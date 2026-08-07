@@ -50,6 +50,28 @@ XWingLabel = b"\./" + b"/^\\"     # 6 bytes, hex 5c2e2f2f5e5c
 Sizes asserted by the Hypothesis property (DoD-V2): ciphertext 1120 = 1088 + 32,
 public key 1216 = 1184 + 32, shared secret 32.
 
+## Verification
+
+This decision is not argued from reading alone. draft-10 Appendix C publishes three test
+vectors, and decapsulation requires no randomness — so it is fully reproducible from
+published data. Both orders were run against vector 0:
+
+```
+draft-10 order (label last)   matches published ss:  True
+doc §3.9 order (label first)  matches published ss:  False
+```
+
+All three vectors match on **both** the derived 1216-byte encapsulation key and the
+32-byte shared secret. The vectors are committed at
+`tests/fixtures/xwing_draft10_vectors.json` and asserted by
+`tests/unit/test_shim_xwing.py::test_kat_decapsulation`, with
+`test_documentation_section_3_9_combiner_order_is_rejected` guarding against someone
+later "correcting" the code back to the document.
+
+Note the round-trip property alone could never have caught this: Quanta generates both
+sides, so a permuted combiner round-trips perfectly. Only the external KAT distinguishes
+X-Wing from a lookalike.
+
 ## Consequences
 
 - The shim is genuinely X-Wing, so ADR-004's security argument holds as written.
