@@ -1,0 +1,51 @@
+# Quanta fixed configuration constants — Technical Documentation §8.1.
+# Override any value by environment variable, e.g. QUANTA_INGEST__MAX_REPO_KB=50000.
+
+[ingest]
+allowed_hosts        = ["github.com"]
+max_repo_kb          = 200000     # 200 MB, per the GitHub API `size` field
+clone_timeout_s      = 180
+max_files            = 20000
+max_file_bytes       = 2000000    # 2 MB
+max_total_bytes      = 500000000  # 500 MB
+max_depth            = 40
+deny_dirs            = [".git", ".venv", "venv", "site-packages", "node_modules",
+                        "build", "dist", ".tox", ".mypy_cache", ".pytest_cache"]
+
+[analysis]
+parse_timeout_s      = 5          # per file
+max_job_seconds      = 600
+blast_radius_max     = 25         # E2 refuses sites above this ancestor count
+
+[worker]
+concurrency          = 2
+poll_interval_s      = 2
+claim_ttl_s          = 900
+max_attempts         = 2
+
+[api]
+rate_limit_per_ip_hour = 10
+max_queue_depth        = 50
+
+[retention]
+artifact_ttl_days    = 7
+
+[stats]
+collinearity_threshold = 0.80
+sensitivity_delta      = 0.30     # ±30% weight perturbation
+bootstrap_iterations   = 10000
+
+# Pre-registered Agility Score weights — §8.2.
+# Committed and git-tagged `weights-v1` before any engine result was observed.
+# Never tune these after observing engine results (§11.2).
+[weights]
+version      = "weights-v1"
+f_sites       = 0.30
+f_isolation   = 0.30
+f_config      = 0.20
+f_propagation = 0.20
+
+[report]
+# "builtin" = deterministic pure-Python SVG emitter (default, see docs/adr/ADR-018).
+# "graphviz" = pydot/Graphviz, requires the `dot` binary on PATH.
+renderer = "builtin"
