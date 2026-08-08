@@ -19,8 +19,8 @@ scratch/
 artifacts/
 /var/lib/quanta/
 
-# Built Next.js export (§9.1)
-src/quanta/web/static/
+# The SPA in src/quanta/web/static/ is hand-written source, not a build output — see
+# docs/adr/ADR-020. It is committed deliberately.
 
 # OS
 .DS_Store

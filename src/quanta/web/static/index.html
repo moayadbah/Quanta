@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quanta — Cryptographic Agility Analyzer</title>
+<!--
+  No inline <script> or <style> anywhere in this file. That is deliberate: it lets the
+  Content-Security-Policy in app.py omit 'unsafe-inline', which is where most of CSP's
+  value actually lives (ADR-020).
+-->
+<link rel="stylesheet" href="/app.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='13' font-size='13'>🔐</text></svg>">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <div class="brand">
+      <span class="brand-mark">Q</span>
+      <div>
+        <div class="brand-name">Quanta</div>
+        <div class="brand-sub">Cryptographic agility measurement for Python repositories</div>
+      </div>
+    </div>
+    <button id="about-toggle" class="ghost" type="button">How it works</button>
+  </div>
+</header>
+
+<!-- ── Explainer ─────────────────────────────────────────────────────────────── -->
+<section id="about" class="wrap panel hidden">
+  <div class="about-grid">
+    <div>
+      <h3>The one thing to know</h3>
+      <p class="lead">The analysis tier <strong>never executes your code.</strong></p>
+      <p class="muted">
+        <code>pip install</code> runs arbitrary build-backend code before any test does, and
+        Python cannot be sandboxed in-process. So the system splits into two planes with a
+        hard trust boundary. Your repository is <em>parsed</em>, never run — the dangerous
+        half of the pipeline was never deployed here.
+      </p>
+      <div class="planes">
+        <div class="plane">
+          <div class="plane-title">Analysis Plane <span class="tag tag-ok">this service</span></div>
+          <ul>
+            <li>Input: any public repository — untrusted</li>
+            <li>Executes target code: <strong>never</strong></li>
+            <li>Credentials present: none</li>
+            <li>Clone deleted unconditionally</li>
+          </ul>
+        </div>
+        <div class="plane plane-dim">
+          <div class="plane-title">Research Plane <span class="tag">offline, not deployed</span></div>
+          <ul>
+            <li>Input: 12 hand-vetted forks</li>
+            <li>Executes target code: yes, in hardened containers</li>
+            <li>Runs the migration engines and verification</li>
+            <li>Never reachable from this service</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h3>What the score means</h3>
+      <p class="muted">
+        A 0–100 measure of how hard it is to replace a cryptographic algorithm in this
+        codebase, from four factors with pre-registered weights.
+      </p>
+      <table class="mini">
+        <tr><td>Call sites</td><td class="num">0.30</td><td class="muted">how many edits</td></tr>
+        <tr><td>Isolation layer</td><td class="num">0.30</td><td class="muted">is there a facade?</td></tr>
+        <tr><td>Algorithm selection</td><td class="num">0.20</td><td class="muted">config or hard-coded</td></tr>
+        <tr><td>Propagation depth</td><td class="num">0.20</td><td class="muted">blast radius</td></tr>
+      </table>
+      <h3>What it is not</h3>
+      <ul id="not-claims" class="muted claims"></ul>
+    </div>
+  </div>
+</section>
+
+<main class="wrap">
+
+  <!-- ── Submit ──────────────────────────────────────────────────────────────── -->
+  <section id="screen-submit" class="screen">
+    <h1>Measure a repository's cryptographic agility</h1>
+    <p class="lead muted">
+      Paste a public GitHub repository. Quanta clones it at a pinned commit, builds a
+      cryptographic dependency graph, and shows you every step it took to reach the number.
+    </p>
+
+    <form id="submit-form" class="submit-row" autocomplete="off">
+      <input id="repo-url" type="text" spellcheck="false"
+             placeholder="https://github.com/owner/repository"
+             aria-label="Public GitHub repository URL">
+      <button type="submit" class="primary">Analyze</button>
+    </form>
+    <div id="submit-error" class="error hidden" role="alert"></div>
+
+    <div class="examples">
+      <div class="examples-head">
+        <h3>Or replay a pre-computed example</h3>
+        <span class="muted small">Runs offline from committed artifacts — no network needed</span>
+      </div>
+      <div id="example-list" class="example-grid"></div>
+    </div>
+  </section>
+
+  <!-- ── Pipeline ────────────────────────────────────────────────────────────── -->
+  <section id="screen-pipeline" class="screen hidden">
+    <div class="run-head">
+      <div>
+        <h2 id="pipeline-repo">Analyzing…</h2>
+        <div id="pipeline-sub" class="muted small"></div>
+      </div>
+      <button id="cancel-run" class="ghost" type="button">Start over</button>
+    </div>
+
+    <div class="progress-track"><div id="progress-bar" class="progress-fill"></div></div>
+    <ol id="steps" class="steps"></ol>
+  </section>
+
+  <!-- ── Result ──────────────────────────────────────────────────────────────── -->
+  <section id="screen-result" class="screen hidden">
+    <div class="run-head">
+      <div>
+        <h2 id="result-repo"></h2>
+        <div id="result-sub" class="muted small"></div>
+      </div>
+      <button id="new-run" class="ghost" type="button">Analyze another</button>
+    </div>
+
+    <div class="result-top">
+      <div class="scorecard">
+        <div id="score-value" class="score-value">—</div>
+        <div class="score-of">/ 100</div>
+        <div id="score-label" class="score-label"></div>
+      </div>
+      <div class="result-facts">
+        <table class="mini wide">
+          <thead>
+            <tr><th>Factor</th><th>Raw</th><th>Normalisation</th>
+                <th class="num">Value</th><th class="num">Weight</th><th class="num">Points</th></tr>
+          </thead>
+          <tbody id="factor-rows"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="tabs" role="tablist">
+      <button class="tab active" data-tab="deductions" type="button">Deductions</button>
+      <button class="tab" data-tab="trace" type="button">Steps taken</button>
+      <button class="tab" data-tab="report" type="button">Full report</button>
+    </div>
+
+    <div id="tab-deductions" class="tabpane">
+      <div id="deductions"></div>
+      <div id="recommendations"></div>
+    </div>
+
+    <div id="tab-trace" class="tabpane hidden">
+      <ol id="result-steps" class="steps"></ol>
+    </div>
+
+    <div id="tab-report" class="tabpane hidden">
+      <p class="muted small">
+        The canonical report, generated once by Jinja2 and embedded in a sandboxed iframe.
+        It is self-contained: it opens from your filesystem with no server and no network.
+      </p>
+      <div class="downloads">
+        <a id="dl-report" class="ghost" download="report.html">Download report.html</a>
+        <a id="dl-score" class="ghost" download="score.json">score.json</a>
+        <a id="dl-cdg" class="ghost" download="cdg.json">cdg.json</a>
+        <a id="dl-meta" class="ghost" download="meta.json">meta.json</a>
+      </div>
+      <iframe id="report-frame" sandbox="" title="Quanta report"></iframe>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap muted small">
+  <span id="footer-version"></span> ·
+  Static analysis only — no code from the analysed repository is imported, executed or
+  installed at any point.
+</footer>
+
+<script src="/app.js"></script>
+</body>
+</html>

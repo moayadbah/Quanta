@@ -1,0 +1,9 @@
+{
+  "agility_score": 13.838066,
+  "blurb": "JSON Web Token library. Cryptography reached directly from many modules.",
+  "commit_sha": "7144e4534c34810f4525dc4578a32addd8212cff",
+  "repo": "jpadilla/pyjwt",
+  "sites": 27,
+  "steps": 9,
+  "title": "PyJWT"
+}

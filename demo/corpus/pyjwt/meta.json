@@ -1,0 +1,379 @@
+{
+  "duration_ms": 15296,
+  "files_scanned": 26,
+  "finished_at": "2026-08-08T04:03:45.164373+00:00",
+  "phase_durations_ms": {
+    "graph": 13,
+    "parsing": 15045,
+    "scoring": 221,
+    "walking": 13
+  },
+  "provenance": {
+    "analyzer_version": "0.1.0+rules.2026.08.01",
+    "commit_sha": "7144e4534c34810f4525dc4578a32addd8212cff",
+    "crypto_ruleset_version": "2026.08.01",
+    "repo": "jpadilla/pyjwt"
+  },
+  "sites_detected": 27,
+  "started_at": "2026-08-08T04:03:29.867959+00:00",
+  "steps": [
+    {
+      "duration_ms": 0,
+      "evidence": [
+        {
+          "label": "Scheme",
+          "ok": true,
+          "value": "https"
+        },
+        {
+          "label": "Host allowlist",
+          "ok": true,
+          "value": "github.com"
+        },
+        {
+          "label": "Userinfo / port / query",
+          "ok": true,
+          "value": "none present"
+        },
+        {
+          "label": "Owner",
+          "ok": true,
+          "value": "jpadilla"
+        },
+        {
+          "label": "Repository",
+          "ok": true,
+          "value": "pyjwt"
+        },
+        {
+          "label": "Character class",
+          "ok": true,
+          "value": "[A-Za-z0-9._-]{1,100}"
+        },
+        {
+          "label": "Network calls so far",
+          "ok": true,
+          "value": "0 — validation precedes DNS"
+        }
+      ],
+      "id": "validate",
+      "status": "done",
+      "summary": "jpadilla/pyjwt accepted, with no network call made",
+      "title": "Validate the URL"
+    },
+    {
+      "duration_ms": 1287,
+      "evidence": [
+        {
+          "label": "Visibility",
+          "ok": true,
+          "value": "public"
+        },
+        {
+          "label": "Default branch",
+          "ok": null,
+          "value": "master"
+        },
+        {
+          "label": "Size",
+          "ok": true,
+          "value": "1,344 KB of 200,000 KB limit"
+        },
+        {
+          "label": "Head commit",
+          "ok": null,
+          "value": "7144e4534c34810f4525dc4578a32addd8212cff"
+        },
+        {
+          "label": "Analysis pinned to",
+          "ok": true,
+          "value": "7144e4534c34"
+        }
+      ],
+      "id": "resolve",
+      "status": "done",
+      "summary": "public, 1,344 KB, pinned to 7144e4534c34",
+      "title": "Resolve repository metadata"
+    },
+    {
+      "duration_ms": 1794,
+      "evidence": [
+        {
+          "label": "Depth",
+          "ok": true,
+          "value": "1 — no history, so no committer personal data"
+        },
+        {
+          "label": "Submodules",
+          "ok": true,
+          "value": "refused — attacker-controlled URLs are an SSRF vector"
+        },
+        {
+          "label": "Hooks",
+          "ok": true,
+          "value": "core.hooksPath=/dev/null"
+        },
+        {
+          "label": "Shell",
+          "ok": true,
+          "value": "shell=False, argument vector only"
+        },
+        {
+          "label": "Timeout",
+          "ok": null,
+          "value": "180s"
+        },
+        {
+          "label": "Checked-out HEAD",
+          "ok": true,
+          "value": "7144e4534c34 matches resolved SHA"
+        }
+      ],
+      "id": "clone",
+      "status": "done",
+      "summary": "shallow clone at 7144e4534c34 in 1794 ms",
+      "title": "Clone at a pinned commit"
+    },
+    {
+      "duration_ms": 13,
+      "evidence": [
+        {
+          "label": "Python files considered",
+          "ok": null,
+          "value": "26"
+        },
+        {
+          "label": "Accepted for analysis",
+          "ok": null,
+          "value": "26"
+        },
+        {
+          "label": "Symlinks skipped",
+          "ok": true,
+          "value": "0"
+        },
+        {
+          "label": "Directories pruned",
+          "ok": null,
+          "value": "1 (denylist, symlinks)"
+        },
+        {
+          "label": "Total bytes",
+          "ok": null,
+          "value": "298,898 of 500,000,000"
+        },
+        {
+          "label": "Containment",
+          "ok": true,
+          "value": "every path re-checked under the clone root"
+        },
+        {
+          "label": "Budgets",
+          "ok": true,
+          "value": "none exceeded"
+        }
+      ],
+      "id": "walk",
+      "status": "done",
+      "summary": "26 Python files accepted",
+      "title": "Walk the source tree"
+    },
+    {
+      "duration_ms": 15045,
+      "evidence": [
+        {
+          "label": "Execution",
+          "ok": true,
+          "value": "parsed only — never imported, never executed"
+        },
+        {
+          "label": "Files parsed",
+          "ok": null,
+          "value": "26"
+        },
+        {
+          "label": "Crypto call sites",
+          "ok": null,
+          "value": "27"
+        },
+        {
+          "label": "Algorithm literals",
+          "ok": null,
+          "value": "2"
+        },
+        {
+          "label": "Configuration reads",
+          "ok": null,
+          "value": "0"
+        },
+        {
+          "label": "Ruleset version",
+          "ok": null,
+          "value": "2026.08.01"
+        },
+        {
+          "label": "Quantum-vulnerable",
+          "ok": false,
+          "value": "4 sites"
+        }
+      ],
+      "id": "parse",
+      "status": "done",
+      "summary": "27 cryptographic call sites detected",
+      "title": "Parse and detect crypto"
+    },
+    {
+      "duration_ms": 14,
+      "evidence": [
+        {
+          "label": "Nodes",
+          "ok": null,
+          "value": "515 — algo_literal 2, crypto_call 27, function 460, module 26"
+        },
+        {
+          "label": "Edges",
+          "ok": null,
+          "value": "701 — binding 487, call 205, import 7, value_flow 2"
+        },
+        {
+          "label": "Low-confidence edges",
+          "ok": true,
+          "value": "205 (every 'call' edge, by rule)"
+        },
+        {
+          "label": "Callees resolved",
+          "ok": null,
+          "value": "290 of 2,435"
+        },
+        {
+          "label": "Callees dropped, not guessed",
+          "ok": true,
+          "value": "0 ambiguous, 2,145 unresolvable"
+        },
+        {
+          "label": "Imports",
+          "ok": null,
+          "value": "17 internal, 378 external"
+        }
+      ],
+      "id": "graph",
+      "status": "done",
+      "summary": "515 nodes, 701 edges",
+      "title": "Build the dependency graph"
+    },
+    {
+      "duration_ms": 221,
+      "evidence": [
+        {
+          "label": "Weights",
+          "ok": true,
+          "value": "weights-v1, pre-registered and git-tagged"
+        },
+        {
+          "label": "call_sites",
+          "ok": null,
+          "value": "raw 27 -> 1 / (1 + log10(1 + n)) -> 0.41 x 0.30 = 12.26"
+        },
+        {
+          "label": "isolation_layer",
+          "ok": null,
+          "value": "raw False -> 1 / (1 + minimum node cut) -> 0.05 x 0.30 = 1.58"
+        },
+        {
+          "label": "selection_source",
+          "ok": null,
+          "value": "raw hardcoded -> config reads / (config reads + literals) -> 0.00 x 0.20 = 0.00"
+        },
+        {
+          "label": "propagation_depth",
+          "ok": null,
+          "value": "raw 26 -> 1 - (ancestors / modules), clamped -> 0.00 x 0.20 = 0.00"
+        },
+        {
+          "label": "Agility Score",
+          "ok": null,
+          "value": "13.8 / 100"
+        },
+        {
+          "label": "-17.74 call_sites",
+          "ok": false,
+          "value": "27 cryptographic call sites must each be edited to change algorithm [jwt/algorithms.py:198, jwt/algorithms.py:408, tests/test_advisory.py:57]"
+        },
+        {
+          "label": "-28.42 isolation_layer",
+          "ok": false,
+          "value": "Crypto APIs invoked directly from 6 modules with no common wrapper; 18 nodes must be cut to decouple cryptography [jwt/algorithms.py:198, jwt/algorithms.py:408, tests/test_advisory.py:57]"
+        },
+        {
+          "label": "-20.00 selection_source",
+          "ok": false,
+          "value": "2 algorithm selections are hard-coded rather than read from configuration [tests/test_api_jws.py:1041, tests/test_api_jws.py:1064]"
+        },
+        {
+          "label": "-20.00 propagation_depth",
+          "ok": false,
+          "value": "26 graph nodes can reach cryptography, so a change propagates well beyond the call sites themselves [tests/test_api_jws.py:1041, tests/test_api_jws.py:1064, jwt/algorithms.py:198]"
+        }
+      ],
+      "id": "score",
+      "status": "done",
+      "summary": "Agility Score 13.8 / 100",
+      "title": "Compute the Agility Score"
+    },
+    {
+      "duration_ms": 43,
+      "evidence": [
+        {
+          "label": "Report size",
+          "ok": null,
+          "value": "38,375 bytes"
+        },
+        {
+          "label": "External requests",
+          "ok": true,
+          "value": "0 — inline SVG and inline CSS"
+        },
+        {
+          "label": "Opens from",
+          "ok": true,
+          "value": "file:// with no server and no network"
+        },
+        {
+          "label": "Artifacts",
+          "ok": null,
+          "value": "cdg.json, score.json, meta.json, report.html"
+        }
+      ],
+      "id": "render",
+      "status": "done",
+      "summary": "report.html rendered, self-contained",
+      "title": "Render artifacts"
+    },
+    {
+      "duration_ms": 0,
+      "evidence": [
+        {
+          "label": "Clone directory",
+          "ok": true,
+          "value": "removed"
+        },
+        {
+          "label": "Source retained",
+          "ok": true,
+          "value": "none — nothing untrusted is kept"
+        },
+        {
+          "label": "Applies to",
+          "ok": true,
+          "value": "success, failure and timeout paths alike"
+        }
+      ],
+      "id": "cleanup",
+      "status": "done",
+      "summary": "working copy deleted",
+      "title": "Delete the working copy"
+    }
+  ],
+  "truncation": null,
+  "unparseable": []
+}

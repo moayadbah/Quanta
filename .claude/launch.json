@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "quanta-web",
+      "runtimeExecutable": "uv",
+      "runtimeArgs": ["run", "quanta", "serve", "--host", "127.0.0.1", "--port", "8000"],
+      "port": 8000
+    }
+  ]
+}
