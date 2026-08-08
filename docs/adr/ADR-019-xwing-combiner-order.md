@@ -44,7 +44,7 @@ Implement `shim/_quanta_hybrid.py` to the draft, not the document:
 
 ```python
 combined = sha3_256(ss_M + ss_X + ct_X + pk_X + XWingLabel)
-XWingLabel = b"\./" + b"/^\\"     # 6 bytes, hex 5c2e2f2f5e5c
+XWingLabel = b"\./" + b"/^\\"  # 6 bytes, hex 5c2e2f2f5e5c
 ```
 
 Sizes asserted by the Hypothesis property (DoD-V2): ciphertext 1120 = 1088 + 32,

@@ -58,7 +58,14 @@ ignore = [
 
 [tool.ruff.lint.per-file-ignores]
 # Security tests deliberately contain hostile strings and assertions about them.
-"tests/**" = ["S101", "S105", "S106", "S108"]
+# PTH211: os.symlink is the clearest way to build a hostile link fixture.
+"tests/**" = ["S101", "S105", "S106", "S108", "PTH211"]
+# RUF001/RUF003 flag ambiguous unicode. In this file the homoglyphs ARE the test — it
+# asserts that Cyrillic look-alike hosts and repo names are rejected.
+"tests/security/test_url_shapes.py" = ["S101", "RUF001", "RUF003"]
+# N818 wants an "Error" suffix, but §9.1 names these exceptions Reject and Truncated and
+# they are referenced by those names throughout the documentation.
+"src/quanta/errors.py" = ["N818"]
 
 [tool.mypy]
 python_version = "3.12"
