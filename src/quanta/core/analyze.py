@@ -181,7 +181,7 @@ def _clone_evidence(settings: Settings, sha: str) -> list[StepEvidence]:
     return [
         _ev("Depth", "1 — no history, so no committer personal data", ok=True),
         _ev("Submodules", "refused — attacker-controlled URLs are an SSRF vector", ok=True),
-        _ev("Hooks", "core.hooksPath=/dev/null", ok=True),
+        _ev("Hooks", "core.hooksPath points at a directory that never exists", ok=True),
         _ev("Shell", "shell=False, argument vector only", ok=True),
         _ev("Timeout", f"{settings.ingest.clone_timeout_s}s"),
         _ev("Checked-out HEAD", f"{sha[:12]} matches resolved SHA", ok=True),

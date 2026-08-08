@@ -38,6 +38,25 @@ def _echo(message: str, *, err: bool = False) -> None:
     typer.echo(message, err=err)
 
 
+def _subprocess_detail(exc: BaseException) -> str:
+    """The stderr of whichever subprocess caused ``exc``, for ``--trace`` only.
+
+    Codes like ``CLONE_FAILED`` are deliberately opaque, because the text underneath is
+    written by the repository being analysed and the web tier must never echo it back. On
+    a developer's own terminal, behind an explicit flag, that trade-off inverts: without
+    this, a clone that fails for a local reason — no git, a proxy, a missing DLL — is
+    indistinguishable from one that fails for any other.
+    """
+    cause = exc.__cause__
+    stderr = getattr(cause, "stderr", None)
+    if not stderr:
+        return "  (no subprocess output was captured)"
+    if isinstance(stderr, bytes):
+        stderr = stderr.decode("utf-8", "replace")
+    lines = [line for line in stderr.strip().splitlines() if line.strip()]
+    return "\n".join(f"  git: {line}" for line in lines[-10:])
+
+
 @app.command()
 def version() -> None:
     """Print the analyzer and crypto ruleset versions."""
@@ -96,6 +115,8 @@ def analyze(
     except Reject as exc:
         # A stable machine code, never a traceback (§5.2.4).
         _echo(f"error: {exc.code}: {exc.detail}", err=True)
+        if trace:
+            _echo(_subprocess_detail(exc), err=True)
         raise typer.Exit(code=1) from None
     except Truncated as exc:
         _echo(f"error: {exc}", err=True)
