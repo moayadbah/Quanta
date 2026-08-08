@@ -1,6 +1,7 @@
 {
   "agility_score": 13.838066,
   "blurb": "JSON Web Token library. Cryptography reached directly from many modules.",
+  "blurb_ar": "مكتبة JSON Web Token، ويُستدعى فيها التشفير مباشرةً من وحدات كثيرة.",
   "commit_sha": "7144e4534c34810f4525dc4578a32addd8212cff",
   "repo": "jpadilla/pyjwt",
   "sites": 27,
