@@ -1,5 +1,5 @@
 {
-  "agility_score": 29.528386,
+  "agility_score": 30.551113,
   "coverage": {
     "files_scanned": 38,
     "files_unparseable": 0,
@@ -37,8 +37,8 @@
         "tests/algorithms/test_EC.py:247"
       ],
       "factor": "isolation_layer",
-      "points": 27.272727,
-      "reason": "Crypto APIs invoked directly from 3 modules with no common wrapper; 10 nodes must be cut to decouple cryptography"
+      "points": 26.25,
+      "reason": "Crypto APIs invoked directly from 3 modules with no common wrapper; 7 nodes must be cut to decouple cryptography"
     },
     {
       "citations": [
@@ -77,8 +77,8 @@
       "weight": 0.3
     },
     "isolation_layer": {
-      "contribution": 2.727273,
-      "normalised": 0.090909,
+      "contribution": 3.75,
+      "normalised": 0.125,
       "raw": false,
       "weight": 0.3
     },
@@ -105,7 +105,7 @@
     {
       "action": "Introduce a crypto facade module fronting the cryptographic primitives, so algorithm changes are made in one place",
       "affected_sites": 10,
-      "estimated_score_gain": 27.272727
+      "estimated_score_gain": 26.25
     },
     {
       "action": "Move algorithm selection into configuration so the algorithm is policy rather than a code literal (NIST CSWP 39)",

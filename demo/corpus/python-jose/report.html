@@ -61,7 +61,7 @@
   <p class="sub mono">mpdavis/python-jose @ 018b310ddb8b</p>
 
   <div class="scorecard">
-    <div class="value">29.5</div>
+    <div class="value">30.6</div>
     <div class="of">/ 100 &nbsp;·&nbsp; Agility Score</div>
   </div>
   <p class="note" style="margin-top:.6rem">
@@ -92,9 +92,9 @@
       <tr>
         <td>Isolation layer</td>
         <td class="mono">False</td>
-        <td class="num">0.09</td>
+        <td class="num">0.12</td>
         <td class="num">0.30</td>
-        <td class="num">2.73</td>
+        <td class="num">3.75</td>
       </tr>
       
       <tr>
@@ -140,9 +140,9 @@
     <div class="deduction">
       <div class="head">
         <span>Isolation layer</span>
-        <span>−27.27</span>
+        <span>−26.25</span>
       </div>
-      <div>Crypto APIs invoked directly from 3 modules with no common wrapper� 10 nodes must be cut to decouple cryptography</div>
+      <div>Crypto APIs invoked directly from 3 modules with no common wrapper� 7 nodes must be cut to decouple cryptography</div>
       <ul class="cites">
         <li class="mono">jose/backends/cryptography_backend.py:462</li><li class="mono">jose/backends/cryptography_backend.py:467</li><li class="mono">jose/backends/cryptography_backend.py:486</li><li class="mono">jose/backends/cryptography_backend.py:493</li><li class="mono">jose/backends/cryptography_backend.py:571</li><li class="mono">jose/backends/cryptography_backend.py:579</li><li class="mono">jose/backends/native.py:59</li><li class="mono">tests/algorithms/test_EC.py:111</li><li class="mono">tests/algorithms/test_EC.py:238</li><li class="mono">tests/algorithms/test_EC.py:247</li>
       </ul>
@@ -179,7 +179,7 @@
       <div>Introduce a crypto facade module fronting the cryptographic primitives, so algorithm changes are made in one place</div>
       <div class="note">
         Affects 10 sites · recovers at most
-        27.3 points
+        26.2 points
       </div>
     </div>
     

@@ -11,8 +11,20 @@
     {
       "confidence": "low",
       "kind": "call",
+      "source": "function-02cb7f49cc3180c7",
+      "target": "function-0849d62d4413d0e2"
+    },
+    {
+      "confidence": "low",
+      "kind": "call",
       "source": "function-03d9a19ffff6884f",
       "target": "function-bc713a892df53b8e"
+    },
+    {
+      "confidence": "low",
+      "kind": "call",
+      "source": "function-0429b37554832eb5",
+      "target": "function-e254c653a1c6107d"
     },
     {
       "confidence": "low",
@@ -73,6 +85,12 @@
       "kind": "call",
       "source": "function-141ed7709d0b969d",
       "target": "function-d9d9b239baef3716"
+    },
+    {
+      "confidence": "low",
+      "kind": "call",
+      "source": "function-145892852611dd1d",
+      "target": "function-b1f930b05fb20297"
     },
     {
       "confidence": "low",
@@ -281,6 +299,18 @@
     {
       "confidence": "low",
       "kind": "call",
+      "source": "function-2b5f3ca21938d05c",
+      "target": "function-0849d62d4413d0e2"
+    },
+    {
+      "confidence": "low",
+      "kind": "call",
+      "source": "function-2b5f3ca21938d05c",
+      "target": "function-47830ea2591629c5"
+    },
+    {
+      "confidence": "low",
+      "kind": "call",
       "source": "function-2efca08a303030b5",
       "target": "function-e0df95e4a33ee17f"
     },
@@ -301,6 +331,12 @@
       "kind": "call",
       "source": "function-34f20240f01d8c18",
       "target": "function-d9d9b239baef3716"
+    },
+    {
+      "confidence": "low",
+      "kind": "call",
+      "source": "function-3510d0059c9b97ef",
+      "target": "function-e254c653a1c6107d"
     },
     {
       "confidence": "low",
@@ -335,6 +371,12 @@
     {
       "confidence": "low",
       "kind": "call",
+      "source": "function-3e0975caeea76ca8",
+      "target": "function-0473288396c5c0f7"
+    },
+    {
+      "confidence": "low",
+      "kind": "call",
       "source": "function-3ee922fd6eabf762",
       "target": "function-e20775eb528bb1d3"
     },
@@ -349,6 +391,30 @@
       "kind": "call",
       "source": "function-40aa646cd5cdb0fb",
       "target": "function-5471a20ad027386c"
+    },
+    {
+      "confidence": "low",
+      "kind": "call",
+      "source": "function-4251a6bb801e8340",
+      "target": "function-6f3ea7740ece4746"
+    },
+    {
+      "confidence": "low",
+      "kind": "call",
+      "source": "function-4251a6bb801e8340",
+      "target": "function-a15e6e5d3852012e"
+    },
+    {
+      "confidence": "low",
+      "kind": "call",
+      "source": "function-4251a6bb801e8340",
+      "target": "function-e9c6efebae1031d2"
+    },
+    {
+      "confidence": "low",
+      "kind": "call",
+      "source": "function-42b0b0b4218418b2",
+      "target": "function-738c17a2c247755d"
     },
     {
       "confidence": "low",
@@ -383,6 +449,12 @@
     {
       "confidence": "low",
       "kind": "call",
+      "source": "function-46b50805bcf002a6",
+      "target": "function-c37bdc991949c957"
+    },
+    {
+      "confidence": "low",
+      "kind": "call",
       "source": "function-47f641102dbce8f6",
       "target": "function-d9d9b239baef3716"
     },
@@ -413,8 +485,20 @@
     {
       "confidence": "low",
       "kind": "call",
+      "source": "function-4dcad916e8b48a8b",
+      "target": "function-1e7a4c3824f159a2"
+    },
+    {
+      "confidence": "low",
+      "kind": "call",
       "source": "function-4dfed39daf398f12",
       "target": "function-99c8fd8db2234da4"
+    },
+    {
+      "confidence": "low",
+      "kind": "call",
+      "source": "function-501f3b64621d127a",
+      "target": "function-9ff31b1a08a1fb31"
     },
     {
       "confidence": "low",
@@ -461,6 +545,12 @@
     {
       "confidence": "low",
       "kind": "call",
+      "source": "function-5f1bfcc2f5839a3b",
+      "target": "function-0473288396c5c0f7"
+    },
+    {
+      "confidence": "low",
+      "kind": "call",
       "source": "function-60b331fb57a590a0",
       "target": "function-7e36ea279af2be6a"
     },
@@ -493,6 +583,12 @@
       "kind": "call",
       "source": "function-62259d5f42cbb88c",
       "target": "function-e20775eb528bb1d3"
+    },
+    {
+      "confidence": "low",
+      "kind": "call",
+      "source": "function-6340e96a8166e9a7",
+      "target": "function-c959921465fa7474"
     },
     {
       "confidence": "low",
@@ -551,6 +647,12 @@
     {
       "confidence": "low",
       "kind": "call",
+      "source": "function-6ef1a5c50595c2eb",
+      "target": "function-0849d62d4413d0e2"
+    },
+    {
+      "confidence": "low",
+      "kind": "call",
       "source": "function-6f3ea7740ece4746",
       "target": "function-10672cc9003dd695"
     },
@@ -605,8 +707,20 @@
     {
       "confidence": "low",
       "kind": "call",
+      "source": "function-75a0eea87960f1e6",
+      "target": "function-a495e2b5857e48f2"
+    },
+    {
+      "confidence": "low",
+      "kind": "call",
       "source": "function-7656f31a3f7096bf",
       "target": "function-d9d9b239baef3716"
+    },
+    {
+      "confidence": "low",
+      "kind": "call",
+      "source": "function-76b3c314b69236d9",
+      "target": "function-738c17a2c247755d"
     },
     {
       "confidence": "low",
@@ -709,6 +823,12 @@
       "kind": "call",
       "source": "function-830888265e9f470e",
       "target": "function-f1633f8f089b6fc9"
+    },
+    {
+      "confidence": "low",
+      "kind": "call",
+      "source": "function-84b310bf7029ce73",
+      "target": "function-8fd76e3ae543d49c"
     },
     {
       "confidence": "low",
@@ -923,6 +1043,30 @@
     {
       "confidence": "low",
       "kind": "call",
+      "source": "function-9bc94edc26545afb",
+      "target": "function-1e7a4c3824f159a2"
+    },
+    {
+      "confidence": "low",
+      "kind": "call",
+      "source": "function-9bc94edc26545afb",
+      "target": "function-5c0de26edc01a4fe"
+    },
+    {
+      "confidence": "low",
+      "kind": "call",
+      "source": "function-9bc94edc26545afb",
+      "target": "function-6f3ea7740ece4746"
+    },
+    {
+      "confidence": "low",
+      "kind": "call",
+      "source": "function-9bc94edc26545afb",
+      "target": "function-e035472e3d3e8368"
+    },
+    {
+      "confidence": "low",
+      "kind": "call",
       "source": "function-9bd26bd8fb0cd24e",
       "target": "function-99c8fd8db2234da4"
     },
@@ -1019,6 +1163,12 @@
     {
       "confidence": "low",
       "kind": "call",
+      "source": "function-a80c4d68867c83d2",
+      "target": "function-156a892482090398"
+    },
+    {
+      "confidence": "low",
+      "kind": "call",
       "source": "function-a879c927b229d0de",
       "target": "function-1cb6ab4f751f143c"
     },
@@ -1027,6 +1177,24 @@
       "kind": "call",
       "source": "function-a885ea44278540ad",
       "target": "function-d9d9b239baef3716"
+    },
+    {
+      "confidence": "low",
+      "kind": "call",
+      "source": "function-aa1d96d772501ad0",
+      "target": "function-5c0de26edc01a4fe"
+    },
+    {
+      "confidence": "low",
+      "kind": "call",
+      "source": "function-aa1d96d772501ad0",
+      "target": "function-6f3ea7740ece4746"
+    },
+    {
+      "confidence": "low",
+      "kind": "call",
+      "source": "function-aa1d96d772501ad0",
+      "target": "function-e035472e3d3e8368"
     },
     {
       "confidence": "low",
@@ -1079,6 +1247,18 @@
     {
       "confidence": "low",
       "kind": "call",
+      "source": "function-b251e5d80f39b9ad",
+      "target": "function-142a3480dc24e3f1"
+    },
+    {
+      "confidence": "low",
+      "kind": "call",
+      "source": "function-b251e5d80f39b9ad",
+      "target": "function-7b6e62d1f63fc042"
+    },
+    {
+      "confidence": "low",
+      "kind": "call",
       "source": "function-b40d493a54cd88a4",
       "target": "function-646cde1527ca86bb"
     },
@@ -1105,6 +1285,12 @@
       "kind": "call",
       "source": "function-b8b98f54efd05ca9",
       "target": "function-7d011d425d14075f"
+    },
+    {
+      "confidence": "low",
+      "kind": "call",
+      "source": "function-b9a1f1508fb01e6e",
+      "target": "function-8fd76e3ae543d49c"
     },
     {
       "confidence": "low",
@@ -1171,6 +1357,18 @@
       "kind": "call",
       "source": "function-bf39367eebadacf8",
       "target": "function-202419f7e8788de3"
+    },
+    {
+      "confidence": "low",
+      "kind": "call",
+      "source": "function-c0268df08b9500ac",
+      "target": "function-0473288396c5c0f7"
+    },
+    {
+      "confidence": "low",
+      "kind": "call",
+      "source": "function-c0268df08b9500ac",
+      "target": "function-fb0900752ef2bc29"
     },
     {
       "confidence": "low",
@@ -1313,8 +1511,26 @@
     {
       "confidence": "low",
       "kind": "call",
+      "source": "function-d0cfe12173dae202",
+      "target": "function-0473288396c5c0f7"
+    },
+    {
+      "confidence": "low",
+      "kind": "call",
       "source": "function-d257480dd85ddbec",
       "target": "function-1d62ce1e926bcedb"
+    },
+    {
+      "confidence": "low",
+      "kind": "call",
+      "source": "function-d2735f1a6019088d",
+      "target": "function-c3c121f4b0fef7fa"
+    },
+    {
+      "confidence": "low",
+      "kind": "call",
+      "source": "function-d3d2eeec4921ed66",
+      "target": "function-a3a826da7c9c2d74"
     },
     {
       "confidence": "low",
@@ -1415,6 +1631,12 @@
     {
       "confidence": "low",
       "kind": "call",
+      "source": "function-e321102754ff6961",
+      "target": "function-f6d21f96a344ad54"
+    },
+    {
+      "confidence": "low",
+      "kind": "call",
       "source": "function-e4649c42413c664e",
       "target": "function-dfe6d1e57a3baf12"
     },
@@ -1459,6 +1681,12 @@
       "kind": "call",
       "source": "function-ed73fdf71ee9ed02",
       "target": "function-5471a20ad027386c"
+    },
+    {
+      "confidence": "low",
+      "kind": "call",
+      "source": "function-ef38ca51fc4e4013",
+      "target": "function-f6d21f96a344ad54"
     },
     {
       "confidence": "low",
@@ -1525,6 +1753,18 @@
       "kind": "call",
       "source": "function-f550c83e982184e4",
       "target": "function-e20775eb528bb1d3"
+    },
+    {
+      "confidence": "low",
+      "kind": "call",
+      "source": "function-f5eea6ee0625ba50",
+      "target": "function-8d649491084ff565"
+    },
+    {
+      "confidence": "low",
+      "kind": "call",
+      "source": "function-f5eea6ee0625ba50",
+      "target": "function-c1b9ad11c2336321"
     },
     {
       "confidence": "low",
@@ -6041,6 +6281,846 @@
     {
       "confidence": "high",
       "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-00288d6373b134d0"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-02cb7f49cc3180c7"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-0473288396c5c0f7"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-04977462547a9a60"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-0ccf761d76ab7539"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-0dd13701604ddbb5"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-145892852611dd1d"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-1a9642500bd1e930"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-1c31e349501623f8"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-1e7a4c3824f159a2"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-1fc0f99e1aaf337b"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-204cbaa1c416b3dd"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-2143da6a66523890"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-22292a512ccbf3ec"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-2260c827844fd3c5"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-229cd6ca1896024f"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-274322474c85290c"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-27604f3a60024b68"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-28be1fea4c5c23ea"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-28cb07e520863084"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-29d1c3bda88aa6e4"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-2b482398872692ab"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-2b5f3ca21938d05c"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-2b780f62b27daee5"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-2e3c2a59203c34dd"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-2f29fbf302877b55"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-3510d0059c9b97ef"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-358b9f9e45832114"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-3a03052c0ed3afa7"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-3b7dc2ccad6d5a9c"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-3d0dd16d7ba2df33"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-3de73c8932c7c7a4"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-3e0975caeea76ca8"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-4251a6bb801e8340"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-42b0b0b4218418b2"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-44df5b936c4b686c"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-46b50805bcf002a6"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-4b2aca83112f0b82"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-4dcad916e8b48a8b"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-501f3b64621d127a"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-51d1ef2a464f8296"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-53066a3311859225"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-5466d8e7f0612dab"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-5c02f0c78a0c23cf"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-5c0de26edc01a4fe"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-5f1bfcc2f5839a3b"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-5f98baa77d8448cc"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-6340e96a8166e9a7"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-640721112dff72da"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-648b480fc5978b41"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-68d843dde44372b5"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-69285021753b1b70"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-6997ec4d1a784ce7"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-6b95f1769d970c82"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-6ba7cb17eccde1cd"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-6da4a33fb18455c0"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-6ef1a5c50595c2eb"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-71e617bd3043937a"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-738c17a2c247755d"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-73a671ff66f682a6"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-74c909a0ccb6d83d"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-75a0eea87960f1e6"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-75f796d45c3dd4cb"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-76b3c314b69236d9"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-7843b016f1083f1c"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-7a04927391af9c55"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-7b6e62d1f63fc042"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-7bd1f9201dc67021"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-7dca3a7a065df0d9"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-7dd51a60af8a6afa"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-7e542401b14e01d2"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-7e87b207f4d7de88"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-84b310bf7029ce73"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-87916fc940eec3e0"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-8ddf6e6e1004a7ef"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-8e790c91a9a3abf6"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-8fd76e3ae543d49c"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-926b93ecd550e546"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-92ea3d50f7eec887"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-94ad05c571a1564d"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-983f85bdcdbd2c2c"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-9a3ad1b12bc1a926"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-9bc94edc26545afb"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-9e379692d7169c66"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-9f278c3299d22b7f"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-a083b3c06b922ea5"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-a2baf14fd189ac38"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-a383698394bf4f18"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-a388662bff373922"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-a3a5e8931f0df029"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-a495e2b5857e48f2"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-a5df3fa9df9e9f55"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-a77fd63744a6692d"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-a80c4d68867c83d2"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-a8bb900b3cb98883"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-a8dbcfa6b6c0635f"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-aa1d96d772501ad0"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-aedbe96b0be239d0"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-af03d37c6ecd4ac9"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-b251e5d80f39b9ad"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-b4fcdf34cb76e4d9"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-b609e8490fb053db"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-b9a1f1508fb01e6e"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-bd7a0b44cf56d7b7"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-c0268df08b9500ac"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-c133f0f6557317e6"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-c37a9a9d3a61835c"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-cbb45e06a77d28f7"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-cbb5b0565855e334"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-d0cfe12173dae202"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-d2735f1a6019088d"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-d311a5983b2d807d"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-d3d2eeec4921ed66"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-d6c716d42a7427a7"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-d8551cd0e3488c31"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-da10234967484541"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-da8e5e3dd339d146"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-e254c653a1c6107d"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-e2bdc297e0358dfb"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-e321102754ff6961"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-e61ec39be344e98e"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-e7dd8792663b7d36"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-e8ea46b7436f03e6"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-ea1f9217ac1da83d"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-ebfeed29904ad182"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-ec1b14d743045deb"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-ec248d81f5df499c"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-edf6aef0879f4dd3"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-ee958f2dda5c2ff6"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-eede35fdd5b73585"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-ef38ca51fc4e4013"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-f0cbab32d755a5dd"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-f1cd8cf62f108c93"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-f4fc1a5ffe05e36a"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-f5eea6ee0625ba50"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-f5f6e4e4897d5aee"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-f83077352af3bc14"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-fc7df51e90e8f91c"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-a042fb26592ea7f1",
+      "target": "function-ffe92df642469d79"
+    },
+    {
+      "confidence": "high",
+      "kind": "import",
+      "source": "module-a042fb26592ea7f1",
+      "target": "module-43cdfcff684faa78"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
       "source": "module-a05d60c1b887a44e",
       "target": "function-c5aef6be9944bfd6"
     },
@@ -6679,6 +7759,12 @@
       "kind": "import",
       "source": "module-ac301bb55b1f5700",
       "target": "module-60f25b25deef6508"
+    },
+    {
+      "confidence": "high",
+      "kind": "import",
+      "source": "module-ac301bb55b1f5700",
+      "target": "module-a042fb26592ea7f1"
     },
     {
       "confidence": "high",
@@ -10139,6 +11225,17 @@
     },
     {
       "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-00288d6373b134d0",
+      "kind": "function",
+      "line": 2827,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Parameter.shell_complete",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
       "col": 0,
       "file": "tests/test_termui.py",
       "id": "function-004d38834acc50a8",
@@ -10305,6 +11402,17 @@
     {
       "algorithm": null,
       "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-02cb7f49cc3180c7",
+      "kind": "function",
+      "line": 3376,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Option.get_help_extra",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
       "file": "src/click/types.py",
       "id": "function-0312c5547c6940ed",
       "kind": "function",
@@ -10425,6 +11533,17 @@
     },
     {
       "algorithm": null,
+      "col": 0,
+      "file": "src/click/core.py",
+      "id": "function-0473288396c5c0f7",
+      "kind": "function",
+      "line": 102,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core._format_deprecated_label",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
       "col": 4,
       "file": "examples/imagepipe/imagepipe.py",
       "id": "function-04832f1b9bb3fe73",
@@ -10443,6 +11562,17 @@
       "line": 62,
       "module": "examples.naval.naval",
       "qualified_name": "examples.naval.naval.mine_set",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-04977462547a9a60",
+      "kind": "function",
+      "line": 3715,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Argument.make_metavar",
       "source": "static"
     },
     {
@@ -10877,6 +12007,17 @@
     {
       "algorithm": null,
       "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-0ccf761d76ab7539",
+      "kind": "function",
+      "line": 1090,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Command.__repr__",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
       "file": "tests/test_basic.py",
       "id": "function-0cd937d5ef4d6c76",
       "kind": "function",
@@ -10927,6 +12068,17 @@
       "line": 361,
       "module": "tests.test_testing",
       "qualified_name": "tests.test_testing.test_stderr.cli_stderr",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-0dd13701604ddbb5",
+      "kind": "function",
+      "line": 3767,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Argument.add_to_parser",
       "source": "static"
     },
     {
@@ -11394,6 +12546,17 @@
     {
       "algorithm": null,
       "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-145892852611dd1d",
+      "kind": "function",
+      "line": 1590,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Command._main_shell_completion",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
       "file": "tests/test_context.py",
       "id": "function-14884b38905fac18",
       "kind": "function",
@@ -11767,6 +12930,17 @@
     },
     {
       "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-1a9642500bd1e930",
+      "kind": "function",
+      "line": 528,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Context.to_info_dict",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
       "col": 0,
       "file": "examples/imagepipe/imagepipe.py",
       "id": "function-1afe03bcfb36279a",
@@ -11851,6 +13025,17 @@
       "line": 135,
       "module": "src.click.exceptions",
       "qualified_name": "src.click.exceptions.BadParameter.__init__",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-1c31e349501623f8",
+      "kind": "function",
+      "line": 2474,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Parameter.consume_value",
       "source": "static"
     },
     {
@@ -11988,6 +13173,17 @@
     {
       "algorithm": null,
       "col": 0,
+      "file": "src/click/core.py",
+      "id": "function-1e7a4c3824f159a2",
+      "kind": "function",
+      "line": 124,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.augment_usage_errors",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 0,
       "file": "examples/aliases/aliases.py",
       "id": "function-1ed27690139e1c25",
       "kind": "function",
@@ -12053,6 +13249,17 @@
     },
     {
       "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-1fc0f99e1aaf337b",
+      "kind": "function",
+      "line": 819,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Context.exit",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
       "col": 0,
       "file": "tests/test_commands.py",
       "id": "function-1fcc92acd4d92394",
@@ -12071,6 +13278,17 @@
       "line": 432,
       "module": "src.click._termui_impl",
       "qualified_name": "src.click._termui_impl.get_pager_file",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-204cbaa1c416b3dd",
+      "kind": "function",
+      "line": 2374,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Parameter.to_info_dict",
       "source": "static"
     },
     {
@@ -12137,6 +13355,17 @@
       "line": 287,
       "module": "src.click._compat",
       "qualified_name": "src.click._compat._force_correct_text_reader",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-2143da6a66523890",
+      "kind": "function",
+      "line": 1166,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Command.collect_usage_pieces",
       "source": "static"
     },
     {
@@ -12251,6 +13480,17 @@
     },
     {
       "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-22292a512ccbf3ec",
+      "kind": "function",
+      "line": 1312,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Command.format_epilog",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
       "col": 0,
       "file": "tests/test_testing.py",
       "id": "function-22373d7cba38598c",
@@ -12263,12 +13503,34 @@
     {
       "algorithm": null,
       "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-2260c827844fd3c5",
+      "kind": "function",
+      "line": 689,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Context.close",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
       "file": "tests/test_termui.py",
       "id": "function-228a61a64ea982ee",
       "kind": "function",
       "line": 1371,
       "module": "tests.test_termui",
       "qualified_name": "tests.test_termui._CustomTypeWithRawValue.convert",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-229cd6ca1896024f",
+      "kind": "function",
+      "line": 2140,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.CommandCollection.add_source",
       "source": "static"
     },
     {
@@ -12516,6 +13778,28 @@
     {
       "algorithm": null,
       "col": 0,
+      "file": "src/click/core.py",
+      "id": "function-274322474c85290c",
+      "kind": "function",
+      "line": 3771,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.__getattr__",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-27604f3a60024b68",
+      "kind": "function",
+      "line": 1756,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Group.to_info_dict",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 0,
       "file": "tests/test_utils/test_echo_via_pager.py",
       "id": "function-2842378aef0eaed6",
       "kind": "function",
@@ -12555,6 +13839,28 @@
       "line": 272,
       "module": "tests.test_termui",
       "qualified_name": "tests.test_termui.test_secho_non_text",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-28be1fea4c5c23ea",
+      "kind": "function",
+      "line": 2578,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Parameter.value_is_missing",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-28cb07e520863084",
+      "kind": "function",
+      "line": 569,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Context.scope",
       "source": "static"
     },
     {
@@ -12658,6 +13964,17 @@
     },
     {
       "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-29d1c3bda88aa6e4",
+      "kind": "function",
+      "line": 1321,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Command.make_context",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
       "col": 0,
       "file": "tests/test_testing.py",
       "id": "function-29d9315add828550",
@@ -12746,6 +14063,17 @@
     },
     {
       "algorithm": null,
+      "col": 12,
+      "file": "src/click/core.py",
+      "id": "function-2b482398872692ab",
+      "kind": "function",
+      "line": 1921,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Group.result_callback.decorator.function",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
       "col": 4,
       "file": "tests/test_termui.py",
       "id": "function-2b4a334b64eb872e",
@@ -12768,6 +14096,17 @@
     },
     {
       "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-2b5f3ca21938d05c",
+      "kind": "function",
+      "line": 2059,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Group.resolve_command",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
       "col": 0,
       "file": "tests/test_termui.py",
       "id": "function-2b77d681cd50eeac",
@@ -12775,6 +14114,17 @@
       "line": 1075,
       "module": "tests.test_termui",
       "qualified_name": "tests.test_termui.test_false_show_default_cause_no_default_display_in_prompt",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-2b780f62b27daee5",
+      "kind": "function",
+      "line": 3143,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Option._validate",
       "source": "static"
     },
     {
@@ -12933,6 +14283,17 @@
     },
     {
       "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-2e3c2a59203c34dd",
+      "kind": "function",
+      "line": 829,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Context.get_usage",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
       "col": 0,
       "file": "tests/test_stream_lifecycle.py",
       "id": "function-2e5ba66f1791a8cf",
@@ -13028,6 +14389,17 @@
       "line": 248,
       "module": "src.click.utils",
       "qualified_name": "src.click.utils._KeepOpenFile.__iter__",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-2f29fbf302877b55",
+      "kind": "function",
+      "line": 1251,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Command.format_help",
       "source": "static"
     },
     {
@@ -13406,6 +14778,17 @@
     },
     {
       "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-3510d0059c9b97ef",
+      "kind": "function",
+      "line": 1358,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Command.parse_args",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
       "col": 0,
       "file": "src/click/termui.py",
       "id": "function-352e767f406a4423",
@@ -13435,6 +14818,17 @@
       "line": 132,
       "module": "src.click._winconsole",
       "qualified_name": "src.click._winconsole._WindowsConsoleReader.readinto",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-358b9f9e45832114",
+      "kind": "function",
+      "line": 3165,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Option.to_info_dict",
       "source": "static"
     },
     {
@@ -13659,6 +15053,17 @@
     },
     {
       "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-3a03052c0ed3afa7",
+      "kind": "function",
+      "line": 3510,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Option.resolve_envvar_value",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
       "col": 0,
       "file": "tests/test_custom_classes.py",
       "id": "function-3a301e0a7fae4306",
@@ -13699,6 +15104,17 @@
       "line": 106,
       "module": "src.click._winconsole",
       "qualified_name": "src.click._winconsole.get_buffer",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-3b7dc2ccad6d5a9c",
+      "kind": "function",
+      "line": 807,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Context.fail",
       "source": "static"
     },
     {
@@ -13814,6 +15230,17 @@
     {
       "algorithm": null,
       "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-3d0dd16d7ba2df33",
+      "kind": "function",
+      "line": 1300,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Command.format_arguments",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
       "file": "src/click/types.py",
       "id": "function-3d3fbdea443ab116",
       "kind": "function",
@@ -13857,6 +15284,17 @@
     },
     {
       "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-3de73c8932c7c7a4",
+      "kind": "function",
+      "line": 1885,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Group.result_callback",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
       "col": 0,
       "file": "tests/test_utils/test_echo.py",
       "id": "function-3df2b918de0ea3ef",
@@ -13875,6 +15313,17 @@
       "line": 755,
       "module": "tests.test_basic",
       "qualified_name": "tests.test_basic.test_evaluation_order.cli",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-3e0975caeea76ca8",
+      "kind": "function",
+      "line": 3671,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Argument.__init__",
       "source": "static"
     },
     {
@@ -14099,6 +15548,17 @@
     },
     {
       "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-4251a6bb801e8340",
+      "kind": "function",
+      "line": 1458,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Command.main",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
       "col": 0,
       "file": "tests/test_arguments.py",
       "id": "function-4268bd68e5e7f4a4",
@@ -14106,6 +15566,17 @@
       "line": 512,
       "module": "tests.test_arguments",
       "qualified_name": "tests.test_arguments.test_good_defaults_for_nargs",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-42b0b0b4218418b2",
+      "kind": "function",
+      "line": 2085,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Group.shell_complete",
       "source": "static"
     },
     {
@@ -14209,6 +15680,17 @@
     },
     {
       "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-44df5b936c4b686c",
+      "kind": "function",
+      "line": 752,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Context.ensure_object",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
       "col": 0,
       "file": "tests/test_utils/test_open_file.py",
       "id": "function-4564e3537d4faa9f",
@@ -14304,6 +15786,17 @@
       "line": 241,
       "module": "src.click.exceptions",
       "qualified_name": "src.click.exceptions.NoSuchOption.__init__",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 8,
+      "file": "src/click/core.py",
+      "id": "function-46b50805bcf002a6",
+      "kind": "function",
+      "line": 1875,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Group.group.decorator",
       "source": "static"
     },
     {
@@ -14572,6 +16065,17 @@
     },
     {
       "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-4b2aca83112f0b82",
+      "kind": "function",
+      "line": 1628,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core._FakeSubclassCheck.__subclasscheck__",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
       "col": 0,
       "file": "tests/test_termui.py",
       "id": "function-4b4ca7b390a920f5",
@@ -14689,6 +16193,17 @@
       "line": 599,
       "module": "tests.test_shell_completion",
       "qualified_name": "tests.test_shell_completion.test_fish_format_completion_escapes_help",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-4dcad916e8b48a8b",
+      "kind": "function",
+      "line": 850,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Context.invoke",
       "source": "static"
     },
     {
@@ -14858,6 +16373,17 @@
     },
     {
       "algorithm": null,
+      "col": 8,
+      "file": "src/click/core.py",
+      "id": "function-501f3b64621d127a",
+      "kind": "function",
+      "line": 3337,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Option.get_help_record._write_opts",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
       "col": 0,
       "file": "tests/test_chain.py",
       "id": "function-503f31ed9c9941cb",
@@ -14957,6 +16483,17 @@
     },
     {
       "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-51d1ef2a464f8296",
+      "kind": "function",
+      "line": 3756,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Argument.get_help_record",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
       "col": 0,
       "file": "tests/test_defaults.py",
       "id": "function-52ade53de0c9a7a5",
@@ -14986,6 +16523,17 @@
       "line": 32,
       "module": "tests.typing.typing_aliased_group",
       "qualified_name": "tests.typing.typing_aliased_group.cli",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-53066a3311859225",
+      "kind": "function",
+      "line": 3222,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Option.get_error_hint",
       "source": "static"
     },
     {
@@ -15085,6 +16633,17 @@
       "line": 146,
       "module": "src.click.formatting",
       "qualified_name": "src.click.formatting.HelpFormatter.write",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-5466d8e7f0612dab",
+      "kind": "function",
+      "line": 1930,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Group.get_command",
       "source": "static"
     },
     {
@@ -15441,6 +17000,17 @@
     },
     {
       "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-5c02f0c78a0c23cf",
+      "kind": "function",
+      "line": 1940,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Group.collect_usage_pieces",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
       "col": 0,
       "file": "tests/test_types.py",
       "id": "function-5c0c755cfbe43f5c",
@@ -15448,6 +17018,17 @@
       "line": 154,
       "module": "tests.test_types",
       "qualified_name": "tests.test_types._symlinks_supported",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 0,
+      "file": "src/click/core.py",
+      "id": "function-5c0de26edc01a4fe",
+      "kind": "function",
+      "line": 110,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core._format_deprecated_suffix",
       "source": "static"
     },
     {
@@ -15574,6 +17155,17 @@
     {
       "algorithm": null,
       "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-5f1bfcc2f5839a3b",
+      "kind": "function",
+      "line": 2944,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Option.__init__",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
       "file": "tests/test_formatting.py",
       "id": "function-5f26bd59ac63ef15",
       "kind": "function",
@@ -15602,6 +17194,17 @@
       "line": 559,
       "module": "tests.test_testing",
       "qualified_name": "tests.test_testing.test_isolation_flushes_unflushed_stderr.cli",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-5f98baa77d8448cc",
+      "kind": "function",
+      "line": 1977,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Group.parse_args",
       "source": "static"
     },
     {
@@ -15782,6 +17385,17 @@
     },
     {
       "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-6340e96a8166e9a7",
+      "kind": "function",
+      "line": 1185,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Command.get_help_option",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
       "col": 0,
       "file": "examples/completion/completion.py",
       "id": "function-6350028ccf655399",
@@ -15848,6 +17462,17 @@
     },
     {
       "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-640721112dff72da",
+      "kind": "function",
+      "line": 1622,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Command.__call__",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
       "col": 0,
       "file": "tests/test_context.py",
       "id": "function-640c0dc6112464c2",
@@ -15910,6 +17535,17 @@
       "line": 226,
       "module": "tests.test_arguments",
       "qualified_name": "tests.test_arguments.test_empty_nargs.cmd2",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-648b480fc5978b41",
+      "kind": "function",
+      "line": 940,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Context.get_parameter_source",
       "source": "static"
     },
     {
@@ -16091,6 +17727,28 @@
     {
       "algorithm": null,
       "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-68d843dde44372b5",
+      "kind": "function",
+      "line": 3753,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Argument.get_usage_pieces",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-69285021753b1b70",
+      "kind": "function",
+      "line": 340,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Context.__init__",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
       "file": "examples/aliases/aliases.py",
       "id": "function-69471c5fee7c6b2a",
       "kind": "function",
@@ -16119,6 +17777,17 @@
       "line": 540,
       "module": "tests.test_commands",
       "qualified_name": "tests.test_commands.test_deprecated_in_invocation.deprecated_cmd",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-6997ec4d1a784ce7",
+      "kind": "function",
+      "line": 1631,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core._FakeSubclassCheck.__instancecheck__",
       "source": "static"
     },
     {
@@ -16207,6 +17876,28 @@
       "line": 1128,
       "module": "tests.test_termui",
       "qualified_name": "tests.test_termui.test_string_show_default_in_prompt.cmd",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-6b95f1769d970c82",
+      "kind": "function",
+      "line": 607,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Context.meta",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-6ba7cb17eccde1cd",
+      "kind": "function",
+      "line": 1035,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Command.__init__",
       "source": "static"
     },
     {
@@ -16333,6 +18024,17 @@
     {
       "algorithm": null,
       "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-6da4a33fb18455c0",
+      "kind": "function",
+      "line": 1102,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Command.get_params",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
       "file": "tests/test_commands.py",
       "id": "function-6e0befd04b3367e7",
       "kind": "function",
@@ -16383,6 +18085,17 @@
       "line": 154,
       "module": "src.click._compat",
       "qualified_name": "src.click._compat._is_binary_reader",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-6ef1a5c50595c2eb",
+      "kind": "function",
+      "line": 3228,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Option._parse_decls",
       "source": "static"
     },
     {
@@ -16563,6 +18276,17 @@
     },
     {
       "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-71e617bd3043937a",
+      "kind": "function",
+      "line": 517,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Context.protected_args",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
       "col": 0,
       "file": "tests/test_chain.py",
       "id": "function-720836433de03538",
@@ -16603,6 +18327,28 @@
       "line": 585,
       "module": "tests.test_commands",
       "qualified_name": "tests.test_commands.test_group_invoke_collects_used_option_prefixes",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 0,
+      "file": "src/click/core.py",
+      "id": "function-738c17a2c247755d",
+      "kind": "function",
+      "line": 63,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core._complete_visible_commands",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-73a671ff66f682a6",
+      "kind": "function",
+      "line": 2662,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Parameter.resolve_envvar_value",
       "source": "static"
     },
     {
@@ -16695,6 +18441,17 @@
     },
     {
       "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-74c909a0ccb6d83d",
+      "kind": "function",
+      "line": 3289,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Option.add_to_parser",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
       "col": 0,
       "file": "tests/test_stream_lifecycle.py",
       "id": "function-74fd03c84e71b1c6",
@@ -16783,6 +18540,17 @@
     },
     {
       "algorithm": null,
+      "col": 8,
+      "file": "src/click/core.py",
+      "id": "function-75a0eea87960f1e6",
+      "kind": "function",
+      "line": 2532,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Parameter.type_cast_value.check_iter",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
       "col": 0,
       "file": "tests/test_basic.py",
       "id": "function-75a9c32ac6518971",
@@ -16801,6 +18569,17 @@
       "line": 127,
       "module": "src.click.formatting",
       "qualified_name": "src.click.formatting.HelpFormatter.__init__",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-75f796d45c3dd4cb",
+      "kind": "function",
+      "line": 1834,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Group.group",
       "source": "static"
     },
     {
@@ -16834,6 +18613,17 @@
       "line": 138,
       "module": "tests.test_stream_lifecycle",
       "qualified_name": "tests.test_stream_lifecycle.test_getvalue_after_isolation_exit",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-76b3c314b69236d9",
+      "kind": "function",
+      "line": 1410,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Command.shell_complete",
       "source": "static"
     },
     {
@@ -16948,6 +18738,17 @@
     },
     {
       "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-7843b016f1083f1c",
+      "kind": "function",
+      "line": 677,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Context.call_on_close",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
       "col": 0,
       "file": "tests/test_termui.py",
       "id": "function-785d470527f92df6",
@@ -17021,6 +18822,17 @@
       "line": 336,
       "module": "tests.test_context",
       "qualified_name": "tests.test_context.test_close_before_pop",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-7a04927391af9c55",
+      "kind": "function",
+      "line": 1158,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Command.format_usage",
       "source": "static"
     },
     {
@@ -17147,12 +18959,34 @@
     {
       "algorithm": null,
       "col": 0,
+      "file": "src/click/core.py",
+      "id": "function-7b6e62d1f63fc042",
+      "kind": "function",
+      "line": 119,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.batch",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 0,
       "file": "examples/imagepipe/imagepipe.py",
       "id": "function-7b9699dff14c2be2",
       "kind": "function",
       "line": 178,
       "module": "examples.imagepipe.imagepipe",
       "qualified_name": "examples.imagepipe.imagepipe.convert_flip",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-7bd1f9201dc67021",
+      "kind": "function",
+      "line": 2814,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Parameter.get_usage_pieces",
       "source": "static"
     },
     {
@@ -17279,6 +19113,28 @@
     {
       "algorithm": null,
       "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-7dca3a7a065df0d9",
+      "kind": "function",
+      "line": 1945,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Group.format_options",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-7dd51a60af8a6afa",
+      "kind": "function",
+      "line": 1949,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Group.format_commands",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
       "file": "tests/test_commands.py",
       "id": "function-7ded6ab3e008e1c2",
       "kind": "function",
@@ -17340,6 +19196,28 @@
       "line": 171,
       "module": "tests.test_basic",
       "qualified_name": "tests.test_basic.test_group_commands_dict.sub",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-7e542401b14e01d2",
+      "kind": "function",
+      "line": 2811,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Parameter.get_help_record",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-7e87b207f4d7de88",
+      "kind": "function",
+      "line": 3638,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Option.process_value",
       "source": "static"
     },
     {
@@ -17729,6 +19607,17 @@
     },
     {
       "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-84b310bf7029ce73",
+      "kind": "function",
+      "line": 1774,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Group.add_command",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
       "col": 8,
       "file": "tests/test_stream_lifecycle.py",
       "id": "function-84e751e19c00a965",
@@ -17912,6 +19801,17 @@
       "line": 529,
       "module": "tests.test_commands",
       "qualified_name": "tests.test_commands.test_deprecated_empty_help_no_leading_space.cli",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-87916fc940eec3e0",
+      "kind": "function",
+      "line": 931,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Context.set_parameter_source",
       "source": "static"
     },
     {
@@ -18334,6 +20234,17 @@
     },
     {
       "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-8ddf6e6e1004a7ef",
+      "kind": "function",
+      "line": 2414,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Parameter.make_metavar",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
       "col": 0,
       "file": "tests/test_basic.py",
       "id": "function-8e210678bbf2f666",
@@ -18341,6 +20252,17 @@
       "line": 740,
       "module": "tests.test_basic",
       "qualified_name": "tests.test_basic.test_evaluation_order",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-8e790c91a9a3abf6",
+      "kind": "function",
+      "line": 3188,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Option.get_default",
       "source": "static"
     },
     {
@@ -18429,6 +20351,17 @@
       "line": 120,
       "module": "src.click._winconsole",
       "qualified_name": "src.click._winconsole._WindowsConsoleRawIOBase.__init__",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 0,
+      "file": "src/click/core.py",
+      "id": "function-8fd76e3ae543d49c",
+      "kind": "function",
+      "line": 82,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core._check_nested_chain",
       "source": "static"
     },
     {
@@ -18577,6 +20510,17 @@
     {
       "algorithm": null,
       "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-926b93ecd550e546",
+      "kind": "function",
+      "line": 3710,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Argument.human_readable_name",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
       "file": "src/click/utils.py",
       "id": "function-92be2c37a13c1694",
       "kind": "function",
@@ -18594,6 +20538,17 @@
       "line": 27,
       "module": "tests.test_normalization",
       "qualified_name": "tests.test_normalization.test_choice_normalization.cli",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-92ea3d50f7eec887",
+      "kind": "function",
+      "line": 912,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Context.forward",
       "source": "static"
     },
     {
@@ -18682,6 +20637,17 @@
       "line": 85,
       "module": "tests.test_arguments",
       "qualified_name": "tests.test_arguments.test_bytes_args.from_bytes",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-94ad05c571a1564d",
+      "kind": "function",
+      "line": 2408,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Parameter.human_readable_name",
       "source": "static"
     },
     {
@@ -18902,6 +20868,17 @@
       "line": 105,
       "module": "tests.test_compat",
       "qualified_name": "tests.test_compat.test_should_strip_ansi",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-983f85bdcdbd2c2c",
+      "kind": "function",
+      "line": 740,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Context.find_object",
       "source": "static"
     },
     {
@@ -19160,6 +21137,17 @@
     {
       "algorithm": null,
       "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-9a3ad1b12bc1a926",
+      "kind": "function",
+      "line": 1991,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Group.invoke",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
       "file": "src/click/exceptions.py",
       "id": "function-9a7029d395b51de5",
       "kind": "function",
@@ -19243,6 +21231,17 @@
       "line": 543,
       "module": "src.click.types",
       "qualified_name": "src.click.types.DateTime.to_info_dict",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-9bc94edc26545afb",
+      "kind": "function",
+      "line": 2723,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Parameter.handle_parse_result",
       "source": "static"
     },
     {
@@ -19556,6 +21555,17 @@
     {
       "algorithm": null,
       "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-9e379692d7169c66",
+      "kind": "function",
+      "line": 1219,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Command.make_parser",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
       "file": "tests/test_basic.py",
       "id": "function-9e4c6e251db5e1cc",
       "kind": "function",
@@ -19643,6 +21653,17 @@
     },
     {
       "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-9f278c3299d22b7f",
+      "kind": "function",
+      "line": 3582,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Option.consume_value",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
       "col": 0,
       "file": "tests/test_commands.py",
       "id": "function-9fb66b2ea9da0953",
@@ -19716,6 +21737,17 @@
       "line": 355,
       "module": "src.click._termui_impl",
       "qualified_name": "src.click._termui_impl.ProgressBar.generator",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-a083b3c06b922ea5",
+      "kind": "function",
+      "line": 715,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Context.command_path",
       "source": "static"
     },
     {
@@ -19864,6 +21896,17 @@
     {
       "algorithm": null,
       "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-a2baf14fd189ac38",
+      "kind": "function",
+      "line": 2522,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Parameter.type_cast_value",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
       "file": "tests/test_basic.py",
       "id": "function-a31a2cfd163bf8a9",
       "kind": "function",
@@ -19892,6 +21935,39 @@
       "line": 11,
       "module": "tests.typing.typing_options",
       "qualified_name": "tests.typing.typing_options.hello",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-a383698394bf4f18",
+      "kind": "function",
+      "line": 1785,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Group.command",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-a388662bff373922",
+      "kind": "function",
+      "line": 1093,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Command.get_usage",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-a3a5e8931f0df029",
+      "kind": "function",
+      "line": 696,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Context._close_with_exception_info",
       "source": "static"
     },
     {
@@ -19925,6 +22001,17 @@
       "line": 688,
       "module": "tests.test_context",
       "qualified_name": "tests.test_context.test_make_pass_decorator_args.test2",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 0,
+      "file": "src/click/core.py",
+      "id": "function-a495e2b5857e48f2",
+      "kind": "function",
+      "line": 2170,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core._check_iter",
       "source": "static"
     },
     {
@@ -20040,6 +22127,17 @@
     {
       "algorithm": null,
       "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-a5df3fa9df9e9f55",
+      "kind": "function",
+      "line": 2429,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Parameter.get_default",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
       "file": "tests/test_utils/test_echo_via_pager.py",
       "id": "function-a5e7e37ab323aa2b",
       "kind": "function",
@@ -20117,6 +22215,17 @@
     {
       "algorithm": null,
       "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-a77fd63744a6692d",
+      "kind": "function",
+      "line": 2403,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Parameter._parse_decls",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
       "file": "src/click/_compat.py",
       "id": "function-a782ae6d265435a0",
       "kind": "function",
@@ -20160,6 +22269,17 @@
     },
     {
       "algorithm": null,
+      "col": 8,
+      "file": "src/click/core.py",
+      "id": "function-a80c4d68867c83d2",
+      "kind": "function",
+      "line": 1823,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Group.command.decorator",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
       "col": 0,
       "file": "src/click/_compat.py",
       "id": "function-a879c927b229d0de",
@@ -20183,6 +22303,17 @@
     {
       "algorithm": null,
       "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-a8bb900b3cb98883",
+      "kind": "function",
+      "line": 158,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.iter_params_for_processing.sort_key",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
       "file": "src/click/types.py",
       "id": "function-a8bc39ad488010f6",
       "kind": "function",
@@ -20200,6 +22331,17 @@
       "line": 314,
       "module": "src.click.types",
       "qualified_name": "src.click.types.StringParamType.__repr__",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 12,
+      "file": "src/click/core.py",
+      "id": "function-a8dbcfa6b6c0635f",
+      "kind": "function",
+      "line": 2547,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Parameter.type_cast_value.convert",
       "source": "static"
     },
     {
@@ -20288,6 +22430,17 @@
       "line": 152,
       "module": "tests.test_commands",
       "qualified_name": "tests.test_commands.test_custom_parser.OptParseCommand.__init__",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-aa1d96d772501ad0",
+      "kind": "function",
+      "line": 1394,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Command.invoke",
       "source": "static"
     },
     {
@@ -20579,6 +22732,28 @@
     {
       "algorithm": null,
       "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-aedbe96b0be239d0",
+      "kind": "function",
+      "line": 2817,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Parameter.get_error_hint",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-af03d37c6ecd4ac9",
+      "kind": "function",
+      "line": 3734,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Argument._parse_decls",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
       "file": "src/click/formatting.py",
       "id": "function-af23c7a0db46bd01",
       "kind": "function",
@@ -20744,6 +22919,17 @@
     {
       "algorithm": null,
       "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-b251e5d80f39b9ad",
+      "kind": "function",
+      "line": 3534,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Option.value_from_envvar",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
       "file": "src/click/decorators.py",
       "id": "function-b266b90e0a1da125",
       "kind": "function",
@@ -20876,6 +23062,17 @@
     {
       "algorithm": null,
       "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-b4fcdf34cb76e4d9",
+      "kind": "function",
+      "line": 2707,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Parameter.value_from_envvar",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
       "file": "tests/test_termui.py",
       "id": "function-b501c0daa08e0b9a",
       "kind": "function",
@@ -20948,6 +23145,17 @@
       "line": 60,
       "module": "tests.test_shell_completion",
       "qualified_name": "tests.test_shell_completion.test_nested_group",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-b609e8490fb053db",
+      "kind": "function",
+      "line": 2367,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Parameter._hide_unset",
       "source": "static"
     },
     {
@@ -21091,6 +23299,17 @@
       "line": 6,
       "module": "examples.naval.naval",
       "qualified_name": "examples.naval.naval.cli",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-b9a1f1508fb01e6e",
+      "kind": "function",
+      "line": 2144,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.CommandCollection.get_command",
       "source": "static"
     },
     {
@@ -21349,6 +23568,17 @@
     {
       "algorithm": null,
       "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-bd7a0b44cf56d7b7",
+      "kind": "function",
+      "line": 1936,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Group.list_commands",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
       "file": "tests/test_termui.py",
       "id": "function-bd95dfacd219f97f",
       "kind": "function",
@@ -21579,6 +23809,17 @@
     },
     {
       "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-c0268df08b9500ac",
+      "kind": "function",
+      "line": 1235,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Command.get_short_help_str",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
       "col": 8,
       "file": "tests/test_defaults.py",
       "id": "function-c036e369a01fa8da",
@@ -21630,6 +23871,17 @@
       "line": 196,
       "module": "src.click._winconsole",
       "qualified_name": "src.click._winconsole.ConsoleStream.__init__",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-c133f0f6557317e6",
+      "kind": "function",
+      "line": 841,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Context._make_sub_context",
       "source": "static"
     },
     {
@@ -21740,6 +23992,17 @@
       "line": 1445,
       "module": "tests.test_termui",
       "qualified_name": "tests.test_termui._ApostropheReprType.convert",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-c37a9a9d3a61835c",
+      "kind": "function",
+      "line": 776,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Context.lookup_default",
       "source": "static"
     },
     {
@@ -22218,6 +24481,28 @@
     {
       "algorithm": null,
       "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-cbb45e06a77d28f7",
+      "kind": "function",
+      "line": 1701,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Group.__init__",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-cbb5b0565855e334",
+      "kind": "function",
+      "line": 648,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Context.with_resource",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
       "file": "tests/test_context.py",
       "id": "function-ccbf4af97ef34c72",
       "kind": "function",
@@ -22504,6 +24789,17 @@
     {
       "algorithm": null,
       "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-d0cfe12173dae202",
+      "kind": "function",
+      "line": 1270,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Command.format_help_text",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
       "file": "tests/test_basic.py",
       "id": "function-d1175e71a0599ff5",
       "kind": "function",
@@ -22581,6 +24877,17 @@
     {
       "algorithm": null,
       "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-d2735f1a6019088d",
+      "kind": "function",
+      "line": 549,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Context.__enter__",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
       "file": "tests/test_stream_lifecycle.py",
       "id": "function-d2c89bc297b89360",
       "kind": "function",
@@ -22598,6 +24905,17 @@
       "line": 924,
       "module": "tests.test_termui",
       "qualified_name": "tests.test_termui.test_get_pager_file_flushes_stream_on_exception.pager_contextmanager",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 8,
+      "file": "src/click/core.py",
+      "id": "function-d311a5983b2d807d",
+      "kind": "function",
+      "line": 1992,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Group.invoke._process_result",
       "source": "static"
     },
     {
@@ -22675,6 +24993,17 @@
       "line": 12,
       "module": "tests.test_utils.test_echo",
       "qualified_name": "tests.test_utils.test_echo.test_echo",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-d3d2eeec4921ed66",
+      "kind": "function",
+      "line": 554,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Context.__exit__",
       "source": "static"
     },
     {
@@ -22822,6 +25151,17 @@
     },
     {
       "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-d6c716d42a7427a7",
+      "kind": "function",
+      "line": 2130,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.CommandCollection.__init__",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
       "col": 8,
       "file": "tests/test_chain.py",
       "id": "function-d6d22d7304bd5271",
@@ -22895,6 +25235,17 @@
       "line": 691,
       "module": "tests.test_basic",
       "qualified_name": "tests.test_basic.test_datetime_option_default",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-d8551cd0e3488c31",
+      "kind": "function",
+      "line": 2472,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Parameter.add_to_parser",
       "source": "static"
     },
     {
@@ -23021,6 +25372,17 @@
     {
       "algorithm": null,
       "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-da10234967484541",
+      "kind": "function",
+      "line": 1288,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Command.format_options",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
       "file": "tests/test_formatting.py",
       "id": "function-da52668494f46375",
       "kind": "function",
@@ -23049,6 +25411,17 @@
       "line": 143,
       "module": "tests.test_basic",
       "qualified_name": "tests.test_basic.test_basic_group.cli",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-da8e5e3dd339d146",
+      "kind": "function",
+      "line": 835,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Context.get_help",
       "source": "static"
     },
     {
@@ -23482,6 +25855,17 @@
     },
     {
       "algorithm": null,
+      "col": 0,
+      "file": "src/click/core.py",
+      "id": "function-e254c653a1c6107d",
+      "kind": "function",
+      "line": 142,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.iter_params_for_processing",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
       "col": 4,
       "file": "src/click/types.py",
       "id": "function-e25f6cc58850dd9e",
@@ -23493,6 +25877,17 @@
     },
     {
       "algorithm": null,
+      "col": 8,
+      "file": "src/click/core.py",
+      "id": "function-e2bdc297e0358dfb",
+      "kind": "function",
+      "line": 1914,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Group.result_callback.decorator",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
       "col": 4,
       "file": "src/click/_termui_impl.py",
       "id": "function-e2dd395ae4d87bf6",
@@ -23500,6 +25895,17 @@
       "line": 302,
       "module": "src.click._termui_impl",
       "qualified_name": "src.click._termui_impl.ProgressBar.make_step",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-e321102754ff6961",
+      "kind": "function",
+      "line": 3080,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Option._pick_type",
       "source": "static"
     },
     {
@@ -23702,6 +26108,17 @@
     },
     {
       "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-e61ec39be344e98e",
+      "kind": "function",
+      "line": 3331,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Option.get_help_record",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
       "col": 8,
       "file": "examples/imagepipe/imagepipe.py",
       "id": "function-e6923eab89c118ba",
@@ -23779,6 +26196,17 @@
     },
     {
       "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-e7dd8792663b7d36",
+      "kind": "function",
+      "line": 815,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Context.abort",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
       "col": 8,
       "file": "tests/test_utils/test_prompt.py",
       "id": "function-e88af010d92cdb4f",
@@ -23797,6 +26225,17 @@
       "line": 500,
       "module": "tests.test_basic",
       "qualified_name": "tests.test_basic.test_path_option.showtype",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-e8ea46b7436f03e6",
+      "kind": "function",
+      "line": 3026,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Option.is_bool_flag",
       "source": "static"
     },
     {
@@ -23863,6 +26302,17 @@
       "line": 120,
       "module": "tests.test_types",
       "qualified_name": "tests.test_types.test_path_type",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-ea1f9217ac1da83d",
+      "kind": "function",
+      "line": 634,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Context.make_formatter",
       "source": "static"
     },
     {
@@ -23956,12 +26406,45 @@
     {
       "algorithm": null,
       "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-ebfeed29904ad182",
+      "kind": "function",
+      "line": 1226,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Command.get_help",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-ec1b14d743045deb",
+      "kind": "function",
+      "line": 1177,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Command.get_help_option_names",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
       "file": "src/click/_compat.py",
       "id": "function-ec1f5929d553860b",
       "kind": "function",
       "line": 476,
       "module": "src.click._compat",
       "qualified_name": "src.click._compat._AtomicFile.__enter__",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-ec248d81f5df499c",
+      "kind": "function",
+      "line": 3035,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Option.flag_activation_value",
       "source": "static"
     },
     {
@@ -24110,12 +26593,45 @@
     {
       "algorithm": null,
       "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-edf6aef0879f4dd3",
+      "kind": "function",
+      "line": 3119,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Option._resolve_lazy_default",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
       "file": "tests/test_context.py",
       "id": "function-ee53ad96669f0123",
       "kind": "function",
       "line": 98,
       "module": "tests.test_context",
       "qualified_name": "tests.test_context.test_get_context_objects_missing.test",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-ee958f2dda5c2ff6",
+      "kind": "function",
+      "line": 1079,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Command.to_info_dict",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-eede35fdd5b73585",
+      "kind": "function",
+      "line": 2161,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.CommandCollection.list_commands",
       "source": "static"
     },
     {
@@ -24149,6 +26665,17 @@
       "line": 651,
       "module": "tests.test_basic",
       "qualified_name": "tests.test_basic.test_choice_argument_optional_metavar",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-ef38ca51fc4e4013",
+      "kind": "function",
+      "line": 2292,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Parameter.__init__",
       "source": "static"
     },
     {
@@ -24215,6 +26742,17 @@
       "line": 530,
       "module": "src.click.shell_completion",
       "qualified_name": "src.click.shell_completion.PowerShellComplete.get_completion_args",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-f0cbab32d755a5dd",
+      "kind": "function",
+      "line": 761,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Context._default_map_has",
       "source": "static"
     },
     {
@@ -24303,6 +26841,17 @@
       "line": 634,
       "module": "tests.test_commands",
       "qualified_name": "tests.test_commands.test_suggest_possible_commands",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-f1cd8cf62f108c93",
+      "kind": "function",
+      "line": 3704,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Argument.to_info_dict",
       "source": "static"
     },
     {
@@ -24538,6 +27087,17 @@
     },
     {
       "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-f4fc1a5ffe05e36a",
+      "kind": "function",
+      "line": 733,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Context.find_root",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
       "col": 0,
       "file": "src/click/shell_completion.py",
       "id": "function-f50ea161498c339c",
@@ -24589,6 +27149,28 @@
       "line": 158,
       "module": "src.click.formatting",
       "qualified_name": "src.click.formatting.HelpFormatter.write_usage",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-f5eea6ee0625ba50",
+      "kind": "function",
+      "line": 3460,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Option.prompt_for_value",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-f5f6e4e4897d5aee",
+      "kind": "function",
+      "line": 3762,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Argument.get_error_hint",
       "source": "static"
     },
     {
@@ -24688,6 +27270,17 @@
       "line": 1581,
       "module": "tests.test_termui",
       "qualified_name": "tests.test_termui.test_hide_input_confirmation_prompt_mismatch_unaffected.cli",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-f83077352af3bc14",
+      "kind": "function",
+      "line": 2596,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Parameter.process_value",
       "source": "static"
     },
     {
@@ -24945,6 +27538,17 @@
     },
     {
       "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-fc7df51e90e8f91c",
+      "kind": "function",
+      "line": 3047,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Option._infer_flag_kind",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
       "col": 0,
       "file": "tests/test_utils/test_echo.py",
       "id": "function-fc92dd27e02d72c0",
@@ -25139,6 +27743,17 @@
       "line": 155,
       "module": "tests.test_stream_lifecycle",
       "qualified_name": "tests.test_stream_lifecycle.test_no_streammixer_del",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/click/core.py",
+      "id": "function-ffe92df642469d79",
+      "kind": "function",
+      "line": 2399,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core.Parameter.__repr__",
       "source": "static"
     },
     {
@@ -25623,6 +28238,17 @@
       "line": 0,
       "module": "src.click._utils",
       "qualified_name": "src.click._utils",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 0,
+      "file": "src/click/core.py",
+      "id": "module-a042fb26592ea7f1",
+      "kind": "module",
+      "line": 0,
+      "module": "src.click.core",
+      "qualified_name": "src.click.core",
       "source": "static"
     },
     {
