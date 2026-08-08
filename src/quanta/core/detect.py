@@ -61,6 +61,49 @@ _ALGO_LOOKUP = {a.upper().replace("-", "").replace("_", ""): a for a in ALGORITH
 _ALGO_KEYS_BY_LENGTH = sorted(_ALGO_LOOKUP, key=lambda k: (-len(k), k))
 
 
+@dataclass(frozen=True)
+class FunctionRecord:
+    """A function or method definition — a scope node in the CDG."""
+
+    module: str
+    name_path: str  # "digest" or "Class.method"
+    file: str
+    line: int
+    col: int
+
+    @property
+    def qualname(self) -> str:
+        return f"{self.module}.{self.name_path}"
+
+
+@dataclass(frozen=True)
+class ImportRecord:
+    """A module-to-module dependency, for CDG ``import`` edges."""
+
+    module: str
+    target: str
+    file: str
+    line: int
+
+
+@dataclass(frozen=True)
+class CallRecord:
+    """A resolved call, for one-hop ``call`` edges (always ``confidence: "low"``)."""
+
+    caller_module: str
+    caller_path: str | None  # None when the call is at module level
+    callee: str
+    file: str
+    line: int
+    col: int
+
+    @property
+    def caller_qualname(self) -> str:
+        if not self.caller_path:
+            return self.caller_module
+        return f"{self.caller_module}.{self.caller_path}"
+
+
 @dataclass
 class DetectionResult:
     """Everything detection produces, including what it failed on."""
@@ -68,6 +111,10 @@ class DetectionResult:
     sites: list[CryptoSite] = field(default_factory=list)
     unparseable: list[UnparseableFile] = field(default_factory=list)
     files_scanned: int = 0
+    functions: list[FunctionRecord] = field(default_factory=list)
+    imports: list[ImportRecord] = field(default_factory=list)
+    calls: list[CallRecord] = field(default_factory=list)
+    modules: set[str] = field(default_factory=set)
 
     @property
     def crypto_calls(self) -> list[CryptoSite]:
@@ -186,12 +233,57 @@ class _CryptoVisitor(cst.CSTVisitor):
         self.file = file
         self.module = module
         self.sites: list[CryptoSite] = []
+        self.functions: list[FunctionRecord] = []
+        self.imports: list[ImportRecord] = []
+        self.calls: list[CallRecord] = []
         self._scope_stack: list[str] = []
+
+    # -- imports -------------------------------------------------------------------
+
+    def visit_Import(self, node: cst.Import) -> bool:
+        for alias in node.names:
+            target = _expr_name(alias.name)
+            if target:
+                line, _ = self._position(node)
+                self.imports.append(
+                    ImportRecord(module=self.module, target=target, file=self.file, line=line)
+                )
+        return True
+
+    def visit_ImportFrom(self, node: cst.ImportFrom) -> bool:
+        # A relative import ("from . import x") has module=None; the dots carry the
+        # meaning and cannot be resolved without a package root, so record the leaf only.
+        base = _expr_name(node.module) if node.module else ""
+        line, _ = self._position(node)
+        if isinstance(node.names, cst.ImportStar):
+            if base:
+                self.imports.append(
+                    ImportRecord(module=self.module, target=base, file=self.file, line=line)
+                )
+            return True
+        for alias in node.names:
+            leaf = _expr_name(alias.name)
+            target = f"{base}.{leaf}" if base else leaf
+            if target:
+                self.imports.append(
+                    ImportRecord(module=self.module, target=target, file=self.file, line=line)
+                )
+        return True
 
     # -- scope tracking ------------------------------------------------------------
 
     def visit_FunctionDef(self, node: cst.FunctionDef) -> bool:
         self._scope_stack.append(node.name.value)
+        line, col = self._position(node)
+        self.functions.append(
+            FunctionRecord(
+                module=self.module,
+                name_path=".".join(self._scope_stack),
+                file=self.file,
+                line=line,
+                col=col,
+            )
+        )
         return True
 
     def leave_FunctionDef(self, original_node: cst.FunctionDef) -> None:
@@ -229,7 +321,25 @@ class _CryptoVisitor(cst.CSTVisitor):
     # -- detection -----------------------------------------------------------------
 
     def visit_Call(self, node: cst.Call) -> bool:
-        matches = self._qualified_names(node.func) & CRYPTO_QUALIFIED_NAMES
+        resolved = self._qualified_names(node.func)
+
+        # Record every resolvable callee. graph.py decides which of these correspond to
+        # functions defined *inside* the repository; the rest are third-party and are
+        # dropped rather than guessed at (§5.3.2).
+        for callee in sorted(resolved):
+            line, col = self._position(node)
+            self.calls.append(
+                CallRecord(
+                    caller_module=self.module,
+                    caller_path=self._enclosing,
+                    callee=callee,
+                    file=self.file,
+                    line=line,
+                    col=col,
+                )
+            )
+
+        matches = resolved & CRYPTO_QUALIFIED_NAMES
         if not matches:
             return True
 
@@ -403,6 +513,10 @@ def detect_file(path: Path, root: Path, settings: Settings | None = None) -> Det
         return result
 
     result.sites.extend(visitor.sites)
+    result.functions.extend(visitor.functions)
+    result.imports.extend(visitor.imports)
+    result.calls.extend(visitor.calls)
+    result.modules.add(visitor.module)
     result.files_scanned = 1
     return result
 
@@ -423,7 +537,16 @@ def detect_repository(
         combined.sites.extend(one.sites)
         combined.unparseable.extend(one.unparseable)
         combined.files_scanned += one.files_scanned
+        combined.functions.extend(one.functions)
+        combined.imports.extend(one.imports)
+        combined.calls.extend(one.calls)
+        combined.modules |= one.modules
 
+    # Sorted output everywhere: the graph, the score and the report are all derived from
+    # these lists, and NFR-03 requires the artifacts to be byte-identical across runs.
     combined.sites.sort(key=lambda s: (s.file, s.line, s.col, s.kind, s.qualified_name))
     combined.unparseable.sort(key=lambda u: u.file)
+    combined.functions.sort(key=lambda f: (f.file, f.line, f.col, f.name_path))
+    combined.imports.sort(key=lambda i: (i.file, i.line, i.target))
+    combined.calls.sort(key=lambda c: (c.file, c.line, c.col, c.callee))
     return combined
