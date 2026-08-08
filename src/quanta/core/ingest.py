@@ -227,9 +227,26 @@ def _get_json(http: httpx.Client, url: str) -> dict[str, object]:
 # ---------------------------------------------------------------------------------------
 
 
-#: Restricted PATH handed to git. CPython resolves ``args[0]`` against the *child's*
-#: ``PATH`` (``os.get_exec_path(env)``), so pinning this also pins which binary runs.
+#: Restricted PATH handed to git on POSIX. CPython resolves ``args[0]`` against the
+#: *child's* ``PATH`` (``os.get_exec_path(env)``), so pinning this also pins which binary
+#: runs. Windows has no equivalent fixed location; see :func:`_git_search_path`.
 _GIT_PATH = "/usr/bin:/bin"
+
+#: Windows environment variables the child cannot work without. A process started with an
+#: environment missing ``SystemRoot`` cannot initialise WinSock, so git fails to reach the
+#: network before it has parsed a single argument. These name the operating system, not the
+#: user, so passing them through does not reopen the gitconfig or credential-helper hole
+#: this minimal environment exists to close.
+_WINDOWS_ESSENTIAL_VARS = ("SystemRoot", "SystemDrive", "windir", "COMSPEC", "PATHEXT")
+
+
+def _is_windows() -> bool:
+    """Indirection so the Windows branch can be exercised from a Linux CI runner.
+
+    Patching ``os.name`` itself is not an option: ``pathlib`` reads it to choose a flavour,
+    and a faked ``nt`` makes every ``Path`` in the process unconstructible.
+    """
+    return os.name == "nt"
 
 
 def _git_binary() -> str:
@@ -246,17 +263,65 @@ def _git_binary() -> str:
     return found
 
 
+def _git_search_path(git: str) -> str:
+    """The ``PATH`` the child gets.
+
+    On POSIX this is the pinned system path. On Windows there is no such path: Git ships
+    its own ``git-remote-https.exe`` and the libcurl and OpenSSL DLLs it links against, and
+    finds them through ``PATH``. Handing it ``/usr/bin:/bin`` leaves it unable to speak
+    HTTPS at all, which is why every clone failed there with an empty ``CLONE_FAILED``.
+
+    The replacement keeps the property that matters — a fixed set of directories belonging
+    to the git installation, not whatever the user happens to have in front of them.
+    ``args[0]`` is already absolute, so ``PATH`` never decides *which* git runs.
+    """
+    if not _is_windows():
+        return _GIT_PATH
+
+    root = Path(git).parent.parent
+    candidates = [Path(git).parent, root / "mingw64" / "bin", root / "usr" / "bin", root / "bin"]
+    found = [str(p) for p in candidates if p.is_dir()]
+    # An unrecognised layout (scoop, a portable build) is not worth failing over: falling
+    # back to the ambient path is what every other tool on the machine already does.
+    return os.pathsep.join(found) if found else os.environ.get("PATH", "")
+
+
+def hooks_path(dest: Path) -> str:
+    """Where git is told to look for hooks: a directory that is never created.
+
+    An attacker-supplied hook would be code executing on our host during checkout. Pointing
+    at a non-existent directory disables the lot, and unlike ``/dev/null`` it means the same
+    thing on Windows.
+    """
+    return str(dest.parent / "quanta-absent-hooks")
+
+
 def _git_env(dest: Path) -> dict[str, str]:
     """A minimal environment so no gitconfig or credential helper can inject behaviour."""
-    return {
+    env = {
         "GIT_TERMINAL_PROMPT": "0",
-        "GIT_ASKPASS": "/bin/true",
         "GIT_CONFIG_NOSYSTEM": "1",
-        "GIT_CONFIG_GLOBAL": "/dev/null",
+        # A path that does not exist reads as an empty config on both platforms, where
+        # ``/dev/null`` only does so on one of them.
+        "GIT_CONFIG_GLOBAL": str(dest.parent / "quanta-absent-gitconfig"),
         "HOME": str(dest),
-        "PATH": _GIT_PATH,
+        "PATH": _git_search_path(_git_binary()),
         "LC_ALL": "C",
     }
+
+    if _is_windows():
+        env.update({k: os.environ[k] for k in _WINDOWS_ESSENTIAL_VARS if k in os.environ})
+        # Git resolves a temporary directory through the environment; without one it falls
+        # back to paths that may not be writable under a restricted account.
+        for key in ("TEMP", "TMP"):
+            if key in os.environ:
+                env[key] = os.environ[key]
+    else:
+        # No Windows equivalent, and none is needed: GIT_TERMINAL_PROMPT already refuses
+        # to prompt, so a public clone either succeeds or fails without blocking.
+        env["GIT_ASKPASS"] = "/bin/true"
+
+    return env
 
 
 def clone_pinned(
@@ -282,7 +347,7 @@ def clone_pinned(
             [
                 git,
                 "-c",
-                "core.hooksPath=/dev/null",
+                f"core.hooksPath={hooks_path(dest)}",
                 "-c",
                 "protocol.ext.allow=never",
                 "clone",
