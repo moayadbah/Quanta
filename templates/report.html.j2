@@ -1,0 +1,213 @@
+{#
+  Canonical Quanta report. Self-contained by contract: inline CSS, inline SVG, no external
+  requests of any kind, so it opens from file:// with no network (NFR-07, DoD-C5).
+
+  Autoescaping is ON for every value here. Repository content is never interpolated — only
+  paths, line numbers and qualified names, each already reduced to a safe character class
+  by report.safe_text. The `svg` value is the one deliberate Markup, and it is built from
+  our own graph data with html.escape applied to every label (T5).
+#}<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quanta — {{ safe(score.provenance.repo) }}</title>
+<style>
+  :root {
+    --bg: #ffffff; --fg: #1a1d21; --muted: #5c6470; --line: #dfe3e8;
+    --card: #f7f8fa; --accent: #3b5b8c; --bad: #a33b3b; --good: #4a7c59;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14171a; --fg: #e6e9ed; --muted: #9aa3b0; --line: #2b3138;
+      --card: #1b1f24; --accent: #7aa2d6; --bad: #d98080; --good: #86c39a;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 2rem 1.25rem; background: var(--bg); color: var(--fg);
+    font: 15px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  main { max-width: 1180px; margin: 0 auto; }
+  h1 { font-size: 1.5rem; margin: 0 0 .25rem; }
+  h2 { font-size: 1.05rem; margin: 2.25rem 0 .75rem; padding-bottom: .35rem;
+       border-bottom: 1px solid var(--line); }
+  code, .mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .86em; }
+  .sub { color: var(--muted); margin: 0 0 1.5rem; }
+  .scorecard { display: flex; align-items: baseline; gap: 1rem; background: var(--card);
+               border: 1px solid var(--line); border-radius: 10px; padding: 1.25rem 1.5rem; }
+  .scorecard .value { font-size: 3rem; font-weight: 650; line-height: 1; }
+  .scorecard .of { color: var(--muted); }
+  table { border-collapse: collapse; width: 100%; }
+  th, td { text-align: left; padding: .5rem .6rem; border-bottom: 1px solid var(--line);
+           vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; font-size: .82rem; text-transform: uppercase;
+       letter-spacing: .04em; }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  .deduction { border-left: 3px solid var(--bad); padding: .6rem .9rem; margin: .6rem 0;
+               background: var(--card); border-radius: 0 6px 6px 0; }
+  .deduction .head { display: flex; justify-content: space-between; gap: 1rem;
+                     font-weight: 600; }
+  .cites { margin: .45rem 0 0; padding: 0; list-style: none; display: flex;
+           flex-wrap: wrap; gap: .35rem; }
+  .cites li { background: var(--bg); border: 1px solid var(--line); border-radius: 4px;
+              padding: .1rem .4rem; }
+  .rec { border-left: 3px solid var(--good); padding: .6rem .9rem; margin: .6rem 0;
+         background: var(--card); border-radius: 0 6px 6px 0; }
+  .figure { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px;
+            background: var(--card); padding: .5rem; }
+  .legend { display: flex; flex-wrap: wrap; gap: 1rem; margin: .6rem 0 0; padding: 0;
+            list-style: none; color: var(--muted); font-size: .85rem; }
+  .legend .swatch { display: inline-block; width: .7rem; height: .7rem; border-radius: 2px;
+                    margin-right: .35rem; vertical-align: baseline; }
+  .note { color: var(--muted); font-size: .88rem; }
+  .warn { border-left: 3px solid #b08a3c; padding: .6rem .9rem; background: var(--card);
+          border-radius: 0 6px 6px 0; }
+  footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--line);
+           color: var(--muted); font-size: .84rem; }
+</style>
+
+<main>
+  <h1>Cryptographic Agility Report</h1>
+  <p class="sub mono">{{ safe(score.provenance.repo) }} @ {{ safe(score.provenance.commit_sha[:12]) }}</p>
+
+  <div class="scorecard">
+    <div class="value">{{ '%.1f'|format(score.agility_score) }}</div>
+    <div class="of">/ 100 &nbsp;·&nbsp; Agility Score</div>
+  </div>
+  <p class="note" style="margin-top:.6rem">
+    This measures <strong>source-edit difficulty</strong> only. It is not a migration-cost
+    estimate: real cost is dominated by certificates, protocols, hardware, external
+    dependencies and compliance, none of which are in scope. It is also not a
+    cryptographic security review.
+  </p>
+
+  <h2>Factors</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Factor</th><th>Raw</th>
+        <th class="num">Normalised</th><th class="num">Weight</th><th class="num">Contribution</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for key, factor in score.factors.items() %}
+      <tr>
+        <td>{{ factor_titles.get(key, key) }}</td>
+        <td class="mono">{{ safe(factor.raw) }}</td>
+        <td class="num">{{ '%.2f'|format(factor.normalised) }}</td>
+        <td class="num">{{ '%.2f'|format(factor.weight) }}</td>
+        <td class="num">{{ '%.2f'|format(factor.contribution) }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <p class="note">
+    Weights are pre-registered and git-tagged <code>weights-v1</code>, fixed before any
+    result was observed. The four factors are expected to be partially collinear — an
+    insulation layer mechanically implies fewer call sites and shallower propagation — so
+    the corpus-level analysis reports a factor correlation matrix rather than assuming
+    independence.
+  </p>
+
+  <h2>Deductions</h2>
+  {% if score.deductions %}
+    {% for d in score.deductions %}
+    <div class="deduction">
+      <div class="head">
+        <span>{{ factor_titles.get(d.factor, d.factor) }}</span>
+        <span>−{{ '%.2f'|format(d.points) }}</span>
+      </div>
+      <div>{{ safe(d.reason, 400) }}</div>
+      <ul class="cites">
+        {% for c in d.citations %}<li class="mono">{{ safe(c) }}</li>{% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+  {% else %}
+    <p class="note">No deductions — no cryptographic call sites were detected.</p>
+  {% endif %}
+
+  {% if score.recommendations %}
+  <h2>Recommendations</h2>
+    {% for r in score.recommendations %}
+    <div class="rec">
+      <div>{{ safe(r.action, 400) }}</div>
+      <div class="note">
+        Affects {{ r.affected_sites }} site{{ '' if r.affected_sites == 1 else 's' }}
+        {%- if r.estimated_score_gain > 0 %} · recovers at most
+        {{ '%.1f'|format(r.estimated_score_gain) }} points{% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  <p class="note">
+    Point estimates are upper bounds on what the corresponding factor is currently losing,
+    not predictions.
+  </p>
+  {% endif %}
+
+  <h2>Cryptographic Dependency Graph</h2>
+  <div class="figure">{{ svg }}</div>
+  <ul class="legend">
+    {% for item in legend %}
+    <li><span class="swatch" style="background: {{ item.color }}"></span>{{ item.label }}</li>
+    {% endfor %}
+    <li><span class="swatch" style="background: #b08a3c"></span>dashed = low confidence</li>
+  </ul>
+  <p class="note">
+    {{ graph_nodes }} nodes, {{ graph_edges }} edges,
+    {{ low_confidence_edges }} of them low confidence.
+    {%- if omitted_nodes %} {{ omitted_nodes }} further nodes are omitted from the figure
+    for legibility; <code>cdg.json</code> contains the complete graph.{% endif %}
+    Every <code>call</code> edge is low confidence: one-hop qualified-name resolution
+    approximates value flow, and that is the honest label for it. Dynamic dispatch,
+    <code>getattr</code>, conditional imports, monkey-patching and <code>**kwargs</code>
+    forwarding all defeat this analysis.
+  </p>
+
+  <h2>Coverage</h2>
+  <table>
+    <tbody>
+      <tr><td>Files scanned</td><td class="num">{{ score.coverage.files_scanned }}</td></tr>
+      <tr><td>Files unparseable</td><td class="num">{{ score.coverage.files_unparseable }}</td></tr>
+      <tr><td>Truncated</td><td class="num">{{ 'yes' if score.coverage.truncated else 'no' }}</td></tr>
+    </tbody>
+  </table>
+
+  {% if meta.truncation %}
+  <div class="warn" style="margin-top:.75rem">
+    <strong>Declared truncation.</strong> The corpus budget
+    <code>{{ safe(meta.truncation.reason) }}</code> was reached
+    (limit {{ meta.truncation.limit }}, observed {{ meta.truncation.observed }}). Results
+    below cover part of the repository only.
+  </div>
+  {% endif %}
+
+  {% if meta.unparseable %}
+  <h2>Unparseable files</h2>
+  <table>
+    <thead><tr><th>File</th><th>Reason</th></tr></thead>
+    <tbody>
+      {% for u in meta.unparseable %}
+      <tr><td class="mono">{{ safe(u.file) }}</td><td>{{ safe(u.reason) }}</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <p class="note">
+    Unparseable files are excluded from the denominator but listed here rather than
+    dropped: a silently skipped file is an unmeasured false negative.
+  </p>
+  {% endif %}
+
+  <footer>
+    <p>
+      Provenance ·
+      <span class="mono">{{ safe(score.provenance.repo) }}</span> @
+      <span class="mono">{{ safe(score.provenance.commit_sha) }}</span> ·
+      analyzer <span class="mono">{{ safe(score.provenance.analyzer_version) }}</span> ·
+      ruleset <span class="mono">{{ safe(score.provenance.crypto_ruleset_version) }}</span> ·
+      renderer <span class="mono">{{ safe(renderer) }}</span>
+    </p>
+    <p>
+      Generated by Quanta. Static analysis only — no code from the analysed repository was
+      imported, executed or installed at any point.
+    </p>
+  </footer>
+</main>

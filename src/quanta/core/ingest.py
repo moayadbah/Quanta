@@ -27,7 +27,7 @@ import shutil
 import subprocess
 import tempfile
 from collections.abc import Iterator
-from contextlib import contextmanager
+from contextlib import contextmanager, suppress
 from dataclasses import dataclass, field
 from pathlib import Path
 from urllib.parse import urlparse
@@ -323,18 +323,52 @@ def clone_pinned(
         raise Reject("SHA_MISMATCH", "branch moved between metadata resolution and clone")
 
 
+def _force_writable(root: Path) -> None:
+    """Make every directory under ``root`` writable so its entries can be unlinked."""
+    for dirpath, dirnames, _filenames in os.walk(root, topdown=False, followlinks=False):
+        for name in dirnames:
+            with suppress(OSError):
+                (Path(dirpath) / name).chmod(0o700)
+    with suppress(OSError):
+        root.chmod(0o700)
+
+
+def remove_tree(path: Path) -> None:
+    """Delete a tree, defeating read-only directories, and never raise.
+
+    ``rmtree(ignore_errors=True)`` alone is **not** sufficient: a directory without the
+    write bit cannot have its entries unlinked, so the tree survives and the call reports
+    nothing. That would silently retain third-party source, which INGEST-09 forbids
+    unconditionally — and "unconditionally" is the whole point, since this runs on failure
+    and timeout paths too.
+
+    Errors are swallowed rather than raised: this always executes in a ``finally``, where
+    an exception would mask the original failure.
+    """
+    if not path.exists():
+        return
+    shutil.rmtree(path, ignore_errors=True)
+    if not path.exists():
+        return
+
+    # Something refused to go. Repair permissions bottom-up and try once more.
+    _force_writable(path)
+    shutil.rmtree(path, ignore_errors=True)
+
+
 @contextmanager
 def scratch_dir(prefix: str = "quanta-") -> Iterator[Path]:
     """An ephemeral clone directory, removed **unconditionally** at exit (INGEST-06/09).
 
     Third-party source is never retained. Besides being the stated data-handling rule,
-    this removes the copyleft redistribution question entirely.
+    this removes the copyleft redistribution question entirely, and it keeps committer
+    names and email addresses — personal data under GDPR and the PDPL — off the host.
     """
     path = Path(tempfile.mkdtemp(prefix=prefix))
     try:
         yield path
     finally:
-        shutil.rmtree(path, ignore_errors=True)
+        remove_tree(path)
 
 
 # ---------------------------------------------------------------------------------------
