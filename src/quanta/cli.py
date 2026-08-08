@@ -22,7 +22,7 @@ from quanta.core.analyze import (
     analyze_repository,
     write_artifacts,
 )
-from quanta.core.models import Provenance, dump_canonical_json
+from quanta.core.models import Provenance, StepRecord, dump_canonical_json
 from quanta.errors import QuantaError, Reject, Truncated
 from quanta.version import CRYPTO_RULESET_VERSION, __version__, analyzer_version
 
@@ -65,6 +65,10 @@ def analyze(
     as_json: Annotated[
         bool, typer.Option("--json", help="Print score.json to stdout instead of a summary.")
     ] = False,
+    trace: Annotated[
+        bool,
+        typer.Option("--trace", help="Print the full pipeline trace with per-step evidence."),
+    ] = False,
 ) -> None:
     """Analyse a repository and write cdg.json, score.json, meta.json and report.html."""
     settings = get_settings()
@@ -79,8 +83,13 @@ def analyze(
         )
         raise typer.Exit(code=2)
 
-    def progress(phase: str, done: int, total: int) -> None:
-        _echo(f"  [{done}/{total}] {phase}", err=True)
+    def progress(step: StepRecord) -> None:
+        if step.status == "running":
+            _echo(f"  .. {step.title}", err=True)
+        elif step.status == "done":
+            _echo(f"  ok {step.title}: {step.summary}", err=True)
+        else:
+            _echo(f"  !! {step.title}: {step.summary}", err=True)
 
     try:
         outcome = _run(target, settings, progress)
@@ -101,7 +110,23 @@ def analyze(
         sys.stdout.write(dump_canonical_json(outcome.score))
         return
 
+    if trace:
+        _print_trace(outcome)
     _summarise(outcome, paths)
+
+
+def _print_trace(outcome: AnalysisOutcome) -> None:
+    """Print the same evidence the web UI shows, so the two never diverge."""
+    _echo("")
+    _echo("  Pipeline trace")
+    for step in outcome.steps:
+        mark = {"done": "ok", "failed": "!!", "skipped": "--"}.get(step.status, "..")
+        _echo(f"    {mark} {step.title}  ({step.duration_ms} ms)")
+        if step.summary:
+            _echo(f"       {step.summary}")
+        for item in step.evidence:
+            flag = "" if item.ok is None else ("  [ok]" if item.ok else "  [!]")
+            _echo(f"         - {item.label}: {item.value}{flag}")
 
 
 def _run(target: str, settings: Settings, progress: ProgressFn) -> AnalysisOutcome:

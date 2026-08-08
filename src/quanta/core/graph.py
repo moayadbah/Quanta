@@ -28,6 +28,7 @@ from __future__ import annotations
 
 import hashlib
 from collections import defaultdict
+from dataclasses import dataclass
 from typing import Any
 
 import networkx as nx
@@ -37,6 +38,24 @@ from quanta.core.detect import DetectionResult
 #: NetworkX renamed the node-link edge key; pinning it keeps ``cdg.json`` stable across
 #: library upgrades, which NFR-03 and DoD-C3 both depend on.
 _EDGES_KEY = "links"
+
+
+@dataclass
+class ResolutionStats:
+    """What one-hop callee resolution managed, and what it refused to guess.
+
+    These numbers are the honest counterpart to the CDG's ``call`` edges. §5.3.2 forbids
+    guessing an unresolvable or ambiguous target, and RR-2 requires the resulting
+    under-reporting be *measured and published* rather than concealed — so the analyzer
+    has to count its own misses, not just its hits.
+    """
+
+    callees_seen: int = 0
+    callees_resolved: int = 0
+    callees_ambiguous: int = 0
+    callees_unresolved: int = 0
+    imports_resolved: int = 0
+    imports_external: int = 0
 
 
 def _nid(kind: str, name: str) -> str:
@@ -58,13 +77,18 @@ def _suffix_index(qualnames: list[str]) -> dict[str, set[str]]:
     return index
 
 
-def build_cdg(detection: DetectionResult) -> nx.DiGraph:
+def build_cdg(detection: DetectionResult, stats: ResolutionStats | None = None) -> nx.DiGraph:
     """Assemble the CDG from a :class:`DetectionResult`.
 
     Construction order is sorted at every step so the emitted node and edge lists — and
     therefore the bytes of ``cdg.json`` — are identical across runs.
+
+    ``stats`` is an optional out-parameter filled with resolution counters. It is kept out
+    of the return value, and out of ``cdg.json``, so adding this instrumentation changes
+    no artifact and cannot perturb NFR-03.
     """
     graph: nx.DiGraph = nx.DiGraph()
+    counters = stats if stats is not None else ResolutionStats()
 
     module_files: dict[str, str] = {}
     for record in detection.functions:
@@ -148,10 +172,14 @@ def build_cdg(detection: DetectionResult) -> nx.DiGraph:
         target_name = imp.target.lstrip(".")
         module_candidates = module_index.get(target_name, set())
         if len(module_candidates) != 1:
-            continue  # third-party, or ambiguous — never guessed
+            # Third-party or ambiguous. Counted, because "how much of this repository's
+            # dependency surface is external?" is a real question the trace can answer.
+            counters.imports_external += 1
+            continue
         resolved = next(iter(module_candidates))
         if resolved == imp.module:
             continue
+        counters.imports_resolved += 1
         graph.add_edge(
             module_nodes[imp.module], module_nodes[resolved], kind="import", confidence="high"
         )
@@ -159,12 +187,18 @@ def build_cdg(detection: DetectionResult) -> nx.DiGraph:
     # -- one-hop call edges (always low confidence) --------------------------------
     function_index = _suffix_index(sorted(function_nodes))
     for call in detection.calls:
+        counters.callees_seen += 1
         callee = call.callee.lstrip(".")
         call_candidates = function_index.get(callee, set())
         if len(call_candidates) != 1:
             # Zero candidates means the callee is third-party or unresolvable; more than
             # one means the name is ambiguous. §5.3.2 forbids guessing in either case.
+            if call_candidates:
+                counters.callees_ambiguous += 1
+            else:
+                counters.callees_unresolved += 1
             continue
+        counters.callees_resolved += 1
         target_qualname = next(iter(call_candidates))
         caller = function_nodes.get(call.caller_qualname) or module_nodes.get(call.caller_module)
         target_node = function_nodes[target_qualname]

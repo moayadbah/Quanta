@@ -383,6 +383,12 @@ class WalkResult:
     files: list[Path] = field(default_factory=list)
     truncations: list[TruncationRecord] = field(default_factory=list)
     total_bytes: int = 0
+    #: Counters describing what traversal *refused*, not only what it accepted. Without
+    #: these the walk is a black box: "812 files" says nothing about the symlink that was
+    #: skipped or the vendored tree that was pruned, which are the interesting decisions.
+    files_considered: int = 0
+    symlinks_skipped: int = 0
+    dirs_pruned: int = 0
 
     @property
     def truncated(self) -> bool:
@@ -432,11 +438,16 @@ def walk_repository(root: Path, settings: Settings | None = None) -> WalkResult:
 
         # Prune: denylisted directories, symlinked directories (loop + escape vector),
         # and anything with a hostile name. Sorted for determinism.
-        dirnames[:] = sorted(
-            d
-            for d in dirnames
-            if d not in deny and not _is_unsafe_name(d) and not (here / d).is_symlink()
-        )
+        kept_dirs = []
+        for d in dirnames:
+            if (here / d).is_symlink():
+                result.symlinks_skipped += 1
+                result.dirs_pruned += 1
+            elif d in deny or _is_unsafe_name(d):
+                result.dirs_pruned += 1
+            else:
+                kept_dirs.append(d)
+        dirnames[:] = sorted(kept_dirs)
 
         depth = len(here.relative_to(root).parts)
         if depth > cfg.max_depth:
@@ -451,7 +462,10 @@ def walk_repository(root: Path, settings: Settings | None = None) -> WalkResult:
             p = here / fn
             if p.suffix not in _SOURCE_SUFFIXES:
                 continue
+
+            result.files_considered += 1
             if p.is_symlink():  # traversal + loop vector; skipped unconditionally
+                result.symlinks_skipped += 1
                 continue
 
             try:

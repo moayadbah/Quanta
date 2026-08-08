@@ -257,15 +257,54 @@ class ScoreReport(_Base):
 
 
 # ---------------------------------------------------------------------------------------
+# Pipeline trace
+# ---------------------------------------------------------------------------------------
+
+StepStatus = Literal["pending", "running", "done", "skipped", "failed"]
+
+
+class StepEvidence(_Base):
+    """One labelled fact about what a pipeline step did.
+
+    ``ok`` marks a control that either held or did not — rendered as a tick or a cross.
+    Leave it ``None`` for a plain measurement, where a tick would imply a judgement the
+    analyzer is not making.
+    """
+
+    label: str
+    value: str
+    ok: bool | None = None
+
+
+class StepRecord(_Base):
+    """One step of the analysis, with the evidence that justifies its summary.
+
+    The score has carried citations since PROC-08, but the *pipeline* has not been
+    traceable at all: until now the only record of what happened between a URL and a
+    number was a phase name and a counter. This closes that gap, which serves auditability
+    as much as it serves the demo — a reviewer asking "what did it actually check before
+    it made a network call?" now has a machine-readable answer.
+    """
+
+    id: str
+    title: str
+    status: StepStatus = "pending"
+    summary: str = ""
+    evidence: tuple[StepEvidence, ...] = ()
+    duration_ms: int = 0
+
+
+# ---------------------------------------------------------------------------------------
 # Meta
 # ---------------------------------------------------------------------------------------
 
 
 class AnalysisMeta(BaseModel):
-    """``meta.json`` — provenance, timings and the truncation record (§5.1.3).
+    """``meta.json`` — provenance, timings, truncation and the pipeline trace (§5.1.3).
 
     Timings live here and **only** here. Putting a duration inside ``score.json`` would
-    break the byte-identical requirement in NFR-03 on the very next run.
+    break the byte-identical requirement in NFR-03 on the very next run — which is also
+    why the trace, whose steps carry durations, belongs in this file and not that one.
     """
 
     model_config = ConfigDict(extra="forbid")
@@ -279,6 +318,7 @@ class AnalysisMeta(BaseModel):
     unparseable: tuple[UnparseableFile, ...] = ()
     files_scanned: int = 0
     sites_detected: int = 0
+    steps: tuple[StepRecord, ...] = ()
 
 
 # ---------------------------------------------------------------------------------------
