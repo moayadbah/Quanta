@@ -21,6 +21,7 @@ from quanta.core.ingest import parse_repo_url
 from quanta.core.report import REPORT_SECURITY_HEADERS
 from quanta.errors import Reject
 from quanta.version import CRYPTO_RULESET_VERSION, __version__
+from quanta.web import demo
 from quanta.web import examples as examples_mod
 from quanta.web.jobs import Job, JobRegistry
 from quanta.web.sse import parse_last_event_id, stream
@@ -218,6 +219,34 @@ def get_meta(request: Request, job_id: str) -> Response:
         content=_artifact(job, "meta.json").read_text(encoding="utf-8"),
         media_type="application/json",
     )
+
+
+@router.get("/content")
+def get_content() -> dict[str, Any]:
+    """Every user-facing walkthrough string, in both languages.
+
+    Served as data so no sentence is hard-coded in the markup — which is what makes a
+    missing translation a test failure rather than a blank panel during a presentation.
+    """
+    return demo.load_content()
+
+
+@router.get("/glossary")
+def get_glossary() -> dict[str, Any]:
+    """Clickable term definitions: what it is, why we chose it, where it is defined."""
+    return {"terms": demo.load_glossary()}
+
+
+@router.get("/demo/variants")
+def get_demo_variants() -> dict[str, Any]:
+    """The three vault variants, measured by the real analyzer at request time."""
+    return demo.variant_report()
+
+
+@router.get("/demo/xwing")
+def get_xwing_evidence() -> dict[str, Any]:
+    """The ADR-019 comparison, recomputed live against the published draft-10 vector."""
+    return demo.xwing_evidence()
 
 
 @router.get("/examples")

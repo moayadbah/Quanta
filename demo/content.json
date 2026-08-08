@@ -1,0 +1,296 @@
+{
+  "_comment": "Every user-facing string in the walkthrough. B2 English: short sentences, one idea each, active voice. Arabic keeps technical terms in English. Numbers here are measured, not illustrative - see tests/unit/test_demo_variants.py.",
+
+  "ui": {
+    "skip": { "en": "Skip to the tool", "ar": "تخطَّ إلى الأداة" },
+    "next": { "en": "Next", "ar": "التالي" },
+    "back": { "en": "Back", "ar": "السابق" },
+    "start": { "en": "Start", "ar": "ابدأ" },
+    "replay": { "en": "Replay", "ar": "أعد التشغيل" },
+    "act_of": { "en": "Step {n} of {total}", "ar": "الخطوة {n} من {total}" },
+    "lang_button": { "en": "العربية", "ar": "English" },
+    "glossary_what": { "en": "What it is", "ar": "ما هو" },
+    "glossary_why": { "en": "Why we chose it", "ar": "لماذا اخترناه" },
+    "glossary_source": { "en": "Defined in", "ar": "مُعرَّف في" },
+    "glossary_hint": { "en": "Underlined terms are clickable.", "ar": "المصطلحات التي تحتها خط قابلة للنقر." },
+    "close": { "en": "Close", "ar": "إغلاق" },
+    "walkthrough": { "en": "Walkthrough", "ar": "الشرح" },
+    "tagline": {
+      "en": "Cryptographic agility measurement for Python repositories",
+      "ar": "قياس مرونة التعمية في مستودعات Python"
+    }
+  },
+
+  "tool": {
+    "title": { "en": "Measure a repository", "ar": "قِس مستودعًا" },
+    "lead": {
+      "en": "Paste a public GitHub repository. Quanta clones it at a fixed commit, builds the graph, and shows every step.",
+      "ar": "الصق مستودع GitHub عامًا. تستنسخه Quanta عند إصدار محدد، وتبني الرسم البياني، وتعرض كل خطوة."
+    },
+    "placeholder": { "en": "https://github.com/owner/repository", "ar": "https://github.com/owner/repository" },
+    "analyze": { "en": "Analyze", "ar": "حلّل" },
+    "examples_title": { "en": "Or replay a saved example", "ar": "أو أعد تشغيل مثال محفوظ" },
+    "examples_note": {
+      "en": "Runs from saved results. No network needed.",
+      "ar": "يعمل من نتائج محفوظة. لا يحتاج شبكة."
+    },
+    "no_examples": {
+      "en": "No saved examples are installed. Live analysis still works.",
+      "ar": "لا توجد أمثلة محفوظة مثبتة. التحليل المباشر ما زال يعمل."
+    },
+    "start_over": { "en": "Start over", "ar": "ابدأ من جديد" },
+    "analyze_another": { "en": "Analyze another", "ar": "حلّل مستودعًا آخر" },
+    "live_sub": { "en": "Live analysis. Cloning at a fixed commit.", "ar": "تحليل مباشر. استنساخ عند إصدار محدد." },
+    "cached_sub": {
+      "en": "Replaying a saved run. No network in use.",
+      "ar": "إعادة تشغيل جولة محفوظة. لا تُستخدم الشبكة."
+    },
+    "tab_deductions": { "en": "Deductions", "ar": "الخصومات" },
+    "tab_trace": { "en": "Steps taken", "ar": "الخطوات المتّبعة" },
+    "tab_report": { "en": "Full report", "ar": "التقرير الكامل" },
+    "report_note": {
+      "en": "The full report, shown inside a sandboxed frame. It opens on its own with no server and no network.",
+      "ar": "التقرير الكامل، معروضًا داخل إطار معزول. يُفتح وحده بلا خادم ولا شبكة."
+    },
+    "download_report": { "en": "Download report.html", "ar": "نزّل report.html" },
+    "no_deductions": {
+      "en": "No deductions. We found no cryptographic calls in this repository.",
+      "ar": "لا خصومات. لم نجد استدعاءات تعمية في هذا المستودع."
+    },
+    "recommendations_title": { "en": "What would improve it", "ar": "ما الذي سيحسّنها" },
+    "factor_header": { "en": "Factor", "ar": "العامل" },
+    "raw_header": { "en": "Raw", "ar": "القيمة الخام" },
+    "formula_header": { "en": "Formula", "ar": "المعادلة" },
+    "value_header": { "en": "Value", "ar": "القيمة" },
+    "weight_header": { "en": "Weight", "ar": "الوزن" },
+    "points_header": { "en": "Points", "ar": "النقاط" },
+    "score_low": { "en": "Rigid. A change touches many places.", "ar": "متصلّبة. التغيير يمسّ أماكن كثيرة." },
+    "score_mid": { "en": "Moderate. Some restructuring needed.", "ar": "متوسطة. تحتاج إعادة هيكلة جزئية." },
+    "score_high": { "en": "Agile. A change is small and local.", "ar": "مرنة. التغيير صغير وموضعي." },
+    "affects": { "en": "Affects {n} sites", "ar": "تؤثر في {n} مواقع" },
+    "recovers": { "en": "recovers at most {n} points", "ar": "تستعيد {n} نقطة على الأكثر" }
+  },
+
+  "factors": {
+    "call_sites": { "en": "Call sites", "ar": "مواقع الاستدعاء" },
+    "isolation_layer": { "en": "Isolation layer", "ar": "طبقة العزل" },
+    "selection_source": { "en": "Algorithm selection", "ar": "اختيار الخوارزمية" },
+    "propagation_depth": { "en": "Propagation depth", "ar": "عمق الانتشار" }
+  },
+
+  "acts": [
+    {
+      "id": "problem",
+      "eyebrow": { "en": "The problem", "ar": "المشكلة" },
+      "title": {
+        "en": "How long will post-quantum migration take?",
+        "ar": "كم سيستغرق الانتقال إلى ما بعد الكم؟"
+      },
+      "lead": {
+        "en": "Ask three consultants about the same company. You get answers from two years to ten.",
+        "ar": "اسأل ثلاثة خبراء عن الشركة نفسها. ستحصل على إجابات تتراوح بين سنتين وعشر سنوات."
+      },
+      "body": [
+        {
+          "en": "The algorithms are ready. <term data-term=\"ml-kem\">ML-KEM</term> and <term data-term=\"ml-dsa\">ML-DSA</term> are standards, and you can install them today.",
+          "ar": "الخوارزميات جاهزة. <term data-term=\"ml-kem\">ML-KEM</term> و<term data-term=\"ml-dsa\">ML-DSA</term> معياران، ويمكنك تثبيتهما اليوم."
+        },
+        {
+          "en": "The hard part is the code. Two projects can use the same amount of cryptography and still cost very different amounts to change.",
+          "ar": "الجزء الصعب هو الشيفرة. قد يستخدم مشروعان القدر نفسه من التعمية، ومع ذلك تختلف تكلفة تغييرهما اختلافًا كبيرًا."
+        }
+      ],
+      "punch": {
+        "en": "Migration cost is a property of the codebase, not of the algorithm.",
+        "ar": "تكلفة الانتقال خاصية من خصائص الشيفرة، لا من خصائص الخوارزمية."
+      }
+    },
+
+    {
+      "id": "inventory",
+      "eyebrow": { "en": "Where tools stop today", "ar": "أين تتوقف الأدوات اليوم" },
+      "title": {
+        "en": "Existing scanners give you a list",
+        "ar": "الأدوات الحالية تعطيك قائمة"
+      },
+      "lead": {
+        "en": "A scanner reads your code and writes a <term data-term=\"cbom\">CBOM</term>. It tells you where the cryptography is.",
+        "ar": "تقرأ الأداة شيفرتك وتكتب <term data-term=\"cbom\">CBOM</term>. تخبرك أين توجد التعمية."
+      },
+      "body": [
+        {
+          "en": "That is useful. It is also where the tools stop.",
+          "ar": "هذا مفيد. وهو أيضًا حيث تتوقف الأدوات."
+        },
+        {
+          "en": "A list does not tell you how hard the change will be. It does not know if one wrapper hides the cryptography, or if fifty files call it directly.",
+          "ar": "القائمة لا تخبرك كم سيكون التغيير صعبًا. ولا تعرف إن كان غلاف واحد يخفي التعمية، أم أنّ خمسين ملفًا تستدعيها مباشرة."
+        }
+      ],
+      "punch": {
+        "en": "They answer \"where\". Nobody answers \"how hard\".",
+        "ar": "تجيب عن سؤال «أين». ولا أحد يجيب عن سؤال «كم هو صعب»."
+      }
+    },
+
+    {
+      "id": "cdg",
+      "eyebrow": { "en": "What we build", "ar": "ما الذي نبنيه" },
+      "title": {
+        "en": "We build a graph, not a list",
+        "ar": "نبني رسمًا بيانيًا، لا قائمة"
+      },
+      "lead": {
+        "en": "Quanta reads the code and builds a <term data-term=\"cdg\">CDG</term>. It links every cryptographic call to the functions and modules around it.",
+        "ar": "تقرأ Quanta الشيفرة وتبني <term data-term=\"cdg\">CDG</term>. يربط كل استدعاء تعمية بالدوال والوحدات المحيطة به."
+      },
+      "body": [
+        {
+          "en": "We parse with <term data-term=\"libcst\">LibCST</term> and run graph algorithms with <term data-term=\"networkx\">NetworkX</term>. Those are existing libraries and we say so.",
+          "ar": "نحلّل الشيفرة بـ<term data-term=\"libcst\">LibCST</term> وننفّذ خوارزميات الرسم البياني بـ<term data-term=\"networkx\">NetworkX</term>. هاتان مكتبتان موجودتان، ونقول ذلك صراحة."
+        },
+        {
+          "en": "The graph itself is ours. So are its rules, the <term data-term=\"resolver\">call resolver</term>, and the score. No existing tool produces this artifact.",
+          "ar": "أمّا الرسم البياني نفسه فهو من عملنا. وكذلك قواعده و<term data-term=\"resolver\">محلّل الاستدعاءات</term> والدرجة. لا توجد أداة حالية تنتج هذا المخرج."
+        },
+        {
+          "en": "We also count what we miss. On PyJWT we resolve 290 calls out of 2,435. We publish that number instead of hiding it.",
+          "ar": "ونحسب أيضًا ما يفوتنا. في PyJWT نحلّ 290 استدعاءً من أصل 2,435. ننشر هذا الرقم بدل إخفائه."
+        }
+      ],
+      "punch": {
+        "en": "Reused: the parser and the graph library. Built: everything that makes this a measurement.",
+        "ar": "المُعاد استخدامه: المحلّل ومكتبة الرسم البياني. والمبني: كل ما يجعل هذا قياسًا."
+      }
+    },
+
+    {
+      "id": "cut",
+      "eyebrow": { "en": "The measurement", "ar": "القياس" },
+      "title": {
+        "en": "How many pieces must you remove?",
+        "ar": "كم قطعة يجب أن تزيل؟"
+      },
+      "lead": {
+        "en": "Ask the graph one question: what is the smallest set of nodes that separates the cryptography from the rest of the program?",
+        "ar": "اسأل الرسم البياني سؤالًا واحدًا: ما أصغر مجموعة عقد تفصل التعمية عن بقية البرنامج؟"
+      },
+      "body": [
+        {
+          "en": "That set is the <term data-term=\"min-cut\">minimum node cut</term>. If it is small, a wrapper already exists. If it is large, the cryptography is spread through the code.",
+          "ar": "تلك المجموعة هي <term data-term=\"min-cut\">minimum node cut</term>. إن كانت صغيرة فهناك غلاف موجود بالفعل. وإن كانت كبيرة فالتعمية منتشرة في الشيفرة."
+        },
+        {
+          "en": "This is the same program, written three ways. Same six cryptographic calls every time. Only the architecture changes.",
+          "ar": "هذا هو البرنامج نفسه، مكتوبًا بثلاث طرق. ستة استدعاءات تعمية في كل مرة. البنية وحدها هي التي تتغير."
+        }
+      ],
+      "punch": {
+        "en": "Same cryptography. Different architecture. The score moves.",
+        "ar": "التعمية نفسها. بنية مختلفة. والدرجة تتحرك."
+      },
+      "note": {
+        "en": "The wrapper halves the cut, from 6 to 3, but adds only about 3 points. The normalisation <term data-term=\"compression\">compresses</term> large cuts. We report that instead of rounding it away.",
+          "ar": "يخفض الغلاف القطع إلى النصف، من 6 إلى 3، لكنه يضيف نحو 3 نقاط فقط. فالتوحيد <term data-term=\"compression\">يضغط</term> القطوع الكبيرة. نذكر ذلك بدل تجاهله."
+      }
+    },
+
+    {
+      "id": "verify",
+      "eyebrow": { "en": "Does the migration work?", "ar": "هل ينجح الانتقال؟" },
+      "title": {
+        "en": "We test the new cryptography against published vectors",
+        "ar": "نختبر التعمية الجديدة مقابل متجهات منشورة"
+      },
+      "lead": {
+        "en": "Quanta replaces old key exchange with <term data-term=\"x-wing\">X-Wing</term>, a <term data-term=\"hybrid\">hybrid</term> <term data-term=\"kem\">KEM</term>. It stays safe if either half stays safe.",
+        "ar": "تستبدل Quanta تبادل المفاتيح القديم بـ<term data-term=\"x-wing\">X-Wing</term>، وهو <term data-term=\"kem\">KEM</term> <term data-term=\"hybrid\">هجين</term>. يبقى آمنًا ما دام أحد نصفيه آمنًا."
+      },
+      "body": [
+        {
+          "en": "We checked our code against the <term data-term=\"kat\">test vectors</term> in <term data-term=\"draft-10\">IETF draft-10</term>. They caught a mistake in our own design document.",
+          "ar": "قارنّا شيفرتنا بـ<term data-term=\"kat\">متجهات الاختبار</term> في <term data-term=\"draft-10\">IETF draft-10</term>. فكشفت خطأً في وثيقة التصميم الخاصة بنا."
+        },
+        {
+          "en": "Our document put one field in the wrong place. The round-trip test still passed, because we generate both sides. Only the published vectors could find it.",
+          "ar": "وضعت وثيقتنا أحد الحقول في المكان الخطأ. ومع ذلك نجح اختبار الذهاب والإياب، لأننا ننتج الطرفين معًا. المتجهات المنشورة وحدها استطاعت كشفه."
+        }
+      ],
+      "punch": {
+        "en": "Our own tests could not catch it. The standard's vectors could.",
+        "ar": "اختباراتنا الخاصة لم تستطع كشفه. متجهات المعيار استطاعت."
+      }
+    },
+
+    {
+      "id": "try",
+      "eyebrow": { "en": "Try it", "ar": "جرّبها" },
+      "title": {
+        "en": "Run it on any public Python repository",
+        "ar": "شغّلها على أي مستودع Python عام"
+      },
+      "lead": {
+        "en": "Quanta clones the code at a fixed commit, builds the graph, and scores it. Every deduction points at a file and a line.",
+        "ar": "تستنسخ Quanta الشيفرة عند إصدار محدد، وتبني الرسم البياني، وتحسب الدرجة. وكل خصم يشير إلى ملف وسطر."
+      },
+      "body": [
+        {
+          "en": "Your code is only read. Quanta never runs it, never installs it, and deletes the copy when it finishes.",
+          "ar": "تُقرأ شيفرتك فقط. لا تشغّلها Quanta أبدًا، ولا تثبّتها، وتحذف النسخة عند الانتهاء."
+        }
+      ],
+      "punch": {
+        "en": "Nine steps, and you can open every one of them.",
+        "ar": "تسع خطوات، ويمكنك فتح كل واحدة منها."
+      }
+    }
+  ],
+
+  "act_cdg": {
+    "built_title": { "en": "We built", "ar": "بنَينا" },
+    "reused_title": { "en": "We reuse", "ar": "نُعيد استخدام" },
+    "built": [
+      { "en": "The Cryptographic Dependency Graph", "ar": "الرسم البياني لتبعيات التعمية" },
+      { "en": "The Agility Score and its four factors", "ar": "درجة المرونة وعواملها الأربعة" },
+      { "en": "The crypto detection rules", "ar": "قواعد كشف التعمية" },
+      { "en": "The call resolver, and its honesty about misses", "ar": "محلّل الاستدعاءات، وصدقه بشأن ما يفوته" },
+      { "en": "The labelled benchmark", "ar": "مجموعة القياس الموسومة" }
+    ],
+    "reused": [
+      { "en": "LibCST — parses Python", "ar": "LibCST — يحلّل Python" },
+      { "en": "NetworkX — graph algorithms", "ar": "NetworkX — خوارزميات الرسوم البيانية" },
+      { "en": "cryptography — provides ML-KEM", "ar": "cryptography — توفّر ML-KEM" }
+    ]
+  },
+
+  "act_cut": {
+    "cut_label": { "en": "Nodes to remove", "ar": "عقد يجب إزالتها" },
+    "sites_label": { "en": "Cryptographic calls", "ar": "استدعاءات التعمية" },
+    "modules_label": { "en": "Modules touching cryptography", "ar": "وحدات تلامس التعمية" },
+    "score_label": { "en": "Agility Score", "ar": "درجة المرونة" },
+    "press": { "en": "Remove the cut", "ar": "أزل القطع" },
+    "removed": { "en": "The cryptography is now separate.", "ar": "أصبحت التعمية منفصلة الآن." },
+    "variants": {
+      "vault-scattered": {
+        "name": { "en": "Scattered", "ar": "مبعثرة" },
+        "note": { "en": "Six modules call cryptography directly.", "ar": "ست وحدات تستدعي التعمية مباشرة." }
+      },
+      "vault-facade": {
+        "name": { "en": "Behind a wrapper", "ar": "خلف غلاف" },
+        "note": { "en": "One module holds all of it.", "ar": "وحدة واحدة تحتويها كلها." }
+      },
+      "vault-configured": {
+        "name": { "en": "Wrapper + configuration", "ar": "غلاف + إعدادات" },
+        "note": { "en": "The algorithm comes from configuration.", "ar": "تأتي الخوارزمية من الإعدادات." }
+      }
+    }
+  },
+
+  "act_verify": {
+    "vector_label": { "en": "Published vector", "ar": "المتجه المنشور" },
+    "ours_label": { "en": "Draft order (our code)", "ar": "ترتيب المسودة (شيفرتنا)" },
+    "wrong_label": { "en": "Our document's order", "ar": "ترتيب وثيقتنا" },
+    "match": { "en": "matches", "ar": "مطابق" },
+    "mismatch": { "en": "does not match", "ar": "غير مطابق" }
+  }
+}

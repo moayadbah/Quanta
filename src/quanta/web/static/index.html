@@ -1,13 +1,17 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Quanta — Cryptographic Agility Analyzer</title>
+<title>Quanta</title>
 <!--
-  No inline <script> or <style> anywhere in this file. That is deliberate: it lets the
+  No inline SCRIPT or STYLE element anywhere in this file. That is deliberate: it lets the
   Content-Security-Policy in app.py omit 'unsafe-inline', which is where most of CSP's
-  value actually lives (ADR-020).
+  value lives (ADR-020).
+
+  No user-facing sentence is written here either. Every text node carries a data-i18n key
+  and is filled from demo/content.json, so a missing Arabic string is a test failure
+  rather than a blank panel during a presentation.
 -->
 <link rel="stylesheet" href="/app.css">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='13' font-size='13'>🔐</text></svg>">
@@ -16,117 +20,189 @@
 
 <header class="topbar">
   <div class="wrap topbar-inner">
-    <div class="brand">
+    <button id="brand" class="brand" type="button">
       <span class="brand-mark">Q</span>
-      <div>
-        <div class="brand-name">Quanta</div>
-        <div class="brand-sub">Cryptographic agility measurement for Python repositories</div>
-      </div>
+      <span class="brand-text">
+        <span class="brand-name">Quanta</span>
+        <span class="brand-sub" data-i18n="ui.tagline"></span>
+      </span>
+    </button>
+    <div class="topbar-actions">
+      <button id="lang-toggle" class="ghost" type="button" data-i18n="ui.lang_button"></button>
+      <button id="to-tool" class="ghost" type="button" data-i18n="ui.skip"></button>
     </div>
-    <button id="about-toggle" class="ghost" type="button">How it works</button>
   </div>
 </header>
 
-<!-- ── Explainer ─────────────────────────────────────────────────────────────── -->
-<section id="about" class="wrap panel hidden">
-  <div class="about-grid">
-    <div>
-      <h3>The one thing to know</h3>
-      <p class="lead">The analysis tier <strong>never executes your code.</strong></p>
-      <p class="muted">
-        <code>pip install</code> runs arbitrary build-backend code before any test does, and
-        Python cannot be sandboxed in-process. So the system splits into two planes with a
-        hard trust boundary. Your repository is <em>parsed</em>, never run — the dangerous
-        half of the pipeline was never deployed here.
-      </p>
-      <div class="planes">
-        <div class="plane">
-          <div class="plane-title">Analysis Plane <span class="tag tag-ok">this service</span></div>
-          <ul>
-            <li>Input: any public repository — untrusted</li>
-            <li>Executes target code: <strong>never</strong></li>
-            <li>Credentials present: none</li>
-            <li>Clone deleted unconditionally</li>
-          </ul>
-        </div>
-        <div class="plane plane-dim">
-          <div class="plane-title">Research Plane <span class="tag">offline, not deployed</span></div>
-          <ul>
-            <li>Input: 12 hand-vetted forks</li>
-            <li>Executes target code: yes, in hardened containers</li>
-            <li>Runs the migration engines and verification</li>
-            <li>Never reachable from this service</li>
-          </ul>
+<!-- ══ Guided walkthrough ═════════════════════════════════════════════════════ -->
+<main id="walkthrough" class="wrap">
+
+  <div class="act-rail">
+    <ol id="act-dots" class="act-dots"></ol>
+    <span id="act-counter" class="act-counter"></span>
+  </div>
+
+  <!-- Act 1 — the problem -->
+  <section class="act" data-act="problem">
+    <p class="eyebrow" data-i18n="acts.0.eyebrow"></p>
+    <h1 data-i18n="acts.0.title"></h1>
+    <p class="lead" data-i18n="acts.0.lead"></p>
+    <div class="act-body">
+      <div class="act-words">
+        <p data-i18n-html="acts.0.body.0"></p>
+        <p data-i18n-html="acts.0.body.1"></p>
+        <p class="punch" data-i18n="acts.0.punch"></p>
+      </div>
+      <div class="act-visual" id="visual-problem"></div>
+    </div>
+  </section>
+
+  <!-- Act 2 — inventory -->
+  <section class="act hidden" data-act="inventory">
+    <p class="eyebrow" data-i18n="acts.1.eyebrow"></p>
+    <h1 data-i18n="acts.1.title"></h1>
+    <p class="lead" data-i18n-html="acts.1.lead"></p>
+    <div class="act-body">
+      <div class="act-words">
+        <p data-i18n-html="acts.1.body.0"></p>
+        <p data-i18n-html="acts.1.body.1"></p>
+        <p class="punch" data-i18n="acts.1.punch"></p>
+      </div>
+      <div class="act-visual" id="visual-inventory"></div>
+    </div>
+  </section>
+
+  <!-- Act 3 — the CDG -->
+  <section class="act hidden" data-act="cdg">
+    <p class="eyebrow" data-i18n="acts.2.eyebrow"></p>
+    <h1 data-i18n="acts.2.title"></h1>
+    <p class="lead" data-i18n-html="acts.2.lead"></p>
+    <div class="act-body">
+      <div class="act-words">
+        <p data-i18n-html="acts.2.body.0"></p>
+        <p data-i18n-html="acts.2.body.1"></p>
+        <p data-i18n-html="acts.2.body.2"></p>
+        <p class="punch" data-i18n="acts.2.punch"></p>
+        <div class="ledger">
+          <div class="ledger-col ledger-built">
+            <h3 data-i18n="act_cdg.built_title"></h3>
+            <ul id="ledger-built"></ul>
+          </div>
+          <div class="ledger-col ledger-reused">
+            <h3 data-i18n="act_cdg.reused_title"></h3>
+            <ul id="ledger-reused"></ul>
+          </div>
         </div>
       </div>
+      <div class="act-visual" id="visual-cdg"></div>
     </div>
-    <div>
-      <h3>What the score means</h3>
-      <p class="muted">
-        A 0–100 measure of how hard it is to replace a cryptographic algorithm in this
-        codebase, from four factors with pre-registered weights.
-      </p>
-      <table class="mini">
-        <tr><td>Call sites</td><td class="num">0.30</td><td class="muted">how many edits</td></tr>
-        <tr><td>Isolation layer</td><td class="num">0.30</td><td class="muted">is there a facade?</td></tr>
-        <tr><td>Algorithm selection</td><td class="num">0.20</td><td class="muted">config or hard-coded</td></tr>
-        <tr><td>Propagation depth</td><td class="num">0.20</td><td class="muted">blast radius</td></tr>
-      </table>
-      <h3>What it is not</h3>
-      <ul id="not-claims" class="muted claims"></ul>
+  </section>
+
+  <!-- Act 4 — the minimum node cut -->
+  <section class="act hidden" data-act="cut">
+    <p class="eyebrow" data-i18n="acts.3.eyebrow"></p>
+    <h1 data-i18n="acts.3.title"></h1>
+    <p class="lead" data-i18n="acts.3.lead"></p>
+    <div class="act-body act-body-wide">
+      <div class="act-words">
+        <p data-i18n-html="acts.3.body.0"></p>
+        <p data-i18n-html="acts.3.body.1"></p>
+        <p class="punch" data-i18n="acts.3.punch"></p>
+        <p class="caveat" data-i18n-html="acts.3.note"></p>
+      </div>
+      <div class="act-visual">
+        <div id="variant-tabs" class="variant-tabs"></div>
+        <div id="visual-cut" class="cut-stage"></div>
+        <div class="cut-controls">
+          <button id="cut-toggle" class="primary" type="button" data-i18n="act_cut.press"></button>
+          <span id="cut-status" class="muted small"></span>
+        </div>
+        <div id="variant-bars" class="variant-bars"></div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<main class="wrap">
+  <!-- Act 5 — verification -->
+  <section class="act hidden" data-act="verify">
+    <p class="eyebrow" data-i18n="acts.4.eyebrow"></p>
+    <h1 data-i18n="acts.4.title"></h1>
+    <p class="lead" data-i18n-html="acts.4.lead"></p>
+    <div class="act-body">
+      <div class="act-words">
+        <p data-i18n-html="acts.4.body.0"></p>
+        <p data-i18n-html="acts.4.body.1"></p>
+        <p class="punch" data-i18n="acts.4.punch"></p>
+      </div>
+      <div class="act-visual" id="visual-verify"></div>
+    </div>
+  </section>
 
-  <!-- ── Submit ──────────────────────────────────────────────────────────────── -->
+  <!-- Act 6 — hand over to the tool -->
+  <section class="act hidden" data-act="try">
+    <p class="eyebrow" data-i18n="acts.5.eyebrow"></p>
+    <h1 data-i18n="acts.5.title"></h1>
+    <p class="lead" data-i18n="acts.5.lead"></p>
+    <div class="act-body">
+      <div class="act-words">
+        <p data-i18n-html="acts.5.body.0"></p>
+        <p class="punch" data-i18n="acts.5.punch"></p>
+        <button id="open-tool" class="primary" type="button" data-i18n="ui.skip"></button>
+      </div>
+      <div class="act-visual" id="visual-try"></div>
+    </div>
+  </section>
+
+  <nav class="act-nav">
+    <button id="act-back" class="ghost" type="button" data-i18n="ui.back"></button>
+    <button id="act-next" class="primary" type="button" data-i18n="ui.next"></button>
+  </nav>
+  <p class="muted small centred" data-i18n="ui.glossary_hint"></p>
+</main>
+
+<!-- ══ The analyzer ═══════════════════════════════════════════════════════════ -->
+<main id="tool" class="wrap hidden">
+
   <section id="screen-submit" class="screen">
-    <h1>Measure a repository's cryptographic agility</h1>
-    <p class="lead muted">
-      Paste a public GitHub repository. Quanta clones it at a pinned commit, builds a
-      cryptographic dependency graph, and shows you every step it took to reach the number.
-    </p>
+    <h1 data-i18n="tool.title"></h1>
+    <p class="lead muted" data-i18n="tool.lead"></p>
 
     <form id="submit-form" class="submit-row" autocomplete="off">
-      <input id="repo-url" type="text" spellcheck="false"
-             placeholder="https://github.com/owner/repository"
-             aria-label="Public GitHub repository URL">
-      <button type="submit" class="primary">Analyze</button>
+      <input id="repo-url" type="text" spellcheck="false" dir="ltr" data-i18n-placeholder="tool.placeholder">
+      <button type="submit" class="primary" data-i18n="tool.analyze"></button>
     </form>
     <div id="submit-error" class="error hidden" role="alert"></div>
 
     <div class="examples">
       <div class="examples-head">
-        <h3>Or replay a pre-computed example</h3>
-        <span class="muted small">Runs offline from committed artifacts — no network needed</span>
+        <h3 data-i18n="tool.examples_title"></h3>
+        <span class="muted small" data-i18n="tool.examples_note"></span>
       </div>
       <div id="example-list" class="example-grid"></div>
     </div>
   </section>
 
-  <!-- ── Pipeline ────────────────────────────────────────────────────────────── -->
   <section id="screen-pipeline" class="screen hidden">
     <div class="run-head">
       <div>
-        <h2 id="pipeline-repo">Analyzing…</h2>
+        <h2 id="pipeline-repo"></h2>
         <div id="pipeline-sub" class="muted small"></div>
       </div>
-      <button id="cancel-run" class="ghost" type="button">Start over</button>
+      <button id="cancel-run" class="ghost" type="button" data-i18n="tool.start_over"></button>
     </div>
-
-    <div class="progress-track"><div id="progress-bar" class="progress-fill"></div></div>
+    <svg class="progress-track" viewBox="0 0 100 4" preserveAspectRatio="none" aria-hidden="true">
+      <rect x="0" y="0" width="100" height="4" class="progress-bg"></rect>
+      <rect id="progress-fill" x="0" y="0" width="0" height="4" class="progress-fill"></rect>
+    </svg>
     <ol id="steps" class="steps"></ol>
   </section>
 
-  <!-- ── Result ──────────────────────────────────────────────────────────────── -->
   <section id="screen-result" class="screen hidden">
     <div class="run-head">
       <div>
         <h2 id="result-repo"></h2>
         <div id="result-sub" class="muted small"></div>
       </div>
-      <button id="new-run" class="ghost" type="button">Analyze another</button>
+      <button id="new-run" class="ghost" type="button" data-i18n="tool.analyze_another"></button>
     </div>
 
     <div class="result-top">
@@ -138,8 +214,14 @@
       <div class="result-facts">
         <table class="mini wide">
           <thead>
-            <tr><th>Factor</th><th>Raw</th><th>Normalisation</th>
-                <th class="num">Value</th><th class="num">Weight</th><th class="num">Points</th></tr>
+            <tr>
+              <th data-i18n="tool.factor_header"></th>
+              <th data-i18n="tool.raw_header"></th>
+              <th data-i18n="tool.formula_header"></th>
+              <th class="num" data-i18n="tool.value_header"></th>
+              <th class="num" data-i18n="tool.weight_header"></th>
+              <th class="num" data-i18n="tool.points_header"></th>
+            </tr>
           </thead>
           <tbody id="factor-rows"></tbody>
         </table>
@@ -147,9 +229,9 @@
     </div>
 
     <div class="tabs" role="tablist">
-      <button class="tab active" data-tab="deductions" type="button">Deductions</button>
-      <button class="tab" data-tab="trace" type="button">Steps taken</button>
-      <button class="tab" data-tab="report" type="button">Full report</button>
+      <button class="tab active" data-tab="deductions" type="button" data-i18n="tool.tab_deductions"></button>
+      <button class="tab" data-tab="trace" type="button" data-i18n="tool.tab_trace"></button>
+      <button class="tab" data-tab="report" type="button" data-i18n="tool.tab_report"></button>
     </div>
 
     <div id="tab-deductions" class="tabpane">
@@ -162,12 +244,9 @@
     </div>
 
     <div id="tab-report" class="tabpane hidden">
-      <p class="muted small">
-        The canonical report, generated once by Jinja2 and embedded in a sandboxed iframe.
-        It is self-contained: it opens from your filesystem with no server and no network.
-      </p>
+      <p class="muted small" data-i18n="tool.report_note"></p>
       <div class="downloads">
-        <a id="dl-report" class="ghost" download="report.html">Download report.html</a>
+        <a id="dl-report" class="ghost" download="report.html" data-i18n="tool.download_report"></a>
         <a id="dl-score" class="ghost" download="score.json">score.json</a>
         <a id="dl-cdg" class="ghost" download="cdg.json">cdg.json</a>
         <a id="dl-meta" class="ghost" download="meta.json">meta.json</a>
@@ -175,13 +254,23 @@
       <iframe id="report-frame" sandbox="" title="Quanta report"></iframe>
     </div>
   </section>
-
 </main>
 
+<!-- ══ Glossary popover ═══════════════════════════════════════════════════════ -->
+<div id="glossary" class="glossary hidden" role="dialog" aria-modal="true">
+  <div class="glossary-card">
+    <button id="glossary-close" class="glossary-close" type="button" aria-label="Close">×</button>
+    <h3 id="glossary-term"></h3>
+    <p class="glossary-heading" data-i18n="ui.glossary_what"></p>
+    <p id="glossary-what"></p>
+    <p class="glossary-heading" data-i18n="ui.glossary_why"></p>
+    <p id="glossary-why"></p>
+    <p class="glossary-source"><span data-i18n="ui.glossary_source"></span> <code id="glossary-source"></code></p>
+  </div>
+</div>
+
 <footer class="wrap muted small">
-  <span id="footer-version"></span> ·
-  Static analysis only — no code from the analysed repository is imported, executed or
-  installed at any point.
+  <span id="footer-version"></span>
 </footer>
 
 <script src="/app.js"></script>
