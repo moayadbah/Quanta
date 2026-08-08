@@ -98,6 +98,11 @@ class CryptoSite(_Base):
     #: True when the matched name is in ``WEAK_ALGORITHMS`` or ``QUANTUM_VULNERABLE``.
     weak: bool = False
     quantum_vulnerable: bool = False
+    #: Qualified name of the function enclosing this site, if any. Used to attach the
+    #: site to its scope in the CDG without re-walking the tree.
+    enclosing_function: str | None = None
+    #: For ``algo_literal`` and ``config_read`` nodes: the ``crypto_call`` they select for.
+    parent_site_id: str | None = None
 
     @property
     def citation(self) -> str:
