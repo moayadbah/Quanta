@@ -38,6 +38,7 @@ class Example:
     repo: str
     title: str
     blurb: str
+    blurb_ar: str
     agility_score: float
     sites: int
     directory: Path
@@ -48,6 +49,7 @@ class Example:
             "repo": self.repo,
             "title": self.title,
             "blurb": self.blurb,
+            "blurb_ar": self.blurb_ar,
             "agility_score": self.agility_score,
             "sites": self.sites,
             "cached": True,
@@ -79,6 +81,7 @@ def load_examples() -> list[Example]:
                 repo=str(score["provenance"]["repo"]),
                 title=str(meta.get("title", directory.name)),
                 blurb=str(meta.get("blurb", "")),
+                blurb_ar=str(meta.get("blurb_ar", "")),
                 agility_score=float(score["agility_score"]),
                 sites=int(meta.get("sites", 0)),
                 directory=directory,

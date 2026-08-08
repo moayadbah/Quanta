@@ -30,18 +30,21 @@ ENTRIES = [
         "url": "https://github.com/jpadilla/pyjwt",
         "title": "PyJWT",
         "blurb": "JSON Web Token library. Cryptography reached directly from many modules.",
+        "blurb_ar": "مكتبة JSON Web Token، ويُستدعى فيها التشفير مباشرةً من وحدات كثيرة.",
     },
     {
         "slug": "python-jose",
         "url": "https://github.com/mpdavis/python-jose",
         "title": "python-jose",
         "blurb": "JOSE implementation. Fewer sites, but still no common wrapper.",
+        "blurb_ar": "تطبيق لمعيار JOSE، مواقع استدعائه أقل لكنه يفتقر إلى غلاف جامع.",
     },
     {
         "slug": "click",
         "url": "https://github.com/pallets/click",
         "title": "Click",
         "blurb": "CLI toolkit with no cryptography at all — the correct answer is 100.",
+        "blurb_ar": "أدوات لسطر الأوامر بلا تشفير إطلاقًا، والإجابة الصحيحة هنا 100.",
     },
 ]
 
@@ -61,13 +64,17 @@ def build(entry: dict[str, str]) -> None:
     manifest = {
         "title": entry["title"],
         "blurb": entry["blurb"],
+        "blurb_ar": entry["blurb_ar"],
         "sites": len(outcome.detection.crypto_calls),
         "repo": outcome.score.provenance.repo,
         "commit_sha": outcome.score.provenance.commit_sha,
         "agility_score": outcome.score.agility_score,
         "steps": len(steps),
     }
-    (target / "example.json").write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n")
+    (target / "example.json").write_text(
+        json.dumps(manifest, indent=2, sort_keys=True, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
 
     print(
         f"    {outcome.score.provenance.repo} @ {outcome.score.provenance.commit_sha[:12]}"

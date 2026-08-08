@@ -26,6 +26,7 @@ const state = {
   content: null,
   glossary: {},
   variants: [],
+  examples: null,
   act: 0,
   cutRemoved: false,
   activeVariant: 0,
@@ -125,6 +126,7 @@ function setLanguage(lang) {
   renderLedger();
   renderActVisual();
   renderDots();
+  renderExamples();
 }
 
 /* ── Glossary ─────────────────────────────────────────────────────────────── */
@@ -619,12 +621,17 @@ function showScreen(screen) {
 }
 
 async function loadExamples() {
+  try {
+    state.examples = (await (await api("/examples")).json()).examples;
+  } catch { return; }
+  renderExamples();
+}
+
+function renderExamples() {
   const container = $("example-list");
   clear(container);
-  let examples = [];
-  try {
-    examples = (await (await api("/examples")).json()).examples;
-  } catch { return; }
+  const examples = state.examples;
+  if (examples === null) return;
 
   if (!examples.length) {
     container.appendChild(el("div", "muted small", t("tool.no_examples")));
@@ -639,7 +646,12 @@ async function loadExamples() {
     top.textContent = example.repo;
     card.appendChild(top);
     card.appendChild(el("div", `example-score ${scoreClass(example.agility_score)}`, example.agility_score.toFixed(1)));
-    card.appendChild(el("div", "example-blurb", example.blurb));
+    // Falls back to English rather than showing nothing, but an English sentence inside an
+    // RTL card would drag its full stop to the wrong end, so it is isolated when it happens.
+    const blurbText = (state.lang === "ar" && example.blurb_ar) || example.blurb;
+    const blurb = el("div", "example-blurb", blurbText);
+    if (state.lang === "ar" && !example.blurb_ar) blurb.dir = "ltr";
+    card.appendChild(blurb);
     card.addEventListener("click", () => replay(example.slug, example.repo));
     container.appendChild(card);
   }
@@ -865,7 +877,12 @@ function renderDeductions(score) {
     head.appendChild(el("span", null, t(`factors.${deduction.factor}`)));
     head.appendChild(el("span", "deduction-points", `−${deduction.points.toFixed(2)}`));
     box.appendChild(head);
-    box.appendChild(el("div", null, deduction.reason));
+    // The analyzer writes its reasons and actions in English. Left to inherit the page
+    // direction they render as Arabic would, so "27 call sites ..." loses its 27 to the
+    // far end of the line. Isolating them keeps the sentence in reading order.
+    const reason = el("div", null, deduction.reason);
+    reason.dir = "ltr";
+    box.appendChild(reason);
     const cites = el("div", "cites");
     for (const citation of deduction.citations) {
       const chip = el("span", "cite", citation);
@@ -882,7 +899,9 @@ function renderDeductions(score) {
     recs.appendChild(el("h3", null, t("tool.recommendations_title")));
     for (const rec of score.recommendations) {
       const box = el("div", "rec");
-      box.appendChild(el("div", null, rec.action));
+      const action = el("div", null, rec.action);
+      action.dir = "ltr";
+      box.appendChild(action);
       const parts = [t("tool.affects", { n: rec.affected_sites })];
       if (rec.estimated_score_gain > 0) {
         parts.push(t("tool.recovers", { n: rec.estimated_score_gain.toFixed(1) }));

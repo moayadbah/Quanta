@@ -1,15 +1,15 @@
 {
-  "_comment": "Clickable terms. The term itself is NEVER translated - only its explanation. 'why' answers the question an examiner actually asks: why did you choose this? 'source' points at the spec section or ADR that decided it.",
+  "_comment": "Clickable terms. The term itself is NEVER translated - only its explanation. 'why' answers the question an examiner actually asks: why did you choose this? 'source' points at the spec section or ADR that decided it. The Arabic is written for a reader, not transliterated from the English: same claims, natural phrasing. Agreed wording: cryptography = التشفير, recall = الاسترجاع, precision = الدقة, commit stays 'commit'.",
 
   "cdg": {
     "term": "CDG — Cryptographic Dependency Graph",
     "what": {
       "en": "A directed graph of a repository's cryptography. Nodes are modules, functions, cryptographic calls, algorithm names, and configuration reads. Edges show which one reaches which.",
-      "ar": "رسم بياني موجَّه لتعمية المستودع. العقد هي وحدات ودوال واستدعاءات تعمية وأسماء خوارزميات وقراءات إعدادات. والحواف تبيّن ما يصل إلى ماذا."
+      "ar": "رسم بياني موجَّه يمثّل التشفير في المستودع. عقده هي الوحدات والدوال واستدعاءات التشفير وأسماء الخوارزميات وقراءات الإعدادات، وحوافه تبيّن أيّ عنصر منها يصل إلى الآخر."
     },
     "why": {
       "en": "A list tells you where cryptography is. A graph tells you what depends on it, so you can measure how far a change spreads. No existing tool produces this, so we build it.",
-      "ar": "القائمة تخبرك أين توجد التعمية. أمّا الرسم البياني فيخبرك بما يعتمد عليها، فتستطيع قياس مدى انتشار التغيير. لا توجد أداة حالية تنتجه، لذلك نبنيه."
+      "ar": "القائمة تدلّك على موضع التشفير، أمّا الرسم البياني فيكشف لك ما يعتمد عليه، فتستطيع قياس مدى انتشار أي تغيير. ولا توجد أداة اليوم تُخرج هذا الرسم، فبنيناه بأنفسنا."
     },
     "source": "§5.3.2"
   },
@@ -18,11 +18,11 @@
     "term": "CBOM — Cryptography Bill of Materials",
     "what": {
       "en": "A standard inventory file. It lists the cryptographic assets a project uses, in the CycloneDX 1.6 format.",
-      "ar": "ملف جرد معياري. يسرد أصول التعمية التي يستخدمها المشروع، بصيغة CycloneDX 1.6."
+      "ar": "ملف جرد معياري يسرد أصول التشفير التي يستخدمها المشروع بصيغة CycloneDX 1.6."
     },
     "why": {
       "en": "We read CBOMs, we do not write one. Good scanners already produce them. Rewriting a solved tool would add no research value. We use it as one more source of sites, and we measure how much it misses.",
-      "ar": "نقرأ ملفات CBOM ولا ننتج واحدًا. فالأدوات الجيدة تنتجها بالفعل. إعادة كتابة أداة محلولة لا تضيف قيمة بحثية. نستخدمها مصدرًا إضافيًا للمواقع، ونقيس ما يفوتها."
+      "ar": "نقرأ ملفات CBOM ولا نُنتجها، فالأدوات الجيدة تنتجها بالفعل، وإعادة بناء أداة محلولة لا تضيف قيمة بحثية. نتعامل معها بوصفها مصدرًا إضافيًا لمواقع الاستدعاء، ونقيس ما يفوتها منها."
     },
     "source": "§3.1, PROC-06"
   },
@@ -31,11 +31,11 @@
     "term": "Minimum node cut",
     "what": {
       "en": "The smallest set of nodes you can delete to break every path between two parts of a graph. Here: between the cryptography and the rest of the program.",
-      "ar": "أصغر مجموعة عقد يمكن حذفها لقطع كل المسارات بين جزأين من الرسم البياني. وهنا: بين التعمية وبقية البرنامج."
+      "ar": "أصغر مجموعة من العقد يؤدي حذفها إلى قطع كل مسار بين جزأين من الرسم البياني، وهما هنا: التشفير من جهة، وبقية البرنامج من جهة أخرى."
     },
     "why": {
       "en": "It turns an architectural question into a computable one. \"Is there a wrapper around the cryptography?\" becomes \"how few nodes separate it?\" A small cut is a wrapper. A large cut means the cryptography is spread out. NIST calls this insulation layer the main thing that makes migration easy or hard.",
-      "ar": "يحوّل سؤالًا معماريًا إلى سؤال قابل للحساب. «هل يوجد غلاف حول التعمية؟» يصبح «كم عقدة تكفي لفصلها؟». القطع الصغير يعني وجود غلاف. والقطع الكبير يعني أنّ التعمية منتشرة. ويسمّي NIST طبقة العزل هذه العامل الأهم في سهولة الانتقال أو صعوبته."
+      "ar": "يحوّل سؤالًا معماريًا إلى سؤال قابل للحساب: فبدل أن تسأل «هل يوجد غلاف حول التشفير؟» تسأل «كم عقدة تكفي لفصله؟». القطع الصغير دليل على وجود غلاف، والقطع الكبير يعني تشفيرًا منتشرًا. وتَعُدّ NIST طبقة العزل هذه أهم ما يحدّد سهولة الانتقال أو صعوبته."
     },
     "source": "§5.3.3, NIST CSWP 39"
   },
@@ -44,11 +44,11 @@
     "term": "Why the wrapper adds only ~3 points",
     "what": {
       "en": "The isolation factor is 1 / (1 + cut). Going from a cut of 6 to a cut of 3 moves it from 0.14 to 0.25.",
-      "ar": "عامل العزل هو 1 / (1 + cut). والانتقال من قطع قيمته 6 إلى 3 ينقله من 0.14 إلى 0.25."
+      "ar": "عامل العزل يساوي 1 / (1 + cut)، فالانتقال من قطع حجمه 6 إلى قطع حجمه 3 لا يرفعه إلا من 0.14 إلى 0.25."
     },
     "why": {
       "en": "The curve flattens quickly, so large architectural gains turn into small score gains. This is a real property of our formula, and we report it rather than smoothing it over. The weight sensitivity analysis exists to test exactly this kind of thing.",
-      "ar": "ينبسط المنحنى سريعًا، فتتحول المكاسب المعمارية الكبيرة إلى مكاسب صغيرة في الدرجة. هذه خاصية حقيقية في معادلتنا، ونذكرها بدل التغطية عليها. وتحليل حساسية الأوزان موجود لاختبار هذا النوع من الأمور تحديدًا."
+      "ar": "ينبسط المنحنى بسرعة، فتتحول المكاسب المعمارية الكبيرة إلى زيادة صغيرة في الدرجة. وهذه خاصية حقيقية في معادلتنا نذكرها كما هي بدل التغطية عليها، ولهذا الغرض تحديدًا وُضع تحليل حساسية الأوزان."
     },
     "source": "§5.3.3"
   },
@@ -57,11 +57,11 @@
     "term": "Agility Score",
     "what": {
       "en": "A number from 0 to 100. It estimates how hard it is to replace a cryptographic algorithm in this codebase. It combines four factors: call sites, isolation, algorithm selection, and propagation.",
-      "ar": "رقم من 0 إلى 100. يقدّر صعوبة استبدال خوارزمية تعمية في هذه الشيفرة. ويجمع أربعة عوامل: مواقع الاستدعاء، والعزل، واختيار الخوارزمية، والانتشار."
+      "ar": "رقم بين 0 و100 يقدّر صعوبة استبدال خوارزمية تشفير في هذه الشيفرة، ويجمع أربعة عوامل: مواقع الاستدعاء، والعزل، واختيار الخوارزمية، والانتشار."
     },
     "why": {
       "en": "It replaces \"somewhere between two and ten years\" with a number you can trace. Every deduction points at a file and a line, so you can argue with it.",
-      "ar": "يستبدل عبارة «بين سنتين وعشر سنوات» برقم يمكن تتبّعه. وكل خصم يشير إلى ملف وسطر، فيمكنك مناقشته."
+      "ar": "يضع رقمًا يمكن تتبّعه مكان تقدير فضفاض مثل «بين سنتين وعشر سنوات». ولأن كل خصم يشير إلى ملف وسطر، يستطيع أي أحد مناقشته والاعتراض عليه."
     },
     "source": "§5.3.3"
   },
@@ -70,11 +70,11 @@
     "term": "Pre-registered weights",
     "what": {
       "en": "The four factor weights (0.30, 0.30, 0.20, 0.20) were fixed and tagged in version control before we ran any experiment.",
-      "ar": "ثُبِّتت أوزان العوامل الأربعة (0.30 و0.30 و0.20 و0.20) ووُسمت في نظام إصدارات قبل تشغيل أي تجربة."
+      "ar": "ثُبِّتت أوزان العوامل الأربعة (0.30 و0.30 و0.20 و0.20) ووُضع لها وسم في نظام إدارة الإصدارات قبل إجراء أي تجربة."
     },
     "why": {
       "en": "If we tuned the weights after seeing results, we would be fitting the score to the answer we wanted. Fixing them first is what makes the score defensible instead of arbitrary.",
-      "ar": "لو ضبطنا الأوزان بعد رؤية النتائج، لكنّا نطوّع الدرجة للإجابة التي نريدها. تثبيتها مسبقًا هو ما يجعل الدرجة قابلة للدفاع عنها بدل أن تكون اعتباطية."
+      "ar": "لو عدّلنا الأوزان بعد رؤية النتائج لكنّا نطوّع الدرجة لتوافق ما نريد. وتثبيتها مسبقًا هو ما يجعلها قابلة للدفاع عنها لا اعتباطية."
     },
     "source": "§8.2, git tag weights-v1"
   },
@@ -83,11 +83,11 @@
     "term": "LibCST",
     "what": {
       "en": "A Python parser that keeps a Concrete Syntax Tree. It preserves comments, spacing, and formatting.",
-      "ar": "محلّل Python يحتفظ بشجرة تركيب ملموسة (CST). يحافظ على التعليقات والمسافات والتنسيق."
+      "ar": "محلّل لشيفرة Python يبني شجرة تركيب ملموسة (CST) يحفظ فيها التعليقات والمسافات والتنسيق كما هي."
     },
     "why": {
       "en": "Python's built-in ast parser throws formatting away. A tool that reformats a file produces a diff nobody can review, and our whole claim is that we open reviewable pull requests. So we need lossless parsing.",
-      "ar": "محلّل ast المدمج في Python يتخلّص من التنسيق. والأداة التي تعيد تنسيق ملف تنتج فرقًا لا يستطيع أحد مراجعته، بينما ادّعاؤنا كله أننا نفتح طلبات دمج قابلة للمراجعة. لذا نحتاج تحليلًا بلا فقد."
+      "ar": "محلّل ast المدمج في Python يهمل التنسيق، والأداة التي تعيد تنسيق الملف تُنتج فروقًا لا يستطيع أحد مراجعتها، بينما جوهر ما نقدّمه هو طلبات دمج قابلة للمراجعة. لذلك نحتاج إلى تحليل بلا فقد."
     },
     "source": "ADR-002"
   },
@@ -96,11 +96,11 @@
     "term": "NetworkX",
     "what": {
       "en": "A Python library of graph algorithms. We use it for minimum cut, reachability, and degree.",
-      "ar": "مكتبة Python لخوارزميات الرسوم البيانية. نستخدمها لحساب القطع الأدنى وقابلية الوصول والدرجة."
+      "ar": "مكتبة Python لخوارزميات الرسوم البيانية، ونستعملها في حساب القطع الأدنى وقابلية الوصول ودرجة العقدة."
     },
     "why": {
       "en": "Minimum node cut is a solved algorithm. Writing our own would add risk and no research value. The contribution is deciding what to put in the graph and what the cut means, not re-implementing max-flow.",
-      "ar": "القطع الأدنى للعقد خوارزمية محلولة. وكتابة نسخة خاصة بنا تضيف مخاطرة بلا قيمة بحثية. الإسهام هو تحديد ما يوضع في الرسم البياني وما يعنيه القطع، لا إعادة تنفيذ التدفق الأقصى."
+      "ar": "القطع الأدنى للعقد مسألة محلولة، وكتابة نسخة خاصة بنا تزيد المخاطرة بلا فائدة بحثية. فإسهامنا هو تحديد ما يدخل الرسم البياني وما يعنيه القطع، لا إعادة تنفيذ خوارزمية التدفق الأقصى."
     },
     "source": "§3.1"
   },
@@ -109,11 +109,11 @@
     "term": "Call resolver",
     "what": {
       "en": "Our own code that links a function call to the function it probably calls. It follows one step only, and it matches names.",
-      "ar": "شيفرتنا الخاصة التي تربط استدعاء دالة بالدالة التي يُرجَّح أنه يستدعيها. تتبع خطوة واحدة فقط، وتطابق الأسماء."
+      "ar": "شيفرة من تأليفنا تربط كل استدعاء دالة بالدالة التي يُرجَّح أنه يقصدها، اعتمادًا على تطابق الأسماء وبخطوة واحدة فقط."
     },
     "why": {
       "en": "LibCST resolves names but not values, and it has no call graph, so this part is genuinely ours. We considered CodeQL and rejected it: it adds a query language, a database build step, and a proprietary CLI for an undergraduate team. The price is less depth, which we measure and publish rather than hide. If our recall drops below 0.60, we revisit that decision.",
-      "ar": "يحلّ LibCST الأسماء لا القيم، ولا يملك رسمًا بيانيًا للاستدعاءات، فهذا الجزء من عملنا فعلًا. نظرنا في CodeQL ورفضناه: يضيف لغة استعلام وخطوة بناء قاعدة بيانات وواجهة مغلقة، لفريق طلاب بكالوريوس. والثمن عمق أقل، وهو ما نقيسه وننشره بدل إخفائه. وإن نزل الاستدعاء تحت 0.60 نعيد النظر في القرار."
+      "ar": "يحلّ LibCST الأسماء لا القيم، ولا يبني رسمًا للاستدعاءات، فهذا الجزء من تأليفنا فعلًا. وقد نظرنا في CodeQL فرفضناه، لأنه يفرض على فريق من طلاب البكالوريوس لغة استعلام وخطوة لبناء قاعدة بيانات وأداة مغلقة المصدر. وثمن ذلك عمق أقل، وهو ما نقيسه وننشره بدل إخفائه، فإن هبط الاسترجاع دون 0.60 أعدنا النظر في القرار."
     },
     "source": "ADR-009"
   },
@@ -122,11 +122,11 @@
     "term": "confidence: \"low\"",
     "what": {
       "en": "A label on every call edge in the graph. It marks an edge we inferred rather than proved.",
-      "ar": "وسم على كل حافة استدعاء في الرسم البياني. يشير إلى حافة استنتجناها ولم نثبتها."
+      "ar": "وسم يُلحق بكل حافة استدعاء في الرسم البياني، ويعني أن الحافة مستنتَجة لا مثبتة."
     },
     "why": {
       "en": "One-step name matching is a guess, not a proof. Labelling it lets the report separate what we measured from what we estimated. Calling both the same thing would overstate what the graph knows.",
-      "ar": "مطابقة الأسماء بخطوة واحدة تخمين لا برهان. ووسمها يتيح للتقرير الفصل بين ما قسناه وما قدّرناه. ولو سمّينا الاثنين الشيء نفسه لبالغنا فيما يعرفه الرسم البياني."
+      "ar": "مطابقة الأسماء بخطوة واحدة ترجيح لا برهان، ووسمها يتيح للتقرير أن يفصل ما قسناه عمّا قدّرناه. ولو سوّينا بينهما لبالغنا في وصف ما يعرفه الرسم البياني فعلًا."
     },
     "source": "§5.3.2, DoD-C3"
   },
@@ -135,11 +135,11 @@
     "term": "Propagation depth",
     "what": {
       "en": "One of the four factors. It counts how much of the graph can reach the cryptography.",
-      "ar": "أحد العوامل الأربعة. يحسب مقدار ما يستطيع الوصول إلى التعمية من الرسم البياني."
+      "ar": "أحد العوامل الأربعة، ويقيس مقدار ما يستطيع الوصول إلى التشفير من الرسم البياني."
     },
     "why": {
       "en": "It captures indirect cost: code that must be reviewed even if it does not call cryptography itself. Known limit: on small repositories it saturates at zero, because there are more crypto-reaching scopes than modules. It contributes nothing in this demo, and we say so instead of implying it helped.",
-      "ar": "يلتقط التكلفة غير المباشرة: شيفرة يجب مراجعتها وإن لم تستدعِ التعمية بنفسها. حدّ معروف: يتشبّع عند الصفر في المستودعات الصغيرة، لأنّ النطاقات التي تصل إلى التعمية أكثر من الوحدات. لا يسهم بشيء في هذا العرض، ونقول ذلك بدل الإيحاء بأنه ساعد."
+      "ar": "يرصد التكلفة غير المباشرة، أي الشيفرة التي تجب مراجعتها وإن لم تستدعِ التشفير بنفسها. وله حدّ معروف: يتشبّع عند الصفر في المستودعات الصغيرة، لأن عدد النطاقات التي تصل إلى التشفير يفوق عدد الوحدات. وهو لا يضيف شيئًا في هذا العرض، ونقول ذلك صراحةً بدل الإيحاء بأنه أفاد."
     },
     "source": "§5.3.3"
   },
@@ -148,11 +148,11 @@
     "term": "KEM — Key Encapsulation Mechanism",
     "what": {
       "en": "A way for two parties to agree on a shared secret key. One side wraps a random key with the other side's public key.",
-      "ar": "طريقة يتفق بها طرفان على مفتاح سري مشترك. يغلّف أحد الطرفين مفتاحًا عشوائيًا بالمفتاح العام للطرف الآخر."
+      "ar": "آلية يتفق بها طرفان على مفتاح سري مشترك، إذ يغلّف أحدهما مفتاحًا عشوائيًا بالمفتاح العام للآخر."
     },
     "why": {
       "en": "Key exchange is the urgent part of post-quantum migration. An attacker can record encrypted traffic today and decrypt it later, once a quantum computer exists. Signatures do not have that problem.",
-      "ar": "تبادل المفاتيح هو الجزء العاجل في الانتقال إلى ما بعد الكم. إذ يمكن للمهاجم تسجيل حركة مشفّرة اليوم وفكّها لاحقًا عند توفر حاسوب كمّي. أمّا التواقيع فلا تعاني هذه المشكلة."
+      "ar": "تبادل المفاتيح هو الجزء العاجل من الانتقال إلى ما بعد الكم، لأن المهاجم يستطيع تسجيل البيانات المشفّرة اليوم وفكّها لاحقًا متى توفّر حاسوب كمّي. أمّا التواقيع فلا تواجه هذه المشكلة."
     },
     "source": "§5.3.4"
   },
@@ -161,11 +161,11 @@
     "term": "Hybrid",
     "what": {
       "en": "Running a classical algorithm and a post-quantum algorithm together, then combining both results into one key.",
-      "ar": "تشغيل خوارزمية تقليدية وأخرى ما بعد كمّية معًا، ثم دمج النتيجتين في مفتاح واحد."
+      "ar": "تشغيل خوارزمية تقليدية وأخرى من خوارزميات ما بعد الكم معًا، ثم دمج ناتجيهما في مفتاح واحد."
     },
     "why": {
       "en": "The post-quantum algorithms are new. Hybrid stays safe if either half stays safe, so a future weakness in one does not break the system. This is what NIST and most standards bodies currently advise.",
-      "ar": "الخوارزميات ما بعد الكمّية جديدة. والوضع الهجين يبقى آمنًا ما دام أحد النصفين آمنًا، فلا يكسر ضعفٌ مستقبلي في أحدهما النظام. وهذا ما ينصح به NIST ومعظم جهات التقييس حاليًا."
+      "ar": "خوارزميات ما بعد الكم حديثة العهد، والنظام الهجين يظل آمنًا ما دام أحد نصفيه آمنًا، فلا يُسقطه ضعف يظهر مستقبلًا في أحدهما. وهذا ما توصي به NIST ومعظم جهات التقييس اليوم."
     },
     "source": "ADR-004"
   },
@@ -174,11 +174,11 @@
     "term": "X-Wing",
     "what": {
       "en": "A specific hybrid KEM. It combines X25519 and ML-KEM-768, and mixes them with SHA3-256.",
-      "ar": "نوع محدد من KEM الهجين. يجمع X25519 وML-KEM-768، ويمزجهما بـSHA3-256."
+      "ar": "نوع محدد من KEM الهجين، يجمع بين X25519 وML-KEM-768 ثم يمزجهما بدالة SHA3-256."
     },
     "why": {
       "en": "You cannot just glue two shared secrets together and assume the result is safe. The combiner must bind the ciphertexts and public keys as well. X-Wing is published with a security proof, so we use it instead of inventing our own.",
-      "ar": "لا يمكنك لصق سرّين مشتركين وافتراض أنّ الناتج آمن. إذ يجب أن يربط الدامج النصوص المشفّرة والمفاتيح العامة أيضًا. وX-Wing منشور مع برهان أمني، لذا نستخدمه بدل اختراع دامج خاص بنا."
+      "ar": "لا يكفي أن تضمّ سرّين مشتركين وتفترض أن الناتج آمن، إذ يجب أن يربط الدامج بينهما وبين النصوص المشفّرة والمفاتيح العامة أيضًا. وX-Wing منشور ومعه برهان أمني، فاستعملناه بدل ابتكار دامج خاص بنا."
     },
     "source": "ADR-004, ADR-019"
   },
@@ -187,11 +187,11 @@
     "term": "ML-KEM (FIPS 203)",
     "what": {
       "en": "The key exchange algorithm that NIST standardised for the post-quantum era. It was called Kyber before standardisation.",
-      "ar": "خوارزمية تبادل المفاتيح التي قيّسها NIST لحقبة ما بعد الكم. كانت تُسمّى Kyber قبل التقييس."
+      "ar": "خوارزمية تبادل المفاتيح التي اعتمدتها NIST معيارًا لحقبة ما بعد الكم، وكانت تُعرف باسم Kyber قبل اعتمادها."
     },
     "why": {
       "en": "It is the standard, and it now ships in the ordinary Python cryptography package. No special build is needed, which is why the replacement is not the hard part.",
-      "ar": "هي المعيار، وتأتي الآن ضمن حزمة cryptography الاعتيادية في Python. لا حاجة إلى بناء خاص، ولهذا فإن الاستبدال ليس الجزء الصعب."
+      "ar": "هي المعيار المعتمد، وصارت متاحة ضمن حزمة cryptography الاعتيادية في Python دون أي بناء خاص، ولهذا فإن استبدال الخوارزمية ليس هو الجزء الصعب."
     },
     "source": "§3.9"
   },
@@ -200,11 +200,11 @@
     "term": "ML-DSA (FIPS 204)",
     "what": {
       "en": "The NIST standard for post-quantum digital signatures. It was called Dilithium before standardisation.",
-      "ar": "معيار NIST للتواقيع الرقمية ما بعد الكمّية. كان يُسمّى Dilithium قبل التقييس."
+      "ar": "معيار NIST للتواقيع الرقمية المقاومة للحوسبة الكمّية، وكان يُعرف باسم Dilithium قبل اعتماده."
     },
     "why": {
       "en": "We detect signature use but do not migrate it in this project. Its signatures are kilobytes long, which often forces database and protocol changes. Those are bigger than a source edit, so they sit outside our scope.",
-      "ar": "نكشف استخدام التواقيع لكننا لا ننقلها في هذا المشروع. فتواقيعها بحجم كيلوبايتات، ما يفرض غالبًا تغييرات في قواعد البيانات والبروتوكولات. وهي أكبر من تعديل في الشيفرة، فتقع خارج نطاقنا."
+      "ar": "نكشف استخدام التواقيع لكننا لا ننقلها في هذا المشروع، فحجم التوقيع الواحد يبلغ آلاف البايتات، ما يستدعي غالبًا تعديل قواعد البيانات والبروتوكولات. وهذه تغييرات أكبر من تعديل في الشيفرة، فتقع خارج نطاقنا."
     },
     "source": "§2.4 R5"
   },
@@ -213,11 +213,11 @@
     "term": "IETF draft-10",
     "what": {
       "en": "Version 10 of an IETF working document. A draft is a proposed standard. It is not yet an RFC, which is the finished form.",
-      "ar": "الإصدار العاشر من وثيقة عمل لدى IETF. المسودة معيار مقترح. وليست بعد RFC، وهي الصيغة النهائية."
+      "ar": "الإصدار العاشر من وثيقة عمل لدى IETF. والمسودة معيار مقترح لم يبلغ بعد صيغته النهائية بوصفه RFC."
     },
     "why": {
       "en": "X-Wing is still a draft and is not FIPS approved. We state this as an accepted risk rather than implying it is settled. The alternative, inventing our own combiner, would be worse.",
-      "ar": "لا يزال X-Wing مسودة وغير معتمد ضمن FIPS. نذكر ذلك بوصفه مخاطرة مقبولة بدل الإيحاء بأنّ الأمر محسوم. والبديل، وهو اختراع دامج خاص بنا، سيكون أسوأ."
+      "ar": "لا يزال X-Wing مسودة غير معتمدة في FIPS، ونذكر ذلك بوصفه مخاطرة قبلناها بدل الإيحاء بأن الأمر محسوم. أمّا البديل، وهو ابتكار دامج خاص بنا، فأسوأ منه."
     },
     "source": "RR-5"
   },
@@ -226,11 +226,11 @@
     "term": "Test vectors (KAT)",
     "what": {
       "en": "Known inputs published with their correct outputs. You run your code on the input and check you get the same output.",
-      "ar": "مدخلات معلومة منشورة مع مخرجاتها الصحيحة. تشغّل شيفرتك على المدخل وتتحقق من حصولك على المخرج نفسه."
+      "ar": "مدخلات معلومة تُنشر مع مخرجاتها الصحيحة، فتشغّل شيفرتك على المدخل وتتأكد أنك حصلت على المخرج نفسه."
     },
     "why": {
       "en": "Our own round-trip test could not catch our mistake, because we generate both sides. If both sides share a bug, the test still passes. Only a vector produced by someone else can find that.",
-      "ar": "لم يستطع اختبار الذهاب والإياب لدينا كشف خطئنا، لأننا ننتج الطرفين. وإذا اشترك الطرفان في العلة نجح الاختبار رغم ذلك. ولا يكشف ذلك إلا متجه أنتجه طرف آخر."
+      "ar": "لم يستطع اختبارنا الداخلي كشف خطئنا، لأننا نولّد طرفي العملية معًا؛ فإذا وقع الطرفان في العلة نفسها نجح الاختبار رغم وجودها. ولا يكشف مثل هذا إلا قيمة أنتجها طرف آخر."
     },
     "source": "DoD-V2"
   },
@@ -239,11 +239,11 @@
     "term": "We never run your code",
     "what": {
       "en": "Quanta reads and parses the repository. It never imports it, never installs its dependencies, and never executes it.",
-      "ar": "تقرأ Quanta المستودع وتحلّله. لا تستوردها أبدًا، ولا تثبّت اعتمادياتها، ولا تنفّذها."
+      "ar": "تقرأ Quanta المستودع وتحلّله فحسب: لا تستورده، ولا تثبّت اعتمادياته، ولا تنفّذ منه شيئًا."
     },
     "why": {
       "en": "Installing a package runs code from that package before any test starts. Python also cannot be safely sandboxed inside itself. Removing execution removes the whole class of risk, instead of trying to contain it.",
-      "ar": "تثبيت حزمة يشغّل شيفرة منها قبل بدء أي اختبار. كما لا يمكن عزل Python بأمان داخل نفسها. وإزالة التنفيذ تزيل صنف المخاطرة كاملًا بدل محاولة احتوائه."
+      "ar": "تثبيت أي حزمة يشغّل شيفرة منها قبل أن يبدأ أي اختبار، كما يتعذّر عزل Python بأمان داخل نفسها. وبإلغاء التنفيذ يزول هذا الصنف من المخاطر كله بدل محاولة احتوائه."
     },
     "source": "§1.5, ADR-001"
   },
@@ -252,11 +252,11 @@
     "term": "Provenance triple",
     "what": {
       "en": "Three values recorded in every result: the repository, the exact commit, and the analyzer version.",
-      "ar": "ثلاث قيم تُسجَّل في كل نتيجة: المستودع، والإصدار الدقيق للالتزام، ونسخة المحلّل."
+      "ar": "ثلاث قيم تُسجَّل مع كل نتيجة: المستودع، والـcommit الذي جرى تحليله بالتحديد، وإصدار المحلّل."
     },
     "why": {
       "en": "A number without these is not reproducible. With them, anyone can fetch the same commit, run the same version, and get the same bytes back.",
-      "ar": "الرقم بلا هذه القيم غير قابل لإعادة الإنتاج. ومعها يستطيع أي شخص جلب الالتزام نفسه وتشغيل النسخة نفسها والحصول على البايتات نفسها."
+      "ar": "الرقم بغير هذه القيم لا يمكن إعادة إنتاجه. ومعها يستطيع أي شخص جلب الـcommit نفسه وتشغيل الإصدار نفسه ليحصل على النتيجة ذاتها بايتًا ببايت."
     },
     "source": "INGEST-04, NFR-03"
   },
@@ -265,11 +265,11 @@
     "term": "The labelled benchmark",
     "what": {
       "en": "Twelve real repositories where two people independently classified every cryptographic site by hand, with a third resolving disagreements.",
-      "ar": "اثنا عشر مستودعًا حقيقيًا صنّف فيها شخصان كل موقع تعمية يدويًا وباستقلال، مع ثالث يحسم الخلافات."
+      "ar": "اثنا عشر مستودعًا حقيقيًا صنّف فيها شخصان كل موقع تشفير يدويًا، كلٌّ على حدة، ويحسم ثالث ما يختلفان عليه."
     },
     "why": {
       "en": "Without hand labels, we could not say how much our detector misses. This dataset does not exist anywhere yet, so it is the main research contribution, and it is frozen before any engine is written so the comparison stays honest.",
-      "ar": "بلا وسم يدوي لا نستطيع القول كم يفوت كاشفنا. وهذه المجموعة غير موجودة في أي مكان بعد، فهي الإسهام البحثي الرئيس، وتُجمَّد قبل كتابة أي محرّك حتى تبقى المقارنة نزيهة."
+      "ar": "بغير وسم يدوي لا نستطيع معرفة ما يفوت كاشفنا. وهذه المجموعة لا وجود لها اليوم في أي مكان، فهي إسهامنا البحثي الأول، ونجمّدها قبل كتابة أي محرّك حتى تبقى المقارنة نزيهة."
     },
     "source": "§2.4 M1, ADR-012"
   },
@@ -278,11 +278,11 @@
     "term": "Precision and recall",
     "what": {
       "en": "Precision: of the sites we report, how many are real. Recall: of the real sites, how many we found.",
-      "ar": "الدقة: كم موقعًا مما نبلّغ عنه حقيقي. والاستدعاء: كم موقعًا من المواقع الحقيقية وجدناه."
+      "ar": "الدقة (precision): كم نسبة ما نبلّغ عنه صحيحًا فعلًا. والاسترجاع (recall): كم نسبة المواقع الحقيقية التي عثرنا عليها."
     },
     "why": {
       "en": "We report them separately, never as one accuracy number. Most calls in a codebase are not cryptographic, so a single accuracy figure would look excellent while hiding everything we missed.",
-      "ar": "نذكرهما منفصلين، ولا نجمعهما في رقم دقة واحد. فمعظم الاستدعاءات في أي شيفرة ليست تعمية، ولذلك سيبدو رقم الدقة الواحد ممتازًا بينما يخفي كل ما فاتنا."
+      "ar": "نذكرهما منفصلين ولا ندمجهما في رقم واحد للدقة الإجمالية، لأن معظم الاستدعاءات في أي شيفرة ليست تشفيرًا، فيبدو الرقم المجمّع ممتازًا بينما يخفي كل ما فاتنا."
     },
     "source": "DoD-C2"
   }
