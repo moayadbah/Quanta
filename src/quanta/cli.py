@@ -182,5 +182,33 @@ def _summarise(outcome: AnalysisOutcome, paths: dict[str, Path]) -> None:
         _echo(f"  wrote {paths[name]}")
 
 
+@app.command()
+def serve(
+    host: Annotated[str, typer.Option("--host", help="Bind address.")] = "127.0.0.1",
+    port: Annotated[int, typer.Option("--port", help="Bind port.")] = 8000,
+    artifacts: Annotated[
+        Path | None, typer.Option("--artifacts", help="Where analysis artifacts are written.")
+    ] = None,
+) -> None:
+    """Serve the web UI and API on localhost (§9.3).
+
+    Binds to 127.0.0.1 by default. ADR-014 fixes deployment at local only — a public URL
+    would add abuse handling, TLS, rate-limit tuning and a permanent liability for a
+    demonstration a laptop already satisfies.
+    """
+    import uvicorn
+
+    from quanta.web.app import create_app
+
+    root = artifacts or (Path.home() / ".quanta" / "artifacts")
+    _echo(f"  Quanta {__version__}  ruleset {CRYPTO_RULESET_VERSION}")
+    _echo(f"  artifacts -> {root}")
+    _echo(f"  serving   -> http://{host}:{port}")
+    _echo("  static analysis only; no repository code is ever executed")
+    _echo("")
+
+    uvicorn.run(create_app(root), host=host, port=port, log_level="warning")
+
+
 if __name__ == "__main__":  # pragma: no cover
     app()

@@ -1,0 +1,120 @@
+{
+  "agility_score": 13.838066,
+  "coverage": {
+    "files_scanned": 26,
+    "files_unparseable": 0,
+    "truncated": false
+  },
+  "deductions": [
+    {
+      "citations": [
+        "jwt/algorithms.py:198",
+        "jwt/algorithms.py:408",
+        "tests/test_advisory.py:57",
+        "tests/test_advisory.py:64",
+        "tests/test_advisory.py:108",
+        "tests/test_advisory.py:115",
+        "tests/test_algorithms.py:1431",
+        "tests/test_algorithms.py:1439",
+        "tests/test_algorithms.py:1448",
+        "tests/test_algorithms.py:1456"
+      ],
+      "factor": "call_sites",
+      "points": 17.740882,
+      "reason": "27 cryptographic call sites must each be edited to change algorithm"
+    },
+    {
+      "citations": [
+        "jwt/algorithms.py:198",
+        "jwt/algorithms.py:408",
+        "tests/test_advisory.py:57",
+        "tests/test_advisory.py:64",
+        "tests/test_advisory.py:108",
+        "tests/test_advisory.py:115",
+        "tests/test_algorithms.py:1431",
+        "tests/test_algorithms.py:1439",
+        "tests/test_algorithms.py:1448",
+        "tests/test_algorithms.py:1456"
+      ],
+      "factor": "isolation_layer",
+      "points": 28.421053,
+      "reason": "Crypto APIs invoked directly from 6 modules with no common wrapper; 18 nodes must be cut to decouple cryptography"
+    },
+    {
+      "citations": [
+        "tests/test_api_jws.py:1041",
+        "tests/test_api_jws.py:1064"
+      ],
+      "factor": "selection_source",
+      "points": 20.0,
+      "reason": "2 algorithm selections are hard-coded rather than read from configuration"
+    },
+    {
+      "citations": [
+        "tests/test_api_jws.py:1041",
+        "tests/test_api_jws.py:1064",
+        "jwt/algorithms.py:198",
+        "jwt/algorithms.py:408",
+        "tests/test_advisory.py:108",
+        "tests/test_advisory.py:115",
+        "tests/test_advisory.py:57",
+        "tests/test_advisory.py:64",
+        "tests/test_algorithms.py:1431",
+        "tests/test_algorithms.py:1439"
+      ],
+      "factor": "propagation_depth",
+      "points": 20.0,
+      "reason": "26 graph nodes can reach cryptography, so a change propagates well beyond the call sites themselves"
+    }
+  ],
+  "factors": {
+    "call_sites": {
+      "contribution": 12.259118,
+      "normalised": 0.408637,
+      "raw": 27,
+      "weight": 0.3
+    },
+    "isolation_layer": {
+      "contribution": 1.578947,
+      "normalised": 0.052632,
+      "raw": false,
+      "weight": 0.3
+    },
+    "propagation_depth": {
+      "contribution": 0.0,
+      "normalised": 0.0,
+      "raw": 26,
+      "weight": 0.2
+    },
+    "selection_source": {
+      "contribution": 0.0,
+      "normalised": 0.0,
+      "raw": "hardcoded",
+      "weight": 0.2
+    }
+  },
+  "provenance": {
+    "analyzer_version": "0.1.0+rules.2026.08.01",
+    "commit_sha": "7144e4534c34810f4525dc4578a32addd8212cff",
+    "crypto_ruleset_version": "2026.08.01",
+    "repo": "jpadilla/pyjwt"
+  },
+  "recommendations": [
+    {
+      "action": "Introduce a crypto facade module fronting the cryptographic primitives, so algorithm changes are made in one place",
+      "affected_sites": 27,
+      "estimated_score_gain": 28.421053
+    },
+    {
+      "action": "Move algorithm selection into configuration so the algorithm is policy rather than a code literal (NIST CSWP 39)",
+      "affected_sites": 2,
+      "estimated_score_gain": 20.0
+    },
+    {
+      "action": "Plan migration of quantum-vulnerable key establishment and signatures to ML-KEM / ML-DSA, ideally via a hybrid construction",
+      "affected_sites": 4,
+      "estimated_score_gain": 0.0
+    }
+  ],
+  "schema_version": "1.0"
+}

@@ -185,4 +185,19 @@ def test_csp_header_is_defined_and_restrictive() -> None:
     assert "default-src 'none'" in csp
     assert "script-src" not in csp, "the report needs no scripts, so none may be allowed"
     assert REPORT_SECURITY_HEADERS["X-Content-Type-Options"] == "nosniff"
-    assert "X-Frame-Options" in REPORT_SECURITY_HEADERS
+
+
+def test_framing_is_restricted_by_frame_ancestors_not_x_frame_options() -> None:
+    """§7.3 names X-Frame-Options: SAMEORIGIN *and* a sandbox iframe. They conflict.
+
+    A sandboxed frame has an opaque origin, so SAMEORIGIN can never match and the browser
+    blanks the report — the control defeats the feature it is protecting. ``frame-ancestors``
+    tests the embedding page's origin instead, so the sandbox can stay at full strength
+    with neither allow-same-origin nor allow-scripts.
+
+    This test exists so nobody "restores" the missing header and silently breaks the
+    report view again.
+    """
+    csp = REPORT_SECURITY_HEADERS["Content-Security-Policy"]
+    assert "frame-ancestors 'self'" in csp
+    assert "X-Frame-Options" not in REPORT_SECURITY_HEADERS

@@ -1,0 +1,117 @@
+{
+  "agility_score": 29.528386,
+  "coverage": {
+    "files_scanned": 38,
+    "files_unparseable": 0,
+    "truncated": false
+  },
+  "deductions": [
+    {
+      "citations": [
+        "jose/backends/cryptography_backend.py:462",
+        "jose/backends/cryptography_backend.py:467",
+        "jose/backends/cryptography_backend.py:486",
+        "jose/backends/cryptography_backend.py:493",
+        "jose/backends/cryptography_backend.py:571",
+        "jose/backends/cryptography_backend.py:579",
+        "jose/backends/native.py:59",
+        "tests/algorithms/test_EC.py:111",
+        "tests/algorithms/test_EC.py:238",
+        "tests/algorithms/test_EC.py:247"
+      ],
+      "factor": "call_sites",
+      "points": 15.30415,
+      "reason": "10 cryptographic call sites must each be edited to change algorithm"
+    },
+    {
+      "citations": [
+        "jose/backends/cryptography_backend.py:462",
+        "jose/backends/cryptography_backend.py:467",
+        "jose/backends/cryptography_backend.py:486",
+        "jose/backends/cryptography_backend.py:493",
+        "jose/backends/cryptography_backend.py:571",
+        "jose/backends/cryptography_backend.py:579",
+        "jose/backends/native.py:59",
+        "tests/algorithms/test_EC.py:111",
+        "tests/algorithms/test_EC.py:238",
+        "tests/algorithms/test_EC.py:247"
+      ],
+      "factor": "isolation_layer",
+      "points": 27.272727,
+      "reason": "Crypto APIs invoked directly from 3 modules with no common wrapper; 10 nodes must be cut to decouple cryptography"
+    },
+    {
+      "citations": [
+        "jose/backends/cryptography_backend.py:467",
+        "jose/backends/cryptography_backend.py:493",
+        "tests/algorithms/test_EC.py:238",
+        "tests/algorithms/test_EC.py:247"
+      ],
+      "factor": "selection_source",
+      "points": 20.0,
+      "reason": "4 algorithm selections are hard-coded rather than read from configuration"
+    },
+    {
+      "citations": [
+        "jose/backends/cryptography_backend.py:467",
+        "jose/backends/cryptography_backend.py:493",
+        "jose/backends/cryptography_backend.py:462",
+        "jose/backends/cryptography_backend.py:486",
+        "jose/backends/cryptography_backend.py:571",
+        "jose/backends/cryptography_backend.py:579",
+        "jose/backends/native.py:59",
+        "tests/algorithms/test_EC.py:238",
+        "tests/algorithms/test_EC.py:247",
+        "tests/algorithms/test_EC.py:111"
+      ],
+      "factor": "propagation_depth",
+      "points": 7.894737,
+      "reason": "15 graph nodes can reach cryptography, so a change propagates well beyond the call sites themselves"
+    }
+  ],
+  "factors": {
+    "call_sites": {
+      "contribution": 14.69585,
+      "normalised": 0.489862,
+      "raw": 10,
+      "weight": 0.3
+    },
+    "isolation_layer": {
+      "contribution": 2.727273,
+      "normalised": 0.090909,
+      "raw": false,
+      "weight": 0.3
+    },
+    "propagation_depth": {
+      "contribution": 12.105263,
+      "normalised": 0.605263,
+      "raw": 15,
+      "weight": 0.2
+    },
+    "selection_source": {
+      "contribution": 0.0,
+      "normalised": 0.0,
+      "raw": "hardcoded",
+      "weight": 0.2
+    }
+  },
+  "provenance": {
+    "analyzer_version": "0.1.0+rules.2026.08.01",
+    "commit_sha": "018b310ddb8b50dcfd09a0c152117835a21dd656",
+    "crypto_ruleset_version": "2026.08.01",
+    "repo": "mpdavis/python-jose"
+  },
+  "recommendations": [
+    {
+      "action": "Introduce a crypto facade module fronting the cryptographic primitives, so algorithm changes are made in one place",
+      "affected_sites": 10,
+      "estimated_score_gain": 27.272727
+    },
+    {
+      "action": "Move algorithm selection into configuration so the algorithm is policy rather than a code literal (NIST CSWP 39)",
+      "affected_sites": 4,
+      "estimated_score_gain": 20.0
+    }
+  ],
+  "schema_version": "1.0"
+}

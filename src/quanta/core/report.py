@@ -68,10 +68,23 @@ _PAD = 24
 #: line of defence and this is the second — if an identifier ever slipped through, it
 #: still could not execute or exfiltrate. Defined here, beside the renderer, so the
 #: contract lives with the artifact rather than in a route handler.
+#:
+#: **Framing uses ``frame-ancestors``, not ``X-Frame-Options``.** §7.3 names both
+#: ``X-Frame-Options: SAMEORIGIN`` *and* embedding the report in a ``sandbox`` iframe, and
+#: those two controls are mutually exclusive: a sandboxed frame has an **opaque** origin,
+#: so ``SAMEORIGIN`` can never match and the browser blanks the report. Verified in a
+#: browser, not deduced.
+#:
+#: ``frame-ancestors 'self'`` restricts the same thing but tests the *embedding* page's
+#: origin rather than the frame's own, so it is unaffected by the opaque origin and lets
+#: the sandbox stay at maximum strength (no ``allow-same-origin``, no ``allow-scripts``).
+#: That combination is strictly stronger than the spec's pairing, and CSP ``frame-ancestors``
+#: formally obsoletes ``X-Frame-Options`` in any case.
 REPORT_SECURITY_HEADERS: dict[str, str] = {
-    "Content-Security-Policy": "default-src 'none'; style-src 'unsafe-inline'; img-src data:",
+    "Content-Security-Policy": (
+        "default-src 'none'; style-src 'unsafe-inline'; img-src data:; frame-ancestors 'self'"
+    ),
     "X-Content-Type-Options": "nosniff",
-    "X-Frame-Options": "SAMEORIGIN",
     "Referrer-Policy": "no-referrer",
 }
 

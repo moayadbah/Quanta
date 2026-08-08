@@ -1,0 +1,43 @@
+{
+  "agility_score": 100.0,
+  "coverage": {
+    "files_scanned": 76,
+    "files_unparseable": 2,
+    "truncated": false
+  },
+  "deductions": [],
+  "factors": {
+    "call_sites": {
+      "contribution": 30.0,
+      "normalised": 1.0,
+      "raw": 0,
+      "weight": 0.3
+    },
+    "isolation_layer": {
+      "contribution": 30.0,
+      "normalised": 1.0,
+      "raw": true,
+      "weight": 0.3
+    },
+    "propagation_depth": {
+      "contribution": 20.0,
+      "normalised": 1.0,
+      "raw": 0,
+      "weight": 0.2
+    },
+    "selection_source": {
+      "contribution": 20.0,
+      "normalised": 1.0,
+      "raw": "none",
+      "weight": 0.2
+    }
+  },
+  "provenance": {
+    "analyzer_version": "0.1.0+rules.2026.08.01",
+    "commit_sha": "00e592cea702e0b2caa0dee42489fdb1c22cd845",
+    "crypto_ruleset_version": "2026.08.01",
+    "repo": "pallets/click"
+  },
+  "recommendations": [],
+  "schema_version": "1.0"
+}
