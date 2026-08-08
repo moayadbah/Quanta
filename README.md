@@ -28,13 +28,40 @@ The dangerous half of the pipeline is never deployed. See `docs/adr/`.
 
 ## Status
 
-Building toward the §11.4 first milestone:
+The §11.4 first milestone is **reached**:
 
 > `quanta analyze <public python repo URL>` produces `cdg.json`, `score.json` and a
 > `report.html` that opens offline — with the entire `tests/security/` suite green.
 
+363 tests pass (270 of them security), `ruff` and `mypy --strict` are clean. Verified
+against live repositories: `pallets/click` scores 100 (it contains no cryptography, which
+is the correct answer), `jpadilla/pyjwt` scores 13.8 across 27 detected sites. Three
+independent clones produce byte-identical `cdg.json` and `score.json`.
+
+| Definition of Done | State |
+|---|---|
+| DoD-C1 ingestion | ✅ security suite green; scratch removed on success, failure and timeout |
+| DoD-C2 detection | ⚠️ precision/recall reported separately against **synthetic** fixtures; the real figure needs the frozen benchmark (Phase 1) |
+| DoD-C3 CDG | ✅ round-trips through `node_link_graph`; every `call` edge `confidence: "low"`; byte-identical across 3 runs |
+| DoD-C4 score | ✅ weights from the `weights-v1` tag; every deduction carries ≥1 `file:line`. Sensitivity and collinearity belong to the stats phase |
+| DoD-C5 report | ✅ opens from `file://` with no network; CSP defined; hostile filenames render escaped; CDG SVG inline |
+| DoD-V2 X-Wing shim | ✅ 1000-example Hypothesis property, plus known-answer tests against draft-10 Appendix C |
+
 Engines (E0/E1/E2), the verification harness, the benchmark corpus, the statistics layer
-and the web tier are later phases and are not built yet.
+and the web tier are build-order steps 8–12 and are **not** built yet. `--cbom` (PROC-06)
+refuses rather than silently ignoring the flag.
+
+### Deviations from the specification
+
+Three, each forced by a verified fact and recorded in `docs/adr/`:
+
+- **ADR-017** — `cryptography` pinned `>=48,<49`. Upstream dropped x86_64 macOS wheels at
+  49.0.0; 48.0.1 ships ML-KEM via OpenSSL 4.0.1.
+- **ADR-018** — deterministic built-in SVG renderer instead of Graphviz. No system binary,
+  and layout stability is required by NFR-03.
+- **ADR-019** — the X-Wing combiner appends `XWingLabel` **last**, per draft-10 §5.3. §3.9
+  of the technical documentation places it first; the published test vectors show that
+  order is wrong. §3.9 should be corrected in the next revision.
 
 ## Quick start
 
