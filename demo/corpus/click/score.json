@@ -1,8 +1,8 @@
 {
   "agility_score": 100.0,
   "coverage": {
-    "files_scanned": 76,
-    "files_unparseable": 2,
+    "files_scanned": 77,
+    "files_unparseable": 1,
     "truncated": false
   },
   "deductions": [],

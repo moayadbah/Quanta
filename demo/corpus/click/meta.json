@@ -1,12 +1,12 @@
 {
-  "duration_ms": 48366,
-  "files_scanned": 76,
-  "finished_at": "2026-08-08T04:04:48.514301+00:00",
+  "duration_ms": 38653,
+  "files_scanned": 77,
+  "finished_at": "2026-08-08T05:04:30.168919+00:00",
   "phase_durations_ms": {
-    "graph": 33,
-    "parsing": 48290,
-    "scoring": 0,
-    "walking": 36
+    "graph": 30,
+    "parsing": 38577,
+    "scoring": 1,
+    "walking": 37
   },
   "provenance": {
     "analyzer_version": "0.1.0+rules.2026.08.01",
@@ -15,7 +15,7 @@
     "repo": "pallets/click"
   },
   "sites_detected": 0,
-  "started_at": "2026-08-08T04:04:00.148254+00:00",
+  "started_at": "2026-08-08T05:03:51.515703+00:00",
   "steps": [
     {
       "duration_ms": 0,
@@ -62,7 +62,7 @@
       "title": "Validate the URL"
     },
     {
-      "duration_ms": 865,
+      "duration_ms": 760,
       "evidence": [
         {
           "label": "Visibility",
@@ -96,7 +96,7 @@
       "title": "Resolve repository metadata"
     },
     {
-      "duration_ms": 1697,
+      "duration_ms": 1530,
       "evidence": [
         {
           "label": "Depth",
@@ -131,11 +131,11 @@
       ],
       "id": "clone",
       "status": "done",
-      "summary": "shallow clone at 00e592cea702 in 1697 ms",
+      "summary": "shallow clone at 00e592cea702 in 1530 ms",
       "title": "Clone at a pinned commit"
     },
     {
-      "duration_ms": 37,
+      "duration_ms": 38,
       "evidence": [
         {
           "label": "Python files considered",
@@ -179,7 +179,7 @@
       "title": "Walk the source tree"
     },
     {
-      "duration_ms": 48290,
+      "duration_ms": 38577,
       "evidence": [
         {
           "label": "Execution",
@@ -189,7 +189,7 @@
         {
           "label": "Files parsed",
           "ok": null,
-          "value": "76"
+          "value": "77"
         },
         {
           "label": "Crypto call sites",
@@ -214,7 +214,7 @@
         {
           "label": "Unparseable",
           "ok": null,
-          "value": "2 — listed, not dropped: src/click/core.py (parse exceeded 5s), tests/test_options.py (parse exceeded 5s)"
+          "value": "1 — listed, not dropped: tests/test_options.py (parse exceeded 5s)"
         }
       ],
       "id": "parse",
@@ -223,46 +223,46 @@
       "title": "Parse and detect crypto"
     },
     {
-      "duration_ms": 37,
+      "duration_ms": 35,
       "evidence": [
         {
           "label": "Nodes",
           "ok": null,
-          "value": "1,442 — function 1366, module 76"
+          "value": "1,582 — function 1505, module 77"
         },
         {
           "label": "Edges",
           "ok": null,
-          "value": "1,685 — binding 1365, call 259, import 61"
+          "value": "1,866 — binding 1504, call 299, import 63"
         },
         {
           "label": "Low-confidence edges",
           "ok": true,
-          "value": "259 (every 'call' edge, by rule)"
+          "value": "299 (every 'call' edge, by rule)"
         },
         {
           "label": "Callees resolved",
           "ok": null,
-          "value": "370 of 5,125"
+          "value": "415 of 5,673"
         },
         {
           "label": "Callees dropped, not guessed",
           "ok": true,
-          "value": "10 ambiguous, 4,745 unresolvable"
+          "value": "10 ambiguous, 5,248 unresolvable"
         },
         {
           "label": "Imports",
           "ok": null,
-          "value": "61 internal, 533 external"
+          "value": "63 internal, 589 external"
         }
       ],
       "id": "graph",
       "status": "done",
-      "summary": "1,442 nodes, 1,685 edges",
+      "summary": "1,582 nodes, 1,866 edges",
       "title": "Build the dependency graph"
     },
     {
-      "duration_ms": 0,
+      "duration_ms": 1,
       "evidence": [
         {
           "label": "Weights",
@@ -301,12 +301,12 @@
       "title": "Compute the Agility Score"
     },
     {
-      "duration_ms": 42,
+      "duration_ms": 33,
       "evidence": [
         {
           "label": "Report size",
           "ok": null,
-          "value": "32,910 bytes"
+          "value": "32,824 bytes"
         },
         {
           "label": "External requests",
@@ -356,10 +356,6 @@
   ],
   "truncation": null,
   "unparseable": [
-    {
-      "file": "src/click/core.py",
-      "reason": "parse exceeded 5s"
-    },
     {
       "file": "tests/test_options.py",
       "reason": "parse exceeded 5s"

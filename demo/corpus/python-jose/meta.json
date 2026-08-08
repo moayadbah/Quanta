@@ -1,12 +1,12 @@
 {
-  "duration_ms": 10223,
+  "duration_ms": 8864,
   "files_scanned": 38,
-  "finished_at": "2026-08-08T04:03:57.499898+00:00",
+  "finished_at": "2026-08-08T05:03:49.152010+00:00",
   "phase_durations_ms": {
-    "graph": 11,
-    "parsing": 10088,
-    "scoring": 104,
-    "walking": 16
+    "graph": 8,
+    "parsing": 8752,
+    "scoring": 87,
+    "walking": 13
   },
   "provenance": {
     "analyzer_version": "0.1.0+rules.2026.08.01",
@@ -15,7 +15,7 @@
     "repo": "mpdavis/python-jose"
   },
   "sites_detected": 10,
-  "started_at": "2026-08-08T04:03:47.276898+00:00",
+  "started_at": "2026-08-08T05:03:40.287754+00:00",
   "steps": [
     {
       "duration_ms": 0,
@@ -62,7 +62,7 @@
       "title": "Validate the URL"
     },
     {
-      "duration_ms": 740,
+      "duration_ms": 742,
       "evidence": [
         {
           "label": "Visibility",
@@ -96,7 +96,7 @@
       "title": "Resolve repository metadata"
     },
     {
-      "duration_ms": 1275,
+      "duration_ms": 1318,
       "evidence": [
         {
           "label": "Depth",
@@ -131,11 +131,11 @@
       ],
       "id": "clone",
       "status": "done",
-      "summary": "shallow clone at 018b310ddb8b in 1275 ms",
+      "summary": "shallow clone at 018b310ddb8b in 1318 ms",
       "title": "Clone at a pinned commit"
     },
     {
-      "duration_ms": 16,
+      "duration_ms": 13,
       "evidence": [
         {
           "label": "Python files considered",
@@ -179,7 +179,7 @@
       "title": "Walk the source tree"
     },
     {
-      "duration_ms": 10088,
+      "duration_ms": 8752,
       "evidence": [
         {
           "label": "Execution",
@@ -218,7 +218,7 @@
       "title": "Parse and detect crypto"
     },
     {
-      "duration_ms": 13,
+      "duration_ms": 10,
       "evidence": [
         {
           "label": "Nodes",
@@ -257,7 +257,7 @@
       "title": "Build the dependency graph"
     },
     {
-      "duration_ms": 104,
+      "duration_ms": 87,
       "evidence": [
         {
           "label": "Weights",
@@ -272,7 +272,7 @@
         {
           "label": "isolation_layer",
           "ok": null,
-          "value": "raw False -> 1 / (1 + minimum node cut) -> 0.09 x 0.30 = 2.73"
+          "value": "raw False -> 1 / (1 + minimum node cut) -> 0.12 x 0.30 = 3.75"
         },
         {
           "label": "selection_source",
@@ -287,7 +287,7 @@
         {
           "label": "Agility Score",
           "ok": null,
-          "value": "29.5 / 100"
+          "value": "30.6 / 100"
         },
         {
           "label": "-15.30 call_sites",
@@ -295,9 +295,9 @@
           "value": "10 cryptographic call sites must each be edited to change algorithm [jose/backends/cryptography_backend.py:462, jose/backends/cryptography_backend.py:467, jose/backends/cryptography_backend.py:486]"
         },
         {
-          "label": "-27.27 isolation_layer",
+          "label": "-26.25 isolation_layer",
           "ok": false,
-          "value": "Crypto APIs invoked directly from 3 modules with no common wrapper; 10 nodes must be cut to decouple cryptography [jose/backends/cryptography_backend.py:462, jose/backends/cryptography_backend.py:467, jose/backends/cryptography_backend.py:486]"
+          "value": "Crypto APIs invoked directly from 3 modules with no common wrapper; 7 nodes must be cut to decouple cryptography [jose/backends/cryptography_backend.py:462, jose/backends/cryptography_backend.py:467, jose/backends/cryptography_backend.py:486]"
         },
         {
           "label": "-20.00 selection_source",
@@ -312,16 +312,16 @@
       ],
       "id": "score",
       "status": "done",
-      "summary": "Agility Score 29.5 / 100",
+      "summary": "Agility Score 30.6 / 100",
       "title": "Compute the Agility Score"
     },
     {
-      "duration_ms": 39,
+      "duration_ms": 28,
       "evidence": [
         {
           "label": "Report size",
           "ok": null,
-          "value": "38,536 bytes"
+          "value": "38,535 bytes"
         },
         {
           "label": "External requests",

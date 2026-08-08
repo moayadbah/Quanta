@@ -1,12 +1,12 @@
 {
-  "duration_ms": 15296,
+  "duration_ms": 11887,
   "files_scanned": 26,
-  "finished_at": "2026-08-08T04:03:45.164373+00:00",
+  "finished_at": "2026-08-08T05:03:38.150108+00:00",
   "phase_durations_ms": {
-    "graph": 13,
-    "parsing": 15045,
-    "scoring": 221,
-    "walking": 13
+    "graph": 11,
+    "parsing": 11690,
+    "scoring": 173,
+    "walking": 10
   },
   "provenance": {
     "analyzer_version": "0.1.0+rules.2026.08.01",
@@ -15,7 +15,7 @@
     "repo": "jpadilla/pyjwt"
   },
   "sites_detected": 27,
-  "started_at": "2026-08-08T04:03:29.867959+00:00",
+  "started_at": "2026-08-08T05:03:26.262223+00:00",
   "steps": [
     {
       "duration_ms": 0,
@@ -62,7 +62,7 @@
       "title": "Validate the URL"
     },
     {
-      "duration_ms": 1287,
+      "duration_ms": 1205,
       "evidence": [
         {
           "label": "Visibility",
@@ -96,7 +96,7 @@
       "title": "Resolve repository metadata"
     },
     {
-      "duration_ms": 1794,
+      "duration_ms": 1567,
       "evidence": [
         {
           "label": "Depth",
@@ -131,11 +131,11 @@
       ],
       "id": "clone",
       "status": "done",
-      "summary": "shallow clone at 7144e4534c34 in 1794 ms",
+      "summary": "shallow clone at 7144e4534c34 in 1566 ms",
       "title": "Clone at a pinned commit"
     },
     {
-      "duration_ms": 13,
+      "duration_ms": 10,
       "evidence": [
         {
           "label": "Python files considered",
@@ -179,7 +179,7 @@
       "title": "Walk the source tree"
     },
     {
-      "duration_ms": 15045,
+      "duration_ms": 11690,
       "evidence": [
         {
           "label": "Execution",
@@ -223,7 +223,7 @@
       "title": "Parse and detect crypto"
     },
     {
-      "duration_ms": 14,
+      "duration_ms": 12,
       "evidence": [
         {
           "label": "Nodes",
@@ -262,7 +262,7 @@
       "title": "Build the dependency graph"
     },
     {
-      "duration_ms": 221,
+      "duration_ms": 173,
       "evidence": [
         {
           "label": "Weights",
@@ -321,7 +321,7 @@
       "title": "Compute the Agility Score"
     },
     {
-      "duration_ms": 43,
+      "duration_ms": 33,
       "evidence": [
         {
           "label": "Report size",

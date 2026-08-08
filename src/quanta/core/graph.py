@@ -237,7 +237,19 @@ def from_node_link(data: dict[str, Any]) -> nx.DiGraph:
 
 
 def crypto_nodes(graph: nx.DiGraph) -> list[str]:
+    """Call sites only. This is what ``f_sites`` counts — the edits a migration must make."""
     return sorted(n for n, d in graph.nodes(data=True) if d.get("kind") == "crypto_call")
+
+
+#: The full cryptographic surface: the calls, the algorithms they name, and the
+#: configuration that selects those algorithms. Distinct from :func:`crypto_nodes`, which
+#: answers "how many edits?" — this answers "what counts as cryptography?"
+CRYPTO_SURFACE_KINDS = frozenset({"crypto_call", "algo_literal", "config_read"})
+
+
+def crypto_surface(graph: nx.DiGraph) -> list[str]:
+    """Every node the detector identified as cryptographic (§5.3.3's ``crypto_set``)."""
+    return sorted(n for n, d in graph.nodes(data=True) if d.get("kind") in CRYPTO_SURFACE_KINDS)
 
 
 def module_nodes_of(graph: nx.DiGraph) -> list[str]:
@@ -260,7 +272,19 @@ def isolation_cut_size(graph: nx.DiGraph) -> tuple[int, bool]:
     cut, because deleting the facade disconnects everything else from the primitives.
 
     ``nx.minimum_node_cut`` takes single endpoints, so a synthetic super-source over
-    non-crypto nodes and super-sink over crypto nodes are added first.
+    program nodes and super-sink over cryptographic nodes are added first.
+
+    **The partition is the whole cryptographic surface, not just the call sites.** An
+    earlier version put only ``crypto_call`` on the crypto side, which left
+    ``algo_literal`` nodes on the *program* side — so the cut had to sever
+    ``hashes.SHA256()`` from the very call it configures. That is not a coupling anyone
+    could remove, and it masked real insulation layers: a facade holding six calls in
+    three functions still measured a cut of 6, because the four algorithm literals had to
+    be severed too. Modules and functions are the program; calls, algorithms and the
+    configuration selecting them are the cryptography.
+
+    Note this is deliberately a *different* set from :func:`crypto_nodes`, which
+    ``f_sites`` uses to count edits. Two questions, two sets.
 
     Returns ``(cut_size, disconnected)``. The flag matters: when cryptography is already
     unreachable from the rest of the graph the cut is 0, which the ``1/(1+cut)``
@@ -268,7 +292,7 @@ def isolation_cut_size(graph: nx.DiGraph) -> tuple[int, bool]:
     on the crypto — but it is not what §5.3.3's "no cut → 0" phrasing suggests, so the
     caller is told which case it is rather than being handed an ambiguous 0.
     """
-    crypto = set(crypto_nodes(graph))
+    crypto = set(crypto_surface(graph))
     if not crypto:
         return (0, True)
 
