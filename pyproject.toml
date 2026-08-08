@@ -49,6 +49,10 @@ packages = ["src/quanta"]
 line-length = 100
 target-version = "py312"
 src = ["src", "tests"]
+# Synthetic target repositories. This is deliberately flawed sample code standing in for
+# a repository under analysis — weak hashes and hard-coded algorithms are the fixture's
+# whole purpose, so linting it as if it were ours is meaningless noise.
+extend-exclude = ["tests/fixtures/repos"]
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "I", "N", "UP", "B", "S", "C4", "RET", "SIM", "PTH", "RUF"]
@@ -66,6 +70,10 @@ ignore = [
 # N818 wants an "Error" suffix, but §9.1 names these exceptions Reject and Truncated and
 # they are referenced by those names throughout the documentation.
 "src/quanta/errors.py" = ["N818"]
+# LibCST dispatches on method names of the form visit_<NodeType>/leave_<NodeType>. N802
+# (lowercase function names) cannot be satisfied without breaking the framework contract.
+"src/quanta/core/detect.py" = ["N802", "N818"]
+"src/quanta/engines/**" = ["N802"]
 
 [tool.mypy]
 python_version = "3.12"
