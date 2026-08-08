@@ -1,6 +1,7 @@
 {
   "agility_score": 100.0,
-  "blurb": "CLI toolkit with no cryptography at all \u2014 the correct answer is 100.",
+  "blurb": "CLI toolkit with no cryptography at all — the correct answer is 100.",
+  "blurb_ar": "أدوات لسطر الأوامر بلا تشفير إطلاقًا، والإجابة الصحيحة هنا 100.",
   "commit_sha": "00e592cea702e0b2caa0dee42489fdb1c22cd845",
   "repo": "pallets/click",
   "sites": 0,
