@@ -74,6 +74,29 @@ def test_spa_csp_constant_matches_what_is_served(client: TestClient) -> None:
     assert client.get("/").headers["content-security-policy"] == SPA_CSP
 
 
+def test_the_spa_never_sets_an_inline_style_from_javascript() -> None:
+    """``style-src 'self'`` blocks JS-set styles too, and it does so silently.
+
+    This is not theoretical. Setting ``element.style.width`` from ``app.js`` was blocked
+    by this policy with no visible failure: the analyzer's progress bar never moved, and
+    the three score bars in the walkthrough all rendered at the same length — destroying
+    the comparison that act exists to make. Nothing threw; the values were simply dropped.
+
+    Continuous values therefore travel as SVG geometry attributes, and staged delays as
+    ``nth-child`` rules. Neither is a style, so neither can be blocked.
+    """
+    import re
+
+    source = (
+        Path(__file__).resolve().parents[2] / "src" / "quanta" / "web" / "static" / "app.js"
+    ).read_text(encoding="utf-8")
+
+    offenders = re.findall(r"\.style\.(?:setProperty\(|[A-Za-z]+\s*=)", source)
+    assert not offenders, (
+        f"JS-set inline styles are silently dropped under style-src 'self': {offenders}"
+    )
+
+
 # ---------------------------------------------------------------------------------------
 # Report
 # ---------------------------------------------------------------------------------------
