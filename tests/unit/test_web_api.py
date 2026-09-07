@@ -250,7 +250,7 @@ def test_rate_limit_is_enforced_per_ip(client: TestClient, monkeypatch: pytest.M
     from quanta.web.jobs import Job, JobRegistry
 
     def _stub_submit(self: JobRegistry, repo_url: str) -> Job:
-        job = Job(id=f"00000000-0000-4000-8000-{len(self._jobs):012d}", repo_url=repo_url)
+        job = Job(id=f"00000000-0000-4000-8000-{self.active_count():012d}", repo_url=repo_url)
         job.status = "running"
         self.adopt_cached(job)
         return job

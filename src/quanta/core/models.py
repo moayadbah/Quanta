@@ -315,6 +315,9 @@ class AnalysisMeta(BaseModel):
     duration_ms: int
     phase_durations_ms: dict[str, int] = Field(default_factory=dict)
     truncation: TruncationRecord | None = None
+    truncations: tuple[TruncationRecord, ...] = ()
+    cbom_sha256: str | None = None
+    cbom_unlocated: int = 0
     unparseable: tuple[UnparseableFile, ...] = ()
     files_scanned: int = 0
     sites_detected: int = 0

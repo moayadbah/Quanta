@@ -25,6 +25,7 @@ from quanta.web import demo
 from quanta.web import examples as examples_mod
 from quanta.web.jobs import Job, JobRegistry
 from quanta.web.sse import parse_last_event_id, stream
+from quanta.web.store import ArtifactStore
 
 router = APIRouter()
 
@@ -84,7 +85,7 @@ def _job_or_404(request: Request, job_id: str) -> Job:
 def _artifact(job: Job, name: str) -> Path:
     if job.status != "succeeded" or job.artifact_dir is None:
         raise Reject("NOT_FINISHED", f"analysis is {job.status}")
-    path = job.artifact_dir / name
+    path = ArtifactStore(job.artifact_dir.parent).path(job.id, name)
     if not path.is_file():
         raise Reject("NOT_FINISHED", f"{name} is not available")
     return path
@@ -112,7 +113,7 @@ def create_analysis(request: Request, body: AnalysisRequest) -> JSONResponse:
 
     job = registry.submit(body.repo_url)
     return JSONResponse(
-        status_code=201,
+        status_code=200 if job.reused else 201,
         content={
             "job_id": job.id,
             "status": job.status,
@@ -182,6 +183,7 @@ def healthz(request: Request) -> dict[str, Any]:
         "version": __version__,
         "crypto_ruleset_version": CRYPTO_RULESET_VERSION,
         "queue_depth": registry.active_count(),
+        "worker_heartbeat_age_s": registry.heartbeat_age(),
     }
 
 

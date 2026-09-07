@@ -21,9 +21,9 @@ jobs:
           enable-cache: true
 
       - name: Install the locked environment
-        # --frozen: CI must fail if uv.lock has drifted from pyproject.toml rather than
+        # --locked: CI must fail if uv.lock has drifted from pyproject.toml rather than
         # silently re-resolving. The lockfile is the source of truth (§3.11).
-        run: uv sync --frozen --extra dev
+        run: uv sync --locked --extra dev --extra research
 
       - name: Lint
         run: uv run ruff check .
@@ -41,3 +41,32 @@ jobs:
         # These are acceptance criteria (§9.4), not extras. Run them as their own step so a
         # failure here is unmistakable in the job summary.
         run: uv run pytest tests/security -v
+
+      - name: JavaScript syntax
+        run: |
+          node --input-type=module --check < src/quanta/web/static/app.js
+          node --test tests/frontend.test.mjs
+
+      - name: Installed wheel
+        run: |
+          uv build --wheel
+          uv venv /tmp/quanta-installed
+          uv pip install --python /tmp/quanta-installed/bin/python dist/*.whl
+          cd /tmp
+          /tmp/quanta-installed/bin/quanta analyze "$GITHUB_WORKSPACE/tests/fixtures/repos/no_crypto" --out /tmp/quanta-report
+
+  service:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Start local service
+        run: docker compose up --build -d --wait
+      - name: Exercise worker and public repository flow
+        run: python scripts/smoke_service.py --live
+      - name: Container logs
+        if: failure()
+        run: docker compose logs --tail=60
+      - name: Stop containers
+        if: always()
+        run: docker compose down -v

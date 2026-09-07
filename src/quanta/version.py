@@ -7,7 +7,7 @@ folded into ``analyzer_version`` rather than tracked separately.
 
 from __future__ import annotations
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 
 #: Crypto ruleset version (§9.5). Bump whenever ``core.rules`` changes in a way that
 #: could alter detection output — it invalidates the analysis cache by design.

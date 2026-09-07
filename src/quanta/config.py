@@ -14,8 +14,11 @@ from typing import Any, Literal
 
 from pydantic import BaseModel, Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic_settings.sources import PydanticBaseSettingsSource
 
-_DEFAULT_CONFIG = Path(__file__).resolve().parents[2] / "config" / "default.toml"
+from quanta.resources import asset_path
+
+_DEFAULT_CONFIG = asset_path("config/default.toml")
 
 
 class IngestSettings(BaseModel):
@@ -110,6 +113,23 @@ class Settings(BaseSettings):
     stats: StatsSettings = Field(default_factory=StatsSettings)
     weights: Weights = Field(default_factory=Weights)
     report: ReportSettings = Field(default_factory=ReportSettings)
+
+    db: Path = Path.home() / ".quanta" / "quanta.db"
+    artifact_root: Path = Path.home() / ".quanta" / "artifacts"
+    scratch_root: Path = Path.home() / ".quanta" / "scratch"
+    require_sandbox: bool = False
+
+    @classmethod
+    def settings_customise_sources(
+        cls,
+        settings_cls: type[BaseSettings],
+        init_settings: PydanticBaseSettingsSource,
+        env_settings: PydanticBaseSettingsSource,
+        dotenv_settings: PydanticBaseSettingsSource,
+        file_secret_settings: PydanticBaseSettingsSource,
+    ) -> tuple[PydanticBaseSettingsSource, ...]:
+        # TOML is passed as initial data. Environment overrides must take precedence.
+        return env_settings, init_settings, dotenv_settings, file_secret_settings
 
 
 def _read_toml(path: Path) -> dict[str, Any]:

@@ -1,0 +1,135 @@
+{
+  "cases": [
+    {
+      "factor": "call_sites",
+      "perturbation": -0.3,
+      "scores": {
+        "jpadilla/pyjwt": 10.363346142857143,
+        "mpdavis/python-jose": 28.18089542857143,
+        "pallets/click": 100.00000000000003
+      },
+      "spearman_rho": 1.0,
+      "weights": {
+        "call_sites": 0.21,
+        "isolation_layer": 0.33857142857142863,
+        "propagation_depth": 0.22571428571428576,
+        "selection_source": 0.22571428571428576
+      }
+    },
+    {
+      "factor": "call_sites",
+      "perturbation": 0.3,
+      "scores": {
+        "jpadilla/pyjwt": 17.312793857142857,
+        "mpdavis/python-jose": 32.92134457142858,
+        "pallets/click": 100.0
+      },
+      "spearman_rho": 1.0,
+      "weights": {
+        "call_sites": 0.39,
+        "isolation_layer": 0.2614285714285714,
+        "propagation_depth": 0.1742857142857143,
+        "selection_source": 0.1742857142857143
+      }
+    },
+    {
+      "factor": "isolation_layer",
+      "perturbation": -0.3,
+      "scores": {
+        "jpadilla/pyjwt": 14.940553285714287,
+        "mpdavis/python-jose": 32.87197828571429,
+        "pallets/click": 100.00000000000003
+      },
+      "spearman_rho": 1.0,
+      "weights": {
+        "call_sites": 0.33857142857142863,
+        "isolation_layer": 0.21,
+        "propagation_depth": 0.22571428571428576,
+        "selection_source": 0.22571428571428576
+      }
+    },
+    {
+      "factor": "isolation_layer",
+      "perturbation": 0.3,
+      "scores": {
+        "jpadilla/pyjwt": 12.735586714285713,
+        "mpdavis/python-jose": 28.230261714285714,
+        "pallets/click": 100.0
+      },
+      "spearman_rho": 1.0,
+      "weights": {
+        "call_sites": 0.2614285714285714,
+        "isolation_layer": 0.39,
+        "propagation_depth": 0.1742857142857143,
+        "selection_source": 0.1742857142857143
+      }
+    },
+    {
+      "factor": "selection_source",
+      "perturbation": -0.3,
+      "scores": {
+        "jpadilla/pyjwt": 14.875925249999996,
+        "mpdavis/python-jose": 32.842454,
+        "pallets/click": 99.99999999999999
+      },
+      "spearman_rho": 1.0,
+      "weights": {
+        "call_sites": 0.32249999999999995,
+        "isolation_layer": 0.32249999999999995,
+        "propagation_depth": 0.215,
+        "selection_source": 0.13999999999999999
+      }
+    },
+    {
+      "factor": "selection_source",
+      "perturbation": 0.3,
+      "scores": {
+        "jpadilla/pyjwt": 12.800214749999997,
+        "mpdavis/python-jose": 28.259786,
+        "pallets/click": 100.0
+      },
+      "spearman_rho": 1.0,
+      "weights": {
+        "call_sites": 0.27749999999999997,
+        "isolation_layer": 0.27749999999999997,
+        "propagation_depth": 0.185,
+        "selection_source": 0.26
+      }
+    },
+    {
+      "factor": "propagation_depth",
+      "perturbation": -0.3,
+      "scores": {
+        "jpadilla/pyjwt": 14.875925249999996,
+        "mpdavis/python-jose": 28.302981499999998,
+        "pallets/click": 99.99999999999999
+      },
+      "spearman_rho": 1.0,
+      "weights": {
+        "call_sites": 0.32249999999999995,
+        "isolation_layer": 0.32249999999999995,
+        "propagation_depth": 0.13999999999999999,
+        "selection_source": 0.215
+      }
+    },
+    {
+      "factor": "propagation_depth",
+      "perturbation": 0.3,
+      "scores": {
+        "jpadilla/pyjwt": 12.800214749999997,
+        "mpdavis/python-jose": 32.7992585,
+        "pallets/click": 100.0
+      },
+      "spearman_rho": 1.0,
+      "weights": {
+        "call_sites": 0.27749999999999997,
+        "isolation_layer": 0.27749999999999997,
+        "propagation_depth": 0.26,
+        "selection_source": 0.185
+      }
+    }
+  ],
+  "delta": 0.3,
+  "repositories": 3,
+  "undefined_correlation": "null means a constant ranking"
+}

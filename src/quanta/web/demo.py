@@ -16,9 +16,10 @@ from typing import Any
 from quanta.core.analyze import analyze_path
 from quanta.core.graph import crypto_surface, isolation_cut_size
 from quanta.core.models import Provenance
+from quanta.resources import asset_path
 from quanta.version import CRYPTO_RULESET_VERSION, analyzer_version
 
-DEMO_ROOT = Path(__file__).resolve().parents[3] / "demo"
+DEMO_ROOT = asset_path("demo")
 CONTENT_PATH = DEMO_ROOT / "content.json"
 GLOSSARY_PATH = DEMO_ROOT / "glossary.json"
 VARIANT_ROOT = DEMO_ROOT / "repos"
@@ -182,9 +183,7 @@ def xwing_evidence() -> dict[str, Any]:
 
     from quanta.shim import _quanta_hybrid as xwing
 
-    vectors_path = (
-        Path(__file__).resolve().parents[3] / "tests" / "fixtures" / "xwing_draft10_vectors.json"
-    )
+    vectors_path = asset_path("tests/fixtures/xwing_draft10_vectors.json")
     if not vectors_path.is_file():
         return {}
 
