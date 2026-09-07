@@ -76,7 +76,9 @@ Follow [the benchmark workflow](docs/research/WORKFLOW.md) to supply independent
 and unlock the migration phase. No completed corpus, independent reviews, migration
 success rates, DOI or publication results are fabricated.
 
-The original score weights are tagged `weights-v1` and unchanged. Sensitivity and factor
+The original score weights remain unchanged and are pinned to commit
+`6f392e5b5fb12a39a19f1443e20ed7aeb76c241f`. Publishing the `weights-v1` tag is still pending;
+the benchmark workflow gives the exact command. Sensitivity and factor
 collinearity reports for the three existing examples are in
 [docs/research/demo-statistics](docs/research/demo-statistics); they are clearly labelled
 as demonstration output and do not justify a corpus-level conclusion.
