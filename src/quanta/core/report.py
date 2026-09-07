@@ -29,8 +29,9 @@ from markupsafe import Markup
 
 from quanta.config import Settings, get_settings
 from quanta.core.models import AnalysisMeta, ScoreReport
+from quanta.resources import asset_path
 
-_TEMPLATE_DIR = Path(__file__).resolve().parents[3] / "templates"
+_TEMPLATE_DIR = asset_path("templates")
 
 #: Everything outside this class is replaced before a value reaches the page. Deliberately
 #: narrow: identifiers, paths and dotted names need nothing else.
@@ -45,7 +46,7 @@ _KIND_FILL = {
     "module": "#3b5b8c",
     "function": "#4a7c59",
     "crypto_call": "#a33b3b",
-    "algo_literal": "#8a6d992",
+    "algo_literal": "#8a6d99",
     "config_read": "#6d6a8a",
 }
 _EDGE_STROKE = {

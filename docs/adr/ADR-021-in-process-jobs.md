@@ -1,6 +1,6 @@
 # ADR-021 — In-memory job registry with per-job child processes
 
-**Status:** Accepted, with a stated shortfall
+**Status:** Superseded by ADR-023 (durable SQLite worker). Retained as historical context.
 **Date:** 2026-08-08
 **Amends §3.5 and ADR-006. Does not satisfy DoD-W2 or M8's "worker process" clause.**
 
