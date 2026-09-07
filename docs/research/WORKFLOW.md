@@ -61,8 +61,17 @@ uv run quanta bench freeze
 Freeze refuses incomplete or inconsistent data and requires a clean working tree. It
 fingerprints candidates, labels, adjudication, the selection audit and agreement, then
 commits the manifest and creates `dataset-v1`. Publication of the tag is a separate action.
-The pre-registered `weights-v1` tag identifies the original, unchanged 0.30/0.30/0.20/0.20
-weights. No engine outcomes have been collected or used to tune them.
+The original, unchanged 0.30/0.30/0.20/0.20 weights are pinned to commit
+`6f392e5b5fb12a39a19f1443e20ed7aeb76c241f`. No engine outcomes have been collected or used to
+tune them. The `weights-v1` tag exists in the implementation checkout but has not been
+published: the connected GitHub tools cannot create tags and the shell has no push
+credentials. Before any engine run, publish it from an authenticated checkout:
+
+```bash
+# Create the local tag if this checkout does not already have it.
+git tag weights-v1 6f392e5b5fb12a39a19f1443e20ed7aeb76c241f
+git push origin weights-v1
+```
 
 After this gate, implement E0, E1, E2 for P0, then the offline verification harness, then P1,
 in the document's order. Verification of target code belongs on a disposable, credential-free
