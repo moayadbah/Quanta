@@ -20,9 +20,10 @@ from pathlib import Path
 from typing import Any
 
 from quanta.core.models import StepRecord
+from quanta.resources import asset_path
 from quanta.web.jobs import Job, JobRegistry
 
-CORPUS_ROOT = Path(__file__).resolve().parents[3] / "demo" / "corpus"
+CORPUS_ROOT = asset_path("demo/corpus")
 
 #: Replay pacing. Real analyses take tens of seconds, most of it clone and parse. Replaying
 #: at true speed would waste a presentation; replaying instantly would hide the pipeline

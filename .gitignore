@@ -24,3 +24,9 @@ artifacts/
 
 # OS
 .DS_Store
+
+# Local operational state
+*.db
+*.db-wal
+*.db-shm
+.hypothesis/
