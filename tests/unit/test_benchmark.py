@@ -1,12 +1,23 @@
 from __future__ import annotations
 
 import csv
+from contextlib import nullcontext
 from pathlib import Path
+from unittest.mock import patch
 
 import pytest
 
+from quanta.bench import selection
 from quanta.bench.agreement import agreement
-from quanta.bench.dataset import Dataset, Repository, freeze, verify_freeze, write_jsonl
+from quanta.bench.dataset import (
+    QUERY,
+    Dataset,
+    Repository,
+    freeze,
+    read_jsonl,
+    verify_freeze,
+    write_jsonl,
+)
 from quanta.bench.enumerate import enumerate_tree
 from quanta.bench.worksheet import import_worksheet, worksheet
 from quanta.core.models import write_canonical_json
@@ -126,3 +137,43 @@ def test_missing_disagreement_resolution_cannot_be_frozen(tmp_path: Path) -> Non
     assert agreement(tmp_path)["detection"]["unresolved"] == 1
     with pytest.raises(Reject, match="unresolved disagreements"):
         agreement(tmp_path, require_adjudication=True)
+
+
+@pytest.mark.parametrize("code", sorted(selection.TRANSIENT_FAILURES))
+def test_acquisition_failure_cannot_exclude_a_repository_or_change_sampling_order(
+    tmp_path: Path, code: str
+) -> None:
+    write_canonical_json(tmp_path / "dataset.lock.json", Dataset())
+    write_canonical_json(
+        tmp_path / "selection_catalog.json",
+        {
+            "query": QUERY,
+            "items": [
+                {
+                    "full_name": f"{owner}/repo",
+                    "stargazers_count": stars,
+                    "license": {"spdx_id": "MIT"},
+                    "size": 1,
+                    "archived": False,
+                    "language": "Python",
+                }
+                for owner, stars in (("first", 2000), ("second", 1000))
+            ],
+        },
+    )
+    # Older audit entries used 'reject' for transport failures; they must be retried too.
+    write_jsonl(
+        tmp_path / "selection_log.jsonl",
+        [{"repo": "first/repo", "decision": "reject", "code": code}],
+    )
+    with (
+        patch.object(selection.httpx, "Client", return_value=nullcontext(object())),
+        patch.object(
+            selection, "resolve_metadata", side_effect=Reject(code, "temporary")
+        ) as resolve,
+        pytest.raises(Reject, match="temporary"),
+    ):
+        selection.select(tmp_path)
+    assert resolve.call_count == 1
+    assert resolve.call_args.args[:2] == ("first", "repo")
+    assert read_jsonl(tmp_path / "selection_log.jsonl")[-1]["decision"] == "defer"
