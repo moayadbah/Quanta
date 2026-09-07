@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Privacy · Quanta</title>
+    <link rel="icon" href="/mark.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/product.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav-shell">
+        <a class="wordmark" href="/"
+          ><img src="/mark.svg" width="28" height="28" alt="" /><span
+            >quanta</span
+          ><span class="nav-motif" aria-hidden="true"></span></a
+        ><a class="text-button" href="/">Back to Quanta ↗</a>
+      </nav>
+    </header>
+    <main class="shell privacy-content">
+      <p class="eyebrow">PRIVACY, PLAINLY</p>
+      <h1>Your code. Your decisions.</h1>
+      <p>
+        Quanta scans public Python repositories and lets you review supported
+        changes before opening a draft pull request. It does not analyze private
+        repositories.
+      </p>
+      <h2>GitHub sign-in</h2>
+      <p>
+        Quanta requests your GitHub profile and public repository access.
+        GitHub's public_repo OAuth scope allows public repository writes; Quanta
+        uses those permissions for the forks, branches and pull requests you
+        request after reviewing a diff. Your GitHub token is encrypted in
+        storage and is never sent to a scanner or exposed to browser JavaScript.
+      </p>
+      <h2>What is stored</h2>
+      <p>
+        We store your GitHub account ID and login, an encrypted access token,
+        session details, scan history, pinned commit references, reports,
+        selected source files needed for fix review, and links to pull requests.
+        The session cookie is required for sign-in. Your language choice stays
+        in your browser.
+      </p>
+      <h2>Retention</h2>
+      <p>
+        Sessions expire after eight hours or on sign-out. Scan results and the
+        bounded source files needed for proposals are retained for seven days.
+        Expired records are removed during service cleanup; they are unavailable
+        after expiration. Daily and monthly usage counters remain to enforce the
+        free allowance. Pull requests and forks created on GitHub remain on
+        GitHub until you remove them there.
+      </p>
+      <h2>Where processing happens</h2>
+      <p>
+        GitHub provides repository content and authentication. On the hosted
+        service, Vercel serves the application and runs disposable scanner
+        environments; a PostgreSQL database stores private application records
+        and results. Cloned repositories are deleted after scanning. Repository
+        code is parsed, never installed, imported, executed or tested.
+      </p>
+      <h2>Your controls</h2>
+      <p>
+        Sign out to remove your current session. You can revoke Quanta's access
+        in
+        <a
+          href="https://github.com/settings/applications"
+          target="_blank"
+          rel="noopener"
+          >GitHub's application settings</a
+        >. For questions or deletion requests,
+        <a
+          href="https://github.com/moayadbah/Quanta/issues"
+          target="_blank"
+          rel="noopener"
+          >contact the project through GitHub</a
+        >. Never include tokens or sensitive source code in a public issue.
+      </p>
+      <h2>No analytics or advertising</h2>
+      <p>
+        Quanta does not add advertising, analytics trackers or marketing
+        cookies. Hosting providers may retain operational request logs according
+        to their own policies.
+      </p>
+      <p>Updated September 2026.</p>
+    </main>
+    <footer class="site-footer">
+      <div class="footer-motif" aria-hidden="true"></div>
+      <div class="shell footer-content">
+        <a class="wordmark" href="/">quanta</a>
+        <p>Clarity, with intention.</p>
+        <div><span lang="ar">من هنا، إلى المستقبل</span></div>
+      </div>
+    </footer>
+  </body>
+</html>

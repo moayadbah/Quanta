@@ -12,7 +12,7 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Any, Literal
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, SecretStr, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from pydantic_settings.sources import PydanticBaseSettingsSource
 
@@ -100,6 +100,29 @@ class ReportSettings(BaseModel):
     renderer: Literal["builtin", "graphviz"] = "builtin"
 
 
+class AuthSettings(BaseModel):
+    required: bool = False
+    public_url: str = "http://localhost:8000"
+    github_client_id: str = ""
+    github_client_secret: SecretStr = SecretStr("")
+    encryption_key: SecretStr = SecretStr("")
+    session_hours: int = Field(default=8, ge=1, le=24)
+
+
+class ProductSettings(BaseModel):
+    scans_per_user_day: int = Field(default=3, ge=1, le=20)
+    scans_per_month: int = Field(default=50, ge=1, le=100)
+    max_fix_files: int = Field(default=20, ge=1, le=30)
+    max_fix_bytes: int = Field(default=500_000, ge=1000, le=1_000_000)
+
+
+class CloudSettings(BaseModel):
+    enabled: bool = False
+    database_url: SecretStr = SecretStr("")
+    sandbox_snapshot: str = ""
+    timeout_seconds: int = Field(default=180, ge=30, le=240)
+
+
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
         env_prefix="QUANTA_",
@@ -115,11 +138,38 @@ class Settings(BaseSettings):
     stats: StatsSettings = Field(default_factory=StatsSettings)
     weights: Weights = Field(default_factory=Weights)
     report: ReportSettings = Field(default_factory=ReportSettings)
+    auth: AuthSettings = Field(default_factory=AuthSettings)
+    product: ProductSettings = Field(default_factory=ProductSettings)
+    cloud: CloudSettings = Field(default_factory=CloudSettings)
 
     db: Path = Path.home() / ".quanta" / "quanta.db"
     artifact_root: Path = Path.home() / ".quanta" / "artifacts"
     scratch_root: Path = Path.home() / ".quanta" / "scratch"
     require_sandbox: bool = False
+    deployment: Literal["local", "vercel"] = "local"
+
+    @model_validator(mode="after")
+    def hosted_requires_auth(self) -> Settings:
+        if self.cloud.enabled or self.deployment == "vercel":
+            self.auth.required = True
+            if not self.auth.public_url.startswith("https://"):
+                raise ValueError("Hosted Quanta requires a canonical HTTPS public URL")
+        if self.cloud.enabled and not self.cloud.database_url.get_secret_value().startswith(
+            ("postgresql://", "postgres://")
+        ):
+            raise ValueError("Hosted scanning requires a PostgreSQL connection URL")
+        return self
+
+    def scanner_settings(self) -> Settings:
+        """Explicit allowlist: OAuth, database and hosting credentials never reach a scan."""
+        return Settings.model_construct(
+            ingest=self.ingest.model_copy(),
+            analysis=self.analysis.model_copy(),
+            weights=self.weights.model_copy(),
+            report=self.report.model_copy(),
+            product=self.product.model_copy(),
+            require_sandbox=self.require_sandbox,
+        )
 
     @classmethod
     def settings_customise_sources(

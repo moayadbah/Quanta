@@ -16,7 +16,7 @@ import pytest
 from quanta.web.demo import load_content, load_glossary
 
 ROOT = Path(__file__).resolve().parents[2]
-INDEX = ROOT / "src" / "quanta" / "web" / "static" / "index.html"
+INDEX = ROOT / "src" / "quanta" / "web" / "static" / "guide.html"
 APP_JS = ROOT / "src" / "quanta" / "web" / "static" / "app.js"
 
 LANGS = ("en", "ar")

@@ -2,14 +2,19 @@
 
 from __future__ import annotations
 
+import base64
 import os
 import tempfile
 import uuid
+import zlib
 from pathlib import Path
+from typing import Any
 
 from quanta.errors import Reject
+from quanta.web.db import Database
 
-ARTIFACT_NAMES = frozenset({"cdg.json", "score.json", "meta.json", "report.html"})
+REQUIRED_ARTIFACT_NAMES = frozenset({"cdg.json", "score.json", "meta.json", "report.html"})
+ARTIFACT_NAMES = REQUIRED_ARTIFACT_NAMES | {"fixes.json"}
 
 
 class ArtifactStore:
@@ -59,4 +64,52 @@ class ArtifactStore:
         return self.path(job_id, name).read_bytes()
 
     def complete(self, job_id: str) -> bool:
-        return all(self.path(job_id, name).is_file() for name in ARTIFACT_NAMES)
+        return all(self.path(job_id, name).is_file() for name in REQUIRED_ARTIFACT_NAMES)
+
+
+class DatabaseArtifactStore(ArtifactStore):
+    """Small compressed artifacts in Postgres; function disks are never durable state."""
+
+    MAX_BYTES = 4_000_000
+
+    def __init__(self, root: Path, database: Database) -> None:
+        super().__init__(root)
+        self.db = database
+
+    def put_in_transaction(self, conn: Any, job_id: str, name: str, data: bytes) -> None:
+        self.path(job_id, name)
+        if len(data) > self.MAX_BYTES:
+            raise Reject("REPO_TOO_LARGE", "Analysis output exceeds the free hosting limit.")
+        encoded = base64.b64encode(zlib.compress(data)).decode()
+        conn.execute(
+            "INSERT INTO artifact_blobs(job_id,name,data) VALUES(?,?,?) "
+            "ON CONFLICT(job_id,name) DO UPDATE SET data=excluded.data",
+            (job_id, name, encoded),
+        )
+
+    def put(self, job_id: str, name: str, data: bytes) -> Path:
+        with self.db.connect(write=True) as conn:
+            self.put_in_transaction(conn, job_id, name, data)
+        return self.path(job_id, name)
+
+    def open(self, job_id: str, name: str) -> bytes:
+        self.path(job_id, name)
+        with self.db.connect() as conn:
+            row = conn.execute(
+                "SELECT data FROM artifact_blobs WHERE job_id=? AND name=?", (job_id, name)
+            ).fetchone()
+        if not row:
+            raise Reject("NOT_FINISHED", "This artifact is not available.")
+        decoder = zlib.decompressobj()
+        data = decoder.decompress(base64.b64decode(row[0]), self.MAX_BYTES + 1)
+        if len(data) > self.MAX_BYTES or not decoder.eof:
+            raise Reject("INTERNAL", "Artifact exceeds its storage limit.")
+        return data
+
+    def complete(self, job_id: str) -> bool:
+        self.directory(job_id)
+        with self.db.connect() as conn:
+            rows = conn.execute(
+                "SELECT name FROM artifact_blobs WHERE job_id=?", (job_id,)
+            ).fetchall()
+        return REQUIRED_ARTIFACT_NAMES.issubset({row[0] for row in rows})
