@@ -2,15 +2,18 @@
 
 from __future__ import annotations
 
+import json
 import time
 from functools import lru_cache
+from pathlib import Path
+from tempfile import TemporaryDirectory
 from typing import Any
 
 from fastapi import APIRouter, Request
 from pydantic import BaseModel, Field
 
 from quanta.core.analyze import AnalysisOutcome, analyze_path
-from quanta.core.fixes import FixPlan, review
+from quanta.core.fixes import FixPlan, review, safe_path
 from quanta.core.models import Provenance
 from quanta.errors import Reject
 from quanta.resources import asset_path
@@ -104,15 +107,25 @@ def pull_request(request: Request, job_id: str, body: PullRequest) -> dict[str, 
 
 @lru_cache(maxsize=1)
 def sample_outcome() -> AnalysisOutcome:
-    return analyze_path(
-        asset_path("demo/repos/product-sample"),
-        Provenance(
-            repo="sample/vault",
-            commit_sha="0" * 40,
-            analyzer_version=analyzer_version(),
-            crypto_ruleset_version=CRYPTO_RULESET_VERSION,
-        ),
-    )
+    # Deliberately weak source is data, never an importable application module.
+    fixture = json.loads(asset_path("demo/product-sample.json").read_text())
+    with TemporaryDirectory(prefix="quanta-sample-") as temporary:
+        root = Path(temporary)
+        for name, source in fixture.items():
+            if not safe_path(name):
+                raise Reject("INTERNAL", "Invalid bundled sample path.")
+            target = root / name
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_text(source)
+        return analyze_path(
+            root,
+            Provenance(
+                repo="sample/vault",
+                commit_sha="0" * 40,
+                analyzer_version=analyzer_version(),
+                crypto_ruleset_version=CRYPTO_RULESET_VERSION,
+            ),
+        )
 
 
 @router.get("/sample")

@@ -1,0 +1,4 @@
+{
+  "fingerprints.py": "\"\"\"Example content fingerprinting service. Deliberately uses legacy hashes for the sample.\"\"\"\nimport hashlib\n\n\ndef document_fingerprint(content: bytes) -> str:\n    return hashlib.sha1(content).hexdigest()\n\n\ndef attachment_fingerprint(content: bytes) -> str:\n    return hashlib.md5(content).hexdigest()\n",
+  "service.py": "from fingerprints import attachment_fingerprint, document_fingerprint\n\n\ndef describe_upload(document: bytes, attachment: bytes) -> dict[str, str]:\n    return {\"document\": document_fingerprint(document),\n            \"attachment\": attachment_fingerprint(attachment)}\n"
+}

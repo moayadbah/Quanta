@@ -1,4 +1,4 @@
-"""Durable SQLite queue, atomic leases and ordered events.
+"""Durable SQLite/PostgreSQL queue, atomic leases and ordered events.
 
 Every transaction opens its own connection. API threads and separate worker processes
 therefore never share a connection or an in-memory source of job truth.
