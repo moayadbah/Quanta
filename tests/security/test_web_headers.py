@@ -138,7 +138,7 @@ def test_report_uses_frame_ancestors_not_x_frame_options(
 
 def test_report_is_embedded_with_a_restrictive_sandbox() -> None:
     static = Path(__file__).resolve().parents[2] / "src" / "quanta" / "web" / "static"
-    html = (static / "index.html").read_text(encoding="utf-8")
+    html = (static / "guide.html").read_text(encoding="utf-8")
     assert 'id="report-frame"' in html
     assert 'sandbox=""' in html, "an empty sandbox grants nothing — no scripts, no same-origin"
 
