@@ -1,9 +1,7 @@
 """Quanta command line (§9.3).
 
-Only ``analyze`` is implemented at this milestone. The remaining subcommands — ``bench``,
-``rewrite``, ``verify``, ``stats``, ``pr``, ``serve``, ``worker`` — belong to build order
-steps 8 onward and are deliberately absent rather than stubbed: a command that exists but
-does nothing is worse than one that is honestly missing.
+Analysis, corpus preparation, statistics and the local service are available.
+Migration and verification require an independently annotated, frozen benchmark.
 """
 
 from __future__ import annotations
@@ -14,6 +12,7 @@ from typing import Annotated
 
 import typer
 
+from quanta.bench.cli import app as bench_app
 from quanta.config import Settings, get_settings
 from quanta.core.analyze import (
     AnalysisOutcome,
@@ -22,6 +21,7 @@ from quanta.core.analyze import (
     analyze_repository,
     write_artifacts,
 )
+from quanta.core.cbom import CbomImport, read_cbom
 from quanta.core.models import Provenance, StepRecord, dump_canonical_json
 from quanta.errors import QuantaError, Reject, Truncated
 from quanta.version import CRYPTO_RULESET_VERSION, __version__, analyzer_version
@@ -92,16 +92,6 @@ def analyze(
     """Analyse a repository and write cdg.json, score.json, meta.json and report.html."""
     settings = get_settings()
 
-    if cbom is not None:
-        # PROC-06 is a real requirement, but it belongs with the benchmark work that
-        # measures scanner recall against the labels. Refusing is honest; silently
-        # ignoring the flag would let someone believe their CBOM had been merged.
-        _echo(
-            "error: --cbom is not implemented yet (PROC-06 lands with the benchmark phase)",
-            err=True,
-        )
-        raise typer.Exit(code=2)
-
     def progress(step: StepRecord) -> None:
         if step.status == "running":
             _echo(f"  .. {step.title}", err=True)
@@ -111,7 +101,7 @@ def analyze(
             _echo(f"  !! {step.title}: {step.summary}", err=True)
 
     try:
-        outcome = _run(target, settings, progress)
+        outcome = _run(target, settings, progress, read_cbom(cbom) if cbom else None)
     except Reject as exc:
         # A stable machine code, never a traceback (§5.2.4).
         _echo(f"error: {exc.code}: {exc.detail}", err=True)
@@ -150,7 +140,12 @@ def _print_trace(outcome: AnalysisOutcome) -> None:
             _echo(f"         - {item.label}: {item.value}{flag}")
 
 
-def _run(target: str, settings: Settings, progress: ProgressFn) -> AnalysisOutcome:
+def _run(
+    target: str,
+    settings: Settings,
+    progress: ProgressFn,
+    cbom: CbomImport | None = None,
+) -> AnalysisOutcome:
     """Dispatch on whether the target is a local directory or a repository URL.
 
     A local tree has no commit to pin to, so its provenance records an all-zero SHA. That
@@ -165,8 +160,8 @@ def _run(target: str, settings: Settings, progress: ProgressFn) -> AnalysisOutco
             analyzer_version=analyzer_version(),
             crypto_ruleset_version=CRYPTO_RULESET_VERSION,
         )
-        return analyze_path(local.resolve(), provenance, settings, progress)
-    return analyze_repository(target, settings, progress)
+        return analyze_path(local.resolve(), provenance, settings, progress, cbom=cbom)
+    return analyze_repository(target, settings, progress, cbom=cbom)
 
 
 def _summarise(outcome: AnalysisOutcome, paths: dict[str, Path]) -> None:
@@ -221,14 +216,51 @@ def serve(
 
     from quanta.web.app import create_app
 
-    root = artifacts or (Path.home() / ".quanta" / "artifacts")
+    settings = get_settings()
+    root = artifacts or settings.artifact_root
     _echo(f"  Quanta {__version__}  ruleset {CRYPTO_RULESET_VERSION}")
     _echo(f"  artifacts -> {root}")
     _echo(f"  serving   -> http://{host}:{port}")
     _echo("  static analysis only; no repository code is ever executed")
     _echo("")
 
-    uvicorn.run(create_app(root), host=host, port=port, log_level="warning")
+    uvicorn.run(create_app(root, settings.db), host=host, port=port, log_level="warning")
+
+
+@app.command()
+def worker(
+    worker_id: Annotated[str, typer.Option("--id", help="Unique worker instance name.")] = "w1",
+) -> None:
+    """Process durable analysis jobs independently of the API."""
+    from quanta.web.worker import run_worker
+
+    try:
+        run_worker(worker_id)
+    except KeyboardInterrupt:
+        return
+
+
+app.add_typer(bench_app, name="bench")
+
+
+@app.command("stats")
+def stats_command(
+    command: Annotated[
+        str, typer.Argument(help="mcnemar, bootstrap, sensitivity, collinearity, all")
+    ],
+    data: Annotated[Path, typer.Option("--data")] = Path("benchmark/results.jsonl"),
+    scores: Annotated[Path, typer.Option("--scores")] = Path("benchmark/scores"),
+    out: Annotated[Path, typer.Option("--out")] = Path("benchmark/statistics"),
+) -> None:
+    """Compute reproducible statistics from actual score and engine result files."""
+    from quanta.stats.analysis import run_statistics
+
+    try:
+        for path in run_statistics(command, data, scores, out):
+            _echo(str(path))
+    except Reject as exc:
+        _echo(f"error: {exc.code}: {exc.detail}", err=True)
+        raise typer.Exit(1) from None
 
 
 if __name__ == "__main__":  # pragma: no cover

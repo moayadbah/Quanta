@@ -1,110 +1,139 @@
 # Quanta
 
-**Cryptographic agility measurement and assisted post-quantum migration for Python repositories.**
+Cryptographic agility analysis for Python repositories. Quanta finds cryptographic call
+sites, builds a dependency graph, and reports a 0–100 source-edit agility score with
+`file:line` evidence for each deduction. Analysis parses source without importing it,
+installing its dependencies, or running its code.
 
-Quanta ingests a public Python repository, builds a **Cryptographic Dependency Graph (CDG)**,
-and computes an **Agility Score (0–100)** — a defensible per-repository estimate of how hard
-it would be to replace a cryptographic algorithm in that codebase. Every deduction in the
-score cites a `file:line`.
+## Run the application
 
-Post-quantum migration is not blocked by algorithm availability; NIST finalised ML-KEM and
-ML-DSA in 2024 and `pyca/cryptography` ships them today. What is unsolved is the engineering
-cost of the swap inside an existing codebase. Quanta measures that cost from the source.
+```bash
+docker compose up --build
+```
 
-## The one thing to know about the architecture
+Open **http://localhost:8000**. The bilingual English/Arabic interface includes the guided
+walkthrough, offline example replays, and a public GitHub repository analyzer. Reports
+open in a sandboxed iframe and download as self-contained HTML. Source snapshots are
+removed after analysis; completed artifacts expire after seven days.
 
-**The analysis tier performs static analysis only. It never executes target code.**
+The API and worker are separate processes. SQLite persists jobs, events and cache entries
+across API restarts. Jobs have bounded attempts, lease recovery, a wall-clock watchdog,
+and a shared concurrency cap. The browser restores a run after refresh and falls back to
+polling when streaming fails. Docker binds the service to localhost.
 
-`pip install` runs arbitrary build-backend code before any test does, and Python cannot be
-sandboxed in-process. So the system splits into two planes with a hard trust boundary:
+For development without Docker, use Python 3.12 and Git. Install once:
 
-| | Analysis Plane | Research Plane |
-|---|---|---|
-| Input trust | Untrusted (any public repo) | Vetted (hand-selected forks) |
-| Executes target code? | **Never** | Yes, in hardened containers |
-| Credentials present? | None | PAT, on the PR step only |
+```bash
+uv sync --locked --extra dev --extra research
+```
 
-The dangerous half of the pipeline is never deployed. See `docs/adr/`.
+Run these in **two terminals** from the repository:
 
-## Status
+```bash
+uv run quanta serve
+```
 
-The §11.4 first milestone is **reached**:
+```bash
+uv run quanta worker --id w1
+```
 
-> `quanta analyze <public python repo URL>` produces `cdg.json`, `score.json` and a
-> `report.html` that opens offline — with the entire `tests/security/` suite green.
+Both use `~/.quanta` by default. To choose another location, set the same `QUANTA_DB`,
+`QUANTA_ARTIFACT_ROOT` and `QUANTA_SCRATCH_ROOT` in both terminals. Nested settings use
+names such as `QUANTA_INGEST__MAX_FILES=10000`; environment settings override defaults.
+Native macOS/Windows development does not provide Linux sandbox controls.
 
-363 tests pass (270 of them security), `ruff` and `mypy --strict` are clean. Verified
-against live repositories: `pallets/click` scores 100 (it contains no cryptography, which
-is the correct answer), `jpadilla/pyjwt` scores 13.8 across 27 detected sites. Three
-independent clones produce byte-identical `cdg.json` and `score.json`.
+## Analyze from the command line
 
-| Definition of Done | State |
+```bash
+uv run quanta analyze https://github.com/pallets/click --out out
+uv run quanta analyze tests/fixtures/repos/hardcoded_crypto --out out --trace
+uv run quanta analyze path/to/repository --cbom path/to/cbom.json --out out --json
+```
+
+Each analysis produces `cdg.json`, `score.json`, `meta.json` and `report.html`. The HTML
+opens offline without a server. URL analyses are pinned to a resolved commit; a moving
+head causes `SHA_MISMATCH`. Local working-copy analyses use a zero SHA and are explicitly
+not pinned results. Optional CycloneDX 1.6 assets with source locations are merged and
+marked `source: cbom`; unusable locations are reported. A CBOM digest participates in
+provenance so different inputs cannot masquerade as the same analysis.
+
+## What is complete and what remains
+
+| Component | Current state |
 |---|---|
-| DoD-C1 ingestion | ✅ security suite green; scratch removed on success, failure and timeout |
-| DoD-C2 detection | ⚠️ precision/recall reported separately against **synthetic** fixtures; the real figure needs the frozen benchmark (Phase 1) |
-| DoD-C3 CDG | ✅ round-trips through `node_link_graph`; every `call` edge `confidence: "low"`; byte-identical across 3 runs |
-| DoD-C4 score | ✅ weights from the `weights-v1` tag; every deduction carries ≥1 `file:line`. Sensitivity and collinearity belong to the stats phase |
-| DoD-C5 report | ✅ opens from `file://` with no network; CSP defined; hostile filenames render escaped; CDG SVG inline |
-| DoD-V2 X-Wing shim | ✅ 1000-example Hypothesis property, plus known-answer tests against draft-10 Appendix C |
+| Static analyzer, dependency graph, cited score, offline report | Implemented and tested; real-corpus detection precision/recall remain unmeasured |
+| CycloneDX input | Located 1.6 occurrences supported; unlocated assets reported |
+| Durable API, worker, events, cache, retention | Implemented with restart, race, retry and watchdog tests |
+| Bilingual application and offline demos | Existing walkthrough retained; reconnection and reload recovery added |
+| Wheel and local container packaging | Included; installed-wheel assets verified |
+| X-Wing primitive shim | Existing draft-10 vectors and 1,000-example round-trip property pass |
+| Benchmark selection, worksheets, annotation import, agreement, freeze | Tooling implemented; the actual 12-repository independent annotation is pending |
+| McNemar, repository bootstrap, sensitivity, collinearity | Implemented; demo outputs and synthetic test results are not research findings |
+| E0/E1/E2, P0/P1 rewriting, target verification, fork PR automation | Not implemented: the technical document requires the labelled benchmark to be frozen first |
 
-Engines (E0/E1/E2), the verification harness, the benchmark corpus, the statistics layer
-and the web tier are build-order steps 8–12 and are **not** built yet. `--cbom` (PROC-06)
-refuses rather than silently ignoring the flag.
+**This revision completes the durable analysis application, not the full research MVP.**
+Follow [the benchmark workflow](docs/research/WORKFLOW.md) to supply independent annotations
+and unlock the migration phase. No completed corpus, independent reviews, migration
+success rates, DOI or publication results are fabricated.
 
-### Deviations from the specification
+The original score weights are tagged `weights-v1` and unchanged. Sensitivity and factor
+collinearity reports for the three existing examples are in
+[docs/research/demo-statistics](docs/research/demo-statistics); they are clearly labelled
+as demonstration output and do not justify a corpus-level conclusion.
 
-Three, each forced by a verified fact and recorded in `docs/adr/`:
-
-- **ADR-017** — `cryptography` pinned `>=48,<49`. Upstream dropped x86_64 macOS wheels at
-  49.0.0; 48.0.1 ships ML-KEM via OpenSSL 4.0.1.
-- **ADR-018** — deterministic built-in SVG renderer instead of Graphviz. No system binary,
-  and layout stability is required by NFR-03.
-- **ADR-019** — the X-Wing combiner appends `XWingLabel` **last**, per draft-10 §5.3. §3.9
-  of the technical documentation places it first; the published test vectors show that
-  order is wrong. §3.9 should be corrected in the next revision.
-
-## Quick start
+## Validation
 
 ```bash
-uv sync --extra dev
+uv run ruff check .
+uv run ruff format --check .
+uv run mypy
+uv run pytest
+node --test tests/frontend.test.mjs
+uv build --wheel
 ```
 
-Run the analyzer against any public Python repository:
+CI also builds and starts the Compose service, checks its worker and example replay, and
+submits a public repository twice to exercise pinned ingestion and cache reuse.
+`tests/security` covers URL rejection before network access, traversal, symlinks, special
+files, budgets, forbidden execution paths, report escaping, artifact confinement, and
+Linux post-clone network isolation. Database tests cover restart persistence, competing
+claims, expired leases, old-attempt fencing, retries, publication and retention.
 
-```bash
-uv run quanta analyze https://github.com/pallets/click --out ./out
-```
+## Scope and isolation
 
-This writes `cdg.json`, `score.json`, `meta.json` and a self-contained `report.html` into
-`./out`. The report opens directly from the filesystem with no server and no network.
+The score measures source-edit difficulty, not total migration cost or cryptographic
+security. Static Python analysis can miss dynamic dispatch and other unresolved behavior.
+A result without detected cryptography does not prove its absence. Target tests and
+migration execution are not exposed through the web API.
 
-Tests:
+Compose runs as non-root with dropped capabilities, a read-only filesystem and bounded,
+non-executable scratch space. A Linux seccomp filter cuts network access after cloning.
+Acquisition uses allowlisted URLs and disabled Git redirects, hooks and credential helpers.
+An **OS-level GitHub-only firewall during acquisition remains unimplemented**; do not
+interpret the current controls as all of section 7.3 or as authorization for public hosting.
+See [ADR-023](docs/adr/ADR-023-durable-local-analysis.md).
 
-```bash
-uv run pytest tests/unit tests/security -v
-```
+The existing ADRs preserve the no-build frontend, deterministic SVG renderer and corrected
+X-Wing combiner order. [ADR-024](docs/adr/ADR-024-corpus-query-and-annotation-gate.md)
+records the corrected GitHub query and research gate; [ADR-025](docs/adr/ADR-025-cbom-and-provenance.md)
+documents CBOM support and its limits. No extra Python dependencies were added.
 
-`tests/security/` encodes the SSRF, path-traversal, resource-exhaustion and injection
-controls from §7.3. Those tests are **acceptance criteria, not extras** — a change that
-breaks one of them is a defect regardless of what else it improves.
+## API
 
-## What Quanta is not
+| Method | Endpoint | Purpose |
+|---|---|---|
+| POST | `/api/v1/analyses` | Resolve and enqueue a public GitHub URL; return 200 on reuse, 201 for new work |
+| GET | `/api/v1/analyses/{id}` | Durable status and progress |
+| GET | `/api/v1/analyses/{id}/events` | SSE with `Last-Event-ID` replay |
+| GET | `/api/v1/analyses/{id}/score` | Canonical score JSON |
+| GET | `/api/v1/analyses/{id}/report` | Sandboxed, downloadable HTML |
+| GET | `/api/v1/healthz` | Queue depth and worker heartbeat age |
 
-- **Not a migration-cost estimator.** It measures *source-edit difficulty*. Real cost is
-  dominated by certificates, protocols, hardware and compliance — all out of scope.
-- **Not a cryptographic security review.** Verification proves functional correctness, not
-  cryptographic soundness. That limitation is a stated result, not an apology.
-- **Not a code execution service.** See above.
-- **Not multi-language.** Python only.
-
-## Requirements
-
-- Python 3.12 (`uv python pin 3.12`)
-- `git` on PATH
-- No Graphviz required — the CDG SVG is emitted by a deterministic built-in renderer
-  (`docs/adr/ADR-018-deterministic-svg.md`)
+Additional read endpoints expose graph, metadata, trace, examples and walkthrough content.
+Errors use `application/problem+json` with a stable `error_code` and correlation ID.
+The machine-readable schema is at `/api/openapi.json`.
 
 ## License
 
-MIT. Analysed repositories retain their own licenses; Quanta redistributes no third-party
-source — clones are deleted unconditionally at job end (INGEST-09).
+MIT. Analyzed repositories retain their own licenses. Research publication must contain
+labels and commit references rather than copies of third-party source.

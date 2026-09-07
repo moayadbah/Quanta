@@ -1,6 +1,6 @@
 [project]
 name = "quanta"
-version = "0.1.0"
+version = "0.2.0"
 description = "Cryptographic agility measurement and assisted post-quantum migration for Python repositories"
 readme = "README.md"
 requires-python = ">=3.12"
@@ -85,7 +85,7 @@ warn_unreachable = true
 plugins = ["pydantic.mypy"]
 
 [[tool.mypy.overrides]]
-module = ["networkx.*", "pydot.*", "libcst.*"]
+module = ["networkx.*", "pydot.*", "libcst.*", "scipy.*", "krippendorff.*"]
 ignore_missing_imports = true
 
 [tool.pytest.ini_options]
@@ -95,3 +95,9 @@ markers = [
   "slow: tests that take more than a few seconds",
   "network: tests that require outbound network access",
 ]
+
+[tool.hatch.build.targets.wheel.force-include]
+"config" = "quanta/data/config"
+"templates" = "quanta/data/templates"
+"demo" = "quanta/data/demo"
+"tests/fixtures/xwing_draft10_vectors.json" = "quanta/data/tests/fixtures/xwing_draft10_vectors.json"

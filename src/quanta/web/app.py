@@ -19,9 +19,12 @@ from pathlib import Path
 
 import structlog
 from fastapi import FastAPI, Request
-from fastapi.responses import JSONResponse
+from fastapi.exceptions import RequestValidationError
+from fastapi.responses import JSONResponse, Response
 from fastapi.staticfiles import StaticFiles
+from starlette.exceptions import HTTPException
 
+from quanta.config import get_settings
 from quanta.errors import Reject
 from quanta.version import __version__
 from quanta.web.jobs import JobRegistry
@@ -66,6 +69,7 @@ def problem(
     return JSONResponse(
         status_code=status,
         media_type="application/problem+json",
+        headers=SPA_HEADERS,
         content={
             "type": "about:blank",
             "title": title,
@@ -86,7 +90,7 @@ async def lifespan(app: FastAPI) -> AsyncIterator[None]:
         registry.shutdown()
 
 
-def create_app(artifact_root: Path | None = None) -> FastAPI:
+def create_app(artifact_root: Path | None = None, db_path: Path | None = None) -> FastAPI:
     app = FastAPI(
         title="Quanta",
         version=__version__,
@@ -96,8 +100,24 @@ def create_app(artifact_root: Path | None = None) -> FastAPI:
         openapi_url="/api/openapi.json",
     )
 
-    root = artifact_root or (Path.home() / ".quanta" / "artifacts")
-    app.state.registry = JobRegistry(root)
+    cfg = get_settings()
+    root = artifact_root or cfg.artifact_root
+    database = db_path or (root.parent / "quanta.db" if artifact_root else cfg.db)
+    app.state.registry = JobRegistry(root, database, cfg)
+
+    @app.exception_handler(RequestValidationError)
+    async def _validation_handler(request: Request, exc: RequestValidationError) -> JSONResponse:
+        return problem(
+            422, "Invalid request", "SCHEMA_INVALID", "Request body does not match the API schema."
+        )
+
+    @app.exception_handler(HTTPException)
+    async def _http_handler(request: Request, exc: HTTPException) -> JSONResponse:
+        return problem(
+            exc.status_code,
+            "Request failed",
+            "NOT_FOUND" if exc.status_code == 404 else "SCHEMA_INVALID",
+        )
 
     @app.exception_handler(Reject)
     async def _reject_handler(request: Request, exc: Reject) -> JSONResponse:
@@ -129,13 +149,13 @@ def create_app(artifact_root: Path | None = None) -> FastAPI:
 
     @app.middleware("http")
     async def _security_headers(
-        request: Request, call_next: Callable[[Request], Awaitable[object]]
-    ) -> object:
+        request: Request, call_next: Callable[[Request], Awaitable[Response]]
+    ) -> Response:
         response = await call_next(request)
         # The report route sets its own, stricter, policy — never override it.
-        if "Content-Security-Policy" not in response.headers:  # type: ignore[attr-defined]
+        if "Content-Security-Policy" not in response.headers:
             for header, value in SPA_HEADERS.items():
-                response.headers[header] = value  # type: ignore[attr-defined]
+                response.headers[header] = value
         return response
 
     app.include_router(router, prefix="/api/v1")

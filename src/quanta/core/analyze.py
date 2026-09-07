@@ -30,6 +30,7 @@ from pathlib import Path
 import networkx as nx
 
 from quanta.config import Settings, get_settings
+from quanta.core.cbom import CbomImport, merge_cbom
 from quanta.core.detect import DetectionResult, detect_repository
 from quanta.core.graph import ResolutionStats, build_cdg, to_node_link
 from quanta.core.ingest import (
@@ -307,6 +308,7 @@ def analyze_path(
     settings: Settings | None = None,
     progress: ProgressFn | None = None,
     tracer: Tracer | None = None,
+    cbom: CbomImport | None = None,
 ) -> AnalysisOutcome:
     """Analyse an already-materialised source tree.
 
@@ -314,6 +316,12 @@ def analyze_path(
     local directory with no network — which is what the corpus runs and the tests do.
     """
     cfg = settings or get_settings()
+    if cbom is not None:
+        provenance = provenance.model_copy(
+            update={
+                "analyzer_version": f"{provenance.analyzer_version}+cbom.{cbom.sha256}",
+            }
+        )
     trace = tracer or Tracer(progress)
     started = datetime.now(UTC)
     timings: dict[str, int] = {}
@@ -332,6 +340,8 @@ def analyze_path(
     trace.start("parse")
     mark = time.monotonic()
     detection = detect_repository(walk.files, root, cfg)
+    if cbom is not None:
+        merge_cbom(detection, cbom)
     timings["parsing"] = int((time.monotonic() - mark) * 1000)
     trace.finish(
         "parse",
@@ -373,6 +383,9 @@ def analyze_path(
         duration_ms=int((finished - started).total_seconds() * 1000),
         phase_durations_ms=timings,
         truncation=walk.truncations[0] if walk.truncations else None,
+        truncations=tuple(walk.truncations),
+        cbom_sha256=cbom.sha256 if cbom else None,
+        cbom_unlocated=cbom.unlocated if cbom else 0,
         unparseable=tuple(detection.unparseable),
         files_scanned=detection.files_scanned,
         sites_detected=len(detection.crypto_calls),
@@ -403,6 +416,11 @@ def analyze_repository(
     repo_url: str,
     settings: Settings | None = None,
     progress: ProgressFn | None = None,
+    *,
+    metadata: RepoMetadata | None = None,
+    scratch_parent: Path | None = None,
+    after_clone: Callable[[], None] | None = None,
+    cbom: CbomImport | None = None,
 ) -> AnalysisOutcome:
     """Analyse a public GitHub repository, pinned to its resolved commit SHA.
 
@@ -421,7 +439,11 @@ def analyze_repository(
     )
 
     trace.start("resolve")
-    metadata: RepoMetadata = resolve_metadata(owner, name, cfg)
+    metadata = metadata or resolve_metadata(owner, name, cfg)
+    if (metadata.owner, metadata.name) != (owner, name):
+        from quanta.errors import Reject
+
+        raise Reject("SHA_MISMATCH", "metadata does not match repository")
     trace.finish(
         "resolve",
         f"public, {metadata.size_kb:,} KB, pinned to {metadata.commit_sha[:12]}",
@@ -435,7 +457,7 @@ def analyze_repository(
         crypto_ruleset_version=CRYPTO_RULESET_VERSION,
     )
 
-    with scratch_dir() as scratch:
+    with scratch_dir(parent=scratch_parent) as scratch:
         clone_root = scratch / "repo"
         trace.start("clone")
         mark = time.monotonic()
@@ -447,7 +469,9 @@ def analyze_repository(
             _clone_evidence(cfg, metadata.commit_sha),
         )
 
-        outcome = analyze_path(clone_root, provenance, cfg, progress, tracer=trace)
+        if after_clone is not None:
+            after_clone()
+        outcome = analyze_path(clone_root, provenance, cfg, progress, tracer=trace, cbom=cbom)
 
     # scratch_dir has now removed the tree, unconditionally (INGEST-09).
     trace.start("cleanup")

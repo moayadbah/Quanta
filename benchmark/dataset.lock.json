@@ -1,0 +1,8 @@
+{
+  "annotators": {},
+  "repositories": [],
+  "schema_version": "1.0",
+  "selection_query": "language:python stars:>500 pushed:>2025-08-01 archived:false",
+  "sha256": {},
+  "status": "draft"
+}
