@@ -1,278 +1,537 @@
 <!doctype html>
 <html lang="en" dir="ltr">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Quanta</title>
-<!--
-  No inline SCRIPT or STYLE element anywhere in this file. That is deliberate: it lets the
-  Content-Security-Policy in app.py omit 'unsafe-inline', which is where most of CSP's
-  value lives (ADR-020).
-
-  No user-facing sentence is written here either. Every text node carries a data-i18n key
-  and is filled from demo/content.json, so a missing Arabic string is a test failure
-  rather than a blank panel during a presentation.
--->
-<link rel="stylesheet" href="/app.css">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='13' font-size='13'>🔐</text></svg>">
-</head>
-<body>
-
-<header class="topbar">
-  <div class="wrap topbar-inner">
-    <button id="brand" class="brand" type="button">
-      <span class="brand-mark">Q</span>
-      <span class="brand-text">
-        <span class="brand-name">Quanta</span>
-        <span class="brand-sub" data-i18n="ui.tagline"></span>
-      </span>
-    </button>
-    <div class="topbar-actions">
-      <button id="lang-toggle" class="ghost" type="button" data-i18n="ui.lang_button"></button>
-      <button id="to-tool" class="ghost" type="button" data-i18n="ui.skip"></button>
-    </div>
-  </div>
-</header>
-
-<!-- ══ Guided walkthrough ═════════════════════════════════════════════════════ -->
-<main id="walkthrough" class="wrap">
-
-  <div class="act-rail">
-    <ol id="act-dots" class="act-dots"></ol>
-    <span id="act-counter" class="act-counter"></span>
-  </div>
-
-  <!-- Act 1 — the problem -->
-  <section class="act" data-act="problem">
-    <p class="eyebrow" data-i18n="acts.0.eyebrow"></p>
-    <h1 data-i18n="acts.0.title"></h1>
-    <p class="lead" data-i18n="acts.0.lead"></p>
-    <div class="act-body">
-      <div class="act-words">
-        <p data-i18n-html="acts.0.body.0"></p>
-        <p data-i18n-html="acts.0.body.1"></p>
-        <p class="punch" data-i18n="acts.0.punch"></p>
-      </div>
-      <div class="act-visual" id="visual-problem"></div>
-    </div>
-  </section>
-
-  <!-- Act 2 — inventory -->
-  <section class="act hidden" data-act="inventory">
-    <p class="eyebrow" data-i18n="acts.1.eyebrow"></p>
-    <h1 data-i18n="acts.1.title"></h1>
-    <p class="lead" data-i18n-html="acts.1.lead"></p>
-    <div class="act-body">
-      <div class="act-words">
-        <p data-i18n-html="acts.1.body.0"></p>
-        <p data-i18n-html="acts.1.body.1"></p>
-        <p class="punch" data-i18n="acts.1.punch"></p>
-      </div>
-      <div class="act-visual" id="visual-inventory"></div>
-    </div>
-  </section>
-
-  <!-- Act 3 — the CDG -->
-  <section class="act hidden" data-act="cdg">
-    <p class="eyebrow" data-i18n="acts.2.eyebrow"></p>
-    <h1 data-i18n="acts.2.title"></h1>
-    <p class="lead" data-i18n-html="acts.2.lead"></p>
-    <div class="act-body">
-      <div class="act-words">
-        <p data-i18n-html="acts.2.body.0"></p>
-        <p data-i18n-html="acts.2.body.1"></p>
-        <p data-i18n-html="acts.2.body.2"></p>
-        <p class="punch" data-i18n="acts.2.punch"></p>
-        <div class="ledger">
-          <div class="ledger-col ledger-built">
-            <h3 data-i18n="act_cdg.built_title"></h3>
-            <ul id="ledger-built"></ul>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f7f7f2" />
+    <meta
+      name="description"
+      content="Understand the cryptography in your Python repository. Find dependencies, review focused fixes, and open a GitHub pull request with Quanta."
+    />
+    <meta
+      property="og:title"
+      content="Quanta · Clarity for your cryptography"
+    />
+    <meta
+      property="og:description"
+      content="Scan Python repositories. Understand the impact. Review the change."
+    />
+    <meta property="og:type" content="website" />
+    <title>Quanta · Clarity for your cryptography</title>
+    <link rel="icon" href="/mark.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/product.css" />
+    <script type="module" src="/product.mjs"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#workspace" data-i18n="skip"
+      >Skip to workspace</a
+    >
+    <header class="site-header">
+      <nav class="nav-shell" aria-label="Main navigation">
+        <a class="wordmark" href="/" aria-label="Quanta home"
+          ><img src="/mark.svg" width="28" height="28" alt="" /><span
+            >quanta</span
+          ><span class="nav-motif" aria-hidden="true"></span
+        ></a>
+        <div class="nav-links">
+          <a href="#workspace" data-i18n="workspace">Workspace</a
+          ><a href="#approach" data-i18n="approach">Our approach</a>
+        </div>
+        <div class="nav-actions">
+          <button class="language" id="language" aria-label="Switch to Arabic">
+            عربي</button
+          ><a
+            class="button small dark"
+            href="/auth/login"
+            id="nav-signin"
+            data-i18n="signin"
+            >Sign in with GitHub</a
+          ><button
+            class="button small outline"
+            id="signout"
+            hidden
+            data-i18n="signout"
+          >
+            Sign out
+          </button>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <section class="hero shell" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">
+            <span class="status-dot"></span
+            ><span data-i18n="eyebrow"
+              >A clearer path through your cryptography</span
+            >
+          </p>
+          <h1 id="hero-title">
+            <span data-i18n="hero1">Know your crypto.</span><br /><span
+              class="soft"
+              data-i18n="hero2"
+              >Own your next move.</span
+            >
+          </h1>
+          <p class="hero-description" data-i18n="intro">
+            See where cryptography lives in your code, understand what depends
+            on it, and turn a focused fix into a pull request.
+          </p>
+          <div class="hero-actions">
+            <a class="button dark" href="#workspace"
+              ><span data-i18n="start">Explore your repository</span
+              ><span aria-hidden="true">↗</span></a
+            ><button class="text-button sample-button" data-i18n="sample">
+              Try a sample scan
+            </button>
           </div>
-          <div class="ledger-col ledger-reused">
-            <h3 data-i18n="act_cdg.reused_title"></h3>
-            <ul id="ledger-reused"></ul>
+          <p class="hero-note" data-i18n="heroNote">
+            Open source. Python first. Your code is never executed.
+          </p>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="orbital orbit-one"></div>
+          <div class="orbital orbit-two"></div>
+          <div class="orbital orbit-three"></div>
+          <div class="orbit-dot dot-one"></div>
+          <div class="orbit-dot dot-two"></div>
+          <div class="orbit-dot dot-three"></div>
+          <div class="scan-specimen">
+            <div class="specimen-top">
+              <span class="mini-mark">q</span><span>fingerprints.py</span
+              ><span class="specimen-label">REVIEW</span>
+            </div>
+            <div class="specimen-code">
+              <span class="code-muted">def</span>
+              fingerprint(content):<br /><span class="code-remove"
+                >− &nbsp; hashlib.sha1(content)</span
+              ><br /><span class="code-add"
+                >+ &nbsp; hashlib.sha256(content)</span
+              >
+            </div>
+            <div class="specimen-bottom">
+              <span class="status-dot"></span
+              ><span data-i18n="specimen">One change. Full visibility.</span
+              ><span class="specimen-arrow">↗</span>
+            </div>
+          </div>
+          <span class="orbit-caption">UNDERSTAND → REVIEW → IMPROVE</span>
+        </div>
+      </section>
+      <section
+        class="workspace-section"
+        id="workspace"
+        aria-labelledby="workspace-title"
+      >
+        <div class="shell">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow" data-i18n="yourWorkspace">YOUR WORKSPACE</p>
+              <h2 id="workspace-title" data-i18n="workspaceTitle">
+                Start with a little clarity.
+              </h2>
+            </div>
+            <span
+              id="account-label"
+              class="quiet-label"
+              data-i18n="publicPython"
+              >Public Python repositories</span
+            >
+          </div>
+          <div class="workspace-grid">
+            <div class="scan-panel">
+              <form id="scan-form">
+                <label for="repo-url" data-i18n="repoLabel"
+                  >GitHub repository</label
+                >
+                <div class="repo-input">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M5 3h11a2 2 0 0 1 2 2v15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"
+                    />
+                    <path d="M3 16h15M7 7h7M7 10h4" /></svg
+                  ><input
+                    id="repo-url"
+                    name="repo"
+                    type="url"
+                    placeholder="https://github.com/owner/repository"
+                    autocomplete="url"
+                    spellcheck="false"
+                    dir="ltr"
+                    required
+                    maxlength="2048"
+                    aria-describedby="scan-help"
+                  />
+                </div>
+                <div class="scan-action-row">
+                  <p id="scan-help" data-i18n="scanHelp">
+                    A public repository URL is all you need.
+                  </p>
+                  <button type="submit" class="button dark" id="scan-button">
+                    <span data-i18n="scan">Scan repository</span
+                    ><span aria-hidden="true">↗</span>
+                  </button>
+                </div>
+              </form>
+              <div class="signin-note" id="signin-note">
+                <span class="tiny-lock" aria-hidden="true">◈</span>
+                <p data-i18n="signinNote">
+                  Sign in with GitHub to scan and keep your results in one
+                  place. Access is limited to public repositories.
+                </p>
+              </div>
+              <div
+                class="notice"
+                id="service-notice"
+                hidden
+                role="status"
+              ></div>
+              <div class="error-message" id="error" hidden role="alert"></div>
+            </div>
+            <aside class="allowance-panel">
+              <div class="allowance-top">
+                <span class="eyebrow" data-i18n="freeAccess">FREE ACCESS</span
+                ><span class="pill" data-i18n="limited">Usage limits</span>
+              </div>
+              <p class="allowance-number">
+                <span id="daily-left">3</span
+                ><span data-i18n="scansToday">scans / day</span>
+              </p>
+              <p id="allowance-description" data-i18n="allowanceNote">
+                A shared monthly allowance keeps Quanta free for everyone.
+              </p>
+              <div class="quota-track"><div id="quota-fill"></div></div>
+              <p class="micro" id="quota-label" data-i18n="quotaDefault">
+                50 shared scans per month · resets in UTC
+              </p>
+            </aside>
+          </div>
+          <section
+            class="activity-panel"
+            id="activity"
+            hidden
+            aria-live="polite"
+            aria-atomic="true"
+          >
+            <div class="activity-icon"><span class="pulse"></span></div>
+            <div>
+              <p class="eyebrow" id="activity-status" data-i18n="scanning">
+                SCAN IN PROGRESS
+              </p>
+              <h3 id="activity-title" data-i18n="looking">
+                Getting to know your repository.
+              </h3>
+              <p id="activity-detail" data-i18n="scanDetail">
+                We pin the commit, trace the source, and prepare your report.
+              </p>
+            </div>
+            <div class="activity-progress">
+              <strong id="progress-label">0%</strong>
+              <div class="progress-track"><div id="progress-fill"></div></div>
+            </div>
+          </section>
+          <section
+            class="results"
+            id="results"
+            hidden
+            aria-labelledby="result-title"
+          >
+            <div class="result-heading">
+              <div>
+                <p class="eyebrow" id="result-kind" data-i18n="scanComplete">
+                  SCAN COMPLETE
+                </p>
+                <h3 id="result-title" dir="ltr"></h3>
+                <p class="micro" id="result-provenance"></p>
+              </div>
+              <div class="result-actions">
+                <button
+                  class="button small outline"
+                  id="download"
+                  data-i18n="download"
+                >
+                  Download report data</button
+                ><a
+                  class="button small outline"
+                  id="full-report"
+                  target="_blank"
+                  rel="noopener"
+                  data-i18n="fullReport"
+                  >Full report ↗</a
+                >
+              </div>
+            </div>
+            <div class="result-summary">
+              <div class="score-block">
+                <div class="score-number">
+                  <span id="score">—</span><span>/ 100</span>
+                </div>
+                <h4 data-i18n="agility">Crypto agility</h4>
+                <p data-i18n="scoreNote">
+                  How easily the architecture can change. This is not a security
+                  grade.
+                </p>
+              </div>
+              <div class="summary-metrics">
+                <div>
+                  <strong id="files-scanned">0</strong
+                  ><span data-i18n="files">Python files scanned</span>
+                </div>
+                <div>
+                  <strong id="sites-detected">0</strong
+                  ><span data-i18n="sites">Cryptographic call sites</span>
+                </div>
+                <div>
+                  <strong id="fix-count">0</strong
+                  ><span data-i18n="fixesAvailable">Reviewable changes</span>
+                </div>
+              </div>
+            </div>
+            <div class="notice" id="coverage-note" hidden></div>
+            <div class="results-tabs" role="tablist" aria-label="Scan results">
+              <button
+                role="tab"
+                id="tab-fixes"
+                aria-selected="true"
+                aria-controls="fix-panel"
+                data-tab="fix-panel"
+                data-i18n="fixesTab"
+              >
+                Suggested changes</button
+              ><button
+                role="tab"
+                id="tab-findings"
+                aria-selected="false"
+                aria-controls="finding-panel"
+                data-tab="finding-panel"
+                data-i18n="findingsTab"
+              >
+                Architecture findings</button
+              ><button
+                role="tab"
+                id="tab-factors"
+                aria-selected="false"
+                aria-controls="factor-panel"
+                data-tab="factor-panel"
+                data-i18n="factorsTab"
+              >
+                Score breakdown
+              </button>
+            </div>
+            <div
+              class="tab-panel"
+              id="fix-panel"
+              role="tabpanel"
+              aria-labelledby="tab-fixes"
+            >
+              <div class="panel-intro">
+                <div>
+                  <h4 data-i18n="fixTitle">
+                    Small changes. Considered carefully.
+                  </h4>
+                  <p data-i18n="fixIntro">
+                    Select the hash upgrades you want to review. Every change
+                    needs a compatibility check before merging.
+                  </p>
+                </div>
+                <button
+                  class="button small dark"
+                  id="review-button"
+                  disabled
+                  data-i18n="review"
+                >
+                  Review selected changes
+                </button>
+              </div>
+              <div id="fix-list"></div>
+              <p class="validation-note" data-i18n="validation">
+                Python syntax checked. Repository tests are never run during a
+                scan.
+              </p>
+            </div>
+            <div
+              class="tab-panel"
+              id="finding-panel"
+              role="tabpanel"
+              aria-labelledby="tab-findings"
+              hidden
+            >
+              <div id="finding-list"></div>
+            </div>
+            <div
+              class="tab-panel"
+              id="factor-panel"
+              role="tabpanel"
+              aria-labelledby="tab-factors"
+              hidden
+            >
+              <p class="panel-copy" data-i18n="factorIntro">
+                Four architecture signals contribute to the score. Higher values
+                indicate more flexibility, not stronger cryptography.
+              </p>
+              <div id="factor-list"></div>
+            </div>
+          </section>
+          <section class="history-section" id="history-section" hidden>
+            <div class="history-heading">
+              <h3 data-i18n="recent">Your recent scans</h3>
+              <span class="micro" data-i18n="retention"
+                >Results kept for 7 days</span
+              >
+            </div>
+            <div id="history-list"></div>
+          </section>
+          <div class="empty-workspace" id="empty-workspace">
+            <span class="empty-symbol" aria-hidden="true">⌁</span>
+            <div>
+              <h3 data-i18n="emptyTitle">Your next insight starts here.</h3>
+              <p data-i18n="emptyDescription">
+                Paste a repository above, or take a look around with a working
+                example.
+              </p>
+            </div>
+            <button class="text-button sample-button" data-i18n="sampleArrow">
+              Explore the sample ↗
+            </button>
           </div>
         </div>
-      </div>
-      <div class="act-visual" id="visual-cdg"></div>
-    </div>
-  </section>
-
-  <!-- Act 4 — the minimum node cut -->
-  <section class="act hidden" data-act="cut">
-    <p class="eyebrow" data-i18n="acts.3.eyebrow"></p>
-    <h1 data-i18n="acts.3.title"></h1>
-    <p class="lead" data-i18n="acts.3.lead"></p>
-    <div class="act-body act-body-wide">
-      <div class="act-words">
-        <p data-i18n-html="acts.3.body.0"></p>
-        <p data-i18n-html="acts.3.body.1"></p>
-        <p class="punch" data-i18n="acts.3.punch"></p>
-        <p class="caveat" data-i18n-html="acts.3.note"></p>
-      </div>
-      <div class="act-visual">
-        <div id="variant-tabs" class="variant-tabs"></div>
-        <div id="visual-cut" class="cut-stage"></div>
-        <div class="cut-controls">
-          <button id="cut-toggle" class="primary" type="button" data-i18n="act_cut.press"></button>
-          <span id="cut-status" class="muted small"></span>
+      </section>
+      <section
+        class="approach-section shell"
+        id="approach"
+        aria-labelledby="approach-title"
+      >
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow" data-i18n="approachEyebrow">
+              FROM UNDERSTANDING TO ACTION
+            </p>
+            <h2 id="approach-title" data-i18n="approachTitle">
+              A thoughtful way forward.
+            </h2>
+          </div>
+          <p class="approach-description" data-i18n="approachDescription">
+            Useful evidence. Focused changes. You stay in control of what ships.
+          </p>
         </div>
-        <div id="variant-bars" class="variant-bars"></div>
+        <div class="principles">
+          <article>
+            <span class="principle-number">01 /</span>
+            <h3 data-i18n="principle1">See the connections.</h3>
+            <p data-i18n="principle1Body">
+              Find cryptographic calls and the code that depends on them, with
+              file and line references you can follow.
+            </p>
+          </article>
+          <article>
+            <span class="principle-number">02 /</span>
+            <h3 data-i18n="principle2">Read every change.</h3>
+            <p data-i18n="principle2Body">
+              Inspect a real diff for supported hash upgrades. Key, certificate
+              and protocol migrations remain guided decisions.
+            </p>
+          </article>
+          <article>
+            <span class="principle-number">03 /</span>
+            <h3 data-i18n="principle3">Make it a pull request.</h3>
+            <p data-i18n="principle3Body">
+              Open a draft PR from the changes you reviewed. Run your own tests,
+              check compatibility, and merge when ready.
+            </p>
+          </article>
+        </div>
+      </section>
+      <section class="closing shell">
+        <p data-i18n="closing">Built to make complex code a little clearer.</p>
+        <a
+          class="text-button"
+          href="https://github.com/moayadbah/Quanta"
+          target="_blank"
+          rel="noopener"
+          data-i18n="source"
+          >Explore the source ↗</a
+        >
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="footer-motif" aria-hidden="true"></div>
+      <div class="shell footer-content">
+        <a class="wordmark" href="/"
+          ><img src="/mark.svg" width="25" height="25" alt="" /><span
+            >quanta</span
+          ></a
+        >
+        <p data-i18n="footer">Clarity, with intention.</p>
+        <div>
+          <a href="/privacy.html" data-i18n="privacy">Privacy</a
+          ><a
+            href="https://github.com/moayadbah/Quanta"
+            target="_blank"
+            rel="noopener"
+            >GitHub ↗</a
+          ><span class="footer-origin" lang="ar">من هنا، إلى المستقبل</span>
+        </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Act 5 — verification -->
-  <section class="act hidden" data-act="verify">
-    <p class="eyebrow" data-i18n="acts.4.eyebrow"></p>
-    <h1 data-i18n="acts.4.title"></h1>
-    <p class="lead" data-i18n-html="acts.4.lead"></p>
-    <div class="act-body">
-      <div class="act-words">
-        <p data-i18n-html="acts.4.body.0"></p>
-        <p data-i18n-html="acts.4.body.1"></p>
-        <p class="punch" data-i18n="acts.4.punch"></p>
+    </footer>
+    <dialog id="review-dialog" aria-labelledby="review-title">
+      <div class="dialog-header">
+        <div>
+          <p class="eyebrow" data-i18n="reviewEyebrow">
+            YOUR CHANGES, BEFORE THEY SHIP
+          </p>
+          <h2 id="review-title" data-i18n="reviewTitle">Take a closer look.</h2>
+        </div>
+        <button
+          class="close-button"
+          id="close-review"
+          aria-label="Close review"
+        >
+          ×
+        </button>
       </div>
-      <div class="act-visual" id="visual-verify"></div>
-    </div>
-  </section>
-
-  <!-- Act 6 — hand over to the tool -->
-  <section class="act hidden" data-act="try">
-    <p class="eyebrow" data-i18n="acts.5.eyebrow"></p>
-    <h1 data-i18n="acts.5.title"></h1>
-    <p class="lead" data-i18n="acts.5.lead"></p>
-    <div class="act-body">
-      <div class="act-words">
-        <p data-i18n-html="acts.5.body.0"></p>
-        <p class="punch" data-i18n="acts.5.punch"></p>
-        <button id="open-tool" class="primary" type="button" data-i18n="ui.skip"></button>
+      <div class="dialog-body">
+        <div class="review-notice">
+          <strong data-i18n="compatibilityTitle"
+            >Check compatibility before merging.</strong
+          >
+          <p data-i18n="compatibilityBody">
+            SHA-256 changes digest values and length. Check stored hashes,
+            signatures, protocols, fixtures and consumers. It is not a password
+            hashing scheme.
+          </p>
+        </div>
+        <div id="diff-list"></div>
+        <p class="validation-note" data-i18n="validation">
+          Python syntax checked. Repository tests are never run during a scan.
+        </p>
+        <div class="error-message" id="review-error" hidden role="alert"></div>
       </div>
-      <div class="act-visual" id="visual-try"></div>
-    </div>
-  </section>
-
-  <nav class="act-nav">
-    <button id="act-back" class="ghost" type="button" data-i18n="ui.back"></button>
-    <button id="act-next" class="primary" type="button" data-i18n="ui.next"></button>
-  </nav>
-  <p class="muted small centred" data-i18n="ui.glossary_hint"></p>
-</main>
-
-<!-- ══ The analyzer ═══════════════════════════════════════════════════════════ -->
-<main id="tool" class="wrap hidden">
-
-  <section id="screen-submit" class="screen">
-    <h1 data-i18n="tool.title"></h1>
-    <p class="lead muted" data-i18n="tool.lead"></p>
-
-    <form id="submit-form" class="submit-row" autocomplete="off">
-      <input id="repo-url" type="text" spellcheck="false" dir="ltr" data-i18n-placeholder="tool.placeholder">
-      <button type="submit" class="primary" data-i18n="tool.analyze"></button>
-    </form>
-    <div id="submit-error" class="error hidden" role="alert"></div>
-
-    <div class="examples">
-      <div class="examples-head">
-        <h3 data-i18n="tool.examples_title"></h3>
-        <span class="muted small" data-i18n="tool.examples_note"></span>
+      <div class="dialog-footer">
+        <label class="acknowledgement"
+          ><input type="checkbox" id="review-ack" /><span
+            data-i18n="acknowledge"
+            >I reviewed the diff and understand the compatibility impact.</span
+          ></label
+        ><button class="button dark" id="open-pr" disabled data-i18n="openPr">
+          Open draft pull request ↗</button
+        ><a
+          class="button dark"
+          id="pr-link"
+          hidden
+          target="_blank"
+          rel="noopener"
+          data-i18n="viewPr"
+          >View pull request ↗</a
+        >
       </div>
-      <div id="example-list" class="example-grid"></div>
-    </div>
-  </section>
-
-  <section id="screen-pipeline" class="screen hidden">
-    <div class="run-head">
-      <div>
-        <h2 id="pipeline-repo"></h2>
-        <div id="pipeline-sub" class="muted small"></div>
-      </div>
-      <button id="cancel-run" class="ghost" type="button" data-i18n="tool.start_over"></button>
-    </div>
-    <svg class="progress-track" viewBox="0 0 100 4" preserveAspectRatio="none" aria-hidden="true">
-      <rect x="0" y="0" width="100" height="4" class="progress-bg"></rect>
-      <rect id="progress-fill" x="0" y="0" width="0" height="4" class="progress-fill"></rect>
-    </svg>
-    <ol id="steps" class="steps"></ol>
-  </section>
-
-  <section id="screen-result" class="screen hidden">
-    <div class="run-head">
-      <div>
-        <h2 id="result-repo"></h2>
-        <div id="result-sub" class="muted small"></div>
-      </div>
-      <button id="new-run" class="ghost" type="button" data-i18n="tool.analyze_another"></button>
-    </div>
-
-    <div class="result-top">
-      <div class="scorecard">
-        <div id="score-value" class="score-value">—</div>
-        <div class="score-of">/ 100</div>
-        <div id="score-label" class="score-label"></div>
-      </div>
-      <div class="result-facts">
-        <table class="mini wide">
-          <thead>
-            <tr>
-              <th data-i18n="tool.factor_header"></th>
-              <th data-i18n="tool.raw_header"></th>
-              <th data-i18n="tool.formula_header"></th>
-              <th class="num" data-i18n="tool.value_header"></th>
-              <th class="num" data-i18n="tool.weight_header"></th>
-              <th class="num" data-i18n="tool.points_header"></th>
-            </tr>
-          </thead>
-          <tbody id="factor-rows"></tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="tabs" role="tablist">
-      <button class="tab active" data-tab="deductions" type="button" data-i18n="tool.tab_deductions"></button>
-      <button class="tab" data-tab="trace" type="button" data-i18n="tool.tab_trace"></button>
-      <button class="tab" data-tab="report" type="button" data-i18n="tool.tab_report"></button>
-    </div>
-
-    <div id="tab-deductions" class="tabpane">
-      <div id="deductions"></div>
-      <div id="recommendations"></div>
-    </div>
-
-    <div id="tab-trace" class="tabpane hidden">
-      <ol id="result-steps" class="steps"></ol>
-    </div>
-
-    <div id="tab-report" class="tabpane hidden">
-      <p class="muted small" data-i18n="tool.report_note"></p>
-      <div class="downloads">
-        <a id="dl-report" class="ghost" download="report.html" data-i18n="tool.download_report"></a>
-        <a id="dl-score" class="ghost" download="score.json">score.json</a>
-        <a id="dl-cdg" class="ghost" download="cdg.json">cdg.json</a>
-        <a id="dl-meta" class="ghost" download="meta.json">meta.json</a>
-      </div>
-      <iframe id="report-frame" sandbox="" title="Quanta report"></iframe>
-    </div>
-  </section>
-</main>
-
-<!-- ══ Glossary popover ═══════════════════════════════════════════════════════ -->
-<div id="glossary" class="glossary hidden" role="dialog" aria-modal="true">
-  <div class="glossary-card">
-    <button id="glossary-close" class="glossary-close" type="button" aria-label="Close">×</button>
-    <h3 id="glossary-term"></h3>
-    <p class="glossary-heading" data-i18n="ui.glossary_what"></p>
-    <p id="glossary-what"></p>
-    <p class="glossary-heading" data-i18n="ui.glossary_why"></p>
-    <p id="glossary-why"></p>
-    <p class="glossary-source"><span data-i18n="ui.glossary_source"></span> <code id="glossary-source"></code></p>
-  </div>
-</div>
-
-<footer class="wrap muted small">
-  <span id="footer-version"></span>
-</footer>
-
-<script src="/app.js" type="module"></script>
-</body>
+    </dialog>
+  </body>
 </html>

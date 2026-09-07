@@ -10,6 +10,8 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any, Literal, cast
 
+import httpx
+
 from quanta.config import Settings, get_settings
 from quanta.core.analyze import STEP_TITLES
 from quanta.core.ingest import RepoMetadata, parse_repo_url, resolve_metadata
@@ -45,6 +47,8 @@ class Job:
     reused: bool = False
     events: list[JobEvent] = field(default_factory=list)
     steps: list[StepRecord] = field(default_factory=list)
+    reported_phase: str | None = None
+    reported_progress: int | None = None
 
     def add_event(self, kind: str, data: dict[str, Any]) -> JobEvent:
         record = JobEvent(len(self.events) + 1, kind, data)
@@ -53,12 +57,14 @@ class Job:
 
     @property
     def phase(self) -> str | None:
-        return self.steps[-1].id if self.steps else None
+        return self.steps[-1].id if self.steps else self.reported_phase
 
     @property
     def progress(self) -> int:
         if self.status == "succeeded":
             return 100
+        if self.reported_progress is not None:
+            return self.reported_progress
         done = sum(s.status in {"done", "skipped"} for s in self.steps)
         return int(100 * done / len(STEP_TITLES))
 
@@ -88,10 +94,17 @@ class JobRegistry:
         db_path: Path | None = None,
         settings: Settings | None = None,
     ) -> None:
-        self.settings = settings or get_settings()
+        self.settings = (settings or get_settings()).model_copy(deep=True)
         self.store = ArtifactStore(artifact_root)
         self.artifact_root = self.store.root
-        self.db = Database(db_path or (self.artifact_root.parent / "quanta.db"))
+        self.db = Database(
+            db_path or (self.artifact_root.parent / "quanta.db"),
+            self.settings.cloud.database_url.get_secret_value(),
+        )
+        if self.settings.cloud.enabled:
+            from quanta.web.store import DatabaseArtifactStore
+
+            self.store = DatabaseArtifactStore(artifact_root, self.db)
 
     def shutdown(self) -> None:
         """Workers have an independent lifecycle; API shutdown cannot cancel their jobs."""
@@ -133,6 +146,9 @@ class JobRegistry:
                 job.steps = [s for s in job.steps if s.id != step.id] + [step]
             elif payload["event"] == "error":
                 job.error_detail = payload["data"].get("detail")
+            elif payload["event"] == "progress":
+                job.reported_phase = payload["data"].get("phase")
+                job.reported_progress = min(100, max(0, int(payload["data"].get("pct", 0))))
         return job
 
     def active_count(self) -> int:
@@ -143,12 +159,14 @@ class JobRegistry:
                 ).fetchone()[0]
             )
 
-    def submit(self, repo_url: str) -> Job:
+    def submit(
+        self, repo_url: str, user_id: str | None = None, client: httpx.Client | None = None
+    ) -> Job:
         owner, name = parse_repo_url(repo_url, self.settings)
-        metadata = resolve_metadata(owner, name, self.settings)
-        return self.enqueue(metadata)
+        metadata = resolve_metadata(owner, name, self.settings, client=client)
+        return self.enqueue(metadata, user_id)
 
-    def enqueue(self, metadata: RepoMetadata) -> Job:
+    def enqueue(self, metadata: RepoMetadata, user_id: str | None = None) -> Job:
         """Deduplicate pinned work and enforce the queue cap under one write lock."""
         owner, name = metadata.owner.lower(), metadata.name.lower()
         provenance = Provenance(
@@ -175,6 +193,8 @@ class JobRegistry:
                 job_id = existing_id
                 reused = True
             else:
+                if user_id:
+                    self.charge(conn, user_id)
                 depth = conn.execute(
                     "SELECT COUNT(*) FROM jobs WHERE status IN ('queued','running')",
                 ).fetchone()[0]
@@ -204,11 +224,53 @@ class JobRegistry:
                         "steps": [{"id": sid, "title": title} for sid, title in STEP_TITLES],
                     },
                 )
+            if user_id:
+                conn.execute(
+                    "INSERT INTO analysis_access(job_id,user_id) VALUES(?,?) "
+                    "ON CONFLICT(job_id,user_id) DO NOTHING",
+                    (job_id, user_id),
+                )
         job = self.get(job_id)
         if job is None:
             raise Reject("INTERNAL", "job disappeared during submission")
         job.reused = reused
         return job
+
+    def charge(self, conn: Any, user_id: str) -> None:
+        """Pessimistic reservations include failures; cache hits do not consume compute."""
+        now = timestamp()
+        limits = [
+            (f"user:{user_id}:{now[:10]}", self.settings.product.scans_per_user_day),
+            (f"global:{now[:7]}", self.settings.product.scans_per_month),
+        ]
+        for key, limit in limits:
+            conn.execute(
+                "INSERT INTO usage_counters(id,used) VALUES(?,0) ON CONFLICT(id) DO NOTHING", (key,)
+            )
+            changed = conn.execute(
+                "UPDATE usage_counters SET used=used+1 WHERE id=? AND used<?", (key, limit)
+            ).rowcount
+            if not changed:
+                raise Reject(
+                    "QUOTA_EXCEEDED",
+                    "The free scan allowance is used up. "
+                    "Daily limits reset at midnight UTC; shared limits reset monthly.",
+                )
+
+    def usage(self, user_id: str) -> dict[str, int]:
+        now = timestamp()
+        with self.db.connect() as conn:
+
+            def used(key: str) -> int:
+                row = conn.execute("SELECT used FROM usage_counters WHERE id=?", (key,)).fetchone()
+                return int(row[0]) if row else 0
+
+            return {
+                "daily_used": used(f"user:{user_id}:{now[:10]}"),
+                "daily_limit": self.settings.product.scans_per_user_day,
+                "monthly_used": used(f"global:{now[:7]}"),
+                "monthly_limit": self.settings.product.scans_per_month,
+            }
 
     def adopt_cached(self, job: Job) -> None:
         """Persist a demo replay using the same artifact boundary as live jobs."""

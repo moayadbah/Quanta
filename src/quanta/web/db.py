@@ -40,6 +40,29 @@ CREATE TABLE IF NOT EXISTS analysis_cache (
 CREATE TABLE IF NOT EXISTS worker_heartbeats (
  id TEXT PRIMARY KEY, last_seen TEXT NOT NULL
 );
+CREATE TABLE IF NOT EXISTS oauth_states (
+ id TEXT PRIMARY KEY, verifier TEXT NOT NULL, expires_at TEXT NOT NULL
+);
+CREATE TABLE IF NOT EXISTS sessions (
+ id TEXT PRIMARY KEY, user_id TEXT NOT NULL, login TEXT NOT NULL,
+ token TEXT NOT NULL, csrf TEXT NOT NULL, expires_at TEXT NOT NULL
+);
+CREATE TABLE IF NOT EXISTS analysis_access (
+ job_id TEXT NOT NULL REFERENCES jobs(id) ON DELETE CASCADE,
+ user_id TEXT NOT NULL, PRIMARY KEY(job_id,user_id)
+);
+CREATE TABLE IF NOT EXISTS usage_counters (
+ id TEXT PRIMARY KEY, used INTEGER NOT NULL DEFAULT 0
+);
+CREATE TABLE IF NOT EXISTS pull_requests (
+ id TEXT PRIMARY KEY, job_id TEXT NOT NULL REFERENCES jobs(id) ON DELETE CASCADE,
+ user_id TEXT NOT NULL, digest TEXT NOT NULL, status TEXT NOT NULL,
+ url TEXT, updated_at TEXT NOT NULL
+);
+CREATE TABLE IF NOT EXISTS artifact_blobs (
+ job_id TEXT NOT NULL REFERENCES jobs(id) ON DELETE CASCADE,
+ name TEXT NOT NULL, data TEXT NOT NULL, PRIMARY KEY(job_id,name)
+);
 """
 
 
@@ -47,7 +70,7 @@ def timestamp(epoch: float | None = None) -> str:
     return datetime.fromtimestamp(time.time() if epoch is None else epoch, UTC).isoformat()
 
 
-def event(conn: sqlite3.Connection, job_id: str, kind: str, data: dict[str, Any]) -> None:
+def event(conn: Any, job_id: str, kind: str, data: dict[str, Any]) -> None:
     conn.execute(
         "INSERT INTO job_events(job_id,ts,phase,done,total,message) VALUES(?,?,?,?,?,?)",
         (
@@ -61,16 +84,53 @@ def event(conn: sqlite3.Connection, job_id: str, kind: str, data: dict[str, Any]
     )
 
 
+class Record(dict[str, Any]):
+    def __getitem__(self, key: str | int) -> Any:
+        return list(self.values())[key] if isinstance(key, int) else super().__getitem__(key)
+
+
+class PostgresConnection:
+    def __init__(self, connection: Any) -> None:
+        self.connection = connection
+
+    def execute(self, sql: str, values: tuple[Any, ...] = ()) -> Any:
+        return self.connection.execute(sql.replace("?", "%s"), values)
+
+
 class Database:
-    def __init__(self, path: Path) -> None:
+    def __init__(self, path: Path, url: str = "") -> None:
         self.path = path.resolve()
+        self.url = url
         self.path.parent.mkdir(parents=True, exist_ok=True)
         with self.connect() as conn:
-            conn.execute("PRAGMA journal_mode=WAL")
-            conn.executescript(SCHEMA)
+            if url:
+                schema = SCHEMA.replace(
+                    "INTEGER PRIMARY KEY AUTOINCREMENT", "BIGSERIAL PRIMARY KEY"
+                )
+                # Serialize startup migrations across cold function instances.
+                conn.execute("SELECT pg_advisory_xact_lock(72682417)")
+                for statement in schema.split(";"):
+                    if statement.strip():
+                        conn.execute(statement)
+            else:
+                conn.execute("PRAGMA journal_mode=WAL")
+                conn.executescript(SCHEMA)
 
     @contextmanager
-    def connect(self, *, write: bool = False) -> Iterator[sqlite3.Connection]:
+    def connect(self, *, write: bool = False) -> Iterator[Any]:
+        if self.url:
+            import psycopg
+
+            def row_factory(cursor: Any) -> Any:
+                names = [column.name for column in cursor.description] if cursor.description else []
+                return lambda values: Record(zip(names, values, strict=True))
+
+            with psycopg.connect(self.url, connect_timeout=10, row_factory=row_factory) as pg:
+                wrapper = PostgresConnection(pg)
+                if write:
+                    wrapper.execute("SELECT pg_advisory_xact_lock(72682417)")
+                yield wrapper
+            return
         conn = sqlite3.connect(self.path, timeout=5.0)
         conn.row_factory = sqlite3.Row
         conn.execute("PRAGMA busy_timeout=5000")

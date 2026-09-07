@@ -27,7 +27,11 @@ from starlette.exceptions import HTTPException
 from quanta.config import get_settings
 from quanta.errors import Reject
 from quanta.version import __version__
+from quanta.web.auth import Auth
+from quanta.web.auth import router as auth_router
+from quanta.web.cloud import router as cloud_router
 from quanta.web.jobs import JobRegistry
+from quanta.web.product import router as product_router
 from quanta.web.routes import router
 
 log = structlog.get_logger()
@@ -104,6 +108,9 @@ def create_app(artifact_root: Path | None = None, db_path: Path | None = None) -
     root = artifact_root or cfg.artifact_root
     database = db_path or (root.parent / "quanta.db" if artifact_root else cfg.db)
     app.state.registry = JobRegistry(root, database, cfg)
+    app.state.auth = Auth(
+        app.state.registry.db, cfg.auth, durable_required=cfg.deployment == "vercel"
+    )
 
     @app.exception_handler(RequestValidationError)
     async def _validation_handler(request: Request, exc: RequestValidationError) -> JSONResponse:
@@ -152,12 +159,17 @@ def create_app(artifact_root: Path | None = None, db_path: Path | None = None) -
         request: Request, call_next: Callable[[Request], Awaitable[Response]]
     ) -> Response:
         response = await call_next(request)
+        if request.url.path.startswith(("/api/", "/auth/")):
+            response.headers["Cache-Control"] = "private, no-store"
         # The report route sets its own, stricter, policy — never override it.
         if "Content-Security-Policy" not in response.headers:
             for header, value in SPA_HEADERS.items():
                 response.headers[header] = value
         return response
 
+    app.include_router(auth_router)
+    app.include_router(product_router, prefix="/api/v1")
+    app.include_router(cloud_router, prefix="/api/v1")
     app.include_router(router, prefix="/api/v1")
 
     if STATIC_DIR.is_dir():

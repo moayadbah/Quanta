@@ -295,7 +295,7 @@ class Worker:
         scratch.mkdir(parents=True, exist_ok=True, mode=0o700)
         messages = self.context.Queue(maxsize=64)
         proc = self.context.Process(
-            target=analyze_child, args=(row, str(scratch), self.cfg, messages)
+            target=analyze_child, args=(row, str(scratch), self.cfg.scanner_settings(), messages)
         )
         try:
             proc.start()

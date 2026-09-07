@@ -32,6 +32,7 @@ import networkx as nx
 from quanta.config import Settings, get_settings
 from quanta.core.cbom import CbomImport, merge_cbom
 from quanta.core.detect import DetectionResult, detect_repository
+from quanta.core.fixes import FixPlan, propose_repository
 from quanta.core.graph import ResolutionStats, build_cdg, to_node_link
 from quanta.core.ingest import (
     RepoMetadata,
@@ -138,6 +139,7 @@ class AnalysisOutcome:
     meta: AnalysisMeta
     detection: DetectionResult
     report_html: str
+    fixes: FixPlan = field(default_factory=FixPlan)
 
     @property
     def steps(self) -> tuple[StepRecord, ...]:
@@ -408,7 +410,12 @@ def analyze_path(
     meta = meta.model_copy(update={"steps": tuple(trace.steps)})
 
     return AnalysisOutcome(
-        score=score, graph=graph, meta=meta, detection=detection, report_html=report_html
+        score=score,
+        graph=graph,
+        meta=meta,
+        detection=detection,
+        report_html=report_html,
+        fixes=propose_repository(root, walk.files, cfg.product),
     )
 
 
@@ -480,7 +487,7 @@ def analyze_repository(
         "working copy deleted",
         [
             _ev("Clone directory", "removed", ok=True),
-            _ev("Source retained", "none — nothing untrusted is kept", ok=True),
+            _ev("Source retained", "only bounded files with reviewable fix proposals", ok=True),
             _ev("Applies to", "success, failure and timeout paths alike", ok=True),
         ],
     )
@@ -491,6 +498,7 @@ def analyze_repository(
         meta=outcome.meta.model_copy(update={"steps": tuple(trace.steps)}),
         detection=outcome.detection,
         report_html=outcome.report_html,
+        fixes=outcome.fixes,
     )
 
 
@@ -512,4 +520,5 @@ def write_artifacts(outcome: AnalysisOutcome, out_dir: Path) -> dict[str, Path]:
     write_canonical_json(paths["score"], outcome.score)
     write_canonical_json(paths["meta"], outcome.meta)
     write_report(paths["report"], outcome.report_html)
+    write_canonical_json(out_dir / "fixes.json", outcome.fixes)
     return paths

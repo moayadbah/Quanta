@@ -1,145 +1,131 @@
 # Quanta
 
-Cryptographic agility analysis for Python repositories. Quanta finds cryptographic call
-sites, builds a dependency graph, and reports a 0–100 source-edit agility score with
-`file:line` evidence for each deduction. Analysis parses source without importing it,
-installing its dependencies, or running its code.
+Understand the cryptography in a Python repository, review focused improvements, and
+open a draft GitHub pull request. Quanta finds cryptographic call sites, maps their
+dependencies, and explains its architecture score with file and line references.
+Repository code is parsed, never imported, installed or executed.
 
-## Run the application
+The product is bilingual in English and Arabic, with a responsive interface, private
+scan history, an interactive sample, a diff review, and explicit compatibility checks.
+The design uses warm neutrals, muted green, and an original geometric motif inspired
+by Saudi Sadu weaving.
+
+## Product scope
+
+| Capability | Behavior |
+|---|---|
+| GitHub sign-in | OAuth with PKCE, single-use state, encrypted server-side tokens, HttpOnly sessions |
+| Public repository scans | Pinned commit, bounded traversal, deterministic analysis, private results |
+| Reviewable changes | MD5/SHA-1 to SHA-256 proposals for supported `hashlib` and `cryptography` calls |
+| Diff review | Only selected call sites change; original imports, comments and line endings are preserved |
+| Draft pull requests | Dedicated branch or user fork, original-source verification, persistent retry handling |
+| Free allowance | 3 new scans per account per UTC day; 50 shared new scans per calendar month |
+| Hosting | Vercel FastAPI + disposable Sandbox microVMs + free PostgreSQL storage |
+| Sample | Working analysis and diff review without sign-in; never creates a real PR |
+
+Hash upgrades change digest values and lengths. Review stored values, protocols,
+signatures, fixtures and downstream consumers before merging. Syntax validation does
+not establish behavior compatibility, and repository tests are not run by the service.
+Key, certificate and protocol migrations require manual engineering. The agility score
+measures architectural flexibility; it is not a security grade or a quantum-readiness
+certification. Dynamic Python behavior may not be resolved statically.
+
+The original benchmark, annotations and comparison-engine research plan is optional
+historical work. It does **not** gate the product release. See
+[ADR-026](docs/adr/ADR-026-published-product.md).
+
+## Run locally
 
 ```bash
 docker compose up --build
 ```
 
-Open **http://localhost:8000**. The bilingual English/Arabic interface includes the guided
-walkthrough, offline example replays, and a public GitHub repository analyzer. Reports
-open in a sandboxed iframe and download as self-contained HTML. Source snapshots are
-removed after analysis; completed artifacts expire after seven days.
+Open **http://localhost:8000**. The local app supports unsigned development scans by
+default; the Vercel entrypoint always requires sign-in. The legacy educational
+walkthrough remains available at `/guide.html`.
 
-The API and worker are separate processes. SQLite persists jobs, events and cache entries
-across API restarts. Jobs have bounded attempts, lease recovery, a wall-clock watchdog,
-and a shared concurrency cap. The browser restores a run after refresh and falls back to
-polling when streaming fails. Docker binds the service to localhost.
-
-For development without Docker, use Python 3.12 and Git. Install once:
+Without Docker, install Python 3.12 and Git, then:
 
 ```bash
-uv sync --locked --extra dev --extra research
-```
-
-Run these in **two terminals** from the repository:
-
-```bash
+uv sync --locked --extra dev
 uv run quanta serve
 ```
 
-```bash
-uv run quanta worker --id w1
-```
+Run `uv run quanta worker --id w1` in a second terminal. Both use `~/.quanta` by default.
+Set the same `QUANTA_DB`, `QUANTA_ARTIFACT_ROOT` and `QUANTA_SCRATCH_ROOT` for both when
+using another location. Environment values override TOML defaults. To exercise OAuth
+locally, use a separate GitHub OAuth application and configure the variables in
+`.env.example` in the process environment. Configuration is not read from `.env`
+automatically.
 
-Both use `~/.quanta` by default. To choose another location, set the same `QUANTA_DB`,
-`QUANTA_ARTIFACT_ROOT` and `QUANTA_SCRATCH_ROOT` in both terminals. Nested settings use
-names such as `QUANTA_INGEST__MAX_FILES=10000`; environment settings override defaults.
-Native macOS/Windows development does not provide Linux sandbox controls.
+Compose gives the worker an internal network and a GitHub-only CONNECT proxy. Its
+non-root processes use read-only mounts, dropped capabilities, resource limits,
+watchdogs and a post-clone seccomp network cutoff. Native development commands do not
+provide the complete Docker network boundary.
 
-## Analyze from the command line
+## Publish on Vercel
+
+Follow [the deployment guide](docs/DEPLOYMENT.md). The code includes a FastAPI entrypoint,
+locked dependencies, hosting limits, the cloud runner, and a trusted snapshot builder.
+Use Vercel **Hobby** and a **free** PostgreSQL project. Do not select a paid plan.
+
+A ChatGPT GitHub/Vercel connection is separate from the application's own OAuth
+registration and runtime database. The deployed application needs those configured
+before live sign-in and scanning can work. Without them, the public site offers the
+sample and explains that live scanning is unavailable; it does not silently run
+anonymous scans or pretend a live analysis succeeded.
+
+## CLI and artifacts
 
 ```bash
 uv run quanta analyze https://github.com/pallets/click --out out
-uv run quanta analyze tests/fixtures/repos/hardcoded_crypto --out out --trace
+uv run quanta analyze path/to/repository --out out --trace
 uv run quanta analyze path/to/repository --cbom path/to/cbom.json --out out --json
 ```
 
-Each analysis produces `cdg.json`, `score.json`, `meta.json` and `report.html`. The HTML
-opens offline without a server. URL analyses are pinned to a resolved commit; a moving
-head causes `SHA_MISMATCH`. Local working-copy analyses use a zero SHA and are explicitly
-not pinned results. Optional CycloneDX 1.6 assets with source locations are merged and
-marked `source: cbom`; unusable locations are reported. A CBOM digest participates in
-provenance so different inputs cannot masquerade as the same analysis.
-
-## What is complete and what remains
-
-| Component | Current state |
-|---|---|
-| Static analyzer, dependency graph, cited score, offline report | Implemented and tested; real-corpus detection precision/recall remain unmeasured |
-| CycloneDX input | Located 1.6 occurrences supported; unlocated assets reported |
-| Durable API, worker, events, cache, retention | Implemented with restart, race, retry and watchdog tests |
-| Bilingual application and offline demos | Existing walkthrough retained; reconnection and reload recovery added |
-| Wheel and local container packaging | Included; installed-wheel assets verified |
-| X-Wing primitive shim | Existing draft-10 vectors and 1,000-example round-trip property pass |
-| Benchmark selection, worksheets, annotation import, agreement, freeze | Tooling implemented; the actual 12-repository independent annotation is pending |
-| McNemar, repository bootstrap, sensitivity, collinearity | Implemented; demo outputs and synthetic test results are not research findings |
-| E0/E1/E2, P0/P1 rewriting, target verification, fork PR automation | Not implemented: the technical document requires the labelled benchmark to be frozen first |
-
-**This revision completes the durable analysis application, not the full research MVP.**
-Follow [the benchmark workflow](docs/research/WORKFLOW.md) to supply independent annotations
-and unlock the migration phase. No completed corpus, independent reviews, migration
-success rates, DOI or publication results are fabricated.
-
-The original score weights remain unchanged and are pinned to commit
-`6f392e5b5fb12a39a19f1443e20ed7aeb76c241f`. Publishing the `weights-v1` tag is still pending;
-the benchmark workflow gives the exact command. Sensitivity and factor
-collinearity reports for the three existing examples are in
-[docs/research/demo-statistics](docs/research/demo-statistics); they are clearly labelled
-as demonstration output and do not justify a corpus-level conclusion.
-
-## Validation
-
-```bash
-uv run ruff check .
-uv run ruff format --check .
-uv run mypy
-uv run pytest
-node --test tests/frontend.test.mjs
-uv build --wheel
-```
-
-CI also builds and starts the Compose service, checks its worker and example replay,
-tests the worker's actual acquisition network boundary, and submits a public repository
-twice to exercise pinned ingestion and cache reuse.
-`tests/security` covers URL rejection before network access, traversal, symlinks, special
-files, budgets, forbidden execution paths, report escaping, artifact confinement, and
-Linux post-clone network isolation. Database tests cover restart persistence, competing
-claims, expired leases, old-attempt fencing, retries, publication and retention.
-
-## Scope and isolation
-
-The score measures source-edit difficulty, not total migration cost or cryptographic
-security. Static Python analysis can miss dynamic dispatch and other unresolved behavior.
-A result without detected cryptography does not prove its absence. Target tests and
-migration execution are not exposed through the web API.
-
-Compose runs as non-root with dropped capabilities, a read-only filesystem and bounded,
-non-executable scratch space. The worker's internal Docker network has no direct external
-route. Its only acquisition path is a separate CONNECT proxy allowing the exact names
-`github.com` and `api.github.com` on port 443. External DNS forwarding is disabled in the
-worker. Git verifies GitHub's TLS certificate through the tunnel; a Linux seccomp filter
-cuts network access after cloning. Redirects, hooks and credential helpers are disabled.
-These controls depend on the supplied Compose topology and are not provided by native
-development commands. Public hosting and hostile target-code execution remain out of scope.
-See [ADR-023](docs/adr/ADR-023-durable-local-analysis.md).
-
-The existing ADRs preserve the no-build frontend, deterministic SVG renderer and corrected
-X-Wing combiner order. [ADR-024](docs/adr/ADR-024-corpus-query-and-annotation-gate.md)
-records the corrected GitHub query and research gate; [ADR-025](docs/adr/ADR-025-cbom-and-provenance.md)
-documents CBOM support and its limits. No extra Python dependencies were added.
+Outputs are `cdg.json`, `score.json`, `meta.json`, `report.html`, and `fixes.json`.
+The HTML works offline. `fixes.json` contains bounded original source files needed to
+apply selected proposals, so keep it with the private analysis artifacts. Hosted results
+expire after seven days. A local path uses a zero commit SHA and cannot be published as
+a live repository PR. Optional CycloneDX 1.6 evidence carries source provenance and
+reports unusable locations explicitly.
 
 ## API
 
 | Method | Endpoint | Purpose |
 |---|---|---|
-| POST | `/api/v1/analyses` | Resolve and enqueue a public GitHub URL; return 200 on reuse, 201 for new work |
+| GET | `/auth/login`, `/auth/callback`, `/auth/session` | GitHub sign-in and current session |
+| POST | `/auth/logout` | End the current session |
+| GET | `/api/v1/workspace` | Private history, usage and availability |
+| POST | `/api/v1/analyses` | Resolve and enqueue; 200 on reuse, 201 for new work |
+| POST | `/api/v1/analyses/{id}/run` | Run queued hosted work; durable claim prevents duplicate scans |
 | GET | `/api/v1/analyses/{id}` | Durable status and progress |
-| GET | `/api/v1/analyses/{id}/events` | SSE with `Last-Event-ID` replay |
-| GET | `/api/v1/analyses/{id}/score` | Canonical score JSON |
-| GET | `/api/v1/analyses/{id}/report` | Sandboxed, downloadable HTML |
-| GET | `/api/v1/healthz` | Queue depth and worker heartbeat age |
+| GET | `/api/v1/analyses/{id}/score`, `/meta`, `/cdg`, `/report` | Private results |
+| GET | `/api/v1/analyses/{id}/fixes` | Supported change proposals, without retained full source |
+| POST | `/api/v1/analyses/{id}/review` | Generate the selected diff and a content digest |
+| POST | `/api/v1/analyses/{id}/pull-request` | Publish exactly that reviewed selection as a draft PR |
+| GET | `/api/v1/sample` | Stateless working example |
 
-Additional read endpoints expose graph, metadata, trace, examples and walkthrough content.
-Errors use `application/problem+json` with a stable `error_code` and correlation ID.
-The machine-readable schema is at `/api/openapi.json`.
+Authenticated mutations require the canonical `Origin` and the session's `X-CSRF-Token`.
+The browser starts hosted jobs and polls their durable status; a page reload can resume a
+queued scan. A lost running invocation expires and is never retried against the free
+compute budget automatically. Local workers run queued jobs independently.
 
-## License
+## Validation
 
-MIT. Analyzed repositories retain their own licenses. Research publication must contain
-labels and commit references rather than copies of third-party source.
+```bash
+uv sync --locked --extra dev --extra research
+uv run ruff check .
+uv run ruff format --check .
+uv run mypy
+uv run pytest
+node --check src/quanta/web/static/product.mjs
+node --test tests/frontend.test.mjs
+uv build --wheel
+```
+
+CI also exercises a real disposable PostgreSQL database, installed-wheel assets,
+Docker isolation and a live public-repository scan. Tests cover OAuth state, account
+isolation, CSRF, concurrent quotas, source-preserving changes, stale branches, fork
+retries, duplicate PR prevention, cloud lifecycle and artifact expiry. Live OAuth and
+Vercel infrastructure still require account configuration and a deployment smoke test.
