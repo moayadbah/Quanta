@@ -1,9 +1,8 @@
 """FastAPI application factory (§4.2).
 
-A design property worth stating plainly: **the API process never touches repository
-content.** It validates a URL, writes a job record and reads a file. Every byte of
-untrusted input is handled in a short-lived child process. That is why the service is
-cheap to secure — the dangerous half of the pipeline was never deployed here (§4.3).
+Repository acquisition and analysis run in separate local processes or cloud microVMs.
+The API handles authentication, durable jobs, bounded fix review, and GitHub publication.
+It never imports or executes repository code.
 
 Errors leave as RFC 9457 ``application/problem+json`` carrying the stable ``error_code``
 from :data:`quanta.errors.ERROR_CODES`. Internal exceptions and tracebacks are never

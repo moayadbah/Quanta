@@ -277,7 +277,7 @@ FACTOR_FORMULAS = {
 
 def _score_evidence(score: ScoreReport) -> list[StepEvidence]:
     evidence = [
-        _ev("Weights", "weights-v1, pre-registered and git-tagged", ok=True),
+        _ev("Weights", "weights-v1, fixed product defaults", ok=True),
     ]
     for key, factor in score.factors.items():
         evidence.append(

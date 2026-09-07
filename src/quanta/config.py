@@ -74,12 +74,9 @@ class StatsSettings(BaseModel):
 
 
 class Weights(BaseModel):
-    """Pre-registered Agility Score weights (§8.2).
+    """Fixed, versioned architecture-score weights; changes require a version bump.
 
-    Committed and git-tagged ``weights-v1`` before any engine result was observed.
-    Tuning these after observing results is overfitting and would invalidate the score
-    entirely (§11.2) — hence :meth:`validate_sum`, which fails loudly rather than
-    silently renormalising.
+    These are product defaults, not empirically calibrated migration-cost estimates.
     """
 
     version: str = "weights-v1"
