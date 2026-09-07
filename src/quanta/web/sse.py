@@ -4,8 +4,8 @@ SSE, not WebSocket: the stream is strictly server→client, and SSE is plain HTT
 automatic reconnection and ``Last-Event-ID`` replay built into every browser (§5.2.1).
 Bidirectional framing and heartbeats would be machinery for a one-way stream.
 
-Event ids are the per-job buffer index, so reconnection resumes exactly rather than
-approximately, and the API still performs no analysis work — it reads a list.
+Event ids are the durable database sequence. Reconnection resumes exactly, including
+after API restart; the API reads events without performing analysis.
 """
 
 from __future__ import annotations
@@ -20,10 +20,8 @@ from quanta.web.jobs import Job, JobEvent, JobRegistry
 _KEEPALIVE = ": keepalive\n\n"
 _KEEPALIVE_INTERVAL_S = 15.0
 
-#: The failure event is named ``failed``, not ``error``. ``EventSource`` already dispatches
-#: a built-in ``error`` event for transport problems, so a server-sent ``event: error``
-#: would be indistinguishable from a dropped connection on the client.
-TERMINAL_EVENTS = {"done", "failed"}
+#: MessageEvent.data distinguishes a server error from an EventSource transport error.
+TERMINAL_EVENTS = {"done", "error", "failed"}
 
 
 def format_event(event: JobEvent) -> str:
@@ -47,7 +45,10 @@ async def stream(
     idle_since = asyncio.get_event_loop().time()
 
     while True:
-        registry.drain()
+        current = registry.get(job.id)
+        if current is None:
+            return
+        job = current
 
         pending = [e for e in job.events if e.id > cursor]
         for event in pending:
@@ -69,7 +70,7 @@ async def stream(
 
         # A live job that has finished but produced no terminal event (e.g. the pool died)
         # must still close, or the client waits forever.
-        if job.status in {"succeeded", "failed"} and not pending:
+        if job.status in {"succeeded", "failed", "timeout"} and not pending:
             remaining = [e for e in job.events if e.id > cursor]
             if not remaining:
                 return
@@ -79,7 +80,7 @@ async def stream(
             yield _KEEPALIVE
             idle_since = now
 
-        await asyncio.sleep(0.05)
+        await asyncio.sleep(0.25)
 
 
 def _fallback_delay() -> int:

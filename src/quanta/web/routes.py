@@ -9,7 +9,6 @@ from __future__ import annotations
 
 import time
 from collections import defaultdict
-from pathlib import Path
 from typing import Annotated, Any
 
 from fastapi import APIRouter, Header, Request
@@ -23,6 +22,8 @@ from quanta.errors import Reject
 from quanta.version import CRYPTO_RULESET_VERSION, __version__
 from quanta.web import demo
 from quanta.web import examples as examples_mod
+from quanta.web.auth import auth, github_client
+from quanta.web.db import timestamp
 from quanta.web.jobs import Job, JobRegistry
 from quanta.web.sse import parse_last_event_id, stream
 
@@ -63,6 +64,20 @@ def _client_ip(request: Request) -> str:
 
 def _enforce_rate_limit(request: Request) -> None:
     cfg = get_settings().api
+    identity = auth(request).identity(request, required=False)
+    if identity:
+        bucket = f"submission:{identity.user_id}:{timestamp()[:13]}"
+        with _registry(request).db.connect(write=True) as conn:
+            conn.execute(
+                "INSERT INTO usage_counters(id,used) VALUES(?,0) ON CONFLICT(id) DO NOTHING",
+                (bucket,),
+            )
+            if not conn.execute(
+                "UPDATE usage_counters SET used=used+1 WHERE id=? AND used<?",
+                (bucket, cfg.rate_limit_per_ip_hour),
+            ).rowcount:
+                raise Reject("RATE_LIMITED", "Too many submissions. Try again in an hour.")
+        return
     limiter = _submissions(request)
     now = time.time()
     ip = _client_ip(request)
@@ -75,19 +90,26 @@ def _enforce_rate_limit(request: Request) -> None:
 
 
 def _job_or_404(request: Request, job_id: str) -> Job:
+    service = auth(request)
+    identity = service.identity(request, required=service.settings.required)
+    if identity:
+        service.own(job_id, identity)
     job = _registry(request).get(job_id)
-    if job is None:
+    if job is None or (
+        time.time() - job.created_at
+        > _registry(request).settings.retention.artifact_ttl_days * 86400
+    ):
         raise Reject("REPO_NOT_FOUND", "no such analysis")
     return job
 
 
-def _artifact(job: Job, name: str) -> Path:
+def _artifact(request: Request, job: Job, name: str) -> str:
     if job.status != "succeeded" or job.artifact_dir is None:
         raise Reject("NOT_FINISHED", f"analysis is {job.status}")
-    path = job.artifact_dir / name
-    if not path.is_file():
-        raise Reject("NOT_FINISHED", f"{name} is not available")
-    return path
+    try:
+        return _registry(request).store.open(job.id, name).decode("utf-8")
+    except FileNotFoundError as exc:
+        raise Reject("NOT_FINISHED", f"{name} is not available") from exc
 
 
 # ---------------------------------------------------------------------------------------
@@ -100,6 +122,16 @@ def create_analysis(request: Request, body: AnalysisRequest) -> JSONResponse:
     """Submit a repository. Returns 201 with the URLs to follow it."""
     registry = _registry(request)
     cfg = get_settings().api
+    service = auth(request)
+    identity = service.identity(request, required=service.settings.required)
+    if identity:
+        service.csrf(request, identity)
+    if registry.settings.deployment == "vercel" and not (
+        registry.settings.cloud.enabled and registry.settings.cloud.sandbox_snapshot
+    ):
+        raise Reject(
+            "SANDBOX_UNAVAILABLE", "Live scanning is temporarily unavailable. Try the sample."
+        )
 
     if registry.active_count() >= cfg.max_queue_depth:
         raise Reject("RATE_LIMITED", "the queue is full; try again shortly")
@@ -110,9 +142,13 @@ def create_analysis(request: Request, body: AnalysisRequest) -> JSONResponse:
     # — that ordering is the SSRF control (§7.3), not an implementation detail.
     parse_repo_url(body.repo_url)
 
-    job = registry.submit(body.repo_url)
+    if identity:
+        with github_client(identity.token) as client:
+            job = registry.submit(body.repo_url, identity.user_id, client)
+    else:
+        job = registry.submit(body.repo_url)
     return JSONResponse(
-        status_code=201,
+        status_code=200 if job.reused else 201,
         content={
             "job_id": job.id,
             "status": job.status,
@@ -125,6 +161,10 @@ def create_analysis(request: Request, body: AnalysisRequest) -> JSONResponse:
 @router.get("/analyses/{job_id}")
 def get_analysis(request: Request, job_id: str) -> dict[str, Any]:
     registry = _registry(request)
+    if registry.settings.cloud.enabled:
+        from quanta.web.cloud import sweep
+
+        sweep(registry)
     registry.drain()
     return _job_or_404(request, job_id).public()
 
@@ -159,7 +199,7 @@ async def get_events(
 def get_score(request: Request, job_id: str) -> Response:
     job = _job_or_404(request, job_id)
     return Response(
-        content=_artifact(job, "score.json").read_text(encoding="utf-8"),
+        content=_artifact(request, job, "score.json"),
         media_type="application/json",
     )
 
@@ -169,7 +209,7 @@ def get_report(request: Request, job_id: str) -> HTMLResponse:
     """The canonical Jinja2 report, served with its own hardened headers (§7.3 T5)."""
     job = _job_or_404(request, job_id)
     return HTMLResponse(
-        content=_artifact(job, "report.html").read_text(encoding="utf-8"),
+        content=_artifact(request, job, "report.html"),
         headers=dict(REPORT_SECURITY_HEADERS),
     )
 
@@ -182,6 +222,7 @@ def healthz(request: Request) -> dict[str, Any]:
         "version": __version__,
         "crypto_ruleset_version": CRYPTO_RULESET_VERSION,
         "queue_depth": registry.active_count(),
+        "worker_heartbeat_age_s": registry.heartbeat_age(),
     }
 
 
@@ -194,7 +235,7 @@ def healthz(request: Request) -> dict[str, Any]:
 def get_cdg(request: Request, job_id: str) -> Response:
     job = _job_or_404(request, job_id)
     return Response(
-        content=_artifact(job, "cdg.json").read_text(encoding="utf-8"),
+        content=_artifact(request, job, "cdg.json"),
         media_type="application/json",
     )
 
@@ -216,7 +257,7 @@ def get_trace(request: Request, job_id: str) -> dict[str, Any]:
 def get_meta(request: Request, job_id: str) -> Response:
     job = _job_or_404(request, job_id)
     return Response(
-        content=_artifact(job, "meta.json").read_text(encoding="utf-8"),
+        content=_artifact(request, job, "meta.json"),
         media_type="application/json",
     )
 
@@ -257,11 +298,22 @@ def list_examples() -> dict[str, Any]:
 
 @router.post("/examples/{slug}/replay", status_code=201)
 def replay_example(request: Request, slug: str) -> JSONResponse:
+    service = auth(request)
+    identity = service.identity(request, required=service.settings.required)
+    if identity:
+        service.csrf(request, identity)
+    _enforce_rate_limit(request)
     example = examples_mod.find_example(slug)
     if example is None:
         raise Reject("REPO_NOT_FOUND", "no such example")
 
     job = examples_mod.start_replay(example, _registry(request))
+    if identity:
+        with _registry(request).db.connect(write=True) as conn:
+            conn.execute(
+                "INSERT INTO analysis_access(job_id,user_id) VALUES(?,?)",
+                (job.id, identity.user_id),
+            )
     return JSONResponse(
         status_code=201,
         content={

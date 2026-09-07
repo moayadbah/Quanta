@@ -188,7 +188,7 @@ def test_hostile_urls_are_refused_by_the_cli(url: str, code: str, tmp_path: Path
     assert code in result.output
 
 
-def test_cbom_flag_refuses_rather_than_silently_ignoring(tmp_path: Path) -> None:
+def test_invalid_cbom_is_rejected(tmp_path: Path) -> None:
     """Accepting a flag that does nothing would let someone believe their CBOM was merged."""
     cbom = tmp_path / "cbom.json"
     cbom.write_text("{}")
@@ -203,8 +203,8 @@ def test_cbom_flag_refuses_rather_than_silently_ignoring(tmp_path: Path) -> None
             str(cbom),
         ],
     )
-    assert result.exit_code == 2
-    assert "not implemented" in result.output
+    assert result.exit_code == 1
+    assert "CBOM_INVALID" in result.output
 
 
 def test_version_reports_the_provenance_components() -> None:

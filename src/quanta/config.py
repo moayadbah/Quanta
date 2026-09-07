@@ -12,14 +12,19 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Any, Literal
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, SecretStr, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic_settings.sources import PydanticBaseSettingsSource
 
-_DEFAULT_CONFIG = Path(__file__).resolve().parents[2] / "config" / "default.toml"
+from quanta.resources import asset_path
+
+_DEFAULT_CONFIG = asset_path("config/default.toml")
 
 
 class IngestSettings(BaseModel):
     allowed_hosts: tuple[str, ...] = ("github.com",)
+    # Operator-supplied CONNECT proxy; never inherited from the submitting client.
+    proxy_url: str | None = None
     max_repo_kb: int = 200_000
     clone_timeout_s: int = 180
     max_files: int = 20_000
@@ -69,12 +74,9 @@ class StatsSettings(BaseModel):
 
 
 class Weights(BaseModel):
-    """Pre-registered Agility Score weights (§8.2).
+    """Fixed, versioned architecture-score weights; changes require a version bump.
 
-    Committed and git-tagged ``weights-v1`` before any engine result was observed.
-    Tuning these after observing results is overfitting and would invalidate the score
-    entirely (§11.2) — hence :meth:`validate_sum`, which fails loudly rather than
-    silently renormalising.
+    These are product defaults, not empirically calibrated migration-cost estimates.
     """
 
     version: str = "weights-v1"
@@ -95,6 +97,29 @@ class ReportSettings(BaseModel):
     renderer: Literal["builtin", "graphviz"] = "builtin"
 
 
+class AuthSettings(BaseModel):
+    required: bool = False
+    public_url: str = "http://localhost:8000"
+    github_client_id: str = ""
+    github_client_secret: SecretStr = SecretStr("")
+    encryption_key: SecretStr = SecretStr("")
+    session_hours: int = Field(default=8, ge=1, le=24)
+
+
+class ProductSettings(BaseModel):
+    scans_per_user_day: int = Field(default=3, ge=1, le=20)
+    scans_per_month: int = Field(default=50, ge=1, le=100)
+    max_fix_files: int = Field(default=20, ge=1, le=30)
+    max_fix_bytes: int = Field(default=500_000, ge=1000, le=1_000_000)
+
+
+class CloudSettings(BaseModel):
+    enabled: bool = False
+    database_url: SecretStr = SecretStr("")
+    sandbox_snapshot: str = ""
+    timeout_seconds: int = Field(default=180, ge=30, le=240)
+
+
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
         env_prefix="QUANTA_",
@@ -110,6 +135,50 @@ class Settings(BaseSettings):
     stats: StatsSettings = Field(default_factory=StatsSettings)
     weights: Weights = Field(default_factory=Weights)
     report: ReportSettings = Field(default_factory=ReportSettings)
+    auth: AuthSettings = Field(default_factory=AuthSettings)
+    product: ProductSettings = Field(default_factory=ProductSettings)
+    cloud: CloudSettings = Field(default_factory=CloudSettings)
+
+    db: Path = Path.home() / ".quanta" / "quanta.db"
+    artifact_root: Path = Path.home() / ".quanta" / "artifacts"
+    scratch_root: Path = Path.home() / ".quanta" / "scratch"
+    require_sandbox: bool = False
+    deployment: Literal["local", "vercel"] = "local"
+
+    @model_validator(mode="after")
+    def hosted_requires_auth(self) -> Settings:
+        if self.cloud.enabled or self.deployment == "vercel":
+            self.auth.required = True
+            if not self.auth.public_url.startswith("https://"):
+                raise ValueError("Hosted Quanta requires a canonical HTTPS public URL")
+        if self.cloud.enabled and not self.cloud.database_url.get_secret_value().startswith(
+            ("postgresql://", "postgres://")
+        ):
+            raise ValueError("Hosted scanning requires a PostgreSQL connection URL")
+        return self
+
+    def scanner_settings(self) -> Settings:
+        """Explicit allowlist: OAuth, database and hosting credentials never reach a scan."""
+        return Settings.model_construct(
+            ingest=self.ingest.model_copy(),
+            analysis=self.analysis.model_copy(),
+            weights=self.weights.model_copy(),
+            report=self.report.model_copy(),
+            product=self.product.model_copy(),
+            require_sandbox=self.require_sandbox,
+        )
+
+    @classmethod
+    def settings_customise_sources(
+        cls,
+        settings_cls: type[BaseSettings],
+        init_settings: PydanticBaseSettingsSource,
+        env_settings: PydanticBaseSettingsSource,
+        dotenv_settings: PydanticBaseSettingsSource,
+        file_secret_settings: PydanticBaseSettingsSource,
+    ) -> tuple[PydanticBaseSettingsSource, ...]:
+        # TOML is passed as initial data. Environment overrides must take precedence.
+        return env_settings, init_settings, dotenv_settings, file_secret_settings
 
 
 def _read_toml(path: Path) -> dict[str, Any]:

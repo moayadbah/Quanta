@@ -22,6 +22,9 @@
   },
 
   "tool": {
+    "polling": {"en": "Reconnecting. Progress updates every 3 seconds.", "ar": "جاري إعادة الاتصال. يتحدث التقدم كل ٣ ثوانٍ."},
+    "network_retry": {"en": "Could not connect. Check that Quanta is running and try again.", "ar": "تعذر الاتصال. تأكد من تشغيل Quanta وحاول مرة ثانية."},
+    "queued": {"en": "Queued. Waiting for an available worker.", "ar": "الطلب في قائمة الانتظار. يبدأ التحليل عند توفر عامل معالجة."},
     "title": { "en": "Measure a repository", "ar": "قياس مستودع" },
     "lead": {
       "en": "Paste a public GitHub repository. Quanta clones it at a fixed commit, builds the graph, and shows every step.",

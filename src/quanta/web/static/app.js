@@ -15,6 +15,8 @@
 
 "use strict";
 
+import { AnalysisWatcher } from "./progress.mjs";
+
 const $ = (id) => document.getElementById(id);
 const api = (path, opts) => fetch(`/api/v1${path}`, opts);
 
@@ -30,7 +32,7 @@ const state = {
   act: 0,
   cutRemoved: false,
   activeVariant: 0,
-  job: { id: null, source: null, cached: false },
+  job: { id: null, watcher: null, cached: false },
 };
 
 /* ── Small DOM helpers ────────────────────────────────────────────────────── */
@@ -554,6 +556,7 @@ async function boot() {
   goToAct(0);
   loadAbout();
   loadExamples();
+  resumeRun();
 }
 
 function wire() {
@@ -585,8 +588,9 @@ function wire() {
   });
 
   const reset = () => {
-    if (state.job.source) state.job.source.close();
-    state.job = { id: null, source: null, cached: false };
+    stopWatching();
+    state.job = { id: null, watcher: null, cached: false };
+    history.replaceState(null, "", location.pathname);
     showScreen("screen-submit");
   };
   $("cancel-run").addEventListener("click", reset);
@@ -690,40 +694,59 @@ async function startLive(url) {
 }
 
 async function replay(slug, repo) {
-  const response = await api(`/examples/${encodeURIComponent(slug)}/replay`, { method: "POST" });
-  const body = await response.json();
-  if (!response.ok) {
-    showSubmitError(body.error_code || "REPLAY_FAILED", body.detail);
-    return;
-  }
-  beginRun(body.job_id, repo, true);
+  try {
+    const response = await api(`/examples/${encodeURIComponent(slug)}/replay`, { method: "POST" });
+    const body = await response.json();
+    if (!response.ok) {
+      showSubmitError(body.error_code || "REPLAY_FAILED", body.detail);
+      return;
+    }
+    beginRun(body.job_id, repo, true);
+  } catch { showSubmitError("NETWORK", t("tool.network_retry")); }
+}
+
+function stopWatching() {
+  state.job.watcher?.stop();
+  state.job.watcher = null;
 }
 
 function beginRun(jobId, repo, cached) {
-  state.job = { id: jobId, source: null, cached };
+  stopWatching();
+  state.job = { id: jobId, watcher: null, cached };
+  history.replaceState(null, "", `#analysis=${encodeURIComponent(jobId)}`);
   $("pipeline-repo").textContent = repo;
   $("pipeline-sub").textContent = cached ? t("tool.cached_sub") : t("tool.live_sub");
   clear($("steps"));
+  STEP_ORDER.length = 0;
   setProgress(0);
   showScreen("screen-pipeline");
-
-  const source = new EventSource(`/api/v1/analyses/${jobId}/events`);
-  state.job.source = source;
-  source.addEventListener("plan", (e) => renderPlan(JSON.parse(e.data)));
-  source.addEventListener("step", (e) => renderStep(JSON.parse(e.data)));
-  source.addEventListener("done", () => { source.close(); showResult(jobId); });
-  source.addEventListener("failed", (e) => {
-    source.close();
-    const payload = JSON.parse(e.data);
-    showScreen("screen-submit");
-    showSubmitError(payload.error_code || "INTERNAL", payload.detail);
-  });
-  source.addEventListener("error", () => {
-    if (source.readyState === EventSource.CLOSED) {
+  state.job.watcher = new AnalysisWatcher(jobId, {
+    plan: renderPlan,
+    step: renderStep,
+    progress: setProgress,
+    status: (data) => {
+      if (data.status === "queued") $("pipeline-sub").textContent = t("tool.queued");
+    },
+    polling: () => { $("pipeline-sub").textContent = t("tool.polling"); },
+    done: () => showResult(jobId),
+    failure: (data) => {
       showScreen("screen-submit");
-      showSubmitError("CONNECTION_LOST", "");
-    }
-  });
+      showSubmitError(data.error_code || "INTERNAL", data.detail);
+    },
+  }).start();
+}
+
+async function resumeRun() {
+  const match = location.hash.match(/^#analysis=([0-9a-f-]{36})$/);
+  if (!match) return;
+  const jobId = match[1];
+  try {
+    const response = await api(`/analyses/${jobId}`);
+    if (!response.ok) return;
+    const status = await response.json();
+    showTool();
+    beginRun(jobId, (status.repo_url || "").replace("https://github.com/", ""), status.cached);
+  } catch { showSubmitError("NETWORK", t("tool.network_retry")); }
 }
 
 /** Drive the progress bar through an SVG width attribute.
@@ -816,10 +839,12 @@ const FORMULAS = {
 };
 
 async function showResult(jobId) {
-  const [score, trace] = await Promise.all([
-    (await api(`/analyses/${jobId}/score`)).json(),
-    (await api(`/analyses/${jobId}/trace`)).json(),
+  const responses = await Promise.all([
+    api(`/analyses/${jobId}/score`), api(`/analyses/${jobId}/trace`),
   ]);
+  if (responses.some((response) => !response.ok)) throw new Error("artifacts unavailable");
+  const [score, trace] = await Promise.all(responses.map((response) => response.json()));
+  if (state.job.id !== jobId) return;
 
   const repo = el("span");
   repo.dir = "ltr";

@@ -1,0 +1,75 @@
+{
+  "action": "Review correlated factors; this report never changes pre-registered weights.",
+  "flagged_pairs": [
+    {
+      "factors": [
+        "call_sites",
+        "isolation_layer"
+      ],
+      "rho": 1.0
+    },
+    {
+      "factors": [
+        "call_sites",
+        "selection_source"
+      ],
+      "rho": 0.8660254037844387
+    },
+    {
+      "factors": [
+        "call_sites",
+        "propagation_depth"
+      ],
+      "rho": 1.0
+    },
+    {
+      "factors": [
+        "isolation_layer",
+        "selection_source"
+      ],
+      "rho": 0.8660254037844387
+    },
+    {
+      "factors": [
+        "isolation_layer",
+        "propagation_depth"
+      ],
+      "rho": 1.0
+    },
+    {
+      "factors": [
+        "selection_source",
+        "propagation_depth"
+      ],
+      "rho": 0.8660254037844387
+    }
+  ],
+  "matrix": {
+    "call_sites": {
+      "call_sites": 1.0,
+      "isolation_layer": 1.0,
+      "propagation_depth": 1.0,
+      "selection_source": 0.8660254037844387
+    },
+    "isolation_layer": {
+      "call_sites": 1.0,
+      "isolation_layer": 1.0,
+      "propagation_depth": 1.0,
+      "selection_source": 0.8660254037844387
+    },
+    "propagation_depth": {
+      "call_sites": 1.0,
+      "isolation_layer": 1.0,
+      "propagation_depth": 1.0,
+      "selection_source": 0.8660254037844387
+    },
+    "selection_source": {
+      "call_sites": 0.8660254037844387,
+      "isolation_layer": 0.8660254037844387,
+      "propagation_depth": 0.8660254037844387,
+      "selection_source": 1.0
+    }
+  },
+  "method": "Spearman factor correlation",
+  "threshold": 0.8
+}

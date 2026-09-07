@@ -180,6 +180,17 @@
   </div>
   {% endif %}
 
+  {% if meta.cbom_sha256 %}
+  <p class="note">External CycloneDX 1.6 input: <code>{{ meta.cbom_sha256 }}</code>.
+    {{ meta.cbom_unlocated }} assets or occurrences had no usable source location and are excluded
+    from source scoring. Imported graph nodes carry <code>source: cbom</code>.</p>
+  {% endif %}
+  {% if meta.truncations|length > 1 %}
+  <ul>{% for item in meta.truncations %}
+    <li>{{ safe(item.reason) }}: limit {{ item.limit }}, observed {{ item.observed }}</li>
+  {% endfor %}</ul>
+  {% endif %}
+
   {% if meta.unparseable %}
   <h2>Unparseable files</h2>
   <table>

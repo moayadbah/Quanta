@@ -24,13 +24,14 @@ from __future__ import annotations
 import os
 import re
 import shutil
+import stat
 import subprocess
 import tempfile
 from collections.abc import Iterator
 from contextlib import contextmanager, suppress
 from dataclasses import dataclass, field
 from pathlib import Path
-from urllib.parse import urlparse
+from urllib.parse import quote, urlparse
 
 import httpx
 from pydantic import BaseModel, ConfigDict
@@ -116,14 +117,14 @@ def parse_repo_url(raw: str, settings: Settings | None = None) -> tuple[str, str
     if hostname is None or hostname.lower() not in cfg.ingest.allowed_hosts:
         raise Reject("HOST_NOT_ALLOWED", f"host {hostname!r} is not in the allowlist")
 
-    if u.username or u.password:
+    if "@" in u.netloc:
         raise Reject("URL_MALFORMED", "userinfo is not permitted")
 
     try:
         port = u.port
     except ValueError as exc:
         raise Reject("URL_MALFORMED", f"invalid port: {exc}") from exc
-    if port is not None:
+    if port is not None or ":" in u.netloc:
         raise Reject("URL_MALFORMED", "explicit ports are not permitted")
 
     if u.query or u.fragment or u.params:
@@ -131,7 +132,9 @@ def parse_repo_url(raw: str, settings: Settings | None = None) -> tuple[str, str
 
     # Split without discarding empty segments: "o//r" must be rejected, not silently
     # collapsed into a valid-looking pair.
-    parts = u.path.strip("/").split("/")
+    if raw != raw.strip() or not u.path.startswith("/") or u.path.startswith("//"):
+        raise Reject("URL_MALFORMED", "URL must have a single leading path separator")
+    parts = u.path.removeprefix("/").removesuffix("/").split("/")
     if len(parts) != 2 or not all(parts):
         raise Reject("URL_MALFORMED", "path must be exactly /{owner}/{repo}")
 
@@ -164,6 +167,7 @@ def resolve_metadata(
     round trip instead of a clone.
     """
     cfg = settings or get_settings()
+    parse_repo_url(f"https://github.com/{owner}/{name}", cfg)
     owned = client is None
     http = client or httpx.Client(
         timeout=30.0,
@@ -187,8 +191,11 @@ def resolve_metadata(
             )
 
         default_branch = str(repo["default_branch"])
-        commit = _get_json(http, f"{GITHUB_API}/repos/{owner}/{name}/commits/{default_branch}")
+        branch = quote(default_branch, safe="")
+        commit = _get_json(http, f"{GITHUB_API}/repos/{owner}/{name}/commits/{branch}")
         commit_sha = str(commit["sha"])
+        if not re.fullmatch(r"[a-f0-9]{40}", commit_sha):
+            raise Reject("GITHUB_UNAVAILABLE", "GitHub returned an invalid commit identifier")
 
         return RepoMetadata(
             owner=owner,
@@ -207,7 +214,7 @@ def _get_json(http: httpx.Client, url: str) -> dict[str, object]:
     try:
         resp = http.get(url)
     except httpx.HTTPError as exc:
-        raise Reject("GITHUB_UNAVAILABLE", f"GitHub API request failed: {exc}") from exc
+        raise Reject("GITHUB_UNAVAILABLE", "GitHub API request failed") from exc
 
     if resp.status_code == 404:
         raise Reject("REPO_NOT_FOUND", "repository does not exist or is not public")
@@ -218,7 +225,12 @@ def _get_json(http: httpx.Client, url: str) -> dict[str, object]:
     if resp.status_code >= 400:
         raise Reject("GITHUB_UNAVAILABLE", f"GitHub API returned {resp.status_code}")
 
-    payload: dict[str, object] = resp.json()
+    try:
+        payload = resp.json()
+    except ValueError as exc:
+        raise Reject("GITHUB_UNAVAILABLE", "GitHub returned invalid JSON") from exc
+    if not isinstance(payload, dict):
+        raise Reject("GITHUB_UNAVAILABLE", "GitHub returned an unexpected response")
     return payload
 
 
@@ -338,6 +350,9 @@ def clone_pinned(
     attacker-supplied code executing on our host during checkout.
     """
     cfg = settings or get_settings()
+    parse_repo_url(f"https://github.com/{owner}/{name}", cfg)
+    if not re.fullmatch(r"[a-f0-9]{40}", sha):
+        raise Reject("SHA_MISMATCH", "invalid pinned commit identifier")
     env = _git_env(dest)
     git = _git_binary()
     url = f"https://github.com/{owner}/{name}.git"
@@ -350,6 +365,14 @@ def clone_pinned(
                 f"core.hooksPath={hooks_path(dest)}",
                 "-c",
                 "protocol.ext.allow=never",
+                "-c",
+                "http.followRedirects=false",
+                "-c",
+                "credential.helper=",
+                # The minimal Git environment drops ambient proxy variables. An explicit
+                # deployment setting routes acquisition through the confined egress tier.
+                "-c",
+                f"http.proxy={cfg.ingest.proxy_url or ''}",
                 "clone",
                 "--depth=1",
                 "--single-branch",
@@ -380,6 +403,7 @@ def clone_pinned(
         text=True,
         check=True,
         stdin=subprocess.DEVNULL,
+        timeout=cfg.ingest.clone_timeout_s,
     ).stdout.strip()
 
     if head != sha:
@@ -393,7 +417,9 @@ def _force_writable(root: Path) -> None:
     for dirpath, dirnames, _filenames in os.walk(root, topdown=False, followlinks=False):
         for name in dirnames:
             with suppress(OSError):
-                (Path(dirpath) / name).chmod(0o700)
+                child = Path(dirpath) / name
+                if not child.is_symlink():
+                    child.chmod(0o700)
     with suppress(OSError):
         root.chmod(0o700)
 
@@ -410,6 +436,9 @@ def remove_tree(path: Path) -> None:
     Errors are swallowed rather than raised: this always executes in a ``finally``, where
     an exception would mask the original failure.
     """
+    if path.is_symlink():
+        path.unlink(missing_ok=True)
+        return
     if not path.exists():
         return
     shutil.rmtree(path, ignore_errors=True)
@@ -422,14 +451,16 @@ def remove_tree(path: Path) -> None:
 
 
 @contextmanager
-def scratch_dir(prefix: str = "quanta-") -> Iterator[Path]:
+def scratch_dir(prefix: str = "quanta-", parent: Path | None = None) -> Iterator[Path]:
     """An ephemeral clone directory, removed **unconditionally** at exit (INGEST-06/09).
 
     Third-party source is never retained. Besides being the stated data-handling rule,
     this removes the copyleft redistribution question entirely, and it keeps committer
     names and email addresses — personal data under GDPR and the PDPL — off the host.
     """
-    path = Path(tempfile.mkdtemp(prefix=prefix))
+    if parent is not None:
+        parent.mkdir(parents=True, exist_ok=True)
+    path = Path(tempfile.mkdtemp(prefix=prefix, dir=parent))
     try:
         yield path
     finally:
@@ -541,7 +572,10 @@ def walk_repository(root: Path, settings: Settings | None = None) -> WalkResult:
                 continue
 
             try:
-                size = p.stat().st_size
+                file_stat = p.stat()
+                if not stat.S_ISREG(file_stat.st_mode):
+                    continue
+                size = file_stat.st_size
             except OSError:
                 continue
 
