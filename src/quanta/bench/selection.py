@@ -54,6 +54,10 @@ OSI_LICENSES = frozenset(
     }
 )
 
+TRANSIENT_FAILURES = frozenset(
+    {"RATE_LIMITED", "GITHUB_UNAVAILABLE", "CLONE_FAILED", "CLONE_TIMEOUT", "SHA_MISMATCH"}
+)
+
 
 def select(root: Path, *, pages: int = 10) -> Dataset:
     cfg = get_settings()
@@ -134,7 +138,7 @@ def select(root: Path, *, pages: int = 10) -> Dataset:
             row.get("repo")
             for row in read_jsonl(log)
             if row.get("decision") in {"accept", "reject"}
-            and row.get("code") not in {"RATE_LIMITED", "GITHUB_UNAVAILABLE"}
+            and row.get("code") not in TRANSIENT_FAILURES
         }
         ordered = sorted(
             candidates.values(), key=lambda r: (-r["stargazers_count"], r["full_name"])
@@ -215,8 +219,18 @@ def select(root: Path, *, pages: int = 10) -> Dataset:
                 )
                 write_canonical_json(path, dataset)
             except Reject as exc:
-                record({"repo": slug, "decision": "reject", "reason": exc.detail, "code": exc.code})
-                if exc.code in {"RATE_LIMITED", "GITHUB_UNAVAILABLE"}:
+                transient = exc.code in TRANSIENT_FAILURES
+                record(
+                    {
+                        "repo": slug,
+                        "decision": "defer" if transient else "reject",
+                        "reason": exc.detail,
+                        "code": exc.code,
+                    }
+                )
+                # Do not select a lower-ranked repository just because acquisition of
+                # this one failed. Retry it in the same saved ordering on the next run.
+                if transient:
                     raise
             if len(dataset.repositories) == 12:
                 break

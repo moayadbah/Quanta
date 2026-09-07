@@ -2,7 +2,10 @@
 
 The software prepares and validates the work; real independent annotations are required
 before migration engines may be written. This is the gate in sections 2.4, 6 and 11 of the
-technical document. The committed corpus is a draft with no selected repositories.
+technical document. The committed corpus is a draft with no selected repositories. The
+1,000-repository search snapshot and the interrupted acquisition audit are saved; the
+anonymous API quota and this workspace's explicit-proxy requirement prevented selection.
+These acquisition failures are deferrals, not evidence that the projects are unsuitable.
 
 ## 1. Prepare candidates
 
@@ -18,7 +21,11 @@ uv run quanta bench worksheet --annotator a2
 
 Selection may need more than the anonymous GitHub API quota. On a transient API failure,
 wait for the quota to recover and rerun `bench select`; the saved catalog preserves the
-ordering and accepted pins. The selector never asks for a token in the analysis service.
+ordering and accepted pins. Transport failures and moving heads halt selection and retry
+the same candidate on the next run, so network availability cannot alter the sample.
+If your environment requires an acquisition proxy, set `QUANTA_INGEST__PROXY_URL` to its
+approved endpoint explicitly; Git discards ambient proxy variables and credentials.
+The selector never asks for a token in the analysis service.
 A corpus that does not fill all size bands stays a partial draft with explicit rejections.
 Candidate enumeration rejects a moved repository head rather than changing its pin.
 
