@@ -14,10 +14,13 @@ throughout the outage.
 from __future__ import annotations
 
 import os
+import subprocess
 from pathlib import Path
+from unittest.mock import patch
 
 import pytest
 
+from quanta.config import IngestSettings, Settings
 from quanta.core import ingest
 from quanta.core.ingest import _git_env, _git_search_path, hooks_path
 
@@ -107,3 +110,23 @@ def test_posix_keeps_its_pinned_path(tmp_path: Path, monkeypatch: pytest.MonkeyP
 
     assert env["PATH"] == "/usr/bin:/bin"
     assert env["GIT_ASKPASS"] == "/bin/true"
+
+
+@pytest.mark.parametrize("proxy", [None, "http://github-egress:8080"])
+def test_acquisition_proxy_is_explicit_and_cannot_inherit_user_credentials(
+    proxy: str | None, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setenv("HTTPS_PROXY", "http://user:secret@untrusted.test:8080")
+    monkeypatch.setenv("NO_PROXY", "*")
+    sha = "a" * 40
+    cfg = Settings(ingest=IngestSettings(proxy_url=proxy))
+    with patch.object(ingest.subprocess, "run") as run:
+        run.side_effect = [
+            subprocess.CompletedProcess([], 0),
+            subprocess.CompletedProcess([], 0, stdout=sha + "\n"),
+        ]
+        ingest.clone_pinned("owner", "repo", sha, tmp_path / "repo", cfg)
+    clone = run.call_args_list[0]
+    assert f"http.proxy={proxy or ''}" in clone.args[0]
+    assert all("proxy" not in name.lower() for name in clone.kwargs["env"])
+    assert "secret" not in str(clone)

@@ -62,6 +62,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Start local service
         run: docker compose up --build -d --wait
+      - name: Verify worker acquisition network boundary
+        run: docker compose exec -T worker python - < scripts/check_worker_egress.py
       - name: Exercise worker and public repository flow
         run: python scripts/smoke_service.py --live
       - name: Container logs
