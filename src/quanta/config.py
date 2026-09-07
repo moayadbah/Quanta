@@ -23,6 +23,8 @@ _DEFAULT_CONFIG = asset_path("config/default.toml")
 
 class IngestSettings(BaseModel):
     allowed_hosts: tuple[str, ...] = ("github.com",)
+    # Operator-supplied CONNECT proxy; never inherited from the submitting client.
+    proxy_url: str | None = None
     max_repo_kb: int = 200_000
     clone_timeout_s: int = 180
     max_files: int = 20_000

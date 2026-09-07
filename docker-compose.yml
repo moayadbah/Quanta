@@ -1,6 +1,8 @@
 services:
   api:
-    build: .
+    build:
+      context: .
+      target: runtime
     image: quanta:local
     command: [quanta, serve, --host, 0.0.0.0, --port, '8000']
     ports: ['127.0.0.1:8000:8000']
@@ -17,15 +19,25 @@ services:
       start_period: 15s
       retries: 5
   worker:
-    build: .
+    build:
+      context: .
+      target: runtime
     image: quanta:local
     command: [quanta, worker, --id, w1]
     depends_on:
       api:
         condition: service_healthy
+      github-egress:
+        condition: service_healthy
     volumes: ['quanta-data:/var/lib/quanta']
     environment:
       QUANTA_REQUIRE_SANDBOX: 'true'
+      QUANTA_INGEST__PROXY_URL: 'http://github-egress:8080'
+    # No external route, including when application URL validation is bypassed.
+    networks: [acquisition]
+    # Docker resolves the internal proxy name; external DNS forwarding is disabled.
+    dns: ['127.0.0.1']
+    dns_opt: ['timeout:1', 'attempts:1']
     read_only: true
     tmpfs:
       - '/tmp:size=64m,noexec,nosuid,nodev,mode=1777'
@@ -36,5 +48,27 @@ services:
     mem_limit: 2g
     pids_limit: 512
     stop_grace_period: 5s
+  github-egress:
+    build:
+      context: .
+      target: github-egress
+    networks: [acquisition, egress]
+    read_only: true
+    tmpfs: ['/tmp:size=16m,noexec,nosuid,nodev,mode=1777']
+    cap_drop: [ALL]
+    security_opt: ['no-new-privileges:true']
+    mem_limit: 256m
+    pids_limit: 64
+    healthcheck:
+      test: [CMD, bash, -c, 'exec 3<>/dev/tcp/127.0.0.1/8080']
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    stop_grace_period: 5s
 volumes:
   quanta-data:
+networks:
+  default:
+  acquisition:
+    internal: true
+  egress:

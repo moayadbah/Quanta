@@ -94,8 +94,9 @@ node --test tests/frontend.test.mjs
 uv build --wheel
 ```
 
-CI also builds and starts the Compose service, checks its worker and example replay, and
-submits a public repository twice to exercise pinned ingestion and cache reuse.
+CI also builds and starts the Compose service, checks its worker and example replay,
+tests the worker's actual acquisition network boundary, and submits a public repository
+twice to exercise pinned ingestion and cache reuse.
 `tests/security` covers URL rejection before network access, traversal, symlinks, special
 files, budgets, forbidden execution paths, report escaping, artifact confinement, and
 Linux post-clone network isolation. Database tests cover restart persistence, competing
@@ -109,10 +110,13 @@ A result without detected cryptography does not prove its absence. Target tests 
 migration execution are not exposed through the web API.
 
 Compose runs as non-root with dropped capabilities, a read-only filesystem and bounded,
-non-executable scratch space. A Linux seccomp filter cuts network access after cloning.
-Acquisition uses allowlisted URLs and disabled Git redirects, hooks and credential helpers.
-An **OS-level GitHub-only firewall during acquisition remains unimplemented**; do not
-interpret the current controls as all of section 7.3 or as authorization for public hosting.
+non-executable scratch space. The worker's internal Docker network has no direct external
+route. Its only acquisition path is a separate CONNECT proxy allowing the exact names
+`github.com` and `api.github.com` on port 443. External DNS forwarding is disabled in the
+worker. Git verifies GitHub's TLS certificate through the tunnel; a Linux seccomp filter
+cuts network access after cloning. Redirects, hooks and credential helpers are disabled.
+These controls depend on the supplied Compose topology and are not provided by native
+development commands. Public hosting and hostile target-code execution remain out of scope.
 See [ADR-023](docs/adr/ADR-023-durable-local-analysis.md).
 
 The existing ADRs preserve the no-build frontend, deterministic SVG renderer and corrected

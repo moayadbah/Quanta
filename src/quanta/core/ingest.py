@@ -369,6 +369,10 @@ def clone_pinned(
                 "http.followRedirects=false",
                 "-c",
                 "credential.helper=",
+                # The minimal Git environment drops ambient proxy variables. An explicit
+                # deployment setting routes acquisition through the confined egress tier.
+                "-c",
+                f"http.proxy={cfg.ingest.proxy_url or ''}",
                 "clone",
                 "--depth=1",
                 "--single-branch",

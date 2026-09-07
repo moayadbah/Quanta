@@ -5,7 +5,16 @@ WORKDIR /app
 COPY . .
 RUN uv sync --locked --no-dev --no-editable
 
-FROM python:3.12-slim-bookworm
+# Separate trust boundary: the worker has no direct external network route.
+FROM debian:bookworm-slim AS github-egress
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends squid ca-certificates \
+ && rm -rf /var/lib/apt/lists/*
+COPY deploy/squid.conf /etc/squid/squid.conf
+USER proxy:proxy
+CMD ["squid", "-N", "-f", "/etc/squid/squid.conf"]
+
+FROM python:3.12-slim-bookworm AS runtime
 RUN apt-get update \
  && apt-get install -y --no-install-recommends git ca-certificates libseccomp2 \
  && rm -rf /var/lib/apt/lists/* \
