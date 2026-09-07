@@ -18,7 +18,7 @@ from quanta.errors import Reject
 
 
 def prepare(cfg: Settings) -> None:
-    if os.name == "posix":
+    if os.name == "posix" and os.getpgrp() != os.getpid():
         os.setsid()
     # Do not give the parser process inherited service tokens or user configuration.
     allowed = {"PATH", "LANG", "LC_ALL", "SYSTEMROOT", "SystemRoot", "WINDIR", "TEMP", "TMP"}
