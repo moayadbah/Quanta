@@ -4,6 +4,34 @@ Use the existing `moayadbah/Quanta` repository. Keep the project on Vercel Hobby
 choose a free PostgreSQL plan. This setup serves the full Python application, not a
 static screenshot of the demo.
 
+## Provisioned deployment targets
+
+Continue with these existing resources. Do not create a duplicate project or use
+`min-taht`.
+
+| Service | Resource | Free plan |
+| --- | --- | --- |
+| GitHub | `moayadbah/Quanta`, branch `main` | Public repository |
+| Vercel | `quanta` in `moayadbahs-projects` | Hobby |
+| Supabase | `quanta` in `The-Underdog` | Free |
+
+Vercel project ID: `prj_D2nwzmDjmr4xJahr2rRbDewqdCiB`.
+Vercel team ID: `team_n3QHkd0FXRngDlIy0xpH7ueN`.
+Production domain: `https://quanta-moayadbahs-projects.vercel.app`.
+
+Supabase project reference: `sktxismylxomhrpnmult`.
+Organization ID: `ntppzxoqbwlkzoxbuwib`. Region: Frankfurt (`eu-central-1`).
+The `initialize_quanta_private_storage` migration has installed all ten application
+tables in the private `quanta` schema. RLS is enabled on every table; `anon`,
+`authenticated`, and `service_role` have no table access. This was verified directly
+on September 8, 2026, along with a rolled-back atomic quota update. The security
+advisor's informational "RLS Enabled No Policy" notices are expected for this
+server-only schema; do not add browser policies to silence them.
+
+Provisioning these resources does not configure the application's runtime secrets.
+Complete the connection string, OAuth app and trusted scanner snapshot steps below,
+then run the production checks before describing hosted scanning as available.
+
 ## Architecture
 
 The FastAPI function handles authentication, private results and PR operations. A
@@ -29,7 +57,7 @@ Results become inaccessible after seven days; cleanup removes expired database r
    root; framework is FastAPI. `pyproject.toml` selects `api.index:app`. Python is pinned
    to 3.12. Keep the checked-in function duration. Use one stable production domain for
    GitHub sign-in; arbitrary preview domains are not OAuth callback destinations.
-2. Use the connected **Supabase Free** project. In **Connect**, choose **Transaction
+2. Use the **Supabase Free `quanta`** project listed above. In **Connect**, choose **Transaction
    pooler** (port 6543) and use its PostgreSQL connection URL, including `sslmode=require`,
    as `QUANTA_CLOUD__DATABASE_URL`. Enter the database password in that URL, with special
    characters URL-encoded. A Supabase project URL or publishable/anon/service-role key
@@ -40,7 +68,7 @@ Results become inaccessible after seven days; cleanup removes expired database r
    schemas; the browser accesses data only through Quanta's authenticated API. Connect as
    the schema owner (the project's `postgres` database user for initial setup).
 3. Register a GitHub OAuth app for Quanta. Set its homepage to the production URL and its
-   callback to exactly `https://YOUR-DOMAIN/auth/callback`. Disable wildcard callback
+   callback to exactly `https://quanta-moayadbahs-projects.vercel.app/auth/callback`. Disable wildcard callback
    matching. The application requests `read:user public_repo`; no private-repository
    scope is requested. `public_repo` permits public repository writes and is broader
    than a per-repository GitHub App permission. The privacy page states this clearly.
