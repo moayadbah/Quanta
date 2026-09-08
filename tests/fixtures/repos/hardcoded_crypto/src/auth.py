@@ -13,7 +13,7 @@ from cryptography.hazmat.primitives.kdf.hkdf import HKDF
 
 
 def legacy_digest(data: bytes) -> bytes:
-    return hashlib.sha1(data).digest()  # crypto_call, weak
+    return hashlib.sha256(data).digest()  # crypto_call, weak
 
 
 def token_mac(key: bytes, msg: bytes) -> bytes:
