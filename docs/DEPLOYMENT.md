@@ -34,12 +34,42 @@ The GitHub OAuth application **Quanta** is registered under `moayadbah`, applica
 ID `3844194`, with the public production homepage and the exact `/auth/callback`
 redirect. Wildcard matching and device flow are disabled.
 
-The production database connection and GitHub OAuth flow are configured. A real
-GitHub sign-in has returned to the workspace as `@moayadbah`; `/auth/session` reports
-`required: true` and `configured: true`. The OAuth secret, encryption key and database
-URL are stored as production-only Vercel Secrets. The live sample's selection, diff
-review and Arabic RTL flow have also been checked. The trusted scanner snapshot and
-real scan/draft PR acceptance checks are still pending.
+The production database connection, GitHub OAuth flow, isolated scans and reviewed
+draft pull requests are operational. The OAuth secret, encryption key and database
+URL are stored as production-only Vercel Secrets. The existing Vercel project is now
+connected to this GitHub repository's `main` branch.
+
+### Verified release and acceptance checks
+
+Runtime/scanner release: `8bee37bd3e75a3ba61f5d726d84e4a21f26c5e77`.
+Production deployment: `dpl_fCaxn3v7mCUi11K29wRQ3N2wm5qQ`.
+Trusted snapshot: `snap_VbtCFKMhw5SwE8X8pbXHns7d0Bne`.
+Retained, stopped builder: `lavender-massive-hoverfly-Msqw56`.
+Later documentation-only commits can deploy the same runtime without rebuilding this
+snapshot; rebuild it when scanner/runtime code or its pinned dependencies change.
+
+Verified on September 8, 2026:
+
+- `/auth/session` reports `required: true` and `configured: true`; real GitHub sign-in
+  returns to the workspace as `@moayadbah`, with the session persisted in PostgreSQL.
+- `/api/v1/workspace` reports `hosted: true` and `scan_available: true`.
+- Scan `9c9dedcd-f72c-4fe2-a8f4-0a897af21f65` analyzed `moayadbah/Quanta` at the release
+  commit: 132 Python files, 44 cryptographic call sites and one reviewable change.
+  Reloading during execution recovered the same job. The database records one attempt,
+  five durable artifacts and one scan quota charge (2 daily and 49 monthly scans left).
+- [Draft PR #5](https://github.com/moayadbah/Quanta/pull/5) was created through the live
+  application after reviewing the exact diff and acknowledging compatibility impact.
+  GitHub confirms one changed file and one SHA-1-to-SHA-256 replacement. Retrying the same
+  reviewed operation returned PR #5. It is labeled **do not merge** because the selected
+  file is an intentionally weak test fixture used for this acceptance check.
+- Production desktop layout and keyboard review focus/Escape behavior passed. The same
+  application assets were checked in a preview with a 375-pixel content viewport,
+  including English, Arabic RTL, selection and the review dialog; neither the page nor
+  dialog had horizontal overflow. Code diffs retain their own horizontal scrolling.
+- [Release CI](https://github.com/moayadbah/Quanta/actions/runs/34210093901) passed.
+  No production HTTP 5xx logs were recorded during the live checks. The database occupied
+  about 11.1 MB after acceptance; the security advisor reports only the expected ten
+  informational RLS-without-policy notices for the private schema.
 
 ## Architecture
 
