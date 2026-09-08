@@ -34,12 +34,12 @@ The GitHub OAuth application **Quanta** is registered under `moayadbah`, applica
 ID `3844194`, with the public production homepage and the exact `/auth/callback`
 redirect. Wildcard matching and device flow are disabled.
 
-The FastAPI production deployment is ready, and the live sample's selection, diff
-review and Arabic RTL flow have been checked. Runtime configuration is still pending:
-`/auth/session` reports `configured: false`, and `/api/v1/workspace` reports
-`scan_available: false`. Complete the encrypted environment settings, database
-connection and trusted scanner snapshot steps below, then run the production checks
-before describing hosted scanning or real draft PR creation as available.
+The production database connection and GitHub OAuth flow are configured. A real
+GitHub sign-in has returned to the workspace as `@moayadbah`; `/auth/session` reports
+`required: true` and `configured: true`. The OAuth secret, encryption key and database
+URL are stored as production-only Vercel Secrets. The live sample's selection, diff
+review and Arabic RTL flow have also been checked. The trusted scanner snapshot and
+real scan/draft PR acceptance checks are still pending.
 
 ## Architecture
 
@@ -75,7 +75,10 @@ Results become inaccessible after seven days; cleanup removes expired database r
    in a private `quanta` schema at startup under a database lock. It revokes Data API role
    grants and enables RLS with no browser policies. Keep `quanta` out of Supabase's exposed
    schemas; the browser accesses data only through Quanta's authenticated API. Connect as
-   the schema owner (the project's `postgres` database user for initial setup).
+   the dedicated schema owner `quanta_app`, using pooler username
+   `quanta_app.sktxismylxomhrpnmult`. This login owns only Quanta's application schema
+   and tables, has database `CONNECT` and `CREATE` privileges for startup, and has no
+   superuser, role-management, database-creation or global RLS-bypass privilege.
 3. Use the registered GitHub OAuth app for Quanta listed above. Its homepage must be the
    public production URL and its callback exactly `https://quanta-gilt-mu.vercel.app/auth/callback`.
    Disable wildcard callback
@@ -97,9 +100,14 @@ Results become inaccessible after seven days; cleanup removes expired database r
    ```
 
    `vercel env pull` writes a file; export its relevant variables in your shell before
-   running Python. The builder installs only the pinned Quanta runtime, checks the real
-   sample, and snapshots it. Credentials authenticate SDK requests and are not copied
-   into the VM. Save the returned snapshot ID as `QUANTA_CLOUD__SANDBOX_SNAPSHOT`.
+   running Python. The builder verifies the checkout SHA, installs only the pinned Quanta
+   runtime into the sandbox's root `.venv`, checks the real sample, and snapshots it.
+   Current Sandbox images place Git checkouts in a repository-named child directory;
+   the script handles this separately from the runtime working directory. Credentials
+   authenticate SDK requests and are not copied into the VM. Save the returned snapshot
+   ID as `QUANTA_CLOUD__SANDBOX_SNAPSHOT` and retain the printed builder sandbox name.
+   The builder is stopped after snapshot creation. Do not destroy it while its snapshot
+   is deployed: destroying a sandbox also removes its snapshots.
 6. Set `QUANTA_CLOUD__ENABLED=true`, redeploy, then test the production URL. Vercel's SDK
    uses the function's OIDC identity automatically. You do not need to give each visitor
    a Vercel credential. Keep snapshot and function code at the same Quanta version.
@@ -164,8 +172,9 @@ CI after reviewing the draft PR. A moved default branch, changed source blob, sy
 unrelated fork or edited Quanta branch is refused, never force-pushed.
 
 For each release, create the new scanner snapshot from that release's tested commit,
-update the snapshot environment value, deploy the matching function revision and remove
-the superseded snapshot after checking the deployment. Do not let snapshots accumulate.
+update the snapshot environment value, deploy the matching function revision and destroy
+the superseded builder after checking the deployment. This also removes its snapshots.
+Do not let stopped builders and snapshots accumulate.
 
 References checked September 2026:
 [FastAPI](https://vercel.com/docs/frameworks/backend/fastapi),
