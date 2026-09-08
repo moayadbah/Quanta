@@ -17,7 +17,9 @@ Continue with these existing resources. Do not create a duplicate project or use
 
 Vercel project ID: `prj_D2nwzmDjmr4xJahr2rRbDewqdCiB`.
 Vercel team ID: `team_n3QHkd0FXRngDlIy0xpH7ueN`.
-Production domain: `https://quanta-moayadbahs-projects.vercel.app`.
+Public production domain: `https://quanta-gilt-mu.vercel.app`.
+The additional `quanta-moayadbahs-projects.vercel.app` alias requires Vercel sign-in;
+use the public production domain for visitors and OAuth callbacks.
 
 Supabase project reference: `sktxismylxomhrpnmult`.
 Organization ID: `ntppzxoqbwlkzoxbuwib`. Region: Frankfurt (`eu-central-1`).
@@ -28,9 +30,16 @@ on September 8, 2026, along with a rolled-back atomic quota update. The security
 advisor's informational "RLS Enabled No Policy" notices are expected for this
 server-only schema; do not add browser policies to silence them.
 
-Provisioning these resources does not configure the application's runtime secrets.
-Complete the connection string, OAuth app and trusted scanner snapshot steps below,
-then run the production checks before describing hosted scanning as available.
+The GitHub OAuth application **Quanta** is registered under `moayadbah`, application
+ID `3844194`, with the public production homepage and the exact `/auth/callback`
+redirect. Wildcard matching and device flow are disabled.
+
+The FastAPI production deployment is ready, and the live sample's selection, diff
+review and Arabic RTL flow have been checked. Runtime configuration is still pending:
+`/auth/session` reports `configured: false`, and `/api/v1/workspace` reports
+`scan_available: false`. Complete the encrypted environment settings, database
+connection and trusted scanner snapshot steps below, then run the production checks
+before describing hosted scanning or real draft PR creation as available.
 
 ## Architecture
 
@@ -67,8 +76,9 @@ Results become inaccessible after seven days; cleanup removes expired database r
    grants and enables RLS with no browser policies. Keep `quanta` out of Supabase's exposed
    schemas; the browser accesses data only through Quanta's authenticated API. Connect as
    the schema owner (the project's `postgres` database user for initial setup).
-3. Register a GitHub OAuth app for Quanta. Set its homepage to the production URL and its
-   callback to exactly `https://quanta-moayadbahs-projects.vercel.app/auth/callback`. Disable wildcard callback
+3. Use the registered GitHub OAuth app for Quanta listed above. Its homepage must be the
+   public production URL and its callback exactly `https://quanta-gilt-mu.vercel.app/auth/callback`.
+   Disable wildcard callback
    matching. The application requests `read:user public_repo`; no private-repository
    scope is requested. `public_repo` permits public repository writes and is broader
    than a per-repository GitHub App permission. The privacy page states this clearly.
