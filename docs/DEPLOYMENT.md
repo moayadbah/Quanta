@@ -29,10 +29,16 @@ Results become inaccessible after seven days; cleanup removes expired database r
    root; framework is FastAPI. `pyproject.toml` selects `api.index:app`. Python is pinned
    to 3.12. Keep the checked-in function duration. Use one stable production domain for
    GitHub sign-in; arbitrary preview domains are not OAuth callback destinations.
-2. Create a **free** PostgreSQL database, such as Neon Free. Set its pooled connection
-   URL, including `sslmode=require`, as `QUANTA_CLOUD__DATABASE_URL`. Tables are created
-   idempotently at application startup under a database lock. This is a new application
-   database; do not reuse a database containing unrelated application tables named `jobs`.
+2. Use the connected **Supabase Free** project. In **Connect**, choose **Transaction
+   pooler** (port 6543) and use its PostgreSQL connection URL, including `sslmode=require`,
+   as `QUANTA_CLOUD__DATABASE_URL`. Enter the database password in that URL, with special
+   characters URL-encoded. A Supabase project URL or publishable/anon/service-role key
+   is not a PostgreSQL connection string. Use Vercel's encrypted environment settings.
+   Quanta disables prepared statements for the transaction pooler and creates its tables
+   in a private `quanta` schema at startup under a database lock. It revokes Data API role
+   grants and enables RLS with no browser policies. Keep `quanta` out of Supabase's exposed
+   schemas; the browser accesses data only through Quanta's authenticated API. Connect as
+   the schema owner (the project's `postgres` database user for initial setup).
 3. Register a GitHub OAuth app for Quanta. Set its homepage to the production URL and its
    callback to exactly `https://YOUR-DOMAIN/auth/callback`. Disable wildcard callback
    matching. The application requests `read:user public_repo`; no private-repository
@@ -64,6 +70,19 @@ Without complete configuration the homepage and sample remain usable. Hosted sca
 fail closed. OAuth is unavailable without durable storage; a public deployment never
 uses local development's unsigned scan path.
 
+### What the GitHub connections do
+
+Connecting Supabase to GitHub links source-control workflows. It does not supply a
+PostgreSQL password to Vercel or register the OAuth app used by Quanta's visitors.
+Quanta uses Supabase as its database and handles GitHub OAuth on its own backend so it
+can retain the provider permission needed for reviewed draft pull requests. Supabase
+Auth, Storage, Edge Functions and paid branching are not required for this setup.
+
+If PostgreSQL was used with a Quanta revision before private-schema support, its tables
+are in `public`. Back up and explicitly migrate those Quanta tables into `quanta` before
+upgrading that installation. Startup does not move or read unrelated `public` tables.
+Local SQLite installations are unchanged.
+
 ## Free limits
 
 The defaults are deliberately small: three new scans per user per UTC day and fifty
@@ -78,6 +97,13 @@ Vercel documents five included Sandbox CPU-hours per month on Hobby and pauses c
 when its quota is exhausted. This is why the deployment must stay on Hobby. On paid
 plans, usage can be billed. Keep the database on its free plan as well. Application
 limits do not replace the providers' plan and account settings.
+
+Supabase Free allows 500 MB of database data and enters read-only mode above that limit.
+The app's 4 MB output cap and 50 monthly scans bound new raw result data to 200 MB per
+month before compression; seven-day retention reduces live result storage. Database
+metadata, indexes, dead tuples and other projects' data still count. Keep the project on
+Free, leave autovacuum enabled, and check Supabase's database-size report before opening
+the service widely. Free projects can pause after inactivity and may need resuming.
 
 ## Before sharing the URL
 
@@ -108,4 +134,7 @@ References checked September 2026:
 [Sandbox Python SDK](https://vercel.com/docs/sandbox/python-sdk-reference),
 [Sandbox pricing](https://vercel.com/docs/sandbox/pricing),
 [Sandbox authentication](https://vercel.com/docs/sandbox/concepts/authentication),
+[Supabase connections](https://supabase.com/docs/guides/database/connecting-to-postgres),
+[Supabase Data API security](https://supabase.com/docs/guides/api/securing-your-api),
+[Supabase database limits](https://supabase.com/docs/guides/platform/database-size),
 [GitHub OAuth](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps).
