@@ -7,6 +7,7 @@ therefore never share a connection or an in-memory source of job truth.
 from __future__ import annotations
 
 import json
+import re
 import sqlite3
 import time
 from collections.abc import Iterator
@@ -65,6 +66,26 @@ CREATE TABLE IF NOT EXISTS artifact_blobs (
 );
 """
 
+TABLE_NAMES = tuple(re.findall(r"CREATE TABLE IF NOT EXISTS (\w+)", SCHEMA))
+
+
+def protect_postgres_schema(conn: PostgresConnection) -> None:
+    """Keep server-owned data private, including on Supabase's older default grants."""
+    # This is an application-only schema. Never expose it through the Data API.
+    # All identifiers below come from our static schema or this fixed role allowlist.
+    roles = ["PUBLIC"]
+    for role in ("anon", "authenticated", "service_role"):
+        if conn.execute("SELECT 1 FROM pg_roles WHERE rolname=?", (role,)).fetchone():
+            roles.append(role)
+    for role in roles:
+        conn.execute(f"REVOKE ALL ON SCHEMA quanta FROM {role}")
+        conn.execute(f"REVOKE ALL ON ALL TABLES IN SCHEMA quanta FROM {role}")
+        conn.execute(f"REVOKE ALL ON ALL SEQUENCES IN SCHEMA quanta FROM {role}")
+    for table in TABLE_NAMES:
+        conn.execute(f"ALTER TABLE quanta.{table} ENABLE ROW LEVEL SECURITY")
+    # No browser policies: requests go through FastAPI's ownership/CSRF checks.
+    # The server connects as the schema owner and can therefore use these tables.
+
 
 def timestamp(epoch: float | None = None) -> str:
     return datetime.fromtimestamp(time.time() if epoch is None else epoch, UTC).isoformat()
@@ -109,9 +130,11 @@ class Database:
                 )
                 # Serialize startup migrations across cold function instances.
                 conn.execute("SELECT pg_advisory_xact_lock(72682417)")
+                conn.execute("CREATE SCHEMA IF NOT EXISTS quanta")
                 for statement in schema.split(";"):
                     if statement.strip():
                         conn.execute(statement)
+                protect_postgres_schema(conn)
             else:
                 conn.execute("PRAGMA journal_mode=WAL")
                 conn.executescript(SCHEMA)
@@ -125,8 +148,17 @@ class Database:
                 names = [column.name for column in cursor.description] if cursor.description else []
                 return lambda values: Record(zip(names, values, strict=True))
 
-            with psycopg.connect(self.url, connect_timeout=10, row_factory=row_factory) as pg:
+            with psycopg.connect(
+                self.url,
+                connect_timeout=10,
+                row_factory=row_factory,
+                # Supabase's transaction pooler cannot retain prepared statements.
+                prepare_threshold=None,
+            ) as pg:
                 wrapper = PostgresConnection(pg)
+                # Transaction-local settings survive every request in transaction
+                # pooling without leaking the search path to another pool client.
+                wrapper.execute("SET LOCAL search_path = quanta, pg_catalog")
                 if write:
                     wrapper.execute("SELECT pg_advisory_xact_lock(72682417)")
                 yield wrapper
