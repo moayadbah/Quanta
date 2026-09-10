@@ -7,18 +7,18 @@ test('repository input accepts PyJWT links and shorthand as the same HTTPS URL',
   for (const input of [
     'https://github.com/jpadilla/pyjwt',
     'https://github.com/jpadilla/pyjwt/',
-    'https://github.com/jpadilla/pyjwt.git',
     'https://www.github.com/jpadilla/pyjwt',
     'http://github.com/jpadilla/pyjwt',
     'HTTPS://GITHUB.COM/jpadilla/pyjwt',
     'github.com/jpadilla/pyjwt',
-    'www.github.com/jpadilla/pyjwt.git/',
     'jpadilla/pyjwt',
     '  jpadilla/pyjwt  ',
   ]) {
     assert.equal(normalizeRepositoryUrl(input), 'https://github.com/jpadilla/pyjwt', input);
   }
   assert.equal(normalizeRepositoryUrl('moayadbah/Quanta'), 'https://github.com/moayadbah/Quanta');
+  assert.equal(normalizeRepositoryUrl('www.github.com/jpadilla/pyjwt.git/'), 'https://github.com/jpadilla/pyjwt.git');
+  assert.equal(normalizeRepositoryUrl('owner/repo.git.git'), 'https://github.com/owner/repo.git.git');
 });
 
 test('repository input rejects ambiguous names and unsafe URL shapes', () => {
