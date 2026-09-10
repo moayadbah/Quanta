@@ -2,6 +2,106 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { AnalysisWatcher } from '../src/quanta/web/static/progress.mjs';
 import { normalizeRepositoryUrl } from '../src/quanta/web/static/repository.mjs';
+import { requestJson } from '../src/quanta/web/static/request.mjs';
+import { watchSavedScan } from '../src/quanta/web/static/saved-scan.mjs';
+
+function savedScan(overrides = {}) {
+  const states = [], retries = [], timers = [];
+  const options = {
+    isCurrent: () => true,
+    getStatus: async () => { throw new Error('unexpected status request'); },
+    loadResult: async () => {},
+    progress: (data) => states.push(data.status),
+    failure: (data) => assert.fail(data.detail || data.status),
+    queued: () => assert.fail('a completed scan must never run again'),
+    retry: (error) => retries.push(error),
+    schedule: (fn, delay) => { assert.equal(delay, 3000); timers.push(fn); },
+    ...overrides,
+  };
+  return { options, states, retries, timers };
+}
+
+test('opening a completed history item loads its report directly without showing queued', async () => {
+  let loaded = 0;
+  const f = savedScan({ initial: { status: 'succeeded' }, loadResult: async () => { loaded++; } });
+  await watchSavedScan(f.options);
+  assert.equal(loaded, 1);
+  assert.ok(f.states.every((state) => state === 'loading_report'));
+  assert.equal(f.timers.length, 0);
+});
+
+test('interrupted report downloads retry without re-queuing or restarting the completed scan', async () => {
+  let attempts = 0;
+  const f = savedScan({ initial: { status: 'succeeded' }, loadResult: async () => {
+    if (++attempts === 1) throw new Error('mobile connection interrupted');
+  }});
+  await watchSavedScan(f.options);
+  assert.equal(f.retries.length, 1);
+  await f.timers.shift()();
+  assert.equal(attempts, 2);
+  assert.ok(f.states.every((state) => state === 'loading_report'));
+  assert.equal(f.timers.length, 0);
+});
+
+test('unknown scans are checked before showing a queue, then finish from real status', async () => {
+  let queued = 0, loaded = 0;
+  const statuses = [{ status: 'queued' }, { status: 'succeeded' }];
+  const f = savedScan({
+    getStatus: async () => statuses.shift(),
+    queued: () => { queued++; },
+    loadResult: async () => { loaded++; },
+  });
+  await watchSavedScan(f.options);
+  assert.deepEqual(f.states, ['checking', 'queued']);
+  await f.timers.shift()();
+  assert.equal(queued, 1);
+  assert.equal(loaded, 1);
+  assert.equal(f.states.at(-1), 'loading_report');
+  assert.equal(f.timers.length, 0);
+});
+
+test('leaving a scan prevents a late status response from replacing the new view', async () => {
+  let current = true, resolve;
+  const f = savedScan({
+    isCurrent: () => current,
+    getStatus: () => new Promise((done) => { resolve = done; }),
+    loadResult: () => assert.fail('stale view loaded'),
+  });
+  const pending = watchSavedScan(f.options);
+  current = false;
+  resolve({ status: 'succeeded' });
+  await pending;
+  assert.deepEqual(f.states, ['checking']);
+  assert.equal(f.timers.length, 0);
+});
+
+for (const stalled of ['headers', 'body']) {
+  test(`a stalled ${stalled} read times out so scan polling can recover`, async () => {
+    let expire, signal, cancelled = false;
+    const pending = requestJson('/status', {}, 30000, {
+      fetch: async (_path, options) => {
+        signal = options.signal;
+        if (stalled === 'headers') return new Promise(() => {});
+        return { json: () => new Promise(() => {}) };
+      },
+      setTimeout: (fn, delay) => { assert.equal(delay, 30000); expire = fn; return 1; },
+      clearTimeout: (id) => { assert.equal(id, 1); cancelled = true; },
+    });
+    const rejected = assert.rejects(pending, /timed out/);
+    expire();
+    await rejected;
+    assert.equal(signal.aborted, true);
+    assert.equal(cancelled, true);
+  });
+}
+
+test('the read deadline does not interrupt a long-running scan POST', async () => {
+  const result = await requestJson('/run', { method: 'POST' }, 0, {
+    fetch: async () => ({ ok: true, json: async () => ({ status: 'succeeded' }) }),
+    setTimeout: () => assert.fail('write must not use the read deadline'),
+  });
+  assert.equal(result.data.status, 'succeeded');
+});
 
 test('repository input accepts PyJWT links and shorthand as the same HTTPS URL', () => {
   for (const input of [
