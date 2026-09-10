@@ -10,13 +10,16 @@ export function normalizeRepositoryUrl(value) {
   );
   if (!match) return null;
   const owner = match[1];
-  const repository = match[2].replace(/\.git$/, "");
+  const repository = match[2];
+  const name = repository.replace(/\.git$/, "");
   if (
-    !repository ||
-    repository.length > 100 ||
-    [owner, repository].some((part) => part === "." || part === "..")
+    !name ||
+    name.length > 100 ||
+    [owner, name].some((part) => part === "." || part === "..")
   ) {
     return null;
   }
+  // The API removes one clone suffix. Preserve it here, including for a
+  // repository whose actual name ends in .git, to avoid stripping it twice.
   return `https://github.com/${owner}/${repository}`;
 }
