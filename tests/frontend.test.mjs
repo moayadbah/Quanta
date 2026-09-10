@@ -1,6 +1,51 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { AnalysisWatcher } from '../src/quanta/web/static/progress.mjs';
+import { normalizeRepositoryUrl } from '../src/quanta/web/static/repository.mjs';
+
+test('repository input accepts PyJWT links and shorthand as the same HTTPS URL', () => {
+  for (const input of [
+    'https://github.com/jpadilla/pyjwt',
+    'https://github.com/jpadilla/pyjwt/',
+    'https://github.com/jpadilla/pyjwt.git',
+    'https://www.github.com/jpadilla/pyjwt',
+    'http://github.com/jpadilla/pyjwt',
+    'HTTPS://GITHUB.COM/jpadilla/pyjwt',
+    'github.com/jpadilla/pyjwt',
+    'www.github.com/jpadilla/pyjwt.git/',
+    'jpadilla/pyjwt',
+    '  jpadilla/pyjwt  ',
+  ]) {
+    assert.equal(normalizeRepositoryUrl(input), 'https://github.com/jpadilla/pyjwt', input);
+  }
+  assert.equal(normalizeRepositoryUrl('moayadbah/Quanta'), 'https://github.com/moayadbah/Quanta');
+});
+
+test('repository input rejects ambiguous names and unsafe URL shapes', () => {
+  for (const input of [
+    '', 'pyjwt', null,
+    'https://evil.com/jpadilla/pyjwt',
+    'https://github.com.evil.com/jpadilla/pyjwt',
+    'https://github.com@evil.com/jpadilla/pyjwt',
+    'https://user:password@github.com/jpadilla/pyjwt',
+    'https://github.com:443/jpadilla/pyjwt',
+    '//github.com/jpadilla/pyjwt',
+    'git@github.com:jpadilla/pyjwt.git',
+    'https://github.com/jpadilla/pyjwt/tree/master',
+    'https://github.com/jpadilla/pyjwt?tab=readme-ov-file',
+    'https://github.com/jpadilla/pyjwt#readme',
+    'https://github.com/jpadilla//pyjwt',
+    'https://github.com/jpadilla/pyjwt//',
+    'https://github.com/jpadilla/%2e%2e',
+    'https://github.com/../pyjwt',
+    'jpadilla/..', 'jpadilla/.git',
+    'jpadilla/py\njwt', 'jpadilla/py\u200bjwt',
+    'jpadilla/' + 'a'.repeat(101),
+    'a'.repeat(101) + '/pyjwt',
+  ]) {
+    assert.equal(normalizeRepositoryUrl(input), null, String(input));
+  }
+});
 
 function fixture(responses) {
   const callbacks = [];

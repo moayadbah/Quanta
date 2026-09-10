@@ -1,3 +1,5 @@
+import { normalizeRepositoryUrl } from "./repository.mjs";
+
 const $ = (id) => document.getElementById(id);
 const english = Object.fromEntries(
   [...document.querySelectorAll("[data-i18n]")].map((el) => [
@@ -24,7 +26,7 @@ const arabic = {
   workspaceTitle: "ابدأ برؤية أوضح.",
   publicPython: "مستودعات Python العامة",
   repoLabel: "مستودع GitHub",
-  scanHelp: "كل ما تحتاجه رابط مستودع عام.",
+  scanHelp: "ألصق رابط GitHub أو اسم المالك/المستودع العام.",
   scan: "افحص المستودع",
   signinNote:
     "سجّل الدخول عبر GitHub لفحص المستودعات وحفظ نتائجك في مكان واحد. الوصول إلى المستودعات العامة فقط.",
@@ -299,18 +301,17 @@ function resetResult(id) {
 async function startScan(event) {
   event.preventDefault();
   if (state.loading) return;
-  const url = $("repo-url").value.trim();
-  if (
-    !/^https:\/\/github\.com\/[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+\/?$/.test(url)
-  ) {
+  const url = normalizeRepositoryUrl($("repo-url").value);
+  if (!url) {
     error(
       tr(
-        "Use a public GitHub repository URL, like https://github.com/owner/repository.",
-        "استخدم رابط مستودع GitHub عام مثل https://github.com/owner/repository.",
+        "Enter a public GitHub repository URL or owner/repository, for example jpadilla/pyjwt.",
+        "أدخل رابط مستودع GitHub عام أو اسم المالك/المستودع، مثل jpadilla/pyjwt.",
       ),
     );
     return;
   }
+  $("repo-url").value = url;
   if (!state.session?.user && state.session?.required) {
     if (!state.session.configured) {
       error(
