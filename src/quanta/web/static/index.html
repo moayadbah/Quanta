@@ -161,9 +161,11 @@
                   ><input
                     id="repo-url"
                     name="repo"
-                    type="url"
-                    placeholder="https://github.com/owner/repository"
-                    autocomplete="url"
+                    type="text"
+                    inputmode="url"
+                    placeholder="https://github.com/owner/repository or owner/repository"
+                    autocomplete="off"
+                    autocapitalize="none"
                     spellcheck="false"
                     dir="ltr"
                     required
@@ -173,7 +175,7 @@
                 </div>
                 <div class="scan-action-row">
                   <p id="scan-help" data-i18n="scanHelp">
-                    A public repository URL is all you need.
+                    Paste a public GitHub URL or owner/repository.
                   </p>
                   <button type="submit" class="button dark" id="scan-button">
                     <span data-i18n="scan">Scan repository</span
