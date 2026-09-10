@@ -44,6 +44,7 @@
             class="button small dark"
             href="/auth/login"
             id="nav-signin"
+            hidden
             data-i18n="signin"
             >Sign in with GitHub</a
           ><button
@@ -53,6 +54,9 @@
             data-i18n="signout"
           >
             Sign out
+          </button>
+          <button class="button small outline" id="account-check" disabled>
+            Checking sign-in…
           </button>
         </div>
       </nav>
@@ -177,13 +181,13 @@
                   <p id="scan-help" data-i18n="scanHelp">
                     Paste a public GitHub URL or owner/repository.
                   </p>
-                  <button type="submit" class="button dark" id="scan-button">
+                  <button type="submit" class="button dark" id="scan-button" disabled>
                     <span data-i18n="scan">Scan repository</span
                     ><span aria-hidden="true">↗</span>
                   </button>
                 </div>
               </form>
-              <div class="signin-note" id="signin-note">
+              <div class="signin-note" id="signin-note" hidden>
                 <span class="tiny-lock" aria-hidden="true">◈</span>
                 <p data-i18n="signinNote">
                   Sign in with GitHub to scan and keep your results in one
@@ -196,6 +200,12 @@
                 hidden
                 role="status"
               ></div>
+              <div class="notice" id="connection-notice" role="status" hidden>
+                <p id="connection-message"></p>
+                <button class="text-button" id="retry-connection" type="button" hidden>
+                  Try again
+                </button>
+              </div>
               <div class="error-message" id="error" hidden role="alert"></div>
             </div>
             <aside class="allowance-panel">

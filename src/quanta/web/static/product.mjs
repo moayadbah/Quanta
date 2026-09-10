@@ -1,6 +1,7 @@
 import { normalizeRepositoryUrl } from "./repository.mjs";
 import { requestJson } from "./request.mjs";
 import { watchSavedScan } from "./saved-scan.mjs";
+import { loadAccount } from "./account.mjs";
 
 const $ = (id) => document.getElementById(id);
 const english = Object.fromEntries(
@@ -102,6 +103,10 @@ const state = {
   runs: new Set(),
   loading: false,
   reviewVersion: 0,
+  bootstrapBusy: false,
+  bootstrapFailed: new Set(),
+  bootstrapRetrying: new Set(),
+  restored: false,
 };
 try {
   state.lang = localStorage.getItem("quanta-language") === "ar" ? "ar" : "en";
@@ -132,7 +137,8 @@ function language() {
   $("language").ariaLabel =
     state.lang === "ar" ? "Switch to English" : "التبديل إلى العربية";
   $("close-review").ariaLabel = tr("Close review", "إغلاق المراجعة");
-  if (state.session) renderAccount();
+  renderAccount();
+  renderConnection();
   if (state.workspace) renderWorkspace();
   if (state.result) renderResult();
   if (state.review) renderReview();
@@ -180,20 +186,58 @@ async function api(path, body) {
 }
 function renderAccount() {
   const session = state.session;
-  const signed = Boolean(session.user);
-  show("nav-signin", !signed);
+  const signed = Boolean(session?.user);
+  show("nav-signin", Boolean(session) && !signed);
   show("signout", signed);
-  show("signin-note", !signed && session.required);
-  $("account-label").textContent = signed
-    ? "@" + session.user.login
-    : tr("Public Python repositories", "مستودعات Python العامة");
-  const label = state.loading
-    ? tr("Starting scan…", "بدء الفحص…")
-    : !signed && session.required
-      ? tr("Sign in to scan ↗", "سجّل الدخول للفحص ↗")
-      : tr("Scan repository ↗", "افحص المستودع ↗");
+  show("account-check", !session);
+  $("account-check").disabled = state.bootstrapBusy || !state.bootstrapFailed.has("session");
+  $("account-check").textContent = state.bootstrapFailed.has("session")
+    ? tr("Retry connection", "أعد الاتصال")
+    : tr("Checking sign-in…", "نتحقق من الدخول…");
+  show("signin-note", Boolean(session) && !signed && session.required);
+  $("account-label").textContent = !session
+    ? tr("Checking sign-in…", "نتحقق من الدخول…")
+    : signed
+      ? "@" + session.user.login
+      : tr("Public Python repositories", "مستودعات Python العامة");
+  const label = !session
+    ? tr("Checking sign-in…", "نتحقق من الدخول…")
+    : state.loading
+      ? tr("Starting scan…", "بدء الفحص…")
+      : !signed && session.required
+        ? tr("Sign in to scan ↗", "سجّل الدخول للفحص ↗")
+        : !state.workspace
+          ? tr("Loading workspace…", "نحمّل مساحة العمل…")
+          : tr("Scan repository ↗", "افحص المستودع ↗");
   $("scan-button").textContent = label;
-  $("scan-button").disabled = state.loading;
+  $("scan-button").disabled = state.loading || !session || (signed && !state.workspace);
+}
+function renderConnection() {
+  const failed = state.bootstrapFailed.size > 0;
+  const retrying = state.bootstrapRetrying.size > 0;
+  show("connection-notice", failed || retrying);
+  show("retry-connection", failed);
+  $("retry-connection").disabled = state.bootstrapBusy;
+  $("retry-connection").textContent = tr("Try again", "حاول مجدداً");
+  $("connection-message").textContent = failed
+    ? state.session?.user
+      ? tr(
+          "You’re signed in. Your workspace couldn’t load. Try again.",
+          "أنت مسجّل الدخول. تعذّر تحميل مساحة العمل. حاول مجدداً.",
+        )
+      : tr(
+          "We couldn’t check your connection. Try again to restore your workspace.",
+          "تعذّر التحقق من الاتصال. حاول مجدداً لاستعادة مساحة العمل.",
+        )
+    : state.session?.user
+      ? tr(
+          "You’re signed in. Reconnecting to your workspace…",
+          "أنت مسجّل الدخول. نعيد الاتصال بمساحة العمل…",
+        )
+      : tr(
+          "Reconnecting to check your saved sign-in…",
+          "نعيد الاتصال للتحقق من دخولك المحفوظ…",
+        );
 }
 function renderWorkspace() {
   const { usage, limits, jobs, scan_available } = state.workspace;
@@ -316,7 +360,7 @@ function resetResult(id) {
 }
 async function startScan(event) {
   event.preventDefault();
-  if (state.loading) return;
+  if (state.loading || !state.session) return;
   const url = normalizeRepositoryUrl($("repo-url").value);
   if (!url) {
     error(
@@ -777,29 +821,66 @@ tabs.forEach((tab, index) => {
     }
   });
 });
-async function init() {
-  language();
+function restoreWorkspace() {
+  if (!state.session || !state.workspace || state.restored) return;
+  state.restored = true;
   try {
-    const [session, workspace] = await Promise.all([
-      api("/auth/session"),
-      api("/api/v1/workspace"),
-    ]);
-    state.session = session;
-    state.workspace = workspace;
+    const pending = sessionStorage.getItem("quanta-pending-repo");
+    if (pending) {
+      $("repo-url").value = pending;
+      sessionStorage.removeItem("quanta-pending-repo");
+    }
+  } catch {}
+  const match = location.hash.match(/^#analysis\/([a-f0-9-]{36})$/);
+  if (match) openJob(match[1]).catch((err) => error(err.message));
+  else if (location.hash === "#sample") sample();
+}
+async function hydrate(kinds = ["session", "workspace"]) {
+  if (state.bootstrapBusy) return;
+  state.bootstrapBusy = true;
+  for (const kind of kinds) {
+    state.bootstrapFailed.delete(kind);
+    state.bootstrapRetrying.delete(kind);
+  }
+  renderAccount();
+  renderConnection();
+  try {
+    await loadAccount({
+      read: {
+        session: () => api("/auth/session"),
+        workspace: () => api("/api/v1/workspace"),
+      },
+      loaded: (kind, value) => {
+        state[kind] = value;
+        state.bootstrapRetrying.delete(kind);
+        renderAccount();
+        if (kind === "workspace") renderWorkspace();
+        renderConnection();
+        restoreWorkspace();
+      },
+      retrying: (kind) => {
+        state.bootstrapRetrying.add(kind);
+        renderConnection();
+      },
+      failed: (kind) => {
+        state.bootstrapRetrying.delete(kind);
+        state.bootstrapFailed.add(kind);
+        renderAccount();
+        renderConnection();
+      },
+    }, kinds);
+  } finally {
+    state.bootstrapBusy = false;
     renderAccount();
-    renderWorkspace();
-    try {
-      const pending = sessionStorage.getItem("quanta-pending-repo");
-      if (pending) {
-        $("repo-url").value = pending;
-        sessionStorage.removeItem("quanta-pending-repo");
-      }
-    } catch {}
-    const match = location.hash.match(/^#analysis\/([a-f0-9-]{36})$/);
-    if (match) await openJob(match[1]);
-    else if (location.hash === "#sample") await sample();
-  } catch (err) {
-    error(err.message);
+    renderConnection();
   }
 }
-init();
+function retryConnection() {
+  const failed = [...state.bootstrapFailed];
+  if (failed.length) hydrate(failed).catch((err) => error(err.message));
+}
+$("account-check").addEventListener("click", retryConnection);
+$("retry-connection").addEventListener("click", retryConnection);
+window.addEventListener("online", retryConnection);
+language();
+hydrate().catch((err) => error(err.message));
