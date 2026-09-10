@@ -4,6 +4,91 @@ import { AnalysisWatcher } from '../src/quanta/web/static/progress.mjs';
 import { normalizeRepositoryUrl } from '../src/quanta/web/static/repository.mjs';
 import { requestJson } from '../src/quanta/web/static/request.mjs';
 import { watchSavedScan } from '../src/quanta/web/static/saved-scan.mjs';
+import { loadAccount } from '../src/quanta/web/static/account.mjs';
+
+test('a successful session is published before a slow workspace finishes', async () => {
+  const loaded = [];
+  let finishWorkspace;
+  const pending = loadAccount({
+    read: {
+      session: async () => ({ user: { login: 'reader' } }),
+      workspace: () => new Promise((resolve) => { finishWorkspace = resolve; }),
+    },
+    loaded: (kind, value) => loaded.push([kind, value]),
+    failed: () => assert.fail('unexpected failure'),
+    retrying: () => assert.fail('unexpected retry'),
+  });
+  await Promise.resolve();
+  assert.equal(loaded[0][0], 'session');
+  assert.equal(loaded[0][1].user.login, 'reader');
+  assert.equal(loaded.length, 1);
+  finishWorkspace({ jobs: [] });
+  await pending;
+  assert.equal(loaded.length, 2);
+});
+
+test('workspace failure preserves the signed-in session and retries only the failed read', async () => {
+  const values = {}, failures = [];
+  let sessionReads = 0, workspaceReads = 0;
+  await loadAccount({
+    read: {
+      session: async () => { sessionReads++; return { user: { login: 'reader' } }; },
+      workspace: async () => { workspaceReads++; throw new Error('connection interrupted'); },
+    },
+    loaded: (kind, value) => { values[kind] = value; },
+    failed: (kind) => failures.push(kind),
+    retrying: () => {},
+    wait: async () => {},
+  });
+  assert.equal(values.session.user.login, 'reader');
+  assert.deepEqual(failures, ['workspace']);
+  assert.equal(sessionReads, 1);
+  assert.equal(workspaceReads, 3);
+});
+
+test('an unreachable session endpoint never publishes an anonymous session', async () => {
+  const loaded = [], failures = [];
+  await loadAccount({
+    read: {
+      session: async () => { throw new Error('offline'); },
+      workspace: async () => ({ jobs: [] }),
+    },
+    loaded: (kind) => loaded.push(kind),
+    failed: (kind) => failures.push(kind),
+    retrying: () => {},
+    wait: async () => {},
+  });
+  assert.deepEqual(loaded, ['workspace']);
+  assert.deepEqual(failures, ['session']);
+});
+
+test('a transient session failure recovers without sending the user through OAuth', async () => {
+  let calls = 0;
+  const loaded = [];
+  await loadAccount({
+    read: { session: async () => {
+      if (++calls === 1) throw new Error('offline');
+      return { user: { login: 'reader' } };
+    } },
+    loaded: (kind, value) => loaded.push([kind, value.user.login]),
+    failed: () => assert.fail('should recover'),
+    retrying: () => {},
+    wait: async () => {},
+  }, ['session']);
+  assert.equal(calls, 2);
+  assert.deepEqual(loaded, [['session', 'reader']]);
+});
+
+test('confirmed anonymous sessions are still published for normal GitHub sign-in', async () => {
+  const loaded = [];
+  await loadAccount({
+    read: { session: async () => ({ user: null, required: true }) },
+    loaded: (kind, value) => loaded.push(value),
+    failed: () => assert.fail('unexpected failure'),
+    retrying: () => assert.fail('unexpected retry'),
+  }, ['session']);
+  assert.deepEqual(loaded, [{ user: null, required: true }]);
+});
 
 function savedScan(overrides = {}) {
   const states = [], retries = [], timers = [];
