@@ -1,4 +1,6 @@
 import { normalizeRepositoryUrl } from "./repository.mjs";
+import { requestJson } from "./request.mjs";
+import { watchSavedScan } from "./saved-scan.mjs";
 
 const $ = (id) => document.getElementById(id);
 const english = Object.fromEntries(
@@ -147,25 +149,23 @@ async function api(path, body) {
     options.body = JSON.stringify(body);
   }
   let response;
-  try {
-    response = await fetch(path, options);
-  } catch {
-    throw new Error(
-      tr(
-        "Connection interrupted. Please try again.",
-        "انقطع الاتصال. حاول مجدداً.",
-      ),
-    );
-  }
   let data;
   try {
-    data = await response.json();
-  } catch {
+    // Writes, particularly /run, can legitimately take the scan's full budget.
+    ({ response, data } = await requestJson(
+      path, options, body === undefined ? 30000 : 0,
+    ));
+  } catch (err) {
     throw new Error(
-      tr(
-        "The service is unavailable. Please try again shortly.",
-        "الخدمة غير متاحة. حاول بعد قليل.",
-      ),
+      err.code === "INVALID_RESPONSE"
+        ? tr(
+            "The service is unavailable. Please try again shortly.",
+            "الخدمة غير متاحة. حاول بعد قليل.",
+          )
+        : tr(
+            "Connection interrupted. Please try again.",
+            "انقطع الاتصال. حاول مجدداً.",
+          ),
     );
   }
   if (!response.ok) {
@@ -256,6 +256,8 @@ function statusLabel(status) {
       succeeded: tr("Complete", "مكتمل"),
       failed: tr("Failed", "لم يكتمل"),
       timeout: tr("Timed out", "انتهت المهلة"),
+      checking: tr("Checking scan", "نتحقق من الفحص"),
+      loading_report: tr("Loading report", "جارٍ تحميل التقرير"),
     }[status] || status
   );
 }
@@ -278,10 +280,24 @@ function progress(data) {
     render: tr("Preparing your results.", "نجهّز نتائجك."),
   };
   $("activity-title").textContent =
-    data.status === "queued"
-      ? tr("Your scan is in the queue.", "فحصك في قائمة الانتظار.")
-      : phases[data.phase] ||
-        tr("Getting to know your repository.", "نتعرّف على مستودعك.");
+    data.status === "loading_report"
+      ? tr("Your scan is complete. Loading your report…", "اكتمل فحصك. نحمّل التقرير…")
+      : data.status === "checking"
+        ? tr("Checking your saved scan…", "نتحقق من فحصك المحفوظ…")
+        : data.status === "queued"
+          ? tr("Your scan is in the queue.", "فحصك في قائمة الانتظار.")
+          : phases[data.phase] ||
+            tr("Getting to know your repository.", "نتعرّف على مستودعك.");
+  $("activity-detail").textContent =
+    data.status === "loading_report"
+      ? tr(
+          "Retrieving your saved results. No new scan is needed.",
+          "نجلب نتائجك المحفوظة. لا حاجة لفحص جديد.",
+        )
+      : tr(
+          "We pin the commit, trace the source, and prepare your report.",
+          "نثبّت نسخة الكود، ونتتبّع المصدر، ونجهّز تقريرك.",
+        );
   const pct = Math.min(100, Math.max(0, data.progress || 0));
   $("progress-label").textContent = pct + "%";
   $("progress-fill").style.width = pct + "%";
@@ -347,34 +363,25 @@ async function openJob(id) {
   resetResult(id);
   history.replaceState(null, "", `#analysis/${id}`);
   show("activity");
-  progress({ status: "queued" });
   const generation = state.generation;
-  const tick = async () => {
-    try {
-      const data = await api(`/api/v1/analyses/${id}`);
-      if (generation !== state.generation) return;
-      if (data.status === "succeeded") {
-        await loadResult(id, generation);
-        return;
-      }
-      if (["failed", "timeout"].includes(data.status)) {
-        show("activity", false);
-        error(
-          data.detail ||
-            tr(
-              "This scan could not finish. Try a smaller repository.",
-              "لم يكتمل الفحص. جرّب مستودعاً أصغر.",
-            ),
-        );
-        refreshWorkspace().catch(() => {});
-        return;
-      }
-      progress(data);
-      if (
-        data.status === "queued" &&
-        state.workspace?.hosted &&
-        !state.runs.has(id)
-      ) {
+  await watchSavedScan({
+    initial: state.workspace?.jobs.find((job) => job.job_id === id),
+    isCurrent: () => generation === state.generation,
+    getStatus: () => api(`/api/v1/analyses/${id}`),
+    loadResult: () => loadResult(id, generation),
+    progress,
+    failure: (data) => {
+      show("activity", false);
+      error(
+        data.detail || tr(
+          "This scan could not finish. Try a smaller repository.",
+          "لم يكتمل الفحص. جرّب مستودعاً أصغر.",
+        ),
+      );
+      refreshWorkspace().catch(() => {});
+    },
+    queued: () => {
+      if (state.workspace?.hosted && !state.runs.has(id)) {
         state.runs.add(id);
         api(`/api/v1/analyses/${id}/run`, {})
           .catch((err) => {
@@ -382,22 +389,20 @@ async function openJob(id) {
           })
           .finally(() => state.runs.delete(id));
       }
-    } catch (err) {
-      if (generation !== state.generation) return;
-      if (["AUTH_REQUIRED", "REPO_NOT_FOUND"].includes(err.code)) {
-        show("activity", false);
-        error(err.message);
-        return;
-      }
+    },
+    retry: () => {
       $("activity-detail").textContent = tr(
         "Connection interrupted. Reconnecting to your saved scan…",
         "انقطع الاتصال. نعيد الاتصال بفحصك المحفوظ…",
       );
-    }
-    if (generation === state.generation) state.polling = setTimeout(tick, 3000);
-  };
-  await tick();
-  $("workspace").scrollIntoView({ behavior: "smooth", block: "start" });
+    },
+    schedule: (tick, delay) => {
+      state.polling = setTimeout(tick, delay);
+    },
+  });
+  if (generation === state.generation) {
+    $("workspace").scrollIntoView({ behavior: "smooth", block: "start" });
+  }
 }
 async function loadResult(id, generation) {
   const [score, meta, fixes] = await Promise.all([
