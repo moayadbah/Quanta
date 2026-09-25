@@ -28,6 +28,8 @@ ACTIONABLE = {"vulnerable", "weak", "review"}
 FINDING_ROWS = 80
 #: Patches shown with their context; the rest are counted.
 PATCH_ROWS = 12
+#: Keep the method cell bounded; meta.json retains every skipped file and reason.
+UNPARSEABLE_PATHS = 20
 LANGUAGES = ("en", "ar")
 
 
@@ -328,7 +330,8 @@ def build(
         "deadlines_clear": clear,
         "files_scanned": meta.get("files_scanned", coverage.get("files_scanned", 0)),
         "shipped_files": shipped_files,
-        "unparseable": coverage.get("files_unparseable", 0),
+        "unparseable": max(coverage.get("files_unparseable", 0), len(meta.get("unparseable", []))),
+        "unparseable_files": [f["file"] for f in meta.get("unparseable", [])[:UNPARSEABLE_PATHS]],
         "score_status": score.get("status") or "",
         "agility_score": score.get("agility_score"),
         "agility": agility,
@@ -528,6 +531,15 @@ def labels(r: dict[str, Any], T: Any) -> dict[str, str]:  # noqa: N803
                     if shipped is not None
                     else T("doc.m_files_unmeasured", n=r["files_scanned"]),
                     T("doc.m_unparseable", n=r["unparseable"]) if r["unparseable"] else "",
+                    T(
+                        "doc.m_unparseable_paths",
+                        paths=", ".join(iso(path) for path in r["unparseable_files"]),
+                    )
+                    if r["unparseable_files"]
+                    else "",
+                    T("doc.more", n=r["unparseable"] - len(r["unparseable_files"]))
+                    if r["unparseable_files"] and r["unparseable"] > len(r["unparseable_files"])
+                    else "",
                 )
                 if p
             ),
