@@ -1,129 +1,201 @@
 {#
   Quanta post-quantum readiness report. Self-contained by contract: inline CSS and SVG, no
-  scripts, no external requests, so it opens from file:// with no network. The same data
-  renders the PDF (core/pdf.py); both come from core/report_data.py.
+  scripts. Fonts load from the site when it serves the report (r.font_base) and fall back
+  to system faces from file://. The same data renders the PDF (core/pdf.py); both come
+  from core/report_data.py, in English or Arabic.
 
   Autoescaping is ON for every value. Repository content appears only as paths, line
   numbers, qualified names and single source lines, all escaped.
 #}<!doctype html>
-<html lang="en">
+<html lang="{{ r.lang }}" dir="{{ r.dir }}">
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{ r.L.html_title }}</title>
 <style>
-  @page { size: A4; margin: 18mm 16mm 20mm;
-    @top-left { content: "Quanta · Post-quantum readiness"; font: 8.5pt Inter, "Segoe UI", sans-serif; color: #8a8a8a; }
-    @top-right { content: "{{ r.repo }}"; font: 8.5pt Inter, "Segoe UI", sans-serif; color: #8a8a8a; }
-    @bottom-right { content: "Page " counter(page) " of " counter(pages); font: 8.5pt Inter, "Segoe UI", sans-serif; color: #8a8a8a; }
-  }
-  :root { --fg: #111; --muted: #5f6368; --line: #e6e6e6; --soft: #f6f6f6;
-          --bad: #c9302c; --warn: #b7791f; --ok: #2f7d4a; --info: #1f5fbf; }
+{% if r.font_base %}
+  @font-face { font-family: "Inter"; src: url("{{ r.font_base }}inter-400-latin.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+  @font-face { font-family: "Inter"; src: url("{{ r.font_base }}inter-600-latin.woff2") format("woff2"); font-weight: 600; font-display: swap; }
+  @font-face { font-family: "Inter Display"; src: url("{{ r.font_base }}inter-display-semibold-latin.woff2") format("woff2"); font-weight: 600; font-display: swap; }
+  @font-face { font-family: "Geist Mono"; src: url("{{ r.font_base }}geist-mono-400-latin.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+  @font-face { font-family: "Readex Pro"; src: url("{{ r.font_base }}readex-pro-arabic.woff2") format("woff2"); font-weight: 160 700; font-display: swap; }
+{% endif %}
+  @page { size: A4; margin: 16mm 15mm 18mm; }
+  :root { --fg: #0a0a0a; --muted: #5f6368; --subtle: #8a8f98; --line: #e8e8e8; --soft: #f5f5f5;
+          --bad: #c9302c; --bad-bg: #fdecea; --warn: #b7791f; --warn-bg: #fdf3e1; --ok: #2f7d4a; --ok-bg: #e8f4ec;
+          --info: #0761d1; --grey: #6b7280;
+          --sans: "Inter", -apple-system, "Segoe UI", Roboto, sans-serif;
+          --display: "Inter Display", "Inter", -apple-system, "Segoe UI", sans-serif;
+          --mono: "Geist Mono", ui-monospace, Consolas, Menlo, monospace; }
+  :root[lang="ar"] { --sans: "Readex Pro", "Segoe UI", Tahoma, sans-serif; --display: "Readex Pro", "Segoe UI", Tahoma, sans-serif; }
   * { box-sizing: border-box; }
   html { background: #fff; }
-  body { margin: 0; color: var(--fg); font: 10.5pt/1.55 Inter, -apple-system, "Segoe UI", Roboto, sans-serif;
-         -webkit-font-smoothing: antialiased; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
-  main { max-width: 860px; margin: 0 auto; padding: 40px 28px 64px; }
-  h1 { font-size: 22pt; line-height: 1.15; letter-spacing: -0.02em; margin: 0; }
-  h2 { font-size: 13.5pt; letter-spacing: -0.01em; margin: 34px 0 10px; padding-top: 14px; border-top: 1px solid var(--line); break-after: avoid; }
-  h3 { font-size: 11pt; margin: 18px 0 6px; break-after: avoid; }
+  body { margin: 0; color: var(--fg); font: 10.5pt/1.6 var(--sans); -webkit-font-smoothing: antialiased;
+         print-color-adjust: exact; -webkit-print-color-adjust: exact; overflow-wrap: anywhere; }
+  main { max-width: 880px; margin: 0 auto; padding: 40px 28px 64px; }
+  h1 { font: 600 24pt/1.12 var(--display); letter-spacing: -0.025em; margin: 0; }
+  h2 { font: 600 14pt/1.3 var(--display); letter-spacing: -0.015em; margin: 40px 0 12px; display: flex; gap: 10px; align-items: baseline; break-after: avoid; }
+  h2 .n { font: 400 10pt var(--mono); color: var(--info); }
+  h3 { font: 600 11pt/1.4 var(--sans); margin: 22px 0 8px; break-after: avoid; }
   p { margin: 0 0 8px; }
+  a { color: var(--info); }
   .muted { color: var(--muted); }
   .small { font-size: 9pt; color: var(--muted); }
-  code, .mono { font-family: "Geist Mono", ui-monospace, Consolas, Menlo, monospace; font-size: 8.8pt; }
-  .brand { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 11pt; }
-  .brand svg { width: 20px; height: 20px; color: var(--fg); }
-  .cover { display: grid; gap: 18px; padding-bottom: 22px; }
-  .facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
-  .facts div { padding: 10px 12px; background: var(--soft); border-radius: 8px; }
-  .facts dt { font-size: 8.5pt; color: var(--muted); margin: 0 0 2px; }
-  .facts dd { margin: 0; font-weight: 600; overflow-wrap: anywhere; }
-  .verdict { display: flex; align-items: center; gap: 10px; font-size: 16pt; font-weight: 600; }
-  .dot { width: 11px; height: 11px; border-radius: 50%; background: #9aa0a6; flex: none; }
-  .dot.at_risk, .dot.vulnerable { background: var(--bad); }
-  .dot.in_transition, .dot.weak, .dot.review { background: var(--warn); }
-  .dot.ready, .dot.pq { background: var(--ok); }
-  .note { padding: 9px 12px; background: var(--soft); border-radius: 8px; margin: 10px 0; }
-  .note.warn { background: #fff6e5; }
-  .bar { display: flex; height: 12px; border-radius: 6px; overflow: hidden; background: var(--soft); margin: 12px 0 8px; }
+  code, .mono, .ltr { font-family: var(--mono); font-size: 8.8pt; direction: ltr; unicode-bidi: isolate; }
+  .brand { display: flex; align-items: center; gap: 8px; font: 600 11.5pt var(--sans); }
+  .brand svg { width: 20px; height: 20px; }
+  .kicker { font: 500 9pt var(--sans); color: var(--muted); letter-spacing: 0.02em; }
+  .cover { display: grid; gap: 16px; padding: 4px 0 8px; }
+  .cover-top { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+  .repo { font: 600 26pt/1.1 var(--display); letter-spacing: -0.03em; direction: ltr; unicode-bidi: isolate; text-align: start; overflow-wrap: anywhere; }
+  :root[dir="rtl"] .repo { text-align: right; }
+  /* Paths, names and hashes read left to right but sit on the Arabic reading edge. */
+  :root[dir="rtl"] :is(td.mono, .sites) { text-align: right; }
+  .meta { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 9.5pt; color: var(--muted); align-items: center; }
+  .who { display: inline-flex; align-items: center; gap: 8px; color: var(--fg); }
+  .avatar { width: 22px; height: 22px; border-radius: 50%; object-fit: cover; flex: none; background: var(--soft); }
+  .initial { width: 22px; height: 22px; border-radius: 50%; display: inline-grid; place-items: center; background: var(--fg); color: #fff; font-size: 9pt; font-weight: 600; }
+  .band { border-radius: 12px; padding: 18px 20px; color: #fff; display: grid; gap: 4px; break-inside: avoid; }
+  .band.at_risk { background: var(--bad); }
+  .band.in_transition, .band.not_assessed { background: var(--warn); }
+  .band.ready { background: var(--ok); }
+  .band.no_crypto, .band.no_source { background: var(--grey); }
+  .band .label { font: 600 20pt/1.2 var(--display); letter-spacing: -0.02em; }
+  .band p { margin: 0; opacity: 0.95; }
+  .band a { color: #fff; font-weight: 600; }
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+  .strip { display: flex; flex-wrap: wrap; gap: 4px 16px; align-items: baseline; background: var(--soft); border-radius: 10px; padding: 10px 14px; }
+  .strip .k { font-size: 8.5pt; color: var(--muted); }
+  .tile { background: var(--soft); border-radius: 10px; padding: 12px 14px; display: grid; gap: 2px; align-content: start; break-inside: avoid; }
+  .tile .v { font: 600 20pt/1.1 var(--display); letter-spacing: -0.03em; }
+  .tile .v.bad { color: var(--bad); } .tile .v.warn { color: var(--warn); }
+  .tile .v.text { font-size: 10.5pt; line-height: 1.35; letter-spacing: 0; }
+  .tile .k { font-size: 8.5pt; color: var(--muted); }
+  .note { padding: 10px 12px; background: var(--soft); border-radius: 8px; margin: 10px 0; }
+  .note.warn { background: var(--warn-bg); }
+  .bar { display: flex; height: 10px; border-radius: 5px; overflow: hidden; background: var(--soft); margin: 14px 0 8px; }
+  .bar span { display: block; height: 100%; }
+  .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #9aa0a6; flex: none; }
+  .vulnerable { background: var(--bad); } .weak, .review { background: var(--warn); } .pq { background: var(--ok); } .safe { background: #c4c7cc; }
   .legend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 9pt; }
   .legend span { display: inline-flex; align-items: center; gap: 6px; }
-  .legend .dot { width: 8px; height: 8px; }
-  table { width: 100%; border-collapse: collapse; margin: 6px 0 4px; }
-  th { text-align: left; font-size: 8.5pt; font-weight: 600; color: var(--muted); padding: 6px 8px 6px 0; border-bottom: 1px solid var(--line); }
-  td { padding: 6px 8px 6px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+  table { width: 100%; border-collapse: collapse; margin: 6px 0 4px; table-layout: fixed; }
+  th { text-align: start; font-size: 8.5pt; font-weight: 600; color: var(--muted); padding: 7px 8px; border-bottom: 1px solid var(--line); }
+  td { padding: 7px 8px; border-bottom: 1px solid var(--line); vertical-align: top; overflow-wrap: anywhere; }
+  th:first-child, td:first-child { padding-inline-start: 0; }
   tr { break-inside: avoid; }
   td.num { white-space: nowrap; font-variant-numeric: tabular-nums; }
   .pill { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: 8.5pt; background: var(--soft); white-space: nowrap; }
-  .pill.bad { background: #fde8e7; color: var(--bad); }
-  .pill.warn { background: #fdf1dc; color: #8a5a12; }
-  .action { display: grid; grid-template-columns: 22px minmax(0, 1fr) auto; gap: 4px 10px; padding: 9px 0; border-bottom: 1px solid var(--line); break-inside: avoid; }
-  .action .rank { color: var(--muted); }
-  .diff { font-family: "Geist Mono", ui-monospace, Consolas, monospace; font-size: 8.6pt; background: var(--soft); border-radius: 8px; padding: 6px 10px; margin: 4px 0 10px; white-space: pre-wrap; overflow-wrap: anywhere; break-inside: avoid; }
-  .diff .del { color: #9b1c1c; }
-  .diff .add { color: #1d6b3a; }
-  pre { font-family: "Geist Mono", ui-monospace, Consolas, monospace; font-size: 8.4pt; line-height: 1.5; background: var(--soft); border-radius: 8px; padding: 10px 12px; white-space: pre-wrap; overflow-wrap: anywhere; margin: 6px 0 8px; }
-  .guide { padding: 10px 0 14px; border-bottom: 1px solid var(--line); }
-  .guide pre { break-inside: auto; }
-  .sites { font-family: "Geist Mono", ui-monospace, Consolas, monospace; font-size: 8.4pt; color: var(--muted); }
-  footer { margin-top: 40px; padding-top: 12px; border-top: 1px solid var(--line); font-size: 8.5pt; color: var(--muted); }
-  @media print { main { max-width: none; padding: 0; } a { color: inherit; text-decoration: none; } h2 { break-before: auto; } }
-  @media (max-width: 640px) { .facts { grid-template-columns: 1fr 1fr; } }
+  .pill.bad { background: var(--bad-bg); color: var(--bad); }
+  .pill.warn { background: var(--warn-bg); color: #8a5a12; }
+  .action { display: grid; grid-template-columns: 22px minmax(0, 1fr) auto; gap: 4px 12px; padding: 10px 0; border-bottom: 1px solid var(--line); break-inside: avoid; }
+  .action .rank { color: var(--muted); font-family: var(--mono); }
+  .action .when { text-align: end; }
+  .diff { border: 1px solid var(--line); border-radius: 8px; margin: 6px 0 14px; overflow: hidden; break-inside: avoid; direction: ltr; text-align: left; }
+  .diff .head { font: 500 8.8pt var(--mono); padding: 7px 10px; background: var(--soft); border-bottom: 1px solid var(--line); }
+  .diff table { margin: 0; table-layout: auto; }
+  .diff td { border: 0; padding: 1px 10px; font: 8.6pt/1.55 var(--mono); white-space: pre-wrap; }
+  .diff td.no { color: var(--subtle); text-align: right; width: 1%; white-space: nowrap; user-select: none; }
+  .diff td.k { width: 1%; padding-inline: 4px; color: var(--subtle); }
+  .diff tr.del td { background: #fdecea; } .diff tr.del td.k { color: var(--bad); }
+  .diff tr.add td { background: #e8f4ec; } .diff tr.add td.k { color: var(--ok); }
+  pre { font: 8.4pt/1.55 var(--mono); background: var(--soft); border-radius: 8px; padding: 10px 12px; white-space: pre-wrap; overflow-wrap: anywhere; margin: 6px 0 8px; direction: ltr; text-align: left; }
+  details.guide { padding: 10px 0; border-bottom: 1px solid var(--line); }
+  details.guide summary { cursor: pointer; display: flex; justify-content: space-between; gap: 12px; align-items: baseline; font-weight: 600; }
+  .sites { font-family: var(--mono); font-size: 8.4pt; color: var(--muted); direction: ltr; unicode-bidi: isolate; text-align: start; }
+  .factor { display: grid; grid-template-columns: minmax(0, 1fr) 150px 60px; gap: 4px 14px; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--line); break-inside: avoid; }
+  .meter { height: 6px; border-radius: 3px; background: var(--soft); overflow: hidden; }
+  .meter span { display: block; height: 100%; background: var(--fg); }
+  .score { font: 600 30pt/1.25 var(--display); letter-spacing: -0.04em; margin: 4px 0 8px; }
+  footer { margin-top: 44px; padding-top: 12px; border-top: 1px solid var(--line); font-size: 8.5pt; color: var(--muted); }
+  @media print { main { max-width: none; padding: 0; } a { color: inherit; text-decoration: none; } details.guide > *:not(summary) { display: block; } }
+  @media (max-width: 720px) { .tiles { grid-template-columns: 1fr 1fr; } .factor { grid-template-columns: 1fr; } main { padding: 24px 16px 48px; } }
+  /* On a phone each table row becomes a small card: every value keeps its own line and
+     nothing is pushed past the screen. */
+  @media (max-width: 640px) {
+    table:not(.diff table), table:not(.diff table) :is(thead, tbody, tr, td) { display: block; width: 100%; }
+    table:not(.diff table) colgroup, table:not(.diff table) thead { display: none; }
+    table:not(.diff table) tr { padding: 10px 0; border-bottom: 1px solid var(--line); }
+    table:not(.diff table) td { border: 0; padding: 2px 0; }
+    .repo { font-size: 20pt; }
+    .band .label { font-size: 17pt; }
+    .diff td { white-space: pre-wrap; overflow-wrap: anywhere; }
+  }
+  details.guide summary { min-height: 44px; align-items: center; }
 </style>
-
+</head>
+<body>
 <main>
   <section class="cover">
-    <div class="brand"><svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M45.6 46.6A22 22 0 1 1 51.9 31" stroke="currentColor" stroke-width="10"/><path d="M31 31h13l16 25H47z" fill="currentColor"/></svg>Quanta</div>
-    <h1>{{ r.L.title }}</h1>
-    <dl class="facts">
-      <div><dt>{{ r.L.fact_repo }}</dt><dd class="mono">{{ r.repo }}</dd></div>
-      <div><dt>{{ r.L.fact_commit }}</dt><dd class="mono">{{ r.commit if r.real_commit else r.L.recorded }}</dd></div>
-      <div><dt>{{ r.L.fact_date }}</dt><dd>{{ r.date }}</dd></div>
-      <div><dt>{{ r.L.fact_verdict }}</dt><dd><span class="dot {{ r.verdict }}" style="display:inline-block;margin-right:6px"></span>{{ r.verdict_label }}</dd></div>
-    </dl>
+    <div class="cover-top">
+      <div class="brand"><svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M45.6 46.6A22 22 0 1 1 51.9 31" stroke="currentColor" stroke-width="10"/><path d="M31 31h13l16 25H47z" fill="currentColor"/></svg>Quanta</div>
+      <div class="kicker">{{ r.L.title }}</div>
+    </div>
+    <div class="repo">{{ r.repo }}</div>
+    <div class="meta">
+      <span class="who">{% if r.run.avatar_data %}<img class="avatar" src="{{ r.run.avatar_data }}" alt="">{% elif r.run.login %}<span class="initial">{{ r.run.login[:1] | upper }}</span>{% endif %}{{ r.L.who }}</span>
+      <span>{{ r.L.fact_commit }} <span class="ltr">{{ r.commit if r.real_commit else r.L.local_commit }}</span></span>
+    </div>
+    {% if not r.assessed %}
+    <div class="band not_assessed">
+      <div class="label">{{ r.verdict_label }}</div>
+      <p>{{ r.L.legacy }}{% if r.rescan_url %} <a href="{{ r.rescan_url }}">{{ r.L.rescan }}</a>{% endif %}</p>
+    </div>
+    {% else %}
+    <div class="band {{ r.verdict }}">
+      <div class="label">{{ r.verdict_label }}</div>
+      <p>{{ r.L.verdict_line }}</p>
+    </div>
+    {% if r.L.outdated %}<div class="note warn">{{ r.L.outdated }}{% if r.rescan_url %} <a href="{{ r.rescan_url }}">{{ r.L.rescan }}</a>{% endif %}</div>{% endif %}
+    {% endif %}
+    <div class="tiles" aria-label="{{ r.L.summary_title }}">
+      {% if r.assessed %}
+      <div class="tile"><span class="v">{{ r.sites }}</span><span class="k">{{ r.L.k_sites }}</span></div>
+      <div class="tile"><span class="v {{ 'bad' if r.tally.vulnerable }}">{{ r.tally.vulnerable }}</span><span class="k">{{ r.L.k_vulnerable }}</span></div>
+      <div class="tile"><span class="v {{ 'warn' if r.tally.weak }}">{{ r.tally.weak }}</span><span class="k">{{ r.L.k_weak }}</span></div>
+      <div class="tile"><span class="v">{{ r.earliest or "-" }}</span><span class="k">{{ r.L.k_earliest }}</span></div>
+      {% else %}
+      <div class="tile"><span class="v">{{ r.findings_all }}</span><span class="k">{{ r.L.k_calls }}</span></div>
+      <div class="tile"><span class="v {{ 'bad' if r.findings_total }}">{{ r.findings_total }}</span><span class="k">{{ r.L.k_review }}</span></div>
+      <div class="tile"><span class="v text">{{ r.L.not_measured }}</span><span class="k">{{ r.L.k_earliest }}</span></div>
+      {% endif %}
+    </div>
+    <div class="strip"><span class="k">{{ r.L.k_entries }}</span><strong>{{ r.L.k_entries_value }}</strong></div>
   </section>
 
-  <h2>{{ r.L.s1 }}</h2>
-  <div class="verdict"><span class="dot {{ r.verdict }}"></span>{{ r.verdict_label }}</div>
-  <p class="muted">{{ r.L.verdict_line }}</p>
-  {% if r.implements %}
-  <div class="note"><strong>{{ r.L.implements }}</strong> {{ r.L.implements_body }}</div>
-  {% endif %}
-  {% if r.truncation %}
-  <div class="note warn"><strong>{{ r.L.partial_title }}</strong> {{ r.L.truncation }}</div>
-  {% endif %}
-  {% if not r.complete %}
-  <div class="note warn"><strong>{{ r.L.partial_title }}</strong> {{ r.L.partial }}</div>
-  {% endif %}
+  <h2><span class="n">1</span>{{ r.L.s1 }}</h2>
+  {% if not r.assessed %}
+  <p class="muted">{{ r.L.not_assessed_body }}{% if r.rescan_url %} <a href="{{ r.rescan_url }}">{{ r.L.rescan }}</a>{% endif %}</p>
+  {% else %}
+  {% if r.implements %}<div class="note"><strong>{{ r.L.implements }}</strong> {{ r.L.implements_body }}</div>{% endif %}
+  {% if r.truncation %}<div class="note warn"><strong>{{ r.L.partial_title }}</strong> {{ r.L.truncation }}</div>{% endif %}
+  {% if not r.complete %}<div class="note warn"><strong>{{ r.L.partial_title }}</strong> {{ r.L.partial }}</div>{% endif %}
   {% if r.sites %}
-  <div class="bar" role="img" aria-label="{{ r.L.bar_label }}">
-    {% for s in ["vulnerable", "weak", "review", "pq", "safe"] %}{% if r.tally[s] %}<span class="dot {{ s }}" style="border-radius:0;height:12px;width:{{ (100 * r.tally[s] / r.sites) | round(2) }}%"></span>{% endif %}{% endfor %}
-  </div>
-  <div class="legend">
-    {% for s in ["vulnerable", "weak", "review", "pq", "safe"] %}<span><span class="dot {{ s }}"></span>{{ r.tally_labels[s] }}: <strong>{{ r.tally[s] }}</strong></span>{% endfor %}
-  </div>
-  <p class="small">{{ r.L.counted }}</p>
+  <div class="bar" role="img" aria-label="{{ r.L.bar_label }}">{% for s in ["vulnerable", "weak", "review", "pq", "safe"] %}{% if r.tally[s] %}<span class="{{ s }}" style="width:{{ (100 * r.tally[s] / r.sites) | round(2) }}%"></span>{% endif %}{% endfor %}</div>
+  <div class="legend">{% for s in ["vulnerable", "weak", "review", "pq", "safe"] %}<span><span class="dot {{ s }}"></span>{{ r.tally_labels[s] }}: <strong>{{ r.tally[s] }}</strong></span>{% endfor %}</div>
+  <p class="small" style="margin-top:6px">{{ r.L.counted }}</p>
   {% endif %}
-
   {% if r.actions %}
   <h3>{{ r.L.actions }}</h3>
   {% for a in r.actions %}
   <div class="action">
     <span class="rank">{{ a.rank }}</span>
-    <div><strong>{{ a.title }}</strong><div class="small">{{ a.body }}</div>
-      <div class="small">{{ a.sources_line }}</div></div>
-    <div style="text-align:right"><span class="pill {{ 'bad' if a.overdue else 'warn' }}">{{ a.when }}</span><div class="small">{{ a.sites_label }}</div></div>
+    <div><strong>{{ a.title }}</strong><div class="small">{{ a.body }}</div><div class="small">{{ a.sources_line }}</div></div>
+    <div class="when"><span class="pill {{ 'bad' if a.overdue else 'warn' }}">{{ a.when }}</span><div class="small">{{ a.sites_label }}</div></div>
   </div>
   {% endfor %}
   {% endif %}
+  {% endif %}
 
-  <h2>{{ r.L.s2 }}</h2>
+  <h2><span class="n">2</span>{{ r.L.s2 }}</h2>
   {% if r.findings %}
   <p class="small">{{ r.L.findings_note }}</p>
   <table>
+    <colgroup><col style="width:30%"><col style="width:32%"><col style="width:12%"><col style="width:15%"><col style="width:11%"></colgroup>
     <thead><tr><th>{{ r.L.col_where }}</th><th>{{ r.L.col_call }}</th><th>{{ r.L.col_algorithm }}</th><th>{{ r.L.col_status }}</th><th>{{ r.L.col_entry }}</th></tr></thead>
     <tbody>
     {% for f in r.findings %}
-      <tr><td class="mono">{{ f.where }}</td><td class="mono">{{ f.name }}</td><td>{{ f.algorithm }}</td>
+      <tr><td class="mono">{{ f.where }}</td><td class="mono">{{ f.name }}</td><td class="mono">{{ f.algorithm }}</td>
           <td><span class="pill {{ 'bad' if f.status == 'vulnerable' else 'warn' }}">{{ f.status_label }}</span></td><td>{{ f.entry }}</td></tr>
     {% endfor %}
     </tbody>
@@ -132,32 +204,35 @@
   <p class="muted">{{ r.L.findings_none }}</p>
   {% endif %}
 
-  <h2>{{ r.L.s3 }}</h2>
+  <h2><span class="n">3</span>{{ r.L.s3 }}</h2>
   <p class="muted">{{ r.L.changes_lede }}</p>
   <p class="small">{{ r.L.changes_counts }}</p>
   {% if r.patches %}
   <h3>{{ r.L.patches }}</h3>
   {% for p in r.patches %}
-  <div class="small mono">{{ p.where }}</div>
-  <div class="diff"><span class="del">- {{ p.before }}</span>
-<span class="add">+ {{ p.after }}</span></div>
+  <div class="diff">
+    <div class="head">{{ p.where }}</div>
+    <table>{% for l in p.lines %}<tr class="{{ 'del' if l.kind == '-' else 'add' if l.kind == '+' else '' }}"><td class="no">{{ l.no }}</td><td class="k">{{ l.kind }}</td><td>{{ l.text }}</td></tr>{% endfor %}</table>
+  </div>
   {% endfor %}
+  {% if r.L.patches_more %}<p class="small">{{ r.L.patches_more }}</p>{% endif %}
   {% endif %}
   {% if r.guides %}
   <h3>{{ r.L.guides }}</h3>
   {% for g in r.guides %}
-  <div class="guide">
-    <strong>{{ g.title }}</strong> <span class="pill">{{ g.sites_label }}</span>
+  <details class="guide" open>
+    <summary><span>{{ g.title }}</span><span class="pill">{{ g.sites_label }}</span></summary>
     <p class="small">{{ g.body }} {{ g.target }}</p>
     <pre>{{ g.example }}</pre>
     <div class="sites">{{ g.sites_line }}</div>
     <div class="small">{{ g.sources_line }}</div>
-  </div>
+  </details>
   {% endfor %}
   {% endif %}
   {% if r.refusals %}
   <h3>{{ r.L.refusals }}</h3>
   <table>
+    <colgroup><col style="width:34%"><col style="width:66%"></colgroup>
     <thead><tr><th>{{ r.L.col_where }}</th><th>{{ r.L.col_reason }}</th></tr></thead>
     <tbody>
     {% for x in r.refusals %}
@@ -167,9 +242,10 @@
   </table>
   {% endif %}
 
-  <h2>{{ r.L.s4 }}</h2>
+  <h2><span class="n">4</span>{{ r.L.s4 }}</h2>
   {% if r.deadlines %}
   <table>
+    <colgroup><col style="width:17%"><col style="width:51%"><col style="width:12%"><col style="width:8%"><col style="width:12%"></colgroup>
     <thead><tr><th>{{ r.L.col_framework }}</th><th>{{ r.L.col_rule }}</th><th>{{ r.L.col_year }}</th><th>{{ r.L.col_sites }}</th><th>{{ r.L.col_status }}</th></tr></thead>
     <tbody>
     {% for d in r.deadlines %}
@@ -181,16 +257,31 @@
   </table>
   <p class="small">{{ r.L.deadlines_note }}</p>
   {% else %}
-  <p class="muted">{{ r.L.deadlines_none }}</p>
+  <p class="muted">{{ r.L.deadlines_none }}{% if not r.assessed and r.rescan_url %} <a href="{{ r.rescan_url }}">{{ r.L.rescan }}</a>{% endif %}</p>
   {% endif %}
 
-  <h2>{{ r.L.s5 }}</h2>
+  <h2><span class="n">5</span>{{ r.L.s5 }}</h2>
+  {% if r.agility.factors and r.score_status == "scored" %}
+  <p class="muted">{{ r.L.agility_lede }}</p>
+  <div class="score">{{ "%.1f" | format(r.agility_score) }} <span class="small">/ 100</span></div>
+  {% for f in r.agility.factors %}
+  <div class="factor">
+    <div><strong>{{ f.name }}</strong><div class="small">{{ f.why }}</div>{% if f.citations %}<div class="sites">{{ f.citations | join(" · ") }}</div>{% endif %}</div>
+    <div class="meter" role="img" aria-label="{{ '%.0f' | format(100 * f.value) }}%"><span style="width:{{ (100 * f.value) | round(1) }}%"></span></div>
+    <div class="num small ltr">{% if f.lost %}-{{ "%.1f" | format(f.lost) }}{% endif %}</div>
+  </div>
+  {% endfor %}
+  {% else %}
+  <p class="muted">{{ r.L.m_score_value }}</p>
+  {% endif %}
+
+  <h2><span class="n">6</span>{{ r.L.s6 }}</h2>
   <table>
+    <colgroup><col style="width:24%"><col style="width:76%"></colgroup>
     <tbody>
       <tr><td>{{ r.L.m_files }}</td><td>{{ r.L.m_files_value }}</td></tr>
       <tr><td>{{ r.L.m_how }}</td><td>{{ r.L.m_how_value }}</td></tr>
       <tr><td>{{ r.L.m_readiness }}</td><td>{{ r.L.m_readiness_value }}</td></tr>
-      <tr><td>{{ r.L.m_score }}</td><td>{{ r.L.m_score_value }}</td></tr>
       <tr><td>{{ r.L.m_versions }}</td><td class="mono">{{ r.L.m_versions_value }}</td></tr>
     </tbody>
   </table>
@@ -198,4 +289,5 @@
 
   <footer>{{ r.L.footer }}</footer>
 </main>
+</body>
 </html>

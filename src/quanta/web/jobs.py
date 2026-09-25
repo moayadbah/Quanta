@@ -232,6 +232,12 @@ class JobRegistry:
                     "ON CONFLICT(job_id,user_id) DO NOTHING",
                     (job_id, user_id),
                 )
+                # When this account asked for the scan, for the report's "scanned by" line.
+                conn.execute(
+                    "INSERT INTO scan_requests(job_id,user_id,requested_at) VALUES(?,?,?) "
+                    "ON CONFLICT(job_id,user_id) DO NOTHING",
+                    (job_id, user_id, timestamp()),
+                )
         job = self.get(job_id)
         if job is None:
             raise Reject("INTERNAL", "job disappeared during submission")

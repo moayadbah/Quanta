@@ -1,0 +1,178 @@
+{
+ "directed": true,
+ "graph": {},
+ "links": [
+  {
+   "confidence": "high",
+   "kind": "value_flow",
+   "source": "algo_literal-3bafdc3bb5cf6082",
+   "target": "crypto_call-3ff388e38397154e"
+  },
+  {
+   "confidence": "high",
+   "kind": "binding",
+   "source": "function-093c27a4b9df5f6f",
+   "target": "crypto_call-5bfde8372f1632f2"
+  },
+  {
+   "confidence": "high",
+   "kind": "binding",
+   "source": "function-736b457aa29e0e55",
+   "target": "crypto_call-7c60f5391df899dd"
+  },
+  {
+   "confidence": "high",
+   "kind": "binding",
+   "source": "function-96db3f1e837053c0",
+   "target": "algo_literal-3bafdc3bb5cf6082"
+  },
+  {
+   "confidence": "high",
+   "kind": "binding",
+   "source": "function-96db3f1e837053c0",
+   "target": "crypto_call-3ff388e38397154e"
+  },
+  {
+   "confidence": "high",
+   "kind": "binding",
+   "source": "module-8bf64ffb289114f7",
+   "target": "function-96db3f1e837053c0"
+  },
+  {
+   "confidence": "high",
+   "kind": "binding",
+   "source": "module-a4188763303f7732",
+   "target": "function-093c27a4b9df5f6f"
+  },
+  {
+   "confidence": "high",
+   "kind": "binding",
+   "source": "module-de37499f2d9d8269",
+   "target": "function-736b457aa29e0e55"
+  }
+ ],
+ "multigraph": false,
+ "nodes": [
+  {
+   "algorithm": "secp256r1",
+   "col": 35,
+   "file": "src/signer/keys.py",
+   "id": "algo_literal-3bafdc3bb5cf6082",
+   "kind": "algo_literal",
+   "line": 5,
+   "module": "src.signer.keys",
+   "qualified_name": "ec.SECP256R1",
+   "source": "static"
+  },
+  {
+   "algorithm": null,
+   "col": 11,
+   "file": "src/signer/keys.py",
+   "id": "crypto_call-3ff388e38397154e",
+   "kind": "crypto_call",
+   "line": 5,
+   "module": "src.signer.keys",
+   "qualified_name": "cryptography.hazmat.primitives.asymmetric.ec.generate_private_key",
+   "source": "static"
+  },
+  {
+   "algorithm": "SHA1",
+   "col": 11,
+   "file": "tests/test_digest.py",
+   "id": "crypto_call-5bfde8372f1632f2",
+   "kind": "crypto_call",
+   "line": 5,
+   "module": "tests.test_digest",
+   "qualified_name": "hashlib.sha1",
+   "source": "static"
+  },
+  {
+   "algorithm": "SHA1",
+   "col": 11,
+   "file": "src/signer/digest.py",
+   "id": "crypto_call-7c60f5391df899dd",
+   "kind": "crypto_call",
+   "line": 5,
+   "module": "src.signer.digest",
+   "qualified_name": "hashlib.sha1",
+   "source": "static"
+  },
+  {
+   "algorithm": null,
+   "col": 0,
+   "file": "tests/test_digest.py",
+   "id": "function-093c27a4b9df5f6f",
+   "kind": "function",
+   "line": 4,
+   "module": "tests.test_digest",
+   "qualified_name": "tests.test_digest.test_known_answer",
+   "source": "static"
+  },
+  {
+   "algorithm": null,
+   "col": 0,
+   "file": "src/signer/digest.py",
+   "id": "function-736b457aa29e0e55",
+   "kind": "function",
+   "line": 4,
+   "module": "src.signer.digest",
+   "qualified_name": "src.signer.digest.fingerprint",
+   "source": "static"
+  },
+  {
+   "algorithm": null,
+   "col": 0,
+   "file": "src/signer/keys.py",
+   "id": "function-96db3f1e837053c0",
+   "kind": "function",
+   "line": 4,
+   "module": "src.signer.keys",
+   "qualified_name": "src.signer.keys.new_key",
+   "source": "static"
+  },
+  {
+   "algorithm": null,
+   "col": 0,
+   "file": "",
+   "id": "module-2f23428551f39f49",
+   "kind": "module",
+   "line": 0,
+   "module": "src.signer",
+   "qualified_name": "src.signer",
+   "source": "static"
+  },
+  {
+   "algorithm": null,
+   "col": 0,
+   "file": "src/signer/keys.py",
+   "id": "module-8bf64ffb289114f7",
+   "kind": "module",
+   "line": 0,
+   "module": "src.signer.keys",
+   "qualified_name": "src.signer.keys",
+   "source": "static"
+  },
+  {
+   "algorithm": null,
+   "col": 0,
+   "file": "tests/test_digest.py",
+   "id": "module-a4188763303f7732",
+   "kind": "module",
+   "line": 0,
+   "module": "tests.test_digest",
+   "qualified_name": "tests.test_digest",
+   "source": "static"
+  },
+  {
+   "algorithm": null,
+   "col": 0,
+   "file": "src/signer/digest.py",
+   "id": "module-de37499f2d9d8269",
+   "kind": "module",
+   "line": 0,
+   "module": "src.signer.digest",
+   "qualified_name": "src.signer.digest",
+   "source": "static"
+  }
+ ]
+}

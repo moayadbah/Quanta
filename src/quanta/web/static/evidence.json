@@ -3,34 +3,135 @@
   "measured_on": "2026-09-24",
   "figures": [
     {
-      "id": "recall", "value": "94.6", "unit": true,
-      "values": {"found": 70, "total": 74, "lo": "86.9", "hi": "97.9", "pk_found": 4, "pk_total": 8, "limit": true},
-      "sources": [{"id": "protocol", "path": "evidence/PROTOCOL-R4.md"}, {"id": "accuracy", "path": "evidence/r4/accuracy-final-v3.json"}]
+      "id": "recall",
+      "value": "94.6",
+      "values": {
+        "found": 70,
+        "total": 74,
+        "lo": "86.9",
+        "hi": "97.9",
+        "pk_found": 4,
+        "pk_total": 8,
+        "limit": true
+      },
+      "sources": [
+        {
+          "id": "protocol",
+          "path": "evidence/PROTOCOL-R4.md"
+        },
+        {
+          "id": "accuracy",
+          "path": "evidence/r4/accuracy-final-v3.json"
+        }
+      ]
     },
     {
-      "id": "precision", "value": "100", "unit": true,
-      "values": {"found": 71, "total": 71, "lo": "94.9"},
-      "sources": [{"id": "protocol", "path": "evidence/PROTOCOL-R4.md"}, {"id": "accuracy", "path": "evidence/r4/accuracy-final-v3.json"}]
+      "id": "precision",
+      "value": "100",
+      "values": {
+        "found": 71,
+        "total": 71,
+        "lo": "94.9"
+      },
+      "sources": [
+        {
+          "id": "protocol",
+          "path": "evidence/PROTOCOL-R4.md"
+        },
+        {
+          "id": "accuracy",
+          "path": "evidence/r4/accuracy-final-v3.json"
+        }
+      ]
     },
     {
-      "id": "hours", "value": "77", "unit": true,
-      "values": {"lines": "15,343", "rate": 200, "repos": 60, "review": "3", "manual": "76.7", "saved": "76.6", "limit": true},
-      "sources": [{"id": "kemerer", "url": "https://sites.pitt.edu/~ckemerer/PSP_Data.pdf"}, {"id": "method", "path": "evidence/r4/TIME-COST-METHOD.md"}, {"id": "timecost", "path": "evidence/r4/time-cost.json"}]
+      "id": "hours",
+      "value": "77",
+      "values": {
+        "lines": "15,343",
+        "rate": 200,
+        "repos": 60,
+        "review": "3",
+        "manual": "76.7",
+        "saved": "76.6",
+        "limit": true
+      },
+      "sources": [
+        {
+          "id": "kemerer",
+          "url": "https://sites.pitt.edu/~ckemerer/PSP_Data.pdf"
+        },
+        {
+          "id": "method",
+          "path": "evidence/r4/TIME-COST-METHOD.md"
+        },
+        {
+          "id": "timecost",
+          "path": "evidence/r4/time-cost.json"
+        }
+      ]
     },
     {
-      "id": "cost", "prefix": "$", "value": "5,007", "unit": false,
-      "values": {"wage": "135,980", "hourly": "65.38", "hours": "76.6", "repos": 60, "limit": true},
-      "sources": [{"id": "bls", "url": "https://www.bls.gov/ooh/computer-and-information-technology/software-developers.htm"}, {"id": "kemerer", "url": "https://sites.pitt.edu/~ckemerer/PSP_Data.pdf"}, {"id": "timecost", "path": "evidence/r4/time-cost.json"}]
+      "id": "cost",
+      "value": "5,007",
+      "values": {
+        "wage": "135,980",
+        "hourly": "65.38",
+        "hours": "76.6",
+        "repos": 60,
+        "limit": true
+      },
+      "sources": [
+        {
+          "id": "bls",
+          "url": "https://www.bls.gov/ooh/computer-and-information-technology/software-developers.htm"
+        },
+        {
+          "id": "kemerer",
+          "url": "https://sites.pitt.edu/~ckemerer/PSP_Data.pdf"
+        },
+        {
+          "id": "timecost",
+          "path": "evidence/r4/time-cost.json"
+        }
+      ]
     },
     {
-      "id": "overdue", "value": "80", "unit": false,
-      "values": {"repos": 60, "vulnerable": 96, "weak": 118, "proposed": 108, "with": 32},
-      "sources": [{"id": "standards", "path": "config/standards.json"}, {"id": "timecost", "path": "evidence/r4/time-cost.json"}]
+      "id": "overdue",
+      "value": "80",
+      "values": {
+        "repos": 60,
+        "vulnerable": 96,
+        "weak": 118,
+        "proposed": 108,
+        "with": 32
+      },
+      "sources": [
+        {
+          "id": "standards",
+          "path": "config/standards.json"
+        },
+        {
+          "id": "timecost",
+          "path": "evidence/r4/time-cost.json"
+        }
+      ]
     },
     {
-      "id": "speed", "value": "15.3", "unit": true,
-      "values": {"lines": "15,343", "max": "269", "biggest": "575,615", "repos": 60},
-      "sources": [{"id": "timecost", "path": "evidence/r4/time-cost.json"}]
+      "id": "speed",
+      "value": "15.3",
+      "values": {
+        "lines": "15,343",
+        "max": "269",
+        "biggest": "575,615",
+        "repos": 60
+      },
+      "sources": [
+        {
+          "id": "timecost",
+          "path": "evidence/r4/time-cost.json"
+        }
+      ]
     }
   ]
 }

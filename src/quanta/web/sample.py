@@ -62,7 +62,7 @@ def payload() -> dict[str, Any]:
 REUSE_SECONDS = 86_400
 
 
-def _recent(registry: JobRegistry) -> Job | None:
+def recent(registry: JobRegistry) -> Job | None:
     owner, name = parse_repo_url(f"https://github.com/{manifest()['repo']}")
     with registry.db.connect() as conn:
         row = conn.execute(
@@ -77,9 +77,9 @@ def _recent(registry: JobRegistry) -> Job | None:
 
 def start_replay(registry: JobRegistry) -> Job:
     """A cached job holding the recorded events, in order, with their offsets."""
-    recent = _recent(registry)
-    if recent is not None:
-        return recent
+    recent_job = recent(registry)
+    if recent_job is not None:
+        return recent_job
     info = manifest()
     job = Job(id=str(uuid.uuid4()), repo_url=f"https://github.com/{info['repo']}")
     job.cached = True

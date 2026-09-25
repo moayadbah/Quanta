@@ -83,7 +83,8 @@ _PAD = 24
 #: formally obsoletes ``X-Frame-Options`` in any case.
 REPORT_SECURITY_HEADERS: dict[str, str] = {
     "Content-Security-Policy": (
-        "default-src 'none'; style-src 'unsafe-inline'; img-src data:; frame-ancestors 'self'"
+        "default-src 'none'; style-src 'unsafe-inline'; img-src data:; font-src 'self'; "
+        "frame-ancestors 'self'"
     ),
     "X-Content-Type-Options": "nosniff",
     "Referrer-Policy": "no-referrer",
@@ -276,6 +277,11 @@ def render_report(
         findings or [],
         fixes.public() if fixes is not None else {"files": [], "skipped": [], "guides": []},
     )
+    return render_data(data)
+
+
+def render_data(data: dict[str, Any]) -> str:
+    """Draw a report dictionary from ``core/report_data.build`` with today's template."""
     return _environment().get_template("report.html.j2").render(r=data)
 
 

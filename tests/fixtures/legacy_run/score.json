@@ -1,0 +1,98 @@
+{
+ "agility_score": 26.225891,
+ "coverage": {
+  "files_scanned": 4,
+  "files_unparseable": 0,
+  "truncated": false
+ },
+ "deductions": [
+  {
+   "citations": [
+    "src/signer/digest.py:5",
+    "src/signer/keys.py:5",
+    "tests/test_digest.py:5"
+   ],
+   "factor": "call_sites",
+   "points": 11.274109,
+   "reason": "3 cryptographic call sites must each be edited to change algorithm"
+  },
+  {
+   "citations": [
+    "src/signer/digest.py:5",
+    "src/signer/keys.py:5",
+    "tests/test_digest.py:5"
+   ],
+   "factor": "isolation_layer",
+   "points": 22.5,
+   "reason": "Crypto APIs invoked directly from 3 modules with no common wrapper; 3 nodes must be cut to decouple cryptography"
+  },
+  {
+   "citations": [
+    "src/signer/keys.py:5"
+   ],
+   "factor": "selection_source",
+   "points": 20.0,
+   "reason": "1 algorithm selection is hard-coded rather than read from configuration"
+  },
+  {
+   "citations": [
+    "src/signer/keys.py:5",
+    "src/signer/digest.py:5",
+    "tests/test_digest.py:5"
+   ],
+   "factor": "propagation_depth",
+   "points": 20.0,
+   "reason": "7 graph nodes can reach cryptography, so a change propagates well beyond the call sites themselves"
+  }
+ ],
+ "factors": {
+  "call_sites": {
+   "contribution": 18.725891,
+   "normalised": 0.624196,
+   "raw": 3,
+   "weight": 0.3
+  },
+  "isolation_layer": {
+   "contribution": 7.5,
+   "normalised": 0.25,
+   "raw": false,
+   "weight": 0.3
+  },
+  "propagation_depth": {
+   "contribution": 0.0,
+   "normalised": 0.0,
+   "raw": 7,
+   "weight": 0.2
+  },
+  "selection_source": {
+   "contribution": 0.0,
+   "normalised": 0.0,
+   "raw": "hardcoded",
+   "weight": 0.2
+  }
+ },
+ "provenance": {
+  "analyzer_version": "0.3.0+rules.2026.08.01",
+  "commit_sha": "3f2a9c1e7b5d4a6f8e0c2b1d9a7f5e3c1b2a4d6e",
+  "crypto_ruleset_version": "2026.08.01",
+  "repo": "example/signer"
+ },
+ "recommendations": [
+  {
+   "action": "Introduce a crypto facade module fronting the cryptographic primitives, so algorithm changes are made in one place",
+   "affected_sites": 3,
+   "estimated_score_gain": 22.5
+  },
+  {
+   "action": "Move algorithm selection into configuration so the algorithm is policy rather than a code literal (NIST CSWP 39)",
+   "affected_sites": 1,
+   "estimated_score_gain": 20.0
+  },
+  {
+   "action": "Replace broken primitives (MD5/SHA1/3DES/RC4); these are weak today, independently of any quantum adversary",
+   "affected_sites": 2,
+   "estimated_score_gain": 0.0
+  }
+ ],
+ "schema_version": "1.0"
+}

@@ -6,7 +6,6 @@
   <meta name="color-scheme" content="dark">
   <title>Quanta</title>
   <link rel="icon" href="brand/logo.svg" type="image/svg+xml">
-  <link rel="preload" href="brand/fonts/inter-display-medium.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="brand/horizon-hero.webp" as="image" media="(min-width: 701px)">
   <link rel="stylesheet" href="site.css">
   <script type="module" src="landing.mjs"></script>
@@ -64,9 +63,9 @@
       </div>
       <div class="hero-scrim" aria-hidden="true"></div>
       <div class="wrap hero-copy">
-        <h1 class="display reveal" id="hero-title" data-t="hero.title"></h1>
-        <p class="lede reveal" data-t="hero.lede"></p>
-        <div class="actions reveal">
+        <h1 class="display" id="hero-title" data-t="hero.title"></h1>
+        <p class="lede" data-t="hero.lede"></p>
+        <div class="actions">
           <a class="btn primary lg" href="/workspace.html"><span data-t="cta.scan"></span><svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></a>
           <a class="btn lg" href="/workspace.html#sample" data-t="cta.sample"></a>
         </div>
@@ -84,19 +83,19 @@
             <span class="num">01</span>
             <h3 class="h3" data-t="product.find_title"></h3>
             <p class="body" data-t="product.find_body"></p>
-            <div class="shot surface" id="shot-find" role="img" data-t-attr="aria-label=product.find_title"></div>
+            <div class="shot surface" id="shot-find" role="img" data-t-attr="aria-label=product.find_title"><span class="sk sk-line "></span><span class="sk sk-line "></span><span class="sk sk-line "></span><span class="sk sk-line "></span><span class="sk sk-line "></span><span class="sk sk-line "></span><span class="sk sk-line short"></span></div>
           </article>
           <article class="pillar reveal">
             <span class="num">02</span>
             <h3 class="h3" data-t="product.change_title"></h3>
             <p class="body" data-t="product.change_body"></p>
-            <div class="shot surface" id="shot-change" role="img" data-t-attr="aria-label=product.change_title"></div>
+            <div class="shot surface" id="shot-change" role="img" data-t-attr="aria-label=product.change_title"><span class="sk sk-line mid"></span><span class="sk sk-line "></span><span class="sk sk-line "></span><span class="sk sk-line short"></span></div>
           </article>
           <article class="pillar reveal">
             <span class="num">03</span>
             <h3 class="h3" data-t="product.ready_title"></h3>
             <p class="body" data-t="product.ready_body"></p>
-            <div class="shot surface" id="shot-ready" role="img" data-t-attr="aria-label=product.ready_title"></div>
+            <div class="shot surface" id="shot-ready" role="img" data-t-attr="aria-label=product.ready_title"><span class="sk sk-line short"></span><span class="sk sk-line mid"></span><span class="sk sk-line "></span><span class="sk sk-line "></span></div>
           </article>
         </div>
       </div>
@@ -109,9 +108,9 @@
           <p class="lede" data-t="readiness.lede"></p>
         </div>
         <div class="timeline-scroll reveal">
-          <div class="timeline" id="timeline" role="group" data-t-attr="aria-label=readiness.timeline_label"></div>
+          <div class="timeline" id="timeline" role="group" data-t-attr="aria-label=readiness.timeline_label"><div class="tl-sk head"></div><div class="tl-sk"><span class="sk sk-line"></span></div><div class="tl-sk"><span class="sk sk-line"></span></div><div class="tl-sk"><span class="sk sk-line"></span></div><div class="tl-sk"><span class="sk sk-line"></span></div><div class="tl-sk"><span class="sk sk-line"></span></div><div class="tl-sk"><span class="sk sk-line"></span></div></div>
         </div>
-        <div class="source-panel surface" id="source-panel" aria-live="polite"></div>
+        <div class="source-panel surface" id="source-panel" aria-live="polite"><span class="sk sk-line short"></span><span class="sk sk-line mid"></span><span class="sk sk-line mid"></span><span class="sk sk-line mid"></span><span class="sk sk-line short"></span><span class="sk sk-line short"></span></div>
       </div>
     </section>
 
@@ -121,7 +120,7 @@
           <h2 class="h2" id="numbers-title" data-t="numbers.title"></h2>
           <p class="lede" data-t="numbers.lede"></p>
         </div>
-        <div class="figures reveal-group" id="figures"></div>
+        <div class="figures reveal-group" id="figures"><div class="figure sk-figure"><span class="value"><span class="sk sk-num"></span></span><span class="sk sk-line mid"></span><span class="sk sk-line short"></span></div><div class="figure sk-figure"><span class="value"><span class="sk sk-num"></span></span><span class="sk sk-line mid"></span><span class="sk sk-line short"></span></div><div class="figure sk-figure"><span class="value"><span class="sk sk-num"></span></span><span class="sk sk-line mid"></span><span class="sk sk-line short"></span></div><div class="figure sk-figure"><span class="value"><span class="sk sk-num"></span></span><span class="sk sk-line mid"></span><span class="sk sk-line short"></span></div><div class="figure sk-figure"><span class="value"><span class="sk sk-num"></span></span><span class="sk sk-line mid"></span><span class="sk sk-line short"></span></div><div class="figure sk-figure"><span class="value"><span class="sk sk-num"></span></span><span class="sk sk-line mid"></span><span class="sk sk-line short"></span></div></div>
         <div class="figure-detail surface" id="figure-detail" hidden></div>
       </div>
     </section>

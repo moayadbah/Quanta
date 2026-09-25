@@ -359,3 +359,9 @@ def test_sample_replay_works_with_database_stored_artifacts(tmp_path: Path) -> N
     assert registry.store.complete(job.id)
     assert b'"findings"' in registry.store.open(job.id, "findings.json")
     assert sample.start_replay(registry).id == job.id
+
+
+def test_opening_the_sample_again_and_again_is_never_rate_limited(registry: JobRegistry) -> None:
+    with TestClient(create_app(registry.artifact_root, registry.db.path)) as client:
+        statuses = {client.post("/api/v1/sample/replay").status_code for _ in range(25)}
+        assert statuses == {201}

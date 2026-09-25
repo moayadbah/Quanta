@@ -245,6 +245,20 @@ function renderSource() {
   );
 }
 
+/* The figure as it is written in the reader's language (fig.<id>.format, "{n}" is the
+   number): "$5,007", "77h" and "94.6%" in English; in Arabic the number stays left to
+   right and a unit word follows it ("77 ساعة", "5,007 دولار"), while a glued sign such as
+   "٪" stays attached to the digits. */
+function figureValue(figure) {
+  const [before, after = ""] = t(`fig.${figure.id}.format`).split("{n}");
+  const word = after.startsWith(" ") ? after.trim() : "";
+  const glued = word ? "" : after;
+  return el("span", { class: "value" },
+    el("span", { class: "n" }, before, figure.value, glued ? el("span", { class: "unit", text: glued }) : null),
+    word ? el("span", { class: "unit word", text: word }) : null,
+  );
+}
+
 /* Numbers: each figure opens its source and method -------------------------------------------- */
 function renderFigures() {
   const evidence = data.evidence;
@@ -261,7 +275,7 @@ function renderFigures() {
           renderFigures();
         },
       },
-        el("span", { class: "value" }, figure.prefix || "", figure.value, figure.unit ? el("span", { class: "unit", text: t(`fig.${figure.id}.unit`) }) : null),
+        figureValue(figure),
         el("span", { class: "label", text: t(`fig.${figure.id}.label`, figure.values) }),
         el("span", { class: "how" }, t("numbers.how"), icon("chevron", "chev")),
       ),
@@ -298,9 +312,12 @@ function renderAll() {
 }
 
 async function main() {
+  // The page arrived with its text (assets.py): start the picture and the scroll fades now,
+  // and let the strings, the sample and the standards fill in behind their skeletons.
+  mountHero();
+  observeReveals();
   await loadContent();
   mountChrome();
-  mountHero();
   onLanguage(() => {
     renderAll();
     drawAscii();
@@ -308,7 +325,7 @@ async function main() {
   const [sample, standards, evidence] = await Promise.allSettled([
     getJson("/api/v1/sample"),
     getJson("/api/v1/standards"),
-    getJson("/evidence.json"),
+    getJson(new URL("./evidence.json", import.meta.url).href),
   ]);
   if (sample.status === "fulfilled") data.sample = sample.value;
   if (standards.status === "fulfilled") data.standards = standards.value;
