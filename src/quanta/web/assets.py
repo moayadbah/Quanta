@@ -80,8 +80,10 @@ FIRST_FONTS = {
         "inter-500-latin.woff2",
         "inter-600-latin.woff2",
         "inter-display-medium-latin.woff2",
+        # The hero's hex field is drawn in this face; it must be ready when the field is.
+        "geist-mono-500-latin.woff2",
     ),
-    "ar": ("readex-pro-arabic.woff2",),
+    "ar": ("readex-pro-arabic.woff2", "geist-mono-500-latin.woff2"),
 }
 _IMPORT = re.compile(r'^\s*import\b[^;]*?\bfrom\s+"\./([\w.-]+\.mjs)"', re.MULTILINE)
 
