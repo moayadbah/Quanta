@@ -144,6 +144,13 @@ const PROBE = String.raw`(() => {
 const HIDE_TEXT = `(() => { const s = document.createElement("style"); s.id = "hide-text"; s.textContent = "*, *::before, *::after { color: transparent !important; text-shadow: none !important; caret-color: transparent !important; -webkit-text-fill-color: transparent !important; } ::placeholder { color: transparent !important; } svg { visibility: hidden !important; }"; document.head.append(s); return true; })()`;
 const SETTLE = `(async () => {
   document.querySelectorAll(".reveal").forEach((e) => e.classList.add("in"));
+  // Sections off screen are not laid out (content-visibility): lay them all out to measure.
+  if (!document.getElementById("lay-out-all")) {
+    const s = document.createElement("style");
+    s.id = "lay-out-all";
+    s.textContent = "main > .section { content-visibility: visible !important; }";
+    document.head.append(s);
+  }
   await document.fonts.ready;
   // The hex field behind the hero is drawn once the page is idle: measure with it present.
   for (let i = 0; i < 40 && document.querySelector(".hero-ascii:not(.ready)"); i++) await new Promise((r) => setTimeout(r, 150));

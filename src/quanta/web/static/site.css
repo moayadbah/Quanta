@@ -278,12 +278,16 @@ button.back { border: 0; background: none; padding: 0; justify-self: start; }
 :root[dir="rtl"] .hero-media img { transform: scaleX(-1); }
 .hero-scrim { position: absolute; inset: 0; background: linear-gradient(to top, #000 0%, rgba(0, 0, 0, 0.72) 32%, rgba(0, 0, 0, 0) 70%), linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0) 22%); }
 .hero-copy { position: relative; z-index: 2; width: 100%; padding-bottom: 104px; display: grid; gap: 24px; justify-items: start; }
-/* The text sits on calm black: the hex field fades out above the headline and never runs
-   behind the paragraph, however many lines the headline takes in either language. */
-.hero-copy::before {
-  content: ""; position: absolute; z-index: -1; inset: -96px calc(-1 * var(--pad)) 0;
-  background: linear-gradient(to top, #000 0%, #000 calc(100% - 150px), rgba(0, 0, 0, 0.85) calc(100% - 96px), rgba(0, 0, 0, 0) 100%);
-  pointer-events: none;
+/* The horizon crosses the whole hero, headline included: large bright type reads over it.
+   On a phone the paragraph can land on the band, so there alone a soft dark fade sits
+   behind the paragraph (never behind the headline, never on larger screens). */
+@media (max-width: 640px), (max-height: 500px) {
+  .hero-copy .lede { position: relative; }
+  .hero-copy .lede::before {
+    content: ""; position: absolute; z-index: -1; inset: -18px calc(-1 * var(--pad)) -22px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0.9) 22px, rgba(0, 0, 0, 0.9) calc(100% - 22px), rgba(0, 0, 0, 0) 100%);
+    pointer-events: none;
+  }
 }
 .hero-copy .lede { color: #cfcfcf; }
 .actions { display: flex; flex-wrap: wrap; gap: 12px; }
@@ -667,3 +671,7 @@ span.avatar.sk { width: 48px; height: 48px; border-radius: 50%; flex: none; }
 /* The scope switch keeps each label on one line; on a narrow phone the two options stack. */
 .segmented { flex-wrap: wrap; max-width: 100%; }
 .segmented button { white-space: nowrap; flex: 1 1 auto; }
+/* Sections below the first screen are laid out when they come near it, so filling their
+   skeletons does not relay out the whole page (costly for shaped Arabic text). The
+   remembered size keeps the scrollbar steady. */
+main > .section { content-visibility: auto; contain-intrinsic-size: auto 900px; }
