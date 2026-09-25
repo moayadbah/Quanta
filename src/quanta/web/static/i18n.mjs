@@ -50,13 +50,16 @@ export function numberText(value, digits = 0) {
 }
 
 export function apply(root = document) {
+  // Only what differs is written: the server already sent the page in its language, and
+  // rewriting identical text would replace every node, relayout the page and repaint it.
   root.querySelectorAll("[data-t]").forEach((el) => {
-    el.textContent = t(el.dataset.t);
+    const text = t(el.dataset.t);
+    if (el.textContent !== text) el.textContent = text;
   });
   root.querySelectorAll("[data-t-attr]").forEach((el) => {
     for (const pair of el.dataset.tAttr.split(";")) {
       const [attr, key] = pair.split("=").map((s) => s.trim());
-      if (attr && key) el.setAttribute(attr, t(key));
+      if (attr && key && el.getAttribute(attr) !== t(key)) el.setAttribute(attr, t(key));
     }
   });
 }
@@ -92,7 +95,8 @@ function commit(next) {
   html.lang = state.lang;
   html.dir = state.lang === "ar" ? "rtl" : "ltr";
   remember(state.lang);
-  document.title = t(document.body.dataset.titleKey || "site.title");
+  const title = t(document.body.dataset.titleKey || "site.title");
+  if (document.title !== title) document.title = title;
   apply();
   for (const listener of listeners) listener(state.lang);
 }
