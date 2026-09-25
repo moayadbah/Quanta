@@ -57,8 +57,9 @@ jobs:
 
       - name: JavaScript syntax
         run: |
-          node --input-type=module --check < src/quanta/web/static/app.js
-          node --check src/quanta/web/static/product.mjs
+          for file in src/quanta/web/static/*.mjs; do
+            node --check "$file"
+          done
           node --test tests/frontend.test.mjs
 
       - name: Installed wheel
