@@ -86,13 +86,11 @@ def _streamed(job: Job) -> list[dict[str, Any]]:
 def _findings(request: Request, job: Job) -> list[dict[str, Any]]:
     if job.status != "succeeded":
         return _streamed(job)
-    try:
-        payload = json.loads(_artifact(request, job, "findings.json"))
-    except Reject:
-        # A cached corpus from before findings.json existed has no findings to show.
-        return []
-    findings: list[dict[str, Any]] = payload.get("findings", [])
-    return findings
+    from quanta.web.documents import read_run
+
+    # An older engine's run has no findings.json: its calls are rebuilt from cdg.json and
+    # classed with today's rules (core/legacy.py), never shown as an empty, clean list.
+    return read_run(request, job)[2].findings
 
 
 def _feedback(registry: JobRegistry, job_id: str, user_id: str) -> dict[str, dict[str, str]]:
@@ -192,7 +190,10 @@ def _check_finding_id(finding_id: str) -> None:
 
 
 def _plan(request: Request, job: Job) -> FixPlan:
-    return FixPlan.model_validate_json(_artifact(request, job, "fixes.json"))
+    from quanta.web.documents import read_run
+
+    _artifact(request, job, "fixes.json")
+    return read_run(request, job)[2].plan
 
 
 def _verification_row(row: Any) -> dict[str, Any]:

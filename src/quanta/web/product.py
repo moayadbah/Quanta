@@ -11,7 +11,7 @@ from typing import Any
 
 import httpx
 from fastapi import APIRouter, Request
-from fastapi.responses import JSONResponse, Response
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
 
 from quanta.core.analyze import AnalysisOutcome, analyze_path
@@ -84,13 +84,17 @@ def workspace(request: Request) -> dict[str, Any]:
 
 
 def _plan(request: Request, job_id: str) -> FixPlan:
+    """The run's plan, read with today's rules: a patch they refuse is never offered."""
+    from quanta.web.documents import read_run
+
     job = _job_or_404(request, job_id)
     try:
-        return FixPlan.model_validate_json(_artifact(request, job, "fixes.json"))
+        _artifact(request, job, "fixes.json")
     except Reject:
         if job.status == "succeeded":
             return FixPlan()
         raise
+    return read_run(request, job)[2].plan
 
 
 @router.get("/analyses/{job_id}/fixes")
@@ -140,36 +144,6 @@ def me(request: Request) -> dict[str, Any]:
             if isinstance(r, dict) and not r.get("private") and not r.get("archived")
         ],
     }
-
-
-@router.get("/analyses/{job_id}/report.pdf")
-def report_pdf(request: Request, job_id: str) -> Response:
-    """The readiness report as a PDF, built from this scan's artifacts."""
-    from quanta.core.pdf import render_pdf
-    from quanta.core.report_data import build
-
-    job = _job_or_404(request, job_id)
-
-    def artifact(name: str) -> Any:
-        try:
-            return json.loads(_artifact(request, job, name))
-        except Reject:
-            return None
-
-    score = artifact("score.json") or {}
-    data = build(
-        score=score,
-        meta=artifact("meta.json") or {},
-        readiness=artifact("readiness.json"),
-        findings=(artifact("findings.json") or {}).get("findings", []),
-        fixes=FixPlan.model_validate(artifact("fixes.json") or {}).public(),
-    )
-    name = str(score.get("provenance", {}).get("repo", "report")).replace("/", "-")
-    return Response(
-        content=render_pdf(data),
-        media_type="application/pdf",
-        headers={"Content-Disposition": f'attachment; filename="quanta-{name}.pdf"'},
-    )
 
 
 @router.get("/standards")
@@ -287,9 +261,12 @@ def sample_replay(request: Request) -> JSONResponse:
     identity = service.identity(request, required=False)
     if identity:
         service.csrf(request, identity)
-    _enforce_rate_limit(request)
     if not recorded_sample.available():
         raise Reject("REPO_NOT_FOUND", "The sample is not installed.")
+    # Streaming the shared, already stored replay creates nothing, so it is never limited;
+    # only storing a new one (about once a day) counts against the submission limit.
+    if recorded_sample.recent(_registry(request)) is None:
+        _enforce_rate_limit(request)
     job = recorded_sample.start_replay(_registry(request))
     if identity:
         with _registry(request).db.connect(write=True) as conn:

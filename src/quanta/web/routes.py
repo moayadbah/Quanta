@@ -12,12 +12,11 @@ from collections import defaultdict
 from typing import Annotated, Any
 
 from fastapi import APIRouter, Header, Request
-from fastapi.responses import HTMLResponse, JSONResponse, Response, StreamingResponse
+from fastapi.responses import JSONResponse, Response, StreamingResponse
 from pydantic import BaseModel, Field
 
 from quanta.config import get_settings
 from quanta.core.ingest import parse_repo_url
-from quanta.core.report import REPORT_SECURITY_HEADERS
 from quanta.errors import Reject
 from quanta.version import CRYPTO_RULESET_VERSION, __version__
 from quanta.web import demo
@@ -204,16 +203,6 @@ def get_score(request: Request, job_id: str) -> Response:
     return Response(
         content=_artifact(request, job, "score.json"),
         media_type="application/json",
-    )
-
-
-@router.get("/analyses/{job_id}/report")
-def get_report(request: Request, job_id: str) -> HTMLResponse:
-    """The canonical Jinja2 report, served with its own hardened headers (§7.3 T5)."""
-    job = _job_or_404(request, job_id)
-    return HTMLResponse(
-        content=_artifact(request, job, "report.html"),
-        headers=dict(REPORT_SECURITY_HEADERS),
     )
 
 

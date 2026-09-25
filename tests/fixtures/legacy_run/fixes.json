@@ -1,0 +1,46 @@
+{
+ "files": [
+  {
+   "changes": [
+    {
+     "after": "sha256",
+     "before": "sha1",
+     "end": 63,
+     "id": "1fd43ee350eaab1e94675086",
+     "import_alias": "",
+     "import_module": "",
+     "import_name": "",
+     "line": 5,
+     "note": "SHA-256 changes digest values and length. Check stored hashes, signatures, protocols, fixtures and consumers before merging. It is not a password hashing scheme.",
+     "rule": "weak-hash-to-sha256",
+     "start": 59
+    }
+   ],
+   "path": "src/signer/digest.py",
+   "sha256": "ec5b5e1ec805169ece7c61e1f8397a564f6c2b09fee028c4af3e33aa6e2f83a2",
+   "source": "import hashlib\n\n\ndef fingerprint(data):\n    return hashlib.sha1(data).hexdigest()\n"
+  },
+  {
+   "changes": [
+    {
+     "after": "sha256",
+     "before": "sha1",
+     "end": 65,
+     "id": "94c0d7630dafd485ba96504f",
+     "import_alias": "",
+     "import_module": "",
+     "import_name": "",
+     "line": 5,
+     "note": "SHA-256 changes digest values and length. Check stored hashes, signatures, protocols, fixtures and consumers before merging. It is not a password hashing scheme.",
+     "rule": "weak-hash-to-sha256",
+     "start": 61
+    }
+   ],
+   "path": "tests/test_digest.py",
+   "sha256": "66991420779cbd3e8720c7704bcb4caba0096c854a7264e64868c42917ebbfa6",
+   "source": "import hashlib\n\n\ndef test_known_answer():\n    assert hashlib.sha1(b\"abc\").hexdigest() == \"a9993e364706816aba3e25717850c26c9cd0d89d\"\n"
+  }
+ ],
+ "limited": false,
+ "version": 1
+}

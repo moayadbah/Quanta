@@ -27,9 +27,11 @@ from quanta.config import get_settings
 from quanta.errors import Reject
 from quanta.resources import asset_path
 from quanta.version import __version__
+from quanta.web import assets
 from quanta.web.auth import Auth
 from quanta.web.auth import router as auth_router
 from quanta.web.cloud import router as cloud_router
+from quanta.web.documents import router as documents_router
 from quanta.web.jobs import JobRegistry
 from quanta.web.product import router as product_router
 from quanta.web.review import router as review_router
@@ -55,6 +57,9 @@ SPA_CSP = (
     "base-uri 'none'; "
     "form-action 'none'"
 )
+
+#: Public, per-deploy data the home page reads; everything else under /api stays private.
+PUBLIC_API = frozenset({"/api/v1/sample", "/api/v1/standards"})
 
 SPA_HEADERS = {
     "Content-Security-Policy": SPA_CSP,
@@ -161,8 +166,14 @@ def create_app(artifact_root: Path | None = None, db_path: Path | None = None) -
         request: Request, call_next: Callable[[Request], Awaitable[Response]]
     ) -> Response:
         response = await call_next(request)
-        if request.url.path.startswith(("/api/", "/auth/")):
+        path = request.url.path
+        if path in PUBLIC_API and request.method == "GET" and response.status_code == 200:
+            # The same for every visitor and fixed per deploy: the home page's data.
+            response.headers["Cache-Control"] = "public, max-age=300, stale-while-revalidate=86400"
+        elif path.startswith(("/api/", "/auth/")):
             response.headers["Cache-Control"] = "private, no-store"
+        elif "Cache-Control" not in response.headers and response.status_code == 200:
+            response.headers["Cache-Control"] = assets.cache_control(path.lstrip("/"))
         # The report route sets its own, stricter, policy — never override it.
         if "Content-Security-Policy" not in response.headers:
             for header, value in SPA_HEADERS.items():
@@ -173,6 +184,7 @@ def create_app(artifact_root: Path | None = None, db_path: Path | None = None) -
     app.include_router(product_router, prefix="/api/v1")
     app.include_router(review_router, prefix="/api/v1")
     app.include_router(cloud_router, prefix="/api/v1")
+    app.include_router(documents_router, prefix="/api/v1")
     app.include_router(router, prefix="/api/v1")
 
     @app.get("/content/site.json", include_in_schema=False)
@@ -183,6 +195,68 @@ def create_app(artifact_root: Path | None = None, db_path: Path | None = None) -
             media_type="application/json",
             headers={"Cache-Control": "no-cache"},
         )
+
+    @app.get("/_v/{build}/content/site.json", include_in_schema=False)
+    def versioned_content(build: str) -> FileResponse:
+        current = build == assets.build_id()
+        return FileResponse(
+            asset_path("content/site.json"),
+            media_type="application/json",
+            headers={"Cache-Control": assets.IMMUTABLE if current else "no-cache"},
+        )
+
+    @app.get("/_v/{build}/{path:path}", include_in_schema=False)
+    def versioned(build: str, path: str) -> FileResponse:
+        """Static files under a build hash: cached for a year, never stale."""
+        found = assets.static_file(path)
+        if found is None:
+            raise HTTPException(status_code=404)
+        # An older page asking for its build gets today's file, uncached under that key.
+        current = build == assets.build_id()
+        return FileResponse(
+            found, headers={"Cache-Control": assets.IMMUTABLE if current else "no-cache"}
+        )
+
+    def _page(request: Request, name: str) -> Response:
+        lang = assets.page_language(
+            request.query_params.get("lang"),
+            request.cookies.get("quanta-language"),
+            request.headers.get("accept-language"),
+        )
+        account, login = "", ""
+        if name == "workspace.html":
+            service: Auth = app.state.auth
+            identity = service.identity(request, required=False)
+            if not service.settings.required:
+                account = "local"
+            elif identity:
+                account, login = "user", identity.login
+            else:
+                account = "doors"
+        page = assets.render_page(name, lang, account)
+        if account:
+            page = assets.workspace_state(page, account, login, lang)
+        return Response(
+            page,
+            media_type="text/html; charset=utf-8",
+            headers=assets.page_headers(),
+        )
+
+    @app.get("/", include_in_schema=False)
+    def home(request: Request) -> Response:
+        return _page(request, "index.html")
+
+    @app.get("/index.html", include_in_schema=False)
+    def home_file(request: Request) -> Response:
+        return _page(request, "index.html")
+
+    @app.get("/workspace.html", include_in_schema=False)
+    def workspace(request: Request) -> Response:
+        return _page(request, "workspace.html")
+
+    @app.get("/privacy.html", include_in_schema=False)
+    def privacy(request: Request) -> Response:
+        return _page(request, "privacy.html")
 
     if STATIC_DIR.is_dir():
         app.mount("/", StaticFiles(directory=str(STATIC_DIR), html=True), name="spa")

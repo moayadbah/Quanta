@@ -123,6 +123,8 @@ function firstName(name) {
 
 function renderAccount() {
   const session = state.session;
+  // Until the session is known, the server's first screen (assets.py) stays as drawn.
+  if (!session) return;
   const signed = signedIn();
   $("account-chip").hidden = !signed;
   if (signed) $("account-chip").textContent = session.user.login;
@@ -142,6 +144,12 @@ function renderAccount() {
 function renderWelcome() {
   const me = state.me;
   const signed = signedIn();
+  // Signed in: the name and avatar come from GitHub; their skeletons hold the place until then.
+  if (signed && !me) {
+    renderRepos();
+    return;
+  }
+  $("avatar-sk").hidden = true;
   $("welcome-title").textContent = signed
     ? t("ws.welcome", { name: firstName(me?.name) || state.session.user.login })
     : t("ws.scan_title");
@@ -161,7 +169,7 @@ function renderRepos() {
   const repos = state.me?.repos;
   $("repos-note").textContent = repos?.length ? t("ws.repos_note", { n: repos.length }) : "";
   if (!repos) {
-    fill($("repos"), el("p", { class: "small", text: t("ws.repos_loading") }));
+    // The server drew skeleton rows in #repos; they stay until the list arrives.
     return;
   }
   if (!repos.length) {
@@ -604,6 +612,13 @@ function renderPanel() {
   if (job.tab === "report") renderReport();
 }
 
+/** A guide's replacement in the reader's language (guide.<id>.to), else the catalogue's. */
+function guideTarget(guide) {
+  const key = `guide.${guide.id}.to`;
+  const text = t(key);
+  return text === key ? guide.to : text;
+}
+
 /* Readiness tab ---------------------------------------------------------------------------------- */
 function sourceLinks(ids) {
   return el("div", { class: "sources" },
@@ -834,7 +849,7 @@ function renderProposals() {
         el("summary", {},
           el("span", { class: "what" },
             el("span", { class: "h4", text: tk(`guide.${g.id}.title`, "guide.other.title") }),
-            el("span", { class: "small", text: t("edits.guide_target", { to: g.to }) }),
+            el("span", { class: "small", text: t("edits.guide_target", { to: guideTarget(g) }) }),
           ),
           badge(t("edits.guide_sites", { n: numberText(g.sites.length) }), "info"),
           icon("chevron", "chev"),

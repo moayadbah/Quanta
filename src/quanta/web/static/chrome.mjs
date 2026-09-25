@@ -5,9 +5,8 @@ import { lang, setLanguage } from "./i18n.mjs";
 const SVG = "http://www.w3.org/2000/svg";
 
 export function mountChrome() {
-  document.documentElement.classList.add("js");
   document.querySelectorAll("[data-action='language']").forEach((button) => {
-    button.addEventListener("click", () => setLanguage(lang() === "ar" ? "en" : "ar"));
+    button.addEventListener("click", () => setLanguage(lang() === "ar" ? "en" : "ar", { animate: true }));
   });
   const menu = document.getElementById("mobile-menu");
   const open = document.getElementById("menu-open");

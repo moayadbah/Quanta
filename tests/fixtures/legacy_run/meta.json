@@ -1,0 +1,241 @@
+{
+ "cbom_sha256": null,
+ "cbom_unlocated": 0,
+ "duration_ms": 25,
+ "files_scanned": 4,
+ "finished_at": "2026-09-25T09:17:36.133102+00:00",
+ "phase_durations_ms": {
+  "graph": 0,
+  "parsing": 15,
+  "scoring": 0,
+  "walking": 0
+ },
+ "provenance": {
+  "analyzer_version": "0.3.0+rules.2026.08.01",
+  "commit_sha": "0000000000000000000000000000000000000000",
+  "crypto_ruleset_version": "2026.08.01",
+  "repo": "example/signer"
+ },
+ "sites_detected": 3,
+ "started_at": "2026-09-25T09:17:36.107305+00:00",
+ "steps": [
+  {
+   "duration_ms": 0,
+   "evidence": [
+    {
+     "label": "Python files considered",
+     "ok": null,
+     "value": "4"
+    },
+    {
+     "label": "Accepted for analysis",
+     "ok": null,
+     "value": "4"
+    },
+    {
+     "label": "Symlinks skipped",
+     "ok": true,
+     "value": "0"
+    },
+    {
+     "label": "Directories pruned",
+     "ok": null,
+     "value": "0 (denylist, symlinks)"
+    },
+    {
+     "label": "Total bytes",
+     "ok": null,
+     "value": "339 of 500,000,000"
+    },
+    {
+     "label": "Containment",
+     "ok": true,
+     "value": "every path re-checked under the clone root"
+    },
+    {
+     "label": "Budgets",
+     "ok": true,
+     "value": "none exceeded"
+    }
+   ],
+   "id": "walk",
+   "status": "done",
+   "summary": "4 Python files accepted",
+   "title": "Walk the source tree"
+  },
+  {
+   "duration_ms": 15,
+   "evidence": [
+    {
+     "label": "Execution",
+     "ok": true,
+     "value": "parsed only \u2014 never imported, never executed"
+    },
+    {
+     "label": "Files parsed",
+     "ok": null,
+     "value": "4"
+    },
+    {
+     "label": "Crypto call sites",
+     "ok": null,
+     "value": "3"
+    },
+    {
+     "label": "Algorithm literals",
+     "ok": null,
+     "value": "1"
+    },
+    {
+     "label": "Configuration reads",
+     "ok": null,
+     "value": "0"
+    },
+    {
+     "label": "Ruleset version",
+     "ok": null,
+     "value": "2026.08.01"
+    },
+    {
+     "label": "Weak primitives",
+     "ok": false,
+     "value": "2 (MD5/SHA1/3DES/RC4)"
+    }
+   ],
+   "id": "parse",
+   "status": "done",
+   "summary": "3 cryptographic call sites detected",
+   "title": "Parse and detect crypto"
+  },
+  {
+   "duration_ms": 0,
+   "evidence": [
+    {
+     "label": "Nodes",
+     "ok": null,
+     "value": "11 \u2014 algo_literal 1, crypto_call 3, function 3, module 4"
+    },
+    {
+     "label": "Edges",
+     "ok": null,
+     "value": "8 \u2014 binding 7, value_flow 1"
+    },
+    {
+     "label": "Low-confidence edges",
+     "ok": true,
+     "value": "0 (every 'call' edge, by rule)"
+    },
+    {
+     "label": "Callees resolved",
+     "ok": null,
+     "value": "0 of 6"
+    },
+    {
+     "label": "Callees dropped, not guessed",
+     "ok": true,
+     "value": "0 ambiguous, 6 unresolvable"
+    },
+    {
+     "label": "Imports",
+     "ok": null,
+     "value": "0 internal, 3 external"
+    }
+   ],
+   "id": "graph",
+   "status": "done",
+   "summary": "11 nodes, 8 edges",
+   "title": "Build the dependency graph"
+  },
+  {
+   "duration_ms": 0,
+   "evidence": [
+    {
+     "label": "Weights",
+     "ok": true,
+     "value": "weights-v1, fixed product defaults"
+    },
+    {
+     "label": "call_sites",
+     "ok": null,
+     "value": "raw 3 -> 1 / (1 + log10(1 + n)) -> 0.62 x 0.30 = 18.73"
+    },
+    {
+     "label": "isolation_layer",
+     "ok": null,
+     "value": "raw False -> 1 / (1 + minimum node cut) -> 0.25 x 0.30 = 7.50"
+    },
+    {
+     "label": "selection_source",
+     "ok": null,
+     "value": "raw hardcoded -> config reads / (config reads + literals) -> 0.00 x 0.20 = 0.00"
+    },
+    {
+     "label": "propagation_depth",
+     "ok": null,
+     "value": "raw 7 -> 1 - (ancestors / modules), clamped -> 0.00 x 0.20 = 0.00"
+    },
+    {
+     "label": "Agility Score",
+     "ok": null,
+     "value": "26.2 / 100"
+    },
+    {
+     "label": "-11.27 call_sites",
+     "ok": false,
+     "value": "3 cryptographic call sites must each be edited to change algorithm [src/signer/digest.py:5, src/signer/keys.py:5, tests/test_digest.py:5]"
+    },
+    {
+     "label": "-22.50 isolation_layer",
+     "ok": false,
+     "value": "Crypto APIs invoked directly from 3 modules with no common wrapper; 3 nodes must be cut to decouple cryptography [src/signer/digest.py:5, src/signer/keys.py:5, tests/test_digest.py:5]"
+    },
+    {
+     "label": "-20.00 selection_source",
+     "ok": false,
+     "value": "1 algorithm selection is hard-coded rather than read from configuration [src/signer/keys.py:5]"
+    },
+    {
+     "label": "-20.00 propagation_depth",
+     "ok": false,
+     "value": "7 graph nodes can reach cryptography, so a change propagates well beyond the call sites themselves [src/signer/keys.py:5, src/signer/digest.py:5, tests/test_digest.py:5]"
+    }
+   ],
+   "id": "score",
+   "status": "done",
+   "summary": "Agility Score 26.2 / 100",
+   "title": "Compute the Agility Score"
+  },
+  {
+   "duration_ms": 16,
+   "evidence": [
+    {
+     "label": "Report size",
+     "ok": null,
+     "value": "13,372 bytes"
+    },
+    {
+     "label": "External requests",
+     "ok": true,
+     "value": "0 \u2014 inline SVG and inline CSS"
+    },
+    {
+     "label": "Opens from",
+     "ok": true,
+     "value": "file:// with no server and no network"
+    },
+    {
+     "label": "Artifacts",
+     "ok": null,
+     "value": "cdg.json, score.json, meta.json, report.html"
+    }
+   ],
+   "id": "render",
+   "status": "done",
+   "summary": "report.html rendered, self-contained",
+   "title": "Render artifacts"
+  }
+ ],
+ "truncation": null,
+ "truncations": [],
+ "unparseable": []
+}

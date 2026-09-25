@@ -52,6 +52,10 @@ CREATE TABLE IF NOT EXISTS analysis_access (
  job_id TEXT NOT NULL REFERENCES jobs(id) ON DELETE CASCADE,
  user_id TEXT NOT NULL, PRIMARY KEY(job_id,user_id)
 );
+CREATE TABLE IF NOT EXISTS scan_requests (
+ job_id TEXT NOT NULL REFERENCES jobs(id) ON DELETE CASCADE,
+ user_id TEXT NOT NULL, requested_at TEXT NOT NULL, PRIMARY KEY(job_id,user_id)
+);
 CREATE TABLE IF NOT EXISTS usage_counters (
  id TEXT PRIMARY KEY, used INTEGER NOT NULL DEFAULT 0
 );

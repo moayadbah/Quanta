@@ -128,3 +128,15 @@ uv run mypy
 uv run pytest tests/unit tests/security
 node --test tests/frontend.test.mjs
 ```
+
+Layout, in English and Arabic at 320, 360, 375, 390, 414, 768, 1024 and 1440 pixels and a
+landscape phone, across every page and state (home, menu, privacy, sign-in, dashboard, a
+sample run's four tabs and the report). It fails on a header that crowds the first heading,
+anything that overflows its box or the screen, sideways scrolling, a tap target under 44 by
+44 pixels, and text below WCAG AA contrast against the pixels actually behind it:
+
+```bash
+uv run quanta up --port 8767            # in one terminal
+node scripts/layout_check.mjs --base http://localhost:8767 --out out/layout
+uv run python scripts/layout_contrast.py out/layout
+```

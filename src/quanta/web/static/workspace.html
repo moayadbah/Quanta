@@ -77,9 +77,10 @@
       <div id="dashboard" class="stack" hidden>
         <div class="welcome">
           <img class="avatar" id="avatar" alt="" width="48" height="48" hidden>
+          <span class="avatar sk" id="avatar-sk" hidden></span>
           <div class="welcome-text">
-            <h1 class="h1" id="welcome-title"></h1>
-            <p class="small" id="scan-limits"></p>
+            <h1 class="h1" id="welcome-title"><span class="sk sk-h1"></span></h1>
+            <p class="small" id="scan-limits"><span class="sk sk-line mid"></span></p>
           </div>
           <button class="btn sm" type="button" id="dash-sample"><span data-t="ws.door_sample_button"></span></button>
         </div>
@@ -98,7 +99,7 @@
 
         <div id="repos-block" hidden>
           <div class="list-head"><h2 class="h4" data-t="ws.repos_title"></h2><span class="small" id="repos-note"></span></div>
-          <div class="rows" id="repos"></div>
+          <div class="rows" id="repos"><div class="item sk-item"><span class="sk sk-line mid"></span><span class="sk sk-line short"></span></div><div class="item sk-item"><span class="sk sk-line mid"></span><span class="sk sk-line short"></span></div><div class="item sk-item"><span class="sk sk-line mid"></span><span class="sk sk-line short"></span></div><div class="item sk-item"><span class="sk sk-line mid"></span><span class="sk sk-line short"></span></div></div>
         </div>
 
         <div id="history-block" hidden>

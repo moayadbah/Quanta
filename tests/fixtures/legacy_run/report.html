@@ -1,0 +1,262 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quanta — local:legacy-src</title>
+<style>
+  :root {
+    --bg: #ffffff; --fg: #1a1d21; --muted: #5c6470; --line: #dfe3e8;
+    --card: #f7f8fa; --accent: #3b5b8c; --bad: #a33b3b; --good: #4a7c59;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14171a; --fg: #e6e9ed; --muted: #9aa3b0; --line: #2b3138;
+      --card: #1b1f24; --accent: #7aa2d6; --bad: #d98080; --good: #86c39a;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 2rem 1.25rem; background: var(--bg); color: var(--fg);
+    font: 15px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  main { max-width: 1180px; margin: 0 auto; }
+  h1 { font-size: 1.5rem; margin: 0 0 .25rem; }
+  h2 { font-size: 1.05rem; margin: 2.25rem 0 .75rem; padding-bottom: .35rem;
+       border-bottom: 1px solid var(--line); }
+  code, .mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .86em; }
+  .sub { color: var(--muted); margin: 0 0 1.5rem; }
+  .scorecard { display: flex; align-items: baseline; gap: 1rem; background: var(--card);
+               border: 1px solid var(--line); border-radius: 10px; padding: 1.25rem 1.5rem; }
+  .scorecard .value { font-size: 3rem; font-weight: 650; line-height: 1; }
+  .scorecard .of { color: var(--muted); }
+  table { border-collapse: collapse; width: 100%; }
+  th, td { text-align: left; padding: .5rem .6rem; border-bottom: 1px solid var(--line);
+           vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; font-size: .82rem; text-transform: uppercase;
+       letter-spacing: .04em; }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  .deduction { border-left: 3px solid var(--bad); padding: .6rem .9rem; margin: .6rem 0;
+               background: var(--card); border-radius: 0 6px 6px 0; }
+  .deduction .head { display: flex; justify-content: space-between; gap: 1rem;
+                     font-weight: 600; }
+  .cites { margin: .45rem 0 0; padding: 0; list-style: none; display: flex;
+           flex-wrap: wrap; gap: .35rem; }
+  .cites li { background: var(--bg); border: 1px solid var(--line); border-radius: 4px;
+              padding: .1rem .4rem; }
+  .rec { border-left: 3px solid var(--good); padding: .6rem .9rem; margin: .6rem 0;
+         background: var(--card); border-radius: 0 6px 6px 0; }
+  .figure { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px;
+            background: var(--card); padding: .5rem; }
+  .legend { display: flex; flex-wrap: wrap; gap: 1rem; margin: .6rem 0 0; padding: 0;
+            list-style: none; color: var(--muted); font-size: .85rem; }
+  .legend .swatch { display: inline-block; width: .7rem; height: .7rem; border-radius: 2px;
+                    margin-right: .35rem; vertical-align: baseline; }
+  .note { color: var(--muted); font-size: .88rem; }
+  .warn { border-left: 3px solid #b08a3c; padding: .6rem .9rem; background: var(--card);
+          border-radius: 0 6px 6px 0; }
+  footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--line);
+           color: var(--muted); font-size: .84rem; }
+</style>
+
+<main>
+  <h1>Cryptographic Agility Report</h1>
+  <p class="sub mono">local:legacy-src @ 000000000000</p>
+
+  <div class="scorecard">
+    <div class="value">26.2</div>
+    <div class="of">/ 100 &nbsp;·&nbsp; Agility Score</div>
+  </div>
+  <p class="note" style="margin-top:.6rem">
+    This measures <strong>source-edit difficulty</strong> only. It is not a migration-cost
+    estimate: real cost is dominated by certificates, protocols, hardware, external
+    dependencies and compliance, none of which are in scope. It is also not a
+    cryptographic security review.
+  </p>
+
+  <h2>Factors</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Factor</th><th>Raw</th>
+        <th class="num">Normalised</th><th class="num">Weight</th><th class="num">Contribution</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      <tr>
+        <td>Call sites</td>
+        <td class="mono">3</td>
+        <td class="num">0.62</td>
+        <td class="num">0.30</td>
+        <td class="num">18.73</td>
+      </tr>
+      
+      <tr>
+        <td>Isolation layer</td>
+        <td class="mono">False</td>
+        <td class="num">0.25</td>
+        <td class="num">0.30</td>
+        <td class="num">7.50</td>
+      </tr>
+      
+      <tr>
+        <td>Algorithm selection</td>
+        <td class="mono">hardcoded</td>
+        <td class="num">0.00</td>
+        <td class="num">0.20</td>
+        <td class="num">0.00</td>
+      </tr>
+      
+      <tr>
+        <td>Propagation depth</td>
+        <td class="mono">7</td>
+        <td class="num">0.00</td>
+        <td class="num">0.20</td>
+        <td class="num">0.00</td>
+      </tr>
+      
+    </tbody>
+  </table>
+  <p class="note">
+    Weights are pre-registered and git-tagged <code>weights-v1</code>, fixed before any
+    result was observed. The four factors are expected to be partially collinear — an
+    insulation layer mechanically implies fewer call sites and shallower propagation — so
+    the corpus-level analysis reports a factor correlation matrix rather than assuming
+    independence.
+  </p>
+
+  <h2>Deductions</h2>
+  
+    
+    <div class="deduction">
+      <div class="head">
+        <span>Call sites</span>
+        <span>−11.27</span>
+      </div>
+      <div>3 cryptographic call sites must each be edited to change algorithm</div>
+      <ul class="cites">
+        <li class="mono">src�signer�digest.py:5</li><li class="mono">src�signer�keys.py:5</li><li class="mono">tests�test_digest.py:5</li>
+      </ul>
+    </div>
+    
+    <div class="deduction">
+      <div class="head">
+        <span>Isolation layer</span>
+        <span>−22.50</span>
+      </div>
+      <div>Crypto APIs invoked directly from 3 modules with no common wrapper� 3 nodes must be cut to decouple cryptography</div>
+      <ul class="cites">
+        <li class="mono">src�signer�digest.py:5</li><li class="mono">src�signer�keys.py:5</li><li class="mono">tests�test_digest.py:5</li>
+      </ul>
+    </div>
+    
+    <div class="deduction">
+      <div class="head">
+        <span>Algorithm selection</span>
+        <span>−20.00</span>
+      </div>
+      <div>1 algorithm selection is hard-coded rather than read from configuration</div>
+      <ul class="cites">
+        <li class="mono">src�signer�keys.py:5</li>
+      </ul>
+    </div>
+    
+    <div class="deduction">
+      <div class="head">
+        <span>Propagation depth</span>
+        <span>−20.00</span>
+      </div>
+      <div>7 graph nodes can reach cryptography, so a change propagates well beyond the call sites themselves</div>
+      <ul class="cites">
+        <li class="mono">src�signer�keys.py:5</li><li class="mono">src�signer�digest.py:5</li><li class="mono">tests�test_digest.py:5</li>
+      </ul>
+    </div>
+    
+  
+
+  
+  <h2>Recommendations</h2>
+    
+    <div class="rec">
+      <div>Introduce a crypto facade module fronting the cryptographic primitives, so algorithm changes are made in one place</div>
+      <div class="note">
+        Affects 3 sites · recovers at most
+        22.5 points
+      </div>
+    </div>
+    
+    <div class="rec">
+      <div>Move algorithm selection into configuration so the algorithm is policy rather than a code literal (NIST CSWP 39)</div>
+      <div class="note">
+        Affects 1 site · recovers at most
+        20.0 points
+      </div>
+    </div>
+    
+    <div class="rec">
+      <div>Replace broken primitives (MD5/SHA1/3DES/RC4)� these are weak today, independently of any quantum adversary</div>
+      <div class="note">
+        Affects 2 sites
+      </div>
+    </div>
+    
+  <p class="note">
+    Point estimates are upper bounds on what the corresponding factor is currently losing,
+    not predictions.
+  </p>
+  
+
+  <h2>Cryptographic Dependency Graph</h2>
+  <div class="figure"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1298 184" width="100%" height="184" role="img" aria-label="Cryptographic Dependency Graph"><line x1="974" y1="35" x2="524" y2="35" stroke="#4a7c59" stroke-width="1" opacity="0.55"/><line x1="474" y1="35" x2="524" y2="69" stroke="#8b93a3" stroke-width="1" opacity="0.55"/><line x1="474" y1="69" x2="524" y2="103" stroke="#8b93a3" stroke-width="1" opacity="0.55"/><line x1="474" y1="103" x2="774" y2="35" stroke="#8b93a3" stroke-width="1" opacity="0.55"/><line x1="474" y1="103" x2="524" y2="35" stroke="#8b93a3" stroke-width="1" opacity="0.55"/><line x1="224" y1="69" x2="274" y2="103" stroke="#8b93a3" stroke-width="1" opacity="0.55"/><line x1="224" y1="103" x2="274" y2="35" stroke="#8b93a3" stroke-width="1" opacity="0.55"/><line x1="224" y1="137" x2="274" y2="69" stroke="#8b93a3" stroke-width="1" opacity="0.55"/><g><title>src�signer�keys.py:5 ec.SECP256R1</title><rect x="774" y="24" width="200" height="22" rx="4" fill="#8a6d99" opacity="0.9"/><text x="782" y="39" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">ec.SECP256R1</text></g><g><title>src�signer�keys.py:5 cryptography.hazmat.primitives.asymmetric.ec.generate_private_key</title><rect x="524" y="24" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="39" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">cryptography.hazmat.primitives.as…</text></g><g><title>tests�test_digest.py:5 hashlib.sha1</title><rect x="524" y="58" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="73" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">hashlib.sha1</text></g><g><title>src�signer�digest.py:5 hashlib.sha1</title><rect x="524" y="92" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="107" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">hashlib.sha1</text></g><g><title>tests�test_digest.py:4 tests.test_digest.test_known_answer</title><rect x="274" y="24" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="39" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">tests.test_digest.test_known_answ…</text></g><g><title>src�signer�digest.py:4 src.signer.digest.fingerprint</title><rect x="274" y="58" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="73" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">src.signer.digest.fingerprint</text></g><g><title>src�signer�keys.py:4 src.signer.keys.new_key</title><rect x="274" y="92" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="107" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">src.signer.keys.new_key</text></g><g><title> src.signer</title><rect x="24" y="24" width="200" height="22" rx="4" fill="#3b5b8c" opacity="0.9"/><text x="32" y="39" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">src.signer</text></g><g><title>src�signer�keys.py src.signer.keys</title><rect x="24" y="58" width="200" height="22" rx="4" fill="#3b5b8c" opacity="0.9"/><text x="32" y="73" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">src.signer.keys</text></g><g><title>tests�test_digest.py tests.test_digest</title><rect x="24" y="92" width="200" height="22" rx="4" fill="#3b5b8c" opacity="0.9"/><text x="32" y="107" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">tests.test_digest</text></g><g><title>src�signer�digest.py src.signer.digest</title><rect x="24" y="126" width="200" height="22" rx="4" fill="#3b5b8c" opacity="0.9"/><text x="32" y="141" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">src.signer.digest</text></g></svg></div>
+  <ul class="legend">
+    
+    <li><span class="swatch" style="background: #3b5b8c"></span>module</li>
+    
+    <li><span class="swatch" style="background: #4a7c59"></span>function</li>
+    
+    <li><span class="swatch" style="background: #a33b3b"></span>crypto call</li>
+    
+    <li><span class="swatch" style="background: #8a6d99"></span>algorithm literal</li>
+    
+    <li><span class="swatch" style="background: #6d6a8a"></span>config read</li>
+    
+    <li><span class="swatch" style="background: #b08a3c"></span>dashed = low confidence</li>
+  </ul>
+  <p class="note">
+    11 nodes, 8 edges,
+    0 of them low confidence.
+    Every <code>call</code> edge is low confidence: one-hop qualified-name resolution
+    approximates value flow, and that is the honest label for it. Dynamic dispatch,
+    <code>getattr</code>, conditional imports, monkey-patching and <code>**kwargs</code>
+    forwarding all defeat this analysis.
+  </p>
+
+  <h2>Coverage</h2>
+  <table>
+    <tbody>
+      <tr><td>Files scanned</td><td class="num">4</td></tr>
+      <tr><td>Files unparseable</td><td class="num">0</td></tr>
+      <tr><td>Truncated</td><td class="num">no</td></tr>
+    </tbody>
+  </table>
+
+  
+
+  
+  
+
+  
+
+  <footer>
+    <p>
+      Provenance ·
+      <span class="mono">local:legacy-src</span> @
+      <span class="mono">0000000000000000000000000000000000000000</span> ·
+      analyzer <span class="mono">0.3.0+rules.2026.08.01</span> ·
+      ruleset <span class="mono">2026.08.01</span> ·
+      renderer <span class="mono">builtin</span>
+    </p>
+    <p>
+      Generated by Quanta. Static analysis only — no code from the analysed repository was
+      imported, executed or installed at any point.
+    </p>
+  </footer>
+</main>

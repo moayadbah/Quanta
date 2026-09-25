@@ -147,7 +147,7 @@ def test_any_embedded_frame_is_fully_sandboxed() -> None:
 
     static = Path(__file__).resolve().parents[2] / "src" / "quanta" / "web" / "static"
     for page in static.glob("*.html"):
-        for frame in re.findall(r"<iframe[^>]*>", page.read_text(encoding="utf-8")):
+        for frame in re.findall(r"<iframe\b[^>]*>", page.read_text(encoding="utf-8")):
             assert 'sandbox=""' in frame, f"{page.name}: {frame}"
 
 

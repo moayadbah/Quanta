@@ -154,16 +154,19 @@ class FixPlan(BaseModel):
                 {
                     "path": f.path,
                     "changes": [
-                        c.model_dump(
-                            exclude={
-                                "start",
-                                "end",
-                                "import_module",
-                                "import_name",
-                                "import_alias",
-                                "extra",
-                            }
-                        )
+                        {
+                            **c.model_dump(
+                                exclude={
+                                    "start",
+                                    "end",
+                                    "import_module",
+                                    "import_name",
+                                    "import_alias",
+                                    "extra",
+                                }
+                            ),
+                            **_context(f.source, c.line),
+                        }
                         for c in f.changes
                     ],
                 }
@@ -175,6 +178,54 @@ class FixPlan(BaseModel):
             ),
             "scope": "Hash upgrades only. Key, certificate and protocol migrations need review.",
         }
+
+
+#: Unchanged lines shown on each side of a patch, as in a code review.
+CONTEXT_LINES = 2
+
+
+def _context(source: str, line: int) -> dict[str, Any]:
+    lines = source.splitlines()
+    index = line - 1
+    if not 0 <= index < len(lines):
+        return {"context_before": [], "context_after": [], "context_start": line}
+    start = max(0, index - CONTEXT_LINES)
+    return {
+        "context_before": lines[start:index],
+        "context_after": lines[index + 1 : index + 1 + CONTEXT_LINES],
+        "context_start": start + 1,
+    }
+
+
+def is_current(plan: FixPlan) -> bool:
+    """True when every change carries the line preview this engine writes."""
+    return all(c.line_before for f in plan.files for c in f.changes)
+
+
+def reevaluate(plan: FixPlan) -> FixPlan:
+    """Re-derive an older plan's patches with today's rules, from the source it retained.
+
+    An engine before round five proposed changes the current rules refuse (test fixtures,
+    known-answer tests) and wrote generated names (``_quanta_sha256_sha256``). Such a plan
+    is never shown as it was: each retained file is proposed again, so a change the current
+    rules refuse can only appear as a refusal. A file whose source no longer matches its
+    recorded hash contributes nothing.
+    """
+    if is_current(plan):
+        return plan
+    files: list[FixFile] = []
+    skipped: list[Skipped] = []
+    reviewed: set[str] = set()
+    for file in plan.files:
+        reviewed.add(file.path)
+        if hashlib.sha256(file.source.encode()).hexdigest() != file.sha256:
+            continue
+        result, refused = propose_with_skips(file.source, file.path)
+        skipped.extend(refused)
+        if result is not None:
+            files.append(result)
+    skipped += [s for s in plan.skipped if s.path not in reviewed]
+    return FixPlan(files=files, limited=plan.limited, skipped=skipped[:200], guides=plan.guides)
 
 
 def safe_path(path: str) -> bool:
