@@ -1,10 +1,11 @@
 {
-  "agility_score": 100.0,
-  "blurb": "CLI toolkit with no cryptography at all — the correct answer is 100.",
-  "blurb_ar": "أدوات لسطر الأوامر بلا تشفير إطلاقًا، والإجابة الصحيحة هنا 100.",
-  "commit_sha": "00e592cea702e0b2caa0dee42489fdb1c22cd845",
+  "agility_score": null,
+  "commit_sha": "06b2a678741131fd577ce170e23e5ca0aeba0309",
+  "findings": 0,
+  "proposals": 0,
+  "refusals": 0,
   "repo": "pallets/click",
   "sites": 0,
-  "steps": 9,
-  "title": "Click"
+  "status": "no_crypto_detected",
+  "steps": 9
 }

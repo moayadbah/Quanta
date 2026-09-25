@@ -169,7 +169,8 @@ def _publish(
     body = (
         "Replaces the hash calls explicitly selected and reviewed in Quanta.\n\n"
         f"Scanned commit: `{row['commit_sha']}`\n\n"
-        "Validation: Python syntax checked. Repository tests were not run.\n\n"
+        + validation_text(result.get("verification"))
+        + "\n\n"
         + result["compatibility"]
         + "\n\n"
         "Please run your repository's tests and review compatibility before merging.\n\n"
@@ -191,6 +192,18 @@ def _publish(
     return _github_url(pull["html_url"])
 
 
+def validation_text(verification: dict[str, Any] | None) -> str:
+    """What the pull request says about testing. Never more than what was measured."""
+    if not verification:
+        return "Validation: Python syntax checked. Repository tests were not run."
+    result = verification.get("result") or {}
+    reasons = "; ".join(str(r) for r in result.get("reasons", []))[:600]
+    return (
+        f"Validation: Quanta verification verdict `{verification.get('verdict')}` "
+        f"(repository tests run twice before and twice after, no network). {reasons}"
+    ).strip()
+
+
 def open_pull(
     registry: JobRegistry,
     job_id: str,
@@ -198,10 +211,12 @@ def open_pull(
     plan: FixPlan,
     selected: list[str],
     digest: str,
+    verification: dict[str, Any] | None = None,
 ) -> str:
     result = review(plan, selected)
     if result["digest"] != digest:
         raise Reject("REVIEW_STALE", "Review the current diff before opening a pull request.")
+    result["verification"] = verification
     key = hashlib.sha256(f"{identity.user_id}:{job_id}:{digest}".encode()).hexdigest()
     with registry.db.connect(write=True) as conn:
         row = conn.execute("SELECT * FROM jobs WHERE id=?", (job_id,)).fetchone()

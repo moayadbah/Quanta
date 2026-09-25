@@ -1,0 +1,147 @@
+{
+  "_about": "Published rules Quanta's readiness assessment applies. Every milestone names its source. Nothing here is Quanta's own opinion. Checked on 2026-09-25 against each primary source and at least one independent source; update the date and the entry when a source changes. A milestone with 'algorithms' applies only to sites using one of them (or whose algorithm cannot be read). 'in_force' marks a rule that already applies.",
+  "checked": "2026-09-25",
+  "sources": {
+    "nist-ir-8547": {
+      "publisher": "NIST",
+      "title": "IR 8547 (Initial Public Draft), Transition to Post-Quantum Cryptography Standards",
+      "date": "2024-11-12",
+      "status": "draft",
+      "url": "https://nvlpubs.nist.gov/nistpubs/ir/2024/NIST.IR.8547.ipd.pdf",
+      "where": "Table 2 (signatures): ECDSA and RSA at 112-bit strength deprecated after 2030; ECDSA, EdDSA and RSA disallowed after 2035. Table 4 (key establishment): finite-field DH and MQV, elliptic-curve DH and MQV, and RSA at 112-bit strength deprecated after 2030; all disallowed after 2035. Quanta applies the 112-bit rows to RSA and finite-field DH, whose usual 2048-bit keys sit at 112 bits; elliptic-curve keys in use (P-256, X25519, Ed25519) are 128 bits or more.",
+      "verification": "Read from the NIST PDF. Dates confirmed by the EU roadmap (June 2025), which cites the same 2035 disallowance."
+    },
+    "nist-sp-800-131a-r2": {
+      "publisher": "NIST",
+      "title": "SP 800-131A Rev. 2, Transitioning the Use of Cryptographic Algorithms and Key Lengths",
+      "date": "2019-03-21",
+      "status": "final",
+      "url": "https://doi.org/10.6028/NIST.SP.800-131Ar2",
+      "where": "Table 1: three-key TDEA encryption disallowed after 31 December 2023; two-key TDEA encryption disallowed. Table 8: SHA-1 disallowed for digital signature generation. MD5 is not in the document's list of approved hash functions."
+    },
+    "nist-sha1-retirement": {
+      "publisher": "NIST",
+      "title": "NIST Transitioning Away from SHA-1 for All Applications",
+      "date": "2022-12-15",
+      "status": "final",
+      "url": "https://csrc.nist.gov/news/2022/nist-transitioning-away-from-sha-1-for-all-apps",
+      "where": "SHA-1 to be phased out of all applications by 31 December 2030",
+      "verification": "Read from the NIST announcement of 15 December 2022; confirmed by FedScoop and Dark Reading."
+    },
+    "nsa-cnsa-2": {
+      "publisher": "NSA",
+      "title": "Commercial National Security Algorithm Suite 2.0 (Cybersecurity Advisory)",
+      "date": "2022-09-07",
+      "status": "final",
+      "url": "https://media.defense.gov/2025/May/30/2003728741/-1/-1/0/CSA_CNSA_2.0_ALGORITHMS.PDF",
+      "where": "Transition timeline: software and firmware signing exclusively CNSA 2.0 by 2030; web browsers, servers and cloud services by 2033; traditional networking equipment by 2030; operating systems by 2033; custom applications and legacy equipment updated or replaced by 2033. Applies to US National Security Systems.",
+      "verification": "NSA's host refuses automated download; the timeline was read from an archived copy of the NSA PDF (PP-22-1338, September 2022, version 1.0) and confirmed by Entrust (October 2022)."
+    },
+    "uk-ncsc-pqc": {
+      "publisher": "UK NCSC",
+      "title": "Timelines for migration to post-quantum cryptography",
+      "date": "2025-03-20",
+      "status": "final",
+      "url": "https://www.ncsc.gov.uk/guidance/pqc-migration-timelines",
+      "where": "By 2028 discovery and an initial plan; by 2031 the highest-priority migration; by 2035 all systems, services and products migrated",
+      "verification": "Read from the NCSC page; confirmed by The Quantum Insider (20 March 2025) and PQShield."
+    },
+    "eu-pqc-roadmap": {
+      "publisher": "NIS Cooperation Group and European Commission",
+      "title": "A Coordinated Implementation Roadmap for the Transition to Post-Quantum Cryptography",
+      "date": "2025-06-23",
+      "status": "final",
+      "url": "https://digital-strategy.ec.europa.eu/en/library/coordinated-implementation-roadmap-transition-post-quantum-cryptography",
+      "where": "By 31 December 2026 first steps and national roadmaps; by 31 December 2030 high-risk use cases transitioned; by 31 December 2035 medium-risk use cases transitioned and low-risk use cases as far as feasible",
+      "verification": "Read from the roadmap PDF (version 1.1); confirmed by Utimaco and PostQuantum.com."
+    },
+    "nca-ncs-2-2025": {
+      "publisher": "National Cybersecurity Authority (Saudi Arabia)",
+      "title": "National Cryptographic Standards NCS-2:2025 (public consultation draft)",
+      "date": "2025-12-25",
+      "status": "draft",
+      "url": "https://istitlaa.scbc.gov.sa/en/security/nca/ncs/Documents/NCS-2-en.pdf",
+      "where": "Clause 2-5-5-1: a post-quantum cryptosystem must be used in hybrid with approved classical cryptosystems. Clause 2-5-1: ML-KEM-512 and ML-KEM-768 at the MODERATE level, ML-KEM-1024 at ADVANCED. The consultation closed on 25 December 2025; the draft sets no year.",
+      "verification": "Read from the consultation PDF; the closing date is confirmed by Digital Policy Alert."
+    },
+    "us-eo-14412": {
+      "publisher": "The White House",
+      "title": "Executive Order 14412, Securing the Nation Against Advanced Cryptographic Attacks",
+      "date": "2026-06-22",
+      "status": "final",
+      "url": "https://www.whitehouse.gov/presidential-actions/2026/06/securing-the-nation-against-advanced-cryptographic-attacks/",
+      "where": "US federal high-value assets and high-impact systems: post-quantum key establishment by 31 December 2030 and signatures by 31 December 2031",
+      "verification": "Read from the White House text; confirmed by the American Presidency Project and Skadden."
+    },
+    "openssl-3-5": {
+      "publisher": "OpenSSL",
+      "title": "OpenSSL 3.5 Series Release Notes",
+      "date": "2025-04-08",
+      "status": "final",
+      "url": "https://openssl-library.org/news/openssl-3.5-notes/",
+      "where": "Default TLS key shares are X25519MLKEM768 and X25519: a Python program linked against OpenSSL 3.5 or later offers hybrid key exchange without code changes",
+      "verification": "Read from the OpenSSL release notes; confirmed by Help Net Security (9 April 2025) and Phoronix."
+    }
+  },
+  "frameworks": [
+    {
+      "id": "nist",
+      "sources": [
+        "nist-ir-8547",
+        "nist-sp-800-131a-r2",
+        "nist-sha1-retirement"
+      ]
+    },
+    {
+      "id": "nsa",
+      "sources": [
+        "nsa-cnsa-2"
+      ]
+    },
+    {
+      "id": "nca",
+      "sources": [
+        "nca-ncs-2-2025"
+      ]
+    },
+    {
+      "id": "eu",
+      "sources": [
+        "eu-pqc-roadmap"
+      ]
+    },
+    {
+      "id": "uk",
+      "sources": [
+        "uk-ncsc-pqc"
+      ]
+    },
+    {
+      "id": "us",
+      "sources": [
+        "us-eo-14412"
+      ]
+    }
+  ],
+  "milestones": [
+    {"id": "nist-kex-deprecated", "framework": "nist", "source": "nist-ir-8547", "year": 2030, "applies": ["key_exchange", "tls"], "rule": "deprecated", "algorithms": ["RSA", "DH"]},
+    {"id": "nist-kex-disallowed", "framework": "nist", "source": "nist-ir-8547", "year": 2035, "applies": ["key_exchange", "tls"], "rule": "disallowed"},
+    {"id": "nist-sig-deprecated", "framework": "nist", "source": "nist-ir-8547", "year": 2030, "applies": ["signature"], "rule": "deprecated", "algorithms": ["RSA"]},
+    {"id": "nist-sig-disallowed", "framework": "nist", "source": "nist-ir-8547", "year": 2035, "applies": ["signature"], "rule": "disallowed"},
+    {"id": "nist-sha1", "framework": "nist", "source": "nist-sha1-retirement", "year": 2030, "applies": ["sha1"], "rule": "retired"},
+    {"id": "nist-md5", "framework": "nist", "source": "nist-sp-800-131a-r2", "year": null, "applies": ["md5"], "rule": "not_approved", "in_force": true},
+    {"id": "nist-tdea", "framework": "nist", "source": "nist-sp-800-131a-r2", "year": 2023, "applies": ["weak_cipher"], "rule": "disallowed", "in_force": true},
+    {"id": "nsa-signing", "framework": "nsa", "source": "nsa-cnsa-2", "year": 2030, "applies": ["signature"], "rule": "exclusive"},
+    {"id": "nsa-web", "framework": "nsa", "source": "nsa-cnsa-2", "year": 2033, "applies": ["key_exchange", "tls"], "rule": "exclusive"},
+    {"id": "nsa-custom", "framework": "nsa", "source": "nsa-cnsa-2", "year": 2033, "applies": ["key_exchange", "tls", "signature"], "rule": "replace"},
+    {"id": "eu-first-steps", "framework": "eu", "source": "eu-pqc-roadmap", "year": 2026, "applies": ["inventory"], "rule": "first_steps"},
+    {"id": "eu-high-risk", "framework": "eu", "source": "eu-pqc-roadmap", "year": 2030, "applies": ["key_exchange", "tls", "signature"], "rule": "high_risk"},
+    {"id": "eu-full", "framework": "eu", "source": "eu-pqc-roadmap", "year": 2035, "applies": ["key_exchange", "tls", "signature"], "rule": "full"},
+    {"id": "uk-discovery", "framework": "uk", "source": "uk-ncsc-pqc", "year": 2028, "applies": ["inventory"], "rule": "discovery"},
+    {"id": "uk-priority", "framework": "uk", "source": "uk-ncsc-pqc", "year": 2031, "applies": ["key_exchange", "tls", "signature"], "rule": "priority"},
+    {"id": "uk-complete", "framework": "uk", "source": "uk-ncsc-pqc", "year": 2035, "applies": ["key_exchange", "tls", "signature"], "rule": "complete"},
+    {"id": "us-kex", "framework": "us", "source": "us-eo-14412", "year": 2030, "applies": ["key_exchange", "tls"], "rule": "federal"},
+    {"id": "us-sig", "framework": "us", "source": "us-eo-14412", "year": 2031, "applies": ["signature"], "rule": "federal"},
+    {"id": "nca-hybrid", "framework": "nca", "source": "nca-ncs-2-2025", "year": null, "applies": ["pq_standalone"], "rule": "hybrid_required"}
+  ]
+}

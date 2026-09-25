@@ -25,6 +25,11 @@ export class AnalysisWatcher {
     receive("step", (data) => this.callbacks.step?.(data));
     receive("status", (data) => this.callbacks.status?.(data));
     receive("progress", (data) => this.callbacks.progress?.(data.pct));
+    // Evidence streamed while the analysis runs (the staged view). Optional callbacks.
+    receive("findings", (data) => this.callbacks.findings?.(data));
+    receive("proposals", (data) => this.callbacks.proposals?.(data));
+    receive("parse_progress", (data) => this.callbacks.parseProgress?.(data));
+    receive("stream_truncated", (data) => this.callbacks.truncated?.(data));
     receive("done", () => this.finish());
     receive("failed", (data) => this.fail(data));
     source.addEventListener("error", (message) => {

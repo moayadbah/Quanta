@@ -1,12 +1,15 @@
-"""Backup manifests. Reaches the MAC through the insulation layer."""
+"""Backup manifests. Calls the MAC directly."""
 
-from vault import cryptobox, models
+import hmac
+
+from vault import models
+from vault import _crypto_facade
 
 
 def sign(key: bytes, manifest: models.Manifest) -> bytes:
-    _sealed, tag = cryptobox.seal(key, manifest.to_bytes())
-    return tag
+    mac = _crypto_facade.hmac_new_sha2_256(key, manifest.to_bytes())
+    return mac.digest()
 
 
 def check(key: bytes, manifest: models.Manifest, tag: bytes) -> bool:
-    return sign(key, manifest) == tag
+    return hmac.compare_digest(sign(key, manifest), tag)

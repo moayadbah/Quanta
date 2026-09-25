@@ -126,7 +126,7 @@ def test_graph_step_counts_callees_it_declined_to_guess() -> None:
 
 def test_score_step_shows_the_arithmetic() -> None:
     """A viewer should be able to check the number, not just receive it."""
-    score_step = next(s for s in run().steps if s.id == "score")
+    score_step = next(s for s in run("scattered_crypto").steps if s.id == "score")
     rendered = " ".join(e.value for e in score_step.evidence)
     assert "log10" in rendered
     assert "raw" in rendered
@@ -134,7 +134,7 @@ def test_score_step_shows_the_arithmetic() -> None:
 
 
 def test_deductions_appear_in_the_trace_with_citations() -> None:
-    score_step = next(s for s in run().steps if s.id == "score")
+    score_step = next(s for s in run("scattered_crypto").steps if s.id == "score")
     failures = [e for e in score_step.evidence if e.ok is False]
     assert failures
     assert any(".py:" in e.value for e in failures)

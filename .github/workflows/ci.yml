@@ -36,7 +36,7 @@ jobs:
       - name: Install the locked environment
         # --locked: CI must fail if uv.lock has drifted from pyproject.toml rather than
         # silently re-resolving. The lockfile is the source of truth (§3.11).
-        run: uv sync --locked --extra dev --extra research
+        run: uv sync --locked --extra dev --extra research --extra rulecheck
 
       - name: Lint
         run: uv run ruff check .

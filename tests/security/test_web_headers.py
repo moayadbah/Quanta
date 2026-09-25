@@ -59,10 +59,13 @@ def test_spa_source_contains_no_inline_script_or_style() -> None:
     import re
 
     static = Path(__file__).resolve().parents[2] / "src" / "quanta" / "web" / "static"
-    raw = (static / "index.html").read_text(encoding="utf-8")
+    raw = "\n".join(
+        (static / name).read_text(encoding="utf-8") for name in ("index.html", "workspace.html")
+    )
     # Strip HTML comments first: the file documents *why* it has no inline script, and
     # that prose mentions the tag by name. A comment is not executable.
     html = re.sub(r"<!--.*?-->", "", raw, flags=re.DOTALL)
+    assert not re.search(r"\sstyle\s*=", html, flags=re.IGNORECASE)
 
     inline_scripts = re.findall(r"<script(?![^>]*\bsrc=)[^>]*>", html, flags=re.IGNORECASE)
     assert inline_scripts == [], f"inline <script> would require 'unsafe-inline': {inline_scripts}"
@@ -87,9 +90,11 @@ def test_the_spa_never_sets_an_inline_style_from_javascript() -> None:
     """
     import re
 
-    source = (
-        Path(__file__).resolve().parents[2] / "src" / "quanta" / "web" / "static" / "app.js"
-    ).read_text(encoding="utf-8")
+    static = Path(__file__).resolve().parents[2] / "src" / "quanta" / "web" / "static"
+    source = "\n".join(
+        (static / name).read_text(encoding="utf-8")
+        for name in sorted(p.name for p in static.glob("*.mjs"))
+    )
 
     offenders = re.findall(r"\.style\.(?:setProperty\(|[A-Za-z]+\s*=)", source)
     assert not offenders, (
@@ -136,11 +141,23 @@ def test_report_uses_frame_ancestors_not_x_frame_options(
     assert "x-frame-options" not in headers
 
 
-def test_report_is_embedded_with_a_restrictive_sandbox() -> None:
+def test_any_embedded_frame_is_fully_sandboxed() -> None:
+    """If a page ever embeds the report, the frame must grant nothing."""
+    import re
+
     static = Path(__file__).resolve().parents[2] / "src" / "quanta" / "web" / "static"
-    html = (static / "guide.html").read_text(encoding="utf-8")
-    assert 'id="report-frame"' in html
-    assert 'sandbox=""' in html, "an empty sandbox grants nothing — no scripts, no same-origin"
+    for page in static.glob("*.html"):
+        for frame in re.findall(r"<iframe[^>]*>", page.read_text(encoding="utf-8")):
+            assert 'sandbox=""' in frame, f"{page.name}: {frame}"
+
+
+def test_the_walkthrough_page_is_gone(client: TestClient) -> None:
+    """Round four deleted guide.html. No page links to it and it is not served."""
+    static = Path(__file__).resolve().parents[2] / "src" / "quanta" / "web" / "static"
+    assert not (static / "guide.html").exists()
+    for page in static.glob("*.html"):
+        assert "guide.html" not in page.read_text(encoding="utf-8"), page.name
+    assert client.get("/guide.html").status_code == 404
 
 
 # ---------------------------------------------------------------------------------------

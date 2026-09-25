@@ -23,7 +23,7 @@ from __future__ import annotations
 
 import time
 from collections.abc import Callable
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from datetime import UTC, datetime
 from pathlib import Path
 
@@ -31,8 +31,9 @@ import networkx as nx
 
 from quanta.config import Settings, get_settings
 from quanta.core.cbom import CbomImport, merge_cbom
+from quanta.core.coverage import cover
 from quanta.core.detect import DetectionResult, detect_repository
-from quanta.core.fixes import FixPlan, propose_repository
+from quanta.core.fixes import FixFile, FixPlan, propose_repository
 from quanta.core.graph import ResolutionStats, build_cdg, to_node_link
 from quanta.core.ingest import (
     RepoMetadata,
@@ -43,9 +44,10 @@ from quanta.core.ingest import (
     scratch_dir,
     walk_repository,
 )
+from quanta.core.metric_v2 import FORMULAS, coverage_from
 from quanta.core.models import (
     AnalysisMeta,
-    Coverage,
+    CryptoSite,
     Provenance,
     ScoreReport,
     StepEvidence,
@@ -53,9 +55,10 @@ from quanta.core.models import (
     StepStatus,
     write_canonical_json,
 )
+from quanta.core.readiness import Readiness, assess, classify, classify_all
 from quanta.core.report import render_report, write_report
 from quanta.core.score import compute_score
-from quanta.version import CRYPTO_RULESET_VERSION, analyzer_version
+from quanta.version import CRYPTO_RULESET_VERSION, METRIC_VERSION, analyzer_version
 
 #: The pipeline, in order. Ids are stable and are what the UI keys on.
 STEP_TITLES: tuple[tuple[str, str], ...] = (
@@ -74,6 +77,15 @@ STEP_TITLES: tuple[tuple[str, str], ...] = (
 PHASES = ("cloning", "walking", "parsing", "graph", "scoring", "rendering")
 
 ProgressFn = Callable[[StepRecord], None]
+
+#: ``on_event(kind, payload)``: findings and proposals as they are produced, so a viewer
+#: can inspect each one (and disagree with it) before any summary exists. Kinds:
+#: ``parse_progress``, ``findings`` (one file's sites), ``proposals`` (one file's changes).
+EventFn = Callable[[str, dict[str, object]], None]
+
+#: Bound on the source text shown next to a finding. The line is display evidence only;
+#: it is rendered as text, never as markup, and never re-parsed.
+_SNIPPET_LIMIT = 240
 
 
 @dataclass
@@ -140,6 +152,8 @@ class AnalysisOutcome:
     detection: DetectionResult
     report_html: str
     fixes: FixPlan = field(default_factory=FixPlan)
+    findings: list[dict[str, object]] = field(default_factory=list)
+    readiness: Readiness | None = None
 
     @property
     def steps(self) -> tuple[StepRecord, ...]:
@@ -174,7 +188,10 @@ def _metadata_evidence(meta: RepoMetadata, settings: Settings) -> list[StepEvide
     return [
         _ev("Visibility", "public", ok=True),
         _ev("Default branch", meta.default_branch),
-        _ev("Size", f"{meta.size_kb:,} KB of {limit:,} KB limit", ok=meta.size_kb <= limit),
+        # Size 0 means GitHub's API did not answer (rate limit) and git resolved the commit.
+        _ev("Size", f"{meta.size_kb:,} KB of {limit:,} KB limit", ok=meta.size_kb <= limit)
+        if meta.size_kb
+        else _ev("Size", "not reported; resolved over git, bounded by the clone budgets"),
         _ev("Head commit", meta.commit_sha),
         _ev("Analysis pinned to", meta.commit_sha[:12], ok=True),
     ]
@@ -215,12 +232,42 @@ def _walk_evidence(walk: WalkResult, settings: Settings) -> list[StepEvidence]:
 
 
 def _parse_evidence(detection: DetectionResult) -> list[StepEvidence]:
+    by_role: dict[str, int] = {}
+    for site in detection.crypto_calls:
+        by_role[site.role] = by_role.get(site.role, 0) + 1
+    ratio = detection.coverage_ratio
+    matched, unmatched = detection.api_matched, detection.api_unmatched
     evidence = [
-        _ev("Execution", "parsed only — never imported, never executed", ok=True),
-        _ev("Files parsed", f"{detection.files_scanned:,}"),
-        _ev("Crypto call sites", len(detection.crypto_calls)),
+        _ev("Execution", "parsed only, never imported, never executed", ok=True),
+        _ev("Files parsed", f"{detection.files_scanned:,} ({detection.source_files:,} shipped)"),
+        _ev(
+            "Read, not parsed",
+            f"{detection.files_text_only:,} test or docs files that name no crypto library",
+        ),
+        *(
+            [
+                _ev(
+                    "Time limit",
+                    f"{detection.files_unread:,} files not reached "
+                    f"({detection.source_unread:,} shipped); shipped code was read first",
+                    ok=False,
+                )
+            ]
+            if detection.files_unread
+            else []
+        ),
+        _ev("Crypto sites", len(detection.crypto_calls)),
+        _ev(
+            "Sites by file role",
+            ", ".join(f"{k} {v}" for k, v in sorted(by_role.items())) or "none",
+        ),
         _ev("Algorithm literals", len(detection.algo_literals)),
         _ev("Configuration reads", len(detection.config_reads)),
+        _ev(
+            "Crypto library calls recognised",
+            f"{matched} of {matched + unmatched}" + ("" if ratio is None else f" ({ratio:.0%})"),
+            ok=None if ratio is None else ratio >= 0.60,
+        ),
         _ev("Ruleset version", CRYPTO_RULESET_VERSION),
     ]
     weak = [s for s in detection.sites if s.weak]
@@ -265,20 +312,30 @@ def _graph_evidence(graph: nx.DiGraph, stats: ResolutionStats) -> list[StepEvide
     ]
 
 
-#: The published normalisation for each factor (§5.3.3), shown so a viewer can check the
-#: arithmetic rather than trust it.
-FACTOR_FORMULAS = {
-    "call_sites": "1 / (1 + log10(1 + n))",
-    "isolation_layer": "1 / (1 + minimum node cut)",
-    "selection_source": "config reads / (config reads + literals)",
-    "propagation_depth": "1 - (ancestors / modules), clamped",
-}
+#: The published normalisation for each factor (Master Plan 8.3 to 8.6), shown so a viewer
+#: can check the arithmetic rather than trust it.
+FACTOR_FORMULAS = FORMULAS
+
+
+def _score_summary(score: ScoreReport) -> str:
+    if score.status == "scored" and score.agility_score is not None:
+        return f"Agility Score {score.agility_score:.1f} / 100"
+    if score.status == "no_crypto_detected":
+        return "No score: no cryptography detected in shipped code (not a 100)"
+    code = score.refusal.code if score.refusal else "REFUSED"
+    return f"No score: {code}"
 
 
 def _score_evidence(score: ScoreReport) -> list[StepEvidence]:
     evidence = [
-        _ev("Weights", "weights-v1, fixed product defaults", ok=True),
+        _ev(
+            "Metric",
+            f"{score.provenance.metric_version}, weights {score.provenance.weights_version}",
+            ok=True,
+        ),
     ]
+    if score.refusal is not None:
+        evidence.append(_ev("Refused", f"{score.refusal.code}: {score.refusal.message}", ok=False))
     for key, factor in score.factors.items():
         evidence.append(
             _ev(
@@ -287,7 +344,7 @@ def _score_evidence(score: ScoreReport) -> list[StepEvidence]:
                 f" x {factor.weight:.2f} = {factor.contribution:.2f}",
             )
         )
-    evidence.append(_ev("Agility Score", f"{score.agility_score:.1f} / 100"))
+    evidence.append(_ev("Result", _score_summary(score)))
     for deduction in score.deductions:
         evidence.append(
             _ev(
@@ -304,6 +361,51 @@ def _score_evidence(score: ScoreReport) -> list[StepEvidence]:
 # ---------------------------------------------------------------------------------------
 
 
+def _snippet(root: Path, rel: str, line: int, cache: dict[str, list[str]]) -> str:
+    if rel not in cache:
+        try:
+            cache[rel] = (root / rel).read_text(encoding="utf-8").splitlines()
+        except (OSError, UnicodeDecodeError):
+            cache[rel] = []
+    lines = cache[rel]
+    text = lines[line - 1].strip() if 0 < line <= len(lines) else ""
+    return text if len(text) <= _SNIPPET_LIMIT else text[: _SNIPPET_LIMIT - 1] + "…"
+
+
+def finding_payload(site: CryptoSite, snippet: str) -> dict[str, object]:
+    """The public shape of one finding, as streamed and as stored in ``findings.json``."""
+    return {
+        "id": site.site_id,
+        "file": site.file,
+        "line": site.line,
+        "kind": site.kind,
+        "name": site.qualified_name,
+        "algorithm": site.algorithm,
+        "algorithms": list(site.algorithms),
+        "category": site.category,
+        "role": site.role,
+        "form": site.form,
+        "selection": site.selection,
+        "free": site.free,
+        "scored": site.scored,
+        "weak": site.weak,
+        "quantum_vulnerable": site.quantum_vulnerable,
+        "parent": site.parent_site_id,
+        "snippet": snippet,
+        "readiness": classify(site).model_dump(mode="json"),
+    }
+
+
+def proposal_payload(file: FixFile) -> dict[str, object]:
+    return {
+        "path": file.path,
+        "changes": [
+            c.model_dump(exclude={"start", "end", "import_module", "import_name", "import_alias"})
+            for c in file.changes
+        ],
+    }
+
+
 def analyze_path(
     root: Path,
     provenance: Provenance,
@@ -311,20 +413,28 @@ def analyze_path(
     progress: ProgressFn | None = None,
     tracer: Tracer | None = None,
     cbom: CbomImport | None = None,
+    on_event: EventFn | None = None,
+    parse_deadline: float | None = None,
 ) -> AnalysisOutcome:
     """Analyse an already-materialised source tree.
 
     Split out from :func:`analyze_repository` so the pipeline can be exercised against a
-    local directory with no network — which is what the corpus runs and the tests do.
+    local directory with no network, which is what the corpus runs and the tests do.
     """
     cfg = settings or get_settings()
-    if cbom is not None:
-        provenance = provenance.model_copy(
-            update={
-                "analyzer_version": f"{provenance.analyzer_version}+cbom.{cbom.sha256}",
-            }
-        )
+    # Walked paths come back absolute; a relative root would not contain them.
+    root = root.resolve()
+    provenance = provenance.model_copy(
+        update={
+            "metric_version": METRIC_VERSION,
+            "weights_version": cfg.weights.version,
+            "cbom_sha256": cbom.sha256 if cbom is not None else None,
+        }
+    )
     trace = tracer or Tracer(progress)
+    emit = on_event or (lambda _kind, _payload: None)
+    snippets: dict[str, list[str]] = {}
+    findings: list[dict[str, object]] = []
     started = datetime.now(UTC)
     timings: dict[str, int] = {}
 
@@ -341,13 +451,39 @@ def analyze_path(
 
     trace.start("parse")
     mark = time.monotonic()
-    detection = detect_repository(walk.files, root, cfg)
+    last_report = [0.0]
+
+    def on_file(index: int, total: int, one: DetectionResult) -> None:
+        shown = [s for s in one.sites if s.kind == "crypto_call" or s.free]
+        if shown:
+            batch = [finding_payload(s, _snippet(root, s.file, s.line, snippets)) for s in shown]
+            findings.extend(batch)
+            emit("findings", {"file": shown[0].file, "items": batch})
+        now = time.monotonic()
+        if now - last_report[0] >= 0.5 or index == total:
+            last_report[0] = now
+            emit("parse_progress", {"done": index, "total": total})
+
+    budget = parse_deadline or time.monotonic() + cfg.analysis.max_job_seconds * 0.6
+    detection = detect_repository(walk.files, root, cfg, on_file=on_file, deadline=budget)
     if cbom is not None:
         merge_cbom(detection, cbom)
+    # Repository-level findings (a package that implements a scheme itself) exist only
+    # once every file is read; they join the list and the stream here.
+    listed = {str(f["id"]) for f in findings}
+    late: dict[str, list[dict[str, object]]] = {}
+    for site in detection.sites:
+        if (site.kind == "crypto_call" or site.free) and site.site_id not in listed:
+            late.setdefault(site.file, []).append(
+                finding_payload(site, _snippet(root, site.file, site.line, snippets))
+            )
+    for file, batch in sorted(late.items()):
+        findings.extend(batch)
+        emit("findings", {"file": file, "items": batch})
     timings["parsing"] = int((time.monotonic() - mark) * 1000)
     trace.finish(
         "parse",
-        f"{len(detection.crypto_calls)} cryptographic call site"
+        f"{len(detection.crypto_calls)} cryptographic site"
         f"{'' if len(detection.crypto_calls) == 1 else 's'} detected",
         _parse_evidence(detection),
     )
@@ -365,14 +501,14 @@ def analyze_path(
 
     trace.start("score")
     mark = time.monotonic()
-    coverage = Coverage(
-        files_scanned=detection.files_scanned,
-        files_unparseable=len(detection.unparseable),
-        truncated=walk.truncated,
-    )
+    coverage = coverage_from(detection, truncated=walk.truncated or detection.files_unread > 0)
     score = compute_score(detection, graph, provenance, coverage, cfg)
     timings["scoring"] = int((time.monotonic() - mark) * 1000)
-    trace.finish("score", f"Agility Score {score.agility_score:.1f} / 100", _score_evidence(score))
+    trace.finish(
+        "score",
+        _score_summary(score),
+        _score_evidence(score),
+    )
 
     finished = datetime.now(UTC)
 
@@ -393,7 +529,30 @@ def analyze_path(
         sites_detected=len(detection.crypto_calls),
         steps=tuple(trace.steps),
     )
-    report_html = render_report(score, graph, meta, cfg)
+    readiness = assess(
+        detection.sites,
+        files_scanned=detection.files_scanned,
+        source_unread=detection.source_unread,
+    )
+    # Findings streamed per file carry a provisional class; the stored ones carry the final
+    # class, which can see a hybrid built across two sites of one module.
+    final = classify_all(detection.sites)
+    for finding in findings:
+        site_class = final.get(str(finding["id"]))
+        if site_class is not None:
+            finding["readiness"] = site_class.model_dump(mode="json")
+    fixes = propose_repository(
+        root,
+        walk.files,
+        cfg.product,
+        on_file=lambda f: emit("proposals", proposal_payload(f)),
+    )
+    # Every finding that needs action ends as a patch, a refusal or a guided migration.
+    fixes = cover(fixes, findings)
+    findings.sort(key=lambda f: (str(f["file"]), int(str(f["line"])), str(f["id"])))
+    report_html = render_report(
+        score, graph, meta, cfg, readiness=readiness, findings=findings, fixes=fixes
+    )
     timings["rendering"] = int((time.monotonic() - mark) * 1000)
     trace.finish(
         "render",
@@ -415,7 +574,9 @@ def analyze_path(
         meta=meta,
         detection=detection,
         report_html=report_html,
-        fixes=propose_repository(root, walk.files, cfg.product),
+        fixes=fixes,
+        readiness=readiness,
+        findings=findings,
     )
 
 
@@ -428,6 +589,7 @@ def analyze_repository(
     scratch_parent: Path | None = None,
     after_clone: Callable[[], None] | None = None,
     cbom: CbomImport | None = None,
+    on_event: EventFn | None = None,
 ) -> AnalysisOutcome:
     """Analyse a public GitHub repository, pinned to its resolved commit SHA.
 
@@ -435,6 +597,7 @@ def analyze_repository(
     before any clone, and the clone is removed unconditionally at exit.
     """
     cfg = settings or get_settings()
+    job_started = time.monotonic()
     trace = Tracer(progress)
 
     trace.start("validate")
@@ -446,8 +609,11 @@ def analyze_repository(
     )
 
     trace.start("resolve")
-    metadata = metadata or resolve_metadata(owner, name, cfg)
-    if (metadata.owner, metadata.name) != (owner, name):
+    if metadata is None:
+        metadata = resolve_metadata(owner, name, cfg)
+        # A renamed or transferred repository resolves to its new, re-validated name.
+        owner, name = metadata.owner, metadata.name
+    elif (metadata.owner, metadata.name) != (owner, name):
         from quanta.errors import Reject
 
         raise Reject("SHA_MISMATCH", "metadata does not match repository")
@@ -462,6 +628,8 @@ def analyze_repository(
         commit_sha=metadata.commit_sha,
         analyzer_version=analyzer_version(),
         crypto_ruleset_version=CRYPTO_RULESET_VERSION,
+        metric_version=METRIC_VERSION,
+        weights_version=cfg.weights.version,
     )
 
     with scratch_dir(parent=scratch_parent) as scratch:
@@ -478,7 +646,18 @@ def analyze_repository(
 
         if after_clone is not None:
             after_clone()
-        outcome = analyze_path(clone_root, provenance, cfg, progress, tracer=trace, cbom=cbom)
+        outcome = analyze_path(
+            clone_root,
+            provenance,
+            cfg,
+            progress,
+            tracer=trace,
+            cbom=cbom,
+            on_event=on_event,
+            # The job limit counts from the start, clone included; parsing gets 70% of it
+            # so the graph, proposals and report still finish inside it.
+            parse_deadline=job_started + cfg.analysis.max_job_seconds * 0.7,
+        )
 
     # scratch_dir has now removed the tree, unconditionally (INGEST-09).
     trace.start("cleanup")
@@ -492,14 +671,8 @@ def analyze_repository(
         ],
     )
 
-    return AnalysisOutcome(
-        score=outcome.score,
-        graph=outcome.graph,
-        meta=outcome.meta.model_copy(update={"steps": tuple(trace.steps)}),
-        detection=outcome.detection,
-        report_html=outcome.report_html,
-        fixes=outcome.fixes,
-    )
+    # replace(), not a field-by-field copy: a new outcome field can never be dropped here.
+    return replace(outcome, meta=outcome.meta.model_copy(update={"steps": tuple(trace.steps)}))
 
 
 def write_artifacts(outcome: AnalysisOutcome, out_dir: Path) -> dict[str, Path]:
@@ -521,4 +694,7 @@ def write_artifacts(outcome: AnalysisOutcome, out_dir: Path) -> dict[str, Path]:
     write_canonical_json(paths["meta"], outcome.meta)
     write_report(paths["report"], outcome.report_html)
     write_canonical_json(out_dir / "fixes.json", outcome.fixes)
+    write_canonical_json(out_dir / "findings.json", {"version": 1, "findings": outcome.findings})
+    if outcome.readiness is not None:
+        write_canonical_json(out_dir / "readiness.json", outcome.readiness)
     return paths

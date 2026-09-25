@@ -1,0 +1,245 @@
+{
+  "findings": [
+    {
+      "algorithm": "MD5",
+      "algorithms": [
+        "MD5"
+      ],
+      "category": "hash",
+      "file": "src/requests/auth.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-0c9a6d21328b33f5",
+      "kind": "crypto_call",
+      "line": 179,
+      "name": "hashlib.md5",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "md5"
+        ],
+        "status": "weak"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "return hashlib.md5(x, usedforsecurity=False).hexdigest()",
+      "weak": true
+    },
+    {
+      "algorithm": "SHA1",
+      "algorithms": [
+        "SHA1"
+      ],
+      "category": "hash",
+      "file": "src/requests/auth.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-7667952a367f46b9",
+      "kind": "crypto_call",
+      "line": 187,
+      "name": "hashlib.sha1",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "sha1"
+        ],
+        "status": "weak"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "return hashlib.sha1(x, usedforsecurity=False).hexdigest()",
+      "weak": true
+    },
+    {
+      "algorithm": "SHA2-256",
+      "algorithms": [
+        "SHA2-256"
+      ],
+      "category": "hash",
+      "file": "src/requests/auth.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-a219765f5c9bf2af",
+      "kind": "crypto_call",
+      "line": 195,
+      "name": "hashlib.sha256",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "return hashlib.sha256(x, usedforsecurity=False).hexdigest()",
+      "weak": false
+    },
+    {
+      "algorithm": "SHA2-512",
+      "algorithms": [
+        "SHA2-512"
+      ],
+      "category": "hash",
+      "file": "src/requests/auth.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-e2df30bfaafca9ac",
+      "kind": "crypto_call",
+      "line": 203,
+      "name": "hashlib.sha512",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "return hashlib.sha512(x, usedforsecurity=False).hexdigest()",
+      "weak": false
+    },
+    {
+      "algorithm": "SHA1",
+      "algorithms": [
+        "SHA1"
+      ],
+      "category": "hash",
+      "file": "src/requests/auth.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-0701b488abe5edf8",
+      "kind": "crypto_call",
+      "line": 237,
+      "name": "hashlib.sha1",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "sha1"
+        ],
+        "status": "weak"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "cnonce = hashlib.sha1(s, usedforsecurity=False).hexdigest()[:16]",
+      "weak": true
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "tls",
+      "file": "tests/conftest.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-08b0accae0314d3e",
+      "kind": "crypto_call",
+      "line": 57,
+      "name": "ssl.create_default_context",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "tls"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "context = ssl.create_default_context(ssl.Purpose.CLIENT_AUTH)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "tls",
+      "file": "tests/conftest.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-dcf899e59b8532ab",
+      "kind": "crypto_call",
+      "line": 60,
+      "name": "ssl.create_default_context.wrap_socket",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "tls"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "test",
+      "scored": false,
+      "selection": "unspecified",
+      "snippet": "server.socket = context.wrap_socket(server.socket, server_side=True)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "tls",
+      "file": "tests/testserver/server.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-cacfac5b9f318560",
+      "kind": "crypto_call",
+      "line": 161,
+      "name": "ssl.SSLContext",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "tls"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "forwarded",
+      "snippet": "self.ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "tls",
+      "file": "tests/testserver/server.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-fc9e172dfeef6cae",
+      "kind": "crypto_call",
+      "line": 173,
+      "name": "ssl.SSLContext.wrap_socket",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "tls"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "test",
+      "scored": false,
+      "selection": "unspecified",
+      "snippet": "sock = self.ssl_context.wrap_socket(sock, server_side=True)",
+      "weak": false
+    }
+  ],
+  "version": 1
+}

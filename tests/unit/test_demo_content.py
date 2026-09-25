@@ -1,5 +1,9 @@
 """The walkthrough's copy, glossary and translations.
 
+The walkthrough page itself (guide.html) was removed in round four; its content and
+glossary are still served by the API, so their translations are still held to account.
+The pages that remain are checked in test_site_content.
+
 Every failure here is something that would otherwise be discovered live, in front of an
 examining committee: a dead glossary link, a blank Arabic panel, or a technical term that
 someone helpfully translated into Arabic.
@@ -16,8 +20,6 @@ import pytest
 from quanta.web.demo import load_content, load_glossary
 
 ROOT = Path(__file__).resolve().parents[2]
-INDEX = ROOT / "src" / "quanta" / "web" / "static" / "guide.html"
-APP_JS = ROOT / "src" / "quanta" / "web" / "static" / "app.js"
 
 LANGS = ("en", "ar")
 
@@ -137,46 +139,6 @@ def test_every_data_term_resolves_to_a_glossary_entry() -> None:
     assert used, "no terms are marked up at all"
 
 
-def test_every_data_i18n_key_exists_in_content() -> None:
-    html = INDEX.read_text(encoding="utf-8")
-    content = load_content()
-
-    def resolve(path: str):  # type: ignore[no-untyped-def]
-        node = content
-        for part in path.split("."):
-            if isinstance(node, list):
-                node = node[int(part)] if part.isdigit() and int(part) < len(node) else None
-            elif isinstance(node, dict):
-                node = node.get(part)
-            else:
-                return None
-            if node is None:
-                return None
-        return node
-
-    missing = []
-    for attr in ("data-i18n", "data-i18n-html", "data-i18n-placeholder"):
-        for key in re.findall(rf'{attr}="([^"]+)"', html):
-            if resolve(key) is None:
-                missing.append(f"{attr}={key}")
-    assert not missing, f"markup references missing content keys: {missing}"
-
-
-def test_no_user_facing_sentence_is_hard_coded_in_the_markup() -> None:
-    """Everything readable comes from content.json, so nothing can go untranslated.
-
-    Scans text nodes outside script/style. Short fragments (units, punctuation, file
-    names like ``score.json``) are allowed; a sentence is not.
-    """
-    html = INDEX.read_text(encoding="utf-8")
-    html = re.sub(r"<!--.*?-->", "", html, flags=re.DOTALL)
-    html = re.sub(r"<(script|style)\b.*?</\1>", "", html, flags=re.DOTALL | re.IGNORECASE)
-
-    text_nodes = [t.strip() for t in re.split(r"<[^>]+>", html)]
-    sentences = [t for t in text_nodes if len(t.split()) >= 3 and any(c.isalpha() for c in t)]
-    assert not sentences, f"hard-coded copy in index.html: {sentences}"
-
-
 def test_arabic_copy_is_actually_arabic() -> None:
     """Guards against an ``ar`` value that was left as a copy of the English.
 
@@ -190,38 +152,6 @@ def test_arabic_copy_is_actually_arabic() -> None:
         if entry.get("en") == entry.get("ar") and len(str(entry.get("en", "")).split()) >= 3
     ]
     assert not identical, f"Arabic is identical to English at: {identical}"
-
-
-# ---------------------------------------------------------------------------------------
-# Bidirectional isolation
-# ---------------------------------------------------------------------------------------
-
-
-def test_terms_are_rendered_inside_a_bdi_element() -> None:
-    """Without <bdi>, an English term in an Arabic sentence takes its punctuation with it.
-
-    ``CDG.`` renders as ``.CDG``. It looks broken to an Arabic reader, and it is the kind
-    of thing that is invisible until someone who reads Arabic looks at the screen.
-    """
-    source = APP_JS.read_text(encoding="utf-8")
-    assert 'createElement("bdi")' in source
-    assert "renderRich" in source
-
-
-def test_direction_and_language_are_switched_together() -> None:
-    source = APP_JS.read_text(encoding="utf-8")
-    assert "documentElement.dir" in source
-    assert "documentElement.lang" in source
-    assert "rtl" in source and "ltr" in source
-
-
-def test_stylesheet_uses_logical_properties_for_layout() -> None:
-    """Physical margins would need a mirrored stylesheet; logical ones mirror themselves."""
-    css = (ROOT / "src" / "quanta" / "web" / "static" / "app.css").read_text(encoding="utf-8")
-    assert "margin-inline" in css
-    assert "padding-inline" in css
-    assert "border-inline-start" in css
-    assert "text-align: start" in css
 
 
 # ---------------------------------------------------------------------------------------

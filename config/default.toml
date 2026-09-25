@@ -3,7 +3,8 @@
 
 [ingest]
 allowed_hosts        = ["github.com"]
-max_repo_kb          = 200000     # 200 MB, per the GitHub API `size` field
+max_repo_kb          = 5000000    # 5 GB of history, per the GitHub API `size` field. Only the
+                                  # Python files at one commit are downloaded (sparse, blob-less).
 clone_timeout_s      = 180
 max_files            = 20000
 max_file_bytes       = 2000000    # 2 MB
@@ -44,6 +45,15 @@ f_sites       = 0.30
 f_isolation   = 0.30
 f_config      = 0.20
 f_propagation = 0.20
+
+# Gate thresholds for metric-v2 (Master Plan 8.2), pre-registered with the metric.
+# They may not be changed after an evaluation sample is drawn.
+[metric]
+version                = "metric-v2"
+coverage_min           = 0.60
+coverage_min_sample    = 5
+max_unparseable_ratio  = 0.10
+min_source_modules     = 3
 
 [report]
 # "builtin" = deterministic pure-Python SVG emitter (default, see docs/adr/ADR-018).

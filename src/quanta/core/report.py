@@ -27,7 +27,7 @@ import networkx as nx
 from jinja2 import Environment, FileSystemLoader, StrictUndefined, select_autoescape
 from markupsafe import Markup
 
-from quanta.config import Settings, get_settings
+from quanta.config import Settings
 from quanta.core.models import AnalysisMeta, ScoreReport
 from quanta.resources import asset_path
 
@@ -232,41 +232,66 @@ def _environment() -> Environment:
     )
 
 
+#: English labels for the offline report. The web product reads its own (English and
+#: Arabic) from content/site.json.
+READINESS_TEXT: dict[str, str] = {
+    "no_source": "No Python source to read, so nothing could be assessed.",
+    "no_crypto": "No cryptography found in shipped code.",
+    "at_risk": "At risk: quantum-vulnerable or weak cryptography with no post-quantum path yet.",
+    "in_transition": "In transition: post-quantum algorithms present beside classical ones.",
+    "ready": "Ready: no quantum-vulnerable or weak cryptography in shipped code.",
+    "replace_weak_now": "Replace MD5 and legacy ciphers now; the deadline has passed.",
+    "hybrid_key_exchange": "Move key exchange and TLS to hybrid ML-KEM (X25519MLKEM768).",
+    "pq_signatures": "Plan the move of signatures to ML-DSA or SLH-DSA.",
+    "retire_sha1": "Retire SHA-1.",
+    "make_hybrid": "Pair standalone post-quantum algorithms with a classical one (hybrid).",
+    "confirm_algorithms": "Confirm the algorithm at sites where the parser could not see it.",
+    "clear": "not affected",
+    "due": "affected",
+    "overdue": "deadline passed",
+    "met": "met by this inventory",
+}
+
+
 def render_report(
     score: ScoreReport,
     graph: nx.DiGraph,
     meta: AnalysisMeta,
     settings: Settings | None = None,
+    *,
+    readiness: Any = None,
+    findings: list[dict[str, Any]] | None = None,
+    fixes: Any = None,
 ) -> str:
-    """Render the canonical, self-contained ``report.html``."""
-    cfg = settings or get_settings()
-    svg, omitted = render_cdg_svg(graph)
+    """Render the canonical, self-contained ``report.html``.
 
-    factor_titles = {
-        "call_sites": "Call sites",
-        "isolation_layer": "Isolation layer",
-        "selection_source": "Algorithm selection",
-        "propagation_depth": "Propagation depth",
-    }
+    Readiness first, then findings, proposed changes, deadlines and method. The dependency
+    graph stays in cdg.json; drawn as one tall column it communicated nothing (round five).
+    """
+    del graph, settings  # kept in the signature for callers; the report no longer draws them
+    data = report_context(
+        score.model_dump(mode="json"),
+        meta.model_dump(mode="json"),
+        readiness.model_dump(mode="json") if readiness is not None else None,
+        findings or [],
+        fixes.public() if fixes is not None else {"files": [], "skipped": [], "guides": []},
+    )
+    return _environment().get_template("report.html.j2").render(r=data)
 
-    context: dict[str, Any] = {
-        "score": score,
-        "meta": meta,
-        "svg": svg,
-        "omitted_nodes": omitted,
-        "legend": _legend(),
-        "factor_titles": factor_titles,
-        "renderer": cfg.report.renderer,
-        "safe": safe_text,
-        "graph_nodes": graph.number_of_nodes(),
-        "graph_edges": graph.number_of_edges(),
-        "low_confidence_edges": sum(
-            1 for _, _, d in graph.edges(data=True) if d.get("confidence") == "low"
-        ),
-    }
-    return _environment().get_template("report.html.j2").render(**context)
+
+def report_context(
+    score: dict[str, Any],
+    meta: dict[str, Any],
+    readiness: dict[str, Any] | None,
+    findings: list[dict[str, Any]],
+    fixes: dict[str, Any],
+) -> dict[str, Any]:
+    from quanta.core.report_data import build
+
+    return build(score=score, meta=meta, readiness=readiness, findings=findings, fixes=fixes)
 
 
 def write_report(path: Path, html_text: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(html_text, encoding="utf-8")
+    # newline="\n" keeps report.html byte-identical on Windows and Linux (22.8).
+    path.write_text(html_text, encoding="utf-8", newline="\n")

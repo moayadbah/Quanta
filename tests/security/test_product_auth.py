@@ -160,3 +160,24 @@ def test_scanner_settings_exclude_all_service_credentials(client: TestClient) ->
     for secret in ("test-secret", "test-client", "postgresql://secret", "private-github-token"):
         assert secret not in serialized
     assert not cfg.scanner_settings().auth.required
+
+
+def test_feedback_and_verification_respect_ownership_and_csrf(client: TestClient) -> None:
+    job = client.app.state.registry.enqueue(metadata(), "2")
+    fid = "crypto_call-0123456789abcdef"
+    url = f"/api/v1/analyses/{job.id}/findings/{fid}/feedback"
+    # Anonymous: refused before any lookup.
+    assert client.put(url, json={"verdict": "disagree"}).status_code == 401
+    assert client.get(f"/api/v1/analyses/{job.id}/findings").status_code == 401
+    sign_in(client, "1")
+    good = {"origin": "http://testserver", "x-csrf-token": "csrf-value"}
+    # Missing CSRF is refused; someone else's analysis reads as absent.
+    assert client.put(url, json={"verdict": "disagree"}).status_code == 403
+    assert client.put(url, json={"verdict": "disagree"}, headers=good).status_code == 404
+    assert client.get(f"/api/v1/analyses/{job.id}/feedback").status_code == 404
+    verify = client.post(
+        f"/api/v1/analyses/{job.id}/verify",
+        json={"selected": ["x"], "digest": "0" * 64},
+        headers=good,
+    )
+    assert verify.status_code == 404

@@ -123,10 +123,76 @@ def test_acquisition_proxy_is_explicit_and_cannot_inherit_user_credentials(
     with patch.object(ingest.subprocess, "run") as run:
         run.side_effect = [
             subprocess.CompletedProcess([], 0),
+            subprocess.CompletedProcess([], 0),
+            subprocess.CompletedProcess([], 0),
             subprocess.CompletedProcess([], 0, stdout=sha + "\n"),
         ]
         ingest.clone_pinned("owner", "repo", sha, tmp_path / "repo", cfg)
-    clone = run.call_args_list[0]
-    assert f"http.proxy={proxy or ''}" in clone.args[0]
-    assert all("proxy" not in name.lower() for name in clone.kwargs["env"])
-    assert "secret" not in str(clone)
+    # Clone, sparse-checkout and checkout (which fetches the Python blobs) all go through
+    # the explicit proxy and never inherit the user's environment.
+    for call in run.call_args_list[:3]:
+        assert f"http.proxy={proxy or ''}" in call.args[0]
+        assert all("proxy" not in name.lower() for name in call.kwargs["env"])
+        assert "secret" not in str(call)
+    clone = run.call_args_list[0].args[0]
+    assert "--filter=blob:none" in clone
+    assert "--no-recurse-submodules" in clone
+
+
+def test_renamed_repository_follows_only_same_host_api_redirects() -> None:
+    """GitHub answers a renamed repository with 301 to /repositories/{id}. Quanta follows
+    that one hop only when it stays on https://api.github.com, then re-validates the name."""
+    import httpx
+
+    repo = {"full_name": "newowner/newname", "default_branch": "main", "size": 10, "private": False}
+    commit = {"sha": "b" * 40}
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        path = request.url.path
+        if path == "/repos/old/name":
+            return httpx.Response(
+                301, headers={"location": "https://api.github.com/repositories/42"}
+            )
+        if path == "/repos/evil/name":
+            return httpx.Response(
+                301, headers={"location": "https://attacker.test/repositories/42"}
+            )
+        if path == "/repositories/42":
+            return httpx.Response(200, json=repo)
+        if path == "/repos/newowner/newname/commits/main":
+            return httpx.Response(200, json=commit)
+        return httpx.Response(404)
+
+    client = httpx.Client(transport=httpx.MockTransport(handler), follow_redirects=False)
+    meta = ingest.resolve_metadata("old", "name", Settings(), client)
+    assert (meta.owner, meta.name, meta.commit_sha) == ("newowner", "newname", "b" * 40)
+    with pytest.raises(ingest.Reject) as refused:
+        ingest.resolve_metadata("evil", "name", Settings(), client)
+    assert refused.value.code == "GITHUB_UNAVAILABLE"
+
+
+def test_rate_limited_api_falls_back_to_the_git_protocol(monkeypatch: pytest.MonkeyPatch) -> None:
+    """60 anonymous API requests an hour would stop a public deployment within minutes.
+    When the API says so, the head commit and default branch come from git ls-remote."""
+    import httpx
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        return httpx.Response(403, json={"message": "API rate limit exceeded"})
+
+    listing = "ref: refs/heads/main\tHEAD\n" + "c" * 40 + "\tHEAD\n"
+    seen: list[list[str]] = []
+
+    def fake_run(argv, **kwargs):  # type: ignore[no-untyped-def]
+        seen.append(argv)
+        return subprocess.CompletedProcess(argv, 0, stdout=listing)
+
+    monkeypatch.setattr(ingest.subprocess, "run", fake_run)
+    client = httpx.Client(transport=httpx.MockTransport(handler), follow_redirects=False)
+    meta = ingest.resolve_metadata("owner", "repo", Settings(), client)
+    assert (meta.default_branch, meta.commit_sha, meta.size_kb) == ("main", "c" * 40, 0)
+    assert "ls-remote" in seen[0] and "http.followRedirects=false" in seen[0]
+
+
+def test_listing_without_a_default_branch_is_refused() -> None:
+    with pytest.raises(ingest.Reject):
+        ingest._metadata_from_listing("o", "r", "garbage\n")

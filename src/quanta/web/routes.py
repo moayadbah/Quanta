@@ -91,10 +91,13 @@ def _enforce_rate_limit(request: Request) -> None:
 
 def _job_or_404(request: Request, job_id: str) -> Job:
     service = auth(request)
-    identity = service.identity(request, required=service.settings.required)
-    if identity:
-        service.own(job_id, identity)
     job = _registry(request).get(job_id)
+    # A replay of a recorded public run (the workspace sample) holds nothing private and is
+    # open to signed-out visitors; every live scan stays with the accounts that ran it.
+    if job is None or not job.cached:
+        identity = service.identity(request, required=service.settings.required)
+        if identity:
+            service.own(job_id, identity)
     if job is None or (
         time.time() - job.created_at
         > _registry(request).settings.retention.artifact_ttl_days * 86400
@@ -296,6 +299,19 @@ def list_examples() -> dict[str, Any]:
     return {"examples": [e.public() for e in examples_mod.load_examples()]}
 
 
+@router.get("/examples/{slug}")
+def example_detail(slug: str) -> dict[str, Any]:
+    """One cached run's recorded pipeline, for the landing page. Creates no job."""
+    example = examples_mod.find_example(slug)
+    if example is None:
+        raise Reject("REPO_NOT_FOUND", "no such example")
+    return {
+        **example.public(),
+        "steps": examples_mod.recorded_steps(example),
+        "refusal": examples_mod.first_refusal(example),
+    }
+
+
 @router.post("/examples/{slug}/replay", status_code=201)
 def replay_example(request: Request, slug: str) -> JSONResponse:
     service = auth(request)
@@ -306,7 +322,13 @@ def replay_example(request: Request, slug: str) -> JSONResponse:
     example = examples_mod.find_example(slug)
     if example is None:
         raise Reject("REPO_NOT_FOUND", "no such example")
+    return start_cached(request, example, identity)
 
+
+def start_cached(
+    request: Request, example: examples_mod.Example, identity: Any | None
+) -> JSONResponse:
+    """Register a cached run for this viewer and hand back its event stream."""
     job = examples_mod.start_replay(example, _registry(request))
     if identity:
         with _registry(request).db.connect(write=True) as conn:

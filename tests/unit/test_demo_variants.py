@@ -1,170 +1,103 @@
-"""The demo's central claim, asserted (`demo/repos/vault-*`).
+"""The three vault variants under metric-v2 (Master Plan 8.8, 8.9, T2.1).
 
-Act 4 tells an examining committee: *the same six cryptographic calls, three
-architectures, and the score moves.* If a future change to the scorer flattens that, the
-right outcome is a failing test — not a presenter discovering it live.
-
-The three variants are a controlled comparison by construction: identical module count,
-identical crypto call count, identical file layout. Only the architecture differs.
+Same application, same eight cryptographic calls, three architectures. The v1 tests that
+pinned the node cut and the saturating propagation factor were removed with metric v1
+(Master Plan 8.7); round two showed v1 could not reward the facade it recommended.
 """
 
 from __future__ import annotations
 
+import json
 from pathlib import Path
 
 import pytest
 
-from quanta.core.detect import DetectionResult, detect_repository
-from quanta.core.graph import build_cdg, isolation_cut_size
-from quanta.core.ingest import walk_repository
-from quanta.core.models import Coverage, Provenance, ScoreReport
-from quanta.core.score import compute_score
+from quanta.core.analyze import AnalysisOutcome, analyze_path
+from quanta.core.models import Provenance
+from quanta.resources import asset_path
 
-REPOS = Path(__file__).resolve().parents[2] / "demo" / "repos"
-
-SCATTERED = "vault-scattered"
-FACADE = "vault-facade"
-CONFIGURED = "vault-configured"
-VARIANTS = (SCATTERED, FACADE, CONFIGURED)
+VARIANTS = ("scattered", "facade", "configured")
 
 PROVENANCE = Provenance(
     repo="demo/vault",
     commit_sha="0" * 40,
-    analyzer_version="0.1.0",
-    crypto_ruleset_version="2026.08.01",
+    analyzer_version="test",
+    crypto_ruleset_version="test",
 )
 
 
-def analyse(variant: str) -> tuple[DetectionResult, ScoreReport, int]:
-    root = REPOS / variant
-    detection = detect_repository(walk_repository(root).files, root)
-    graph = build_cdg(detection)
-    cut, _ = isolation_cut_size(graph)
-    score = compute_score(
-        detection, graph, PROVENANCE, Coverage(files_scanned=detection.files_scanned)
-    )
-    return detection, score, cut
-
-
 @pytest.fixture(scope="module")
-def measured() -> dict[str, tuple[DetectionResult, ScoreReport, int]]:
-    return {v: analyse(v) for v in VARIANTS}
+def measured() -> dict[str, AnalysisOutcome]:
+    return {v: analyze_path(asset_path(f"demo/repos/vault-{v}"), PROVENANCE) for v in VARIANTS}
 
 
-# ---------------------------------------------------------------------------------------
-# The controls — what must stay constant for the comparison to mean anything
-# ---------------------------------------------------------------------------------------
+def test_every_variant_is_scored(measured: dict[str, AnalysisOutcome]) -> None:
+    for outcome in measured.values():
+        assert outcome.score.status == "scored"
 
 
-def test_all_variants_have_the_same_crypto_call_count(measured) -> None:  # type: ignore[no-untyped-def]
-    """The headline claim depends on this. If it drifts, the demo is comparing apples to
-    oranges and act 4 becomes dishonest."""
-    counts = {v: len(measured[v][0].crypto_calls) for v in VARIANTS}
-    assert set(counts.values()) == {6}, counts
+def test_all_variants_have_the_same_eight_touchpoints(measured: dict[str, AnalysisOutcome]) -> None:
+    counts = {v: o.score.coverage.touchpoints for v, o in measured.items()}
+    assert set(counts.values()) == {8}, counts
 
 
-def test_f_sites_is_identical_across_variants(measured) -> None:  # type: ignore[no-untyped-def]
-    """So any score movement is attributable to architecture, not to edit volume."""
-    values = {measured[v][1].factors["call_sites"].normalised for v in VARIANTS}
-    assert len(values) == 1, values
-
-
-def test_all_variants_have_the_same_module_count(measured) -> None:  # type: ignore[no-untyped-def]
-    files = {v: measured[v][0].files_scanned for v in VARIANTS}
-    assert set(files.values()) == {14}, files
-
-
-# ---------------------------------------------------------------------------------------
-# The claim
-# ---------------------------------------------------------------------------------------
-
-
-def test_the_score_climbs_across_the_three_architectures(measured) -> None:  # type: ignore[no-untyped-def]
-    scattered = measured[SCATTERED][1].agility_score
-    facade = measured[FACADE][1].agility_score
-    configured = measured[CONFIGURED][1].agility_score
-
-    assert scattered < facade < configured, (scattered, facade, configured)
-    assert configured > 2 * scattered, "the demo claims the score roughly doubles"
-
-
-def test_the_facade_halves_the_minimum_node_cut(measured) -> None:
-    """Act 4's centrepiece: six nodes must be removed, or three."""
-    assert measured[SCATTERED][2] == 6
-    assert measured[FACADE][2] == 3
-    assert measured[CONFIGURED][2] == 3
-
-
-def test_the_facade_confines_crypto_to_one_module(measured) -> None:  # type: ignore[no-untyped-def]
-    def modules_with_crypto(variant: str) -> int:
-        return len({s.module for s in measured[variant][0].crypto_calls})
-
-    assert modules_with_crypto(SCATTERED) == 6
-    assert modules_with_crypto(FACADE) == 1
-    assert modules_with_crypto(CONFIGURED) == 1
-
-
-def test_only_the_configured_variant_reads_its_algorithm_from_config(measured) -> None:  # type: ignore[no-untyped-def]
-    assert measured[SCATTERED][0].config_reads == []
-    assert measured[FACADE][0].config_reads == []
-    assert measured[CONFIGURED][0].config_reads
-
-    assert measured[CONFIGURED][1].factors["selection_source"].normalised == 1.0
-    assert measured[SCATTERED][1].factors["selection_source"].normalised == 0.0
-
-
-def test_each_jump_comes_from_the_factor_that_should_move(measured) -> None:
-    """Isolation explains step one; algorithm selection explains step two.
-
-    Asserted separately from the totals because "the number went up" is a weaker claim
-    than "the number went up *for the stated reason*".
-    """
-    scattered, facade, configured = (measured[v][1].factors for v in VARIANTS)
-
-    assert facade["isolation_layer"].normalised > scattered["isolation_layer"].normalised
-    assert facade["selection_source"].normalised == scattered["selection_source"].normalised
-
-    assert configured["isolation_layer"].normalised == facade["isolation_layer"].normalised
-    assert configured["selection_source"].normalised > facade["selection_source"].normalised
-
-
-def test_the_isolation_gain_is_modest_and_that_is_reported_honestly(measured) -> None:
-    """A measured property of the metric, not a defect — and the demo says so.
-
-    ``1 / (1 + cut)`` compresses hard: halving the cut from 6 to 3 is worth only about
-    three points. The demo states this rather than implying the facade transforms the
-    score, and this test pins the honest range so the narrative cannot drift from it.
-    """
-    gain = measured[FACADE][1].agility_score - measured[SCATTERED][1].agility_score
-    assert 2.0 < gain < 6.0, f"narrative says ~3 points; measured {gain:.1f}"
-
-
-def test_propagation_saturates_on_a_repository_this_size(measured) -> None:
-    """Also stated in the demo as a known limit (glossary: propagation depth).
-
-    ``1 - ancestors/modules`` clamps to 0 whenever a repository has more crypto-reaching
-    scopes than modules, which is normal at this scale. It contributes nothing here, and
-    pretending otherwise would misattribute the movement.
-    """
-    for variant in VARIANTS:
-        assert measured[variant][1].factors["propagation_depth"].normalised == 0.0
-
-
-# ---------------------------------------------------------------------------------------
-# The recommendations that predicted the movement
-# ---------------------------------------------------------------------------------------
-
-
-def test_the_scattered_variant_recommends_exactly_the_refactors_we_then_apply(
-    measured,  # type: ignore[no-untyped-def]
+def test_the_score_climbs_across_the_three_architectures(
+    measured: dict[str, AnalysisOutcome],
 ) -> None:
-    """The strongest version of the claim: the tool asks for these two changes, we make
-    them, and the score responds."""
-    actions = " ".join(r.action for r in measured[SCATTERED][1].recommendations).lower()
-    assert "facade" in actions
-    assert "configuration" in actions
+    s = {v: measured[v].score.agility_score for v in VARIANTS}
+    assert s["scattered"] < s["facade"] < s["configured"]  # type: ignore[operator]
+    assert s["facade"] - s["scattered"] >= 15.0  # type: ignore[operator]
+    assert s["configured"] - s["facade"] >= 5.0  # type: ignore[operator]
 
 
-def test_the_configured_variant_no_longer_recommends_configuration(measured) -> None:  # type: ignore[no-untyped-def]
-    factors = {r.factor for r in measured[CONFIGURED][1].deductions}
-    assert "selection_source" not in factors
+def test_the_facade_is_seen_by_isolation(measured: dict[str, AnalysisOutcome]) -> None:
+    scattered = measured["scattered"].score.factors["isolation_layer"]
+    facade = measured["facade"].score.factors["isolation_layer"]
+    assert round(scattered.normalised, 6) == 0.21875
+    assert facade.normalised == 1.0
+
+
+def test_only_the_configured_variant_reads_its_hash_choices_from_config(
+    measured: dict[str, AnalysisOutcome],
+) -> None:
+    config = {v: measured[v].score.factors["selection_source"].inputs for v in VARIANTS}
+    assert config["scattered"] == {"configured": 0, "literal": 8}
+    assert config["facade"] == {"configured": 0, "literal": 8}
+    assert config["configured"] == {"configured": 4, "literal": 4}
+
+
+def test_the_scattered_variant_reproduces_the_worked_example(
+    measured: dict[str, AnalysisOutcome],
+) -> None:
+    """Master Plan 8.8: 30.4851 for the scattered variant."""
+    assert round(measured["scattered"].score.agility_score or 0, 4) == 30.4851
+
+
+def test_the_facade_recommendation_bounds_the_isolation_gain(
+    measured: dict[str, AnalysisOutcome],
+) -> None:
+    """The P1 upper bound is the isolation deduction, and the facade recovers all of it."""
+    scattered, facade = measured["scattered"].score, measured["facade"].score
+    bound = next(r for r in scattered.recommendations if r.pattern == "P1").estimated_score_gain
+    gained = (
+        facade.factors["isolation_layer"].contribution
+        - scattered.factors["isolation_layer"].contribution
+    )
+    assert gained == pytest.approx(bound, abs=1e-6)
+
+
+def test_measured_scores_are_published(measured: dict[str, AnalysisOutcome]) -> None:
+    """docs/research/metric-v2-variants.json holds the three measured scores."""
+    published = json.loads(asset_path("docs/research/metric-v2-variants.json").read_text())
+    for v in VARIANTS:
+        assert published[v] == measured[v].score.agility_score
+
+
+def test_variants_are_equivalent_programs() -> None:
+    """The facade and configured variants move calls; they must not drop any file."""
+    names = {
+        v: sorted(p.name for p in Path(asset_path(f"demo/repos/vault-{v}/vault")).glob("*.py"))
+        for v in VARIANTS
+    }
+    assert set(names["scattered"]) | {"_crypto_facade.py"} == set(names["facade"])
+    assert names["facade"] == names["configured"]

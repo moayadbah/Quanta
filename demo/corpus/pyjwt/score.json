@@ -1,120 +1,183 @@
 {
-  "agility_score": 13.838066,
+  "agility_score": 56.681325,
   "coverage": {
+    "coverage_ratio": 0.930233,
+    "crypto_api_calls_matched": 40,
+    "crypto_api_calls_unmatched": 3,
     "files_scanned": 26,
     "files_unparseable": 0,
-    "truncated": false
+    "files_unparseable_source": 0,
+    "method_calls_note": "Calls on key or context objects are not counted.",
+    "sites_by_role": {
+      "docs": 0,
+      "example": 0,
+      "source": 38,
+      "test": 72,
+      "tooling": 0,
+      "vendored": 0
+    },
+    "source_files": 12,
+    "touchpoints": 36,
+    "truncated": false,
+    "unmatched_top": [
+      {
+        "count": 1,
+        "name": "cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePrivateNumbers.private_key"
+      },
+      {
+        "count": 1,
+        "name": "cryptography.hazmat.primitives.asymmetric.utils.decode_dss_signature"
+      },
+      {
+        "count": 1,
+        "name": "cryptography.hazmat.primitives.asymmetric.utils.encode_dss_signature"
+      }
+    ]
   },
   "deductions": [
     {
       "citations": [
-        "jwt/algorithms.py:198",
-        "jwt/algorithms.py:408",
-        "tests/test_advisory.py:57",
-        "tests/test_advisory.py:64",
-        "tests/test_advisory.py:108",
-        "tests/test_advisory.py:115",
-        "tests/test_algorithms.py:1431",
-        "tests/test_algorithms.py:1439",
-        "tests/test_algorithms.py:1448",
-        "tests/test_algorithms.py:1456"
+        "jwt/algorithms.py:159",
+        "jwt/algorithms.py:160",
+        "jwt/algorithms.py:161",
+        "jwt/algorithms.py:162",
+        "jwt/algorithms.py:164",
+        "jwt/algorithms.py:200",
+        "jwt/algorithms.py:320",
+        "jwt/algorithms.py:321",
+        "jwt/algorithms.py:322",
+        "jwt/algorithms.py:494"
       ],
       "factor": "call_sites",
-      "points": 17.740882,
-      "reason": "27 cryptographic call sites must each be edited to change algorithm"
+      "points": 18.31866,
+      "reason": "36 cryptographic touchpoints in shipped code must each be edited to change an algorithm."
     },
     {
       "citations": [
-        "jwt/algorithms.py:198",
-        "jwt/algorithms.py:408",
-        "tests/test_advisory.py:57",
-        "tests/test_advisory.py:64",
-        "tests/test_advisory.py:108",
-        "tests/test_advisory.py:115",
-        "tests/test_algorithms.py:1431",
-        "tests/test_algorithms.py:1439",
-        "tests/test_algorithms.py:1448",
-        "tests/test_algorithms.py:1456"
-      ],
-      "factor": "isolation_layer",
-      "points": 28.421053,
-      "reason": "Crypto APIs invoked directly from 6 modules with no common wrapper; 18 nodes must be cut to decouple cryptography"
-    },
-    {
-      "citations": [
-        "tests/test_api_jws.py:1041",
-        "tests/test_api_jws.py:1064"
+        "jwt/algorithms.py:159",
+        "jwt/algorithms.py:160",
+        "jwt/algorithms.py:161",
+        "jwt/algorithms.py:162",
+        "jwt/algorithms.py:164",
+        "jwt/algorithms.py:320",
+        "jwt/algorithms.py:321",
+        "jwt/algorithms.py:322",
+        "jwt/algorithms.py:508",
+        "jwt/algorithms.py:509"
       ],
       "factor": "selection_source",
       "points": 20.0,
-      "reason": "2 algorithm selections are hard-coded rather than read from configuration"
+      "reason": "34 of 34 algorithm choices are fixed in code."
     },
     {
       "citations": [
-        "tests/test_api_jws.py:1041",
-        "tests/test_api_jws.py:1064",
-        "jwt/algorithms.py:198",
-        "jwt/algorithms.py:408",
-        "tests/test_advisory.py:108",
-        "tests/test_advisory.py:115",
-        "tests/test_advisory.py:57",
-        "tests/test_advisory.py:64",
-        "tests/test_algorithms.py:1431",
-        "tests/test_algorithms.py:1439"
+        "jwt/api_jwk.py:76",
+        "jwt/api_jws.py:44"
       ],
       "factor": "propagation_depth",
-      "points": 20.0,
-      "reason": "26 graph nodes can reach cryptography, so a change propagates well beyond the call sites themselves"
+      "points": 5.0,
+      "reason": "3 of 12 shipped modules contain cryptography or call a module that does."
     }
   ],
   "factors": {
     "call_sites": {
-      "contribution": 12.259118,
-      "normalised": 0.408637,
-      "raw": 27,
+      "contribution": 11.681325,
+      "formula": "1 / (1 + log10(1 + n))",
+      "inputs": {
+        "n": 36
+      },
+      "normalised": 0.389378,
+      "raw": 36,
       "weight": 0.3
     },
     "isolation_layer": {
-      "contribution": 1.578947,
-      "normalised": 0.052632,
-      "raw": false,
+      "contribution": 30.0,
+      "formula": "sum over crypto modules of (n_m / n)^2",
+      "inputs": {
+        "crypto_modules": 1,
+        "touchpoints": 36
+      },
+      "normalised": 1.0,
+      "raw": 1.0,
       "weight": 0.3
     },
     "propagation_depth": {
-      "contribution": 0.0,
-      "normalised": 0.0,
-      "raw": 26,
+      "contribution": 15.0,
+      "formula": "1 - (|C| + |D|) / |M|",
+      "inputs": {
+        "crypto_modules": 1,
+        "dependents": 2,
+        "shipped_modules": 12
+      },
+      "normalised": 0.75,
+      "raw": 3,
       "weight": 0.2
     },
     "selection_source": {
       "contribution": 0.0,
+      "formula": "configured / (configured + literal)",
+      "inputs": {
+        "configured": 0,
+        "literal": 34
+      },
       "normalised": 0.0,
-      "raw": "hardcoded",
+      "raw": "configured_share",
       "weight": 0.2
     }
   },
+  "inventory_summary": {
+    "by_algorithm": {
+      "ECC": 4,
+      "ECDSA": 4,
+      "EDDSA-ED25519": 3,
+      "EDDSA-ED448": 2,
+      "HMAC": 3,
+      "HMAC-SHA2-256": 9,
+      "RSA": 14,
+      "SHA2-256": 3,
+      "SHA2-384": 1,
+      "SHA2-512": 1
+    },
+    "by_category": {
+      "certificate": 2,
+      "hash": 4,
+      "key_generation": 4,
+      "key_loading": 66,
+      "mac": 3,
+      "signature": 10,
+      "tls": 2,
+      "token": 19
+    },
+    "pq": 0,
+    "quantum_vulnerable": 27,
+    "weak": 0
+  },
   "provenance": {
-    "analyzer_version": "0.1.0+rules.2026.08.01",
-    "commit_sha": "7144e4534c34810f4525dc4578a32addd8212cff",
-    "crypto_ruleset_version": "2026.08.01",
-    "repo": "jpadilla/pyjwt"
+    "analyzer_version": "0.5.0+rules.2026.11.01",
+    "cbom_sha256": null,
+    "commit_sha": "1d41a6478e1562e68ff667fcd703356acf085f68",
+    "crypto_ruleset_version": "2026.11.01",
+    "metric_version": "metric-v2",
+    "repo": "jpadilla/pyjwt",
+    "weights_version": "weights-v1"
   },
   "recommendations": [
     {
-      "action": "Introduce a crypto facade module fronting the cryptographic primitives, so algorithm changes are made in one place",
-      "affected_sites": 27,
-      "estimated_score_gain": 28.421053
+      "action": "Read algorithm choices from a checked policy (pattern P2).",
+      "affected_sites": 34,
+      "bound": "upper bound for this factor",
+      "estimated_score_gain": 20.0,
+      "pattern": "P2"
     },
     {
-      "action": "Move algorithm selection into configuration so the algorithm is policy rather than a code literal (NIST CSWP 39)",
-      "affected_sites": 2,
-      "estimated_score_gain": 20.0
-    },
-    {
-      "action": "Plan migration of quantum-vulnerable key establishment and signatures to ML-KEM / ML-DSA, ideally via a hybrid construction",
-      "affected_sites": 4,
-      "estimated_score_gain": 0.0
+      "action": "Plan migration of quantum-vulnerable key establishment and signatures (ML-KEM, ML-DSA, ideally hybrid).",
+      "affected_sites": 17,
+      "bound": "not scored; needs both ends of a protocol",
+      "estimated_score_gain": 0.0,
+      "pattern": "P3"
     }
   ],
-  "schema_version": "1.0"
+  "refusal": null,
+  "schema_version": "2.0",
+  "status": "scored"
 }

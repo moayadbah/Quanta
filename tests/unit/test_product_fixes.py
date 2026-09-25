@@ -4,7 +4,7 @@ import ast
 
 import pytest
 
-from quanta.core.fixes import FixPlan, propose, review
+from quanta.core.fixes import FixPlan, propose, propose_with_skips, review
 from quanta.errors import Reject
 
 
@@ -48,10 +48,59 @@ x = sha1(b"x")
 y = SHA1()
 """)
     output = review(result, [c.id for c in result.files[0].changes])["files"][0]["content"]
-    assert "sha256 as _quanta_sha256_sha256" in output
-    assert "SHA256 as _quanta_sha256_SHA256" in output
-    assert 'x = _quanta_sha256_sha256(b"x")' in output
-    assert "y = _quanta_sha256_SHA256()" in output
+    # Each import is rewritten in place under its own name: no generated aliases.
+    assert output == (
+        "from hashlib import sha256\n"
+        "from cryptography.hazmat.primitives.hashes import SHA256\n"
+        'x = sha256(b"x")\n'
+        "y = SHA256()\n"
+    )
+    assert "_quanta" not in output
+
+
+def test_preview_is_built_from_offsets_not_by_searching_the_line() -> None:
+    """Round five, python-ecdsa test_keys.py:937: ``sha1 = hashlib.sha1()`` was shown as
+    ``sha256 = hashlib.sha1()`` because the page replaced the first "sha1" on the line."""
+    result = plan("import hashlib\nsha1 = hashlib.sha1()\n")
+    change = result.files[0].changes[0]
+    assert change.line_before == "sha1 = hashlib.sha1()"
+    assert change.line_after == "sha1 = hashlib.sha256()"
+    output = review(result, [change.id])["files"][0]["content"]
+    assert "sha1 = hashlib.sha256()" in output
+
+
+def test_a_name_that_already_means_something_else_is_refused() -> None:
+    file, refused = propose_with_skips(
+        "from hashlib import sha1\nsha256 = 3\nx = sha1(b'x')\n", "src/h.py"
+    )
+    assert file is None
+    assert [r.code for r in refused] == ["NAME_CONFLICT"]
+
+
+def test_known_answer_tests_are_never_patched() -> None:
+    """Round five, python-ecdsa test_pyecdsa.py:2038: the call changed while
+    ``hash_func=hashlib.sha1`` and a SHA-1 expected value stayed. Tests are refused."""
+    source = (
+        "import hashlib\n"
+        "def test_2():\n"
+        "    check(hsh=hashlib.sha1(b'sample').digest(), hash_func=hashlib.sha1,\n"
+        "          expected=0x37D7CA00D2C7B0E5E412AC03BD44BA837FDD5B28CD3B0021)\n"
+    )
+    file, refused = propose_with_skips(source, "tests/test_vectors.py")
+    assert file is None
+    assert [r.code for r in refused] == ["TEST_EXPECTATION"]
+
+
+def test_a_call_beside_the_same_hash_passed_as_a_value_is_refused() -> None:
+    source = (
+        "import hashlib\n"
+        "def sign(data):\n"
+        "    digest = hashlib.sha1(data).digest()\n"
+        "    return key.sign(digest, hash_func=hashlib.sha1)\n"
+    )
+    file, refused = propose_with_skips(source, "src/signer.py")
+    assert file is None
+    assert [r.code for r in refused] == ["MIXED_USE"]
 
 
 @pytest.mark.parametrize(

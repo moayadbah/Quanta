@@ -54,6 +54,9 @@ class Box:
     def open(self, path, mode):
         return RemoteFile(self.artifacts[path.split("/")[-1]])
 
+    async def is_file(self, path):
+        return path.split("/")[-1] in self.artifacts
+
     async def update_network_policy(self, policy):
         self.policy = policy.mode
 
@@ -74,7 +77,7 @@ def test_cloud_scan_is_isolated_persistent_bounded_and_deduplicated(
     registry.store = DatabaseArtifactStore(tmp_path / "artifacts", registry.db)
     sample = sample_outcome()
     metadata = RepoMetadata(
-        owner="sample", name="vault", commit_sha="0" * 40, default_branch="main", size_kb=1
+        owner="sample", name="clinic", commit_sha="0" * 40, default_branch="main", size_kb=1
     )
     job = registry.enqueue(metadata, "1")
     write_artifacts(sample, tmp_path / "output")
@@ -172,3 +175,28 @@ def test_postgres_queue_artifacts_and_quota_transactions(tmp_path: Path) -> None
             ).fetchone()[0]
             == 0
         )
+
+
+def test_a_scanner_snapshot_without_optional_artifacts_still_succeeds(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """A snapshot built before readiness.json existed must not fail every hosted scan."""
+    registry = JobRegistry(tmp_path / "artifacts")
+    registry.settings.cloud.enabled = True
+    registry.settings.cloud.sandbox_snapshot = "snap-old"
+    registry.store = DatabaseArtifactStore(tmp_path / "artifacts", registry.db)
+    metadata = RepoMetadata(
+        owner="sample", name="clinic", commit_sha="0" * 40, default_branch="main", size_kb=1
+    )
+    job = registry.enqueue(metadata, "1")
+    write_artifacts(sample_outcome(), tmp_path / "output")
+    box = Box(
+        {
+            name: (tmp_path / "output" / name).read_bytes()
+            for name in ARTIFACT_NAMES
+            if name != "readiness.json"
+        }
+    )
+    monkeypatch.setattr("quanta.web.cloud.sandbox.create_sandbox", lambda **kwargs: box)
+    asyncio.run(execute(registry, job.id))
+    assert registry.get(job.id).status == "succeeded"

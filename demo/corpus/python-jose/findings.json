@@ -1,0 +1,6595 @@
+{
+  "findings": [
+    {
+      "algorithm": "SHA2-256",
+      "algorithms": [
+        "SHA2-256"
+      ],
+      "category": null,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "call",
+      "free": true,
+      "id": "algo_literal-fce12176784b9dac",
+      "kind": "algo_literal",
+      "line": 34,
+      "name": "cryptography.hazmat.primitives.hashes.SHA256",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "SHA256 = hashes.SHA256",
+      "weak": false
+    },
+    {
+      "algorithm": "SHA2-384",
+      "algorithms": [
+        "SHA2-384"
+      ],
+      "category": null,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "call",
+      "free": true,
+      "id": "algo_literal-6e61f8dde11c2489",
+      "kind": "algo_literal",
+      "line": 35,
+      "name": "cryptography.hazmat.primitives.hashes.SHA384",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "SHA384 = hashes.SHA384",
+      "weak": false
+    },
+    {
+      "algorithm": "SHA2-512",
+      "algorithms": [
+        "SHA2-512"
+      ],
+      "category": null,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "call",
+      "free": true,
+      "id": "algo_literal-6b84e8563c55d8c6",
+      "kind": "algo_literal",
+      "line": 36,
+      "name": "cryptography.hazmat.primitives.hashes.SHA512",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "SHA512 = hashes.SHA512",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "key_loading",
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-8685488bfaa11b08",
+      "kind": "crypto_call",
+      "line": 72,
+      "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": true,
+        "exposure": [
+          "signature"
+        ],
+        "status": "review"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
+      "snippet": "key = load_pem_public_key(key, self.cryptography_backend())",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "key_loading",
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-26761db2c4923eeb",
+      "kind": "crypto_call",
+      "line": 74,
+      "name": "cryptography.hazmat.primitives.serialization.load_pem_private_key",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": true,
+        "exposure": [
+          "signature"
+        ],
+        "status": "review"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
+      "snippet": "key = load_pem_private_key(key, password=None, backend=self.cryptography_backend())",
+      "weak": false
+    },
+    {
+      "algorithm": "ECC-P256",
+      "algorithms": [
+        "ECC-P256"
+      ],
+      "category": null,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "call",
+      "free": true,
+      "id": "algo_literal-1577b08f8907955d",
+      "kind": "algo_literal",
+      "line": 93,
+      "name": "cryptography.hazmat.primitives.asymmetric.ec.SECP256R1",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "\"P-256\": ec.SECP256R1,",
+      "weak": false
+    },
+    {
+      "algorithm": "ECC-P384",
+      "algorithms": [
+        "ECC-P384"
+      ],
+      "category": null,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "call",
+      "free": true,
+      "id": "algo_literal-40b3e903bbac414a",
+      "kind": "algo_literal",
+      "line": 94,
+      "name": "cryptography.hazmat.primitives.asymmetric.ec.SECP384R1",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "\"P-384\": ec.SECP384R1,",
+      "weak": false
+    },
+    {
+      "algorithm": "ECC-P521",
+      "algorithms": [
+        "ECC-P521"
+      ],
+      "category": null,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "call",
+      "free": true,
+      "id": "algo_literal-a5f6e695fdfbe9f5",
+      "kind": "algo_literal",
+      "line": 95,
+      "name": "cryptography.hazmat.primitives.asymmetric.ec.SECP521R1",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "\"P-521\": ec.SECP521R1,",
+      "weak": false
+    },
+    {
+      "algorithm": "ECC",
+      "algorithms": [
+        "ECC"
+      ],
+      "category": "key_loading",
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-9e7eef7ae8fa7bd7",
+      "kind": "crypto_call",
+      "line": 98,
+      "name": "cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePublicNumbers",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "public = ec.EllipticCurvePublicNumbers(x, y, curve())",
+      "weak": false
+    },
+    {
+      "algorithm": "ECC",
+      "algorithms": [
+        "ECC"
+      ],
+      "category": "key_loading",
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-65311d86e027b984",
+      "kind": "crypto_call",
+      "line": 102,
+      "name": "cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePrivateNumbers",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "private = ec.EllipticCurvePrivateNumbers(d, public)",
+      "weak": false
+    },
+    {
+      "algorithm": "ECC",
+      "algorithms": [
+        "ECC"
+      ],
+      "category": "key_loading",
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-d22c64dcb04d550c",
+      "kind": "crypto_call",
+      "line": 104,
+      "name": "cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePrivateNumbers.private_key",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "literal",
+      "snippet": "return private.private_key(self.cryptography_backend())",
+      "weak": false
+    },
+    {
+      "algorithm": "ECC",
+      "algorithms": [
+        "ECC"
+      ],
+      "category": "key_loading",
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-44c2d0ce316e994b",
+      "kind": "crypto_call",
+      "line": 106,
+      "name": "cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePublicNumbers.public_key",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "literal",
+      "snippet": "return public.public_key(self.cryptography_backend())",
+      "weak": false
+    },
+    {
+      "algorithm": "ECDSA",
+      "algorithms": [
+        "ECDSA"
+      ],
+      "category": null,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "call",
+      "free": true,
+      "id": "algo_literal-a753d75178a58626",
+      "kind": "algo_literal",
+      "line": 139,
+      "name": "cryptography.hazmat.primitives.asymmetric.ec.ECDSA",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "signature = self.prepared_key.sign(msg, ec.ECDSA(self.hash_alg()))",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "signature",
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-9316d611f6a31641",
+      "kind": "crypto_call",
+      "line": 139,
+      "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.sign",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": true,
+        "exposure": [
+          "signature"
+        ],
+        "status": "review"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
+      "snippet": "signature = self.prepared_key.sign(msg, ec.ECDSA(self.hash_alg()))",
+      "weak": false
+    },
+    {
+      "algorithm": "ECDSA",
+      "algorithms": [
+        "ECDSA"
+      ],
+      "category": null,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "call",
+      "free": true,
+      "id": "algo_literal-8073962a5ee53897",
+      "kind": "algo_literal",
+      "line": 145,
+      "name": "cryptography.hazmat.primitives.asymmetric.ec.ECDSA",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "self.prepared_key.verify(signature, msg, ec.ECDSA(self.hash_alg()))",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "signature",
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-cf2f253c96d8a4b4",
+      "kind": "crypto_call",
+      "line": 145,
+      "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.verify",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": true,
+        "exposure": [
+          "signature"
+        ],
+        "status": "review"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
+      "snippet": "self.prepared_key.verify(signature, msg, ec.ECDSA(self.hash_alg()))",
+      "weak": false
+    },
+    {
+      "algorithm": "SHA2-256",
+      "algorithms": [
+        "SHA2-256"
+      ],
+      "category": null,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "call",
+      "free": true,
+      "id": "algo_literal-93e3f2e9c28ef49c",
+      "kind": "algo_literal",
+      "line": 204,
+      "name": "cryptography.hazmat.primitives.hashes.SHA256",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "SHA256 = hashes.SHA256",
+      "weak": false
+    },
+    {
+      "algorithm": "SHA2-384",
+      "algorithms": [
+        "SHA2-384"
+      ],
+      "category": null,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "call",
+      "free": true,
+      "id": "algo_literal-e7ddae3bc7e299f2",
+      "kind": "algo_literal",
+      "line": 205,
+      "name": "cryptography.hazmat.primitives.hashes.SHA384",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "SHA384 = hashes.SHA384",
+      "weak": false
+    },
+    {
+      "algorithm": "SHA2-512",
+      "algorithms": [
+        "SHA2-512"
+      ],
+      "category": null,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "call",
+      "free": true,
+      "id": "algo_literal-5e563a7c6711e932",
+      "kind": "algo_literal",
+      "line": 206,
+      "name": "cryptography.hazmat.primitives.hashes.SHA512",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "SHA512 = hashes.SHA512",
+      "weak": false
+    },
+    {
+      "algorithm": "RSA",
+      "algorithms": [
+        "RSA"
+      ],
+      "category": null,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "call",
+      "free": true,
+      "id": "algo_literal-16ce4c4c82008478",
+      "kind": "algo_literal",
+      "line": 208,
+      "name": "cryptography.hazmat.primitives.asymmetric.padding.PKCS1v15",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "RSA1_5 = padding.PKCS1v15()",
+      "weak": false
+    },
+    {
+      "algorithm": "RSA",
+      "algorithms": [
+        "RSA"
+      ],
+      "category": null,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "call",
+      "free": true,
+      "id": "algo_literal-6c0cec631c8c0e39",
+      "kind": "algo_literal",
+      "line": 209,
+      "name": "cryptography.hazmat.primitives.asymmetric.padding.OAEP",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "RSA_OAEP = padding.OAEP(padding.MGF1(hashes.SHA1()), hashes.SHA1(), None)",
+      "weak": false
+    },
+    {
+      "algorithm": "RSA",
+      "algorithms": [
+        "RSA"
+      ],
+      "category": null,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "call",
+      "free": true,
+      "id": "algo_literal-4f52bad3a027a453",
+      "kind": "algo_literal",
+      "line": 210,
+      "name": "cryptography.hazmat.primitives.asymmetric.padding.OAEP",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "RSA_OAEP_256 = padding.OAEP(padding.MGF1(hashes.SHA256()), hashes.SHA256(), None)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "key_loading",
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-3abcec123b4d6a79",
+      "kind": "crypto_call",
+      "line": 250,
+      "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": true,
+        "exposure": [
+          "signature"
+        ],
+        "status": "review"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
+      "snippet": "self.prepared_key = load_pem_public_key(key, self.cryptography_backend())",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "key_loading",
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-e82f44ac293c5f79",
+      "kind": "crypto_call",
+      "line": 252,
+      "name": "cryptography.hazmat.primitives.serialization.load_pem_private_key",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": true,
+        "exposure": [
+          "signature"
+        ],
+        "status": "review"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
+      "snippet": "self.prepared_key = load_pem_private_key(key, password=None, backend=self.cryptography_backend())",
+      "weak": false
+    },
+    {
+      "algorithm": "RSA",
+      "algorithms": [
+        "RSA"
+      ],
+      "category": "key_loading",
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-77f90f85e6513f96",
+      "kind": "crypto_call",
+      "line": 265,
+      "name": "cryptography.hazmat.primitives.asymmetric.rsa.RSAPublicNumbers",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "public = rsa.RSAPublicNumbers(e, n)",
+      "weak": false
+    },
+    {
+      "algorithm": "RSA",
+      "algorithms": [
+        "RSA"
+      ],
+      "category": "key_loading",
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-9e1afe81ecc5a7d0",
+      "kind": "crypto_call",
+      "line": 268,
+      "name": "cryptography.hazmat.primitives.asymmetric.rsa.RSAPublicNumbers.public_key",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "literal",
+      "snippet": "return public.public_key(self.cryptography_backend())",
+      "weak": false
+    },
+    {
+      "algorithm": "RSA",
+      "algorithms": [
+        "RSA"
+      ],
+      "category": "key_loading",
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-7f4beb150a9612ec",
+      "kind": "crypto_call",
+      "line": 291,
+      "name": "cryptography.hazmat.primitives.asymmetric.rsa.rsa_recover_prime_factors",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "literal",
+      "snippet": "p, q = rsa.rsa_recover_prime_factors(n, e, d)",
+      "weak": false
+    },
+    {
+      "algorithm": "RSA",
+      "algorithms": [
+        "RSA"
+      ],
+      "category": "key_loading",
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-93e283217f17e2e2",
+      "kind": "crypto_call",
+      "line": 292,
+      "name": "cryptography.hazmat.primitives.asymmetric.rsa.rsa_crt_dmp1",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "literal",
+      "snippet": "dp = rsa.rsa_crt_dmp1(d, p)",
+      "weak": false
+    },
+    {
+      "algorithm": "RSA",
+      "algorithms": [
+        "RSA"
+      ],
+      "category": "key_loading",
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-5977b6804652334b",
+      "kind": "crypto_call",
+      "line": 293,
+      "name": "cryptography.hazmat.primitives.asymmetric.rsa.rsa_crt_dmq1",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "literal",
+      "snippet": "dq = rsa.rsa_crt_dmq1(d, q)",
+      "weak": false
+    },
+    {
+      "algorithm": "RSA",
+      "algorithms": [
+        "RSA"
+      ],
+      "category": "key_loading",
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-3362245bb54edb20",
+      "kind": "crypto_call",
+      "line": 294,
+      "name": "cryptography.hazmat.primitives.asymmetric.rsa.rsa_crt_iqmp",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "literal",
+      "snippet": "qi = rsa.rsa_crt_iqmp(p, q)",
+      "weak": false
+    },
+    {
+      "algorithm": "RSA",
+      "algorithms": [
+        "RSA"
+      ],
+      "category": "key_loading",
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-b15b8d38f8660bc4",
+      "kind": "crypto_call",
+      "line": 296,
+      "name": "cryptography.hazmat.primitives.asymmetric.rsa.RSAPrivateNumbers",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "private = rsa.RSAPrivateNumbers(p, q, d, dp, dq, qi, public)",
+      "weak": false
+    },
+    {
+      "algorithm": "RSA",
+      "algorithms": [
+        "RSA"
+      ],
+      "category": "key_loading",
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-286d5929859b1035",
+      "kind": "crypto_call",
+      "line": 298,
+      "name": "cryptography.hazmat.primitives.asymmetric.rsa.RSAPrivateNumbers.private_key",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "literal",
+      "snippet": "return private.private_key(self.cryptography_backend())",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "certificate",
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-53a8ff4e0b4eaaaf",
+      "kind": "crypto_call",
+      "line": 301,
+      "name": "cryptography.x509.load_pem_x509_certificate",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": true,
+        "exposure": [
+          "signature"
+        ],
+        "status": "review"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
+      "snippet": "key = load_pem_x509_certificate(key, self.cryptography_backend())",
+      "weak": false
+    },
+    {
+      "algorithm": "RSA",
+      "algorithms": [
+        "RSA"
+      ],
+      "category": null,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "call",
+      "free": true,
+      "id": "algo_literal-9e13607b6461bd7b",
+      "kind": "algo_literal",
+      "line": 306,
+      "name": "cryptography.hazmat.primitives.asymmetric.padding.PKCS1v15",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "signature = self.prepared_key.sign(msg, padding.PKCS1v15(), self.hash_alg())",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "signature",
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-9eba9f4169b92550",
+      "kind": "crypto_call",
+      "line": 306,
+      "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.sign",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": true,
+        "exposure": [
+          "signature"
+        ],
+        "status": "review"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
+      "snippet": "signature = self.prepared_key.sign(msg, padding.PKCS1v15(), self.hash_alg())",
+      "weak": false
+    },
+    {
+      "algorithm": "RSA",
+      "algorithms": [
+        "RSA"
+      ],
+      "category": null,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "call",
+      "free": true,
+      "id": "algo_literal-aebe8dd0e44535ea",
+      "kind": "algo_literal",
+      "line": 316,
+      "name": "cryptography.hazmat.primitives.asymmetric.padding.PKCS1v15",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "self.public_key().prepared_key.verify(sig, msg, padding.PKCS1v15(), self.hash_alg())",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "key_loading",
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-4043a1549a16ffb4",
+      "kind": "crypto_call",
+      "line": 380,
+      "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.encrypt",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": true,
+        "exposure": [
+          "signature"
+        ],
+        "status": "review"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
+      "snippet": "wrapped_key = self.prepared_key.encrypt(key_data, self.padding)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "key_loading",
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-1ae11a31942b0664",
+      "kind": "crypto_call",
+      "line": 388,
+      "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.decrypt",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": true,
+        "exposure": [
+          "signature"
+        ],
+        "status": "review"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
+      "snippet": "unwrapped_key = self.prepared_key.decrypt(wrapped_key, self.padding)",
+      "weak": false
+    },
+    {
+      "algorithm": "MODE-GCM",
+      "algorithms": [
+        "MODE-GCM"
+      ],
+      "category": null,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "call",
+      "free": true,
+      "id": "algo_literal-f23f8adc4dfa24a2",
+      "kind": "algo_literal",
+      "line": 410,
+      "name": "cryptography.hazmat.primitives.ciphers.modes.GCM",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "ALGORITHMS.A128GCM: modes.GCM,",
+      "weak": false
+    },
+    {
+      "algorithm": "MODE-GCM",
+      "algorithms": [
+        "MODE-GCM"
+      ],
+      "category": null,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "call",
+      "free": true,
+      "id": "algo_literal-744bd52bdc7d29ee",
+      "kind": "algo_literal",
+      "line": 411,
+      "name": "cryptography.hazmat.primitives.ciphers.modes.GCM",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "ALGORITHMS.A192GCM: modes.GCM,",
+      "weak": false
+    },
+    {
+      "algorithm": "MODE-GCM",
+      "algorithms": [
+        "MODE-GCM"
+      ],
+      "category": null,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "call",
+      "free": true,
+      "id": "algo_literal-e395097708f9b557",
+      "kind": "algo_literal",
+      "line": 412,
+      "name": "cryptography.hazmat.primitives.ciphers.modes.GCM",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "ALGORITHMS.A256GCM: modes.GCM,",
+      "weak": false
+    },
+    {
+      "algorithm": "MODE-CBC",
+      "algorithms": [
+        "MODE-CBC"
+      ],
+      "category": null,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "call",
+      "free": true,
+      "id": "algo_literal-de2d75d457fb26d1",
+      "kind": "algo_literal",
+      "line": 413,
+      "name": "cryptography.hazmat.primitives.ciphers.modes.CBC",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "ALGORITHMS.A128CBC_HS256: modes.CBC,",
+      "weak": false
+    },
+    {
+      "algorithm": "MODE-CBC",
+      "algorithms": [
+        "MODE-CBC"
+      ],
+      "category": null,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "call",
+      "free": true,
+      "id": "algo_literal-80c9c8b4a46a750e",
+      "kind": "algo_literal",
+      "line": 414,
+      "name": "cryptography.hazmat.primitives.ciphers.modes.CBC",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "ALGORITHMS.A192CBC_HS384: modes.CBC,",
+      "weak": false
+    },
+    {
+      "algorithm": "MODE-CBC",
+      "algorithms": [
+        "MODE-CBC"
+      ],
+      "category": null,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "call",
+      "free": true,
+      "id": "algo_literal-93dceb2dd9e942b0",
+      "kind": "algo_literal",
+      "line": 415,
+      "name": "cryptography.hazmat.primitives.ciphers.modes.CBC",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "ALGORITHMS.A256CBC_HS512: modes.CBC,",
+      "weak": false
+    },
+    {
+      "algorithm": "MODE-CBC",
+      "algorithms": [
+        "MODE-CBC"
+      ],
+      "category": null,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "call",
+      "free": true,
+      "id": "algo_literal-5c54c54d6832e41d",
+      "kind": "algo_literal",
+      "line": 416,
+      "name": "cryptography.hazmat.primitives.ciphers.modes.CBC",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "ALGORITHMS.A128CBC: modes.CBC,",
+      "weak": false
+    },
+    {
+      "algorithm": "MODE-CBC",
+      "algorithms": [
+        "MODE-CBC"
+      ],
+      "category": null,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "call",
+      "free": true,
+      "id": "algo_literal-2a8e4c5cb8022d4b",
+      "kind": "algo_literal",
+      "line": 417,
+      "name": "cryptography.hazmat.primitives.ciphers.modes.CBC",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "ALGORITHMS.A192CBC: modes.CBC,",
+      "weak": false
+    },
+    {
+      "algorithm": "MODE-CBC",
+      "algorithms": [
+        "MODE-CBC"
+      ],
+      "category": null,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "call",
+      "free": true,
+      "id": "algo_literal-c30257cf8f7c32f3",
+      "kind": "algo_literal",
+      "line": 418,
+      "name": "cryptography.hazmat.primitives.ciphers.modes.CBC",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "ALGORITHMS.A256CBC: modes.CBC,",
+      "weak": false
+    },
+    {
+      "algorithm": "MODE-GCM",
+      "algorithms": [
+        "MODE-GCM"
+      ],
+      "category": null,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "call",
+      "free": true,
+      "id": "algo_literal-4902f3d5a9014a24",
+      "kind": "algo_literal",
+      "line": 419,
+      "name": "cryptography.hazmat.primitives.ciphers.modes.GCM",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "ALGORITHMS.A128GCMKW: modes.GCM,",
+      "weak": false
+    },
+    {
+      "algorithm": "MODE-GCM",
+      "algorithms": [
+        "MODE-GCM"
+      ],
+      "category": null,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "call",
+      "free": true,
+      "id": "algo_literal-d3e1bb583144b33d",
+      "kind": "algo_literal",
+      "line": 420,
+      "name": "cryptography.hazmat.primitives.ciphers.modes.GCM",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "ALGORITHMS.A192GCMKW: modes.GCM,",
+      "weak": false
+    },
+    {
+      "algorithm": "MODE-GCM",
+      "algorithms": [
+        "MODE-GCM"
+      ],
+      "category": null,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "call",
+      "free": true,
+      "id": "algo_literal-083bf9b84434a417",
+      "kind": "algo_literal",
+      "line": 421,
+      "name": "cryptography.hazmat.primitives.ciphers.modes.GCM",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "ALGORITHMS.A256GCMKW: modes.GCM,",
+      "weak": false
+    },
+    {
+      "algorithm": "AES",
+      "algorithms": [
+        "AES"
+      ],
+      "category": "aead",
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-d5972655713cd22b",
+      "kind": "crypto_call",
+      "line": 462,
+      "name": "cryptography.hazmat.primitives.ciphers.aead.AESGCM",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "cipher = aead.AESGCM(self._key)",
+      "weak": false
+    },
+    {
+      "algorithm": "AES",
+      "algorithms": [
+        "AES"
+      ],
+      "category": "aead",
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-83ada9cf01553253",
+      "kind": "crypto_call",
+      "line": 463,
+      "name": "cryptography.hazmat.primitives.ciphers.aead.AESGCM.encrypt",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "literal",
+      "snippet": "cipher_text_and_tag = cipher.encrypt(iv, plain_text, aad)",
+      "weak": false
+    },
+    {
+      "algorithm": "AES",
+      "algorithms": [
+        "AES"
+      ],
+      "category": "cipher",
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-773e483d761abffc",
+      "kind": "crypto_call",
+      "line": 467,
+      "name": "cryptography.hazmat.primitives.ciphers.Cipher",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "cipher = Cipher(algorithms.AES(self._key), mode, backend=default_backend())",
+      "weak": false
+    },
+    {
+      "algorithm": "AES",
+      "algorithms": [
+        "AES"
+      ],
+      "category": "cipher",
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-fb99c2c0d3744703",
+      "kind": "crypto_call",
+      "line": 468,
+      "name": "cryptography.hazmat.primitives.ciphers.aead.AESGCM.encryptor",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "literal",
+      "snippet": "encryptor = cipher.encryptor()",
+      "weak": false
+    },
+    {
+      "algorithm": "AES",
+      "algorithms": [
+        "AES"
+      ],
+      "category": "aead",
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-38b66fdc3dd9234f",
+      "kind": "crypto_call",
+      "line": 486,
+      "name": "cryptography.hazmat.primitives.ciphers.aead.AESGCM",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "cipher = aead.AESGCM(self._key)",
+      "weak": false
+    },
+    {
+      "algorithm": "AES",
+      "algorithms": [
+        "AES"
+      ],
+      "category": "aead",
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-c8704602d989c58b",
+      "kind": "crypto_call",
+      "line": 489,
+      "name": "cryptography.hazmat.primitives.ciphers.aead.AESGCM.decrypt",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "literal",
+      "snippet": "plain_text = cipher.decrypt(iv, cipher_text_and_tag, aad)",
+      "weak": false
+    },
+    {
+      "algorithm": "AES",
+      "algorithms": [
+        "AES"
+      ],
+      "category": "cipher",
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-b45168cb273642ad",
+      "kind": "crypto_call",
+      "line": 493,
+      "name": "cryptography.hazmat.primitives.ciphers.Cipher",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "cipher = Cipher(algorithms.AES(self._key), mode, backend=default_backend())",
+      "weak": false
+    },
+    {
+      "algorithm": "AES",
+      "algorithms": [
+        "AES"
+      ],
+      "category": "cipher",
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-05e963c4f6841870",
+      "kind": "crypto_call",
+      "line": 494,
+      "name": "cryptography.hazmat.primitives.ciphers.aead.AESGCM.decryptor",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "literal",
+      "snippet": "decryptor = cipher.decryptor()",
+      "weak": false
+    },
+    {
+      "algorithm": "SHA2-256",
+      "algorithms": [
+        "SHA2-256"
+      ],
+      "category": null,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "call",
+      "free": true,
+      "id": "algo_literal-43526459c2d5bc32",
+      "kind": "algo_literal",
+      "line": 525,
+      "name": "cryptography.hazmat.primitives.hashes.SHA256",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "ALG_MAP = {ALGORITHMS.HS256: hashes.SHA256(), ALGORITHMS.HS384: hashes.SHA384(), ALGORITHMS.HS512: hashes.SHA512()}",
+      "weak": false
+    },
+    {
+      "algorithm": "SHA2-384",
+      "algorithms": [
+        "SHA2-384"
+      ],
+      "category": null,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "call",
+      "free": true,
+      "id": "algo_literal-48d68f0db45fc590",
+      "kind": "algo_literal",
+      "line": 525,
+      "name": "cryptography.hazmat.primitives.hashes.SHA384",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "ALG_MAP = {ALGORITHMS.HS256: hashes.SHA256(), ALGORITHMS.HS384: hashes.SHA384(), ALGORITHMS.HS512: hashes.SHA512()}",
+      "weak": false
+    },
+    {
+      "algorithm": "SHA2-512",
+      "algorithms": [
+        "SHA2-512"
+      ],
+      "category": null,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "call",
+      "free": true,
+      "id": "algo_literal-64d255a6bf42f3b3",
+      "kind": "algo_literal",
+      "line": 525,
+      "name": "cryptography.hazmat.primitives.hashes.SHA512",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "ALG_MAP = {ALGORITHMS.HS256: hashes.SHA256(), ALGORITHMS.HS384: hashes.SHA384(), ALGORITHMS.HS512: hashes.SHA512()}",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC",
+      "algorithms": [
+        "HMAC"
+      ],
+      "category": "mac",
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-504209d42ab67e87",
+      "kind": "crypto_call",
+      "line": 571,
+      "name": "cryptography.hazmat.primitives.hmac.HMAC",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "forwarded",
+      "snippet": "h = hmac.HMAC(self.prepared_key, self._hash_alg, backend=default_backend())",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC",
+      "algorithms": [
+        "HMAC"
+      ],
+      "category": "mac",
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-d7cb3bbe3bb2cea5",
+      "kind": "crypto_call",
+      "line": 579,
+      "name": "cryptography.hazmat.primitives.hmac.HMAC",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "forwarded",
+      "snippet": "h = hmac.HMAC(self.prepared_key, self._hash_alg, backend=default_backend())",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC",
+      "algorithms": [
+        "HMAC"
+      ],
+      "category": "signature",
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-bfd28e433fa8e754",
+      "kind": "crypto_call",
+      "line": 582,
+      "name": "cryptography.hazmat.primitives.hmac.HMAC.verify",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": true,
+        "exposure": [
+          "signature"
+        ],
+        "status": "review"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "literal",
+      "snippet": "h.verify(sig)",
+      "weak": false
+    },
+    {
+      "algorithm": "SHA2-256",
+      "algorithms": [
+        "SHA2-256"
+      ],
+      "category": "hash",
+      "file": "jose/backends/ecdsa_backend.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-a75731a3988e73fa",
+      "kind": "crypto_call",
+      "line": 21,
+      "name": "hashlib.sha256",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "SHA256 = hashlib.sha256",
+      "weak": false
+    },
+    {
+      "algorithm": "SHA2-384",
+      "algorithms": [
+        "SHA2-384"
+      ],
+      "category": "hash",
+      "file": "jose/backends/ecdsa_backend.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-5b2080cd950bcfdb",
+      "kind": "crypto_call",
+      "line": 22,
+      "name": "hashlib.sha384",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "SHA384 = hashlib.sha384",
+      "weak": false
+    },
+    {
+      "algorithm": "SHA2-512",
+      "algorithms": [
+        "SHA2-512"
+      ],
+      "category": "hash",
+      "file": "jose/backends/ecdsa_backend.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-057e1862f4c6a6f9",
+      "kind": "crypto_call",
+      "line": 23,
+      "name": "hashlib.sha512",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "SHA512 = hashlib.sha512",
+      "weak": false
+    },
+    {
+      "algorithm": "ECDSA",
+      "algorithms": [
+        "ECDSA"
+      ],
+      "category": "key_loading",
+      "file": "jose/backends/ecdsa_backend.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-209b5f5639acd471",
+      "kind": "crypto_call",
+      "line": 65,
+      "name": "ecdsa.VerifyingKey.from_pem",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "key = ecdsa.VerifyingKey.from_pem(key)",
+      "weak": false
+    },
+    {
+      "algorithm": "ECDSA",
+      "algorithms": [
+        "ECDSA"
+      ],
+      "category": "key_loading",
+      "file": "jose/backends/ecdsa_backend.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-abb5c92cca909d02",
+      "kind": "crypto_call",
+      "line": 67,
+      "name": "ecdsa.SigningKey.from_pem",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "key = ecdsa.SigningKey.from_pem(key)",
+      "weak": false
+    },
+    {
+      "algorithm": "ECDSA",
+      "algorithms": [
+        "ECDSA"
+      ],
+      "category": "signature",
+      "file": "jose/backends/ecdsa_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-d96126f857927518",
+      "kind": "crypto_call",
+      "line": 99,
+      "name": "ecdsa.VerifyingKey.from_pem.sign",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "literal",
+      "snippet": "return self.prepared_key.sign(",
+      "weak": false
+    },
+    {
+      "algorithm": "ECDSA",
+      "algorithms": [
+        "ECDSA"
+      ],
+      "category": "signature",
+      "file": "jose/backends/ecdsa_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-e1eac1e88a479f10",
+      "kind": "crypto_call",
+      "line": 105,
+      "name": "ecdsa.VerifyingKey.from_pem.verify",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "literal",
+      "snippet": "return self.prepared_key.verify(",
+      "weak": false
+    },
+    {
+      "algorithm": "SHA2-512",
+      "algorithms": [
+        "SHA2-512"
+      ],
+      "category": "hash",
+      "file": "jose/backends/native.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-5cf68aebe9c68856",
+      "kind": "crypto_call",
+      "line": 21,
+      "name": "hashlib.sha512",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "HASHES = {ALGORITHMS.HS256: hashlib.sha256, ALGORITHMS.HS384: hashlib.sha384, ALGORITHMS.HS512: hashlib.sha512}",
+      "weak": false
+    },
+    {
+      "algorithm": "SHA2-256",
+      "algorithms": [
+        "SHA2-256"
+      ],
+      "category": "hash",
+      "file": "jose/backends/native.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-999d58daa2e9581d",
+      "kind": "crypto_call",
+      "line": 21,
+      "name": "hashlib.sha256",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "HASHES = {ALGORITHMS.HS256: hashlib.sha256, ALGORITHMS.HS384: hashlib.sha384, ALGORITHMS.HS512: hashlib.sha512}",
+      "weak": false
+    },
+    {
+      "algorithm": "SHA2-384",
+      "algorithms": [
+        "SHA2-384"
+      ],
+      "category": "hash",
+      "file": "jose/backends/native.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-be8a73057e87d733",
+      "kind": "crypto_call",
+      "line": 21,
+      "name": "hashlib.sha384",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "HASHES = {ALGORITHMS.HS256: hashlib.sha256, ALGORITHMS.HS384: hashlib.sha384, ALGORITHMS.HS512: hashlib.sha512}",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC",
+      "algorithms": [
+        "HMAC"
+      ],
+      "category": "mac",
+      "file": "jose/backends/native.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-2c6d0d74b67f1f16",
+      "kind": "crypto_call",
+      "line": 59,
+      "name": "hmac.new",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "forwarded",
+      "snippet": "return hmac.new(self.prepared_key, msg, self._hash_alg).digest()",
+      "weak": false
+    },
+    {
+      "algorithm": "RSA",
+      "algorithms": [
+        "RSA"
+      ],
+      "category": "key_loading",
+      "file": "jose/backends/rsa_backend.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-2ffa2740d7a96697",
+      "kind": "crypto_call",
+      "line": 152,
+      "name": "rsa.PublicKey.load_pkcs1",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "self._prepared_key = pyrsa.PublicKey.load_pkcs1(key)",
+      "weak": false
+    },
+    {
+      "algorithm": "RSA",
+      "algorithms": [
+        "RSA"
+      ],
+      "category": "key_loading",
+      "file": "jose/backends/rsa_backend.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-7c32f4f466290bae",
+      "kind": "crypto_call",
+      "line": 158,
+      "name": "rsa.PrivateKey.load_pkcs1",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "self._prepared_key = pyrsa.PrivateKey.load_pkcs1(key)",
+      "weak": false
+    },
+    {
+      "algorithm": "RSA",
+      "algorithms": [
+        "RSA"
+      ],
+      "category": "key_loading",
+      "file": "jose/backends/rsa_backend.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-3ea1011db3e3520e",
+      "kind": "crypto_call",
+      "line": 169,
+      "name": "rsa.PrivateKey.load_pkcs1",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "self._prepared_key = pyrsa.PrivateKey.load_pkcs1(pkcs1_key, format=\"DER\")",
+      "weak": false
+    },
+    {
+      "algorithm": "RSA",
+      "algorithms": [
+        "RSA"
+      ],
+      "category": "signature",
+      "file": "jose/backends/rsa_backend.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-bf3be195ce0044cd",
+      "kind": "crypto_call",
+      "line": 204,
+      "name": "rsa.sign",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "return pyrsa.sign(msg, self._prepared_key, self.hash_alg)",
+      "weak": false
+    },
+    {
+      "algorithm": "RSA",
+      "algorithms": [
+        "RSA"
+      ],
+      "category": "signature",
+      "file": "jose/backends/rsa_backend.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-e65416069e9aa13c",
+      "kind": "crypto_call",
+      "line": 210,
+      "name": "rsa.verify",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "pyrsa.verify(msg, sig, self._prepared_key)",
+      "weak": false
+    },
+    {
+      "algorithm": "RSA",
+      "algorithms": [
+        "RSA"
+      ],
+      "category": "key_agreement",
+      "file": "jose/backends/rsa_backend.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-504946114e06deb6",
+      "kind": "crypto_call",
+      "line": 275,
+      "name": "rsa.encrypt",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "key_exchange"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "wrapped_key = pyrsa.encrypt(key_data, self._prepared_key)",
+      "weak": false
+    },
+    {
+      "algorithm": "RSA",
+      "algorithms": [
+        "RSA"
+      ],
+      "category": "key_agreement",
+      "file": "jose/backends/rsa_backend.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-505cd699767c02cd",
+      "kind": "crypto_call",
+      "line": 280,
+      "name": "rsa.decrypt",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "key_exchange"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "unwrapped_key = pyrsa.decrypt(wrapped_key, self._prepared_key)",
+      "weak": false
+    },
+    {
+      "algorithm": "SHA2-256",
+      "algorithms": [
+        "SHA2-256"
+      ],
+      "category": "hash",
+      "file": "jose/constants.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-f242cda384bf1af1",
+      "kind": "crypto_call",
+      "line": 75,
+      "name": "hashlib.sha256",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "HS256: hashlib.sha256,",
+      "weak": false
+    },
+    {
+      "algorithm": "SHA2-384",
+      "algorithms": [
+        "SHA2-384"
+      ],
+      "category": "hash",
+      "file": "jose/constants.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-3bdf19905fdd00f3",
+      "kind": "crypto_call",
+      "line": 76,
+      "name": "hashlib.sha384",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "HS384: hashlib.sha384,",
+      "weak": false
+    },
+    {
+      "algorithm": "SHA2-512",
+      "algorithms": [
+        "SHA2-512"
+      ],
+      "category": "hash",
+      "file": "jose/constants.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-a58e5a69d3959e97",
+      "kind": "crypto_call",
+      "line": 77,
+      "name": "hashlib.sha512",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "HS512: hashlib.sha512,",
+      "weak": false
+    },
+    {
+      "algorithm": "SHA2-256",
+      "algorithms": [
+        "SHA2-256"
+      ],
+      "category": "hash",
+      "file": "jose/constants.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-d692d3cf7cf47629",
+      "kind": "crypto_call",
+      "line": 78,
+      "name": "hashlib.sha256",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "RS256: hashlib.sha256,",
+      "weak": false
+    },
+    {
+      "algorithm": "SHA2-384",
+      "algorithms": [
+        "SHA2-384"
+      ],
+      "category": "hash",
+      "file": "jose/constants.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-770abfccb25b0d7c",
+      "kind": "crypto_call",
+      "line": 79,
+      "name": "hashlib.sha384",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "RS384: hashlib.sha384,",
+      "weak": false
+    },
+    {
+      "algorithm": "SHA2-512",
+      "algorithms": [
+        "SHA2-512"
+      ],
+      "category": "hash",
+      "file": "jose/constants.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-e705602c8c312ee8",
+      "kind": "crypto_call",
+      "line": 80,
+      "name": "hashlib.sha512",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "RS512: hashlib.sha512,",
+      "weak": false
+    },
+    {
+      "algorithm": "SHA2-256",
+      "algorithms": [
+        "SHA2-256"
+      ],
+      "category": "hash",
+      "file": "jose/constants.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-72654faf79d059c9",
+      "kind": "crypto_call",
+      "line": 81,
+      "name": "hashlib.sha256",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "ES256: hashlib.sha256,",
+      "weak": false
+    },
+    {
+      "algorithm": "SHA2-384",
+      "algorithms": [
+        "SHA2-384"
+      ],
+      "category": "hash",
+      "file": "jose/constants.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-fe0e0b92cb5f2937",
+      "kind": "crypto_call",
+      "line": 82,
+      "name": "hashlib.sha384",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "ES384: hashlib.sha384,",
+      "weak": false
+    },
+    {
+      "algorithm": "SHA2-512",
+      "algorithms": [
+        "SHA2-512"
+      ],
+      "category": "hash",
+      "file": "jose/constants.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-20310b301b436a1f",
+      "kind": "crypto_call",
+      "line": 83,
+      "name": "hashlib.sha512",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "ES512: hashlib.sha512,",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "jose/jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-d31eddb5a95e5dfb",
+      "kind": "crypto_call",
+      "line": 63,
+      "name": "jose.jws.sign",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "forwarded",
+      "snippet": "return jws.sign(claims, key, headers=headers, algorithm=algorithm)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "jose/jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-0fd6108e245692f5",
+      "kind": "crypto_call",
+      "line": 159,
+      "name": "jose.jws.verify",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "payload = jws.verify(token, key, algorithms, verify=verify_signature)",
+      "weak": false
+    },
+    {
+      "algorithm": "ECDSA",
+      "algorithms": [
+        "ECDSA"
+      ],
+      "category": "key_loading",
+      "file": "tests/algorithms/test_EC.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-ea1b57118d626ad3",
+      "kind": "crypto_call",
+      "line": 94,
+      "name": "ecdsa.SigningKey.from_pem",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "key = ecdsa.SigningKey.from_pem(private_key)",
+      "weak": false
+    },
+    {
+      "algorithm": "ECC-P256",
+      "algorithms": [
+        "ECC-P256"
+      ],
+      "category": null,
+      "file": "tests/algorithms/test_EC.py",
+      "form": "call",
+      "free": true,
+      "id": "algo_literal-2337801e4ba660b6",
+      "kind": "algo_literal",
+      "line": 106,
+      "name": "cryptography.hazmat.primitives.asymmetric.ec.SECP256R1",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "ALGORITHMS.ES256: CryptographyEc.SECP256R1,",
+      "weak": false
+    },
+    {
+      "algorithm": "ECC-P384",
+      "algorithms": [
+        "ECC-P384"
+      ],
+      "category": null,
+      "file": "tests/algorithms/test_EC.py",
+      "form": "call",
+      "free": true,
+      "id": "algo_literal-cacc54e36c865302",
+      "kind": "algo_literal",
+      "line": 107,
+      "name": "cryptography.hazmat.primitives.asymmetric.ec.SECP384R1",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "ALGORITHMS.ES384: CryptographyEc.SECP384R1,",
+      "weak": false
+    },
+    {
+      "algorithm": "ECC-P521",
+      "algorithms": [
+        "ECC-P521"
+      ],
+      "category": null,
+      "file": "tests/algorithms/test_EC.py",
+      "form": "call",
+      "free": true,
+      "id": "algo_literal-06d6a7562ddf84f0",
+      "kind": "algo_literal",
+      "line": 108,
+      "name": "cryptography.hazmat.primitives.asymmetric.ec.SECP521R1",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "ALGORITHMS.ES512: CryptographyEc.SECP521R1,",
+      "weak": false
+    },
+    {
+      "algorithm": "ECC",
+      "algorithms": [
+        "ECC"
+      ],
+      "category": "key_generation",
+      "file": "tests/algorithms/test_EC.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-a7829ccb04f96ea1",
+      "kind": "crypto_call",
+      "line": 111,
+      "name": "cryptography.hazmat.primitives.asymmetric.ec.generate_private_key",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "forwarded",
+      "snippet": "CryptographyEc.generate_private_key(mapping[algorithm](), backend=CryptographyBackend()), algorithm",
+      "weak": false
+    },
+    {
+      "algorithm": "ECC",
+      "algorithms": [
+        "ECC",
+        "ECC-P256"
+      ],
+      "category": "key_generation",
+      "file": "tests/algorithms/test_EC.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-f8dadfaa5367e32e",
+      "kind": "crypto_call",
+      "line": 238,
+      "name": "cryptography.hazmat.primitives.asymmetric.ec.generate_private_key",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "KEY = CryptographyEc.generate_private_key(CryptographyEc.SECP256R1)",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC",
+      "algorithms": [
+        "HMAC",
+        "SHA2-256"
+      ],
+      "category": "mac",
+      "file": "tests/algorithms/test_EC.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-ac97b242cfc359ca",
+      "kind": "crypto_call",
+      "line": 247,
+      "name": "cryptography.hazmat.primitives.hmac.HMAC",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "hasher = hmac.HMAC(PUBKEY, hashes.SHA256())",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/algorithms/test_EC.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-26aa4ffe961b3260",
+      "kind": "crypto_call",
+      "line": 255,
+      "name": "jose.jwt.decode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jwt.decode(evil_token, PUBKEY)",
+      "weak": false
+    },
+    {
+      "algorithm": "RSA",
+      "algorithms": [
+        "RSA"
+      ],
+      "category": "key_loading",
+      "file": "tests/algorithms/test_RSA.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-fb36de593c921eb9",
+      "kind": "crypto_call",
+      "line": 226,
+      "name": "cryptography.hazmat.primitives.asymmetric.rsa.RSAPublicNumbers",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "key = pyca_rsa.RSAPublicNumbers(",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/rfc/test_rfc7520.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-517ee820c0f7b72a",
+      "kind": "crypto_call",
+      "line": 45,
+      "name": "jose.jws.verify",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "payload = verify(self.token, rsa_public_jwk, \"RS256\")",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/rfc/test_rfc7520.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-2149797f0f45c839",
+      "kind": "crypto_call",
+      "line": 53,
+      "name": "jose.jws.verify",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "payload = verify(self.token, ec_public_key, \"ES512\")",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/rfc/test_rfc7520.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-3ca5177983240769",
+      "kind": "crypto_call",
+      "line": 61,
+      "name": "jose.jws.verify",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "payload = verify(self.token, hmac_key, \"HS256\")",
+      "weak": false
+    },
+    {
+      "algorithm": "RSA",
+      "algorithms": [
+        "RSA"
+      ],
+      "category": "token",
+      "file": "tests/test_firebase.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-4fdc16bbff3ff499",
+      "kind": "crypto_call",
+      "line": 27,
+      "name": "jose.jwt.decode",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "jwt.decode(",
+      "weak": false
+    },
+    {
+      "algorithm": "RSA",
+      "algorithms": [
+        "RSA"
+      ],
+      "category": "token",
+      "file": "tests/test_firebase.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-cf072ddc33bfcd1f",
+      "kind": "crypto_call",
+      "line": 35,
+      "name": "jose.jwt.decode",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "jwt.decode(",
+      "weak": false
+    },
+    {
+      "algorithm": "RSA",
+      "algorithms": [
+        "RSA"
+      ],
+      "category": "token",
+      "file": "tests/test_firebase.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-21ef3cc4f61d872f",
+      "kind": "crypto_call",
+      "line": 41,
+      "name": "jose.jwt.decode",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "jwt.decode(firebase_token, certs, algorithms=\"RS256\", options={\"verify_exp\": False, \"verify_aud\": False})",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jws.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-3c5aa8ad59369aa3",
+      "kind": "crypto_call",
+      "line": 26,
+      "name": "jose.jws.verify",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jws.verify(token, \"secret\", [\"HS256\"])",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jws.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-cab19f6f7262ddad",
+      "kind": "crypto_call",
+      "line": 40,
+      "name": "jose.jws.verify",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jws.verify(token, {\"keys\": [\"incorrect\", \"secret\"]}, [\"HS256\"])",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jws.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-e19008dc693661e1",
+      "kind": "crypto_call",
+      "line": 47,
+      "name": "jose.jws.verify",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jws.verify(token, \"secret\", [None])",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jws.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-bb79cb15925b8c16",
+      "kind": "crypto_call",
+      "line": 52,
+      "name": "jose.jws.verify",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jws.verify(token, \"secret\", [\"HS256\"])",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jws.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-4c18b5c53546f990",
+      "kind": "crypto_call",
+      "line": 57,
+      "name": "jose.jws.verify",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jws.verify(token, \"secret\", [\"HS256\"])",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jws.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-581530e780c01c37",
+      "kind": "crypto_call",
+      "line": 62,
+      "name": "jose.jws.verify",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jws.verify(token, \"secret\", [\"HS256\"])",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jws.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-86cd2fe76b8e85f6",
+      "kind": "crypto_call",
+      "line": 67,
+      "name": "jose.jws.verify",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jws.verify(token, \"secret\", [\"HS256\"])",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jws.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-f2a1423ec27e0196",
+      "kind": "crypto_call",
+      "line": 72,
+      "name": "jose.jws.verify",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jws.verify(token, \"secret\", [\"HS256\"])",
+      "weak": false
+    },
+    {
+      "algorithm": "RSA",
+      "algorithms": [
+        "RSA"
+      ],
+      "category": "token",
+      "file": "tests/test_jws.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-c22e36d6b8fded30",
+      "kind": "crypto_call",
+      "line": 76,
+      "name": "jose.jws.sign",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "jws.sign(payload, \"secret\", algorithm=\"RS256\")",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jws.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-1d0f9f46f227d061",
+      "kind": "crypto_call",
+      "line": 86,
+      "name": "jose.jws.sign",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "forwarded",
+      "snippet": "signed_data = jws.sign({\"testkey\": \"testvalue\"}, key, algorithm=ALGORITHMS.HS256)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jws.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-f220cbfffaf69a0e",
+      "kind": "crypto_call",
+      "line": 87,
+      "name": "jose.jws.verify",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "forwarded",
+      "snippet": "verified_bytes = jws.verify(signed_data, key, algorithms=[ALGORITHMS.HS256])",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jws.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-777f6a0b7b2c9be0",
+      "kind": "crypto_call",
+      "line": 97,
+      "name": "jose.jws.sign",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "forwarded",
+      "snippet": "token = jws.sign(payload, key, algorithm=ALGORITHMS.HS256)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jws.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-81ab875f2257b38b",
+      "kind": "crypto_call",
+      "line": 98,
+      "name": "jose.jws.verify",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "assert jws.verify(token, key_data, ALGORITHMS.HS256) == payload",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jws.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-72af572408e1db5c",
+      "kind": "crypto_call",
+      "line": 103,
+      "name": "jose.jws.sign",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "forwarded",
+      "snippet": "token = jws.sign(payload, \"secret\", algorithm=ALGORITHMS.HS256)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jws.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-b0030e3df252a2bf",
+      "kind": "crypto_call",
+      "line": 104,
+      "name": "jose.jws.verify",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "assert jws.verify(token, \"secret\", ALGORITHMS.HS256) == payload",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jws.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-ab89e1a430cd4093",
+      "kind": "crypto_call",
+      "line": 107,
+      "name": "jose.jws.sign",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "forwarded",
+      "snippet": "token = jws.sign(payload, \"secret\", algorithm=ALGORITHMS.HS384)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jws.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-e6dab84f75002fb5",
+      "kind": "crypto_call",
+      "line": 108,
+      "name": "jose.jws.verify",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "assert jws.verify(token, \"secret\", ALGORITHMS.HS384) == payload",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jws.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-ec9cc8eb34a0e221",
+      "kind": "crypto_call",
+      "line": 111,
+      "name": "jose.jws.sign",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "forwarded",
+      "snippet": "token = jws.sign(payload, \"secret\", algorithm=ALGORITHMS.HS512)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jws.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-ec31d50c22ccaa8e",
+      "kind": "crypto_call",
+      "line": 112,
+      "name": "jose.jws.verify",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "assert jws.verify(token, \"secret\", ALGORITHMS.HS512) == payload",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jws.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-c861f8a311517b41",
+      "kind": "crypto_call",
+      "line": 115,
+      "name": "jose.jws.sign",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "forwarded",
+      "snippet": "token = jws.sign(payload, \"secret\", algorithm=ALGORITHMS.HS256)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jws.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-a55981ab92bfd888",
+      "kind": "crypto_call",
+      "line": 117,
+      "name": "jose.jws.verify",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jws.verify(token, \"secret\", ALGORITHMS.HS384)",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jws.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-e5338f29f3441c98",
+      "kind": "crypto_call",
+      "line": 120,
+      "name": "jose.jws.sign",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "forwarded",
+      "snippet": "token = jws.sign(payload, \"secret\", algorithm=ALGORITHMS.HS256)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jws.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-a05fafb182402f27",
+      "kind": "crypto_call",
+      "line": 122,
+      "name": "jose.jws.verify",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jws.verify(token, \"another\", ALGORITHMS.HS256)",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jws.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-8a9566eadcad0a21",
+      "kind": "crypto_call",
+      "line": 126,
+      "name": "jose.jws.sign",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "forwarded",
+      "snippet": "jws.sign(payload, \"secret\", algorithm=\"SOMETHING\")",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jws.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-db800a7206c5a6a0",
+      "kind": "crypto_call",
+      "line": 137,
+      "name": "jose.jws.sign",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "token = jws.sign(payload, \"secret\", headers=additional_headers)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jws.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-d8907451f1793057",
+      "kind": "crypto_call",
+      "line": 299,
+      "name": "jose.jws.verify",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "payload = jws.verify(google_id_token, jwk_set, ALGORITHMS.RS256)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jws.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-e47e1b3e52e7ec83",
+      "kind": "crypto_call",
+      "line": 307,
+      "name": "jose.jws.verify",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "payload = jws.verify(google_id_token, jwk_set, ALGORITHMS.RS256)  # noqa: F841",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jws.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-cfbc335484689b74",
+      "kind": "crypto_call",
+      "line": 310,
+      "name": "jose.jws.sign",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "forwarded",
+      "snippet": "token = jws.sign(payload, rsa_private_key, algorithm=ALGORITHMS.RS256)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jws.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-16c39a96d7395f9e",
+      "kind": "crypto_call",
+      "line": 311,
+      "name": "jose.jws.verify",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "assert jws.verify(token, rsa_public_key, ALGORITHMS.RS256) == payload",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jws.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-f7cd5bdf128cfbe5",
+      "kind": "crypto_call",
+      "line": 314,
+      "name": "jose.jws.sign",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "forwarded",
+      "snippet": "token = jws.sign(payload, rsa_private_key, algorithm=ALGORITHMS.RS384)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jws.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-376f173b0a7d5e34",
+      "kind": "crypto_call",
+      "line": 315,
+      "name": "jose.jws.verify",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "assert jws.verify(token, rsa_public_key, ALGORITHMS.RS384) == payload",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jws.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-f897b0ee3062aad5",
+      "kind": "crypto_call",
+      "line": 318,
+      "name": "jose.jws.sign",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "forwarded",
+      "snippet": "token = jws.sign(payload, rsa_private_key, algorithm=ALGORITHMS.RS512)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jws.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-8fc066d060a47679",
+      "kind": "crypto_call",
+      "line": 319,
+      "name": "jose.jws.verify",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "assert jws.verify(token, rsa_public_key, ALGORITHMS.RS512) == payload",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jws.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-c9d929df5f5f7bd6",
+      "kind": "crypto_call",
+      "line": 322,
+      "name": "jose.jws.sign",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "forwarded",
+      "snippet": "token = jws.sign(payload, rsa_private_key, algorithm=ALGORITHMS.RS256)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jws.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-f760fc425c454c53",
+      "kind": "crypto_call",
+      "line": 324,
+      "name": "jose.jws.verify",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jws.verify(token, rsa_public_key, ALGORITHMS.RS384)",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jws.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-027ca75b260faef3",
+      "kind": "crypto_call",
+      "line": 327,
+      "name": "jose.jws.sign",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "forwarded",
+      "snippet": "token = jws.sign(payload, rsa_private_key, algorithm=ALGORITHMS.RS256)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jws.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-6f10dfaabbef9b8a",
+      "kind": "crypto_call",
+      "line": 329,
+      "name": "jose.jws.verify",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jws.verify(token, rsa_public_key, ALGORITHMS.HS256)",
+      "weak": false
+    },
+    {
+      "algorithm": "RSA",
+      "algorithms": [
+        "RSA"
+      ],
+      "category": "token",
+      "file": "tests/test_jws.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-8907463a71e7c2d3",
+      "kind": "crypto_call",
+      "line": 332,
+      "name": "jose.jws.sign",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "token = jws.sign(payload, rsa_private_key, algorithm=\"RS256\")",
+      "weak": false
+    },
+    {
+      "algorithm": "RSA",
+      "algorithms": [
+        "RSA"
+      ],
+      "category": "token",
+      "file": "tests/test_jws.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-ce9ff98f934c18b6",
+      "kind": "crypto_call",
+      "line": 335,
+      "name": "jose.jws.verify",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "jws.verify(token, rsa_public_key, algorithms=\"RS256\")",
+      "weak": false
+    },
+    {
+      "algorithm": "RSA",
+      "algorithms": [
+        "RSA"
+      ],
+      "category": "token",
+      "file": "tests/test_jws.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-bfe149ac3db0609f",
+      "kind": "crypto_call",
+      "line": 339,
+      "name": "jose.jws.verify",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "jws.verify(token, rsa_private_key, algorithms=\"RS256\")",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jws.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-c2f6fbb1aadd2388",
+      "kind": "crypto_call",
+      "line": 364,
+      "name": "jose.jws.sign",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "forwarded",
+      "snippet": "token = jws.sign(payload, ec_private_key, algorithm=ALGORITHMS.ES256)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jws.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-9caf333d1ca78414",
+      "kind": "crypto_call",
+      "line": 365,
+      "name": "jose.jws.verify",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "assert jws.verify(token, ec_public_key, ALGORITHMS.ES256) == payload",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jws.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-f0edd0322287e499",
+      "kind": "crypto_call",
+      "line": 368,
+      "name": "jose.jws.sign",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "forwarded",
+      "snippet": "token = jws.sign(payload, ec_private_key, algorithm=ALGORITHMS.ES384)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jws.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-84b87dec940910bc",
+      "kind": "crypto_call",
+      "line": 369,
+      "name": "jose.jws.verify",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "assert jws.verify(token, ec_public_key, ALGORITHMS.ES384) == payload",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jws.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-50419b250d15da07",
+      "kind": "crypto_call",
+      "line": 372,
+      "name": "jose.jws.sign",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "forwarded",
+      "snippet": "token = jws.sign(payload, ec_private_key, algorithm=ALGORITHMS.ES512)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jws.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-898c6ed816fc2b0f",
+      "kind": "crypto_call",
+      "line": 373,
+      "name": "jose.jws.verify",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "assert jws.verify(token, ec_public_key, ALGORITHMS.ES512) == payload",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jws.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-6fbc7f776bc331f8",
+      "kind": "crypto_call",
+      "line": 376,
+      "name": "jose.jws.sign",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "forwarded",
+      "snippet": "token = jws.sign(payload, ec_private_key, algorithm=ALGORITHMS.ES256)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jws.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-699f201dd0966c66",
+      "kind": "crypto_call",
+      "line": 378,
+      "name": "jose.jws.verify",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jws.verify(token, rsa_public_key, ALGORITHMS.ES384)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jws.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-e152e5ea802ff615",
+      "kind": "crypto_call",
+      "line": 385,
+      "name": "jose.jws.verify",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jws.verify(token, \"secret\", [\"HS256\"])",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jws.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-26096b6ddc19cfec",
+      "kind": "crypto_call",
+      "line": 390,
+      "name": "jose.jws.verify",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jws.verify(token, \"secret\", [\"HS256\"])",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jws.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-36a0c35104518258",
+      "kind": "crypto_call",
+      "line": 395,
+      "name": "jose.jws.verify",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jws.verify(token, \"secret\", [\"HS256\"])",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-384",
+      "algorithms": [
+        "HMAC-SHA2-384"
+      ],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-8acdd30a2f317057",
+      "kind": "crypto_call",
+      "line": 39,
+      "name": "jose.jwt.encode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "token = jwt.encode(claims, key, algorithm=\"HS384\")",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-cf905ed1cf3973f4",
+      "kind": "crypto_call",
+      "line": 50,
+      "name": "jose.jwt.decode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "forwarded",
+      "snippet": "jwt.decode(token=bad_token, key=key, algorithms=[])",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-43e026aaa60f0fb3",
+      "kind": "crypto_call",
+      "line": 66,
+      "name": "jose.jwt.decode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "token_info = jwt.decode(token, key)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-068758ac85b65675",
+      "kind": "crypto_call",
+      "line": 70,
+      "name": "jose.jws.verify",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "old_jws_verify = jws.verify",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-54972f4cf1c586a3",
+      "kind": "crypto_call",
+      "line": 80,
+      "name": "jose.jwt.decode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jwt.decode(token, \"secret\", [\"HS256\"])",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-98466ba91078a78b",
+      "kind": "crypto_call",
+      "line": 85,
+      "name": "jose.jws.verify",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "old_jws_verify = jws.verify",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-d0116a0a565ecd5e",
+      "kind": "crypto_call",
+      "line": 95,
+      "name": "jose.jwt.decode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jwt.decode(token, \"secret\", [\"HS256\"])",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-384",
+      "algorithms": [
+        "HMAC-SHA2-384"
+      ],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-a3e4d66f19aba56e",
+      "kind": "crypto_call",
+      "line": 100,
+      "name": "jose.jwt.encode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "encoded = jwt.encode(claims, key, algorithm=\"HS384\")",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-384",
+      "algorithms": [
+        "HMAC-SHA2-384"
+      ],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-f6ca56de2b65f9dd",
+      "kind": "crypto_call",
+      "line": 101,
+      "name": "jose.jwt.decode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "decoded = jwt.decode(encoded, key, algorithms=\"HS384\")",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-549696b2c36fab51",
+      "kind": "crypto_call",
+      "line": 105,
+      "name": "jose.jwt.encode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "encoded = jwt.encode(claims, key, \"HS384\")",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-71917442b720a6ee",
+      "kind": "crypto_call",
+      "line": 106,
+      "name": "jose.jwt.decode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "decoded = jwt.decode(encoded, key, \"HS384\")",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-384",
+      "algorithms": [
+        "HMAC-SHA2-384"
+      ],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-bf5228850013d643",
+      "kind": "crypto_call",
+      "line": 110,
+      "name": "jose.jwt.encode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "token = jwt.encode(claims, key, algorithm=\"HS384\")",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-9328e11206af6721",
+      "kind": "crypto_call",
+      "line": 117,
+      "name": "jose.jwt.encode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "encoded = jwt.encode(claims, key, headers=headers)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-6afc8a548aa0e07a",
+      "kind": "crypto_call",
+      "line": 118,
+      "name": "jose.jwt.decode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "decoded = jwt.decode(encoded, key)",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-ab3b9dc041affead",
+      "kind": "crypto_call",
+      "line": 138,
+      "name": "jose.jwt.encode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "encoded1 = jwt.encode(claims, key, algorithm=\"HS256\", headers=headers1)",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-0a7bf950e753a257",
+      "kind": "crypto_call",
+      "line": 147,
+      "name": "jose.jwt.encode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "encoded2 = jwt.encode(claims, key, algorithm=\"HS256\", headers=headers2)",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-37832e2ee1e0805b",
+      "kind": "crypto_call",
+      "line": 162,
+      "name": "jose.jwt.encode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "encoded = jwt.encode(claims, key)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-30be1dc6988ba256",
+      "kind": "crypto_call",
+      "line": 169,
+      "name": "jose.jwt.decode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "decoded = jwt.decode(token, key)",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-e41685b08af550b3",
+      "kind": "crypto_call",
+      "line": 181,
+      "name": "jose.jwt.encode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "token = jwt.encode({\"testkey\": \"testvalue\"}, key, algorithm=\"HS256\")",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-c9f4e2e76cb17c2e",
+      "kind": "crypto_call",
+      "line": 182,
+      "name": "jose.jwt.decode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "verified_data = jwt.decode(token, key, algorithms=[\"HS256\"])",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-fbacd82a33ce0f57",
+      "kind": "crypto_call",
+      "line": 199,
+      "name": "jose.jwt.encode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "token = jwt.encode(claims, key)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-e9fe39c422c7c693",
+      "kind": "crypto_call",
+      "line": 200,
+      "name": "jose.jwt.decode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jwt.decode(token, key, options=options)",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-4a96949e2f13d476",
+      "kind": "crypto_call",
+      "line": 205,
+      "name": "jose.jwt.encode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "token = jwt.encode(claims, key)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-fb721ba20e6e1b53",
+      "kind": "crypto_call",
+      "line": 208,
+      "name": "jose.jwt.decode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jwt.decode(token, key)",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-6a7d46710bb9ad39",
+      "kind": "crypto_call",
+      "line": 213,
+      "name": "jose.jwt.encode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "token = jwt.encode(claims, key)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-aa5aa334cd01e016",
+      "kind": "crypto_call",
+      "line": 216,
+      "name": "jose.jwt.decode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jwt.decode(token, key)",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-28898106dfb346ce",
+      "kind": "crypto_call",
+      "line": 223,
+      "name": "jose.jwt.encode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "token = jwt.encode(claims, key)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-e677ebed3a566e70",
+      "kind": "crypto_call",
+      "line": 224,
+      "name": "jose.jwt.decode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jwt.decode(token, key)",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-c7e5339c79fee0da",
+      "kind": "crypto_call",
+      "line": 235,
+      "name": "jose.jwt.encode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "token = jwt.encode(claims, key)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-c206ba80a276662c",
+      "kind": "crypto_call",
+      "line": 236,
+      "name": "jose.jwt.decode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jwt.decode(token, key, options=options)",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-a26070d78a0ac06e",
+      "kind": "crypto_call",
+      "line": 243,
+      "name": "jose.jwt.encode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "token = jwt.encode(claims, key)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-721b55528752c8dd",
+      "kind": "crypto_call",
+      "line": 246,
+      "name": "jose.jwt.decode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jwt.decode(token, key)",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-26f0531559254247",
+      "kind": "crypto_call",
+      "line": 253,
+      "name": "jose.jwt.encode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "token = jwt.encode(claims, key)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-3bf4a6c3c1430f9c",
+      "kind": "crypto_call",
+      "line": 256,
+      "name": "jose.jwt.decode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jwt.decode(token, key)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-40f2a6464d1c1315",
+      "kind": "crypto_call",
+      "line": 260,
+      "name": "jose.jwt.decode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jwt.decode(token, key, options=options)",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-57f072f42a08e7c8",
+      "kind": "crypto_call",
+      "line": 265,
+      "name": "jose.jwt.encode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "token = jwt.encode(claims, key)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-ad58e7383553dd09",
+      "kind": "crypto_call",
+      "line": 268,
+      "name": "jose.jwt.decode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jwt.decode(token, key)",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-6ec1aca6bdf15478",
+      "kind": "crypto_call",
+      "line": 275,
+      "name": "jose.jwt.encode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "token = jwt.encode(claims, key)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-ce11e02f64f0e919",
+      "kind": "crypto_call",
+      "line": 276,
+      "name": "jose.jwt.decode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jwt.decode(token, key)",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-b018f579b8beb63d",
+      "kind": "crypto_call",
+      "line": 287,
+      "name": "jose.jwt.encode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "token = jwt.encode(claims, key)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-d8dbecc18f1c9b43",
+      "kind": "crypto_call",
+      "line": 288,
+      "name": "jose.jwt.decode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jwt.decode(token, key, options=options)",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-0d6ef471d5f6c34a",
+      "kind": "crypto_call",
+      "line": 295,
+      "name": "jose.jwt.encode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "token = jwt.encode(claims, key)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-0c2dc2bf6288b2c6",
+      "kind": "crypto_call",
+      "line": 298,
+      "name": "jose.jwt.decode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jwt.decode(token, key)",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-afad4761ff4e8b1c",
+      "kind": "crypto_call",
+      "line": 305,
+      "name": "jose.jwt.encode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "token = jwt.encode(claims, key)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-9520f6d4eac2e92c",
+      "kind": "crypto_call",
+      "line": 308,
+      "name": "jose.jwt.decode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jwt.decode(token, key)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-0767f448c71fa36a",
+      "kind": "crypto_call",
+      "line": 312,
+      "name": "jose.jwt.decode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jwt.decode(token, key, options=options)",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-094682cbf60f2ef0",
+      "kind": "crypto_call",
+      "line": 319,
+      "name": "jose.jwt.encode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "token = jwt.encode(claims, key)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-79d017cd2983bf77",
+      "kind": "crypto_call",
+      "line": 320,
+      "name": "jose.jwt.decode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jwt.decode(token, key, audience=aud)",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-0864a518edc8769e",
+      "kind": "crypto_call",
+      "line": 327,
+      "name": "jose.jwt.encode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "token = jwt.encode(claims, key)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-4035c3c2c9a362b0",
+      "kind": "crypto_call",
+      "line": 328,
+      "name": "jose.jwt.decode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jwt.decode(token, key, audience=aud)",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-cdad8cb2a8ae43bf",
+      "kind": "crypto_call",
+      "line": 335,
+      "name": "jose.jwt.encode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "token = jwt.encode(claims, key)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-ae59fd00511c9ea7",
+      "kind": "crypto_call",
+      "line": 336,
+      "name": "jose.jwt.decode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jwt.decode(token, key, audience=aud)",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-234827c51d158686",
+      "kind": "crypto_call",
+      "line": 343,
+      "name": "jose.jwt.encode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "token = jwt.encode(claims, key)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-06d61669f826988d",
+      "kind": "crypto_call",
+      "line": 345,
+      "name": "jose.jwt.decode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jwt.decode(token, key, audience=aud)",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-08e9cdb5bc956f48",
+      "kind": "crypto_call",
+      "line": 352,
+      "name": "jose.jwt.encode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "token = jwt.encode(claims, key)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-f63f27fed0be1e44",
+      "kind": "crypto_call",
+      "line": 354,
+      "name": "jose.jwt.decode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jwt.decode(token, key, audience=\"AUDIENCE\")",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-287c8d20b73c3c4f",
+      "kind": "crypto_call",
+      "line": 359,
+      "name": "jose.jwt.encode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "token = jwt.encode(claims, key)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-78a49d1f2aa9f574",
+      "kind": "crypto_call",
+      "line": 360,
+      "name": "jose.jwt.decode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jwt.decode(token, key, audience=aud)",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-649e8b38223c2df0",
+      "kind": "crypto_call",
+      "line": 367,
+      "name": "jose.jwt.encode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "token = jwt.encode(claims, key)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-2bd88c70dd4062ac",
+      "kind": "crypto_call",
+      "line": 369,
+      "name": "jose.jwt.decode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jwt.decode(token, key)",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-c63be35d354157c8",
+      "kind": "crypto_call",
+      "line": 376,
+      "name": "jose.jwt.encode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "token = jwt.encode(claims, key)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-2fb2ab20c7769fae",
+      "kind": "crypto_call",
+      "line": 378,
+      "name": "jose.jwt.decode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jwt.decode(token, key, audience=1)",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-d175548a8e2790b7",
+      "kind": "crypto_call",
+      "line": 385,
+      "name": "jose.jwt.encode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "token = jwt.encode(claims, key)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-9285a50e2b01860d",
+      "kind": "crypto_call",
+      "line": 386,
+      "name": "jose.jwt.decode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jwt.decode(token, key, issuer=iss)",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-ed11df15b4ca33d7",
+      "kind": "crypto_call",
+      "line": 393,
+      "name": "jose.jwt.encode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "token = jwt.encode(claims, key)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-6d8d2a2d6d47df9c",
+      "kind": "crypto_call",
+      "line": 394,
+      "name": "jose.jwt.decode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jwt.decode(token, key, issuer=[\"https://issuer\", \"issuer\"])",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-18dbd8378284074f",
+      "kind": "crypto_call",
+      "line": 401,
+      "name": "jose.jwt.encode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "token = jwt.encode(claims, key)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-0a4a537c0acbe9b0",
+      "kind": "crypto_call",
+      "line": 402,
+      "name": "jose.jwt.decode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jwt.decode(token, key, issuer=(\"https://issuer\", \"issuer\"))",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-a3e23c5cd66f9570",
+      "kind": "crypto_call",
+      "line": 409,
+      "name": "jose.jwt.encode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "token = jwt.encode(claims, key)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-25fea2f1a8831408",
+      "kind": "crypto_call",
+      "line": 411,
+      "name": "jose.jwt.decode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jwt.decode(token, key, issuer=\"another\")",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-1cbe3d631e1ec294",
+      "kind": "crypto_call",
+      "line": 418,
+      "name": "jose.jwt.encode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "token = jwt.encode(claims, key)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-7ac9524ab46a34a2",
+      "kind": "crypto_call",
+      "line": 419,
+      "name": "jose.jwt.decode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jwt.decode(token, key)",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-39d9425b7d1dfe9b",
+      "kind": "crypto_call",
+      "line": 426,
+      "name": "jose.jwt.encode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "token = jwt.encode(claims, key)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-4833284eafa21ecb",
+      "kind": "crypto_call",
+      "line": 428,
+      "name": "jose.jwt.decode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jwt.decode(token, key)",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-a68aba2a848bb16a",
+      "kind": "crypto_call",
+      "line": 435,
+      "name": "jose.jwt.encode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "token = jwt.encode(claims, key)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-775a91ca3844ad1d",
+      "kind": "crypto_call",
+      "line": 436,
+      "name": "jose.jwt.decode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jwt.decode(token, key, subject=sub)",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-8ab50d1762cbae3b",
+      "kind": "crypto_call",
+      "line": 443,
+      "name": "jose.jwt.encode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "token = jwt.encode(claims, key)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-c807e21ff1b67f27",
+      "kind": "crypto_call",
+      "line": 445,
+      "name": "jose.jwt.decode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jwt.decode(token, key, subject=\"another\")",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-b21cd50a1dc2d8f3",
+      "kind": "crypto_call",
+      "line": 452,
+      "name": "jose.jwt.encode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "token = jwt.encode(claims, key)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-9d7ac1dfcb3c3bd1",
+      "kind": "crypto_call",
+      "line": 453,
+      "name": "jose.jwt.decode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jwt.decode(token, key)",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-358194c5af938ff9",
+      "kind": "crypto_call",
+      "line": 460,
+      "name": "jose.jwt.encode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "token = jwt.encode(claims, key)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-448ed727adf74923",
+      "kind": "crypto_call",
+      "line": 462,
+      "name": "jose.jwt.decode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jwt.decode(token, key)",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-39c39162ad2d5731",
+      "kind": "crypto_call",
+      "line": 466,
+      "name": "jose.jwt.encode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "token = jwt.encode(claims, key, access_token=access_token)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-bf989f6e02727b1c",
+      "kind": "crypto_call",
+      "line": 467,
+      "name": "jose.jwt.decode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "payload = jwt.decode(token, key, access_token=access_token)",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-5b6aac03bd1b7b02",
+      "kind": "crypto_call",
+      "line": 471,
+      "name": "jose.jwt.encode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "token = jwt.encode(claims, key, access_token=\"<ACCESS_TOKEN>\")",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-0e4ba3d6e90080fa",
+      "kind": "crypto_call",
+      "line": 473,
+      "name": "jose.jwt.decode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jwt.decode(token, key, access_token=\"<OTHER_TOKEN>\")",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-d88d8b437a0d71e1",
+      "kind": "crypto_call",
+      "line": 476,
+      "name": "jose.jwt.encode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "token = jwt.encode(claims, key, access_token=\"<ACCESS_TOKEN>\")",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-ff459a605ce3f99c",
+      "kind": "crypto_call",
+      "line": 478,
+      "name": "jose.jwt.decode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jwt.decode(token, key)",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-2cd58dc443890517",
+      "kind": "crypto_call",
+      "line": 481,
+      "name": "jose.jwt.encode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "token = jwt.encode(claims, key)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-206b92c697ce1b80",
+      "kind": "crypto_call",
+      "line": 482,
+      "name": "jose.jwt.decode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "payload = jwt.decode(token, key, access_token=\"<ACCESS_TOKEN>\")",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-9ce1af5bd3c22805",
+      "kind": "crypto_call",
+      "line": 486,
+      "name": "jose.jwt.encode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "token = jwt.encode(claims, key, access_token=\"<ACCESS_TOKEN>\")",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-6fddea323ad016fa",
+      "kind": "crypto_call",
+      "line": 488,
+      "name": "jose.jwt.decode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jwt.decode(token, key, access_token=\"\\xe2\")",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-380784faaa65fdcd",
+      "kind": "crypto_call",
+      "line": 506,
+      "name": "jose.jwt.encode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "token = jwt.encode(claims, key)",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-6c1e8ea74764f1b8",
+      "kind": "crypto_call",
+      "line": 526,
+      "name": "jose.jwt.encode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "token = jwt.encode(claims, key)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-6ab5ef7c21ed3b68",
+      "kind": "crypto_call",
+      "line": 528,
+      "name": "jose.jwt.decode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jwt.decode(token, key, options=options, audience=str(value))",
+      "weak": false
+    },
+    {
+      "algorithm": "HMAC-SHA2-256",
+      "algorithms": [
+        "HMAC-SHA2-256"
+      ],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-55d0add6d03bf708",
+      "kind": "crypto_call",
+      "line": 532,
+      "name": "jose.jwt.encode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "token = jwt.encode(new_claims, key)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "token",
+      "file": "tests/test_jwt.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-e8f784cea9538628",
+      "kind": "crypto_call",
+      "line": 533,
+      "name": "jose.jwt.decode",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "review"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "jwt.decode(token, key, options=options, audience=str(value))",
+      "weak": false
+    }
+  ],
+  "version": 1
+}

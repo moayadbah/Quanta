@@ -23,6 +23,10 @@ _KEEPALIVE_INTERVAL_S = 15.0
 #: MessageEvent.data distinguishes a server error from an EventSource transport error.
 TERMINAL_EVENTS = {"done", "error", "failed"}
 
+#: A cached replay paces evidence too, so a viewer can read findings as they arrive.
+_PACED_EVIDENCE = {"findings", "proposals"}
+_EVIDENCE_DELAY_S = 0.12
+
 
 def format_event(event: JobEvent) -> str:
     payload = json.dumps(event.data, sort_keys=True)
@@ -51,8 +55,20 @@ async def stream(
         job = current
 
         pending = [e for e in job.events if e.id > cursor]
+        recorded = [int(e.data["at_ms"]) for e in job.events if "at_ms" in e.data]
+        longest = max(recorded, default=0)
+        scale = min(1.0, _RECORDED_WINDOW_MS / longest) if longest else 1.0
         for event in pending:
-            if replay_delays is not None and event.event == "step":
+            if replay_delays is not None and "at_ms" in event.data:
+                # A recorded run: keep its rhythm, compressed into a watchable window.
+                previous = next(
+                    (int(e.data.get("at_ms", 0)) for e in reversed(job.events) if e.id < event.id),
+                    0,
+                )
+                gap = (int(event.data["at_ms"]) - previous) * scale
+                await asyncio.sleep(min(_RECORDED_GAP_MAX_MS, max(0.0, gap)) / 1000)
+
+            elif replay_delays is not None and event.event == "step":
                 delay_ms = (
                     replay_delays[step_index]
                     if step_index < len(replay_delays)
@@ -60,6 +76,9 @@ async def stream(
                 )
                 step_index += 1
                 await asyncio.sleep(delay_ms / 1000)
+
+            elif replay_delays is not None and event.event in _PACED_EVIDENCE:
+                await asyncio.sleep(_EVIDENCE_DELAY_S)
 
             yield format_event(event)
             cursor = event.id
@@ -81,6 +100,11 @@ async def stream(
             idle_since = now
 
         await asyncio.sleep(0.25)
+
+
+#: A recorded run replays in at most this long, and no single pause exceeds the cap.
+_RECORDED_WINDOW_MS = 12_000
+_RECORDED_GAP_MAX_MS = 1_500
 
 
 def _fallback_delay() -> int:

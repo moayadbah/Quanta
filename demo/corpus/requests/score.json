@@ -1,0 +1,148 @@
+{
+  "agility_score": 63.871456,
+  "coverage": {
+    "coverage_ratio": 1.0,
+    "crypto_api_calls_matched": 5,
+    "crypto_api_calls_unmatched": 0,
+    "files_scanned": 37,
+    "files_unparseable": 0,
+    "files_unparseable_source": 0,
+    "method_calls_note": "Calls on key or context objects are not counted.",
+    "sites_by_role": {
+      "docs": 0,
+      "example": 0,
+      "source": 5,
+      "test": 4,
+      "tooling": 0,
+      "vendored": 0
+    },
+    "source_files": 20,
+    "touchpoints": 5,
+    "truncated": false,
+    "unmatched_top": []
+  },
+  "deductions": [
+    {
+      "citations": [
+        "src/requests/auth.py:179",
+        "src/requests/auth.py:187",
+        "src/requests/auth.py:195",
+        "src/requests/auth.py:203",
+        "src/requests/auth.py:237"
+      ],
+      "factor": "call_sites",
+      "points": 13.12854,
+      "reason": "5 cryptographic touchpoints in shipped code must each be edited to change an algorithm."
+    },
+    {
+      "citations": [
+        "src/requests/auth.py:179",
+        "src/requests/auth.py:187",
+        "src/requests/auth.py:195",
+        "src/requests/auth.py:203",
+        "src/requests/auth.py:237"
+      ],
+      "factor": "selection_source",
+      "points": 20.0,
+      "reason": "5 of 5 algorithm choices are fixed in code."
+    },
+    {
+      "citations": [
+        "src/requests/adapters.py:630",
+        "src/requests/sessions.py:366"
+      ],
+      "factor": "propagation_depth",
+      "points": 3.0,
+      "reason": "3 of 20 shipped modules contain cryptography or call a module that does."
+    }
+  ],
+  "factors": {
+    "call_sites": {
+      "contribution": 16.871456,
+      "formula": "1 / (1 + log10(1 + n))",
+      "inputs": {
+        "n": 5
+      },
+      "normalised": 0.562382,
+      "raw": 5,
+      "weight": 0.3
+    },
+    "isolation_layer": {
+      "contribution": 30.0,
+      "formula": "sum over crypto modules of (n_m / n)^2",
+      "inputs": {
+        "crypto_modules": 1,
+        "touchpoints": 5
+      },
+      "normalised": 1.0,
+      "raw": 1.0,
+      "weight": 0.3
+    },
+    "propagation_depth": {
+      "contribution": 17.0,
+      "formula": "1 - (|C| + |D|) / |M|",
+      "inputs": {
+        "crypto_modules": 1,
+        "dependents": 2,
+        "shipped_modules": 20
+      },
+      "normalised": 0.85,
+      "raw": 3,
+      "weight": 0.2
+    },
+    "selection_source": {
+      "contribution": 0.0,
+      "formula": "configured / (configured + literal)",
+      "inputs": {
+        "configured": 0,
+        "literal": 5
+      },
+      "normalised": 0.0,
+      "raw": "configured_share",
+      "weight": 0.2
+    }
+  },
+  "inventory_summary": {
+    "by_algorithm": {
+      "MD5": 1,
+      "SHA1": 2,
+      "SHA2-256": 1,
+      "SHA2-512": 1
+    },
+    "by_category": {
+      "hash": 5,
+      "tls": 4
+    },
+    "pq": 0,
+    "quantum_vulnerable": 0,
+    "weak": 3
+  },
+  "provenance": {
+    "analyzer_version": "0.5.0+rules.2026.11.01",
+    "cbom_sha256": null,
+    "commit_sha": "611c6162cbc4ac2020a2f91c7cfa4f3abf9bbb60",
+    "crypto_ruleset_version": "2026.11.01",
+    "metric_version": "metric-v2",
+    "repo": "psf/requests",
+    "weights_version": "weights-v1"
+  },
+  "recommendations": [
+    {
+      "action": "Read algorithm choices from a checked policy (pattern P2).",
+      "affected_sites": 5,
+      "bound": "upper bound for this factor",
+      "estimated_score_gain": 20.0,
+      "pattern": "P2"
+    },
+    {
+      "action": "Replace broken primitives (MD5, SHA-1, DES, 3DES, RC4, ECB mode).",
+      "affected_sites": 3,
+      "bound": "not scored; a security fix, and compatibility-changing",
+      "estimated_score_gain": 0.0,
+      "pattern": "P0"
+    }
+  ],
+  "refusal": null,
+  "schema_version": "2.0",
+  "status": "scored"
+}

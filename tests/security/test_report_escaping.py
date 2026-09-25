@@ -13,6 +13,7 @@ every other test and fail the one thing it promises.
 from __future__ import annotations
 
 import re
+import sys
 from pathlib import Path
 
 import pytest
@@ -58,6 +59,13 @@ def _render(repo: Path) -> str:
     return render_report(score, graph, meta)
 
 
+#: Master Plan M0 (D16): these fixtures need '<' and '>' in file names, which Windows
+#: forbids. They run on Linux, which is the CI reference.
+_WINDOWS_FORBIDS = pytest.mark.skipif(
+    sys.platform == "win32", reason="filename not allowed on Windows; Linux CI runs it"
+)
+
+
 @pytest.fixture
 def xss_repo(tmp_path: Path) -> Path:
     """A repository whose *file name* carries the payload."""
@@ -69,23 +77,27 @@ def xss_repo(tmp_path: Path) -> Path:
     return root
 
 
+@_WINDOWS_FORBIDS
 def test_script_tag_in_filename_is_escaped(xss_repo: Path) -> None:
     html = _render(xss_repo)
     assert "<script>" not in html
     assert "alert(1)" not in html or "&lt;script&gt;" in html
 
 
+@_WINDOWS_FORBIDS
 def test_no_executable_script_element_anywhere(xss_repo: Path) -> None:
     """No <script> element may exist in the document, escaped payload or not."""
     assert not re.search(r"<\s*script", _render(xss_repo), flags=re.IGNORECASE)
 
 
+@_WINDOWS_FORBIDS
 def test_no_event_handler_or_javascript_uri(xss_repo: Path) -> None:
     html = _render(xss_repo)
     assert not re.search(r"\bon(click|load|error|mouseover)\s*=", html, flags=re.IGNORECASE)
     assert "javascript:" not in html.lower()
 
 
+@_WINDOWS_FORBIDS
 def test_event_handler_payload_in_filename_is_escaped(tmp_path: Path) -> None:
     """A complete, slash-free payload: <img src=x onerror=alert(1)>."""
     root = tmp_path / "repo"
@@ -119,6 +131,7 @@ def test_report_is_self_contained(tmp_path: Path) -> None:
     assert externals == [], f"report references external resources: {externals}"
 
 
+@_WINDOWS_FORBIDS
 def test_payload_in_a_directory_name_is_escaped(tmp_path: Path) -> None:
     root = tmp_path / "repo"
     (root / f"{XSS}pkg").mkdir(parents=True)
@@ -126,6 +139,7 @@ def test_payload_in_a_directory_name_is_escaped(tmp_path: Path) -> None:
     assert not re.search(r"<\s*script", _render(root), flags=re.IGNORECASE)
 
 
+@_WINDOWS_FORBIDS
 def test_payload_in_an_unparseable_filename_is_escaped(tmp_path: Path) -> None:
     """Unparseable files are listed in the report by name — same exposure, same control."""
     root = tmp_path / "repo"

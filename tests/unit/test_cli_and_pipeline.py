@@ -59,17 +59,23 @@ def test_cdg_json_round_trips_from_disk(tmp_path: Path) -> None:
 
 
 def test_score_json_matches_the_published_schema(tmp_path: Path) -> None:
-    outcome = analyze_path(FIXTURES / "hardcoded_crypto", _provenance())
+    outcome = analyze_path(FIXTURES / "scattered_crypto", _provenance())
     paths = write_artifacts(outcome, tmp_path / "out")
     score = json.loads(paths["score"].read_text())
 
-    assert score["schema_version"] == "1.0"
+    assert score["schema_version"] == "2.0"
+    assert score["status"] == "scored"
+    assert score["refusal"] is None
     assert set(score["provenance"]) == {
         "repo",
         "commit_sha",
         "analyzer_version",
         "crypto_ruleset_version",
+        "metric_version",
+        "weights_version",
+        "cbom_sha256",
     }
+    assert score["provenance"]["metric_version"] == "metric-v2"
     assert set(score["factors"]) == {
         "call_sites",
         "isolation_layer",
@@ -77,11 +83,24 @@ def test_score_json_matches_the_published_schema(tmp_path: Path) -> None:
         "propagation_depth",
     }
     for factor in score["factors"].values():
-        assert set(factor) == {"raw", "normalised", "weight", "contribution"}
+        assert set(factor) == {"raw", "normalised", "weight", "contribution", "formula", "inputs"}
+    assert score["deductions"]
     for deduction in score["deductions"]:
         assert set(deduction) == {"factor", "points", "reason", "citations"}
         assert deduction["citations"]
-    assert set(score["coverage"]) == {"files_scanned", "files_unparseable", "truncated"}
+    assert {"coverage_ratio", "crypto_api_calls_matched", "sites_by_role", "touchpoints"} <= set(
+        score["coverage"]
+    )
+    assert (tmp_path / "out" / "findings.json").is_file()
+
+
+def test_refused_score_json_has_no_score_and_a_reason(tmp_path: Path) -> None:
+    outcome = analyze_path(FIXTURES / "hardcoded_crypto", _provenance())
+    score = json.loads(write_artifacts(outcome, tmp_path / "out")["score"].read_text())
+    assert score["status"] == "refused"
+    assert score["agility_score"] is None
+    assert score["refusal"]["code"] == "TOO_FEW_MODULES"
+    assert score["factors"] == {}
 
 
 def test_canonical_artifacts_are_byte_identical_across_runs(tmp_path: Path) -> None:
@@ -162,8 +181,9 @@ def test_analyze_json_output_is_valid_score_json(tmp_path: Path) -> None:
     )
     assert result.exit_code == 0, result.output
     payload = json.loads(result.stdout)
-    assert payload["schema_version"] == "1.0"
-    assert 0.0 <= payload["agility_score"] <= 100.0
+    assert payload["schema_version"] == "2.0"
+    assert payload["status"] == "refused"
+    assert payload["agility_score"] is None
 
 
 def test_malformed_url_reports_a_stable_error_code_not_a_traceback(tmp_path: Path) -> None:

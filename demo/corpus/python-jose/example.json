@@ -1,10 +1,11 @@
 {
-  "agility_score": 30.551113,
-  "blurb": "JOSE implementation. Fewer sites, but still no common wrapper.",
-  "blurb_ar": "تطبيق لمعيار JOSE، مواقع استدعائه أقل لكنه يفتقر إلى غلاف جامع.",
+  "agility_score": null,
   "commit_sha": "018b310ddb8b50dcfd09a0c152117835a21dd656",
+  "findings": 256,
+  "proposals": 2,
+  "refusals": 0,
   "repo": "mpdavis/python-jose",
-  "sites": 10,
-  "steps": 9,
-  "title": "python-jose"
+  "sites": 222,
+  "status": "refused",
+  "steps": 9
 }

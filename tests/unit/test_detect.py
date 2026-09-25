@@ -18,7 +18,6 @@ import pytest
 
 from quanta.core.detect import (
     DetectionResult,
-    _algorithm_from_name,
     detect_repository,
     module_name,
     node_id,
@@ -31,6 +30,11 @@ FIXTURES = Path(__file__).resolve().parents[1] / "fixtures" / "repos"
 def analyse(name: str) -> DetectionResult:
     repo = FIXTURES / name
     return detect_repository(walk_repository(repo).files, repo)
+
+
+def choices(result: DetectionResult) -> list:
+    """Sites where an algorithm is chosen; operations on the objects are left out."""
+    return [s for s in result.crypto_calls if s.form != "operation"]
 
 
 # ---------------------------------------------------------------------------------------
@@ -48,7 +52,21 @@ def analyse(name: str) -> DetectionResult:
     ],
 )
 def test_crypto_call_counts_match_ground_truth(repo: str, expected_calls: int) -> None:
-    assert len(analyse(repo).crypto_calls) == expected_calls
+    # Algorithm choices only; operations on the objects they produce are counted below.
+    assert len(choices(analyse(repo))) == expected_calls
+
+
+def test_operations_on_crypto_objects_are_reported_once_and_not_scored() -> None:
+    """Round four: ``kdf.derive`` and ``private.exchange`` in the hardcoded fixture."""
+    ops = {
+        (s.line, s.qualified_name.rsplit(".", 1)[-1], s.category)
+        for s in analyse("hardcoded_crypto").crypto_calls
+        if s.form == "operation"
+    }
+    assert ops == {(30, "derive", "kdf"), (36, "exchange", "key_agreement")}
+    assert all(
+        not s.scored for s in analyse("hardcoded_crypto").crypto_calls if s.form == "operation"
+    )
 
 
 def test_no_crypto_fixture_yields_no_false_positives() -> None:
@@ -60,36 +78,40 @@ def test_no_crypto_fixture_yields_no_false_positives() -> None:
 
 
 def test_weak_algorithms_are_flagged() -> None:
+    """SHA-1 at a call, and MD5 selected by ``hmac.new(key, msg, hashlib.md5)``."""
     result = analyse("hardcoded_crypto")
-    weak = {s.algorithm for s in result.sites if s.weak}
-    assert weak == {"SHA1", "MD5"}
+    weak_algorithms = {a for s in result.sites if s.weak for a in s.algorithms}
+    assert {"SHA1", "MD5"} <= weak_algorithms
+    assert {s.line for s in result.crypto_calls if s.weak} == {16, 20}
 
 
 def test_quantum_vulnerable_algorithms_are_flagged() -> None:
     """X25519 is named in the *module*, not the callable — the tail is ``generate``."""
     result = analyse("hardcoded_crypto")
-    vulnerable = [s for s in result.crypto_calls if s.quantum_vulnerable]
+    vulnerable = [s for s in choices(result) if s.quantum_vulnerable]
     assert len(vulnerable) == 2
     assert all(s.algorithm == "X25519" for s in vulnerable)
 
 
-def test_configuration_reads_are_detected() -> None:
+def test_configuration_selects_the_algorithm_through_a_helper() -> None:
+    """``algorithm=_algorithm()`` where ``_algorithm`` returns ``getattr(hashes, os.getenv(...))()``
+    is configuration-driven (Master Plan 7.6 rules 4 to 6)."""
     result = analyse("configured_crypto")
-    names = {s.qualified_name for s in result.config_reads}
-    assert names == {"os.environ", "os.getenv", "settings"}
+    assert {s.selection for s in choices(result)} == {"configured"}
+    assert {s.qualified_name for s in result.config_reads} == {"os.getenv"}
 
 
-def test_config_read_nested_in_a_callee_is_found() -> None:
-    """``os.getenv(...).encode()`` hides the read in the callee, not in the arguments."""
+def test_config_reads_outside_selector_positions_are_not_selections() -> None:
+    """``iterations=int(os.environ[...])`` configures a count, not an algorithm (D7)."""
     result = analyse("configured_crypto")
-    assert any(s.qualified_name == "os.getenv" for s in result.config_reads)
+    assert all(s.line not in {25, 33, 35} for s in result.config_reads)
 
 
 def test_algorithm_literals_are_detected_and_attached_to_their_site() -> None:
     result = analyse("facade_crypto")
     literals = result.algo_literals
     assert len(literals) == 2
-    assert all(lit.algorithm == "SHA256" for lit in literals)
+    assert all(lit.algorithm == "SHA2-256" for lit in literals)
     site_ids = {s.site_id for s in result.crypto_calls}
     assert all(lit.parent_site_id in site_ids for lit in literals)
 
@@ -124,7 +146,7 @@ def test_precision_and_recall_against_fixture_labels() -> None:
     false_negatives = 0
 
     for repo, expected in labels.items():
-        found = len(analyse(repo).crypto_calls)
+        found = len(choices(analyse(repo)))
         true_positives += min(found, expected)
         false_positives += max(0, found - expected)
         false_negatives += max(0, expected - found)
@@ -201,27 +223,30 @@ def test_site_ids_are_stable_and_position_derived() -> None:
 
 
 # ---------------------------------------------------------------------------------------
-# Algorithm resolution
+# Algorithm resolution (ruleset v2 aliases, exact match only)
 # ---------------------------------------------------------------------------------------
 
 
 @pytest.mark.parametrize(
-    ("qualified_name", "expected"),
+    ("spelling", "expected"),
     [
-        ("hashlib.sha1", "SHA1"),
-        ("hashlib.md5", "MD5"),
-        ("hashes.SHA256", "SHA256"),
-        ("cryptography...x25519.X25519PrivateKey.generate", "X25519"),
-        ("cryptography...ciphers.aead.AESGCM", "AES"),
-        ("cryptography...ciphers.aead.ChaCha20Poly1305", "ChaCha20"),
-        ("cryptography...asymmetric.rsa.generate_private_key", "RSA"),
-        ("cryptography...hashes.Hash", None),
-        ("os.getenv", None),
-        ("json.dumps", None),
+        ("sha1", "SHA1"),
+        ("SHA-1", "SHA1"),
+        ("md5", "MD5"),
+        ("sha256", "SHA2-256"),
+        ("SHA3_256", "SHA3-256"),
+        ("secp256r1", "ECC-P256"),
+        ("RS256", "RSA"),
+        ("HS256", "HMAC-SHA2-256"),
+        ("Kyber768", "ML-KEM-768"),
+        ("sha256crypt", None),  # exact match, never a prefix
+        ("json", None),
     ],
 )
-def test_algorithm_resolution(qualified_name: str, expected: str | None) -> None:
-    assert _algorithm_from_name(qualified_name) == expected
+def test_algorithm_aliases(spelling: str, expected: str | None) -> None:
+    from quanta.core.ruleset_v2 import canonical
+
+    assert canonical(spelling) == expected
 
 
 def test_module_name_derivation(tmp_path: Path) -> None:
@@ -230,3 +255,113 @@ def test_module_name_derivation(tmp_path: Path) -> None:
     assert module_name(root / "pkg" / "sub" / "mod.py", root) == "pkg.sub.mod"
     assert module_name(root / "pkg" / "__init__.py", root) == "pkg"
     assert module_name(root / "top.py", root) == "top"
+
+
+def test_parallel_detection_is_identical_to_sequential(tmp_path: Path) -> None:
+    """Round four: large repositories are parsed by a process pool. The merged result must
+    be byte-identical to the one-process result, in the same order."""
+    import json
+
+    from quanta.config import get_settings
+    from quanta.core.detect import PARALLEL_MIN_FILES, result_to_json
+
+    source = (FIXTURES / "hardcoded_crypto" / "src" / "auth.py").read_text(encoding="utf-8")
+    pkg = tmp_path / "pkg"
+    pkg.mkdir()
+    for i in range(PARALLEL_MIN_FILES + 2):
+        (pkg / f"m{i:03d}.py").write_text(source, encoding="utf-8")
+    files = walk_repository(tmp_path).files
+    parallel = get_settings().model_copy(deep=True)
+    parallel.analysis.parse_workers = 2
+    sequential = get_settings().model_copy(deep=True)
+    sequential.analysis.parse_workers = 1
+    a = detect_repository(files, tmp_path, parallel)
+    b = detect_repository(files, tmp_path, sequential)
+    assert a.files_scanned == len(files)
+    assert json.dumps(result_to_json(a), sort_keys=True) == json.dumps(
+        result_to_json(b), sort_keys=True
+    )
+
+
+def test_non_shipped_files_without_a_crypto_library_name_are_read_not_parsed(
+    tmp_path: Path,
+) -> None:
+    """Round four: large repositories spend most parse time on tests. A test file whose text
+    names no crypto library cannot hold a finding; shipped code is always parsed."""
+    (tmp_path / "pkg").mkdir()
+    (tmp_path / "tests").mkdir()
+    (tmp_path / "pkg" / "plain.py").write_text("def f():\n    return 1\n", encoding="utf-8")
+    (tmp_path / "tests" / "test_plain.py").write_text(
+        "def test_f():\n    assert 1\n", encoding="utf-8"
+    )
+    (tmp_path / "tests" / "test_hash.py").write_text(
+        "import hashlib\n\ndef test_h():\n    hashlib.md5(b'x')\n", encoding="utf-8"
+    )
+    result = detect_repository(walk_repository(tmp_path).files, tmp_path)
+    assert result.files_scanned == 3
+    assert result.files_text_only == 1
+    assert [s.file for s in result.crypto_calls] == ["tests/test_hash.py"]
+    assert any(f.file == "pkg/plain.py" for f in result.functions)
+
+
+def test_time_budget_reads_shipped_code_first_and_counts_the_rest(tmp_path: Path) -> None:
+    """Round four: a huge repository stops at the parse budget instead of timing out. Shipped
+    code is read first, and every file not reached is counted."""
+    import time
+
+    (tmp_path / "tests").mkdir()
+    (tmp_path / "pkg").mkdir()
+    for i in range(3):
+        (tmp_path / "tests" / f"test_{i}.py").write_text("import hashlib\n", encoding="utf-8")
+    (tmp_path / "pkg" / "core.py").write_text(
+        "import hashlib\n\ndef f():\n    return hashlib.md5(b'x')\n", encoding="utf-8"
+    )
+    files = walk_repository(tmp_path).files
+    result = detect_repository(files, tmp_path, deadline=time.monotonic() - 1)
+    assert result.files_scanned == 1
+    assert result.files_unread == 3 and result.source_unread == 0
+    assert [s.file for s in result.crypto_calls] == ["pkg/core.py"]
+
+
+def _write(root: Path, rel: str, text: str) -> None:
+    path = root / rel
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(text, encoding="utf-8")
+
+
+def test_a_repository_that_is_an_ecdsa_library_is_recognised(tmp_path: Path) -> None:
+    """Round five: scanning python-ecdsa reported one quantum-vulnerable finding. A package
+    that is a library the rules know, and defines what they name, implements the scheme."""
+    _write(
+        tmp_path,
+        "src/ecdsa/keys.py",
+        "class SigningKey:\n"
+        "    @classmethod\n"
+        "    def generate(cls, curve=None, hashfunc=None):\n"
+        "        return cls()\n"
+        "    def sign(self, data):\n"
+        "        return b''\n"
+        "    def helper(self):\n"
+        "        return 1\n",
+    )
+    result = detect_repository(walk_repository(tmp_path).files, tmp_path)
+    found = {(s.qualified_name, s.algorithm, s.form) for s in result.crypto_calls}
+    assert ("ecdsa.keys.SigningKey.generate", "ECDSA", "implementation") in found
+    assert ("ecdsa.keys.SigningKey.sign", "ECDSA", "implementation") in found
+    assert not any(name.endswith("helper") for name, _, _ in found)
+    assert all(s.quantum_vulnerable and not s.scored for s in result.crypto_calls)
+
+
+def test_modular_exponentiation_named_for_rsa_is_recognised(tmp_path: Path) -> None:
+    _write(
+        tmp_path,
+        "toyrsa/rsa.py",
+        "def encrypt(message, e, n):\n    return pow(message, e, n)\n",
+    )
+    _write(
+        tmp_path,
+        "shop/pricing.py",
+        "def encrypt(value, e, n):\n    return pow(value, e, n)\n",
+    )
+    result = detect_repository(walk_repository(tmp_path).files, tmp_path)
+    assert [(s.file, s.algorithm) for s in result.crypto_calls] == [("toyrsa/rsa.py", "RSA")]

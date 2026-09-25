@@ -1,0 +1,276 @@
+{
+  "actions": [
+    {
+      "by": 2030,
+      "citations": [
+        "jwt/algorithms.py:1104",
+        "jwt/algorithms.py:1105",
+        "jwt/algorithms.py:1109",
+        "jwt/algorithms.py:1111",
+        "jwt/algorithms.py:333",
+        "jwt/algorithms.py:340",
+        "jwt/algorithms.py:544",
+        "jwt/algorithms.py:548",
+        "jwt/algorithms.py:555",
+        "jwt/algorithms.py:641",
+        "jwt/algorithms.py:647",
+        "jwt/algorithms.py:658",
+        "jwt/algorithms.py:662",
+        "jwt/algorithms.py:666",
+        "jwt/algorithms.py:667",
+        "jwt/algorithms.py:668",
+        "jwt/algorithms.py:672",
+        "jwt/algorithms.py:675",
+        "jwt/algorithms.py:683",
+        "jwt/algorithms.py:688",
+        "jwt/algorithms.py:744",
+        "jwt/algorithms.py:746",
+        "jwt/algorithms.py:754",
+        "jwt/algorithms.py:761",
+        "jwt/algorithms.py:889",
+        "jwt/algorithms.py:896",
+        "jwt/algorithms.py:904",
+        "jwt/algorithms.py:914",
+        "jwt/algorithms.py:926",
+        "jwt/algorithms.py:971",
+        "jwt/algorithms.py:973",
+        "jwt/algorithms.py:975",
+        "jwt/algorithms.py:994"
+      ],
+      "id": "pq_signatures",
+      "priority": 3,
+      "sites": 33,
+      "sources": [
+        "nist-ir-8547",
+        "nsa-cnsa-2",
+        "uk-ncsc-pqc"
+      ]
+    },
+    {
+      "by": null,
+      "citations": [
+        "jwt/algorithms.py:333",
+        "jwt/algorithms.py:340",
+        "jwt/algorithms.py:544",
+        "jwt/algorithms.py:548",
+        "jwt/algorithms.py:555",
+        "jwt/algorithms.py:683",
+        "jwt/algorithms.py:688",
+        "jwt/algorithms.py:744",
+        "jwt/algorithms.py:746",
+        "jwt/algorithms.py:754",
+        "jwt/algorithms.py:761",
+        "jwt/algorithms.py:914",
+        "jwt/algorithms.py:926",
+        "jwt/algorithms.py:971",
+        "jwt/algorithms.py:973",
+        "jwt/algorithms.py:975"
+      ],
+      "id": "confirm_algorithms",
+      "priority": 6,
+      "sites": 16,
+      "sources": [
+        "nist-ir-8547"
+      ]
+    }
+  ],
+  "checked": "2026-09-24",
+  "counts": {
+    "key_exchange": 0,
+    "pq": 0,
+    "review": 16,
+    "safe": 5,
+    "signature": 33,
+    "sites": 38,
+    "tls": 0,
+    "vulnerable": 17,
+    "weak": 0
+  },
+  "earliest_milestone": "eu-high-risk",
+  "earliest_year": 2030,
+  "frameworks": [
+    "nist",
+    "nsa",
+    "nca",
+    "eu",
+    "uk",
+    "us"
+  ],
+  "milestones": [
+    {
+      "framework": "nist",
+      "id": "nist-kex-deprecated",
+      "rule": "deprecated",
+      "sites": 0,
+      "source": "nist-ir-8547",
+      "state": "clear",
+      "year": 2030
+    },
+    {
+      "framework": "nist",
+      "id": "nist-kex-disallowed",
+      "rule": "disallowed",
+      "sites": 0,
+      "source": "nist-ir-8547",
+      "state": "clear",
+      "year": 2035
+    },
+    {
+      "framework": "nist",
+      "id": "nist-sig-deprecated",
+      "rule": "deprecated",
+      "sites": 33,
+      "source": "nist-ir-8547",
+      "state": "due",
+      "year": 2030
+    },
+    {
+      "framework": "nist",
+      "id": "nist-sig-disallowed",
+      "rule": "disallowed",
+      "sites": 33,
+      "source": "nist-ir-8547",
+      "state": "due",
+      "year": 2035
+    },
+    {
+      "framework": "nist",
+      "id": "nist-sha1",
+      "rule": "retired",
+      "sites": 0,
+      "source": "nist-sha1-retirement",
+      "state": "clear",
+      "year": 2030
+    },
+    {
+      "framework": "nist",
+      "id": "nist-md5",
+      "rule": "not_approved",
+      "sites": 0,
+      "source": "nist-sp-800-131a-r2",
+      "state": "clear",
+      "year": 2019
+    },
+    {
+      "framework": "nist",
+      "id": "nist-tdea",
+      "rule": "disallowed",
+      "sites": 0,
+      "source": "nist-sp-800-131a-r2",
+      "state": "clear",
+      "year": 2023
+    },
+    {
+      "framework": "nsa",
+      "id": "nsa-signing",
+      "rule": "exclusive",
+      "sites": 33,
+      "source": "nsa-cnsa-2",
+      "state": "due",
+      "year": 2030
+    },
+    {
+      "framework": "nsa",
+      "id": "nsa-web",
+      "rule": "exclusive",
+      "sites": 0,
+      "source": "nsa-cnsa-2",
+      "state": "clear",
+      "year": 2033
+    },
+    {
+      "framework": "nsa",
+      "id": "nsa-custom",
+      "rule": "replace",
+      "sites": 33,
+      "source": "nsa-cnsa-2",
+      "state": "due",
+      "year": 2033
+    },
+    {
+      "framework": "eu",
+      "id": "eu-first-steps",
+      "rule": "first_steps",
+      "sites": 0,
+      "source": "eu-pqc-roadmap",
+      "state": "met",
+      "year": 2026
+    },
+    {
+      "framework": "eu",
+      "id": "eu-high-risk",
+      "rule": "high_risk",
+      "sites": 33,
+      "source": "eu-pqc-roadmap",
+      "state": "due",
+      "year": 2030
+    },
+    {
+      "framework": "eu",
+      "id": "eu-full",
+      "rule": "full",
+      "sites": 33,
+      "source": "eu-pqc-roadmap",
+      "state": "due",
+      "year": 2035
+    },
+    {
+      "framework": "uk",
+      "id": "uk-discovery",
+      "rule": "discovery",
+      "sites": 0,
+      "source": "uk-ncsc-pqc",
+      "state": "met",
+      "year": 2028
+    },
+    {
+      "framework": "uk",
+      "id": "uk-priority",
+      "rule": "priority",
+      "sites": 33,
+      "source": "uk-ncsc-pqc",
+      "state": "due",
+      "year": 2031
+    },
+    {
+      "framework": "uk",
+      "id": "uk-complete",
+      "rule": "complete",
+      "sites": 33,
+      "source": "uk-ncsc-pqc",
+      "state": "due",
+      "year": 2035
+    },
+    {
+      "framework": "us",
+      "id": "us-kex",
+      "rule": "federal",
+      "sites": 0,
+      "source": "us-eo-14412",
+      "state": "clear",
+      "year": 2030
+    },
+    {
+      "framework": "us",
+      "id": "us-sig",
+      "rule": "federal",
+      "sites": 33,
+      "source": "us-eo-14412",
+      "state": "due",
+      "year": 2031
+    },
+    {
+      "framework": "nca",
+      "id": "nca-hybrid",
+      "rule": "hybrid_required",
+      "sites": 0,
+      "source": "nca-ncs-2-2025",
+      "state": "clear",
+      "year": null
+    }
+  ],
+  "overdue": [],
+  "reference_year": 2026,
+  "verdict": "at_risk",
+  "version": 1
+}

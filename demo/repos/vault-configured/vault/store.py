@@ -1,8 +1,14 @@
-"""Blob storage. Reaches the AEAD through the insulation layer."""
+"""Blob storage. Calls the AEAD directly."""
 
-from vault import cryptobox, models
+import os
+
+from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+
+from vault import models
+from vault import _crypto_facade
 
 
 def seal(key: bytes, blob: models.Blob) -> bytes:
-    sealed, _tag = cryptobox.seal(key, blob.payload, blob.aad)
-    return sealed
+    nonce = os.urandom(12)
+    aead = _crypto_facade.aead_aesgcm_aes(key)
+    return nonce + aead.encrypt(nonce, blob.payload, blob.aad)

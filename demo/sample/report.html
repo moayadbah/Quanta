@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quanta readiness report: tlsfuzzer/python-ecdsa</title>
+<style>
+  @page { size: A4; margin: 18mm 16mm 20mm;
+    @top-left { content: "Quanta · Post-quantum readiness"; font: 8.5pt Inter, "Segoe UI", sans-serif; color: #8a8a8a; }
+    @top-right { content: "tlsfuzzer/python-ecdsa"; font: 8.5pt Inter, "Segoe UI", sans-serif; color: #8a8a8a; }
+    @bottom-right { content: "Page " counter(page) " of " counter(pages); font: 8.5pt Inter, "Segoe UI", sans-serif; color: #8a8a8a; }
+  }
+  :root { --fg: #111; --muted: #5f6368; --line: #e6e6e6; --soft: #f6f6f6;
+          --bad: #c9302c; --warn: #b7791f; --ok: #2f7d4a; --info: #1f5fbf; }
+  * { box-sizing: border-box; }
+  html { background: #fff; }
+  body { margin: 0; color: var(--fg); font: 10.5pt/1.55 Inter, -apple-system, "Segoe UI", Roboto, sans-serif;
+         -webkit-font-smoothing: antialiased; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  main { max-width: 860px; margin: 0 auto; padding: 40px 28px 64px; }
+  h1 { font-size: 22pt; line-height: 1.15; letter-spacing: -0.02em; margin: 0; }
+  h2 { font-size: 13.5pt; letter-spacing: -0.01em; margin: 34px 0 10px; padding-top: 14px; border-top: 1px solid var(--line); break-after: avoid; }
+  h3 { font-size: 11pt; margin: 18px 0 6px; break-after: avoid; }
+  p { margin: 0 0 8px; }
+  .muted { color: var(--muted); }
+  .small { font-size: 9pt; color: var(--muted); }
+  code, .mono { font-family: "Geist Mono", ui-monospace, Consolas, Menlo, monospace; font-size: 8.8pt; }
+  .brand { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 11pt; }
+  .brand svg { width: 20px; height: 20px; color: var(--fg); }
+  .cover { display: grid; gap: 18px; padding-bottom: 22px; }
+  .facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+  .facts div { padding: 10px 12px; background: var(--soft); border-radius: 8px; }
+  .facts dt { font-size: 8.5pt; color: var(--muted); margin: 0 0 2px; }
+  .facts dd { margin: 0; font-weight: 600; overflow-wrap: anywhere; }
+  .verdict { display: flex; align-items: center; gap: 10px; font-size: 16pt; font-weight: 600; }
+  .dot { width: 11px; height: 11px; border-radius: 50%; background: #9aa0a6; flex: none; }
+  .dot.at_risk, .dot.vulnerable { background: var(--bad); }
+  .dot.in_transition, .dot.weak, .dot.review { background: var(--warn); }
+  .dot.ready, .dot.pq { background: var(--ok); }
+  .note { padding: 9px 12px; background: var(--soft); border-radius: 8px; margin: 10px 0; }
+  .note.warn { background: #fff6e5; }
+  .bar { display: flex; height: 12px; border-radius: 6px; overflow: hidden; background: var(--soft); margin: 12px 0 8px; }
+  .legend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 9pt; }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .legend .dot { width: 8px; height: 8px; }
+  table { width: 100%; border-collapse: collapse; margin: 6px 0 4px; }
+  th { text-align: left; font-size: 8.5pt; font-weight: 600; color: var(--muted); padding: 6px 8px 6px 0; border-bottom: 1px solid var(--line); }
+  td { padding: 6px 8px 6px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+  tr { break-inside: avoid; }
+  td.num { white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .pill { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: 8.5pt; background: var(--soft); white-space: nowrap; }
+  .pill.bad { background: #fde8e7; color: var(--bad); }
+  .pill.warn { background: #fdf1dc; color: #8a5a12; }
+  .action { display: grid; grid-template-columns: 22px minmax(0, 1fr) auto; gap: 4px 10px; padding: 9px 0; border-bottom: 1px solid var(--line); break-inside: avoid; }
+  .action .rank { color: var(--muted); }
+  .diff { font-family: "Geist Mono", ui-monospace, Consolas, monospace; font-size: 8.6pt; background: var(--soft); border-radius: 8px; padding: 6px 10px; margin: 4px 0 10px; white-space: pre-wrap; overflow-wrap: anywhere; break-inside: avoid; }
+  .diff .del { color: #9b1c1c; }
+  .diff .add { color: #1d6b3a; }
+  pre { font-family: "Geist Mono", ui-monospace, Consolas, monospace; font-size: 8.4pt; line-height: 1.5; background: var(--soft); border-radius: 8px; padding: 10px 12px; white-space: pre-wrap; overflow-wrap: anywhere; margin: 6px 0 8px; }
+  .guide { padding: 10px 0 14px; border-bottom: 1px solid var(--line); }
+  .guide pre { break-inside: auto; }
+  .sites { font-family: "Geist Mono", ui-monospace, Consolas, monospace; font-size: 8.4pt; color: var(--muted); }
+  footer { margin-top: 40px; padding-top: 12px; border-top: 1px solid var(--line); font-size: 8.5pt; color: var(--muted); }
+  @media print { main { max-width: none; padding: 0; } a { color: inherit; text-decoration: none; } h2 { break-before: auto; } }
+  @media (max-width: 640px) { .facts { grid-template-columns: 1fr 1fr; } }
+</style>
+
+<main>
+  <section class="cover">
+    <div class="brand"><svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M45.6 46.6A22 22 0 1 1 51.9 31" stroke="currentColor" stroke-width="10"/><path d="M31 31h13l16 25H47z" fill="currentColor"/></svg>Quanta</div>
+    <h1>Post-quantum readiness report</h1>
+    <dl class="facts">
+      <div><dt>Repository</dt><dd class="mono">tlsfuzzer/python-ecdsa</dd></div>
+      <div><dt>Commit</dt><dd class="mono">bff40c6cf234</dd></div>
+      <div><dt>Date</dt><dd>2026-09-25</dd></div>
+      <div><dt>Verdict</dt><dd><span class="dot at_risk" style="display:inline-block;margin-right:6px"></span>At risk</dd></div>
+    </dl>
+  </section>
+
+  <h2>1. Readiness</h2>
+  <div class="verdict"><span class="dot at_risk"></span>At risk</div>
+  <p class="muted">Shipped code uses quantum-vulnerable or weak cryptography, with no post-quantum algorithm yet. The earliest published deadline that applies is 2030.</p>
+  
+  <div class="note"><strong>This repository implements ECDSA itself.</strong> Its users can only migrate if it offers a post-quantum scheme beside it; see the guided migrations below.</div>
+  
+  
+  
+  
+  <div class="bar" role="img" aria-label="Shipped cryptographic call sites by status">
+    <span class="dot vulnerable" style="border-radius:0;height:12px;width:37.5%"></span><span class="dot weak" style="border-radius:0;height:12px;width:30.0%"></span><span class="dot safe" style="border-radius:0;height:12px;width:32.5%"></span>
+  </div>
+  <div class="legend">
+    <span><span class="dot vulnerable"></span>Quantum-vulnerable: <strong>15</strong></span><span><span class="dot weak"></span>Weak: <strong>12</strong></span><span><span class="dot review"></span>Needs review: <strong>0</strong></span><span><span class="dot pq"></span>Post-quantum: <strong>0</strong></span><span><span class="dot safe"></span>No action: <strong>13</strong></span>
+  </div>
+  <p class="small">Counted across 40 cryptographic call sites in shipped code. Tests, examples and docs are listed separately and do not change the verdict.</p>
+  
+
+  
+  <h3>What to do, in order</h3>
+  
+  <div class="action">
+    <span class="rank">1</span>
+    <div><strong>Plan post-quantum signatures</strong><div class="small">Move RSA, ECDSA and EdDSA signatures to ML-DSA or SLH-DSA, keeping a classical signature alongside during the transition.</div>
+      <div class="small">Sources: NIST IR 8547 (draft): Transition to Post-Quantum Cryptography Standards; NSA: Commercial National Security Algorithm Suite 2.0; UK NCSC: Timelines for migration to post-quantum cryptography</div></div>
+    <div style="text-align:right"><span class="pill warn">By 2030</span><div class="small">Sites: 15</div></div>
+  </div>
+  
+  <div class="action">
+    <span class="rank">2</span>
+    <div><strong>Retire SHA-1</strong><div class="small">Replace SHA-1 with SHA-256 or stronger wherever no protocol or stored data requires it.</div>
+      <div class="small">Sources: NIST: Transitioning away from SHA-1 for all applications; NIST SP 800-131A Rev. 2: Transitioning the Use of Cryptographic Algorithms</div></div>
+    <div style="text-align:right"><span class="pill warn">By 2030</span><div class="small">Sites: 12</div></div>
+  </div>
+  
+  
+
+  <h2>2. Findings that need action</h2>
+  
+  <p class="small">27 in shipped code. Tests, examples and docs add 8 more, listed in findings.json.</p>
+  <table>
+    <thead><tr><th>Where</th><th>Call</th><th>Algorithm</th><th>Status</th><th>In Changes</th></tr></thead>
+    <tbody>
+    
+      <tr><td class="mono">speed.py:63</td><td class="mono">ecdsa.SigningKey.generate</td><td>ECDSA</td>
+          <td><span class="pill bad">Quantum-vulnerable</span></td><td>Guide</td></tr>
+    
+      <tr><td class="mono">src/ecdsa/keys.py:1315</td><td class="mono">ecdsa.keys.SigningKey.sign_deterministic</td><td>ECDSA</td>
+          <td><span class="pill bad">Quantum-vulnerable</span></td><td>Guide</td></tr>
+    
+      <tr><td class="mono">src/ecdsa/keys.py:1378</td><td class="mono">ecdsa.keys.SigningKey.sign_digest_deterministic</td><td>ECDSA</td>
+          <td><span class="pill bad">Quantum-vulnerable</span></td><td>Guide</td></tr>
+    
+      <tr><td class="mono">src/ecdsa/keys.py:1457</td><td class="mono">ecdsa.keys.SigningKey.sign</td><td>ECDSA</td>
+          <td><span class="pill bad">Quantum-vulnerable</span></td><td>Guide</td></tr>
+    
+      <tr><td class="mono">src/ecdsa/keys.py:1539</td><td class="mono">ecdsa.keys.SigningKey.sign_digest</td><td>ECDSA</td>
+          <td><span class="pill bad">Quantum-vulnerable</span></td><td>Guide</td></tr>
+    
+      <tr><td class="mono">src/ecdsa/keys.py:1597</td><td class="mono">ecdsa.keys.SigningKey.sign_number</td><td>ECDSA</td>
+          <td><span class="pill bad">Quantum-vulnerable</span></td><td>Guide</td></tr>
+    
+      <tr><td class="mono">src/ecdsa/keys.py:219</td><td class="mono">ecdsa.keys.VerifyingKey.from_string</td><td>ECDSA</td>
+          <td><span class="pill bad">Quantum-vulnerable</span></td><td>Guide</td></tr>
+    
+      <tr><td class="mono">src/ecdsa/keys.py:284</td><td class="mono">ecdsa.keys.VerifyingKey.from_pem</td><td>ECDSA</td>
+          <td><span class="pill bad">Quantum-vulnerable</span></td><td>Guide</td></tr>
+    
+      <tr><td class="mono">src/ecdsa/keys.py:326</td><td class="mono">ecdsa.keys.VerifyingKey.from_der</td><td>ECDSA</td>
+          <td><span class="pill bad">Quantum-vulnerable</span></td><td>Guide</td></tr>
+    
+      <tr><td class="mono">src/ecdsa/keys.py:629</td><td class="mono">ecdsa.keys.VerifyingKey.verify</td><td>ECDSA</td>
+          <td><span class="pill bad">Quantum-vulnerable</span></td><td>Guide</td></tr>
+    
+      <tr><td class="mono">src/ecdsa/keys.py:687</td><td class="mono">ecdsa.keys.VerifyingKey.verify_digest</td><td>ECDSA</td>
+          <td><span class="pill bad">Quantum-vulnerable</span></td><td>Guide</td></tr>
+    
+      <tr><td class="mono">src/ecdsa/keys.py:810</td><td class="mono">ecdsa.keys.SigningKey.generate</td><td>ECDSA</td>
+          <td><span class="pill bad">Quantum-vulnerable</span></td><td>Guide</td></tr>
+    
+      <tr><td class="mono">src/ecdsa/keys.py:885</td><td class="mono">ecdsa.keys.SigningKey.from_string</td><td>ECDSA</td>
+          <td><span class="pill bad">Quantum-vulnerable</span></td><td>Guide</td></tr>
+    
+      <tr><td class="mono">src/ecdsa/keys.py:931</td><td class="mono">ecdsa.keys.SigningKey.from_pem</td><td>ECDSA</td>
+          <td><span class="pill bad">Quantum-vulnerable</span></td><td>Guide</td></tr>
+    
+      <tr><td class="mono">src/ecdsa/keys.py:983</td><td class="mono">ecdsa.keys.SigningKey.from_der</td><td>ECDSA</td>
+          <td><span class="pill bad">Quantum-vulnerable</span></td><td>Guide</td></tr>
+    
+      <tr><td class="mono">src/ecdsa/ecdsa.py:327</td><td class="mono">hashlib.sha1</td><td>SHA1</td>
+          <td><span class="pill warn">Weak</span></td><td>Patch</td></tr>
+    
+      <tr><td class="mono">src/ecdsa/keys.py:136</td><td class="mono">hashlib.sha1</td><td>SHA1</td>
+          <td><span class="pill warn">Weak</span></td><td>Guide</td></tr>
+    
+      <tr><td class="mono">src/ecdsa/keys.py:223</td><td class="mono">hashlib.sha1</td><td>SHA1</td>
+          <td><span class="pill warn">Weak</span></td><td>Guide</td></tr>
+    
+      <tr><td class="mono">src/ecdsa/keys.py:287</td><td class="mono">hashlib.sha1</td><td>SHA1</td>
+          <td><span class="pill warn">Weak</span></td><td>Guide</td></tr>
+    
+      <tr><td class="mono">src/ecdsa/keys.py:329</td><td class="mono">hashlib.sha1</td><td>SHA1</td>
+          <td><span class="pill warn">Weak</span></td><td>Guide</td></tr>
+    
+      <tr><td class="mono">src/ecdsa/keys.py:420</td><td class="mono">hashlib.sha1</td><td>SHA1</td>
+          <td><span class="pill warn">Weak</span></td><td>Guide</td></tr>
+    
+      <tr><td class="mono">src/ecdsa/keys.py:472</td><td class="mono">hashlib.sha1</td><td>SHA1</td>
+          <td><span class="pill warn">Weak</span></td><td>Guide</td></tr>
+    
+      <tr><td class="mono">src/ecdsa/keys.py:810</td><td class="mono">hashlib.sha1</td><td>SHA1</td>
+          <td><span class="pill warn">Weak</span></td><td>Guide</td></tr>
+    
+      <tr><td class="mono">src/ecdsa/keys.py:834</td><td class="mono">hashlib.sha1</td><td>SHA1</td>
+          <td><span class="pill warn">Weak</span></td><td>Guide</td></tr>
+    
+      <tr><td class="mono">src/ecdsa/keys.py:885</td><td class="mono">hashlib.sha1</td><td>SHA1</td>
+          <td><span class="pill warn">Weak</span></td><td>Guide</td></tr>
+    
+      <tr><td class="mono">src/ecdsa/keys.py:931</td><td class="mono">hashlib.sha1</td><td>SHA1</td>
+          <td><span class="pill warn">Weak</span></td><td>Guide</td></tr>
+    
+      <tr><td class="mono">src/ecdsa/keys.py:983</td><td class="mono">hashlib.sha1</td><td>SHA1</td>
+          <td><span class="pill warn">Weak</span></td><td>Guide</td></tr>
+    
+    </tbody>
+  </table>
+  
+
+  <h2>3. Proposed changes</h2>
+  <p class="muted">Every finding that needs action has one entry: an automatic patch where the change is safe, a guided migration with example code where it is not, or a refusal with its reason.</p>
+  <p class="small">Automatic patches: 1 · Guided migrations: 26 sites in 3 guides · Refused: 8</p>
+  
+  <h3>Automatic patches</h3>
+  
+  <div class="small mono">src/ecdsa/ecdsa.py:327</div>
+  <div class="diff"><span class="del">-     return string_to_int(sha1(int_to_string(m)).digest())</span>
+<span class="add">+     return string_to_int(sha256(int_to_string(m)).digest())</span></div>
+  
+  
+  
+  <h3>Guided migrations</h3>
+  
+  <div class="guide">
+    <strong>Add ML-DSA beside the classical signature</strong> <span class="pill">Sites: 1</span>
+    <p class="small">Sign with both and verify both, so old verifiers keep working while new ones require the post-quantum signature. Replacement: ML-DSA-65 beside the classical signature.</p>
+    <pre>from cryptography.exceptions import InvalidSignature
+from cryptography.hazmat.primitives import hashes
+from cryptography.hazmat.primitives.asymmetric import ec, mldsa
+
+# Keep the classical key and add a post-quantum one. Sign with both.
+classical_key = ec.generate_private_key(ec.SECP256R1())
+pq_key = mldsa.MLDSA65PrivateKey.generate()
+
+
+def sign(message: bytes) -&gt; tuple[bytes, bytes]:
+    return (
+        classical_key.sign(message, ec.ECDSA(hashes.SHA256())),
+        pq_key.sign(message),
+    )
+
+
+def verify(message: bytes, signatures: tuple[bytes, bytes]) -&gt; None:
+    classical_sig, pq_sig = signatures
+    # Accept only if both verify; each raises InvalidSignature otherwise.
+    classical_key.public_key().verify(classical_sig, message, ec.ECDSA(hashes.SHA256()))
+    pq_key.public_key().verify(pq_sig, message)
+
+
+signatures = sign(b&#34;release-1.4.2.tar.gz&#34;)
+verify(b&#34;release-1.4.2.tar.gz&#34;, signatures)
+try:
+    verify(b&#34;tampered&#34;, signatures)
+    raise AssertionError(&#34;a tampered message must not verify&#34;)
+except InvalidSignature:
+    pass
+</pre>
+    <div class="sites">speed.py:63</div>
+    <div class="small">Sources: NIST IR 8547 (draft): Transition to Post-Quantum Cryptography Standards; NSA: Commercial National Security Algorithm Suite 2.0; NCA: National Cryptographic Standards NCS-2:2025 (consultation draft)</div>
+  </div>
+  
+  <div class="guide">
+    <strong>Move the hash to SHA-256 by hand</strong> <span class="pill">Sites: 11</span>
+    <p class="small">The value is stored, compared or sent, so switching it silently would break existing data. Migrate readers and writers together. Replacement: SHA-256.</p>
+    <pre>import hashlib
+import hmac
+
+data, key = b&#34;payload&#34;, b&#34;shared secret&#34;
+
+# Before: hashlib.sha1(data) and hmac.new(key, data, hashlib.sha1)
+digest = hashlib.sha256(data).hexdigest()
+tag = hmac.new(key, data, hashlib.sha256).hexdigest()
+
+# Stored values and peers expect the old length: migrate them together, for
+# example by writing both digests during a transition period.
+assert len(digest) == 64 and len(tag) == 64
+</pre>
+    <div class="sites">src/ecdsa/keys.py:136 · src/ecdsa/keys.py:223 · src/ecdsa/keys.py:287 · src/ecdsa/keys.py:329 · src/ecdsa/keys.py:420 · src/ecdsa/keys.py:472 · src/ecdsa/keys.py:810 · src/ecdsa/keys.py:834 · src/ecdsa/keys.py:885 · src/ecdsa/keys.py:931 · src/ecdsa/keys.py:983</div>
+    <div class="small">Sources: NIST: Transitioning away from SHA-1 for all applications; NIST SP 800-131A Rev. 2: Transitioning the Use of Cryptographic Algorithms</div>
+  </div>
+  
+  <div class="guide">
+    <strong>This code is the cryptography</strong> <span class="pill">Sites: 14</span>
+    <p class="small">The repository implements a quantum-vulnerable scheme itself. Its users can only migrate if it offers a post-quantum scheme beside it. Replacement: ML-DSA or ML-KEM offered beside the classical scheme.</p>
+    <pre>from cryptography.hazmat.primitives.asymmetric import mldsa
+
+# This project implements a classical scheme itself. Its users can only migrate if
+# it offers a post-quantum signer too. A small wrapper keeps both in one object.
+
+
+class HybridSigningKey:
+    def __init__(self, classical_key) -&gt; None:  # the library&#39;s own signing key
+        self.classical = classical_key
+        self.post_quantum = mldsa.MLDSA65PrivateKey.generate()
+
+    def sign(self, message: bytes) -&gt; tuple[bytes, bytes]:
+        return self.classical.sign(message), self.post_quantum.sign(message)
+
+
+class _Classical:  # stands in for the library&#39;s key class in this example
+    def sign(self, message: bytes) -&gt; bytes:
+        return b&#34;classical-signature&#34;
+
+
+classical_sig, pq_sig = HybridSigningKey(_Classical()).sign(b&#34;message&#34;)
+assert classical_sig and len(pq_sig) == 3309
+</pre>
+    <div class="sites">src/ecdsa/keys.py:219 · src/ecdsa/keys.py:284 · src/ecdsa/keys.py:326 · src/ecdsa/keys.py:629 · src/ecdsa/keys.py:687 · src/ecdsa/keys.py:810 · src/ecdsa/keys.py:885 · src/ecdsa/keys.py:931 · src/ecdsa/keys.py:983 · src/ecdsa/keys.py:1315 · src/ecdsa/keys.py:1378 · src/ecdsa/keys.py:1457 · and 2 more</div>
+    <div class="small">Sources: NIST IR 8547 (draft): Transition to Post-Quantum Cryptography Standards; NSA: Commercial National Security Algorithm Suite 2.0; NCA: National Cryptographic Standards NCS-2:2025 (consultation draft)</div>
+  </div>
+  
+  
+  
+  <h3>Refused, with the reason</h3>
+  <table>
+    <thead><tr><th>Where</th><th>Reason</th></tr></thead>
+    <tbody>
+    
+      <tr><td class="mono">src/ecdsa/test_keys.py:937</td><td><strong>Test or fixture.</strong> <span class="muted">Tests compare against fixed expected values. Changing the algorithm would change the answer the test checks.</span></td></tr>
+    
+      <tr><td class="mono">src/ecdsa/test_pyecdsa.py:2038</td><td><strong>Test or fixture.</strong> <span class="muted">Tests compare against fixed expected values. Changing the algorithm would change the answer the test checks.</span></td></tr>
+    
+      <tr><td class="mono">src/ecdsa/test_pyecdsa.py:2071</td><td><strong>Test or fixture.</strong> <span class="muted">Tests compare against fixed expected values. Changing the algorithm would change the answer the test checks.</span></td></tr>
+    
+      <tr><td class="mono">src/ecdsa/test_pyecdsa.py:2107</td><td><strong>Test or fixture.</strong> <span class="muted">Tests compare against fixed expected values. Changing the algorithm would change the answer the test checks.</span></td></tr>
+    
+      <tr><td class="mono">src/ecdsa/test_keys.py:878</td><td><strong>Test or fixture.</strong> <span class="muted">Tests compare against fixed expected values. Changing the algorithm would change the answer the test checks.</span></td></tr>
+    
+      <tr><td class="mono">src/ecdsa/test_pyecdsa.py:2039</td><td><strong>Test or fixture.</strong> <span class="muted">Tests compare against fixed expected values. Changing the algorithm would change the answer the test checks.</span></td></tr>
+    
+      <tr><td class="mono">src/ecdsa/test_pyecdsa.py:2072</td><td><strong>Test or fixture.</strong> <span class="muted">Tests compare against fixed expected values. Changing the algorithm would change the answer the test checks.</span></td></tr>
+    
+      <tr><td class="mono">src/ecdsa/test_pyecdsa.py:2108</td><td><strong>Test or fixture.</strong> <span class="muted">Tests compare against fixed expected values. Changing the algorithm would change the answer the test checks.</span></td></tr>
+    
+    </tbody>
+  </table>
+  
+
+  <h2>4. Published deadlines</h2>
+  
+  <table>
+    <thead><tr><th>Framework</th><th>Rule</th><th>Year</th><th>Sites</th><th>Status</th></tr></thead>
+    <tbody>
+    
+      <tr><td><strong>European Union</strong></td><td>High-risk use cases are transitioned by 31 December 2030.<div class="small">EU: Coordinated Implementation Roadmap for the Transition to Post-Quantum Cryptography</div></td>
+          <td class="num">2030</td><td class="num">15</td>
+          <td><span class="pill warn">Affected</span></td></tr>
+    
+      <tr><td><strong>NIST</strong></td><td>SHA-1 is phased out of all applications by 31 December 2030.<div class="small">NIST: Transitioning away from SHA-1 for all applications</div></td>
+          <td class="num">2030</td><td class="num">12</td>
+          <td><span class="pill warn">Affected</span></td></tr>
+    
+      <tr><td><strong>NSA CNSA 2.0</strong></td><td>Software and firmware signing uses CNSA 2.0 exclusively by 2030 (US national security systems).<div class="small">NSA: Commercial National Security Algorithm Suite 2.0</div></td>
+          <td class="num">2030</td><td class="num">15</td>
+          <td><span class="pill warn">Affected</span></td></tr>
+    
+      <tr><td><strong>UK NCSC</strong></td><td>The highest-priority migration is complete by 2031.<div class="small">UK NCSC: Timelines for migration to post-quantum cryptography</div></td>
+          <td class="num">2031</td><td class="num">15</td>
+          <td><span class="pill warn">Affected</span></td></tr>
+    
+      <tr><td><strong>US federal</strong></td><td>Federal high-value systems use post-quantum signatures by 31 December 2031.<div class="small">US Executive Order 14412: Securing the Nation Against Advanced Cryptographic Attacks</div></td>
+          <td class="num">2031</td><td class="num">15</td>
+          <td><span class="pill warn">Affected</span></td></tr>
+    
+      <tr><td><strong>NSA CNSA 2.0</strong></td><td>Custom applications and legacy equipment are updated or replaced by 2033.<div class="small">NSA: Commercial National Security Algorithm Suite 2.0</div></td>
+          <td class="num">2033</td><td class="num">15</td>
+          <td><span class="pill warn">Affected</span></td></tr>
+    
+      <tr><td><strong>European Union</strong></td><td>Medium-risk use cases are transitioned by 31 December 2035, and low-risk ones as far as feasible.<div class="small">EU: Coordinated Implementation Roadmap for the Transition to Post-Quantum Cryptography</div></td>
+          <td class="num">2035</td><td class="num">15</td>
+          <td><span class="pill warn">Affected</span></td></tr>
+    
+      <tr><td><strong>NIST</strong></td><td>RSA, ECDSA and EdDSA signatures are disallowed after 2035.<div class="small">NIST IR 8547 (draft): Transition to Post-Quantum Cryptography Standards</div></td>
+          <td class="num">2035</td><td class="num">15</td>
+          <td><span class="pill warn">Affected</span></td></tr>
+    
+      <tr><td><strong>UK NCSC</strong></td><td>All systems, services and products are migrated by 2035.<div class="small">UK NCSC: Timelines for migration to post-quantum cryptography</div></td>
+          <td class="num">2035</td><td class="num">15</td>
+          <td><span class="pill warn">Affected</span></td></tr>
+    
+    </tbody>
+  </table>
+  <p class="small">Rules that do not apply to this code: 8. Rules as published, checked 2026-09-25.</p>
+  
+
+  <h2>5. Method</h2>
+  <table>
+    <tbody>
+      <tr><td>Files read</td><td>34 Python files (20 shipped)</td></tr>
+      <tr><td>How</td><td>The code is parsed, never imported or run. Every finding cites its file and line. An asymmetric call whose algorithm cannot be seen is assumed classical and flagged for confirmation.</td></tr>
+      <tr><td>Readiness</td><td>Each finding in shipped code is classed by what quantum computing or today&#39;s cryptanalysis does to it, then held against the published milestones of NIST, NSA CNSA 2.0, the Saudi NCA, the EU, the UK NCSC and US Executive Order 14412, each with its source.</td></tr>
+      <tr><td>Agility score</td><td>29.6 of 100: how easy the algorithms are to change (score.json)</td></tr>
+      <tr><td>Versions</td><td class="mono">analyzer 0.5.0+rules.2026.11.01 · ruleset 2026.11.01</td></tr>
+    </tbody>
+  </table>
+  <p class="small">Not a cryptographic security review, and not an estimate of migration cost. Certificates, protocols, hardware and third-party services are outside what a source scan can see.</p>
+
+  <footer>Generated by Quanta from the artifacts of this scan: readiness.json, findings.json, fixes.json, score.json and meta.json.</footer>
+</main>
+</html>

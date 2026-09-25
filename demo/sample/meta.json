@@ -1,0 +1,405 @@
+{
+  "cbom_sha256": null,
+  "cbom_unlocated": 0,
+  "duration_ms": 11530,
+  "files_scanned": 34,
+  "finished_at": "2026-09-25T07:47:05.151862+00:00",
+  "phase_durations_ms": {
+    "graph": 47,
+    "parsing": 11469,
+    "scoring": 15,
+    "walking": 0
+  },
+  "provenance": {
+    "analyzer_version": "0.5.0+rules.2026.11.01",
+    "cbom_sha256": null,
+    "commit_sha": "bff40c6cf2340148d410d5b3def0e949c547caf1",
+    "crypto_ruleset_version": "2026.11.01",
+    "metric_version": "metric-v2",
+    "repo": "tlsfuzzer/python-ecdsa",
+    "weights_version": "weights-v1"
+  },
+  "sites_detected": 102,
+  "started_at": "2026-09-25T07:46:53.621243+00:00",
+  "steps": [
+    {
+      "duration_ms": 0,
+      "evidence": [
+        {
+          "label": "Scheme",
+          "ok": true,
+          "value": "https"
+        },
+        {
+          "label": "Host allowlist",
+          "ok": true,
+          "value": "github.com"
+        },
+        {
+          "label": "Userinfo / port / query",
+          "ok": true,
+          "value": "none present"
+        },
+        {
+          "label": "Owner",
+          "ok": true,
+          "value": "tlsfuzzer"
+        },
+        {
+          "label": "Repository",
+          "ok": true,
+          "value": "python-ecdsa"
+        },
+        {
+          "label": "Character class",
+          "ok": true,
+          "value": "[A-Za-z0-9._-]{1,100}"
+        },
+        {
+          "label": "Network calls so far",
+          "ok": true,
+          "value": "0 — validation precedes DNS"
+        }
+      ],
+      "id": "validate",
+      "status": "done",
+      "summary": "tlsfuzzer/python-ecdsa accepted, with no network call made",
+      "title": "Validate the URL"
+    },
+    {
+      "duration_ms": 1202,
+      "evidence": [
+        {
+          "label": "Visibility",
+          "ok": true,
+          "value": "public"
+        },
+        {
+          "label": "Default branch",
+          "ok": null,
+          "value": "master"
+        },
+        {
+          "label": "Size",
+          "ok": true,
+          "value": "1,040 KB of 5,000,000 KB limit"
+        },
+        {
+          "label": "Head commit",
+          "ok": null,
+          "value": "bff40c6cf2340148d410d5b3def0e949c547caf1"
+        },
+        {
+          "label": "Analysis pinned to",
+          "ok": true,
+          "value": "bff40c6cf234"
+        }
+      ],
+      "id": "resolve",
+      "status": "done",
+      "summary": "public, 1,040 KB, pinned to bff40c6cf234",
+      "title": "Resolve repository metadata"
+    },
+    {
+      "duration_ms": 3342,
+      "evidence": [
+        {
+          "label": "Depth",
+          "ok": true,
+          "value": "1 — no history, so no committer personal data"
+        },
+        {
+          "label": "Submodules",
+          "ok": true,
+          "value": "refused — attacker-controlled URLs are an SSRF vector"
+        },
+        {
+          "label": "Hooks",
+          "ok": true,
+          "value": "core.hooksPath points at a directory that never exists"
+        },
+        {
+          "label": "Shell",
+          "ok": true,
+          "value": "shell=False, argument vector only"
+        },
+        {
+          "label": "Timeout",
+          "ok": null,
+          "value": "180s"
+        },
+        {
+          "label": "Checked-out HEAD",
+          "ok": true,
+          "value": "bff40c6cf234 matches resolved SHA"
+        }
+      ],
+      "id": "clone",
+      "status": "done",
+      "summary": "shallow clone at bff40c6cf234 in 3342 ms",
+      "title": "Clone at a pinned commit"
+    },
+    {
+      "duration_ms": 0,
+      "evidence": [
+        {
+          "label": "Python files considered",
+          "ok": null,
+          "value": "34"
+        },
+        {
+          "label": "Accepted for analysis",
+          "ok": null,
+          "value": "34"
+        },
+        {
+          "label": "Symlinks skipped",
+          "ok": true,
+          "value": "0"
+        },
+        {
+          "label": "Directories pruned",
+          "ok": null,
+          "value": "1 (denylist, symlinks)"
+        },
+        {
+          "label": "Total bytes",
+          "ok": null,
+          "value": "668,177 of 500,000,000"
+        },
+        {
+          "label": "Containment",
+          "ok": true,
+          "value": "every path re-checked under the clone root"
+        },
+        {
+          "label": "Budgets",
+          "ok": true,
+          "value": "none exceeded"
+        }
+      ],
+      "id": "walk",
+      "status": "done",
+      "summary": "34 Python files accepted",
+      "title": "Walk the source tree"
+    },
+    {
+      "duration_ms": 11469,
+      "evidence": [
+        {
+          "label": "Execution",
+          "ok": true,
+          "value": "parsed only, never imported, never executed"
+        },
+        {
+          "label": "Files parsed",
+          "ok": null,
+          "value": "34 (20 shipped)"
+        },
+        {
+          "label": "Read, not parsed",
+          "ok": null,
+          "value": "5 test or docs files that name no crypto library"
+        },
+        {
+          "label": "Crypto sites",
+          "ok": null,
+          "value": "102"
+        },
+        {
+          "label": "Sites by file role",
+          "ok": null,
+          "value": "source 40, test 62"
+        },
+        {
+          "label": "Algorithm literals",
+          "ok": null,
+          "value": "4"
+        },
+        {
+          "label": "Configuration reads",
+          "ok": null,
+          "value": "0"
+        },
+        {
+          "label": "Crypto library calls recognised",
+          "ok": true,
+          "value": "13 of 13 (100%)"
+        },
+        {
+          "label": "Ruleset version",
+          "ok": null,
+          "value": "2026.11.01"
+        },
+        {
+          "label": "Weak primitives",
+          "ok": false,
+          "value": "20 (MD5/SHA1/3DES/RC4)"
+        },
+        {
+          "label": "Quantum-vulnerable",
+          "ok": false,
+          "value": "15 sites"
+        }
+      ],
+      "id": "parse",
+      "status": "done",
+      "summary": "102 cryptographic sites detected",
+      "title": "Parse and detect crypto"
+    },
+    {
+      "duration_ms": 47,
+      "evidence": [
+        {
+          "label": "Nodes",
+          "ok": null,
+          "value": "1,039 — algo_literal 4, crypto_call 102, function 899, module 34"
+        },
+        {
+          "label": "Edges",
+          "ok": null,
+          "value": "1,681 — binding 1005, call 651, import 21, value_flow 4"
+        },
+        {
+          "label": "Low-confidence edges",
+          "ok": true,
+          "value": "651 (every 'call' edge, by rule)"
+        },
+        {
+          "label": "Callees resolved",
+          "ok": null,
+          "value": "953 of 4,911"
+        },
+        {
+          "label": "Callees dropped, not guessed",
+          "ok": true,
+          "value": "48 ambiguous, 3,910 unresolvable"
+        },
+        {
+          "label": "Imports",
+          "ok": null,
+          "value": "21 internal, 417 external"
+        }
+      ],
+      "id": "graph",
+      "status": "done",
+      "summary": "1,039 nodes, 1,681 edges",
+      "title": "Build the dependency graph"
+    },
+    {
+      "duration_ms": 15,
+      "evidence": [
+        {
+          "label": "Metric",
+          "ok": true,
+          "value": "metric-v2, weights weights-v1"
+        },
+        {
+          "label": "call_sites",
+          "ok": null,
+          "value": "raw 26 -> 1 / (1 + log10(1 + n)) -> 0.41 x 0.30 = 12.34"
+        },
+        {
+          "label": "isolation_layer",
+          "ok": null,
+          "value": "raw 3.634409 -> sum over crypto modules of (n_m / n)^2 -> 0.28 x 0.30 = 8.25"
+        },
+        {
+          "label": "selection_source",
+          "ok": null,
+          "value": "raw configured_share -> configured / (configured + literal) -> 0.00 x 0.20 = 0.00"
+        },
+        {
+          "label": "propagation_depth",
+          "ok": null,
+          "value": "raw 11 -> 1 - (|C| + |D|) / |M| -> 0.45 x 0.20 = 9.00"
+        },
+        {
+          "label": "Result",
+          "ok": null,
+          "value": "Agility Score 29.6 / 100"
+        },
+        {
+          "label": "-17.66 call_sites",
+          "ok": false,
+          "value": "26 cryptographic touchpoints in shipped code must each be edited to change an algorithm. [speed.py:63, src/ecdsa/_sha3.py:8, src/ecdsa/_sha3.py:11]"
+        },
+        {
+          "label": "-21.75 isolation_layer",
+          "ok": false,
+          "value": "Cryptography is spread over 7 modules (effective number 3.6). 15 of 26 touchpoints are outside src.ecdsa.keys. [speed.py:63, src/ecdsa/_sha3.py:8, src/ecdsa/_sha3.py:11]"
+        },
+        {
+          "label": "-20.00 selection_source",
+          "ok": false,
+          "value": "19 of 19 algorithm choices are fixed in code. [speed.py:63, src/ecdsa/_sha3.py:8, src/ecdsa/_sha3.py:11]"
+        },
+        {
+          "label": "-11.00 propagation_depth",
+          "ok": false,
+          "value": "11 of 20 shipped modules contain cryptography or call a module that does. [src/ecdsa/curves.py:4, src/ecdsa/curves.py:72, src/ecdsa/curves.py:137]"
+        }
+      ],
+      "id": "score",
+      "status": "done",
+      "summary": "Agility Score 29.6 / 100",
+      "title": "Compute the Agility Score"
+    },
+    {
+      "duration_ms": 6922,
+      "evidence": [
+        {
+          "label": "Report size",
+          "ok": null,
+          "value": "26,063 bytes"
+        },
+        {
+          "label": "External requests",
+          "ok": true,
+          "value": "0 — inline SVG and inline CSS"
+        },
+        {
+          "label": "Opens from",
+          "ok": true,
+          "value": "file:// with no server and no network"
+        },
+        {
+          "label": "Artifacts",
+          "ok": null,
+          "value": "cdg.json, score.json, meta.json, report.html"
+        }
+      ],
+      "id": "render",
+      "status": "done",
+      "summary": "report.html rendered, self-contained",
+      "title": "Render artifacts"
+    },
+    {
+      "duration_ms": 0,
+      "evidence": [
+        {
+          "label": "Clone directory",
+          "ok": true,
+          "value": "removed"
+        },
+        {
+          "label": "Source retained",
+          "ok": true,
+          "value": "only bounded files with reviewable fix proposals"
+        },
+        {
+          "label": "Applies to",
+          "ok": true,
+          "value": "success, failure and timeout paths alike"
+        }
+      ],
+      "id": "cleanup",
+      "status": "done",
+      "summary": "working copy deleted",
+      "title": "Delete the working copy"
+    }
+  ],
+  "truncation": null,
+  "truncations": [],
+  "unparseable": []
+}

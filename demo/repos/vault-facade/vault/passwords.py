@@ -1,11 +1,19 @@
-"""Password stretching. Reaches the KDF through the insulation layer."""
+"""Password stretching. Calls the KDF directly."""
 
-from vault import cryptobox
+from cryptography.hazmat.primitives import hashes
+from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
+from vault import _crypto_facade
+
+ITERATIONS = 600_000
 
 
 def stretch(password: bytes, salt: bytes) -> bytes:
-    key, _fingerprint = cryptobox.derive_key(password, salt)
-    return key
+    kdf = _crypto_facade.pbkdf2_pbkdf2hmac_sha2_256(
+        length=32,
+        salt=salt,
+        iterations=ITERATIONS,
+    )
+    return kdf.derive(password)
 
 
 def verify(password: bytes, salt: bytes, expected: bytes) -> bool:
