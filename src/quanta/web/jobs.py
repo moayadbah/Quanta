@@ -19,7 +19,7 @@ from quanta.core.models import Provenance, StepRecord
 from quanta.errors import Reject
 from quanta.version import CRYPTO_RULESET_VERSION, analyzer_version
 from quanta.web.db import Database, event, timestamp
-from quanta.web.store import ARTIFACT_NAMES, ArtifactStore
+from quanta.web.store import ARTIFACT_NAMES, ArtifactStore, DatabaseArtifactStore
 
 JobStatus = Literal["queued", "running", "succeeded", "failed", "timeout"]
 TERMINAL_STATUSES = frozenset({"succeeded", "failed", "timeout"})
@@ -277,12 +277,17 @@ class JobRegistry:
     def adopt_cached(self, job: Job) -> None:
         """Persist a demo replay using the same artifact boundary as live jobs."""
         destination = self.store.directory(job.id)
-        if job.artifact_dir and job.artifact_dir.resolve() != destination:
-            for name in ARTIFACT_NAMES:
-                source = job.artifact_dir / name
-                if source.is_file():
-                    self.store.put(job.id, name, source.read_bytes())
+        sources = (
+            [
+                job.artifact_dir / n
+                for n in sorted(ARTIFACT_NAMES)
+                if (job.artifact_dir / n).is_file()
+            ]
+            if job.artifact_dir and job.artifact_dir.resolve() != destination
+            else []
+        )
         owner, name = parse_repo_url(job.repo_url)
+        # The job row comes first: database-stored artifacts reference it.
         with self.db.connect(write=True) as conn:
             conn.execute(
                 "INSERT INTO jobs(id,repo_owner,repo_name,commit_sha,analyzer_version,status,"
@@ -302,6 +307,12 @@ class JobRegistry:
             )
             for record in job.events:
                 event(conn, job.id, record.event, record.data)
+            if isinstance(self.store, DatabaseArtifactStore):
+                for source in sources:
+                    self.store.put_in_transaction(conn, job.id, source.name, source.read_bytes())
+        if not isinstance(self.store, DatabaseArtifactStore):
+            for source in sources:
+                self.store.put(job.id, source.name, source.read_bytes())
         job.artifact_dir = destination
 
     def heartbeat_age(self) -> float | None:

@@ -346,3 +346,16 @@ def test_sample_replays_share_one_stored_job(registry: JobRegistry) -> None:
         assert first == second
         events = client.get(f"/api/v1/analyses/{second}/events")
         assert events.status_code == 200 and "event: done" in events.text
+
+
+def test_sample_replay_works_with_database_stored_artifacts(tmp_path: Path) -> None:
+    """Hosted artifacts live in the database and reference their job: the row comes first."""
+    from quanta.web import sample
+    from quanta.web.store import DatabaseArtifactStore
+
+    registry = JobRegistry(tmp_path / "artifacts")
+    registry.store = DatabaseArtifactStore(tmp_path / "artifacts", registry.db)
+    job = sample.start_replay(registry)
+    assert registry.store.complete(job.id)
+    assert b'"findings"' in registry.store.open(job.id, "findings.json")
+    assert sample.start_replay(registry).id == job.id
