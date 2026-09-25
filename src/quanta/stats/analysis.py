@@ -139,9 +139,15 @@ def bootstrap(
 
 
 def load_scores(directory: Path) -> list[ScoreReport]:
+    # Weight sensitivity only makes sense over scored repositories; a refused or
+    # not-detected analysis has no score to perturb (Master Plan 8.2).
     scores = [
-        ScoreReport.model_validate_json(p.read_text())
-        for p in sorted(directory.rglob("score.json"))
+        report
+        for report in (
+            ScoreReport.model_validate_json(p.read_text())
+            for p in sorted(directory.rglob("score.json"))
+        )
+        if report.status == "scored"
     ]
     if len(scores) < 2:
         raise Reject("BENCHMARK_INVALID", "at least two repository scores are required")
@@ -165,7 +171,9 @@ def sensitivity(scores: list[ScoreReport], delta: float = 0.30) -> dict[str, Any
     weights = [scores[0].factors[k].weight for k in FACTORS]
     if any([s.factors[k].weight for k in FACTORS] != weights for s in scores):
         raise Reject("BENCHMARK_INVALID", "all scores must use identical pre-registered weights")
-    baseline = [s.agility_score for s in scores]
+    baseline = [s.agility_score for s in scores if s.agility_score is not None]
+    if len(baseline) != len(scores):
+        raise Reject("BENCHMARK_INVALID", "sensitivity needs scored repositories only")
     cases = []
     for index, factor in enumerate(FACTORS):
         for direction in (-1, 1):

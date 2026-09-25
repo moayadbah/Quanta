@@ -2,11 +2,16 @@
 
     uv run python scripts/build_demo_corpus.py
 
-Each entry is a real public repository analysed at whatever commit is current when this
-runs, then committed. The pinned SHA travels in every artifact's provenance, so a cached
-example is reproducible: anyone can clone at that SHA and re-derive the same numbers.
+Each entry is a real public repository analysed through the product's own pipeline
+(validate, resolve, clone, walk, parse, graph, score, render, cleanup) at whatever commit
+is the branch head when this runs. The resolved SHA travels in every artifact's
+provenance and in ``example.json``, so anyone can clone at that SHA and re-derive the
+same numbers.
 
-Not part of the shipped CLI surface (§9.3) — this is a maintenance script, run rarely.
+Titles and descriptions are not stored here: every visible string lives in
+``content/site.json`` under ``examples.<slug>``.
+
+Not part of the shipped CLI surface (§9.3). This is a maintenance script, run rarely.
 """
 
 from __future__ import annotations
@@ -19,77 +24,51 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from quanta.core.analyze import analyze_repository, write_artifacts
-from quanta.core.models import StepRecord
 
 CORPUS = Path(__file__).resolve().parents[1] / "demo" / "corpus"
 
-#: Chosen for contrast across the score's range, not for flattering results.
+#: Chosen to show every kind of answer, not flattering ones: a scored library, a
+#: library where the hash fix is refused because MD5 is part of a protocol, a library
+#: whose score is withheld, and a project with no cryptography at all.
 ENTRIES = [
-    {
-        "slug": "pyjwt",
-        "url": "https://github.com/jpadilla/pyjwt",
-        "title": "PyJWT",
-        "blurb": "JSON Web Token library. Cryptography reached directly from many modules.",
-        "blurb_ar": "مكتبة JSON Web Token، ويُستدعى فيها التشفير مباشرةً من وحدات كثيرة.",
-    },
-    {
-        "slug": "python-jose",
-        "url": "https://github.com/mpdavis/python-jose",
-        "title": "python-jose",
-        "blurb": "JOSE implementation. Fewer sites, but still no common wrapper.",
-        "blurb_ar": "تطبيق لمعيار JOSE، مواقع استدعائه أقل لكنه يفتقر إلى غلاف جامع.",
-    },
-    {
-        "slug": "click",
-        "url": "https://github.com/pallets/click",
-        "title": "Click",
-        "blurb": "CLI toolkit with no cryptography at all — the correct answer is 100.",
-        "blurb_ar": "أدوات لسطر الأوامر بلا تشفير إطلاقًا، والإجابة الصحيحة هنا 100.",
-    },
+    ("pyjwt", "https://github.com/jpadilla/pyjwt"),
+    ("requests", "https://github.com/psf/requests"),
+    ("python-jose", "https://github.com/mpdavis/python-jose"),
+    ("click", "https://github.com/pallets/click"),
 ]
 
 
-def build(entry: dict[str, str]) -> None:
-    target = CORPUS / entry["slug"]
-    print(f"  analysing {entry['url']} ...", flush=True)
-
-    outcome = analyze_repository(entry["url"])
-
+def build(slug: str, url: str) -> None:
+    target = CORPUS / slug
+    print(f"  analysing {url} ...", flush=True)
+    outcome = analyze_repository(url)
     if target.exists():
         shutil.rmtree(target)
     target.mkdir(parents=True)
     write_artifacts(outcome, target)
-
-    steps: list[StepRecord] = list(outcome.meta.steps)
+    score = outcome.score
     manifest = {
-        "title": entry["title"],
-        "blurb": entry["blurb"],
-        "blurb_ar": entry["blurb_ar"],
+        "repo": score.provenance.repo,
+        "commit_sha": score.provenance.commit_sha,
+        "status": score.status,
+        "agility_score": score.agility_score,
         "sites": len(outcome.detection.crypto_calls),
-        "repo": outcome.score.provenance.repo,
-        "commit_sha": outcome.score.provenance.commit_sha,
-        "agility_score": outcome.score.agility_score,
-        "steps": len(steps),
+        "findings": len(outcome.findings),
+        "proposals": sum(len(f.changes) for f in outcome.fixes.files),
+        "refusals": len(outcome.fixes.skipped),
+        "steps": len(outcome.meta.steps),
     }
     (target / "example.json").write_text(
-        json.dumps(manifest, indent=2, sort_keys=True, ensure_ascii=False) + "\n",
-        encoding="utf-8",
+        json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8", newline="\n"
     )
-
-    print(
-        f"    {outcome.score.provenance.repo} @ {outcome.score.provenance.commit_sha[:12]}"
-        f"  score {outcome.score.agility_score:.1f}"
-        f"  sites {len(outcome.detection.crypto_calls)}"
-        f"  steps {len(steps)}",
-        flush=True,
-    )
+    print(f"    {json.dumps(manifest, sort_keys=True)}", flush=True)
 
 
 def main() -> int:
     CORPUS.mkdir(parents=True, exist_ok=True)
     print("Building demo corpus")
     for entry in ENTRIES:
-        build(entry)
+        build(*entry)
     print("Done.")
     return 0
 

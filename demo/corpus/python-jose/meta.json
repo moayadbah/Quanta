@@ -1,21 +1,26 @@
 {
-  "duration_ms": 8864,
+  "cbom_sha256": null,
+  "cbom_unlocated": 0,
+  "duration_ms": 6843,
   "files_scanned": 38,
-  "finished_at": "2026-08-08T05:03:49.152010+00:00",
+  "finished_at": "2026-09-24T22:26:20.962399+00:00",
   "phase_durations_ms": {
-    "graph": 8,
-    "parsing": 8752,
-    "scoring": 87,
-    "walking": 13
+    "graph": 0,
+    "parsing": 6828,
+    "scoring": 0,
+    "walking": 15
   },
   "provenance": {
-    "analyzer_version": "0.1.0+rules.2026.08.01",
+    "analyzer_version": "0.5.0+rules.2026.11.01",
+    "cbom_sha256": null,
     "commit_sha": "018b310ddb8b50dcfd09a0c152117835a21dd656",
-    "crypto_ruleset_version": "2026.08.01",
-    "repo": "mpdavis/python-jose"
+    "crypto_ruleset_version": "2026.11.01",
+    "metric_version": "metric-v2",
+    "repo": "mpdavis/python-jose",
+    "weights_version": "weights-v1"
   },
-  "sites_detected": 10,
-  "started_at": "2026-08-08T05:03:40.287754+00:00",
+  "sites_detected": 222,
+  "started_at": "2026-09-24T22:26:14.118411+00:00",
   "steps": [
     {
       "duration_ms": 0,
@@ -62,7 +67,7 @@
       "title": "Validate the URL"
     },
     {
-      "duration_ms": 742,
+      "duration_ms": 1750,
       "evidence": [
         {
           "label": "Visibility",
@@ -76,8 +81,8 @@
         },
         {
           "label": "Size",
-          "ok": true,
-          "value": "635 KB of 200,000 KB limit"
+          "ok": null,
+          "value": "not reported; resolved over git, bounded by the clone budgets"
         },
         {
           "label": "Head commit",
@@ -92,11 +97,11 @@
       ],
       "id": "resolve",
       "status": "done",
-      "summary": "public, 635 KB, pinned to 018b310ddb8b",
+      "summary": "public, 0 KB, pinned to 018b310ddb8b",
       "title": "Resolve repository metadata"
     },
     {
-      "duration_ms": 1318,
+      "duration_ms": 2422,
       "evidence": [
         {
           "label": "Depth",
@@ -111,7 +116,7 @@
         {
           "label": "Hooks",
           "ok": true,
-          "value": "core.hooksPath=/dev/null"
+          "value": "core.hooksPath points at a directory that never exists"
         },
         {
           "label": "Shell",
@@ -131,11 +136,11 @@
       ],
       "id": "clone",
       "status": "done",
-      "summary": "shallow clone at 018b310ddb8b in 1318 ms",
+      "summary": "shallow clone at 018b310ddb8b in 2422 ms",
       "title": "Clone at a pinned commit"
     },
     {
-      "duration_ms": 13,
+      "duration_ms": 15,
       "evidence": [
         {
           "label": "Python files considered",
@@ -179,27 +184,32 @@
       "title": "Walk the source tree"
     },
     {
-      "duration_ms": 8752,
+      "duration_ms": 6828,
       "evidence": [
         {
           "label": "Execution",
           "ok": true,
-          "value": "parsed only — never imported, never executed"
+          "value": "parsed only, never imported, never executed"
         },
         {
           "label": "Files parsed",
           "ok": null,
-          "value": "38"
+          "value": "38 (16 shipped)"
         },
         {
-          "label": "Crypto call sites",
+          "label": "Crypto sites",
           "ok": null,
-          "value": "10"
+          "value": "222"
+        },
+        {
+          "label": "Sites by file role",
+          "ok": null,
+          "value": "source 62, test 160"
         },
         {
           "label": "Algorithm literals",
           "ok": null,
-          "value": "4"
+          "value": "53"
         },
         {
           "label": "Configuration reads",
@@ -207,28 +217,38 @@
           "value": "0"
         },
         {
+          "label": "Crypto library calls recognised",
+          "ok": false,
+          "value": "52 of 161 (32%)"
+        },
+        {
           "label": "Ruleset version",
           "ok": null,
-          "value": "2026.08.01"
+          "value": "2026.11.01"
+        },
+        {
+          "label": "Quantum-vulnerable",
+          "ok": false,
+          "value": "34 sites"
         }
       ],
       "id": "parse",
       "status": "done",
-      "summary": "10 cryptographic call sites detected",
+      "summary": "222 cryptographic sites detected",
       "title": "Parse and detect crypto"
     },
     {
-      "duration_ms": 10,
+      "duration_ms": 0,
       "evidence": [
         {
           "label": "Nodes",
           "ok": null,
-          "value": "407 — algo_literal 4, crypto_call 10, function 355, module 38"
+          "value": "668 — algo_literal 53, crypto_call 222, function 355, module 38"
         },
         {
           "label": "Edges",
           "ok": null,
-          "value": "731 — binding 369, call 341, import 17, value_flow 4"
+          "value": "1,007 — binding 630, call 341, import 17, value_flow 19"
         },
         {
           "label": "Low-confidence edges",
@@ -238,12 +258,12 @@
         {
           "label": "Callees resolved",
           "ok": null,
-          "value": "412 of 1,738"
+          "value": "412 of 1,730"
         },
         {
           "label": "Callees dropped, not guessed",
           "ok": true,
-          "value": "2 ambiguous, 1,324 unresolvable"
+          "value": "2 ambiguous, 1,316 unresolvable"
         },
         {
           "label": "Imports",
@@ -253,75 +273,40 @@
       ],
       "id": "graph",
       "status": "done",
-      "summary": "407 nodes, 731 edges",
+      "summary": "668 nodes, 1,007 edges",
       "title": "Build the dependency graph"
     },
     {
-      "duration_ms": 87,
+      "duration_ms": 0,
       "evidence": [
         {
-          "label": "Weights",
+          "label": "Metric",
           "ok": true,
-          "value": "weights-v1, pre-registered and git-tagged"
+          "value": "metric-v2, weights weights-v1"
         },
         {
-          "label": "call_sites",
-          "ok": null,
-          "value": "raw 10 -> 1 / (1 + log10(1 + n)) -> 0.49 x 0.30 = 14.70"
-        },
-        {
-          "label": "isolation_layer",
-          "ok": null,
-          "value": "raw False -> 1 / (1 + minimum node cut) -> 0.12 x 0.30 = 3.75"
-        },
-        {
-          "label": "selection_source",
-          "ok": null,
-          "value": "raw hardcoded -> config reads / (config reads + literals) -> 0.00 x 0.20 = 0.00"
-        },
-        {
-          "label": "propagation_depth",
-          "ok": null,
-          "value": "raw 15 -> 1 - (ancestors / modules), clamped -> 0.61 x 0.20 = 12.11"
-        },
-        {
-          "label": "Agility Score",
-          "ok": null,
-          "value": "30.6 / 100"
-        },
-        {
-          "label": "-15.30 call_sites",
+          "label": "Refused",
           "ok": false,
-          "value": "10 cryptographic call sites must each be edited to change algorithm [jose/backends/cryptography_backend.py:462, jose/backends/cryptography_backend.py:467, jose/backends/cryptography_backend.py:486]"
+          "value": "LOW_DETECTION_COVERAGE: Quanta recognised 52 of 161 calls into cryptography libraries. Below 60%, the score would describe a small part of the code."
         },
         {
-          "label": "-26.25 isolation_layer",
-          "ok": false,
-          "value": "Crypto APIs invoked directly from 3 modules with no common wrapper; 7 nodes must be cut to decouple cryptography [jose/backends/cryptography_backend.py:462, jose/backends/cryptography_backend.py:467, jose/backends/cryptography_backend.py:486]"
-        },
-        {
-          "label": "-20.00 selection_source",
-          "ok": false,
-          "value": "4 algorithm selections are hard-coded rather than read from configuration [jose/backends/cryptography_backend.py:467, jose/backends/cryptography_backend.py:493, tests/algorithms/test_EC.py:238]"
-        },
-        {
-          "label": "-7.89 propagation_depth",
-          "ok": false,
-          "value": "15 graph nodes can reach cryptography, so a change propagates well beyond the call sites themselves [jose/backends/cryptography_backend.py:467, jose/backends/cryptography_backend.py:493, jose/backends/cryptography_backend.py:462]"
+          "label": "Result",
+          "ok": null,
+          "value": "No score: LOW_DETECTION_COVERAGE"
         }
       ],
       "id": "score",
       "status": "done",
-      "summary": "Agility Score 30.6 / 100",
+      "summary": "No score: LOW_DETECTION_COVERAGE",
       "title": "Compute the Agility Score"
     },
     {
-      "duration_ms": 28,
+      "duration_ms": 46,
       "evidence": [
         {
           "label": "Report size",
           "ok": null,
-          "value": "38,535 bytes"
+          "value": "39,247 bytes"
         },
         {
           "label": "External requests",
@@ -355,7 +340,7 @@
         {
           "label": "Source retained",
           "ok": true,
-          "value": "none — nothing untrusted is kept"
+          "value": "only bounded files with reviewable fix proposals"
         },
         {
           "label": "Applies to",
@@ -370,5 +355,6 @@
     }
   ],
   "truncation": null,
+  "truncations": [],
   "unparseable": []
 }

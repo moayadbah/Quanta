@@ -1,0 +1,285 @@
+{
+  "actions": [
+    {
+      "by": 2030,
+      "citations": [
+        "jose/backends/rsa_backend.py:275",
+        "jose/backends/rsa_backend.py:280"
+      ],
+      "id": "hybrid_key_exchange",
+      "priority": 2,
+      "sites": 2,
+      "sources": [
+        "nist-ir-8547",
+        "eu-pqc-roadmap",
+        "nca-ncs-2-2025"
+      ]
+    },
+    {
+      "by": 2030,
+      "citations": [
+        "jose/backends/cryptography_backend.py:102",
+        "jose/backends/cryptography_backend.py:104",
+        "jose/backends/cryptography_backend.py:106",
+        "jose/backends/cryptography_backend.py:139",
+        "jose/backends/cryptography_backend.py:145",
+        "jose/backends/cryptography_backend.py:250",
+        "jose/backends/cryptography_backend.py:252",
+        "jose/backends/cryptography_backend.py:265",
+        "jose/backends/cryptography_backend.py:268",
+        "jose/backends/cryptography_backend.py:291",
+        "jose/backends/cryptography_backend.py:292",
+        "jose/backends/cryptography_backend.py:293",
+        "jose/backends/cryptography_backend.py:294",
+        "jose/backends/cryptography_backend.py:296",
+        "jose/backends/cryptography_backend.py:298",
+        "jose/backends/cryptography_backend.py:301",
+        "jose/backends/cryptography_backend.py:306",
+        "jose/backends/cryptography_backend.py:380",
+        "jose/backends/cryptography_backend.py:388",
+        "jose/backends/cryptography_backend.py:582",
+        "jose/backends/cryptography_backend.py:72",
+        "jose/backends/cryptography_backend.py:74",
+        "jose/backends/cryptography_backend.py:98",
+        "jose/backends/ecdsa_backend.py:105",
+        "jose/backends/ecdsa_backend.py:65",
+        "jose/backends/ecdsa_backend.py:67",
+        "jose/backends/ecdsa_backend.py:99",
+        "jose/backends/rsa_backend.py:152",
+        "jose/backends/rsa_backend.py:158",
+        "jose/backends/rsa_backend.py:169",
+        "jose/backends/rsa_backend.py:204",
+        "jose/backends/rsa_backend.py:210"
+      ],
+      "id": "pq_signatures",
+      "priority": 3,
+      "sites": 32,
+      "sources": [
+        "nist-ir-8547",
+        "nsa-cnsa-2",
+        "uk-ncsc-pqc"
+      ]
+    },
+    {
+      "by": null,
+      "citations": [
+        "jose/backends/cryptography_backend.py:139",
+        "jose/backends/cryptography_backend.py:145",
+        "jose/backends/cryptography_backend.py:250",
+        "jose/backends/cryptography_backend.py:252",
+        "jose/backends/cryptography_backend.py:301",
+        "jose/backends/cryptography_backend.py:306",
+        "jose/backends/cryptography_backend.py:380",
+        "jose/backends/cryptography_backend.py:388",
+        "jose/backends/cryptography_backend.py:582",
+        "jose/backends/cryptography_backend.py:72",
+        "jose/backends/cryptography_backend.py:74"
+      ],
+      "id": "confirm_algorithms",
+      "priority": 6,
+      "sites": 11,
+      "sources": [
+        "nist-ir-8547"
+      ]
+    }
+  ],
+  "checked": "2026-09-24",
+  "counts": {
+    "key_exchange": 2,
+    "pq": 0,
+    "review": 12,
+    "safe": 27,
+    "signature": 32,
+    "sites": 62,
+    "tls": 0,
+    "vulnerable": 23,
+    "weak": 0
+  },
+  "earliest_milestone": "eu-high-risk",
+  "earliest_year": 2030,
+  "frameworks": [
+    "nist",
+    "nsa",
+    "nca",
+    "eu",
+    "uk",
+    "us"
+  ],
+  "milestones": [
+    {
+      "framework": "nist",
+      "id": "nist-kex-deprecated",
+      "rule": "deprecated",
+      "sites": 2,
+      "source": "nist-ir-8547",
+      "state": "due",
+      "year": 2030
+    },
+    {
+      "framework": "nist",
+      "id": "nist-kex-disallowed",
+      "rule": "disallowed",
+      "sites": 2,
+      "source": "nist-ir-8547",
+      "state": "due",
+      "year": 2035
+    },
+    {
+      "framework": "nist",
+      "id": "nist-sig-deprecated",
+      "rule": "deprecated",
+      "sites": 32,
+      "source": "nist-ir-8547",
+      "state": "due",
+      "year": 2030
+    },
+    {
+      "framework": "nist",
+      "id": "nist-sig-disallowed",
+      "rule": "disallowed",
+      "sites": 32,
+      "source": "nist-ir-8547",
+      "state": "due",
+      "year": 2035
+    },
+    {
+      "framework": "nist",
+      "id": "nist-sha1",
+      "rule": "retired",
+      "sites": 0,
+      "source": "nist-sha1-retirement",
+      "state": "clear",
+      "year": 2030
+    },
+    {
+      "framework": "nist",
+      "id": "nist-md5",
+      "rule": "not_approved",
+      "sites": 0,
+      "source": "nist-sp-800-131a-r2",
+      "state": "clear",
+      "year": 2019
+    },
+    {
+      "framework": "nist",
+      "id": "nist-tdea",
+      "rule": "disallowed",
+      "sites": 0,
+      "source": "nist-sp-800-131a-r2",
+      "state": "clear",
+      "year": 2023
+    },
+    {
+      "framework": "nsa",
+      "id": "nsa-signing",
+      "rule": "exclusive",
+      "sites": 32,
+      "source": "nsa-cnsa-2",
+      "state": "due",
+      "year": 2030
+    },
+    {
+      "framework": "nsa",
+      "id": "nsa-web",
+      "rule": "exclusive",
+      "sites": 2,
+      "source": "nsa-cnsa-2",
+      "state": "due",
+      "year": 2033
+    },
+    {
+      "framework": "nsa",
+      "id": "nsa-custom",
+      "rule": "replace",
+      "sites": 34,
+      "source": "nsa-cnsa-2",
+      "state": "due",
+      "year": 2033
+    },
+    {
+      "framework": "eu",
+      "id": "eu-first-steps",
+      "rule": "first_steps",
+      "sites": 0,
+      "source": "eu-pqc-roadmap",
+      "state": "met",
+      "year": 2026
+    },
+    {
+      "framework": "eu",
+      "id": "eu-high-risk",
+      "rule": "high_risk",
+      "sites": 34,
+      "source": "eu-pqc-roadmap",
+      "state": "due",
+      "year": 2030
+    },
+    {
+      "framework": "eu",
+      "id": "eu-full",
+      "rule": "full",
+      "sites": 34,
+      "source": "eu-pqc-roadmap",
+      "state": "due",
+      "year": 2035
+    },
+    {
+      "framework": "uk",
+      "id": "uk-discovery",
+      "rule": "discovery",
+      "sites": 0,
+      "source": "uk-ncsc-pqc",
+      "state": "met",
+      "year": 2028
+    },
+    {
+      "framework": "uk",
+      "id": "uk-priority",
+      "rule": "priority",
+      "sites": 34,
+      "source": "uk-ncsc-pqc",
+      "state": "due",
+      "year": 2031
+    },
+    {
+      "framework": "uk",
+      "id": "uk-complete",
+      "rule": "complete",
+      "sites": 34,
+      "source": "uk-ncsc-pqc",
+      "state": "due",
+      "year": 2035
+    },
+    {
+      "framework": "us",
+      "id": "us-kex",
+      "rule": "federal",
+      "sites": 2,
+      "source": "us-eo-14412",
+      "state": "due",
+      "year": 2030
+    },
+    {
+      "framework": "us",
+      "id": "us-sig",
+      "rule": "federal",
+      "sites": 32,
+      "source": "us-eo-14412",
+      "state": "due",
+      "year": 2031
+    },
+    {
+      "framework": "nca",
+      "id": "nca-hybrid",
+      "rule": "hybrid_required",
+      "sites": 0,
+      "source": "nca-ncs-2-2025",
+      "state": "clear",
+      "year": null
+    }
+  ],
+  "overdue": [],
+  "reference_year": 2026,
+  "verdict": "at_risk",
+  "version": 1
+}

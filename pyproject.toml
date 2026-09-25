@@ -1,6 +1,6 @@
 [project]
 name = "quanta"
-version = "0.3.0"
+version = "0.5.0"
 description = "Cryptographic agility measurement and assisted post-quantum migration for Python repositories"
 readme = "README.md"
 requires-python = ">=3.12"
@@ -22,6 +22,8 @@ dependencies = [
   "structlog>=24.1",
   "psycopg[binary]>=3.2,<4",
   "vercel>=0.10.0",
+  # Report export (round five): pure Python, so it runs in a serverless function.
+  "fpdf2>=2.8,<3",
 ]
 
 [project.optional-dependencies]
@@ -35,6 +37,8 @@ research = [
   "pandas>=2.2",
   "PyGithub>=2.3",
 ]
+# Plan 7.3: resolve every ruleset-v2 name against the real libraries.
+rulecheck = ["pycryptodome","pycryptodomex","pynacl","pyjwt","python-jose","bcrypt","passlib","argon2-cffi","werkzeug","django","itsdangerous","jwcrypto","authlib","pyopenssl","paramiko","ecdsa","coincurve","eth-keys","eth-account","pyotp","grpcio","rsa","truststore"]
 dev = ["ruff>=0.5", "mypy>=1.10", "pytest-cov>=5", "pytest>=8", "hypothesis>=6.100"]
 
 [project.scripts]
@@ -80,6 +84,8 @@ ignore = [
 # LibCST dispatches on method names of the form visit_<NodeType>/leave_<NodeType>. N802
 # (lowercase function names) cannot be satisfied without breaking the framework contract.
 "src/quanta/core/detect.py" = ["N802", "N818"]
+"src/quanta/core/fixes.py" = ["N802"]
+"src/quanta/core/operations.py" = ["N802"]
 "src/quanta/engines/**" = ["N802"]
 
 [tool.mypy]
@@ -105,4 +111,5 @@ markers = [
 "config" = "quanta/data/config"
 "templates" = "quanta/data/templates"
 "demo" = "quanta/data/demo"
+"content" = "quanta/data/content"
 "tests/fixtures/xwing_draft10_vectors.json" = "quanta/data/tests/fixtures/xwing_draft10_vectors.json"

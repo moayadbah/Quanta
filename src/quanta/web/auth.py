@@ -236,7 +236,8 @@ def callback(request: Request, code: str = "", state: str = "") -> RedirectRespo
         raw = service.create_session(identity, data.get("expires_in"))
     except (httpx.HTTPError, ValueError, KeyError, TypeError) as exc:
         raise Reject("AUTH_INVALID", "GitHub sign-in failed. Please try again.") from exc
-    response = RedirectResponse("/#workspace", status_code=303)
+    # Straight to the dashboard: welcome, repositories, one-click scan.
+    response = RedirectResponse("/workspace.html", status_code=303)
     response.set_cookie(
         service.cookie,
         raw,

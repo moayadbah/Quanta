@@ -303,8 +303,8 @@ test('artifact fetch failure can recover through polling', async () => {
   assert.equal(f.watcher.stopped, true);
 });
 
-test('the app entrypoint is served as a module so its progress import can load', async () => {
+test('the workspace entrypoint is served as a module so its imports can load', async () => {
   const { readFile } = await import('node:fs/promises');
-  const html = await readFile(new URL('../src/quanta/web/static/guide.html', import.meta.url), 'utf8');
-  assert.match(html, /<script src="\/app\.js" type="module"><\/script>/);
+  const html = await readFile(new URL('../src/quanta/web/static/workspace.html', import.meta.url), 'utf8');
+  assert.match(html, /<script type="module" src="\/?workspace\.mjs"><\/script>/);
 });

@@ -1,0 +1,12 @@
+{
+  "commit_sha": "bff40c6cf2340148d410d5b3def0e949c547caf1",
+  "duration_ms": 23015,
+  "events": 48,
+  "findings": 102,
+  "guided_sites": 26,
+  "patches": 1,
+  "recorded_at": "2026-09-25T07:47:12+00:00",
+  "refusals": 8,
+  "repo": "tlsfuzzer/python-ecdsa",
+  "verdict": "at_risk"
+}

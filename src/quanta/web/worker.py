@@ -17,11 +17,18 @@ from quanta.core.analyze import STEP_TITLES, analyze_repository, write_artifacts
 from quanta.core.ingest import RepoMetadata, remove_tree
 from quanta.core.models import Provenance, StepRecord
 from quanta.errors import Reject
+from quanta.verify.service import VerificationRunner
 from quanta.version import CRYPTO_RULESET_VERSION
 from quanta.web.db import event, timestamp
 from quanta.web.jobs import JobRegistry
 from quanta.web.sandbox import block_network, prepare
 from quanta.web.store import ARTIFACT_NAMES
+
+#: Engine events relayed to the browser while the analysis runs (the staged view).
+STREAMED_EVENTS = frozenset({"findings", "proposals", "parse_progress"})
+#: Bound on streamed events per job. The complete list is always in findings.json and
+#: fixes.json; the stream only exists so a viewer sees evidence before any summary.
+MAX_STREAMED_EVENTS = 1500
 
 
 @dataclass
@@ -31,11 +38,15 @@ class Running:
     messages: Any
     started: float
     scratch: Path
+    streamed: int = 0
 
 
 def analyze_child(row: dict[str, Any], scratch: str, cfg: Settings, messages: Any) -> None:
     def emit(step: StepRecord) -> None:
         messages.put(("step", step.model_dump(mode="json")))
+
+    def relay(kind: str, payload: dict[str, Any]) -> None:
+        messages.put((kind, payload))
 
     try:
         prepare(cfg)
@@ -54,6 +65,7 @@ def analyze_child(row: dict[str, Any], scratch: str, cfg: Settings, messages: An
             metadata=metadata,
             scratch_parent=root,
             after_clone=lambda: block_network(required=cfg.require_sandbox),
+            on_event=relay,
         )
         write_artifacts(outcome, root / "output")
         messages.put(
@@ -90,6 +102,7 @@ class Worker:
         self.scratch_root.mkdir(parents=True, exist_ok=True, mode=0o700)
         self.running: dict[str, Running] = {}
         self.context = mp.get_context("spawn")
+        self.verifier = VerificationRunner(registry, worker_id, self.scratch_root)
 
     def claim(self) -> dict[str, Any] | None:
         with self.registry.db.connect(write=True) as conn:
@@ -218,6 +231,23 @@ class Worker:
                     },
                 )
 
+    def record_stream(self, run: Running, kind: str, payload: dict[str, Any]) -> None:
+        """Relay one engine event, only while this worker still owns the attempt."""
+        if run.streamed > MAX_STREAMED_EVENTS:
+            return
+        run.streamed += 1
+        if run.streamed > MAX_STREAMED_EVENTS:
+            kind, payload = "stream_truncated", {"limit": MAX_STREAMED_EVENTS}
+        row = run.row
+        with self.registry.db.connect(write=True) as conn:
+            owned = conn.execute(
+                "SELECT id FROM jobs WHERE id=? AND worker_id=? AND attempts=? "
+                "AND status='running'",
+                (row["id"], self.worker_id, row["attempts"]),
+            ).fetchone()
+            if owned:
+                event(conn, row["id"], kind, payload)
+
     def finish(self, row: dict[str, Any], result: dict[str, Any]) -> bool:
         with self.registry.db.connect(write=True) as conn:
             owned = conn.execute(
@@ -336,6 +366,8 @@ class Worker:
                     break
                 if kind == "step":
                     self.record_step(run.row, payload)
+                elif kind in STREAMED_EVENTS:
+                    self.record_stream(run, kind, payload)
                 elif kind == "result":
                     result = payload
             if (
@@ -364,6 +396,8 @@ class Worker:
             if row is None:
                 break
             self.launch(row)
+        if self.cfg.verify.web:
+            self.verifier.tick()
 
     def close(self) -> None:
         for run in self.running.values():
@@ -371,6 +405,7 @@ class Worker:
             remove_tree(run.scratch)
             run.messages.close()
         self.running.clear()
+        self.verifier.close()
         # Leave leases to expire and requeue, just as on an abrupt shutdown.
 
     def run(self) -> None:

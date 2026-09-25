@@ -27,6 +27,7 @@ import shutil
 import stat
 import subprocess
 import tempfile
+import time
 from collections.abc import Iterator
 from contextlib import contextmanager, suppress
 from dataclasses import dataclass, field
@@ -177,7 +178,22 @@ def resolve_metadata(
         headers={"Accept": "application/vnd.github+json", "User-Agent": "quanta"},
     )
     try:
-        repo = _get_json(http, f"{GITHUB_API}/repos/{owner}/{name}")
+        try:
+            repo = _get_json(http, f"{GITHUB_API}/repos/{owner}/{name}", follow_rename=True)
+        except Reject as exc:
+            if exc.code != "RATE_LIMITED":
+                raise
+            # The REST API allows 60 anonymous requests an hour. Git's own protocol does not
+            # count against it and answers the two things a scan needs: the head commit and
+            # the default branch. Size is then unknown; the sparse clone and the walk budgets
+            # bound the work instead.
+            return _resolve_with_git(owner, name, cfg)
+        # A renamed or transferred repository answers under its new name. The new name is
+        # validated exactly like user input before anything else uses it.
+        full_name = str(repo.get("full_name") or "")
+        if full_name.count("/") == 1 and full_name.lower() != f"{owner}/{name}".lower():
+            owner, name = full_name.split("/")
+            parse_repo_url(f"https://github.com/{owner}/{name}", cfg)
 
         if repo.get("private", False):
             raise Reject("REPO_PRIVATE", "repository is not public")
@@ -210,9 +226,93 @@ def resolve_metadata(
             http.close()
 
 
-def _get_json(http: httpx.Client, url: str) -> dict[str, object]:
+def _resolve_with_git(owner: str, name: str, cfg: Settings) -> RepoMetadata:
+    """Head commit and default branch over the Git protocol (no REST API quota).
+
+    Anonymous Git over HTTPS only serves public repositories, so a private or missing
+    repository fails here exactly as it would at clone time.
+    """
+    url = f"https://github.com/{owner}/{name}.git"
+    with tempfile.TemporaryDirectory(prefix="quanta-ls-") as home:
+        env = _git_env(Path(home) / "ls")
+        listing = _ls_remote(url, env, cfg)
+    return _metadata_from_listing(owner, name, listing)
+
+
+def _ls_remote(url: str, env: dict[str, str], cfg: Settings) -> str:
+    try:
+        return subprocess.run(
+            [
+                _git_binary(),
+                "-c",
+                "protocol.ext.allow=never",
+                "-c",
+                "http.followRedirects=false",
+                "-c",
+                "credential.helper=",
+                "-c",
+                f"http.proxy={cfg.ingest.proxy_url or ''}",
+                "ls-remote",
+                "--symref",
+                "--",
+                url,
+                "HEAD",
+            ],
+            env=env,
+            shell=False,
+            check=True,
+            capture_output=True,
+            text=True,
+            stdin=subprocess.DEVNULL,
+            timeout=60,
+        ).stdout
+    except subprocess.TimeoutExpired as exc:
+        raise Reject("GITHUB_UNAVAILABLE", "GitHub did not answer in time") from exc
+    except subprocess.CalledProcessError as exc:
+        raise Reject("REPO_NOT_FOUND", "repository does not exist or is not public") from exc
+
+
+def _metadata_from_listing(owner: str, name: str, listing: str) -> RepoMetadata:
+    branch = re.search(r"^ref: refs/heads/([^\t\n]+)\tHEAD$", listing, re.MULTILINE)
+    head = re.search(r"^([a-f0-9]{40})\tHEAD$", listing, re.MULTILINE)
+    if not branch or not head:
+        raise Reject("GITHUB_UNAVAILABLE", "GitHub returned no default branch")
+    return RepoMetadata(
+        owner=owner,
+        name=name,
+        default_branch=branch.group(1),
+        commit_sha=head.group(1),
+        size_kb=0,
+        is_private=False,
+    )
+
+
+def _api_redirect(resp: httpx.Response) -> str | None:
+    """The target of a GitHub API redirect, only if it stays on https://api.github.com.
+
+    GitHub answers a renamed repository with 301 to /repositories/{id}. Following a
+    redirect off that host would be an SSRF bypass (§7.3 control 3), so any other target
+    is refused.
+    """
+    location = resp.headers.get("location", "")
+    target = urlparse(location)
+    if (
+        target.scheme == "https"
+        and target.hostname == "api.github.com"
+        and target.port is None
+        and not target.username
+        and not target.password
+        and target.path.startswith("/repositories/")
+    ):
+        return f"{GITHUB_API}{target.path}"
+    return None
+
+
+def _get_json(http: httpx.Client, url: str, *, follow_rename: bool = False) -> dict[str, object]:
     try:
         resp = http.get(url)
+        if follow_rename and resp.is_redirect and (target := _api_redirect(resp)):
+            resp = http.get(target)
     except httpx.HTTPError as exc:
         raise Reject("GITHUB_UNAVAILABLE", "GitHub API request failed") from exc
 
@@ -356,39 +456,56 @@ def clone_pinned(
     env = _git_env(dest)
     git = _git_binary()
     url = f"https://github.com/{owner}/{name}.git"
-
+    # Every git invocation that can touch the network carries the same hardening.
+    hardened = [
+        "-c",
+        f"core.hooksPath={hooks_path(dest)}",
+        # Windows' 260-character path limit fails deep test trees (ansible). No effect elsewhere.
+        "-c",
+        "core.longpaths=true",
+        "-c",
+        "protocol.ext.allow=never",
+        "-c",
+        "http.followRedirects=false",
+        "-c",
+        "credential.helper=",
+        # The minimal Git environment drops ambient proxy variables. An explicit
+        # deployment setting routes acquisition through the confined egress tier.
+        "-c",
+        f"http.proxy={cfg.ingest.proxy_url or ''}",
+    ]
+    # Only Python source is analysed, so only Python blobs are downloaded: a blob-less
+    # clone, then a sparse checkout of *.py and *.pyi. A repository with large data files (test
+    # vectors, media) no longer spends the clone budget on bytes that are never read.
+    steps = [
+        [
+            "clone",
+            "--depth=1",
+            "--single-branch",
+            "--no-tags",
+            "--no-recurse-submodules",
+            "--filter=blob:none",
+            "--no-checkout",
+            "--",
+            url,
+            str(dest),
+        ],
+        # Exactly the suffixes the walk reads (_SOURCE_SUFFIXES).
+        ["-C", str(dest), "sparse-checkout", "set", "--no-cone", "*.py", "*.pyi"],
+        ["-C", str(dest), "checkout", "--quiet"],
+    ]
+    deadline = time.monotonic() + cfg.ingest.clone_timeout_s
     try:
-        subprocess.run(
-            [
-                git,
-                "-c",
-                f"core.hooksPath={hooks_path(dest)}",
-                "-c",
-                "protocol.ext.allow=never",
-                "-c",
-                "http.followRedirects=false",
-                "-c",
-                "credential.helper=",
-                # The minimal Git environment drops ambient proxy variables. An explicit
-                # deployment setting routes acquisition through the confined egress tier.
-                "-c",
-                f"http.proxy={cfg.ingest.proxy_url or ''}",
-                "clone",
-                "--depth=1",
-                "--single-branch",
-                "--no-tags",
-                "--no-recurse-submodules",
-                "--",
-                url,
-                str(dest),
-            ],
-            env=env,
-            shell=False,
-            check=True,
-            timeout=cfg.ingest.clone_timeout_s,
-            stdin=subprocess.DEVNULL,
-            capture_output=True,
-        )
+        for step in steps:
+            subprocess.run(
+                [git, *hardened, *step],
+                env=env,
+                shell=False,
+                check=True,
+                timeout=max(1.0, deadline - time.monotonic()),
+                stdin=subprocess.DEVNULL,
+                capture_output=True,
+            )
     except subprocess.TimeoutExpired as exc:
         raise Reject("CLONE_TIMEOUT", f"clone exceeded {cfg.ingest.clone_timeout_s}s") from exc
     except subprocess.CalledProcessError as exc:

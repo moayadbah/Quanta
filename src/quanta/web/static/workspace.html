@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Quanta</title>
+  <link rel="icon" href="brand/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="site.css">
+  <script type="module" src="workspace.mjs"></script>
+</head>
+<body data-title-key="ws.title">
+  <a class="skip" href="#main" data-t="a11y.skip"></a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="/" data-t-attr="aria-label=brand.home">
+        <img src="brand/logo.svg" alt="" width="24" height="24">
+        <span data-t="brand.name"></span>
+      </a>
+      <nav class="nav" data-t-attr="aria-label=nav.label">
+        <a href="/" data-t="nav.home"></a>
+        <a href="/workspace.html" aria-current="page" data-t="nav.workspace"></a>
+      </nav>
+      <div class="header-actions">
+        <span class="badge plain hide-mobile" id="account-chip" hidden></span>
+        <a class="btn sm hide-mobile" id="signin" href="/auth/login" hidden data-t="account.signin"></a>
+        <button class="btn ghost sm hide-mobile" id="signout" type="button" hidden data-t="account.signout"></button>
+        <button class="icon-btn" type="button" data-action="language" data-t-attr="aria-label=lang.switch_label;title=lang.switch_label">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><circle cx="8" cy="8" r="6.25"/><path d="M1.75 8h12.5M8 1.75c1.8 1.9 2.6 4 2.6 6.25S9.8 12.35 8 14.25M8 1.75C6.2 3.65 5.4 5.75 5.4 8s.8 4.35 2.6 6.25"/></svg>
+        </button>
+        <button class="icon-btn menu-button" id="menu-open" type="button" data-t-attr="aria-label=menu.open">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2.5 5.5h11M2.5 10.5h11"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <dialog class="mobile-menu" id="mobile-menu" data-t-attr="aria-label=menu.label">
+    <div class="menu-top">
+      <span class="brand"><img src="brand/logo.svg" alt="" width="24" height="24"><span data-t="brand.name"></span></span>
+      <button class="btn ghost sm" id="menu-close" type="button" data-t="menu.close"></button>
+    </div>
+    <nav>
+      <a href="/" data-t="nav.home"></a>
+      <a href="/workspace.html" data-t="nav.workspace"></a>
+      <a href="/auth/login" id="menu-signin" data-t="account.signin"></a>
+      <button type="button" data-action="language" data-t="lang.switch"></button>
+    </nav>
+  </dialog>
+
+  <main id="main" class="app">
+    <section id="home-view" class="stack">
+      <p class="notice error" id="scan-error" role="alert" hidden></p>
+
+      <div id="doors" class="stack" hidden>
+        <div class="section-head">
+          <h1 class="h1" data-t="ws.doors_title"></h1>
+          <p class="body" data-t="ws.doors_lede"></p>
+        </div>
+        <div class="doors">
+          <article class="door surface">
+            <h2 class="h3" data-t="ws.door_signin_title"></h2>
+            <p class="body" data-t="ws.door_signin_body"></p>
+            <a class="btn primary lg" id="door-signin" href="/auth/login"><svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg><span data-t="account.signin"></span></a>
+            <p class="small" id="door-signin-note" hidden data-t="ws.signin_unavailable"></p>
+          </article>
+          <article class="door surface">
+            <h2 class="h3" data-t="ws.door_sample_title"></h2>
+            <p class="body" data-t="ws.door_sample_body"></p>
+            <button class="btn lg" type="button" id="door-sample"><span data-t="ws.door_sample_button"></span></button>
+          </article>
+        </div>
+        <p class="small" data-t="ws.doors_note"></p>
+      </div>
+
+      <div id="dashboard" class="stack" hidden>
+        <div class="welcome">
+          <img class="avatar" id="avatar" alt="" width="48" height="48" hidden>
+          <div class="welcome-text">
+            <h1 class="h1" id="welcome-title"></h1>
+            <p class="small" id="scan-limits"></p>
+          </div>
+          <button class="btn sm" type="button" id="dash-sample"><span data-t="ws.door_sample_button"></span></button>
+        </div>
+
+        <div class="scanbar">
+          <h2 class="h4" id="scan-title" data-t="ws.scan_any"></h2>
+          <form id="scan-form" novalidate>
+            <div class="input-wrap">
+              <span class="prefix" aria-hidden="true" data-t="ws.prefix"></span>
+              <input class="input" id="repo-url" name="repo" autocomplete="off" spellcheck="false" inputmode="url" data-t-attr="placeholder=ws.scan_placeholder;aria-label=ws.scan_label">
+            </div>
+            <button class="btn primary" type="submit" id="scan-submit"><span data-t="ws.scan_button"></span></button>
+          </form>
+          <p class="notice" id="scan-auth" hidden></p>
+        </div>
+
+        <div id="repos-block" hidden>
+          <div class="list-head"><h2 class="h4" data-t="ws.repos_title"></h2><span class="small" id="repos-note"></span></div>
+          <div class="rows" id="repos"></div>
+        </div>
+
+        <div id="history-block" hidden>
+          <div class="list-head"><h2 class="h4" data-t="ws.history_title"></h2><span class="small" id="history-note"></span></div>
+          <div class="rows" id="history"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="run-view" class="stack" hidden aria-live="polite">
+      <div class="run-head">
+        <button class="back" type="button" id="back"><svg class="arrow back-arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M10 6H2.5M5.5 3 2.5 6l3 3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-t="ws.back"></span></button>
+        <div class="run-title"><h1 class="h1" id="run-repo"></h1><span id="run-badge"></span></div>
+        <div class="run-facts" id="run-facts"></div>
+        <div class="statusline" id="statusline"><span class="spinner" aria-hidden="true"></span><span id="status-text"></span></div>
+        <p class="notice" id="run-banner" hidden><span data-t="ws.sample_banner"></span> <a class="link" id="run-banner-signin" href="/auth/login" data-t="ws.sample_banner_action"></a></p>
+      </div>
+
+      <div class="stages surface" id="stages"></div>
+
+      <div class="result surface" id="result" hidden></div>
+
+      <div>
+        <div class="tabs" role="tablist" id="tabs" data-t-attr="aria-label=tabs.label">
+          <button class="tab" role="tab" id="tab-readiness" aria-controls="panel-readiness" aria-selected="false" type="button"><span data-t="tabs.readiness"></span></button>
+          <button class="tab" role="tab" id="tab-findings" aria-controls="panel-findings" aria-selected="true" type="button"><span data-t="tabs.findings"></span><span class="count" id="count-findings"></span></button>
+          <button class="tab" role="tab" id="tab-changes" aria-controls="panel-changes" aria-selected="false" type="button"><span data-t="tabs.changes"></span><span class="count" id="count-changes"></span></button>
+          <button class="tab" role="tab" id="tab-report" aria-controls="panel-report" aria-selected="false" type="button"><span data-t="tabs.report"></span></button>
+        </div>
+        <div class="panel" role="tabpanel" id="panel-readiness" aria-labelledby="tab-readiness" hidden></div>
+        <div class="panel" role="tabpanel" id="panel-findings" aria-labelledby="tab-findings"></div>
+        <div class="panel" role="tabpanel" id="panel-changes" aria-labelledby="tab-changes" hidden>
+          <div id="changes-summary"></div>
+          <div class="patches">
+            <div id="proposals"></div>
+            <div class="selectionbar" id="selectionbar" hidden>
+              <span class="small fg" id="selection-note"></span>
+              <button class="btn primary sm" type="button" id="review-open" disabled><span data-t="edits.review"></span></button>
+            </div>
+          </div>
+          <div id="guides"></div>
+          <div id="refusals"></div>
+        </div>
+        <div class="panel" role="tabpanel" id="panel-report" aria-labelledby="tab-report" hidden></div>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="sheet" id="review" data-t-attr="aria-label=review.title">
+    <div class="sheet-head">
+      <h2 class="h4" data-t="review.title"></h2>
+      <button class="btn ghost sm" type="button" id="review-close" data-t="review.close"></button>
+    </div>
+    <div class="sheet-body">
+      <div class="code" id="diff"></div>
+      <p class="small" id="review-validation"></p>
+      <label class="ack"><input type="checkbox" id="ack-compat"><span id="ack-compat-text"></span></label>
+      <p class="notice error" id="review-error" role="alert" hidden></p>
+      <div class="actions">
+        <button class="btn primary" type="button" id="pr-open" disabled><span data-t="review.pr"></span></button>
+        <a class="btn" id="pr-link" hidden target="_blank" rel="noopener noreferrer"><span data-t="review.pr_link"></span></a>
+      </div>
+    </div>
+  </dialog>
+</body>
+</html>

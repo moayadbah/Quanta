@@ -1,0 +1,204 @@
+{
+  "agility_score": 29.593192,
+  "coverage": {
+    "coverage_ratio": 1.0,
+    "crypto_api_calls_matched": 13,
+    "crypto_api_calls_unmatched": 0,
+    "files_scanned": 34,
+    "files_unparseable": 0,
+    "files_unparseable_source": 0,
+    "method_calls_note": "Calls on key or context objects are not counted.",
+    "sites_by_role": {
+      "docs": 0,
+      "example": 0,
+      "source": 40,
+      "test": 62,
+      "tooling": 0,
+      "vendored": 0
+    },
+    "source_files": 20,
+    "touchpoints": 26,
+    "truncated": false,
+    "unmatched_top": []
+  },
+  "deductions": [
+    {
+      "citations": [
+        "speed.py:63",
+        "src/ecdsa/_sha3.py:8",
+        "src/ecdsa/_sha3.py:11",
+        "src/ecdsa/ecdsa.py:327",
+        "src/ecdsa/eddsa.py:41",
+        "src/ecdsa/keys.py:136",
+        "src/ecdsa/keys.py:223",
+        "src/ecdsa/keys.py:287",
+        "src/ecdsa/keys.py:329",
+        "src/ecdsa/keys.py:420"
+      ],
+      "factor": "call_sites",
+      "points": 17.66124,
+      "reason": "26 cryptographic touchpoints in shipped code must each be edited to change an algorithm."
+    },
+    {
+      "citations": [
+        "speed.py:63",
+        "src/ecdsa/_sha3.py:8",
+        "src/ecdsa/_sha3.py:11",
+        "src/ecdsa/ecdsa.py:327",
+        "src/ecdsa/eddsa.py:41",
+        "src/ecdsa/rfc6979.py:75",
+        "src/ecdsa/rfc6979.py:82",
+        "src/ecdsa/rfc6979.py:85",
+        "src/ecdsa/rfc6979.py:92",
+        "src/ecdsa/rfc6979.py:101"
+      ],
+      "factor": "isolation_layer",
+      "points": 21.74556,
+      "reason": "Cryptography is spread over 7 modules (effective number 3.6). 15 of 26 touchpoints are outside src.ecdsa.keys."
+    },
+    {
+      "citations": [
+        "speed.py:63",
+        "src/ecdsa/_sha3.py:8",
+        "src/ecdsa/_sha3.py:11",
+        "src/ecdsa/ecdsa.py:327",
+        "src/ecdsa/eddsa.py:41",
+        "src/ecdsa/keys.py:136",
+        "src/ecdsa/keys.py:223",
+        "src/ecdsa/keys.py:287",
+        "src/ecdsa/keys.py:329",
+        "src/ecdsa/keys.py:420"
+      ],
+      "factor": "selection_source",
+      "points": 20.0,
+      "reason": "19 of 19 algorithm choices are fixed in code."
+    },
+    {
+      "citations": [
+        "src/ecdsa/curves.py:4",
+        "src/ecdsa/curves.py:72",
+        "src/ecdsa/curves.py:137",
+        "src/ecdsa/curves.py:239",
+        "src/ecdsa/ecdh.py:123",
+        "src/ecdsa/ecdh.py:166",
+        "src/ecdsa/ecdh.py:188",
+        "src/ecdsa/ecdh.py:209",
+        "src/ecdsa/ecdh.py:259",
+        "src/ecdsa/ecdh.py:280"
+      ],
+      "factor": "propagation_depth",
+      "points": 11.0,
+      "reason": "11 of 20 shipped modules contain cryptography or call a module that does."
+    }
+  ],
+  "factors": {
+    "call_sites": {
+      "contribution": 12.338754,
+      "formula": "1 / (1 + log10(1 + n))",
+      "inputs": {
+        "n": 26
+      },
+      "normalised": 0.411292,
+      "raw": 26,
+      "weight": 0.3
+    },
+    "isolation_layer": {
+      "contribution": 8.254438,
+      "formula": "sum over crypto modules of (n_m / n)^2",
+      "inputs": {
+        "crypto_modules": 7,
+        "touchpoints": 26
+      },
+      "normalised": 0.275148,
+      "raw": 3.634409,
+      "weight": 0.3
+    },
+    "propagation_depth": {
+      "contribution": 9.0,
+      "formula": "1 - (|C| + |D|) / |M|",
+      "inputs": {
+        "crypto_modules": 7,
+        "dependents": 4,
+        "shipped_modules": 20
+      },
+      "normalised": 0.45,
+      "raw": 11,
+      "weight": 0.2
+    },
+    "selection_source": {
+      "contribution": 0.0,
+      "formula": "configured / (configured + literal)",
+      "inputs": {
+        "configured": 0,
+        "literal": 19
+      },
+      "normalised": 0.0,
+      "raw": "configured_share",
+      "weight": 0.2
+    }
+  },
+  "inventory_summary": {
+    "by_algorithm": {
+      "ECC-P256": 1,
+      "ECDSA": 15,
+      "HMAC": 7,
+      "SHA1": 20,
+      "SHA2-256": 39,
+      "SHA2-384": 1,
+      "SHA2-512": 9,
+      "SHAKE256": 2
+    },
+    "by_category": {
+      "hash": 80,
+      "key_generation": 2,
+      "key_loading": 6,
+      "mac": 7,
+      "signature": 7
+    },
+    "pq": 0,
+    "quantum_vulnerable": 15,
+    "weak": 20
+  },
+  "provenance": {
+    "analyzer_version": "0.5.0+rules.2026.11.01",
+    "cbom_sha256": null,
+    "commit_sha": "bff40c6cf2340148d410d5b3def0e949c547caf1",
+    "crypto_ruleset_version": "2026.11.01",
+    "metric_version": "metric-v2",
+    "repo": "tlsfuzzer/python-ecdsa",
+    "weights_version": "weights-v1"
+  },
+  "recommendations": [
+    {
+      "action": "Move cryptographic calls into one module (pattern P1).",
+      "affected_sites": 26,
+      "bound": "upper bound for this factor",
+      "estimated_score_gain": 21.74556,
+      "pattern": "P1"
+    },
+    {
+      "action": "Read algorithm choices from a checked policy (pattern P2).",
+      "affected_sites": 19,
+      "bound": "upper bound for this factor",
+      "estimated_score_gain": 20.0,
+      "pattern": "P2"
+    },
+    {
+      "action": "Replace broken primitives (MD5, SHA-1, DES, 3DES, RC4, ECB mode).",
+      "affected_sites": 12,
+      "bound": "not scored; a security fix, and compatibility-changing",
+      "estimated_score_gain": 0.0,
+      "pattern": "P0"
+    },
+    {
+      "action": "Plan migration of quantum-vulnerable key establishment and signatures (ML-KEM, ML-DSA, ideally hybrid).",
+      "affected_sites": 15,
+      "bound": "not scored; needs both ends of a protocol",
+      "estimated_score_gain": 0.0,
+      "pattern": "P3"
+    }
+  ],
+  "refusal": null,
+  "schema_version": "2.0",
+  "status": "scored"
+}

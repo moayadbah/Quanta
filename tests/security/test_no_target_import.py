@@ -121,7 +121,8 @@ def test_git_binary_resolves_to_an_absolute_path() -> None:
 
     resolved = _git_binary()
     assert Path(resolved).is_absolute()
-    assert Path(resolved).name in {"git", "git.exe"}
+    # Windows reports the executable as git.EXE; the name check is case-insensitive there.
+    assert Path(resolved).name.lower() in {"git", "git.exe"}
 
 
 def test_the_checker_would_actually_catch_a_violation(tmp_path: Path) -> None:

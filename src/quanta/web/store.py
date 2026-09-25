@@ -14,7 +14,9 @@ from quanta.errors import Reject
 from quanta.web.db import Database
 
 REQUIRED_ARTIFACT_NAMES = frozenset({"cdg.json", "score.json", "meta.json", "report.html"})
-ARTIFACT_NAMES = REQUIRED_ARTIFACT_NAMES | {"fixes.json"}
+#: Optional artifacts: a cached corpus built before a name existed still replays.
+OPTIONAL_ARTIFACT_NAMES = frozenset({"fixes.json", "findings.json", "readiness.json"})
+ARTIFACT_NAMES = REQUIRED_ARTIFACT_NAMES | OPTIONAL_ARTIFACT_NAMES
 
 
 class ArtifactStore:

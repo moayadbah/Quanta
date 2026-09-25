@@ -1,43 +1,46 @@
 {
-  "agility_score": 100.0,
+  "agility_score": null,
   "coverage": {
-    "files_scanned": 77,
-    "files_unparseable": 1,
-    "truncated": false
+    "coverage_ratio": null,
+    "crypto_api_calls_matched": 0,
+    "crypto_api_calls_unmatched": 0,
+    "files_scanned": 91,
+    "files_unparseable": 0,
+    "files_unparseable_source": 0,
+    "method_calls_note": "Calls on key or context objects are not counted.",
+    "sites_by_role": {
+      "docs": 0,
+      "example": 0,
+      "source": 0,
+      "test": 0,
+      "tooling": 0,
+      "vendored": 0
+    },
+    "source_files": 17,
+    "touchpoints": 0,
+    "truncated": false,
+    "unmatched_top": []
   },
   "deductions": [],
-  "factors": {
-    "call_sites": {
-      "contribution": 30.0,
-      "normalised": 1.0,
-      "raw": 0,
-      "weight": 0.3
-    },
-    "isolation_layer": {
-      "contribution": 30.0,
-      "normalised": 1.0,
-      "raw": true,
-      "weight": 0.3
-    },
-    "propagation_depth": {
-      "contribution": 20.0,
-      "normalised": 1.0,
-      "raw": 0,
-      "weight": 0.2
-    },
-    "selection_source": {
-      "contribution": 20.0,
-      "normalised": 1.0,
-      "raw": "none",
-      "weight": 0.2
-    }
+  "factors": {},
+  "inventory_summary": {
+    "by_algorithm": {},
+    "by_category": {},
+    "pq": 0,
+    "quantum_vulnerable": 0,
+    "weak": 0
   },
   "provenance": {
-    "analyzer_version": "0.1.0+rules.2026.08.01",
-    "commit_sha": "00e592cea702e0b2caa0dee42489fdb1c22cd845",
-    "crypto_ruleset_version": "2026.08.01",
-    "repo": "pallets/click"
+    "analyzer_version": "0.5.0+rules.2026.11.01",
+    "cbom_sha256": null,
+    "commit_sha": "06b2a678741131fd577ce170e23e5ca0aeba0309",
+    "crypto_ruleset_version": "2026.11.01",
+    "metric_version": "metric-v2",
+    "repo": "pallets/click",
+    "weights_version": "weights-v1"
   },
   "recommendations": [],
-  "schema_version": "1.0"
+  "refusal": null,
+  "schema_version": "2.0",
+  "status": "no_crypto_detected"
 }

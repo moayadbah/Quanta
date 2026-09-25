@@ -29,9 +29,10 @@ def client(tmp_path: Path) -> Iterator[TestClient]:
 def cached_job(client: TestClient) -> str:
     """Replay a cached example and return its job id."""
     examples = client.get("/api/v1/examples").json()["examples"]
-    if not examples:
+    scored = [e for e in examples if e["status"] == "scored"]
+    if not scored:
         pytest.skip("demo corpus is not built")
-    response = client.post(f"/api/v1/examples/{examples[0]['slug']}/replay")
+    response = client.post(f"/api/v1/examples/{scored[0]['slug']}/replay")
     assert response.status_code == 201
     job_id: str = response.json()["job_id"]
     return job_id
@@ -93,8 +94,8 @@ def test_status_endpoint_shape(client: TestClient, cached_job: str) -> None:
 
 def test_score_endpoint_returns_the_artifact(client: TestClient, cached_job: str) -> None:
     body = client.get(f"/api/v1/analyses/{cached_job}/score").json()
-    assert body["schema_version"] == "1.0"
-    assert 0.0 <= body["agility_score"] <= 100.0
+    assert body["schema_version"] == "2.0"
+    assert body["agility_score"] is None or 0.0 <= body["agility_score"] <= 100.0
     assert set(body["factors"]) == {
         "call_sites",
         "isolation_layer",
@@ -305,7 +306,10 @@ def test_artifacts_of_an_unfinished_job_are_409(client: TestClient) -> None:
 def test_examples_are_all_flagged_cached(client: TestClient) -> None:
     for example in client.get("/api/v1/examples").json()["examples"]:
         assert example["cached"] is True
-        assert 0.0 <= example["agility_score"] <= 100.0
+        if example["status"] == "scored":
+            assert 0.0 <= example["agility_score"] <= 100.0
+        else:
+            assert example["agility_score"] is None
 
 
 def test_unknown_example_is_rejected(client: TestClient) -> None:

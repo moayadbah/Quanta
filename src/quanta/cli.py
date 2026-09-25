@@ -6,9 +6,10 @@ Migration and verification require an independently annotated, frozen benchmark.
 
 from __future__ import annotations
 
+import json
 import sys
 from pathlib import Path
-from typing import Annotated
+from typing import Annotated, Any
 
 import typer
 
@@ -88,8 +89,11 @@ def analyze(
         bool,
         typer.Option("--trace", help="Print the full pipeline trace with per-step evidence."),
     ] = False,
+    pdf: Annotated[
+        bool, typer.Option("--pdf", help="Also write report.pdf, the readiness report as a PDF.")
+    ] = False,
 ) -> None:
-    """Analyse a repository and write cdg.json, score.json, meta.json and report.html."""
+    """Analyse a repository and write its readiness, findings, changes and report."""
     settings = get_settings()
 
     def progress(step: StepRecord) -> None:
@@ -116,6 +120,8 @@ def analyze(
         raise typer.Exit(code=1) from None
 
     paths = write_artifacts(outcome, out)
+    if pdf:
+        paths["pdf"] = _write_pdf(out)
 
     if as_json:
         sys.stdout.write(dump_canonical_json(outcome.score))
@@ -138,6 +144,28 @@ def _print_trace(outcome: AnalysisOutcome) -> None:
         for item in step.evidence:
             flag = "" if item.ok is None else ("  [ok]" if item.ok else "  [!]")
             _echo(f"         - {item.label}: {item.value}{flag}")
+
+
+def _write_pdf(out: Path) -> Path:
+    """The same PDF the web product exports, built from the artifacts just written."""
+    from quanta.core.fixes import FixPlan
+    from quanta.core.pdf import render_pdf
+    from quanta.core.report_data import build
+
+    def read(name: str) -> Any:
+        path = out / name
+        return json.loads(path.read_text(encoding="utf-8")) if path.is_file() else None
+
+    data = build(
+        score=read("score.json") or {},
+        meta=read("meta.json") or {},
+        readiness=read("readiness.json"),
+        findings=(read("findings.json") or {}).get("findings", []),
+        fixes=FixPlan.model_validate(read("fixes.json") or {}).public(),
+    )
+    target = out / "report.pdf"
+    target.write_bytes(render_pdf(data))
+    return target
 
 
 def _run(
@@ -168,7 +196,14 @@ def _summarise(outcome: AnalysisOutcome, paths: dict[str, Path]) -> None:
     score = outcome.score
     _echo("")
     _echo(f"  {score.provenance.repo} @ {score.provenance.commit_sha[:12]}")
-    _echo(f"  Agility Score: {score.agility_score:.1f} / 100")
+    if score.agility_score is not None:
+        _echo(
+            f"  Agility Score: {score.agility_score:.1f} / 100 ({score.provenance.metric_version})"
+        )
+    elif score.refusal is not None:
+        _echo(f"  No score: {score.refusal.code}. {score.refusal.message}")
+    else:
+        _echo("  No score: no cryptography detected in shipped code (this is not a 100).")
     _echo("")
 
     for key, factor in score.factors.items():
@@ -191,11 +226,20 @@ def _summarise(outcome: AnalysisOutcome, paths: dict[str, Path]) -> None:
     _echo(
         f"  {score.coverage.files_scanned} files scanned, "
         f"{score.coverage.files_unparseable} unparseable, "
-        f"{len(outcome.detection.crypto_calls)} crypto sites"
+        f"{len(outcome.detection.crypto_calls)} crypto sites, "
+        f"{score.coverage.crypto_api_calls_matched} of "
+        f"{score.coverage.crypto_api_calls_matched + score.coverage.crypto_api_calls_unmatched}"
+        " crypto library calls recognised"
     )
     _echo("")
     for name in ("cdg", "score", "meta", "report"):
         _echo(f"  wrote {paths[name]}")
+    _echo(f"  wrote {paths['score'].parent / 'fixes.json'}")
+    _echo(f"  wrote {paths['score'].parent / 'findings.json'}")
+    if (paths["score"].parent / "readiness.json").is_file():
+        _echo(f"  wrote {paths['score'].parent / 'readiness.json'}")
+    if "pdf" in paths:
+        _echo(f"  wrote {paths['pdf']}")
 
 
 @app.command()
@@ -238,6 +282,150 @@ def worker(
         run_worker(worker_id)
     except KeyboardInterrupt:
         return
+
+
+def _worker_entry(worker_id: str) -> None:
+    from quanta.web.worker import run_worker
+
+    try:
+        run_worker(worker_id)
+    except KeyboardInterrupt:
+        return
+
+
+@app.command()
+def up(
+    port: Annotated[int, typer.Option("--port", help="Bind port.")] = 8000,
+) -> None:
+    """Run the whole local product with one command: the web app and one worker.
+
+    The worker is a separate process (analysis never runs in the API). Verification with
+    a project's own tests is ``quanta verify``; the web product offers it only when
+    QUANTA_VERIFY__WEB=true. Stop both with Ctrl+C.
+    """
+    import multiprocessing as mp
+
+    import uvicorn
+
+    from quanta.web.app import create_app
+
+    settings = get_settings()
+    process = mp.get_context("spawn").Process(target=_worker_entry, args=("local-1",))
+    process.start()
+    _echo(f"  Quanta {__version__}  ruleset {CRYPTO_RULESET_VERSION}")
+    _echo(f"  data      -> {settings.db.parent}")
+    _echo(f"  worker    -> pid {process.pid}")
+    _echo(f"  open      -> http://127.0.0.1:{port}")
+    _echo("  analysis never runs repository code")
+    _echo("")
+    try:
+        uvicorn.run(
+            create_app(settings.artifact_root, settings.db),
+            host="127.0.0.1",
+            port=port,
+            log_level="warning",
+        )
+    finally:
+        process.terminate()
+        process.join(timeout=5)
+
+
+def _local_outcome(path: Path) -> AnalysisOutcome:
+    settings = get_settings()
+    provenance = Provenance(
+        repo=f"local:{path.resolve().name}",
+        commit_sha="0" * 40,
+        analyzer_version=analyzer_version(),
+        crypto_ruleset_version=CRYPTO_RULESET_VERSION,
+    )
+    return analyze_path(path.resolve(), provenance, settings)
+
+
+@app.command()
+def trace(
+    path: Annotated[Path, typer.Argument(help="Local source tree with a test suite.")],
+    out: Annotated[Path, typer.Option("--out", help="Where to write trace.json.")] = Path(
+        "./out-trace"
+    ),
+) -> None:
+    """Check the static inventory against what the project's own tests execute.
+
+    Installs the project in a Docker container (network only during install), runs its
+    tests once with no network and a crypto-call tracer, and reports how many of the
+    executed algorithm-bearing lines static analysis found (Master Plan 25).
+    """
+    from quanta.core.graph import to_node_link
+    from quanta.verify.pipeline import trace_check
+    from quanta.verify.sandbox import docker_available
+
+    if not path.is_dir():
+        _echo("error: PATH must be a local directory", err=True)
+        raise typer.Exit(1)
+    if not docker_available():
+        _echo("error: SANDBOX_UNAVAILABLE: Docker is required to run repository tests", err=True)
+        raise typer.Exit(1)
+    outcome = _local_outcome(path)
+    write_artifacts(outcome, out)
+    report = trace_check(path, to_node_link(outcome.graph), out, path.resolve().name)
+    if report.get("status") != "done":
+        _echo(f"  unverifiable: {report.get('reason')}")
+        raise typer.Exit(1)
+    executed, found = report["executed_a_lines"], report["found_by_static"]
+    _echo(f"  tests: {report['tests']['passed']} passed, {report['tests']['failed']} failed")
+    _echo(f"  the tests ran {executed} algorithm-bearing crypto lines in shipped code")
+    _echo(f"  the static inventory had found {found} of them")
+    for miss in report["missed"][:10]:
+        _echo(f"    missed {miss['file']}:{miss['line']}  {', '.join(miss['callees'])}")
+    if report["too_few_to_judge"]:
+        _echo(f"  {report['note']}")
+    _echo(f"  wrote {out / 'trace.json'}")
+
+
+@app.command()
+def verify(
+    path: Annotated[Path, typer.Argument(help="Local source tree with a test suite.")],
+    select: Annotated[
+        str, typer.Option("--select", help="Comma-separated fix ids, or 'all'.")
+    ] = "all",
+    out: Annotated[Path, typer.Option("--out", help="Where to write verification.json.")] = Path(
+        "./out-verify"
+    ),
+) -> None:
+    """Verify proposed fixes with the project's own tests (Master Plan 10.10).
+
+    Runs the tests twice before and twice after the selected changes, with no network,
+    checks which changed lines ran, and swaps the algorithm at each changed site to test
+    whether the tests can see the change. Prints one verdict.
+    """
+    from quanta.core.fixes import review
+    from quanta.verify.pipeline import verify_changes
+    from quanta.verify.sandbox import docker_available
+
+    if not path.is_dir():
+        _echo("error: PATH must be a local directory", err=True)
+        raise typer.Exit(1)
+    if not docker_available():
+        _echo("error: SANDBOX_UNAVAILABLE: Docker is required to run repository tests", err=True)
+        raise typer.Exit(1)
+    outcome = _local_outcome(path)
+    ids = [c.id for f in outcome.fixes.files for c in f.changes]
+    chosen = ids if select == "all" else [s.strip() for s in select.split(",") if s.strip()]
+    if not chosen:
+        _echo("  no fix proposals to verify")
+        for skipped in outcome.fixes.skipped:
+            _echo(f"    refused {skipped.path}:{skipped.line} {skipped.code}")
+        return
+    try:
+        result = review(outcome.fixes, chosen)
+    except Reject as exc:
+        _echo(f"error: {exc.code}: {exc.detail}", err=True)
+        raise typer.Exit(1) from None
+    files = [{"path": f["path"], "content": f["content"]} for f in result["files"]]
+    verdict = verify_changes(path, files, out, path.resolve().name)
+    _echo(f"  verdict: {verdict.verdict}")
+    for reason in verdict.reasons:
+        _echo(f"    {reason}")
+    _echo(f"  wrote {out / 'verification.json'}")
 
 
 app.add_typer(bench_app, name="bench")

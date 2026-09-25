@@ -1,0 +1,231 @@
+{
+  "actions": [
+    {
+      "by": 2019,
+      "citations": [
+        "src/requests/auth.py:179"
+      ],
+      "id": "replace_weak_now",
+      "priority": 1,
+      "sites": 1,
+      "sources": [
+        "nist-sp-800-131a-r2"
+      ]
+    },
+    {
+      "by": 2030,
+      "citations": [
+        "src/requests/auth.py:187",
+        "src/requests/auth.py:237"
+      ],
+      "id": "retire_sha1",
+      "priority": 4,
+      "sites": 2,
+      "sources": [
+        "nist-sha1-retirement",
+        "nist-sp-800-131a-r2"
+      ]
+    }
+  ],
+  "checked": "2026-09-24",
+  "counts": {
+    "key_exchange": 0,
+    "pq": 0,
+    "review": 0,
+    "safe": 2,
+    "signature": 0,
+    "sites": 5,
+    "tls": 0,
+    "vulnerable": 0,
+    "weak": 3
+  },
+  "earliest_milestone": "nist-sha1",
+  "earliest_year": 2030,
+  "frameworks": [
+    "nist",
+    "nsa",
+    "nca",
+    "eu",
+    "uk",
+    "us"
+  ],
+  "milestones": [
+    {
+      "framework": "nist",
+      "id": "nist-kex-deprecated",
+      "rule": "deprecated",
+      "sites": 0,
+      "source": "nist-ir-8547",
+      "state": "clear",
+      "year": 2030
+    },
+    {
+      "framework": "nist",
+      "id": "nist-kex-disallowed",
+      "rule": "disallowed",
+      "sites": 0,
+      "source": "nist-ir-8547",
+      "state": "clear",
+      "year": 2035
+    },
+    {
+      "framework": "nist",
+      "id": "nist-sig-deprecated",
+      "rule": "deprecated",
+      "sites": 0,
+      "source": "nist-ir-8547",
+      "state": "clear",
+      "year": 2030
+    },
+    {
+      "framework": "nist",
+      "id": "nist-sig-disallowed",
+      "rule": "disallowed",
+      "sites": 0,
+      "source": "nist-ir-8547",
+      "state": "clear",
+      "year": 2035
+    },
+    {
+      "framework": "nist",
+      "id": "nist-sha1",
+      "rule": "retired",
+      "sites": 2,
+      "source": "nist-sha1-retirement",
+      "state": "due",
+      "year": 2030
+    },
+    {
+      "framework": "nist",
+      "id": "nist-md5",
+      "rule": "not_approved",
+      "sites": 1,
+      "source": "nist-sp-800-131a-r2",
+      "state": "overdue",
+      "year": 2019
+    },
+    {
+      "framework": "nist",
+      "id": "nist-tdea",
+      "rule": "disallowed",
+      "sites": 0,
+      "source": "nist-sp-800-131a-r2",
+      "state": "clear",
+      "year": 2023
+    },
+    {
+      "framework": "nsa",
+      "id": "nsa-signing",
+      "rule": "exclusive",
+      "sites": 0,
+      "source": "nsa-cnsa-2",
+      "state": "clear",
+      "year": 2030
+    },
+    {
+      "framework": "nsa",
+      "id": "nsa-web",
+      "rule": "exclusive",
+      "sites": 0,
+      "source": "nsa-cnsa-2",
+      "state": "clear",
+      "year": 2033
+    },
+    {
+      "framework": "nsa",
+      "id": "nsa-custom",
+      "rule": "replace",
+      "sites": 0,
+      "source": "nsa-cnsa-2",
+      "state": "clear",
+      "year": 2033
+    },
+    {
+      "framework": "eu",
+      "id": "eu-first-steps",
+      "rule": "first_steps",
+      "sites": 0,
+      "source": "eu-pqc-roadmap",
+      "state": "met",
+      "year": 2026
+    },
+    {
+      "framework": "eu",
+      "id": "eu-high-risk",
+      "rule": "high_risk",
+      "sites": 0,
+      "source": "eu-pqc-roadmap",
+      "state": "clear",
+      "year": 2030
+    },
+    {
+      "framework": "eu",
+      "id": "eu-full",
+      "rule": "full",
+      "sites": 0,
+      "source": "eu-pqc-roadmap",
+      "state": "clear",
+      "year": 2035
+    },
+    {
+      "framework": "uk",
+      "id": "uk-discovery",
+      "rule": "discovery",
+      "sites": 0,
+      "source": "uk-ncsc-pqc",
+      "state": "met",
+      "year": 2028
+    },
+    {
+      "framework": "uk",
+      "id": "uk-priority",
+      "rule": "priority",
+      "sites": 0,
+      "source": "uk-ncsc-pqc",
+      "state": "clear",
+      "year": 2031
+    },
+    {
+      "framework": "uk",
+      "id": "uk-complete",
+      "rule": "complete",
+      "sites": 0,
+      "source": "uk-ncsc-pqc",
+      "state": "clear",
+      "year": 2035
+    },
+    {
+      "framework": "us",
+      "id": "us-kex",
+      "rule": "federal",
+      "sites": 0,
+      "source": "us-eo-14412",
+      "state": "clear",
+      "year": 2030
+    },
+    {
+      "framework": "us",
+      "id": "us-sig",
+      "rule": "federal",
+      "sites": 0,
+      "source": "us-eo-14412",
+      "state": "clear",
+      "year": 2031
+    },
+    {
+      "framework": "nca",
+      "id": "nca-hybrid",
+      "rule": "hybrid_required",
+      "sites": 0,
+      "source": "nca-ncs-2-2025",
+      "state": "clear",
+      "year": null
+    }
+  ],
+  "overdue": [
+    "nist-md5"
+  ],
+  "reference_year": 2026,
+  "verdict": "at_risk",
+  "version": 1
+}

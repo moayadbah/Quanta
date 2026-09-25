@@ -18,7 +18,7 @@ from quanta.web.auth import auth
 from quanta.web.db import event, timestamp
 from quanta.web.jobs import JobRegistry
 from quanta.web.routes import _job_or_404, _registry
-from quanta.web.store import ARTIFACT_NAMES, DatabaseArtifactStore
+from quanta.web.store import ARTIFACT_NAMES, OPTIONAL_ARTIFACT_NAMES, DatabaseArtifactStore
 
 router = APIRouter()
 
@@ -116,8 +116,12 @@ async def execute(registry: JobRegistry, job_id: str) -> None:
                                 "INTERNAL", "The isolated scanner could not finish."
                             ) from None
                 artifacts = {}
-                for name in ARTIFACT_NAMES:
-                    async with box.fs.open("quanta-output/" + name, "rb") as handle:
+                for name in sorted(ARTIFACT_NAMES):
+                    path = "quanta-output/" + name
+                    # A scanner snapshot built before an optional artifact existed omits it.
+                    if name in OPTIONAL_ARTIFACT_NAMES and not await box.fs.is_file(path):
+                        continue
+                    async with box.fs.open(path, "rb") as handle:
                         data = await handle.read(DatabaseArtifactStore.MAX_BYTES + 1)
                     if len(data) > DatabaseArtifactStore.MAX_BYTES:
                         raise Reject("REPO_TOO_LARGE", "The report exceeds the free output limit.")

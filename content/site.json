@@ -1,0 +1,2475 @@
+{
+  "_readme": [
+    "Every word the Quanta web pages show lives in this file, in English (en) and Arabic (ar).",
+    "To change wording: find the English text, edit it, and edit the Arabic beside it.",
+    "Keep anything in curly braces, such as {n} or {repo}, exactly as it is: the page fills it in.",
+    "Do not rename keys (the text before the colon). Save the file as UTF-8.",
+    "After editing, run: uv run pytest tests/unit/test_site_content.py"
+  ],
+  "strings": {
+    "a11y.skip": {
+      "en": "Skip to content",
+      "ar": "انتقل إلى المحتوى"
+    },
+    "account.signin": {
+      "en": "Sign in with GitHub",
+      "ar": "سجّل الدخول عبر GitHub"
+    },
+    "account.signout": {
+      "en": "Sign out",
+      "ar": "تسجيل الخروج"
+    },
+    "action.confirm_algorithms.body": {
+      "en": "The algorithm at these calls could not be read, so Quanta assumed a classical one. Confirm each.",
+      "ar": "تعذّرت قراءة الخوارزمية في هذه الاستدعاءات، فافترض Quanta أنها تقليدية. تحقّق من كل منها."
+    },
+    "action.confirm_algorithms.short": {
+      "en": "Confirm algorithms",
+      "ar": "تأكيد الخوارزميات"
+    },
+    "action.confirm_algorithms.title": {
+      "en": "Confirm algorithms Quanta could not see",
+      "ar": "تحقّق من الخوارزميات التي لم يرها Quanta"
+    },
+    "action.hybrid_key_exchange.body": {
+      "en": "Pair ML-KEM with X25519 (X25519MLKEM768). OpenSSL 3.5 and later offers it in TLS by default.",
+      "ar": "اقرن ML-KEM مع X25519 (X25519MLKEM768). يوفّره OpenSSL 3.5 وما بعده في TLS افتراضيًا."
+    },
+    "action.hybrid_key_exchange.short": {
+      "en": "Hybrid key exchange",
+      "ar": "تبادل مفاتيح هجين"
+    },
+    "action.hybrid_key_exchange.title": {
+      "en": "Move key exchange and TLS to hybrid ML-KEM",
+      "ar": "انقل تبادل المفاتيح وTLS إلى ML-KEM الهجين"
+    },
+    "action.make_hybrid.body": {
+      "en": "The NCA draft requires post-quantum algorithms to run in hybrid with an approved classical one.",
+      "ar": "تشترط مسودة الهيئة الوطنية للأمن السيبراني تشغيل خوارزميات ما بعد الكم بشكل هجين مع خوارزمية تقليدية معتمدة."
+    },
+    "action.make_hybrid.short": {
+      "en": "Make it hybrid",
+      "ar": "اجعلها هجينة"
+    },
+    "action.make_hybrid.title": {
+      "en": "Pair standalone post-quantum algorithms",
+      "ar": "اقرن خوارزميات ما بعد الكم المنفردة"
+    },
+    "action.pq_signatures.body": {
+      "en": "Move RSA, ECDSA and EdDSA signatures to ML-DSA or SLH-DSA, keeping a classical signature alongside during the transition.",
+      "ar": "انقل تواقيع RSA وECDSA وEdDSA إلى ML-DSA أو SLH-DSA، مع الإبقاء على توقيع تقليدي بجانبها خلال الانتقال."
+    },
+    "action.pq_signatures.short": {
+      "en": "Post-quantum signatures",
+      "ar": "تواقيع ما بعد كمية"
+    },
+    "action.pq_signatures.title": {
+      "en": "Plan post-quantum signatures",
+      "ar": "خطّط للتواقيع ما بعد الكمية"
+    },
+    "action.replace_weak_now.body": {
+      "en": "Published rules already exclude them. Use SHA-256 or stronger, and AES-GCM.",
+      "ar": "القواعد المنشورة تستبعدها بالفعل. استخدم SHA-256 أو أقوى، وAES-GCM."
+    },
+    "action.replace_weak_now.short": {
+      "en": "Replace MD5 and legacy ciphers",
+      "ar": "استبدال MD5 والتشفير القديم"
+    },
+    "action.replace_weak_now.title": {
+      "en": "Replace MD5 and legacy ciphers now",
+      "ar": "استبدل MD5 والتشفير القديم الآن"
+    },
+    "action.retire_sha1.body": {
+      "en": "Replace SHA-1 with SHA-256 or stronger wherever no protocol or stored data requires it.",
+      "ar": "استبدل SHA-1 بـ SHA-256 أو أقوى حيثما لا يفرضه بروتوكول أو بيانات مخزّنة."
+    },
+    "action.retire_sha1.short": {
+      "en": "Retire SHA-1",
+      "ar": "إيقاف SHA-1"
+    },
+    "action.retire_sha1.title": {
+      "en": "Retire SHA-1",
+      "ar": "أوقف استخدام SHA-1"
+    },
+    "brand.home": {
+      "en": "Quanta home",
+      "ar": "الصفحة الرئيسية لـ Quanta"
+    },
+    "brand.name": {
+      "en": "Quanta",
+      "ar": "Quanta"
+    },
+    "cat.aead": {
+      "en": "AEAD",
+      "ar": "تشفير موثَّق"
+    },
+    "cat.certificate": {
+      "en": "Certificate",
+      "ar": "شهادة"
+    },
+    "cat.cipher": {
+      "en": "Cipher",
+      "ar": "تشفير"
+    },
+    "cat.hash": {
+      "en": "Hash",
+      "ar": "تجزئة"
+    },
+    "cat.kdf": {
+      "en": "Key derivation",
+      "ar": "اشتقاق مفاتيح"
+    },
+    "cat.key_agreement": {
+      "en": "Key agreement",
+      "ar": "تبادل مفاتيح"
+    },
+    "cat.key_generation": {
+      "en": "Key generation",
+      "ar": "توليد مفاتيح"
+    },
+    "cat.key_loading": {
+      "en": "Key loading",
+      "ar": "تحميل مفاتيح"
+    },
+    "cat.mac": {
+      "en": "MAC",
+      "ar": "رمز مصادقة"
+    },
+    "cat.other": {
+      "en": "Other",
+      "ar": "أخرى"
+    },
+    "cat.pq_kem": {
+      "en": "Post-quantum KEM",
+      "ar": "تغليف مفاتيح ما بعد الكم"
+    },
+    "cat.pq_signature": {
+      "en": "Post-quantum signature",
+      "ar": "توقيع ما بعد الكم"
+    },
+    "cat.randomness": {
+      "en": "Randomness",
+      "ar": "عشوائية"
+    },
+    "cat.signature": {
+      "en": "Signature",
+      "ar": "توقيع"
+    },
+    "cat.tls": {
+      "en": "TLS",
+      "ar": "TLS"
+    },
+    "cat.token": {
+      "en": "Token",
+      "ar": "رمز مميّز"
+    },
+    "close.lede": {
+      "en": "Start with the sample, or scan a public repository.",
+      "ar": "ابدأ بالعيّنة، أو افحص مستودعًا عامًا."
+    },
+    "close.title": {
+      "en": "See it on your own code.",
+      "ar": "جرّبه على شيفرتك."
+    },
+    "cta.open": {
+      "en": "Open Quanta",
+      "ar": "افتح Quanta"
+    },
+    "cta.sample": {
+      "en": "Watch the sample run",
+      "ar": "شاهد تشغيل العيّنة"
+    },
+    "cta.scan": {
+      "en": "Scan a repository",
+      "ar": "افحص مستودعًا"
+    },
+    "doc.actions": {
+      "en": "What to do, in order",
+      "ar": "ما يجب فعله، بالترتيب"
+    },
+    "doc.bar_label": {
+      "en": "Shipped cryptographic call sites by status",
+      "ar": "مواقع الاستدعاء التشفيري في الشيفرة المنشورة حسب الحالة"
+    },
+    "doc.changes_counts": {
+      "en": "Automatic patches: {patches} · Guided migrations: {sites} sites in {guides} guides · Refused: {refused}",
+      "ar": "تعديلات تلقائية: {patches} · ترحيلات موجّهة: {sites} موقعًا في {guides} أدلة · مرفوضة: {refused}"
+    },
+    "doc.changes_lede": {
+      "en": "Every finding that needs action has one entry: an automatic patch where the change is safe, a guided migration with example code where it is not, or a refusal with its reason.",
+      "ar": "لكل نتيجة تحتاج إلى إجراء مدخل واحد: تعديل تلقائي حيث يكون التغيير آمنًا، أو ترحيل موجّه مع شيفرة مثال حيث لا يكون كذلك، أو رفض مع سببه."
+    },
+    "doc.col_action": {
+      "en": "Action",
+      "ar": "الإجراء"
+    },
+    "doc.col_algorithm": {
+      "en": "Algorithm",
+      "ar": "الخوارزمية"
+    },
+    "doc.col_call": {
+      "en": "Call",
+      "ar": "الاستدعاء"
+    },
+    "doc.col_entry": {
+      "en": "In Changes",
+      "ar": "في التغييرات"
+    },
+    "doc.col_framework": {
+      "en": "Framework",
+      "ar": "الإطار"
+    },
+    "doc.col_reason": {
+      "en": "Reason",
+      "ar": "السبب"
+    },
+    "doc.col_rule": {
+      "en": "Rule",
+      "ar": "القاعدة"
+    },
+    "doc.col_sites": {
+      "en": "Sites",
+      "ar": "المواقع"
+    },
+    "doc.col_status": {
+      "en": "Status",
+      "ar": "الحالة"
+    },
+    "doc.col_when": {
+      "en": "When",
+      "ar": "الموعد"
+    },
+    "doc.col_where": {
+      "en": "Where",
+      "ar": "الموضع"
+    },
+    "doc.col_year": {
+      "en": "Year",
+      "ar": "السنة"
+    },
+    "doc.counted": {
+      "en": "Counted across {n} cryptographic call sites in shipped code. Tests, examples and docs are listed separately and do not change the verdict.",
+      "ar": "محتسبة عبر {n} موقع استدعاء تشفيري في الشيفرة المنشورة. تُدرج الاختبارات والأمثلة والتوثيق منفصلة ولا تغيّر الحكم."
+    },
+    "doc.deadlines_none": {
+      "en": "No published deadline applies to the shipped code.",
+      "ar": "لا ينطبق أي موعد نهائي منشور على الشيفرة المنشورة."
+    },
+    "doc.deadlines_note": {
+      "en": "Rules that do not apply to this code: {clear}. Rules as published, checked {checked}.",
+      "ar": "قواعد لا تنطبق على هذه الشيفرة: {clear}. القواعد كما نُشرت، رُوجعت في {checked}."
+    },
+    "doc.earliest": {
+      "en": "The earliest published deadline that applies is {year}.",
+      "ar": "أقرب موعد نهائي منشور ينطبق هو {year}."
+    },
+    "doc.fact_commit": {
+      "en": "Commit",
+      "ar": "الإيداع"
+    },
+    "doc.fact_date": {
+      "en": "Date",
+      "ar": "التاريخ"
+    },
+    "doc.fact_repo": {
+      "en": "Repository",
+      "ar": "المستودع"
+    },
+    "doc.fact_verdict": {
+      "en": "Verdict",
+      "ar": "الحكم"
+    },
+    "doc.findings_first": {
+      "en": "The first {n} are shown.",
+      "ar": "تُعرض أول {n} منها."
+    },
+    "doc.findings_none": {
+      "en": "No finding in shipped code needs action.",
+      "ar": "لا توجد نتيجة في الشيفرة المنشورة تحتاج إلى إجراء."
+    },
+    "doc.findings_note": {
+      "en": "{n} in shipped code.",
+      "ar": "{n} في الشيفرة المنشورة."
+    },
+    "doc.findings_other": {
+      "en": "Tests, examples and docs add {n} more, listed in findings.json.",
+      "ar": "تضيف الاختبارات والأمثلة والتوثيق {n} أخرى، مدرجة في findings.json."
+    },
+    "doc.footer": {
+      "en": "Generated by Quanta from the artifacts of this scan: readiness.json, findings.json, fixes.json, score.json and meta.json.",
+      "ar": "أنشأه Quanta من مخرجات هذا الفحص: readiness.json وfindings.json وfixes.json وscore.json وmeta.json."
+    },
+    "doc.guides": {
+      "en": "Guided migrations",
+      "ar": "الترحيلات الموجّهة"
+    },
+    "doc.header": {
+      "en": "Quanta  ·  Post-quantum readiness",
+      "ar": "Quanta  ·  الجاهزية لما بعد الحوسبة الكمية"
+    },
+    "doc.html_title": {
+      "en": "Quanta readiness report: {repo}",
+      "ar": "تقرير جاهزية Quanta: {repo}"
+    },
+    "doc.implements": {
+      "en": "This repository implements {algorithms} itself.",
+      "ar": "ينفّذ هذا المستودع {algorithms} بنفسه."
+    },
+    "doc.implements_body": {
+      "en": "Its users can only migrate if it offers a post-quantum scheme beside it; see the guided migrations below.",
+      "ar": "لا يستطيع مستخدموه الترحيل إلا إذا قدّم مخططًا ما بعد كمي بجانبه؛ انظر الترحيلات الموجّهة أدناه."
+    },
+    "doc.m_files": {
+      "en": "Files read",
+      "ar": "الملفات المقروءة"
+    },
+    "doc.m_files_value": {
+      "en": "{n} Python files ({shipped} shipped)",
+      "ar": "{n} ملف بايثون ({shipped} منشورة)"
+    },
+    "doc.m_how": {
+      "en": "How",
+      "ar": "الطريقة"
+    },
+    "doc.m_how_value": {
+      "en": "The code is parsed, never imported or run. Every finding cites its file and line. An asymmetric call whose algorithm cannot be seen is assumed classical and flagged for confirmation.",
+      "ar": "تُحلَّل الشيفرة دون استيرادها أو تشغيلها. تذكر كل نتيجة ملفها وسطرها. ويُفترض أن الاستدعاء غير المتماثل الذي لا تظهر خوارزميته تقليدي، ويُعلَّم للتأكيد."
+    },
+    "doc.m_readiness": {
+      "en": "Readiness",
+      "ar": "الجاهزية"
+    },
+    "doc.m_readiness_value": {
+      "en": "Each finding in shipped code is classed by what quantum computing or today's cryptanalysis does to it, then held against the published milestones of NIST, NSA CNSA 2.0, the Saudi NCA, the EU, the UK NCSC and US Executive Order 14412, each with its source.",
+      "ar": "تُصنَّف كل نتيجة في الشيفرة المنشورة بحسب أثر الحوسبة الكمية أو تحليل الشفرات الحالي عليها، ثم تُقاس بالمعالم المنشورة من NIST وNSA CNSA 2.0 والهيئة الوطنية للأمن السيبراني والاتحاد الأوروبي وNCSC البريطاني والأمر التنفيذي الأمريكي 14412، مع مصدر كل منها."
+    },
+    "doc.m_score": {
+      "en": "Agility score",
+      "ar": "درجة المرونة"
+    },
+    "doc.m_score_none": {
+      "en": "Not computed for this repository ({status}).",
+      "ar": "لم تُحسب لهذا المستودع ({status})."
+    },
+    "doc.m_score_value": {
+      "en": "{score} of 100: how easy the algorithms are to change (score.json)",
+      "ar": "{score} من 100: مدى سهولة تغيير الخوارزميات (score.json)"
+    },
+    "doc.m_unparseable": {
+      "en": "{n} could not be parsed and are listed in meta.json",
+      "ar": "{n} تعذّر تحليلها وهي مدرجة في meta.json"
+    },
+    "doc.m_versions": {
+      "en": "Versions",
+      "ar": "الإصدارات"
+    },
+    "doc.m_versions_value": {
+      "en": "analyzer {analyzer} · ruleset {ruleset}",
+      "ar": "المحلّل {analyzer} · القواعد {ruleset}"
+    },
+    "doc.more": {
+      "en": "and {n} more",
+      "ar": "و{n} أخرى"
+    },
+    "doc.overdue": {
+      "en": "Rules already in force: {n}.",
+      "ar": "قواعد سارية بالفعل: {n}."
+    },
+    "doc.page": {
+      "en": "Page {page} of {pages}",
+      "ar": "صفحة {page} من {pages}"
+    },
+    "doc.partial": {
+      "en": "The time limit stopped the scan with {n} shipped files unread. Counts cover what was read.",
+      "ar": "أوقف الحد الزمني الفحص وبقي {n} من الملفات المنشورة دون قراءة. تغطي الأعداد ما قُرئ."
+    },
+    "doc.partial_title": {
+      "en": "Partial result.",
+      "ar": "نتيجة جزئية."
+    },
+    "doc.patches": {
+      "en": "Automatic patches",
+      "ar": "التعديلات التلقائية"
+    },
+    "doc.recorded": {
+      "en": "recorded sample",
+      "ar": "عينة مسجَّلة"
+    },
+    "doc.refusals": {
+      "en": "Refused, with the reason",
+      "ar": "المرفوضة مع السبب"
+    },
+    "doc.s1": {
+      "en": "1. Readiness",
+      "ar": "1. الجاهزية"
+    },
+    "doc.s2": {
+      "en": "2. Findings that need action",
+      "ar": "2. نتائج تحتاج إلى إجراء"
+    },
+    "doc.s3": {
+      "en": "3. Proposed changes",
+      "ar": "3. التغييرات المقترحة"
+    },
+    "doc.s4": {
+      "en": "4. Published deadlines",
+      "ar": "4. المواعيد النهائية المنشورة"
+    },
+    "doc.s5": {
+      "en": "5. Method",
+      "ar": "5. المنهجية"
+    },
+    "doc.scope": {
+      "en": "Not a cryptographic security review, and not an estimate of migration cost. Certificates, protocols, hardware and third-party services are outside what a source scan can see.",
+      "ar": "ليس مراجعة أمنية للتشفير، ولا تقديرًا لتكلفة الترحيل. الشهادات والبروتوكولات والعتاد وخدمات الأطراف الثالثة خارج ما يراه فحص الشيفرة المصدرية."
+    },
+    "doc.sources": {
+      "en": "Sources: {list}",
+      "ar": "المصادر: {list}"
+    },
+    "doc.target": {
+      "en": "Replacement: {to}.",
+      "ar": "البديل: {to}."
+    },
+    "doc.title": {
+      "en": "Post-quantum readiness report",
+      "ar": "تقرير الجاهزية لما بعد الحوسبة الكمية"
+    },
+    "doc.truncation": {
+      "en": "Input truncation: {observed} {unit} against a limit of {limit}, so only part of the repository was read. Counts cover what was read.",
+      "ar": "اقتطاع المدخلات: {observed} ({unit}) مقابل حد قدره {limit}، لذا قُرئ جزء من المستودع فقط. تغطي الأعداد ما قُرئ."
+    },
+    "edits.guide_sites": {
+      "en": "Sites: {n}",
+      "ar": "المواقع: {n}"
+    },
+    "edits.guide_target": {
+      "en": "Replacement: {to}",
+      "ar": "البديل: {to}"
+    },
+    "edits.guides_lede": {
+      "en": "Changes that alter keys, signatures or wire formats need a person. Each guide names the replacement, shows working code and cites its source.",
+      "ar": "التغييرات التي تمس المفاتيح أو التواقيع أو صيغ النقل تحتاج إلى مراجعة بشرية. يسمّي كل دليل البديل، ويعرض شيفرة عاملة، ويذكر مصدره."
+    },
+    "edits.guides_title": {
+      "en": "Guided migrations ({n})",
+      "ar": "الترحيلات الموجّهة ({n})"
+    },
+    "edits.lede": {
+      "en": "Select changes to review them as one diff. Nothing changes until you open a pull request.",
+      "ar": "اختر التغييرات لمراجعتها كفرق واحد. لا يتغير شيء حتى تفتح طلب دمج."
+    },
+    "edits.no_patches": {
+      "en": "No change here is safe to make automatically. The guides below show how to migrate each one.",
+      "ar": "لا يوجد هنا تغيير آمن لإجرائه تلقائيًا. توضح الأدلة أدناه كيفية ترحيل كل منها."
+    },
+    "edits.none": {
+      "en": "No changes proposed. Quanta proposes only changes it can defend.",
+      "ar": "لا تغييرات مقترحة. لا يقترح Quanta إلا تغييرات يمكنه الدفاع عنها."
+    },
+    "edits.none_but_refused": {
+      "en": "No changes proposed. The candidates below were refused with a reason.",
+      "ar": "لا تغييرات مقترحة. رُفضت المرشحات أدناه مع ذكر السبب."
+    },
+    "edits.note": {
+      "en": "Syntax checked. Review stored hashes and peers before merging.",
+      "ar": "فُحصت الصياغة. راجع التجزئات المخزّنة والأطراف الأخرى قبل الدمج."
+    },
+    "edits.patches_title": {
+      "en": "Automatic patches ({n})",
+      "ar": "التعديلات التلقائية ({n})"
+    },
+    "edits.refusals_title": {
+      "en": "Refused ({n})",
+      "ar": "مرفوضة ({n})"
+    },
+    "edits.review": {
+      "en": "Review the diff",
+      "ar": "راجع الفروقات"
+    },
+    "edits.select_hint": {
+      "en": "Select edits to review them as a diff.",
+      "ar": "اختر تعديلات لمراجعتها كفروقات."
+    },
+    "edits.selected": {
+      "en": "{n} selected",
+      "ar": "اختير {n}"
+    },
+    "edits.summary": {
+      "en": "Every finding that needs action has one entry here. Automatic patches: {patches}. Guided migrations: {guided}. Refused, with the reason: {refused}.",
+      "ar": "لكل نتيجة تحتاج إلى إجراء مدخل واحد هنا. تعديلات تلقائية: {patches}. ترحيلات موجّهة: {guided}. مرفوضة مع السبب: {refused}."
+    },
+    "edits.waiting": {
+      "en": "Proposed changes appear here as files are read.",
+      "ar": "تظهر التغييرات المقترحة هنا مع قراءة الملفات."
+    },
+    "error.ACKNOWLEDGEMENT_REQUIRED": {
+      "en": "Confirm the notes above before opening a pull request.",
+      "ar": "أكّد الملاحظات أعلاه قبل فتح طلب الدمج."
+    },
+    "error.ANALYSIS_TIMEOUT": {
+      "en": "The analysis exceeded its time limit.",
+      "ar": "تجاوز التحليل مهلته الزمنية."
+    },
+    "error.AUTH_INVALID": {
+      "en": "Your session is no longer valid. Sign in again.",
+      "ar": "لم تعد جلستك صالحة. سجّل الدخول مجددًا."
+    },
+    "error.AUTH_REQUIRED": {
+      "en": "Sign in with GitHub to continue.",
+      "ar": "سجّل الدخول عبر GitHub للمتابعة."
+    },
+    "error.AUTH_UNAVAILABLE": {
+      "en": "Sign-in is not available right now.",
+      "ar": "تسجيل الدخول غير متاح الآن."
+    },
+    "error.BENCHMARK_INVALID": {
+      "en": "The benchmark file is not valid.",
+      "ar": "ملف المقارنة غير صالح."
+    },
+    "error.BENCHMARK_NOT_FROZEN": {
+      "en": "The benchmark is not frozen.",
+      "ar": "ملف المقارنة غير مجمَّد."
+    },
+    "error.CBOM_INVALID": {
+      "en": "The CBOM file is not valid.",
+      "ar": "ملف CBOM غير صالح."
+    },
+    "error.CLONE_FAILED": {
+      "en": "The repository could not be cloned.",
+      "ar": "تعذّر نسخ المستودع."
+    },
+    "error.CLONE_TIMEOUT": {
+      "en": "Cloning took too long.",
+      "ar": "استغرق النسخ وقتًا طويلًا."
+    },
+    "error.CSRF_INVALID": {
+      "en": "The request could not be verified. Reload the page.",
+      "ar": "تعذّر التحقق من الطلب. أعد تحميل الصفحة."
+    },
+    "error.FIX_UNAVAILABLE": {
+      "en": "This action needs a completed live analysis with available edits.",
+      "ar": "هذا الإجراء يحتاج تحليلًا حيًا مكتملًا فيه تعديلات متاحة."
+    },
+    "error.GITHUB_UNAVAILABLE": {
+      "en": "GitHub is unavailable or refused the request. Try again shortly.",
+      "ar": "GitHub غير متاح أو رفض الطلب. حاول بعد قليل."
+    },
+    "error.HOST_NOT_ALLOWED": {
+      "en": "Only github.com repositories can be analysed.",
+      "ar": "لا يمكن تحليل إلا مستودعات github.com."
+    },
+    "error.INTERNAL": {
+      "en": "An internal error occurred.",
+      "ar": "حدث خطأ داخلي."
+    },
+    "error.NOT_FINISHED": {
+      "en": "The analysis has not finished yet.",
+      "ar": "لم يكتمل التحليل بعد."
+    },
+    "error.NOT_FOUND": {
+      "en": "Not found.",
+      "ar": "غير موجود."
+    },
+    "error.PR_CONFLICT": {
+      "en": "GitHub could not complete this. Check your access and try again.",
+      "ar": "تعذّر على GitHub إكمال ذلك. تحقق من صلاحياتك وحاول مجددًا."
+    },
+    "error.PR_PENDING": {
+      "en": "Your pull request is being prepared. Try again shortly.",
+      "ar": "يجري تجهيز طلب الدمج. حاول بعد قليل."
+    },
+    "error.QUOTA_EXCEEDED": {
+      "en": "Your free analyses are used up. Daily limits reset at midnight UTC.",
+      "ar": "استُنفدت تحليلاتك المجانية. تتجدد الحدود اليومية عند منتصف الليل بتوقيت UTC."
+    },
+    "error.RATE_LIMITED": {
+      "en": "Too many requests. Try again later.",
+      "ar": "طلبات كثيرة جدًا. حاول لاحقًا."
+    },
+    "error.REPO_NOT_FOUND": {
+      "en": "Repository not found.",
+      "ar": "لم يُعثر على المستودع."
+    },
+    "error.REPO_PRIVATE": {
+      "en": "Repository not found, or it is private.",
+      "ar": "لم يُعثر على المستودع، أو أنه خاص."
+    },
+    "error.REPO_TOO_LARGE": {
+      "en": "This repository is larger than the free limit.",
+      "ar": "هذا المستودع أكبر من الحد المجاني."
+    },
+    "error.REVIEW_STALE": {
+      "en": "The proposal changed. Review the current diff again.",
+      "ar": "تغيّر الاقتراح. راجع الفروقات الحالية مجددًا."
+    },
+    "error.SANDBOX_UNAVAILABLE": {
+      "en": "The isolated worker is not available on this server.",
+      "ar": "العامل المعزول غير متاح على هذا الخادم."
+    },
+    "error.SCHEMA_INVALID": {
+      "en": "The request was not valid.",
+      "ar": "الطلب غير صالح."
+    },
+    "error.SHA_MISMATCH": {
+      "en": "The branch moved during the analysis. Try again.",
+      "ar": "تغيّر الفرع أثناء التحليل. حاول مجددًا."
+    },
+    "error.URL_MALFORMED": {
+      "en": "That is not a GitHub repository address.",
+      "ar": "هذا ليس عنوان مستودع على GitHub."
+    },
+    "error.VERIFICATION_FAILED": {
+      "en": "The project's tests failed after this change.",
+      "ar": "فشلت اختبارات المشروع بعد هذا التغيير."
+    },
+    "error.VERIFICATION_REQUIRED": {
+      "en": "Verify this selection with the project's tests first.",
+      "ar": "تحقّق من هذا الاختيار باختبارات المشروع أولًا."
+    },
+    "error.analysis_failed": {
+      "en": "This analysis could not finish.",
+      "ar": "تعذّر إكمال هذا التحليل."
+    },
+    "error.connection": {
+      "en": "Connection interrupted. Please try again.",
+      "ar": "انقطع الاتصال. حاول مجددًا."
+    },
+    "error.generic": {
+      "en": "Something went wrong. Please try again.",
+      "ar": "حدث خطأ. حاول مجددًا."
+    },
+    "error.unavailable": {
+      "en": "The service is unavailable. Please try again shortly.",
+      "ar": "الخدمة غير متاحة. حاول بعد قليل."
+    },
+    "ev.Accepted for analysis": {
+      "en": "Accepted for analysis",
+      "ar": "المقبولة للتحليل"
+    },
+    "ev.Algorithm literals": {
+      "en": "Algorithm literals",
+      "ar": "أسماء الخوارزميات الحرفية"
+    },
+    "ev.Analysis pinned to": {
+      "en": "Analysis pinned to",
+      "ar": "التحليل مثبَّت على"
+    },
+    "ev.Applies to": {
+      "en": "Applies to",
+      "ar": "ينطبق على"
+    },
+    "ev.Artifacts": {
+      "en": "Artifacts",
+      "ar": "المخرجات"
+    },
+    "ev.Budgets": {
+      "en": "Budgets",
+      "ar": "الحدود"
+    },
+    "ev.Callees dropped, not guessed": {
+      "en": "Callees dropped, not guessed",
+      "ar": "مستدعَيات أُسقطت دون تخمين"
+    },
+    "ev.Callees resolved": {
+      "en": "Callees resolved",
+      "ar": "المستدعَيات المحلولة"
+    },
+    "ev.Character class": {
+      "en": "Character class",
+      "ar": "فئة الأحرف"
+    },
+    "ev.Checked-out HEAD": {
+      "en": "Checked-out HEAD",
+      "ar": "الإيداع المستخرج"
+    },
+    "ev.Clone directory": {
+      "en": "Clone directory",
+      "ar": "مجلد النسخة"
+    },
+    "ev.Configuration reads": {
+      "en": "Configuration reads",
+      "ar": "قراءات الإعدادات"
+    },
+    "ev.Containment": {
+      "en": "Containment",
+      "ar": "الاحتواء"
+    },
+    "ev.Crypto library calls recognised": {
+      "en": "Crypto library calls recognised",
+      "ar": "استدعاءات مكتبات التشفير المعروفة"
+    },
+    "ev.Crypto sites": {
+      "en": "Crypto sites",
+      "ar": "المواضع التشفيرية"
+    },
+    "ev.Default branch": {
+      "en": "Default branch",
+      "ar": "الفرع الافتراضي"
+    },
+    "ev.Depth": {
+      "en": "Depth",
+      "ar": "العمق"
+    },
+    "ev.Directories pruned": {
+      "en": "Directories pruned",
+      "ar": "المجلدات المستبعدة"
+    },
+    "ev.Edges": {
+      "en": "Edges",
+      "ar": "الحواف"
+    },
+    "ev.Execution": {
+      "en": "Execution",
+      "ar": "التنفيذ"
+    },
+    "ev.External requests": {
+      "en": "External requests",
+      "ar": "الطلبات الخارجية"
+    },
+    "ev.Files parsed": {
+      "en": "Files parsed",
+      "ar": "الملفات المحللة"
+    },
+    "ev.Head commit": {
+      "en": "Head commit",
+      "ar": "آخر إيداع"
+    },
+    "ev.Hooks": {
+      "en": "Hooks",
+      "ar": "الخطافات"
+    },
+    "ev.Host allowlist": {
+      "en": "Host allowlist",
+      "ar": "قائمة المضيفين المسموحين"
+    },
+    "ev.Imports": {
+      "en": "Imports",
+      "ar": "الاستيرادات"
+    },
+    "ev.Low-confidence edges": {
+      "en": "Low-confidence edges",
+      "ar": "حواف منخفضة الثقة"
+    },
+    "ev.Metric": {
+      "en": "Metric",
+      "ar": "المقياس"
+    },
+    "ev.Network calls so far": {
+      "en": "Network calls so far",
+      "ar": "اتصالات الشبكة حتى الآن"
+    },
+    "ev.Nodes": {
+      "en": "Nodes",
+      "ar": "العُقد"
+    },
+    "ev.Opens from": {
+      "en": "Opens from",
+      "ar": "يُفتح من"
+    },
+    "ev.Owner": {
+      "en": "Owner",
+      "ar": "المالك"
+    },
+    "ev.Python files considered": {
+      "en": "Python files considered",
+      "ar": "ملفات بايثون المفحوصة"
+    },
+    "ev.Quantum-vulnerable": {
+      "en": "Quantum-vulnerable",
+      "ar": "المعرّضة للحوسبة الكمية"
+    },
+    "ev.Read, not parsed": {
+      "en": "Read, not parsed",
+      "ar": "قُرئت دون تحليل"
+    },
+    "ev.Refused": {
+      "en": "Refused",
+      "ar": "مرفوض"
+    },
+    "ev.Report size": {
+      "en": "Report size",
+      "ar": "حجم التقرير"
+    },
+    "ev.Repository": {
+      "en": "Repository",
+      "ar": "المستودع"
+    },
+    "ev.Result": {
+      "en": "Result",
+      "ar": "النتيجة"
+    },
+    "ev.Ruleset version": {
+      "en": "Ruleset version",
+      "ar": "إصدار القواعد"
+    },
+    "ev.Scheme": {
+      "en": "Scheme",
+      "ar": "البروتوكول"
+    },
+    "ev.Shell": {
+      "en": "Shell",
+      "ar": "الصدفة"
+    },
+    "ev.Sites by file role": {
+      "en": "Sites by file role",
+      "ar": "المواضع حسب دور الملف"
+    },
+    "ev.Size": {
+      "en": "Size",
+      "ar": "الحجم"
+    },
+    "ev.Source retained": {
+      "en": "Source retained",
+      "ar": "الشيفرة المحتفَظ بها"
+    },
+    "ev.Submodules": {
+      "en": "Submodules",
+      "ar": "الوحدات الفرعية"
+    },
+    "ev.Symlinks skipped": {
+      "en": "Symlinks skipped",
+      "ar": "الروابط الرمزية المتجاوزة"
+    },
+    "ev.Time limit": {
+      "en": "Time limit",
+      "ar": "الحد الزمني"
+    },
+    "ev.Timeout": {
+      "en": "Timeout",
+      "ar": "المهلة"
+    },
+    "ev.Total bytes": {
+      "en": "Total bytes",
+      "ar": "إجمالي البايتات"
+    },
+    "ev.Userinfo / port / query": {
+      "en": "Userinfo / port / query",
+      "ar": "بيانات المستخدم / المنفذ / الاستعلام"
+    },
+    "ev.Visibility": {
+      "en": "Visibility",
+      "ar": "الإتاحة"
+    },
+    "ev.raw": {
+      "en": "{label}",
+      "ar": "{label}"
+    },
+    "factor.call_sites.name": {
+      "en": "Call sites",
+      "ar": "مواضع الاستدعاء"
+    },
+    "factor.call_sites.why": {
+      "en": "{n} touchpoints in shipped code must each be edited to change an algorithm.",
+      "ar": "{n} موضع تماس في شيفرة المنتج يجب تعديل كل منها لتغيير خوارزمية."
+    },
+    "factor.isolation_layer.name": {
+      "en": "Isolation",
+      "ar": "العزل"
+    },
+    "factor.isolation_layer.why": {
+      "en": "{touchpoints} touchpoints spread over {crypto_modules} modules. One module is best.",
+      "ar": "{touchpoints} موضع تماس موزعة على {crypto_modules} وحدات. الأفضل وحدة واحدة."
+    },
+    "factor.propagation_depth.name": {
+      "en": "Spread",
+      "ar": "الانتشار"
+    },
+    "factor.propagation_depth.why": {
+      "en": "{crypto_modules} modules use cryptography and {dependents} call them, of {shipped_modules} shipped modules.",
+      "ar": "{crypto_modules} وحدات تستخدم التشفير و{dependents} تستدعيها، من أصل {shipped_modules} وحدة في المنتج."
+    },
+    "factor.selection_source.name": {
+      "en": "Algorithm as a setting",
+      "ar": "الخوارزمية كإعداد"
+    },
+    "factor.selection_source.why": {
+      "en": "{configured} choices are read from configuration, {literal} are fixed in code.",
+      "ar": "{configured} خيارات تُقرأ من الإعدادات، و{literal} مثبتة في الشيفرة."
+    },
+    "facts.commit": {
+      "en": "Commit",
+      "ar": "الإيداع"
+    },
+    "facts.duration": {
+      "en": "Duration {seconds} s",
+      "ar": "المدة {seconds} ث"
+    },
+    "facts.files": {
+      "en": "Files: {n}",
+      "ar": "الملفات: {n}"
+    },
+    "facts.recorded": {
+      "en": "Recorded run",
+      "ar": "تشغيل مسجَّل"
+    },
+    "faq.a1": {
+      "en": "No. It parses the source text and never installs, imports or executes it. The working copy is deleted when the scan ends.",
+      "ar": "لا. يحلّل نص الشيفرة ولا يثبّتها أو يستوردها أو ينفّذها أبدًا، وتُحذف نسخة العمل عند انتهاء الفحص."
+    },
+    "faq.a2": {
+      "en": "Any public GitHub repository within the size limit shown in the workspace. Python is measured today; the approach carries to other languages, and more are coming.",
+      "ar": "أي مستودع عام على GitHub ضمن حد الحجم المعروض في مساحة العمل. بايثون هي ما يُقاس عليه اليوم، والنهج ينتقل إلى لغات أخرى قادمة."
+    },
+    "faq.a3": {
+      "en": "Every cryptographic call is classified: quantum-vulnerable (RSA, elliptic curves, Diffie-Hellman), weak today (MD5, SHA-1, legacy ciphers), post-quantum, or no action needed. A repository is ready only when shipped code has nothing vulnerable or weak.",
+      "ar": "يُصنَّف كل استدعاء تشفيري: معرّض للحوسبة الكمية (RSA والمنحنيات الإهليلجية وDiffie-Hellman)، أو ضعيف اليوم (MD5 وSHA-1 والتشفير القديم)، أو ما بعد كمي، أو لا يحتاج إجراء. ولا يكون المستودع جاهزًا إلا إذا خلت شيفرته المنشورة من كل ما هو معرّض أو ضعيف."
+    },
+    "faq.a4": {
+      "en": "From published documents only: NIST IR 8547 and SP 800-131A, NSA CNSA 2.0, the Saudi NCA's NCS-2 draft, the EU roadmap, UK NCSC guidance and US Executive Order 14412. Each rule links to its source.",
+      "ar": "من وثائق منشورة فقط: NIST IR 8547 وSP 800-131A، وNSA CNSA 2.0، ومسودة NCS-2 من الهيئة الوطنية للأمن السيبراني، وخريطة الطريق الأوروبية، وإرشادات NCSC البريطاني، والأمر التنفيذي الأمريكي 14412. وكل قاعدة مرتبطة بمصدرها."
+    },
+    "faq.a5": {
+      "en": "Only when you ask. Proposed changes are shown as a diff, you choose which to keep, and a draft pull request opens only after you review it. Changes that would break a protocol or stored data are refused, with the reason.",
+      "ar": "فقط عندما تطلب ذلك. تُعرض التغييرات المقترحة كفروقات، وتختار ما تبقيه، ولا يُفتح طلب دمج مسودة إلا بعد مراجعتك. أما التغييرات التي تكسر بروتوكولًا أو بيانات مخزّنة فتُرفض مع ذكر السبب."
+    },
+    "faq.a6": {
+      "en": "On 20 repositories it had never seen, it found 70 of 74 hand-labelled cryptographic calls, and everything it reported was cryptography. Public-key calls hidden behind other libraries are the hardest case. The method and the raw files are published.",
+      "ar": "في 20 مستودعًا لم يرها من قبل، وجد 70 من 74 استدعاءً تشفيريًا موسومًا يدويًا، وكان كل ما أبلغ عنه تشفيرًا. واستدعاءات المفتاح العام المخفية خلف مكتبات أخرى هي الحالة الأصعب. والطريقة والملفات الخام منشورة."
+    },
+    "faq.a7": {
+      "en": "Data encrypted today can be recorded now and decrypted later, and migrations take years. The US government estimates $7.1 billion to move its prioritised civilian systems between 2025 and 2035 (OMB, July 2024). The first step every roadmap names is an inventory.",
+      "ar": "البيانات المشفّرة اليوم يمكن تسجيلها الآن وفك تشفيرها لاحقًا، والترحيل يستغرق سنوات. وتقدّر الحكومة الأمريكية كلفة نقل أنظمتها المدنية ذات الأولوية بين 2025 و2035 بنحو 7.1 مليار دولار (مكتب الإدارة والميزانية، يوليو 2024). والخطوة الأولى في كل خريطة طريق هي الحصر."
+    },
+    "faq.a8": {
+      "en": "Results, your review marks and the files needed for proposed changes, for seven days. Sessions last eight hours. There are no analytics or advertising trackers. The privacy page has the details.",
+      "ar": "النتائج وعلامات مراجعتك والملفات اللازمة للتغييرات المقترحة، لمدة سبعة أيام. وتستمر الجلسة ثماني ساعات. ولا توجد أدوات تحليلات أو تتبّع إعلاني. وتجد التفاصيل في صفحة الخصوصية."
+    },
+    "faq.q1": {
+      "en": "Does Quanta run my code?",
+      "ar": "هل يشغّل Quanta شيفرتي؟"
+    },
+    "faq.q2": {
+      "en": "Which repositories can I scan?",
+      "ar": "ما المستودعات التي يمكنني فحصها؟"
+    },
+    "faq.q3": {
+      "en": "What does quantum-ready mean here?",
+      "ar": "ماذا تعني الجاهزية الكمية هنا؟"
+    },
+    "faq.q4": {
+      "en": "Where do the deadlines come from?",
+      "ar": "من أين تأتي المواعيد النهائية؟"
+    },
+    "faq.q5": {
+      "en": "Will it change my code?",
+      "ar": "هل سيغيّر شيفرتي؟"
+    },
+    "faq.q6": {
+      "en": "How accurate is it?",
+      "ar": "ما مدى دقته؟"
+    },
+    "faq.q7": {
+      "en": "Why act now?",
+      "ar": "لماذا التحرك الآن؟"
+    },
+    "faq.q8": {
+      "en": "What is stored, and for how long?",
+      "ar": "ما الذي يُخزَّن، ولأي مدة؟"
+    },
+    "faq.title": {
+      "en": "Questions",
+      "ar": "أسئلة شائعة"
+    },
+    "fig.cost.label": {
+      "en": "of engineering time saved per repository",
+      "ar": "من وقت المهندسين يُوفَّر لكل مستودع"
+    },
+    "fig.cost.limit": {
+      "en": "A US wage. The same method applies with any local rate.",
+      "ar": "أجر أمريكي، والطريقة نفسها تنطبق بأي أجر محلي."
+    },
+    "fig.cost.measured": {
+      "en": "{hours} hours at ${hourly} an hour: the US median software developer wage of ${wage} a year over 2,080 hours.",
+      "ar": "{hours} ساعة بأجر {hourly} دولارًا في الساعة، وهو الأجر الوسيط لمطوري البرمجيات في الولايات المتحدة البالغ {wage} دولارًا سنويًا مقسومًا على 2,080 ساعة."
+    },
+    "fig.cost.method": {
+      "en": "Hours from the figure beside it, times the wage. Wage only, with no overhead or benefits, so it understates the real cost.",
+      "ar": "الساعات من الرقم المجاور مضروبة في الأجر. الأجر وحده دون تكاليف إضافية أو مزايا، لذا فهو أقل من الكلفة الفعلية."
+    },
+    "fig.hours.label": {
+      "en": "of reading avoided in the median repository",
+      "ar": "من القراءة وُفّرت في المستودع الوسيط"
+    },
+    "fig.hours.limit": {
+      "en": "Generated code inflates line counts, which is why the median is shown. Every repository's figure is in the evidence file.",
+      "ar": "الشيفرة المولَّدة تضخّم عدد الأسطر، ولذلك يُعرض الوسيط. وأرقام كل مستودع موجودة في ملف الأدلة."
+    },
+    "fig.hours.measured": {
+      "en": "The median of {repos} repositories has {lines} lines of shipped code: {manual} hours of reading at {rate} lines an hour. Less {review} minutes to confirm each finding and the scan time, {saved} hours remain.",
+      "ar": "المستودع الوسيط بين {repos} مستودعًا فيه {lines} سطرًا من الشيفرة المنشورة، أي {manual} ساعة قراءة بمعدل {rate} سطر في الساعة. وبعد خصم {review} دقائق لتأكيد كل نتيجة وزمن الفحص، يبقى {saved} ساعة."
+    },
+    "fig.hours.method": {
+      "en": "{rate} lines an hour is the fastest pace at which code review stays effective (Kemerer and Paulk, 2009). A floor: no time is counted for cataloguing or mapping deadlines.",
+      "ar": "{rate} سطر في الساعة هو أسرع معدل تبقى عنده مراجعة الشيفرة فعّالة (Kemerer وPaulk، 2009). وهو حد أدنى: لم يُحتسب أي وقت للفهرسة أو لربط المواعيد النهائية."
+    },
+    "fig.hours.unit": {
+      "en": "h",
+      "ar": "س"
+    },
+    "fig.overdue.label": {
+      "en": "cryptographic calls already past a published deadline, across 60 public repositories",
+      "ar": "استدعاءً تشفيريًا تجاوزت موعدًا نهائيًا منشورًا، في 60 مستودعًا عامًا"
+    },
+    "fig.overdue.measured": {
+      "en": "MD5 and Triple DES in shipped code. The same {repos} scans found {vulnerable} quantum-vulnerable and {weak} weak calls, and proposed {proposed} replacements in {with} repositories.",
+      "ar": "MD5 وTriple DES في الشيفرة المنشورة. ووجدت الفحوصات نفسها وعددها {repos} {vulnerable} استدعاءً معرّضًا للحوسبة الكمية و{weak} استدعاءً ضعيفًا، واقترحت {proposed} استبدالًا في {with} مستودعًا."
+    },
+    "fig.overdue.method": {
+      "en": "Each call classified by its algorithm and mapped to the published milestones: in NIST SP 800-131A, MD5 is not approved and three-key Triple DES is disallowed after 2023.",
+      "ar": "صُنّف كل استدعاء حسب خوارزميته ورُبط بالمعالم المنشورة: في NIST SP 800-131A لا تُعتمد MD5 ويُمنع Triple DES ثلاثي المفاتيح بعد 2023."
+    },
+    "fig.precision.label": {
+      "en": "of what it reported was cryptography",
+      "ar": "مما أبلغ عنه كان تشفيرًا فعلًا"
+    },
+    "fig.precision.measured": {
+      "en": "{found} of {total} reported calls on the same held-out set were real cryptographic calls (95% lower bound {lo} percent).",
+      "ar": "{found} من {total} استدعاءً أُبلغ عنه في المجموعة نفسها كانت استدعاءات تشفيرية حقيقية (الحد الأدنى لفترة الثقة 95% هو {lo} بالمئة)."
+    },
+    "fig.precision.method": {
+      "en": "Every reported call was matched against the hand labels. Anything without a label counts as a false alarm.",
+      "ar": "طوبق كل استدعاء مُبلغ عنه مع الوسوم اليدوية، وكل ما لا يقابله وسم يُحسب إنذارًا كاذبًا."
+    },
+    "fig.precision.unit": {
+      "en": "%",
+      "ar": "%"
+    },
+    "fig.recall.label": {
+      "en": "of labelled cryptographic calls found in 20 repositories it had never seen",
+      "ar": "من الاستدعاءات التشفيرية الموسومة عُثر عليها في 20 مستودعًا لم يرها من قبل"
+    },
+    "fig.recall.limit": {
+      "en": "Public-key and TLS calls hidden behind other libraries are the hardest case: {pk_found} of {pk_total} on this set.",
+      "ar": "استدعاءات المفتاح العام وTLS المخفية خلف مكتبات أخرى هي الحالة الأصعب: {pk_found} من {pk_total} في هذه المجموعة."
+    },
+    "fig.recall.measured": {
+      "en": "{found} of {total} hand-labelled cryptographic calls in 20 public repositories sampled after the rules were frozen (95% interval {lo} to {hi} percent).",
+      "ar": "{found} من {total} استدعاءً تشفيريًا موسومًا يدويًا في 20 مستودعًا عامًا سُحبت بعد تجميد القواعد (فترة ثقة 95% من {lo} إلى {hi} بالمئة)."
+    },
+    "fig.recall.method": {
+      "en": "Repositories drawn by a pre-registered sampling rule, labelled line by line, then scored once with the rules frozen. The protocol was hashed before the labels were written.",
+      "ar": "سُحبت المستودعات بقاعدة معاينة مسجّلة مسبقًا، ووُسمت سطرًا بسطر، ثم قيست مرة واحدة والقواعد مجمّدة. وحُفظت بصمة البروتوكول قبل كتابة الوسوم."
+    },
+    "fig.recall.unit": {
+      "en": "%",
+      "ar": "%"
+    },
+    "fig.speed.label": {
+      "en": "to scan the median repository",
+      "ar": "لفحص المستودع الوسيط"
+    },
+    "fig.speed.measured": {
+      "en": "{lines} lines of shipped code. The largest of the {repos} repositories, {biggest} lines, took {max} seconds.",
+      "ar": "{lines} سطرًا من الشيفرة المنشورة. أما أكبر المستودعات الـ{repos}، وفيه {biggest} سطرًا، فاستغرق {max} ثانية."
+    },
+    "fig.speed.method": {
+      "en": "Wall-clock time of the full analysis on one laptop, with the repository already on disk.",
+      "ar": "الزمن الفعلي للتحليل الكامل على حاسوب محمول واحد، والمستودع موجود مسبقًا على القرص."
+    },
+    "fig.speed.unit": {
+      "en": "s",
+      "ar": "ث"
+    },
+    "fig.src.accuracy": {
+      "en": "Scored results",
+      "ar": "النتائج المقيسة"
+    },
+    "fig.src.bls": {
+      "en": "US Bureau of Labor Statistics: Software Developers, May 2025",
+      "ar": "مكتب إحصاءات العمل الأمريكي: مطورو البرمجيات، مايو 2025"
+    },
+    "fig.src.kemerer": {
+      "en": "Kemerer and Paulk (2009), IEEE Transactions on Software Engineering 35(4)",
+      "ar": "Kemerer وPaulk (2009)، IEEE Transactions on Software Engineering 35(4)"
+    },
+    "fig.src.method": {
+      "en": "Method, written before the measurement",
+      "ar": "الطريقة، مكتوبة قبل القياس"
+    },
+    "fig.src.protocol": {
+      "en": "Pre-registered protocol",
+      "ar": "البروتوكول المسجّل مسبقًا"
+    },
+    "fig.src.standards": {
+      "en": "Published rules Quanta applies",
+      "ar": "القواعد المنشورة التي يطبقها Quanta"
+    },
+    "fig.src.timecost": {
+      "en": "Per-repository measurements",
+      "ar": "القياسات لكل مستودع"
+    },
+    "footer.api": {
+      "en": "API",
+      "ar": "واجهة البرمجة"
+    },
+    "footer.label": {
+      "en": "Footer",
+      "ar": "تذييل الصفحة"
+    },
+    "footer.privacy": {
+      "en": "Privacy",
+      "ar": "الخصوصية"
+    },
+    "fw.eu": {
+      "en": "European Union",
+      "ar": "الاتحاد الأوروبي"
+    },
+    "fw.nca": {
+      "en": "Saudi NCA",
+      "ar": "الهيئة الوطنية للأمن السيبراني"
+    },
+    "fw.nist": {
+      "en": "NIST",
+      "ar": "NIST"
+    },
+    "fw.nsa": {
+      "en": "NSA CNSA 2.0",
+      "ar": "NSA CNSA 2.0"
+    },
+    "fw.uk": {
+      "en": "UK NCSC",
+      "ar": "NCSC البريطاني"
+    },
+    "fw.us": {
+      "en": "US federal",
+      "ar": "الحكومة الفيدرالية الأمريكية"
+    },
+    "gate.LOW_DETECTION_COVERAGE": {
+      "en": "Score withheld: Quanta recognised {matched} calls into cryptography libraries and not {unmatched} others ({pct}% recognised). Below 60%, a score would describe too little of the code.",
+      "ar": "حُجب التقييم: تعرّف Quanta على {matched} استدعاءً لمكتبات التشفير ولم يتعرّف على {unmatched} غيرها (نسبة التعرّف {pct}%). دون 60% يصف التقييم جزءًا صغيرًا جدًا من الشيفرة."
+    },
+    "gate.NO_SOURCE_FILES": {
+      "en": "Score withheld: no shipped Python code was found. Tests, docs and examples are not scored.",
+      "ar": "حُجب التقييم: لم يُعثر على شيفرة بايثون في المنتج. الاختبارات والتوثيق والأمثلة لا تُقيَّم."
+    },
+    "gate.TOO_FEW_MODULES": {
+      "en": "Score withheld: the architecture factors need at least 3 shipped modules, and this repository has {source_modules}.",
+      "ar": "حُجب التقييم: عوامل البنية تحتاج 3 وحدات منتج على الأقل، وهذا المستودع فيه {source_modules}."
+    },
+    "gate.TOO_MANY_UNPARSEABLE": {
+      "en": "Score withheld: {unparseable} of {parsed} shipped files could not be parsed.",
+      "ar": "حُجب التقييم: تعذّر تحليل {unparseable} من {parsed} ملفات المنتج."
+    },
+    "gate.TRUNCATED_INPUT": {
+      "en": "Score withheld: the repository exceeded an input limit, so part of it was not read.",
+      "ar": "حُجب التقييم: تجاوز المستودع حدًا للمدخلات، فلم يُقرأ جزء منه."
+    },
+    "gate.other": {
+      "en": "Score withheld.",
+      "ar": "حُجب التقييم."
+    },
+    "guide.confirm-algorithm.body": {
+      "en": "The algorithm is chosen at run time, so the scan assumed it is classical. Confirm it, then follow the matching guide.",
+      "ar": "تُختار الخوارزمية أثناء التشغيل، لذا افترض الفحص أنها تقليدية. أكّدها ثم اتبع الدليل المناسب."
+    },
+    "guide.confirm-algorithm.title": {
+      "en": "Confirm the algorithm",
+      "ar": "أكّد الخوارزمية"
+    },
+    "guide.implements-classical-primitive.body": {
+      "en": "The repository implements a quantum-vulnerable scheme itself. Its users can only migrate if it offers a post-quantum scheme beside it.",
+      "ar": "ينفّذ هذا المستودع بنفسه مخططًا معرّضًا للحوسبة الكمية، ولا يستطيع مستخدموه الترحيل إلا إذا قدّم مخططًا ما بعد كمي بجانبه."
+    },
+    "guide.implements-classical-primitive.title": {
+      "en": "This code is the cryptography",
+      "ar": "هذه الشيفرة هي التشفير نفسه"
+    },
+    "guide.key-exchange-hybrid-ml-kem.body": {
+      "en": "Derive the session key from both the classical and the ML-KEM shared secret, so it stays safe if either holds.",
+      "ar": "اشتق مفتاح الجلسة من السرّين المشتركين التقليدي وML-KEM معًا، فيبقى آمنًا ما دام أحدهما صامدًا."
+    },
+    "guide.key-exchange-hybrid-ml-kem.title": {
+      "en": "Combine the key exchange with ML-KEM",
+      "ar": "ادمج تبادل المفاتيح مع ML-KEM"
+    },
+    "guide.legacy-cipher-aes-gcm.body": {
+      "en": "Triple DES, DES, RC4, Blowfish and ECB mode are disallowed or unsafe. Re-encrypt with AES-256-GCM.",
+      "ar": "خوارزميات Triple DES وDES وRC4 وBlowfish ونمط ECB ممنوعة أو غير آمنة. أعد التشفير بـ AES-256-GCM."
+    },
+    "guide.legacy-cipher-aes-gcm.title": {
+      "en": "Replace the legacy cipher with AES-GCM",
+      "ar": "استبدل الشفرة القديمة بـ AES-GCM"
+    },
+    "guide.other.body": {
+      "en": "No automatic change is safe here. Review the call and move it to an approved algorithm.",
+      "ar": "لا يوجد تغيير تلقائي آمن هنا. راجع الاستدعاء وانقله إلى خوارزمية معتمدة."
+    },
+    "guide.other.title": {
+      "en": "Migrate by hand",
+      "ar": "رحّل يدويًا"
+    },
+    "guide.rsa-encryption-ml-kem.body": {
+      "en": "Encapsulate a key with ML-KEM and encrypt the data with AES-GCM under it. Keep RSA only to read old data.",
+      "ar": "غلّف مفتاحًا بـ ML-KEM وشفّر البيانات به عبر AES-GCM. أبقِ RSA فقط لقراءة البيانات القديمة."
+    },
+    "guide.rsa-encryption-ml-kem.title": {
+      "en": "Replace RSA encryption with ML-KEM",
+      "ar": "استبدل تشفير RSA بـ ML-KEM"
+    },
+    "guide.signature-hybrid-ml-dsa.body": {
+      "en": "Sign with both and verify both, so old verifiers keep working while new ones require the post-quantum signature.",
+      "ar": "وقّع بالخوارزميتين وتحقّق منهما معًا، فتستمر أدوات التحقق القديمة في العمل بينما تشترط الجديدة التوقيع ما بعد الكمي."
+    },
+    "guide.signature-hybrid-ml-dsa.title": {
+      "en": "Add ML-DSA beside the classical signature",
+      "ar": "أضف ML-DSA بجانب التوقيع التقليدي"
+    },
+    "guide.tls-hybrid.body": {
+      "en": "OpenSSL 3.5 and later offer X25519MLKEM768 by default. Check the linked version rather than changing the code.",
+      "ar": "يقدّم OpenSSL 3.5 وما بعده X25519MLKEM768 افتراضيًا. تحقّق من الإصدار المرتبط بدل تعديل الشيفرة."
+    },
+    "guide.tls-hybrid.title": {
+      "en": "Use hybrid key exchange in TLS",
+      "ar": "استخدم تبادل المفاتيح الهجين في TLS"
+    },
+    "guide.weak-hash-manual.body": {
+      "en": "The value is stored, compared or sent, so switching it silently would break existing data. Migrate readers and writers together.",
+      "ar": "القيمة تُخزَّن أو تُقارَن أو تُرسَل، لذا فإن تغييرها بصمت يكسر البيانات الحالية. رحّل القرّاء والكتّاب معًا."
+    },
+    "guide.weak-hash-manual.title": {
+      "en": "Move the hash to SHA-256 by hand",
+      "ar": "انقل دالة التجزئة إلى SHA-256 يدويًا"
+    },
+    "hero.lede": {
+      "en": "Quanta scans a repository without running it, proposes the changes, and measures your code against the published post-quantum deadlines.",
+      "ar": "يفحص Quanta المستودع دون تشغيله، ويقترح التغييرات، ويقيس شيفرتك مقابل المواعيد النهائية المنشورة للانتقال إلى التشفير ما بعد الكمي."
+    },
+    "hero.title": {
+      "en": "Find every cryptographic call. Know what quantum breaks.",
+      "ar": "اعثر على كل استدعاء تشفيري، واعرف ما الذي ستكسره الحوسبة الكمية."
+    },
+    "inv.all": {
+      "en": "All",
+      "ar": "الكل"
+    },
+    "inv.argument": {
+      "en": "Algorithm argument",
+      "ar": "وسيط خوارزمية"
+    },
+    "inv.entry_guide": {
+      "en": "Guide",
+      "ar": "دليل ترحيل"
+    },
+    "inv.entry_patch": {
+      "en": "Patch",
+      "ar": "تعديل تلقائي"
+    },
+    "inv.entry_refused": {
+      "en": "Refused",
+      "ar": "مرفوض"
+    },
+    "inv.filter_label": {
+      "en": "Filter findings",
+      "ar": "تصفية النتائج"
+    },
+    "inv.implementation": {
+      "en": "Implements it",
+      "ar": "ينفّذها بنفسه"
+    },
+    "inv.none": {
+      "en": "No cryptographic calls were recognised.",
+      "ar": "لم يُتعرَّف على أي استدعاءات تشفيرية."
+    },
+    "inv.scope_label": {
+      "en": "Which code",
+      "ar": "أي شيفرة"
+    },
+    "inv.scope_other": {
+      "en": "Tests, examples, docs ({n})",
+      "ar": "الاختبارات والأمثلة والتوثيق ({n})"
+    },
+    "inv.scope_other_note": {
+      "en": "Listed for completeness. They do not change the readiness verdict.",
+      "ar": "مدرجة للاكتمال، ولا تغيّر حكم الجاهزية."
+    },
+    "inv.scope_shipped": {
+      "en": "Shipped code ({n})",
+      "ar": "الشيفرة المنشورة ({n})"
+    },
+    "inv.scope_shipped_note": {
+      "en": "These are the call sites the readiness verdict counts, so the numbers above match it.",
+      "ar": "هذه هي مواقع الاستدعاء التي يحتسبها حكم الجاهزية، لذا تطابق الأرقام أعلاه."
+    },
+    "inv.waiting": {
+      "en": "Findings appear here as each file is read.",
+      "ar": "تظهر النتائج هنا مع قراءة كل ملف."
+    },
+    "lang.switch": {
+      "en": "عربي",
+      "ar": "English"
+    },
+    "lang.switch_label": {
+      "en": "Switch to Arabic",
+      "ar": "التبديل إلى الإنجليزية"
+    },
+    "languages.lede": {
+      "en": "Quanta models cryptography as algorithms, call sites, data flow and deadlines, and none of those depend on the language. Python is where it is measured today; more languages are coming.",
+      "ar": "يصوغ Quanta التشفير على شكل خوارزميات ومواقع استدعاء وتدفق بيانات ومواعيد نهائية، ولا يعتمد أي منها على لغة البرمجة. بايثون هي اللغة التي يُقاس عليها اليوم، ولغات أخرى قادمة."
+    },
+    "languages.title": {
+      "en": "Proven on Python. Built for every language.",
+      "ar": "مُثبت على بايثون، ومصمَّم لكل لغة."
+    },
+    "live.cleanup": {
+      "en": "Deleting the working copy",
+      "ar": "جارٍ حذف نسخة العمل"
+    },
+    "live.clone": {
+      "en": "Cloning at a pinned commit",
+      "ar": "جارٍ النسخ على إيداع مثبّت"
+    },
+    "live.done": {
+      "en": "Finished in {seconds} s · Findings: {n}",
+      "ar": "انتهى خلال {seconds} ث · النتائج: {n}"
+    },
+    "live.graph": {
+      "en": "Building the dependency graph",
+      "ar": "جارٍ بناء مخطط الاعتماديات"
+    },
+    "live.parse": {
+      "en": "Reading the code",
+      "ar": "جارٍ قراءة الشيفرة"
+    },
+    "live.parse_progress": {
+      "en": "Reading file {done} of {total} · Findings so far: {n}",
+      "ar": "جارٍ قراءة الملف {done} من {total} · النتائج حتى الآن: {n}"
+    },
+    "live.queued": {
+      "en": "Queued, waiting for a worker",
+      "ar": "في الانتظار حتى يتوفر عامل"
+    },
+    "live.render": {
+      "en": "Assessing readiness and writing the report",
+      "ar": "جارٍ تقييم الجاهزية وكتابة التقرير"
+    },
+    "live.resolve": {
+      "en": "Resolving the commit",
+      "ar": "جارٍ تحديد الإيداع"
+    },
+    "live.score": {
+      "en": "Scoring",
+      "ar": "جارٍ التقييم"
+    },
+    "live.starting": {
+      "en": "Starting",
+      "ar": "جارٍ البدء"
+    },
+    "live.validate": {
+      "en": "Validating the URL",
+      "ar": "جارٍ التحقق من الرابط"
+    },
+    "live.walk": {
+      "en": "Sorting the files",
+      "ar": "جارٍ فرز الملفات"
+    },
+    "live.working": {
+      "en": "Working",
+      "ar": "جارٍ العمل"
+    },
+    "menu.close": {
+      "en": "Close",
+      "ar": "إغلاق"
+    },
+    "menu.label": {
+      "en": "Menu",
+      "ar": "القائمة"
+    },
+    "menu.open": {
+      "en": "Open menu",
+      "ar": "افتح القائمة"
+    },
+    "ms.eu-first-steps": {
+      "en": "First steps and a national roadmap by 31 December 2026.",
+      "ar": "الخطوات الأولى وخريطة طريق وطنية بحلول 31 ديسمبر 2026."
+    },
+    "ms.eu-full": {
+      "en": "Medium-risk use cases are transitioned by 31 December 2035, and low-risk ones as far as feasible.",
+      "ar": "تُنقل حالات الاستخدام متوسطة المخاطر بحلول 31 ديسمبر 2035، ومنخفضة المخاطر قدر الإمكان."
+    },
+    "ms.eu-high-risk": {
+      "en": "High-risk use cases are transitioned by 31 December 2030.",
+      "ar": "تُنقل حالات الاستخدام عالية المخاطر بحلول 31 ديسمبر 2030."
+    },
+    "ms.nca-hybrid": {
+      "en": "Post-quantum algorithms must run in hybrid with an approved classical algorithm (consultation draft).",
+      "ar": "يجب تشغيل خوارزميات ما بعد الكم بشكل هجين مع خوارزمية تقليدية معتمدة (مسودة للاستطلاع)."
+    },
+    "ms.nist-kex-deprecated": {
+      "en": "RSA and finite-field Diffie-Hellman key establishment at 112-bit strength (2048-bit keys) is deprecated after 2030.",
+      "ar": "إنشاء المفاتيح بخوارزميتي RSA وDiffie-Hellman على الحقول المنتهية بقوة 112 بت (مفاتيح 2048 بت) يُهمل بعد 2030."
+    },
+    "ms.nist-kex-disallowed": {
+      "en": "All quantum-vulnerable key establishment (RSA, Diffie-Hellman, elliptic-curve) is disallowed after 2035.",
+      "ar": "يُمنع بعد 2035 كل إنشاء للمفاتيح معرّض للحوسبة الكمية (RSA وDiffie-Hellman والمنحنيات الإهليلجية)."
+    },
+    "ms.nist-md5": {
+      "en": "MD5 is not an approved hash function; it has never been approved.",
+      "ar": "MD5 ليست دالة تجزئة معتمدة، ولم تُعتمد قط."
+    },
+    "ms.nist-sha1": {
+      "en": "SHA-1 is phased out of all applications by 31 December 2030.",
+      "ar": "يُوقف استخدام SHA-1 في جميع التطبيقات بحلول 31 ديسمبر 2030."
+    },
+    "ms.nist-sig-deprecated": {
+      "en": "RSA signatures at 112-bit strength (2048-bit keys) are deprecated after 2030.",
+      "ar": "تواقيع RSA بقوة 112 بت (مفاتيح 2048 بت) تُهمل بعد 2030."
+    },
+    "ms.nist-sig-disallowed": {
+      "en": "RSA, ECDSA and EdDSA signatures are disallowed after 2035.",
+      "ar": "تُمنع تواقيع RSA وECDSA وEdDSA بعد 2035."
+    },
+    "ms.nist-tdea": {
+      "en": "Triple DES encryption is disallowed after 31 December 2023.",
+      "ar": "يُمنع التشفير بخوارزمية Triple DES بعد 31 ديسمبر 2023."
+    },
+    "ms.nsa-custom": {
+      "en": "Custom applications and legacy equipment are updated or replaced by 2033.",
+      "ar": "تُحدَّث التطبيقات المخصصة والمعدات القديمة أو تُستبدل بحلول 2033."
+    },
+    "ms.nsa-signing": {
+      "en": "Software and firmware signing uses CNSA 2.0 exclusively by 2030 (US national security systems).",
+      "ar": "توقيع البرمجيات والبرامج الثابتة بخوارزميات CNSA 2.0 حصرًا بحلول 2030 (أنظمة الأمن القومي الأمريكية)."
+    },
+    "ms.nsa-web": {
+      "en": "Web browsers, servers and cloud services use CNSA 2.0 exclusively by 2033.",
+      "ar": "المتصفحات والخوادم والخدمات السحابية بخوارزميات CNSA 2.0 حصرًا بحلول 2033."
+    },
+    "ms.state.clear": {
+      "en": "Not affected",
+      "ar": "غير متأثر"
+    },
+    "ms.state.due": {
+      "en": "Affected",
+      "ar": "متأثر"
+    },
+    "ms.state.met": {
+      "en": "Met by this scan",
+      "ar": "يحققه هذا الفحص"
+    },
+    "ms.state.overdue": {
+      "en": "Deadline passed",
+      "ar": "انقضى الموعد"
+    },
+    "ms.uk-complete": {
+      "en": "All systems, services and products are migrated by 2035.",
+      "ar": "تُرحَّل جميع الأنظمة والخدمات والمنتجات بحلول 2035."
+    },
+    "ms.uk-discovery": {
+      "en": "Discovery and an initial migration plan by 2028.",
+      "ar": "حصر الأصول وخطة ترحيل أولية بحلول 2028."
+    },
+    "ms.uk-priority": {
+      "en": "The highest-priority migration is complete by 2031.",
+      "ar": "يكتمل الترحيل ذو الأولوية القصوى بحلول 2031."
+    },
+    "ms.us-kex": {
+      "en": "Federal high-value systems use post-quantum key establishment by 31 December 2030.",
+      "ar": "تستخدم الأنظمة الفيدرالية عالية القيمة إنشاء مفاتيح ما بعد كمي بحلول 31 ديسمبر 2030."
+    },
+    "ms.us-sig": {
+      "en": "Federal high-value systems use post-quantum signatures by 31 December 2031.",
+      "ar": "تستخدم الأنظمة الفيدرالية عالية القيمة تواقيع ما بعد كمية بحلول 31 ديسمبر 2031."
+    },
+    "nav.faq": {
+      "en": "FAQ",
+      "ar": "الأسئلة الشائعة"
+    },
+    "nav.home": {
+      "en": "Home",
+      "ar": "الرئيسية"
+    },
+    "nav.label": {
+      "en": "Main",
+      "ar": "التنقل الرئيسي"
+    },
+    "nav.numbers": {
+      "en": "Numbers",
+      "ar": "الأرقام"
+    },
+    "nav.product": {
+      "en": "Product",
+      "ar": "المنتج"
+    },
+    "nav.readiness": {
+      "en": "Readiness",
+      "ar": "الجاهزية"
+    },
+    "nav.workspace": {
+      "en": "Workspace",
+      "ar": "مساحة العمل"
+    },
+    "numbers.how": {
+      "en": "Source and method",
+      "ar": "المصدر والطريقة"
+    },
+    "numbers.lede": {
+      "en": "Open any figure to see what was measured, how, and where it comes from.",
+      "ar": "افتح أي رقم لترى ما قيس، وكيف، ومن أين جاء."
+    },
+    "numbers.limit": {
+      "en": "Limit",
+      "ar": "الحدود"
+    },
+    "numbers.measured": {
+      "en": "Measured",
+      "ar": "ما قيس"
+    },
+    "numbers.method": {
+      "en": "Method",
+      "ar": "الطريقة"
+    },
+    "numbers.source": {
+      "en": "Source",
+      "ar": "المصدر"
+    },
+    "numbers.title": {
+      "en": "Measured, not claimed.",
+      "ar": "أرقام مقيسة، لا ادعاءات."
+    },
+    "privacy.analytics_body": {
+      "en": "Quanta adds no advertising, analytics trackers or marketing cookies. Hosting providers may keep operational request logs under their own policies.",
+      "ar": "لا يضيف Quanta إعلانات ولا أدوات تتبع تحليلية ولا ملفات تعريف تسويقية. وقد يحتفظ مزودو الاستضافة بسجلات تشغيلية للطلبات وفق سياساتهم."
+    },
+    "privacy.analytics_title": {
+      "en": "No analytics or advertising",
+      "ar": "لا تحليلات ولا إعلانات"
+    },
+    "privacy.back": {
+      "en": "Back to Quanta",
+      "ar": "العودة إلى Quanta"
+    },
+    "privacy.contact_link": {
+      "en": "Contact through GitHub",
+      "ar": "التواصل عبر GitHub"
+    },
+    "privacy.controls_body": {
+      "en": "Sign out to end your session. You can revoke Quanta's access in GitHub's application settings. For questions or deletion requests, contact the project through GitHub.",
+      "ar": "سجّل الخروج لإنهاء جلستك. ويمكنك سحب صلاحية Quanta من إعدادات التطبيقات في GitHub. وللأسئلة أو طلبات الحذف، تواصل مع المشروع عبر GitHub."
+    },
+    "privacy.controls_title": {
+      "en": "Your controls",
+      "ar": "خياراتك"
+    },
+    "privacy.heading": {
+      "en": "Your code. Your decisions.",
+      "ar": "شيفرتك، وقرارك."
+    },
+    "privacy.intro": {
+      "en": "Quanta analyses public GitHub repositories and lets you review changes before opening a draft pull request. It does not analyse private repositories.",
+      "ar": "يحلّل Quanta مستودعات GitHub العامة ويتيح لك مراجعة التغييرات قبل فتح طلب دمج مسودة. ولا يحلّل المستودعات الخاصة."
+    },
+    "privacy.no_tokens": {
+      "en": "Never include tokens or sensitive source code in a public issue.",
+      "ar": "لا تضع أبدًا رموز وصول أو شيفرة حساسة في بلاغ عام."
+    },
+    "privacy.processing_body": {
+      "en": "GitHub provides repository content and sign-in. Clones are deleted after each analysis. Analysis parses code and never installs, imports or runs it.",
+      "ar": "يوفر GitHub محتوى المستودع وتسجيل الدخول. تُحذف النسخ بعد كل تحليل. ويقرأ التحليل الشيفرة دون أن يثبتها أو يستوردها أو يشغلها أبدًا."
+    },
+    "privacy.processing_title": {
+      "en": "Where processing happens",
+      "ar": "أين تتم المعالجة"
+    },
+    "privacy.retention_body": {
+      "en": "Sessions end after eight hours or when you sign out. Analysis results, your marks and the files needed for proposals are kept for seven days, then removed. Daily and monthly usage counters remain to enforce the free allowance. Forks and pull requests created on GitHub stay on GitHub until you remove them there.",
+      "ar": "تنتهي الجلسات بعد ثماني ساعات أو عند تسجيل الخروج. تُحفظ نتائج التحليل وعلاماتك والملفات اللازمة للاقتراحات سبعة أيام ثم تُحذف. تبقى عدادات الاستخدام اليومية والشهرية لتطبيق الحد المجاني. وتبقى التفرعات وطلبات الدمج التي أُنشئت على GitHub هناك حتى تحذفها بنفسك."
+    },
+    "privacy.retention_title": {
+      "en": "How long",
+      "ar": "مدة الحفظ"
+    },
+    "privacy.revoke_link": {
+      "en": "GitHub application settings",
+      "ar": "إعدادات التطبيقات في GitHub"
+    },
+    "privacy.signin_body": {
+      "en": "Quanta asks for your GitHub profile and public repository access. The public_repo scope allows writes to public repositories; Quanta uses it only for the forks, branches and draft pull requests you ask for after reviewing a diff. Your token is encrypted in storage, and it never reaches a scanner or the browser's JavaScript.",
+      "ar": "يطلب Quanta ملفك الشخصي على GitHub وصلاحية الوصول إلى المستودعات العامة. يسمح نطاق public_repo بالكتابة في المستودعات العامة، ولا يستخدمه Quanta إلا للتفرعات والفروع ومسودات طلبات الدمج التي تطلبها بعد مراجعة الفروقات. يُخزَّن رمزك مشفرًا، ولا يصل أبدًا إلى أداة الفحص ولا إلى شيفرة JavaScript في المتصفح."
+    },
+    "privacy.signin_title": {
+      "en": "GitHub sign-in",
+      "ar": "تسجيل الدخول عبر GitHub"
+    },
+    "privacy.stored_body": {
+      "en": "Your GitHub account ID and login, an encrypted access token, session details, your analysis history, pinned commit references, reports, the source files needed to review a proposed edit, your marks on findings, and links to pull requests. The session cookie is required for sign-in. Your language choice stays in your browser.",
+      "ar": "معرّف حسابك على GitHub واسم المستخدم، ورمز وصول مشفّر، وتفاصيل الجلسة، وسجل تحليلاتك، ومراجع الإيداعات المثبّتة، والتقارير، وملفات الشيفرة اللازمة لمراجعة تعديل مقترح، وعلاماتك على النتائج، وروابط طلبات الدمج. ملف تعريف الجلسة ضروري لتسجيل الدخول، ويبقى اختيار اللغة في متصفحك."
+    },
+    "privacy.stored_title": {
+      "en": "What is stored",
+      "ar": "ما الذي يُخزَّن"
+    },
+    "privacy.title": {
+      "en": "Privacy at Quanta",
+      "ar": "الخصوصية في Quanta"
+    },
+    "privacy.updated": {
+      "en": "Updated 24 September 2026.",
+      "ar": "آخر تحديث: 24 سبتمبر 2026."
+    },
+    "product.change_body": {
+      "en": "Proposed edits as a diff you select and review. When a change would break a protocol or stored data, Quanta refuses it and says why.",
+      "ar": "تعديلات مقترحة على شكل فروقات تختارها وتراجعها. وحين يكسر التغيير بروتوكولًا أو بيانات مخزّنة، يرفضه Quanta ويذكر السبب."
+    },
+    "product.change_foot": {
+      "en": "Refused with a reason: {n}",
+      "ar": "مرفوض مع ذكر السبب: {n}"
+    },
+    "product.change_title": {
+      "en": "See the changes",
+      "ar": "مراجعة التغييرات"
+    },
+    "product.find_body": {
+      "en": "Every cryptographic call, with its file, line and algorithm. Code is parsed, never run.",
+      "ar": "كل استدعاء تشفيري مع ملفه وسطره وخوارزميته. تُحلَّل الشيفرة ولا تُشغَّل أبدًا."
+    },
+    "product.find_foot": {
+      "en": "Shipped code in the sample: {n} cryptographic call sites",
+      "ar": "الشيفرة المنشورة في العينة: {n} موقع استدعاء تشفيري"
+    },
+    "product.find_title": {
+      "en": "Find the cryptography",
+      "ar": "اكتشاف التشفير"
+    },
+    "product.lede": {
+      "en": "What cryptography is in the code, what to change, and how far you are from the deadlines.",
+      "ar": "ما التشفير الموجود في الشيفرة، وما الذي يجب تغييره، وكم تبعد عن المواعيد النهائية."
+    },
+    "product.ready_body": {
+      "en": "Each finding mapped to its quantum status and to the NIST, NSA, NCA, EU, UK NCSC and US federal deadlines it falls under.",
+      "ar": "كل نتيجة مربوطة بحالتها أمام الحوسبة الكمية وبالمواعيد النهائية التي تنطبق عليها من NIST وNSA والهيئة الوطنية للأمن السيبراني والاتحاد الأوروبي وNCSC البريطاني والحكومة الفيدرالية الأمريكية."
+    },
+    "product.ready_title": {
+      "en": "Assess readiness",
+      "ar": "تقييم الجاهزية"
+    },
+    "product.title": {
+      "en": "Three answers for every repository.",
+      "ar": "ثلاث إجابات لكل مستودع."
+    },
+    "readiness.actions_title": {
+      "en": "What to do, in order",
+      "ar": "ما يجب فعله، بالترتيب"
+    },
+    "readiness.after": {
+      "en": "After {year}",
+      "ar": "بعد {year}"
+    },
+    "readiness.any_date": {
+      "en": "No date",
+      "ar": "دون تاريخ"
+    },
+    "readiness.col.fw": {
+      "en": "Framework",
+      "ar": "الإطار"
+    },
+    "readiness.col.rule": {
+      "en": "Rule",
+      "ar": "القاعدة"
+    },
+    "readiness.col.sites": {
+      "en": "Sites",
+      "ar": "المواقع"
+    },
+    "readiness.col.state": {
+      "en": "Status",
+      "ar": "الحالة"
+    },
+    "readiness.col.year": {
+      "en": "Year",
+      "ar": "السنة"
+    },
+    "readiness.col_inforce": {
+      "en": "In force",
+      "ar": "سارية"
+    },
+    "readiness.col_undated": {
+      "en": "No date",
+      "ar": "دون تاريخ"
+    },
+    "readiness.deadlines_title": {
+      "en": "Published deadlines",
+      "ar": "المواعيد النهائية المنشورة"
+    },
+    "readiness.in_force": {
+      "en": "In force",
+      "ar": "سارية"
+    },
+    "readiness.lede": {
+      "en": "Every rule Quanta applies is published by a standards body or a government. Select a marker to read the rule and open its source.",
+      "ar": "كل قاعدة يطبقها Quanta منشورة من جهة معايير أو جهة حكومية. اختر علامة لقراءة القاعدة وفتح مصدرها."
+    },
+    "readiness.mark_label": {
+      "en": "{framework}, {when}",
+      "ar": "{framework}، {when}"
+    },
+    "readiness.note": {
+      "en": "Rules as published, checked {checked}. Only shipped code counts; tests and examples do not. A call whose algorithm cannot be read is assumed classical.",
+      "ar": "القواعد كما نُشرت، رُوجعت في {checked}. تُحتسب الشيفرة المنشورة فقط، لا الاختبارات ولا الأمثلة. ويُفترض أن الاستدعاء الذي لا تُقرأ خوارزميته تقليدي."
+    },
+    "readiness.nothing": {
+      "en": "Nothing to change against the published deadlines.",
+      "ar": "لا شيء يحتاج إلى تغيير مقابل المواعيد النهائية المنشورة."
+    },
+    "readiness.others": {
+      "en": "Rules that do not apply to this code: {clear}. Inventory milestones this scan meets: {met}.",
+      "ar": "قواعد لا تنطبق على هذه الشيفرة: {clear}. معالم الحصر التي يحققها هذا الفحص: {met}."
+    },
+    "readiness.pick": {
+      "en": "Select a marker to see the rule and its source.",
+      "ar": "اختر علامة لعرض القاعدة ومصدرها."
+    },
+    "readiness.read_source": {
+      "en": "Read",
+      "ar": "اقرأ"
+    },
+    "readiness.source_detail": {
+      "en": "{publisher}. {status}, {date}.",
+      "ar": "{publisher}. {status}، {date}."
+    },
+    "readiness.source_line": {
+      "en": "{title}",
+      "ar": "{title}"
+    },
+    "readiness.timeline_label": {
+      "en": "Published post-quantum deadlines by framework",
+      "ar": "المواعيد النهائية المنشورة حسب الإطار"
+    },
+    "readiness.title": {
+      "en": "Measured against the deadlines that apply.",
+      "ar": "مقيسة مقابل المواعيد النهائية التي تنطبق عليك."
+    },
+    "readiness.waiting": {
+      "en": "The assessment appears when the scan finishes.",
+      "ar": "يظهر التقييم عند انتهاء الفحص."
+    },
+    "ready.by": {
+      "en": "By {year}",
+      "ar": "بحلول {year}"
+    },
+    "ready.earliest": {
+      "en": "Earliest deadline {year}",
+      "ar": "أقرب موعد نهائي {year}"
+    },
+    "ready.in_force": {
+      "en": "In force now",
+      "ar": "سارية الآن"
+    },
+    "ready.more": {
+      "en": "+{n} more",
+      "ar": "و{n} أخرى"
+    },
+    "ready.no_date": {
+      "en": "No date set",
+      "ar": "دون موعد محدد"
+    },
+    "ready.overdue_since": {
+      "en": "Overdue since {year}",
+      "ar": "متأخر منذ {year}"
+    },
+    "ready.sites": {
+      "en": "Sites: {n}",
+      "ar": "المواقع: {n}"
+    },
+    "rec.P0": {
+      "en": "Upgrade weak hashes where no protocol or stored data depends on them. Sites: {n}",
+      "ar": "ترقية دوال التجزئة الضعيفة حيث لا يعتمد عليها بروتوكول أو بيانات مخزنة. المواضع: {n}"
+    },
+    "rec.P1": {
+      "en": "Move cryptography behind one module, a facade. Sites: {n}",
+      "ar": "نقل التشفير خلف وحدة واحدة تعمل واجهةً موحدة. المواضع: {n}"
+    },
+    "rec.P2": {
+      "en": "Read algorithm choices from a checked policy. Sites: {n}",
+      "ar": "قراءة خيارات الخوارزميات من سياسة مُتحقَّق منها. المواضع: {n}"
+    },
+    "rec.P3": {
+      "en": "Plan the move of quantum-vulnerable key exchange and signatures, ideally hybrid. Sites: {n}",
+      "ar": "التخطيط لنقل تبادل المفاتيح والتوقيعات المعرّضة للحوسبة الكمية، ويفضَّل أن يكون هجينًا. المواضع: {n}"
+    },
+    "rec.other": {
+      "en": "Recommended change. Sites: {n}",
+      "ar": "تغيير موصى به. المواضع: {n}"
+    },
+    "refusal.MIXED_USE.body": {
+      "en": "The same code passes this hash to another function as a value. Changing one call and not the other would make them disagree.",
+      "ar": "تمرّر الشيفرة نفسها دالة التجزئة هذه إلى دالة أخرى كقيمة، وتغيير استدعاء واحد دون الآخر يجعلهما غير متطابقين."
+    },
+    "refusal.MIXED_USE.title": {
+      "en": "Also passed as a value",
+      "ar": "تُمرَّر أيضًا كقيمة"
+    },
+    "refusal.NAME_CONFLICT.body": {
+      "en": "The replacement name already means something else in this file, so the patch would change what the code calls.",
+      "ar": "اسم البديل يعني شيئًا آخر في هذا الملف مسبقًا، لذا سيغيّر التعديل ما تستدعيه الشيفرة."
+    },
+    "refusal.NAME_CONFLICT.title": {
+      "en": "Name already in use",
+      "ar": "الاسم مستخدم مسبقًا"
+    },
+    "refusal.PROTOCOL_NEGOTIATED.body": {
+      "en": "This code compares a value with the algorithm's name, so a peer or a stored format chooses the hash. Changing it would break compatibility.",
+      "ar": "تقارن هذه الشيفرة قيمة باسم الخوارزمية، أي أن طرفًا آخر أو صيغة مخزنة يحدد دالة التجزئة. تغييرها سيكسر التوافق."
+    },
+    "refusal.PROTOCOL_NEGOTIATED.title": {
+      "en": "The protocol decides",
+      "ar": "البروتوكول هو من يقرر"
+    },
+    "refusal.STORED_FORMAT_DEFAULT.body": {
+      "en": "The hash is a default or is passed as a value, so its output is likely stored or checked later. Changing it would invalidate existing data.",
+      "ar": "دالة التجزئة قيمة افتراضية أو تُمرَّر كقيمة، لذا يُرجَّح أن ناتجها مخزن أو يُتحقق منه لاحقًا. تغييرها سيُبطل البيانات الموجودة."
+    },
+    "refusal.STORED_FORMAT_DEFAULT.title": {
+      "en": "Stored data depends on it",
+      "ar": "بيانات مخزنة تعتمد عليه"
+    },
+    "refusal.TEST_EXPECTATION.body": {
+      "en": "Tests compare against fixed expected values. Changing the algorithm would change the answer the test checks.",
+      "ar": "تقارن الاختبارات بقيم متوقعة ثابتة، وتغيير الخوارزمية يغيّر الإجابة التي يتحقق منها الاختبار."
+    },
+    "refusal.TEST_EXPECTATION.title": {
+      "en": "Test or fixture",
+      "ar": "اختبار أو بيانات اختبار"
+    },
+    "refusal.other.body": {
+      "en": "Quanta found a reason not to change this line.",
+      "ar": "وجد Quanta سببًا لعدم تغيير هذا السطر."
+    },
+    "refusal.other.title": {
+      "en": "Refused",
+      "ar": "مرفوض"
+    },
+    "report.cli": {
+      "en": "Reproduce from the command line",
+      "ar": "أعد الإنتاج من سطر الأوامر"
+    },
+    "report.coverage": {
+      "en": "Recognised {matched} of {total} calls into cryptography libraries.",
+      "ar": "تعرّف على {matched} من {total} استدعاءً لمكتبات التشفير."
+    },
+    "report.document_lede": {
+      "en": "Readiness, findings, proposed changes, deadlines and method in one document, with every rule's source.",
+      "ar": "الجاهزية والنتائج والتغييرات المقترحة والمواعيد النهائية والمنهجية في وثيقة واحدة، مع مصدر كل قاعدة."
+    },
+    "report.document_title": {
+      "en": "Readiness report",
+      "ar": "تقرير الجاهزية"
+    },
+    "report.downloads": {
+      "en": "Artifacts",
+      "ar": "الملفات الناتجة"
+    },
+    "report.entry.guide": {
+      "en": "Guide",
+      "ar": "دليل ترحيل"
+    },
+    "report.entry.patch": {
+      "en": "Patch",
+      "ar": "تعديل تلقائي"
+    },
+    "report.entry.refused": {
+      "en": "Refused",
+      "ar": "مرفوض"
+    },
+    "report.export_pdf": {
+      "en": "Export to PDF",
+      "ar": "تصدير إلى PDF"
+    },
+    "report.gain": {
+      "en": "up to +{gain}",
+      "ar": "حتى +{gain}"
+    },
+    "report.gain_note": {
+      "en": "Gains are upper bounds for one factor, not promises.",
+      "ar": "المكاسب حدود عليا لعامل واحد، وليست وعودًا."
+    },
+    "report.next": {
+      "en": "What would raise the score",
+      "ar": "ما الذي يرفع التقييم"
+    },
+    "report.no_crypto": {
+      "en": "No cryptography detected in shipped code, so there is no score.",
+      "ar": "لم يُكتشف تشفير في شيفرة المنتج، لذلك لا يوجد تقييم."
+    },
+    "report.no_crypto_note": {
+      "en": "Earlier versions gave such repositories 100, which read as perfect when nothing had been seen.",
+      "ar": "كانت الإصدارات السابقة تمنح مثل هذه المستودعات 100، فبدت مثالية مع أن شيئًا لم يُرَ."
+    },
+    "report.no_gain": {
+      "en": "Not scored",
+      "ar": "غير محتسب"
+    },
+    "report.open_html": {
+      "en": "Open report.html",
+      "ar": "افتح report.html"
+    },
+    "report.out_of": {
+      "en": "/ 100",
+      "ar": "/ 100"
+    },
+    "report.score_title": {
+      "en": "Agility score",
+      "ar": "درجة المرونة"
+    },
+    "report.scored_lede": {
+      "en": "How easy it is to change the algorithms here. Every lost point cites a file and line.",
+      "ar": "مدى سهولة تغيير الخوارزميات هنا. كل نقطة مفقودة تُحال إلى ملف وسطر."
+    },
+    "report.scored_title": {
+      "en": "Agility Score",
+      "ar": "مؤشر مرونة التشفير"
+    },
+    "report.waiting": {
+      "en": "The report appears when the scan finishes.",
+      "ar": "يظهر التقرير عند انتهاء الفحص."
+    },
+    "report.withheld_title": {
+      "en": "Score withheld",
+      "ar": "حُجب التقييم"
+    },
+    "report.withheld_why": {
+      "en": "No score is better than a wrong score. The findings above still stand.",
+      "ar": "غياب التقييم أفضل من تقييم خاطئ. النتائج أعلاه ما تزال قائمة."
+    },
+    "result.earliest": {
+      "en": "The earliest published deadline that applies is {year}.",
+      "ar": "أقرب موعد نهائي منشور ينطبق عليها هو {year}."
+    },
+    "result.implements": {
+      "en": "This repository implements {algorithms} itself. Its users can only migrate if it offers a post-quantum scheme beside it; the Changes tab shows how.",
+      "ar": "ينفّذ هذا المستودع {algorithms} بنفسه، ولا يستطيع مستخدموه الترحيل إلا إذا قدّم مخططًا ما بعد كمي بجانبه؛ يوضح تبويب التغييرات كيف."
+    },
+    "result.no_readiness": {
+      "en": "This recorded run predates the readiness assessment. Scan the repository again to see it.",
+      "ar": "هذا التشغيل المسجَّل أقدم من تقييم الجاهزية. افحص المستودع مجددًا لعرضه."
+    },
+    "result.overdue": {
+      "en": "Deadlines already passed: {n}.",
+      "ar": "مواعيد نهائية انقضت: {n}."
+    },
+    "result.partial": {
+      "en": "Partial: the time limit stopped the scan with shipped files still unread ({n}). The counts cover what was read.",
+      "ar": "نتيجة جزئية: أوقف الحد الزمني الفحص وما زالت ملفات منشورة غير مقروءة ({n}). الأرقام تشمل ما قُرئ فقط."
+    },
+    "result.sites": {
+      "en": "Counted across {n} cryptographic call sites in shipped code.",
+      "ar": "محسوبة على {n} موقع استدعاء تشفيري في الشيفرة المنشورة."
+    },
+    "review.bad_link": {
+      "en": "GitHub returned a link Quanta could not verify.",
+      "ar": "أعاد GitHub رابطًا لم يستطع Quanta التحقق منه."
+    },
+    "review.cached": {
+      "en": "This is a recorded run. You can review the diff; pull requests open only from your own scans.",
+      "ar": "هذا تشغيل مسجَّل. يمكنك مراجعة الفرق، لكن طلبات الدمج تُفتح من فحوصاتك فقط."
+    },
+    "review.close": {
+      "en": "Close",
+      "ar": "إغلاق"
+    },
+    "review.compat": {
+      "en": "I understand that SHA-256 changes digest values and length, and I have checked stored hashes, signatures, protocols, fixtures and consumers. It is not a password hashing scheme.",
+      "ar": "أدرك أن SHA-256 يغيّر قيم الملخصات وطولها، وقد راجعت التجزئات المخزنة والتوقيعات والبروتوكولات وبيانات الاختبار والجهات المستهلكة. وهو ليس خوارزمية لتجزئة كلمات المرور."
+    },
+    "review.pr": {
+      "en": "Open a draft pull request",
+      "ar": "افتح مسودة طلب دمج"
+    },
+    "review.pr_link": {
+      "en": "View the pull request",
+      "ar": "اعرض طلب الدمج"
+    },
+    "review.signin": {
+      "en": "Sign in with GitHub to open a pull request.",
+      "ar": "سجّل الدخول عبر GitHub لفتح طلب دمج."
+    },
+    "review.title": {
+      "en": "Review the change",
+      "ar": "راجع التغيير"
+    },
+    "review.validation": {
+      "en": "Python syntax checked on every changed file. Review stored hashes, signatures and peers before you merge.",
+      "ar": "فُحصت صياغة بايثون في كل ملف متغيّر. راجع التجزئات المخزّنة والتواقيع والأطراف الأخرى قبل الدمج."
+    },
+    "role.docs": {
+      "en": "Docs",
+      "ar": "توثيق"
+    },
+    "role.example": {
+      "en": "Example",
+      "ar": "مثال"
+    },
+    "role.other": {
+      "en": "Other",
+      "ar": "أخرى"
+    },
+    "role.source": {
+      "en": "Shipped",
+      "ar": "شيفرة المنتج"
+    },
+    "role.test": {
+      "en": "Test",
+      "ar": "اختبار"
+    },
+    "role.tooling": {
+      "en": "Tooling",
+      "ar": "أدوات"
+    },
+    "role.vendored": {
+      "en": "Vendored",
+      "ar": "مضمَّن من طرف آخر"
+    },
+    "rule.other": {
+      "en": "Edit",
+      "ar": "تعديل"
+    },
+    "rule.weak-hash-to-sha256": {
+      "en": "Weak hash to SHA-256",
+      "ar": "تجزئة ضعيفة إلى SHA-256"
+    },
+    "site.title": {
+      "en": "Quanta: post-quantum readiness for your code",
+      "ar": "Quanta: جاهزية شيفرتك لما بعد الحوسبة الكمية"
+    },
+    "src.eu-pqc-roadmap": {
+      "en": "EU: Coordinated Implementation Roadmap for the Transition to Post-Quantum Cryptography",
+      "ar": "الاتحاد الأوروبي: خريطة الطريق المنسقة للانتقال إلى التشفير ما بعد الكمي"
+    },
+    "src.nca-ncs-2-2025": {
+      "en": "NCA: National Cryptographic Standards NCS-2:2025 (consultation draft)",
+      "ar": "الهيئة الوطنية للأمن السيبراني: المعايير الوطنية للتشفير NCS-2:2025 (مسودة للاستطلاع)"
+    },
+    "src.nist-ir-8547": {
+      "en": "NIST IR 8547 (draft): Transition to Post-Quantum Cryptography Standards",
+      "ar": "NIST IR 8547 (مسودة): الانتقال إلى معايير التشفير ما بعد الكمي"
+    },
+    "src.nist-sha1-retirement": {
+      "en": "NIST: Transitioning away from SHA-1 for all applications",
+      "ar": "NIST: التخلي عن SHA-1 في جميع التطبيقات"
+    },
+    "src.nist-sp-800-131a-r2": {
+      "en": "NIST SP 800-131A Rev. 2: Transitioning the Use of Cryptographic Algorithms",
+      "ar": "NIST SP 800-131A المراجعة 2: الانتقال في استخدام الخوارزميات التشفيرية"
+    },
+    "src.nsa-cnsa-2": {
+      "en": "NSA: Commercial National Security Algorithm Suite 2.0",
+      "ar": "NSA: حزمة خوارزميات الأمن القومي التجارية 2.0"
+    },
+    "src.openssl-3-5": {
+      "en": "OpenSSL 3.5 release notes: hybrid ML-KEM key exchange by default",
+      "ar": "ملاحظات إصدار OpenSSL 3.5: تبادل مفاتيح ML-KEM الهجين افتراضيًا"
+    },
+    "src.status.draft": {
+      "en": "Draft",
+      "ar": "مسودة"
+    },
+    "src.status.final": {
+      "en": "Final",
+      "ar": "نهائي"
+    },
+    "src.uk-ncsc-pqc": {
+      "en": "UK NCSC: Timelines for migration to post-quantum cryptography",
+      "ar": "NCSC البريطاني: الجداول الزمنية للترحيل إلى التشفير ما بعد الكمي"
+    },
+    "src.us-eo-14412": {
+      "en": "US Executive Order 14412: Securing the Nation Against Advanced Cryptographic Attacks",
+      "ar": "الأمر التنفيذي الأمريكي 14412: حماية الأمة من الهجمات التشفيرية المتقدمة"
+    },
+    "st.pq": {
+      "en": "Post-quantum",
+      "ar": "ما بعد كمي"
+    },
+    "st.review": {
+      "en": "Needs review",
+      "ar": "يحتاج مراجعة"
+    },
+    "st.safe": {
+      "en": "No action",
+      "ar": "لا إجراء"
+    },
+    "st.vulnerable": {
+      "en": "Quantum-vulnerable",
+      "ar": "معرّض للحوسبة الكمية"
+    },
+    "st.weak": {
+      "en": "Weak",
+      "ar": "ضعيف"
+    },
+    "stage.analyse": {
+      "en": "Analyse",
+      "ar": "التحليل"
+    },
+    "stage.analyse_done": {
+      "en": "Graph, score, readiness and report written",
+      "ar": "كُتب المخطط والتقييم والجاهزية والتقرير"
+    },
+    "stage.analyse_running": {
+      "en": "Building the graph and assessing readiness",
+      "ar": "جارٍ بناء المخطط وتقييم الجاهزية"
+    },
+    "stage.cleanup": {
+      "en": "Clean up",
+      "ar": "التنظيف"
+    },
+    "stage.cleanup_done": {
+      "en": "Working copy deleted",
+      "ar": "حُذفت نسخة العمل"
+    },
+    "stage.cleanup_running": {
+      "en": "Deleting the working copy",
+      "ar": "جارٍ حذف نسخة العمل"
+    },
+    "stage.fetch": {
+      "en": "Fetch",
+      "ar": "الجلب"
+    },
+    "stage.fetch_done": {
+      "en": "Fetched",
+      "ar": "اكتمل الجلب"
+    },
+    "stage.fetch_pinned": {
+      "en": "Pinned to {sha}",
+      "ar": "مثبّت على {sha}"
+    },
+    "stage.fetch_running": {
+      "en": "Resolving the repository",
+      "ar": "جارٍ تحديد المستودع"
+    },
+    "stage.hide_evidence": {
+      "en": "Hide evidence ({n})",
+      "ar": "أخفِ الدليل ({n})"
+    },
+    "stage.scan": {
+      "en": "Scan",
+      "ar": "الفحص"
+    },
+    "stage.scan_done": {
+      "en": "Files: {files} · Findings: {n}",
+      "ar": "الملفات: {files} · النتائج: {n}"
+    },
+    "stage.scan_done_findings": {
+      "en": "Findings: {n}",
+      "ar": "النتائج: {n}"
+    },
+    "stage.scan_running": {
+      "en": "Files {done} of {total} · Findings: {n}",
+      "ar": "الملفات {done} من {total} · النتائج: {n}"
+    },
+    "stage.show_evidence": {
+      "en": "Show evidence ({n})",
+      "ar": "اعرض الدليل ({n})"
+    },
+    "stage.waiting": {
+      "en": "Waiting",
+      "ar": "بانتظار"
+    },
+    "status.job.failed": {
+      "en": "Failed",
+      "ar": "فشل"
+    },
+    "status.job.queued": {
+      "en": "Queued",
+      "ar": "في الانتظار"
+    },
+    "status.job.running": {
+      "en": "Running",
+      "ar": "قيد التشغيل"
+    },
+    "status.job.succeeded": {
+      "en": "Done",
+      "ar": "اكتمل"
+    },
+    "status.job.timeout": {
+      "en": "Timed out",
+      "ar": "انتهت المهلة"
+    },
+    "status.no_crypto": {
+      "en": "No crypto",
+      "ar": "لا تشفير"
+    },
+    "status.score.no_crypto_detected": {
+      "en": "No crypto",
+      "ar": "لا تشفير"
+    },
+    "status.score.refused": {
+      "en": "Withheld",
+      "ar": "محجوب"
+    },
+    "status.score.scored": {
+      "en": "Scored",
+      "ar": "مُقيَّم"
+    },
+    "status.step.done": {
+      "en": "Done",
+      "ar": "تم"
+    },
+    "status.step.failed": {
+      "en": "Failed",
+      "ar": "فشل"
+    },
+    "status.step.pending": {
+      "en": "Waiting",
+      "ar": "بانتظار"
+    },
+    "status.step.running": {
+      "en": "Running",
+      "ar": "جارٍ"
+    },
+    "status.step.skipped": {
+      "en": "Skipped",
+      "ar": "تُخطّي"
+    },
+    "status.withheld": {
+      "en": "Withheld",
+      "ar": "محجوب"
+    },
+    "step.cleanup": {
+      "en": "Delete the copy",
+      "ar": "حذف النسخة"
+    },
+    "step.clone": {
+      "en": "Clone, pinned",
+      "ar": "نسخ مثبَّت على إيداع"
+    },
+    "step.graph": {
+      "en": "Build the graph",
+      "ar": "بناء المخطط"
+    },
+    "step.parse": {
+      "en": "Find the cryptography",
+      "ar": "اكتشاف التشفير"
+    },
+    "step.render": {
+      "en": "Write the report",
+      "ar": "كتابة التقرير"
+    },
+    "step.resolve": {
+      "en": "Resolve the commit",
+      "ar": "تحديد الإيداع"
+    },
+    "step.score": {
+      "en": "Score",
+      "ar": "التقييم"
+    },
+    "step.validate": {
+      "en": "Validate the URL",
+      "ar": "التحقق من الرابط"
+    },
+    "step.walk": {
+      "en": "Sort the files",
+      "ar": "فرز الملفات"
+    },
+    "tabs.changes": {
+      "en": "Changes",
+      "ar": "التغييرات"
+    },
+    "tabs.findings": {
+      "en": "Findings",
+      "ar": "النتائج"
+    },
+    "tabs.label": {
+      "en": "Scan results",
+      "ar": "نتائج الفحص"
+    },
+    "tabs.readiness": {
+      "en": "Readiness",
+      "ar": "الجاهزية"
+    },
+    "tabs.report": {
+      "en": "Report",
+      "ar": "التقرير"
+    },
+    "unit.ms": {
+      "en": "{ms} ms",
+      "ar": "{ms} مللي ثانية"
+    },
+    "unit.seconds": {
+      "en": "{s} s",
+      "ar": "{s} ث"
+    },
+    "verdict.at_risk": {
+      "en": "At risk",
+      "ar": "في خطر"
+    },
+    "verdict.at_risk.body": {
+      "en": "Shipped code uses quantum-vulnerable or weak cryptography, with no post-quantum algorithm yet.",
+      "ar": "تستخدم الشيفرة المنشورة تشفيرًا معرّضًا للحوسبة الكمية أو ضعيفًا، ولا توجد خوارزمية ما بعد كمية بعد."
+    },
+    "verdict.in_transition": {
+      "en": "In transition",
+      "ar": "قيد الانتقال"
+    },
+    "verdict.in_transition.body": {
+      "en": "Post-quantum algorithms are present beside classical ones that still need to move.",
+      "ar": "توجد خوارزميات ما بعد كمية إلى جانب خوارزميات تقليدية ما زالت تحتاج إلى نقل."
+    },
+    "verdict.no_crypto": {
+      "en": "No cryptography found",
+      "ar": "لم يُعثر على تشفير"
+    },
+    "verdict.no_crypto.body": {
+      "en": "No cryptographic calls were recognised in shipped code, so there is nothing to assess.",
+      "ar": "لم يُتعرّف على أي استدعاء تشفيري في الشيفرة المنشورة، فلا يوجد ما يُقيَّم."
+    },
+    "verdict.no_source": {
+      "en": "No Python source to read",
+      "ar": "لا توجد شيفرة بايثون لقراءتها"
+    },
+    "verdict.no_source.body": {
+      "en": "This repository has no Python files. Quanta measures Python today, so it cannot say anything about the cryptography here yet.",
+      "ar": "لا يحتوي هذا المستودع على ملفات بايثون. يقيس Quanta بايثون اليوم، لذا لا يستطيع بعدُ أن يقول شيئًا عن التشفير فيه."
+    },
+    "verdict.ready": {
+      "en": "Ready",
+      "ar": "جاهز"
+    },
+    "verdict.ready.body": {
+      "en": "No quantum-vulnerable or weak cryptography was found in shipped code.",
+      "ar": "لم يُعثر على تشفير معرّض للحوسبة الكمية أو ضعيف في الشيفرة المنشورة."
+    },
+    "ws.avatar_alt": {
+      "en": "GitHub avatar of {login}",
+      "ar": "الصورة الرمزية لحساب {login} على GitHub"
+    },
+    "ws.back": {
+      "en": "All scans",
+      "ar": "كل الفحوصات"
+    },
+    "ws.door_sample_body": {
+      "en": "A real scan of python-ecdsa, recorded once and replayed step by step. The findings, changes and report are its actual output.",
+      "ar": "فحص حقيقي لمكتبة python-ecdsa، سُجّل مرة واحدة ويُعاد عرضه خطوة بخطوة. النتائج والتغييرات والتقرير هي مخرجاته الفعلية."
+    },
+    "ws.door_sample_button": {
+      "en": "Open the sample",
+      "ar": "افتح العينة"
+    },
+    "ws.door_sample_title": {
+      "en": "Try the sample",
+      "ar": "جرّب العينة"
+    },
+    "ws.door_signin_body": {
+      "en": "Scan any real public repository. Three scans a day.",
+      "ar": "افحص أي مستودع عام حقيقي. ثلاثة فحوصات في اليوم."
+    },
+    "ws.door_signin_title": {
+      "en": "Sign in with GitHub",
+      "ar": "سجّل الدخول عبر GitHub"
+    },
+    "ws.doors_lede": {
+      "en": "Scan a public repository of your own, or open a recorded scan to see what you get.",
+      "ar": "افحص مستودعًا عامًا من مستودعاتك، أو افتح فحصًا مسجَّلًا لترى ما ستحصل عليه."
+    },
+    "ws.doors_note": {
+      "en": "The sample is a recorded run. Sign in to scan any public repository.",
+      "ar": "العينة تشغيل مسجَّل. سجّل الدخول لفحص أي مستودع عام."
+    },
+    "ws.doors_title": {
+      "en": "Check a Python codebase for post-quantum readiness.",
+      "ar": "افحص شيفرة بايثون لمعرفة جاهزيتها لما بعد الحوسبة الكمية."
+    },
+    "ws.history_note": {
+      "en": "Private to your account. Kept for {days} days.",
+      "ar": "خاصة بحسابك. تُحفظ {days} أيام."
+    },
+    "ws.history_signed_out": {
+      "en": "Sign in to keep a private history.",
+      "ar": "سجّل الدخول للاحتفاظ بسجل خاص."
+    },
+    "ws.history_title": {
+      "en": "Your analyses",
+      "ar": "تحليلاتك"
+    },
+    "ws.limits": {
+      "en": "{limit} analyses per day after sign-in. Repositories up to {mb} MB.",
+      "ar": "{limit} تحليلات يوميًا بعد تسجيل الدخول. المستودعات حتى {mb} ميغابايت."
+    },
+    "ws.limits_used": {
+      "en": "{used} of {limit} analyses used today. Repositories up to {mb} MB.",
+      "ar": "استُخدم {used} من {limit} تحليلات اليوم. المستودعات حتى {mb} ميغابايت."
+    },
+    "ws.prefix": {
+      "en": "github.com/",
+      "ar": "github.com/"
+    },
+    "ws.repos_loading": {
+      "en": "Loading your repositories.",
+      "ar": "جارٍ تحميل مستودعاتك."
+    },
+    "ws.repos_none": {
+      "en": "No public repositories on this account yet. Paste any public repository above.",
+      "ar": "لا توجد مستودعات عامة في هذا الحساب بعد. الصق رابط أي مستودع عام أعلاه."
+    },
+    "ws.repos_note": {
+      "en": "{n} most recently pushed",
+      "ar": "آخر {n} مستودعًا دُفعت إليها تغييرات"
+    },
+    "ws.repos_title": {
+      "en": "Your public repositories",
+      "ar": "مستودعاتك العامة"
+    },
+    "ws.sample_banner": {
+      "en": "Recorded sample run.",
+      "ar": "تشغيل مسجَّل للعينة."
+    },
+    "ws.sample_banner_action": {
+      "en": "Sign in to scan your own repository",
+      "ar": "سجّل الدخول لفحص مستودعك"
+    },
+    "ws.scan_any": {
+      "en": "Scan another public repository",
+      "ar": "افحص مستودعًا عامًا آخر"
+    },
+    "ws.scan_button": {
+      "en": "Scan",
+      "ar": "افحص"
+    },
+    "ws.scan_label": {
+      "en": "Public GitHub repository",
+      "ar": "مستودع GitHub عام"
+    },
+    "ws.scan_lede": {
+      "en": "Any public GitHub repository. Quanta reads the code without running it and deletes its copy when done.",
+      "ar": "أي مستودع عام على GitHub. يقرأ Quanta الشيفرة دون تشغيلها ويحذف نسخته عند الانتهاء."
+    },
+    "ws.scan_placeholder": {
+      "en": "owner/repository",
+      "ar": "owner/repository"
+    },
+    "ws.scan_repo_label": {
+      "en": "Scan {repo}",
+      "ar": "افحص {repo}"
+    },
+    "ws.scan_title": {
+      "en": "Scan a repository",
+      "ar": "افحص مستودعًا"
+    },
+    "ws.signin_needed": {
+      "en": "Sign in with GitHub to analyse a repository. The sample and the recorded runs need no account.",
+      "ar": "سجّل الدخول عبر GitHub لتحليل مستودع. المثال المرفق والتشغيلات المسجلة لا تحتاج حسابًا."
+    },
+    "ws.signin_unavailable": {
+      "en": "GitHub sign-in is not configured here. Try the sample or a recorded run.",
+      "ar": "تسجيل الدخول عبر GitHub غير مهيأ هنا. جرّب المثال المرفق أو تشغيلًا مسجلًا."
+    },
+    "ws.stream_truncated": {
+      "en": "Stream shortened; the full list follows",
+      "ar": "اختُصر البث، والقائمة الكاملة تتبع"
+    },
+    "ws.title": {
+      "en": "Quanta workspace",
+      "ar": "مساحة عمل Quanta"
+    },
+    "ws.updated": {
+      "en": "Updated {date}",
+      "ar": "حُدّث في {date}"
+    },
+    "ws.url_invalid": {
+      "en": "Enter a public GitHub repository, for example jpadilla/pyjwt.",
+      "ar": "أدخل مستودع GitHub عامًا، مثل jpadilla/pyjwt."
+    },
+    "ws.welcome": {
+      "en": "Welcome, {name}",
+      "ar": "مرحبًا، {name}"
+    }
+  }
+}

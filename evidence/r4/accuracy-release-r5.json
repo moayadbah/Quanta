@@ -1,0 +1,173 @@
+{
+ "time": "2026-09-25T08:16:37Z",
+ "ruleset": "2026.11.01",
+ "note": "round five release: final code before push (readiness corrections, sample, report), regression check",
+ "sets": {
+  "D": {
+   "precision": {
+    "found": 95,
+    "total": 98,
+    "rate": 0.9694,
+    "ci": [
+     0.9138,
+     0.9895
+    ]
+   },
+   "recall_A": {
+    "found": 84,
+    "total": 84,
+    "rate": 1.0,
+    "ci": [
+     0.9563,
+     1.0
+    ]
+   },
+   "recall_AB": {
+    "found": 94,
+    "total": 94,
+    "rate": 1.0,
+    "ci": [
+     0.9607,
+     1.0
+    ]
+   },
+   "pktls_A": {
+    "found": 19,
+    "total": 19,
+    "rate": 1.0,
+    "ci": [
+     0.8318,
+     1.0
+    ]
+   },
+   "pktls_AB": {
+    "found": 19,
+    "total": 19,
+    "rate": 1.0,
+    "ci": [
+     0.8318,
+     1.0
+    ]
+   },
+   "missed": [],
+   "false_positives": [
+    "GetBindu/Bindu bindu/extensions/mtls/mtls_agent_extension.py:317",
+    "GetBindu/Bindu bindu/extensions/mtls/mtls_agent_extension.py:379",
+    "GetBindu/Bindu bindu/utils/notifications.py:243"
+   ]
+  },
+  "H3": {
+   "precision": {
+    "found": 108,
+    "total": 115,
+    "rate": 0.9391,
+    "ci": [
+     0.8797,
+     0.9702
+    ]
+   },
+   "recall_A": {
+    "found": 102,
+    "total": 102,
+    "rate": 1.0,
+    "ci": [
+     0.9637,
+     1.0
+    ]
+   },
+   "recall_AB": {
+    "found": 106,
+    "total": 107,
+    "rate": 0.9907,
+    "ci": [
+     0.949,
+     0.9983
+    ]
+   },
+   "pktls_A": {
+    "found": 16,
+    "total": 16,
+    "rate": 1.0,
+    "ci": [
+     0.8064,
+     1.0
+    ]
+   },
+   "pktls_AB": {
+    "found": 20,
+    "total": 21,
+    "rate": 0.9524,
+    "ci": [
+     0.7733,
+     0.9915
+    ]
+   },
+   "missed": [
+    "xuan32546/IOS13-SimulateTouch layout/usr/lib/python3.7/asyncio/sslproto.py:117 [B tls] context.wrap_bio"
+   ],
+   "false_positives": [
+    "BiZken/PhishMailer Core/Mailer/MailerMain.py:92",
+    "BiZken/PhishMailer Core/Mailer/MailerMain.py:278",
+    "foyoux/aligo src/aligo/core/EMail.py:30",
+    "googleads/googleads-python-lib googleads/common.py:456",
+    "xuan32546/IOS13-SimulateTouch layout/usr/lib/python3.7/hmac.py:56",
+    "xuan32546/IOS13-SimulateTouch layout/usr/lib/python3.7/urllib/request.py:1359",
+    "xuan32546/IOS13-SimulateTouch layout/usr/lib/python3.7/urllib/request.py:1959"
+   ]
+  },
+  "H4": {
+   "precision": {
+    "found": 71,
+    "total": 71,
+    "rate": 1.0,
+    "ci": [
+     0.9487,
+     1.0
+    ]
+   },
+   "recall_A": {
+    "found": 67,
+    "total": 70,
+    "rate": 0.9571,
+    "ci": [
+     0.8814,
+     0.9853
+    ]
+   },
+   "recall_AB": {
+    "found": 70,
+    "total": 74,
+    "rate": 0.9459,
+    "ci": [
+     0.8691,
+     0.9788
+    ]
+   },
+   "pktls_A": {
+    "found": 4,
+    "total": 7,
+    "rate": 0.5714,
+    "ci": [
+     0.2505,
+     0.8418
+    ]
+   },
+   "pktls_AB": {
+    "found": 4,
+    "total": 8,
+    "rate": 0.5,
+    "ci": [
+     0.2152,
+     0.7848
+    ]
+   },
+   "missed": [
+    "langchain-ai/open-swe agent/federation/github_oidc.py:83 [A key_handling] PyJWKClient.get_signing_key_from_jwt",
+    "theupdateframework/python-tuf tuf/api/_payload.py:468 [B public_key] key.verify_signature",
+    "theupdateframework/python-tuf tuf/api/_payload.py:589 [A key_handling] securesystemslib Key.from_dict",
+    "theupdateframework/python-tuf tuf/api/_payload.py:1484 [A key_handling] securesystemslib Key.from_dict"
+   ],
+   "false_positives": []
+  }
+ }
+}

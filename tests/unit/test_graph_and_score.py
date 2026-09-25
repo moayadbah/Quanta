@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import math
 from pathlib import Path
 
 import networkx as nx
@@ -18,8 +17,9 @@ from quanta.core.graph import (
     to_node_link,
 )
 from quanta.core.ingest import walk_repository
-from quanta.core.models import Coverage, Provenance, dump_canonical_json
-from quanta.core.score import compute_score, factor_config, factor_propagation, factor_sites
+from quanta.core.metric_v2 import coverage_from
+from quanta.core.models import Provenance, dump_canonical_json
+from quanta.core.score import compute_score
 
 FIXTURES = Path(__file__).resolve().parents[1] / "fixtures" / "repos"
 
@@ -39,10 +39,7 @@ def analyse(name: str) -> tuple[DetectionResult, nx.DiGraph]:
 
 def score_of(name: str) -> object:
     detection, graph = analyse(name)
-    coverage = Coverage(
-        files_scanned=detection.files_scanned, files_unparseable=len(detection.unparseable)
-    )
-    return compute_score(detection, graph, PROVENANCE, coverage)
+    return compute_score(detection, graph, PROVENANCE, coverage_from(detection, truncated=False))
 
 
 # ---------------------------------------------------------------------------------------
@@ -163,104 +160,37 @@ def test_a_self_contained_crypto_module_is_a_minimal_cut(tmp_path: Path) -> None
 
 
 # ---------------------------------------------------------------------------------------
-# Factors (§5.3.3)
+# Score assembly under metric-v2 (Master Plan 8.2 to 8.6). Factor arithmetic and the
+# metamorphic relations live in tests/metric/.
 # ---------------------------------------------------------------------------------------
 
 
-@pytest.mark.parametrize(("count", "expected"), [(0, 1.0), (1, 1 / (1 + math.log10(2)))])
-def test_factor_sites_matches_the_published_formula(count: int, expected: float) -> None:
-    graph: nx.DiGraph = nx.DiGraph()
-    for i in range(count):
-        graph.add_node(f"c{i}", kind="crypto_call")
-    assert factor_sites(graph).normalised == pytest.approx(expected)
-
-
-def test_factor_sites_decreases_monotonically() -> None:
-    values = []
-    for count in (1, 5, 20, 100, 500):
-        graph: nx.DiGraph = nx.DiGraph()
-        for i in range(count):
-            graph.add_node(f"c{i}", kind="crypto_call")
-        values.append(factor_sites(graph).normalised)
-    assert values == sorted(values, reverse=True)
-
-
-def test_factor_config_rewards_configuration_over_literals() -> None:
-    configured = factor_config(analyse("configured_crypto")[0]).normalised
-    hardcoded = factor_config(analyse("hardcoded_crypto")[0]).normalised
-    assert configured > hardcoded
-    assert hardcoded == 0.0
-
-
-def test_factor_config_is_neutral_when_nothing_selects_an_algorithm() -> None:
-    """No selectors must not manufacture a deduction against the repository."""
-    value = factor_config(DetectionResult())
-    assert value.normalised == 1.0
-    assert value.raw == "none"
-
-
-def test_factor_propagation_is_clamped_into_the_unit_interval() -> None:
-    for name in ("hardcoded_crypto", "configured_crypto", "facade_crypto", "no_crypto"):
-        value = factor_propagation(analyse(name)[1])
-        assert 0.0 <= value.normalised <= 1.0
-
-
-# ---------------------------------------------------------------------------------------
-# Score assembly (DoD-C4)
-# ---------------------------------------------------------------------------------------
-
-
-def test_clean_repository_scores_one_hundred() -> None:
+def test_repository_without_crypto_is_not_scored_one_hundred() -> None:
+    """D11: a silent zero must never read as a perfect result."""
     score = score_of("no_crypto")
-    assert score.agility_score == 100.0
+    assert score.status == "no_crypto_detected"
+    assert score.agility_score is None
     assert score.deductions == ()
 
 
-def test_score_is_bounded_and_ordered_across_fixtures() -> None:
-    scores = {
-        name: score_of(name).agility_score
-        for name in ("no_crypto", "configured_crypto", "facade_crypto", "hardcoded_crypto")
-    }
-    assert all(0.0 <= v <= 100.0 for v in scores.values())
-    assert scores["no_crypto"] > scores["configured_crypto"]
-    assert scores["configured_crypto"] > scores["hardcoded_crypto"]
-
-
-def test_every_deduction_carries_a_citation() -> None:
-    """PROC-08 / DoD-C4: a score without a traceable cause is a defect."""
+def test_single_module_fixtures_are_refused_not_scored() -> None:
+    """G6: architecture factors need at least three shipped modules."""
     for name in ("hardcoded_crypto", "configured_crypto", "facade_crypto"):
         score = score_of(name)
-        assert score.deductions
-        for deduction in score.deductions:
-            assert deduction.citations
-            for citation in deduction.citations:
-                path, _, line = citation.rpartition(":")
-                assert path and line.isdigit()
+        assert score.status == "refused"
+        assert score.refusal is not None
+        assert score.refusal.code == "TOO_FEW_MODULES"
+        assert score.agility_score is None
+        assert score.inventory_summary.by_category, "the inventory is still reported"
 
 
-def test_citations_point_at_real_files() -> None:
-    detection, _graph = analyse("hardcoded_crypto")
-    known = {f"{s.file}:{s.line}" for s in detection.sites}
-    for deduction in score_of("hardcoded_crypto").deductions:
-        assert set(deduction.citations) <= known
-
-
-def test_contributions_sum_to_the_score() -> None:
-    score = score_of("hardcoded_crypto")
-    total = sum(f.contribution for f in score.factors.values())
-    assert score.agility_score == pytest.approx(total, abs=0.01)
-
-
-def test_weights_come_from_the_pre_registered_set() -> None:
-    score = score_of("hardcoded_crypto")
-    assert score.factors["call_sites"].weight == 0.30
-    assert score.factors["isolation_layer"].weight == 0.30
-    assert score.factors["selection_source"].weight == 0.20
-    assert score.factors["propagation_depth"].weight == 0.20
+def test_refusal_keeps_the_quantum_and_weak_advisories() -> None:
+    patterns = {r.pattern for r in score_of("hardcoded_crypto").recommendations}
+    assert {"P0", "P3"} <= patterns
 
 
 def test_weights_must_sum_to_one() -> None:
-    """§11.2 forbids silent renormalisation — a bad weight set must fail loudly."""
+    """Silent renormalisation is forbidden: a bad weight set must fail loudly."""
     settings = Settings()
     settings.weights.f_sites = 0.5
     with pytest.raises(ValueError, match=r"sum to 1\.00"):
@@ -273,12 +203,15 @@ def test_score_json_is_byte_identical_across_runs() -> None:
     assert payloads[0] == payloads[1] == payloads[2]
 
 
-def test_weak_and_quantum_recommendations_appear() -> None:
-    actions = " ".join(r.action for r in score_of("hardcoded_crypto").recommendations)
-    assert "MD5" in actions or "weak" in actions.lower()
-    assert "ML-KEM" in actions
-
-
 def test_crypto_node_count_matches_detected_call_sites() -> None:
     detection, graph = analyse("hardcoded_crypto")
     assert len(crypto_nodes(graph)) == len(detection.crypto_calls)
+
+
+def test_import_and_call_edges_carry_citations() -> None:
+    """8.5: propagation deductions cite the edge that makes a module a dependent."""
+    _detection, graph = analyse("facade_crypto")
+    for _s, _t, data in graph.edges(data=True):
+        if data["kind"] in {"import", "call"}:
+            assert data["file"].endswith(".py")
+            assert data["line"] > 0

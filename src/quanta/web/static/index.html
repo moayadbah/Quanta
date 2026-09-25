@@ -1,549 +1,177 @@
 <!doctype html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#f7f7f2" />
-    <meta
-      name="description"
-      content="Understand the cryptography in your Python repository. Find dependencies, review focused fixes, and open a GitHub pull request with Quanta."
-    />
-    <meta
-      property="og:title"
-      content="Quanta · Clarity for your cryptography"
-    />
-    <meta
-      property="og:description"
-      content="Scan Python repositories. Understand the impact. Review the change."
-    />
-    <meta property="og:type" content="website" />
-    <title>Quanta · Clarity for your cryptography</title>
-    <link rel="icon" href="/mark.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="/product.css" />
-    <script type="module" src="/product.mjs"></script>
-  </head>
-  <body>
-    <a class="skip-link" href="#workspace" data-i18n="skip"
-      >Skip to workspace</a
-    >
-    <header class="site-header">
-      <nav class="nav-shell" aria-label="Main navigation">
-        <a class="wordmark" href="/" aria-label="Quanta home"
-          ><img src="/mark.svg" width="28" height="28" alt="" /><span
-            >quanta</span
-          ><span class="nav-motif" aria-hidden="true"></span
-        ></a>
-        <div class="nav-links">
-          <a href="#workspace" data-i18n="workspace">Workspace</a
-          ><a href="#approach" data-i18n="approach">Our approach</a>
-        </div>
-        <div class="nav-actions">
-          <button class="language" id="language" aria-label="Switch to Arabic">
-            عربي</button
-          ><a
-            class="button small dark"
-            href="/auth/login"
-            id="nav-signin"
-            hidden
-            data-i18n="signin"
-            >Sign in with GitHub</a
-          ><button
-            class="button small outline"
-            id="signout"
-            hidden
-            data-i18n="signout"
-          >
-            Sign out
-          </button>
-          <button class="button small outline" id="account-check" disabled>
-            Checking sign-in…
-          </button>
-        </div>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Quanta</title>
+  <link rel="icon" href="brand/logo.svg" type="image/svg+xml">
+  <link rel="preload" href="brand/fonts/inter-display-medium.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="brand/horizon-hero.webp" as="image" media="(min-width: 701px)">
+  <link rel="stylesheet" href="site.css">
+  <script type="module" src="landing.mjs"></script>
+</head>
+<body data-title-key="site.title">
+  <a class="skip" href="#main" data-t="a11y.skip"></a>
+
+  <header class="site-header overlay">
+    <div class="wrap">
+      <a class="brand" href="/" data-t-attr="aria-label=brand.home">
+        <img src="brand/logo.svg" alt="" width="24" height="24">
+        <span data-t="brand.name"></span>
+      </a>
+      <nav class="nav" data-t-attr="aria-label=nav.label">
+        <a href="#product" data-t="nav.product"></a>
+        <a href="#readiness" data-t="nav.readiness"></a>
+        <a href="#numbers" data-t="nav.numbers"></a>
+        <a href="#faq" data-t="nav.faq"></a>
       </nav>
-    </header>
-    <main>
-      <section class="hero shell" aria-labelledby="hero-title">
-        <div class="hero-copy">
-          <p class="eyebrow">
-            <span class="status-dot"></span
-            ><span data-i18n="eyebrow"
-              >A clearer path through your cryptography</span
-            >
-          </p>
-          <h1 id="hero-title">
-            <span data-i18n="hero1">Know your crypto.</span><br /><span
-              class="soft"
-              data-i18n="hero2"
-              >Own your next move.</span
-            >
-          </h1>
-          <p class="hero-description" data-i18n="intro">
-            See where cryptography lives in your code, understand what depends
-            on it, and turn a focused fix into a pull request.
-          </p>
-          <div class="hero-actions">
-            <a class="button dark" href="#workspace"
-              ><span data-i18n="start">Explore your repository</span
-              ><span aria-hidden="true">↗</span></a
-            ><button class="text-button sample-button" data-i18n="sample">
-              Try a sample scan
-            </button>
-          </div>
-          <p class="hero-note" data-i18n="heroNote">
-            Open source. Python first. Your code is never executed.
-          </p>
-        </div>
-        <div class="hero-art" aria-hidden="true">
-          <div class="orbital orbit-one"></div>
-          <div class="orbital orbit-two"></div>
-          <div class="orbital orbit-three"></div>
-          <div class="orbit-dot dot-one"></div>
-          <div class="orbit-dot dot-two"></div>
-          <div class="orbit-dot dot-three"></div>
-          <div class="scan-specimen">
-            <div class="specimen-top">
-              <span class="mini-mark">q</span><span>fingerprints.py</span
-              ><span class="specimen-label">REVIEW</span>
-            </div>
-            <div class="specimen-code">
-              <span class="code-muted">def</span>
-              fingerprint(content):<br /><span class="code-remove"
-                >− &nbsp; hashlib.sha1(content)</span
-              ><br /><span class="code-add"
-                >+ &nbsp; hashlib.sha256(content)</span
-              >
-            </div>
-            <div class="specimen-bottom">
-              <span class="status-dot"></span
-              ><span data-i18n="specimen">One change. Full visibility.</span
-              ><span class="specimen-arrow">↗</span>
-            </div>
-          </div>
-          <span class="orbit-caption">UNDERSTAND → REVIEW → IMPROVE</span>
-        </div>
-      </section>
-      <section
-        class="workspace-section"
-        id="workspace"
-        aria-labelledby="workspace-title"
-      >
-        <div class="shell">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow" data-i18n="yourWorkspace">YOUR WORKSPACE</p>
-              <h2 id="workspace-title" data-i18n="workspaceTitle">
-                Start with a little clarity.
-              </h2>
-            </div>
-            <span
-              id="account-label"
-              class="quiet-label"
-              data-i18n="publicPython"
-              >Public Python repositories</span
-            >
-          </div>
-          <div class="workspace-grid">
-            <div class="scan-panel">
-              <form id="scan-form">
-                <label for="repo-url" data-i18n="repoLabel"
-                  >GitHub repository</label
-                >
-                <div class="repo-input">
-                  <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M5 3h11a2 2 0 0 1 2 2v15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"
-                    />
-                    <path d="M3 16h15M7 7h7M7 10h4" /></svg
-                  ><input
-                    id="repo-url"
-                    name="repo"
-                    type="text"
-                    inputmode="url"
-                    placeholder="https://github.com/owner/repository or owner/repository"
-                    autocomplete="off"
-                    autocapitalize="none"
-                    spellcheck="false"
-                    dir="ltr"
-                    required
-                    maxlength="2048"
-                    aria-describedby="scan-help"
-                  />
-                </div>
-                <div class="scan-action-row">
-                  <p id="scan-help" data-i18n="scanHelp">
-                    Paste a public GitHub URL or owner/repository.
-                  </p>
-                  <button type="submit" class="button dark" id="scan-button" disabled>
-                    <span data-i18n="scan">Scan repository</span
-                    ><span aria-hidden="true">↗</span>
-                  </button>
-                </div>
-              </form>
-              <div class="signin-note" id="signin-note" hidden>
-                <span class="tiny-lock" aria-hidden="true">◈</span>
-                <p data-i18n="signinNote">
-                  Sign in with GitHub to scan and keep your results in one
-                  place. Access is limited to public repositories.
-                </p>
-              </div>
-              <div
-                class="notice"
-                id="service-notice"
-                hidden
-                role="status"
-              ></div>
-              <div class="notice" id="connection-notice" role="status" hidden>
-                <p id="connection-message"></p>
-                <button class="text-button" id="retry-connection" type="button" hidden>
-                  Try again
-                </button>
-              </div>
-              <div class="error-message" id="error" hidden role="alert"></div>
-            </div>
-            <aside class="allowance-panel">
-              <div class="allowance-top">
-                <span class="eyebrow" data-i18n="freeAccess">FREE ACCESS</span
-                ><span class="pill" data-i18n="limited">Usage limits</span>
-              </div>
-              <p class="allowance-number">
-                <span id="daily-left">3</span
-                ><span data-i18n="scansToday">scans / day</span>
-              </p>
-              <p id="allowance-description" data-i18n="allowanceNote">
-                A shared monthly allowance keeps Quanta free for everyone.
-              </p>
-              <div class="quota-track"><div id="quota-fill"></div></div>
-              <p class="micro" id="quota-label" data-i18n="quotaDefault">
-                50 shared scans per month · resets in UTC
-              </p>
-            </aside>
-          </div>
-          <section
-            class="activity-panel"
-            id="activity"
-            hidden
-            aria-live="polite"
-            aria-atomic="true"
-          >
-            <div class="activity-icon"><span class="pulse"></span></div>
-            <div>
-              <p class="eyebrow" id="activity-status" data-i18n="scanning">
-                SCAN IN PROGRESS
-              </p>
-              <h3 id="activity-title" data-i18n="looking">
-                Getting to know your repository.
-              </h3>
-              <p id="activity-detail" data-i18n="scanDetail">
-                We pin the commit, trace the source, and prepare your report.
-              </p>
-            </div>
-            <div class="activity-progress">
-              <strong id="progress-label">0%</strong>
-              <div class="progress-track"><div id="progress-fill"></div></div>
-            </div>
-          </section>
-          <section
-            class="results"
-            id="results"
-            hidden
-            aria-labelledby="result-title"
-          >
-            <div class="result-heading">
-              <div>
-                <p class="eyebrow" id="result-kind" data-i18n="scanComplete">
-                  SCAN COMPLETE
-                </p>
-                <h3 id="result-title" dir="ltr"></h3>
-                <p class="micro" id="result-provenance"></p>
-              </div>
-              <div class="result-actions">
-                <button
-                  class="button small outline"
-                  id="download"
-                  data-i18n="download"
-                >
-                  Download report data</button
-                ><a
-                  class="button small outline"
-                  id="full-report"
-                  target="_blank"
-                  rel="noopener"
-                  data-i18n="fullReport"
-                  >Full report ↗</a
-                >
-              </div>
-            </div>
-            <div class="result-summary">
-              <div class="score-block">
-                <div class="score-number">
-                  <span id="score">—</span><span>/ 100</span>
-                </div>
-                <h4 data-i18n="agility">Crypto agility</h4>
-                <p data-i18n="scoreNote">
-                  How easily the architecture can change. This is not a security
-                  grade.
-                </p>
-              </div>
-              <div class="summary-metrics">
-                <div>
-                  <strong id="files-scanned">0</strong
-                  ><span data-i18n="files">Python files scanned</span>
-                </div>
-                <div>
-                  <strong id="sites-detected">0</strong
-                  ><span data-i18n="sites">Cryptographic call sites</span>
-                </div>
-                <div>
-                  <strong id="fix-count">0</strong
-                  ><span data-i18n="fixesAvailable">Reviewable changes</span>
-                </div>
-              </div>
-            </div>
-            <div class="notice" id="coverage-note" hidden></div>
-            <div class="results-tabs" role="tablist" aria-label="Scan results">
-              <button
-                role="tab"
-                id="tab-fixes"
-                aria-selected="true"
-                aria-controls="fix-panel"
-                data-tab="fix-panel"
-                data-i18n="fixesTab"
-              >
-                Suggested changes</button
-              ><button
-                role="tab"
-                id="tab-findings"
-                aria-selected="false"
-                aria-controls="finding-panel"
-                data-tab="finding-panel"
-                data-i18n="findingsTab"
-              >
-                Architecture findings</button
-              ><button
-                role="tab"
-                id="tab-factors"
-                aria-selected="false"
-                aria-controls="factor-panel"
-                data-tab="factor-panel"
-                data-i18n="factorsTab"
-              >
-                Score breakdown
-              </button>
-            </div>
-            <div
-              class="tab-panel"
-              id="fix-panel"
-              role="tabpanel"
-              aria-labelledby="tab-fixes"
-            >
-              <div class="panel-intro">
-                <div>
-                  <h4 data-i18n="fixTitle">
-                    Small changes. Considered carefully.
-                  </h4>
-                  <p data-i18n="fixIntro">
-                    Select the hash upgrades you want to review. Every change
-                    needs a compatibility check before merging.
-                  </p>
-                </div>
-                <button
-                  class="button small dark"
-                  id="review-button"
-                  disabled
-                  data-i18n="review"
-                >
-                  Review selected changes
-                </button>
-              </div>
-              <div id="fix-list"></div>
-              <p class="validation-note" data-i18n="validation">
-                Python syntax checked. Repository tests are never run during a
-                scan.
-              </p>
-            </div>
-            <div
-              class="tab-panel"
-              id="finding-panel"
-              role="tabpanel"
-              aria-labelledby="tab-findings"
-              hidden
-            >
-              <div id="finding-list"></div>
-            </div>
-            <div
-              class="tab-panel"
-              id="factor-panel"
-              role="tabpanel"
-              aria-labelledby="tab-factors"
-              hidden
-            >
-              <p class="panel-copy" data-i18n="factorIntro">
-                Four architecture signals contribute to the score. Higher values
-                indicate more flexibility, not stronger cryptography.
-              </p>
-              <div id="factor-list"></div>
-            </div>
-          </section>
-          <section class="history-section" id="history-section" hidden>
-            <div class="history-heading">
-              <h3 data-i18n="recent">Your recent scans</h3>
-              <span class="micro" data-i18n="retention"
-                >Results kept for 7 days</span
-              >
-            </div>
-            <div id="history-list"></div>
-          </section>
-          <div class="empty-workspace" id="empty-workspace">
-            <span class="empty-symbol" aria-hidden="true">⌁</span>
-            <div>
-              <h3 data-i18n="emptyTitle">Your next insight starts here.</h3>
-              <p data-i18n="emptyDescription">
-                Paste a repository above, or take a look around with a working
-                example.
-              </p>
-            </div>
-            <button class="text-button sample-button" data-i18n="sampleArrow">
-              Explore the sample ↗
-            </button>
-          </div>
-        </div>
-      </section>
-      <section
-        class="approach-section shell"
-        id="approach"
-        aria-labelledby="approach-title"
-      >
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow" data-i18n="approachEyebrow">
-              FROM UNDERSTANDING TO ACTION
-            </p>
-            <h2 id="approach-title" data-i18n="approachTitle">
-              A thoughtful way forward.
-            </h2>
-          </div>
-          <p class="approach-description" data-i18n="approachDescription">
-            Useful evidence. Focused changes. You stay in control of what ships.
-          </p>
-        </div>
-        <div class="principles">
-          <article>
-            <span class="principle-number">01 /</span>
-            <h3 data-i18n="principle1">See the connections.</h3>
-            <p data-i18n="principle1Body">
-              Find cryptographic calls and the code that depends on them, with
-              file and line references you can follow.
-            </p>
-          </article>
-          <article>
-            <span class="principle-number">02 /</span>
-            <h3 data-i18n="principle2">Read every change.</h3>
-            <p data-i18n="principle2Body">
-              Inspect a real diff for supported hash upgrades. Key, certificate
-              and protocol migrations remain guided decisions.
-            </p>
-          </article>
-          <article>
-            <span class="principle-number">03 /</span>
-            <h3 data-i18n="principle3">Make it a pull request.</h3>
-            <p data-i18n="principle3Body">
-              Open a draft PR from the changes you reviewed. Run your own tests,
-              check compatibility, and merge when ready.
-            </p>
-          </article>
-        </div>
-      </section>
-      <section class="closing shell">
-        <p data-i18n="closing">Built to make complex code a little clearer.</p>
-        <a
-          class="text-button"
-          href="https://github.com/moayadbah/Quanta"
-          target="_blank"
-          rel="noopener"
-          data-i18n="source"
-          >Explore the source ↗</a
-        >
-      </section>
-    </main>
-    <footer class="site-footer">
-      <div class="footer-motif" aria-hidden="true"></div>
-      <div class="shell footer-content">
-        <a class="wordmark" href="/"
-          ><img src="/mark.svg" width="25" height="25" alt="" /><span
-            >quanta</span
-          ></a
-        >
-        <p data-i18n="footer">Clarity, with intention.</p>
-        <div>
-          <a href="/privacy.html" data-i18n="privacy">Privacy</a
-          ><a
-            href="https://github.com/moayadbah/Quanta"
-            target="_blank"
-            rel="noopener"
-            >GitHub ↗</a
-          ><span class="footer-origin" lang="ar">من هنا، إلى المستقبل</span>
-        </div>
-      </div>
-    </footer>
-    <dialog id="review-dialog" aria-labelledby="review-title">
-      <div class="dialog-header">
-        <div>
-          <p class="eyebrow" data-i18n="reviewEyebrow">
-            YOUR CHANGES, BEFORE THEY SHIP
-          </p>
-          <h2 id="review-title" data-i18n="reviewTitle">Take a closer look.</h2>
-        </div>
-        <button
-          class="close-button"
-          id="close-review"
-          aria-label="Close review"
-        >
-          ×
+      <div class="header-actions">
+        <button class="icon-btn" type="button" data-action="language" data-t-attr="aria-label=lang.switch_label;title=lang.switch_label">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><circle cx="8" cy="8" r="6.25"/><path d="M1.75 8h12.5M8 1.75c1.8 1.9 2.6 4 2.6 6.25S9.8 12.35 8 14.25M8 1.75C6.2 3.65 5.4 5.75 5.4 8s.8 4.35 2.6 6.25"/></svg>
+        </button>
+        <a class="btn primary sm hide-mobile" href="/workspace.html" data-t="cta.open"></a>
+        <button class="icon-btn menu-button" id="menu-open" type="button" data-t-attr="aria-label=menu.open">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2.5 5.5h11M2.5 10.5h11"/></svg>
         </button>
       </div>
-      <div class="dialog-body">
-        <div class="review-notice">
-          <strong data-i18n="compatibilityTitle"
-            >Check compatibility before merging.</strong
-          >
-          <p data-i18n="compatibilityBody">
-            SHA-256 changes digest values and length. Check stored hashes,
-            signatures, protocols, fixtures and consumers. It is not a password
-            hashing scheme.
-          </p>
+    </div>
+  </header>
+
+  <dialog class="mobile-menu" id="mobile-menu" data-t-attr="aria-label=menu.label">
+    <div class="menu-top">
+      <span class="brand"><img src="brand/logo.svg" alt="" width="24" height="24"><span data-t="brand.name"></span></span>
+      <button class="btn ghost sm" id="menu-close" type="button" data-t="menu.close"></button>
+    </div>
+    <nav>
+      <a href="#product" data-t="nav.product"></a>
+      <a href="#readiness" data-t="nav.readiness"></a>
+      <a href="#numbers" data-t="nav.numbers"></a>
+      <a href="#faq" data-t="nav.faq"></a>
+      <a href="/workspace.html" data-t="cta.open"></a>
+      <button type="button" data-action="language" data-t="lang.switch"></button>
+    </nav>
+  </dialog>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-media" id="hero-media">
+        <picture>
+          <source media="(max-width: 700px)" srcset="brand/horizon-hero-mobile.webp">
+          <img id="hero-image" src="brand/horizon-hero.webp" alt="" width="1920" height="1270" fetchpriority="high">
+        </picture>
+        <canvas class="hero-ascii" id="hero-ascii" aria-hidden="true"></canvas>
+      </div>
+      <div class="hero-scrim" aria-hidden="true"></div>
+      <div class="wrap hero-copy">
+        <h1 class="display reveal" id="hero-title" data-t="hero.title"></h1>
+        <p class="lede reveal" data-t="hero.lede"></p>
+        <div class="actions reveal">
+          <a class="btn primary lg" href="/workspace.html"><span data-t="cta.scan"></span><svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></a>
+          <a class="btn lg" href="/workspace.html#sample" data-t="cta.sample"></a>
         </div>
-        <div id="diff-list"></div>
-        <p class="validation-note" data-i18n="validation">
-          Python syntax checked. Repository tests are never run during a scan.
-        </p>
-        <div class="error-message" id="review-error" hidden role="alert"></div>
       </div>
-      <div class="dialog-footer">
-        <label class="acknowledgement"
-          ><input type="checkbox" id="review-ack" /><span
-            data-i18n="acknowledge"
-            >I reviewed the diff and understand the compatibility impact.</span
-          ></label
-        ><button class="button dark" id="open-pr" disabled data-i18n="openPr">
-          Open draft pull request ↗</button
-        ><a
-          class="button dark"
-          id="pr-link"
-          hidden
-          target="_blank"
-          rel="noopener"
-          data-i18n="viewPr"
-          >View pull request ↗</a
-        >
+    </section>
+
+    <section class="section" id="product" aria-labelledby="product-title">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <h2 class="h2" id="product-title" data-t="product.title"></h2>
+          <p class="lede" data-t="product.lede"></p>
+        </div>
+        <div class="pillars reveal-group">
+          <article class="pillar reveal">
+            <span class="num">01</span>
+            <h3 class="h3" data-t="product.find_title"></h3>
+            <p class="body" data-t="product.find_body"></p>
+            <div class="shot surface" id="shot-find" role="img" data-t-attr="aria-label=product.find_title"></div>
+          </article>
+          <article class="pillar reveal">
+            <span class="num">02</span>
+            <h3 class="h3" data-t="product.change_title"></h3>
+            <p class="body" data-t="product.change_body"></p>
+            <div class="shot surface" id="shot-change" role="img" data-t-attr="aria-label=product.change_title"></div>
+          </article>
+          <article class="pillar reveal">
+            <span class="num">03</span>
+            <h3 class="h3" data-t="product.ready_title"></h3>
+            <p class="body" data-t="product.ready_body"></p>
+            <div class="shot surface" id="shot-ready" role="img" data-t-attr="aria-label=product.ready_title"></div>
+          </article>
+        </div>
       </div>
-    </dialog>
-  </body>
+    </section>
+
+    <section class="section" id="readiness" aria-labelledby="readiness-title">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <h2 class="h2" id="readiness-title" data-t="readiness.title"></h2>
+          <p class="lede" data-t="readiness.lede"></p>
+        </div>
+        <div class="timeline-scroll reveal">
+          <div class="timeline" id="timeline" role="group" data-t-attr="aria-label=readiness.timeline_label"></div>
+        </div>
+        <div class="source-panel surface" id="source-panel" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="section" id="numbers" aria-labelledby="numbers-title">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <h2 class="h2" id="numbers-title" data-t="numbers.title"></h2>
+          <p class="lede" data-t="numbers.lede"></p>
+        </div>
+        <div class="figures reveal-group" id="figures"></div>
+        <div class="figure-detail surface" id="figure-detail" hidden></div>
+      </div>
+    </section>
+
+    <section class="section band" id="languages" aria-labelledby="languages-title">
+      <div class="wrap split reveal">
+        <h2 class="h2" id="languages-title" data-t="languages.title"></h2>
+        <p class="lede" data-t="languages.lede"></p>
+      </div>
+    </section>
+
+    <section class="section" id="faq" aria-labelledby="faq-title">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <h2 class="h2" id="faq-title" data-t="faq.title"></h2>
+        </div>
+        <div class="faq reveal">
+          <details><summary><span data-t="faq.q1"></span><span class="plus" aria-hidden="true"></span></summary><p class="answer" data-t="faq.a1"></p></details>
+          <details><summary><span data-t="faq.q2"></span><span class="plus" aria-hidden="true"></span></summary><p class="answer" data-t="faq.a2"></p></details>
+          <details><summary><span data-t="faq.q3"></span><span class="plus" aria-hidden="true"></span></summary><p class="answer" data-t="faq.a3"></p></details>
+          <details><summary><span data-t="faq.q4"></span><span class="plus" aria-hidden="true"></span></summary><p class="answer" data-t="faq.a4"></p></details>
+          <details><summary><span data-t="faq.q5"></span><span class="plus" aria-hidden="true"></span></summary><p class="answer" data-t="faq.a5"></p></details>
+          <details><summary><span data-t="faq.q6"></span><span class="plus" aria-hidden="true"></span></summary><p class="answer" data-t="faq.a6"></p></details>
+          <details><summary><span data-t="faq.q7"></span><span class="plus" aria-hidden="true"></span></summary><p class="answer" data-t="faq.a7"></p></details>
+          <details><summary><span data-t="faq.q8"></span><span class="plus" aria-hidden="true"></span></summary><p class="answer" data-t="faq.a8"></p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="close-title">
+      <div class="wrap closing reveal">
+        <h2 class="h2" id="close-title" data-t="close.title"></h2>
+        <p class="lede" data-t="close.lede"></p>
+        <div class="actions">
+          <a class="btn primary lg" href="/workspace.html"><span data-t="cta.scan"></span><svg class="arrow" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></a>
+          <a class="btn lg" href="/workspace.html#sample" data-t="cta.sample"></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span class="brand"><img src="brand/logo.svg" alt="" width="24" height="24"><span data-t="brand.name"></span></span>
+      <nav data-t-attr="aria-label=footer.label">
+        <a href="/workspace.html" data-t="cta.open"></a>
+        <a href="/privacy.html" data-t="footer.privacy"></a>
+        <a href="/api/docs" data-t="footer.api"></a>
+      </nav>
+    </div>
+  </footer>
+</body>
 </html>

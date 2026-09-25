@@ -1,0 +1,3535 @@
+{
+ "events": [
+  {
+   "at_ms": 0,
+   "data": {
+    "status": "running"
+   },
+   "event": "status"
+  },
+  {
+   "at_ms": 0,
+   "data": {
+    "steps": [
+     {
+      "id": "validate",
+      "title": "Validate the URL"
+     },
+     {
+      "id": "resolve",
+      "title": "Resolve repository metadata"
+     },
+     {
+      "id": "clone",
+      "title": "Clone at a pinned commit"
+     },
+     {
+      "id": "walk",
+      "title": "Walk the source tree"
+     },
+     {
+      "id": "parse",
+      "title": "Parse and detect crypto"
+     },
+     {
+      "id": "graph",
+      "title": "Build the dependency graph"
+     },
+     {
+      "id": "score",
+      "title": "Compute the Agility Score"
+     },
+     {
+      "id": "render",
+      "title": "Render artifacts"
+     },
+     {
+      "id": "cleanup",
+      "title": "Delete the working copy"
+     }
+    ]
+   },
+   "event": "plan"
+  },
+  {
+   "at_ms": 0,
+   "data": {
+    "duration_ms": 0,
+    "evidence": [],
+    "id": "validate",
+    "status": "running",
+    "summary": "",
+    "title": "Validate the URL"
+   },
+   "event": "step"
+  },
+  {
+   "at_ms": 0,
+   "data": {
+    "duration_ms": 0,
+    "evidence": [
+     {
+      "label": "Scheme",
+      "ok": true,
+      "value": "https"
+     },
+     {
+      "label": "Host allowlist",
+      "ok": true,
+      "value": "github.com"
+     },
+     {
+      "label": "Userinfo / port / query",
+      "ok": true,
+      "value": "none present"
+     },
+     {
+      "label": "Owner",
+      "ok": true,
+      "value": "tlsfuzzer"
+     },
+     {
+      "label": "Repository",
+      "ok": true,
+      "value": "python-ecdsa"
+     },
+     {
+      "label": "Character class",
+      "ok": true,
+      "value": "[A-Za-z0-9._-]{1,100}"
+     },
+     {
+      "label": "Network calls so far",
+      "ok": true,
+      "value": "0 \u2014 validation precedes DNS"
+     }
+    ],
+    "id": "validate",
+    "status": "done",
+    "summary": "tlsfuzzer/python-ecdsa accepted, with no network call made",
+    "title": "Validate the URL"
+   },
+   "event": "step"
+  },
+  {
+   "at_ms": 0,
+   "data": {
+    "duration_ms": 0,
+    "evidence": [],
+    "id": "resolve",
+    "status": "running",
+    "summary": "",
+    "title": "Resolve repository metadata"
+   },
+   "event": "step"
+  },
+  {
+   "at_ms": 1202,
+   "data": {
+    "duration_ms": 1202,
+    "evidence": [
+     {
+      "label": "Visibility",
+      "ok": true,
+      "value": "public"
+     },
+     {
+      "label": "Default branch",
+      "ok": null,
+      "value": "master"
+     },
+     {
+      "label": "Size",
+      "ok": true,
+      "value": "1,040 KB of 5,000,000 KB limit"
+     },
+     {
+      "label": "Head commit",
+      "ok": null,
+      "value": "bff40c6cf2340148d410d5b3def0e949c547caf1"
+     },
+     {
+      "label": "Analysis pinned to",
+      "ok": true,
+      "value": "bff40c6cf234"
+     }
+    ],
+    "id": "resolve",
+    "status": "done",
+    "summary": "public, 1,040 KB, pinned to bff40c6cf234",
+    "title": "Resolve repository metadata"
+   },
+   "event": "step"
+  },
+  {
+   "at_ms": 1202,
+   "data": {
+    "duration_ms": 0,
+    "evidence": [],
+    "id": "clone",
+    "status": "running",
+    "summary": "",
+    "title": "Clone at a pinned commit"
+   },
+   "event": "step"
+  },
+  {
+   "at_ms": 4545,
+   "data": {
+    "duration_ms": 3342,
+    "evidence": [
+     {
+      "label": "Depth",
+      "ok": true,
+      "value": "1 \u2014 no history, so no committer personal data"
+     },
+     {
+      "label": "Submodules",
+      "ok": true,
+      "value": "refused \u2014 attacker-controlled URLs are an SSRF vector"
+     },
+     {
+      "label": "Hooks",
+      "ok": true,
+      "value": "core.hooksPath points at a directory that never exists"
+     },
+     {
+      "label": "Shell",
+      "ok": true,
+      "value": "shell=False, argument vector only"
+     },
+     {
+      "label": "Timeout",
+      "ok": null,
+      "value": "180s"
+     },
+     {
+      "label": "Checked-out HEAD",
+      "ok": true,
+      "value": "bff40c6cf234 matches resolved SHA"
+     }
+    ],
+    "id": "clone",
+    "status": "done",
+    "summary": "shallow clone at bff40c6cf234 in 3342 ms",
+    "title": "Clone at a pinned commit"
+   },
+   "event": "step"
+  },
+  {
+   "at_ms": 4545,
+   "data": {
+    "duration_ms": 0,
+    "evidence": [],
+    "id": "walk",
+    "status": "running",
+    "summary": "",
+    "title": "Walk the source tree"
+   },
+   "event": "step"
+  },
+  {
+   "at_ms": 4545,
+   "data": {
+    "duration_ms": 0,
+    "evidence": [
+     {
+      "label": "Python files considered",
+      "ok": null,
+      "value": "34"
+     },
+     {
+      "label": "Accepted for analysis",
+      "ok": null,
+      "value": "34"
+     },
+     {
+      "label": "Symlinks skipped",
+      "ok": true,
+      "value": "0"
+     },
+     {
+      "label": "Directories pruned",
+      "ok": null,
+      "value": "1 (denylist, symlinks)"
+     },
+     {
+      "label": "Total bytes",
+      "ok": null,
+      "value": "668,177 of 500,000,000"
+     },
+     {
+      "label": "Containment",
+      "ok": true,
+      "value": "every path re-checked under the clone root"
+     },
+     {
+      "label": "Budgets",
+      "ok": true,
+      "value": "none exceeded"
+     }
+    ],
+    "id": "walk",
+    "status": "done",
+    "summary": "34 Python files accepted",
+    "title": "Walk the source tree"
+   },
+   "event": "step"
+  },
+  {
+   "at_ms": 4545,
+   "data": {
+    "duration_ms": 0,
+    "evidence": [],
+    "id": "parse",
+    "status": "running",
+    "summary": "",
+    "title": "Parse and detect crypto"
+   },
+   "event": "step"
+  },
+  {
+   "at_ms": 4609,
+   "data": {
+    "done": 1,
+    "total": 34
+   },
+   "event": "parse_progress"
+  },
+  {
+   "at_ms": 4717,
+   "data": {
+    "file": "speed.py",
+    "items": [
+     {
+      "algorithm": "ECDSA",
+      "algorithms": [
+       "ECDSA",
+       "ECC-P256"
+      ],
+      "category": "key_generation",
+      "file": "speed.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-1f7ab0a82c240f43",
+      "kind": "crypto_call",
+      "line": 63,
+      "name": "ecdsa.SigningKey.generate",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+       "assumed": false,
+       "exposure": [
+        "signature"
+       ],
+       "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "sig = ecdsa.SigningKey.generate(c).sign(b\"msg\")",
+      "weak": false
+     }
+    ]
+   },
+   "event": "findings"
+  },
+  {
+   "at_ms": 4967,
+   "data": {
+    "file": "src/ecdsa/_sha3.py",
+    "items": [
+     {
+      "algorithm": "SHAKE256",
+      "algorithms": [
+       "SHAKE256"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/_sha3.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-68fe786fd1cd8e71",
+      "kind": "crypto_call",
+      "line": 8,
+      "name": "hashlib.new",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "hashlib.new(\"shake256\").digest(64)",
+      "weak": false
+     },
+     {
+      "algorithm": "SHAKE256",
+      "algorithms": [
+       "SHAKE256"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/_sha3.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-5966ccfb0344157d",
+      "kind": "crypto_call",
+      "line": 11,
+      "name": "hashlib.new",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "return hashlib.new(\"shake256\", msg).digest(outlen)",
+      "weak": false
+     }
+    ]
+   },
+   "event": "findings"
+  },
+  {
+   "at_ms": 5390,
+   "data": {
+    "done": 7,
+    "total": 34
+   },
+   "event": "parse_progress"
+  },
+  {
+   "at_ms": 5984,
+   "data": {
+    "done": 9,
+    "total": 34
+   },
+   "event": "parse_progress"
+  },
+  {
+   "at_ms": 6545,
+   "data": {
+    "file": "src/ecdsa/ecdsa.py",
+    "items": [
+     {
+      "algorithm": "SHA1",
+      "algorithms": [
+       "SHA1"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/ecdsa.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-dc623f1b63aed517",
+      "kind": "crypto_call",
+      "line": 327,
+      "name": "hashlib.sha1",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [
+        "sha1"
+       ],
+       "status": "weak"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "return string_to_int(sha1(int_to_string(m)).digest())",
+      "weak": true
+     }
+    ]
+   },
+   "event": "findings"
+  },
+  {
+   "at_ms": 6545,
+   "data": {
+    "done": 11,
+    "total": 34
+   },
+   "event": "parse_progress"
+  },
+  {
+   "at_ms": 6717,
+   "data": {
+    "file": "src/ecdsa/eddsa.py",
+    "items": [
+     {
+      "algorithm": "SHA2-512",
+      "algorithms": [
+       "SHA2-512"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/eddsa.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-3df3773bf57745d3",
+      "kind": "crypto_call",
+      "line": 41,
+      "name": "hashlib.new",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "return hashlib.new(\"sha512\", compat26_str(data)).digest()",
+      "weak": false
+     }
+    ]
+   },
+   "event": "findings"
+  },
+  {
+   "at_ms": 7780,
+   "data": {
+    "done": 13,
+    "total": 34
+   },
+   "event": "parse_progress"
+  },
+  {
+   "at_ms": 8295,
+   "data": {
+    "file": "src/ecdsa/keys.py",
+    "items": [
+     {
+      "algorithm": "SHA1",
+      "algorithms": [
+       "SHA1"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/keys.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-413380af0edfe6f7",
+      "kind": "crypto_call",
+      "line": 136,
+      "name": "hashlib.sha1",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [
+        "sha1"
+       ],
+       "status": "weak"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "cls, point, curve=NIST192p, hashfunc=sha1, validate_point=True",
+      "weak": true
+     },
+     {
+      "algorithm": "SHA1",
+      "algorithms": [
+       "SHA1"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/keys.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-c7be029eaedc8bcc",
+      "kind": "crypto_call",
+      "line": 223,
+      "name": "hashlib.sha1",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [
+        "sha1"
+       ],
+       "status": "weak"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "hashfunc=sha1,",
+      "weak": true
+     },
+     {
+      "algorithm": "SHA1",
+      "algorithms": [
+       "SHA1"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/keys.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-c454269c29472c12",
+      "kind": "crypto_call",
+      "line": 287,
+      "name": "hashlib.sha1",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [
+        "sha1"
+       ],
+       "status": "weak"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "hashfunc=sha1,",
+      "weak": true
+     },
+     {
+      "algorithm": "SHA1",
+      "algorithms": [
+       "SHA1"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/keys.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-4462eaef37700634",
+      "kind": "crypto_call",
+      "line": 329,
+      "name": "hashlib.sha1",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [
+        "sha1"
+       ],
+       "status": "weak"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "hashfunc=sha1,",
+      "weak": true
+     },
+     {
+      "algorithm": "SHA1",
+      "algorithms": [
+       "SHA1"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/keys.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-de7c89eefca0f1ee",
+      "kind": "crypto_call",
+      "line": 420,
+      "name": "hashlib.sha1",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [
+        "sha1"
+       ],
+       "status": "weak"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "hashfunc=sha1,",
+      "weak": true
+     },
+     {
+      "algorithm": "SHA1",
+      "algorithms": [
+       "SHA1"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/keys.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-11ccf4f4661d0f9a",
+      "kind": "crypto_call",
+      "line": 472,
+      "name": "hashlib.sha1",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [
+        "sha1"
+       ],
+       "status": "weak"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "hashfunc=sha1,",
+      "weak": true
+     },
+     {
+      "algorithm": "SHA1",
+      "algorithms": [
+       "SHA1"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/keys.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-85c77775cef48015",
+      "kind": "crypto_call",
+      "line": 810,
+      "name": "hashlib.sha1",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [
+        "sha1"
+       ],
+       "status": "weak"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "def generate(cls, curve=NIST192p, entropy=None, hashfunc=sha1):",
+      "weak": true
+     },
+     {
+      "algorithm": "SHA1",
+      "algorithms": [
+       "SHA1"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/keys.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-30af2372aaa8c92f",
+      "kind": "crypto_call",
+      "line": 834,
+      "name": "hashlib.sha1",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [
+        "sha1"
+       ],
+       "status": "weak"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "def from_secret_exponent(cls, secexp, curve=NIST192p, hashfunc=sha1):",
+      "weak": true
+     },
+     {
+      "algorithm": "SHA1",
+      "algorithms": [
+       "SHA1"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/keys.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-10c5b048a274dbb3",
+      "kind": "crypto_call",
+      "line": 885,
+      "name": "hashlib.sha1",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [
+        "sha1"
+       ],
+       "status": "weak"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "def from_string(cls, string, curve=NIST192p, hashfunc=sha1):",
+      "weak": true
+     },
+     {
+      "algorithm": "SHA1",
+      "algorithms": [
+       "SHA1"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/keys.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-4ace95b60c388739",
+      "kind": "crypto_call",
+      "line": 931,
+      "name": "hashlib.sha1",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [
+        "sha1"
+       ],
+       "status": "weak"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "def from_pem(cls, string, hashfunc=sha1, valid_curve_encodings=None):",
+      "weak": true
+     },
+     {
+      "algorithm": "SHA1",
+      "algorithms": [
+       "SHA1"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/keys.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-ced884c78e865dba",
+      "kind": "crypto_call",
+      "line": 983,
+      "name": "hashlib.sha1",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [
+        "sha1"
+       ],
+       "status": "weak"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "def from_der(cls, string, hashfunc=sha1, valid_curve_encodings=None):",
+      "weak": true
+     }
+    ]
+   },
+   "event": "findings"
+  },
+  {
+   "at_ms": 8295,
+   "data": {
+    "done": 15,
+    "total": 34
+   },
+   "event": "parse_progress"
+  },
+  {
+   "at_ms": 8780,
+   "data": {
+    "file": "src/ecdsa/rfc6979.py",
+    "items": [
+     {
+      "algorithm": "HMAC",
+      "algorithms": [
+       "HMAC"
+      ],
+      "category": "mac",
+      "file": "src/ecdsa/rfc6979.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-7e99c6647fad791a",
+      "kind": "crypto_call",
+      "line": 75,
+      "name": "hmac.new",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "forwarded",
+      "snippet": "k = hmac.new(k, digestmod=hash_func)",
+      "weak": false
+     },
+     {
+      "algorithm": "HMAC",
+      "algorithms": [
+       "HMAC"
+      ],
+      "category": "mac",
+      "file": "src/ecdsa/rfc6979.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-9b813050c23bcecd",
+      "kind": "crypto_call",
+      "line": 82,
+      "name": "hmac.new",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "forwarded",
+      "snippet": "v = hmac.new(k, v, hash_func).digest()",
+      "weak": false
+     },
+     {
+      "algorithm": "HMAC",
+      "algorithms": [
+       "HMAC"
+      ],
+      "category": "mac",
+      "file": "src/ecdsa/rfc6979.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-889702a4a12bf6c2",
+      "kind": "crypto_call",
+      "line": 85,
+      "name": "hmac.new",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "forwarded",
+      "snippet": "k = hmac.new(k, digestmod=hash_func)",
+      "weak": false
+     },
+     {
+      "algorithm": "HMAC",
+      "algorithms": [
+       "HMAC"
+      ],
+      "category": "mac",
+      "file": "src/ecdsa/rfc6979.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-0ad10924f8e151aa",
+      "kind": "crypto_call",
+      "line": 92,
+      "name": "hmac.new",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "forwarded",
+      "snippet": "v = hmac.new(k, v, hash_func).digest()",
+      "weak": false
+     },
+     {
+      "algorithm": "HMAC",
+      "algorithms": [
+       "HMAC"
+      ],
+      "category": "mac",
+      "file": "src/ecdsa/rfc6979.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-d9f260a8891daef5",
+      "kind": "crypto_call",
+      "line": 101,
+      "name": "hmac.new",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "forwarded",
+      "snippet": "v = hmac.new(k, v, hash_func).digest()",
+      "weak": false
+     },
+     {
+      "algorithm": "HMAC",
+      "algorithms": [
+       "HMAC"
+      ],
+      "category": "mac",
+      "file": "src/ecdsa/rfc6979.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-6b2e6cdc1f0da1f9",
+      "kind": "crypto_call",
+      "line": 112,
+      "name": "hmac.new",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "forwarded",
+      "snippet": "k = hmac.new(k, v + b\"\\x00\", hash_func).digest()",
+      "weak": false
+     },
+     {
+      "algorithm": "HMAC",
+      "algorithms": [
+       "HMAC"
+      ],
+      "category": "mac",
+      "file": "src/ecdsa/rfc6979.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-8ace1319877f9a06",
+      "kind": "crypto_call",
+      "line": 113,
+      "name": "hmac.new",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "forwarded",
+      "snippet": "v = hmac.new(k, v, hash_func).digest()",
+      "weak": false
+     }
+    ]
+   },
+   "event": "findings"
+  },
+  {
+   "at_ms": 8842,
+   "data": {
+    "done": 18,
+    "total": 34
+   },
+   "event": "parse_progress"
+  },
+  {
+   "at_ms": 9062,
+   "data": {
+    "file": "src/ecdsa/util.py",
+    "items": [
+     {
+      "algorithm": "SHA2-256",
+      "algorithms": [
+       "SHA2-256"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/util.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-4d6482d65d2a5eb6",
+      "kind": "crypto_call",
+      "line": 122,
+      "name": "hashlib.sha256",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "for byte in sha256(",
+      "weak": false
+     },
+     {
+      "algorithm": "SHA2-256",
+      "algorithms": [
+       "SHA2-256"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/util.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-e480e32d17a46c54",
+      "kind": "crypto_call",
+      "line": 165,
+      "name": "hashlib.sha256",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "def randrange_from_seed__truncate_bytes(seed, order, hashmod=sha256):",
+      "weak": false
+     },
+     {
+      "algorithm": "SHA2-256",
+      "algorithms": [
+       "SHA2-256"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/util.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-c6f4633c60aad98c",
+      "kind": "crypto_call",
+      "line": 179,
+      "name": "hashlib.sha256",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "def randrange_from_seed__truncate_bits(seed, order, hashmod=sha256):",
+      "weak": false
+     }
+    ]
+   },
+   "event": "findings"
+  },
+  {
+   "at_ms": 9875,
+   "data": {
+    "done": 20,
+    "total": 34
+   },
+   "event": "parse_progress"
+  },
+  {
+   "at_ms": 10687,
+   "data": {
+    "done": 26,
+    "total": 34
+   },
+   "event": "parse_progress"
+  },
+  {
+   "at_ms": 11437,
+   "data": {
+    "file": "src/ecdsa/test_eddsa.py",
+    "items": [
+     {
+      "algorithm": "SHA2-512",
+      "algorithms": [
+       "SHA2-512"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/test_eddsa.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-b7ae46b5481a7861",
+      "kind": "crypto_call",
+      "line": 606,
+      "name": "hashlib.new",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "return hashlib.new(\"sha512\", compat26_str(data)).digest()",
+      "weak": false
+     }
+    ]
+   },
+   "event": "findings"
+  },
+  {
+   "at_ms": 11437,
+   "data": {
+    "done": 27,
+    "total": 34
+   },
+   "event": "parse_progress"
+  },
+  {
+   "at_ms": 12670,
+   "data": {
+    "done": 29,
+    "total": 34
+   },
+   "event": "parse_progress"
+  },
+  {
+   "at_ms": 13592,
+   "data": {
+    "file": "src/ecdsa/test_keys.py",
+    "items": [
+     {
+      "algorithm": "SHA2-256",
+      "algorithms": [
+       "SHA2-256"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/test_keys.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-68d8ab963b536f08",
+      "kind": "crypto_call",
+      "line": 221,
+      "name": "hashlib.sha256",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "vk = VerifyingKey.from_der(self.key_bytes, hashlib.sha256)",
+      "weak": false
+     },
+     {
+      "algorithm": "SHA2-256",
+      "algorithms": [
+       "SHA2-256"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/test_keys.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-ef134d4ae8f9e0c3",
+      "kind": "crypto_call",
+      "line": 223,
+      "name": "hashlib.sha256",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "self.assertIs(vk.default_hashfunc, hashlib.sha256)",
+      "weak": false
+     },
+     {
+      "algorithm": "SHA2-256",
+      "algorithms": [
+       "SHA2-256"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/test_keys.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-85490714c331d090",
+      "kind": "crypto_call",
+      "line": 226,
+      "name": "hashlib.sha256",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "vk = VerifyingKey.from_pem(self.key_pem, hashlib.sha256)",
+      "weak": false
+     },
+     {
+      "algorithm": "SHA2-256",
+      "algorithms": [
+       "SHA2-256"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/test_keys.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-3908289bfea19e3e",
+      "kind": "crypto_call",
+      "line": 228,
+      "name": "hashlib.sha256",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "self.assertIs(vk.default_hashfunc, hashlib.sha256)",
+      "weak": false
+     },
+     {
+      "algorithm": "SHA1",
+      "algorithms": [
+       "SHA1"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/test_keys.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-396a02b0e5c51e6c",
+      "kind": "crypto_call",
+      "line": 878,
+      "name": "hashlib.sha1",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [
+        "sha1"
+       ],
+       "status": "weak"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "hashfunc=hashlib.sha1,",
+      "weak": true
+     },
+     {
+      "algorithm": "SHA1",
+      "algorithms": [
+       "SHA1"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/test_keys.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-bc82803c6fd15653",
+      "kind": "crypto_call",
+      "line": 937,
+      "name": "hashlib.sha1",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [
+        "sha1"
+       ],
+       "status": "weak"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "sha1 = hashlib.sha1()",
+      "weak": true
+     }
+    ]
+   },
+   "event": "findings"
+  },
+  {
+   "at_ms": 13592,
+   "data": {
+    "done": 30,
+    "total": 34
+   },
+   "event": "parse_progress"
+  },
+  {
+   "at_ms": 13859,
+   "data": {
+    "file": "src/ecdsa/test_malformed_sigs.py",
+    "items": [
+     {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "hash",
+      "file": "src/ecdsa/test_malformed_sigs.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-b9bc200d241add35",
+      "kind": "crypto_call",
+      "line": 51,
+      "name": "hashlib.new",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "forwarded",
+      "snippet": "(name, hashlib.new(name).digest_size) for name in algorithms_available",
+      "weak": false
+     },
+     {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "hash",
+      "file": "src/ecdsa/test_malformed_sigs.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-5659fb9c19e3a925",
+      "kind": "crypto_call",
+      "line": 74,
+      "name": "hashlib.new",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "curve, hashfunc=partial(hashlib.new, hash_alg)",
+      "weak": false
+     }
+    ]
+   },
+   "event": "findings"
+  },
+  {
+   "at_ms": 16000,
+   "data": {
+    "file": "src/ecdsa/test_pyecdsa.py",
+    "items": [
+     {
+      "algorithm": "SHA2-256",
+      "algorithms": [
+       "SHA2-256"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/test_pyecdsa.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-ef9faa2fee7ad299",
+      "kind": "crypto_call",
+      "line": 120,
+      "name": "hashlib.sha256",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "secexp, SECP256k1, hashlib.sha256",
+      "weak": false
+     },
+     {
+      "algorithm": "SHA2-256",
+      "algorithms": [
+       "SHA2-256"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/test_pyecdsa.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-b08890535dd93198",
+      "kind": "crypto_call",
+      "line": 127,
+      "name": "hashlib.sha256",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "hashlib.sha256,",
+      "weak": false
+     },
+     {
+      "algorithm": "SHA2-256",
+      "algorithms": [
+       "SHA2-256"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/test_pyecdsa.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-a83bb61ea7c8e774",
+      "kind": "crypto_call",
+      "line": 128,
+      "name": "hashlib.sha256",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "hashlib.sha256(data).digest(),",
+      "weak": false
+     },
+     {
+      "algorithm": "SHA2-256",
+      "algorithms": [
+       "SHA2-256"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/test_pyecdsa.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-806716fa376c5704",
+      "kind": "crypto_call",
+      "line": 137,
+      "name": "hashlib.sha256",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "sig3 = priv.sign_deterministic(data, hashlib.sha256)",
+      "weak": false
+     },
+     {
+      "algorithm": "SHA2-256",
+      "algorithms": [
+       "SHA2-256"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/test_pyecdsa.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-9c630c018b84ddca",
+      "kind": "crypto_call",
+      "line": 694,
+      "name": "hashlib.sha256",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "sk = SigningKey.generate(curve=NIST256p, hashfunc=hashlib.sha256)",
+      "weak": false
+     },
+     {
+      "algorithm": "SHA2-256",
+      "algorithms": [
+       "SHA2-256"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/test_pyecdsa.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-37955579a5e71d06",
+      "kind": "crypto_call",
+      "line": 700,
+      "name": "hashlib.sha256",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "hashfunc=hashlib.sha256,",
+      "weak": false
+     },
+     {
+      "algorithm": "SHA2-256",
+      "algorithms": [
+       "SHA2-256"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/test_pyecdsa.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-68d69c79b6c526ff",
+      "kind": "crypto_call",
+      "line": 705,
+      "name": "hashlib.sha256",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "sig2 = sk2.sign(data, hashfunc=hashlib.sha256)",
+      "weak": false
+     },
+     {
+      "algorithm": "SHA2-256",
+      "algorithms": [
+       "SHA2-256"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/test_pyecdsa.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-c1cec876febd68a4",
+      "kind": "crypto_call",
+      "line": 709,
+      "name": "hashlib.sha256",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "hashfunc=hashlib.sha256,",
+      "weak": false
+     },
+     {
+      "algorithm": "SHA2-256",
+      "algorithms": [
+       "SHA2-256"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/test_pyecdsa.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-185432974360abe9",
+      "kind": "crypto_call",
+      "line": 716,
+      "name": "hashlib.sha256",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "self.assertTrue(vk3.verify(sig, data, hashfunc=hashlib.sha256))",
+      "weak": false
+     },
+     {
+      "algorithm": "SHA2-256",
+      "algorithms": [
+       "SHA2-256"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/test_pyecdsa.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-e2590b8016491993",
+      "kind": "crypto_call",
+      "line": 755,
+      "name": "hashlib.sha256",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "sk = SigningKey.generate(curve=curve, hashfunc=hashlib.sha256)",
+      "weak": false
+     },
+     {
+      "algorithm": "SHA2-256",
+      "algorithms": [
+       "SHA2-256"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/test_pyecdsa.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-58c591ebde85ce82",
+      "kind": "crypto_call",
+      "line": 767,
+      "name": "hashlib.sha256",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "hashfunc=hashlib.sha256,",
+      "weak": false
+     },
+     {
+      "algorithm": "SHA2-256",
+      "algorithms": [
+       "SHA2-256"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/test_pyecdsa.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-f77b9ff5cda4ad98",
+      "kind": "crypto_call",
+      "line": 778,
+      "name": "hashlib.sha256",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "self.assertEqual(hashlib.sha256, recovered_vk.default_hashfunc)",
+      "weak": false
+     },
+     {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "hash",
+      "file": "src/ecdsa/test_pyecdsa.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-55dcc856eb205602",
+      "kind": "crypto_call",
+      "line": 1329,
+      "name": "hashlib.new",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "hashfunc=partial(hashlib.new, hash_name),",
+      "weak": false
+     },
+     {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "hash",
+      "file": "src/ecdsa/test_pyecdsa.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-07b001c688b6e325",
+      "kind": "crypto_call",
+      "line": 1337,
+      "name": "hashlib.new",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "sig = sk.sign(data, hashfunc=partial(hashlib.new, hash_name))",
+      "weak": false
+     },
+     {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "hash",
+      "file": "src/ecdsa/test_pyecdsa.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-65e9c0d124f1b3c1",
+      "kind": "crypto_call",
+      "line": 1339,
+      "name": "hashlib.new",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "vk.verify(sig, data, hashfunc=partial(hashlib.new, hash_name))",
+      "weak": false
+     },
+     {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "hash",
+      "file": "src/ecdsa/test_pyecdsa.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-0711b6e73b4b84ce",
+      "kind": "crypto_call",
+      "line": 1585,
+      "name": "hashlib.new",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "hashfunc=partial(hashlib.new, hash_name),",
+      "weak": false
+     },
+     {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "hash",
+      "file": "src/ecdsa/test_pyecdsa.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-8f02331d2adbf6ba",
+      "kind": "crypto_call",
+      "line": 1785,
+      "name": "hashlib.new",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "hashfunc=partial(hashlib.new, \"SHA256\"),",
+      "weak": false
+     },
+     {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "hash",
+      "file": "src/ecdsa/test_pyecdsa.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-29e39976afce6853",
+      "kind": "crypto_call",
+      "line": 1800,
+      "name": "hashlib.new",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "hashfunc=partial(hashlib.new, \"SHA256\"),",
+      "weak": false
+     },
+     {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "hash",
+      "file": "src/ecdsa/test_pyecdsa.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-58ce78cd8b793c3b",
+      "kind": "crypto_call",
+      "line": 1808,
+      "name": "hashlib.new",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "unspecified",
+      "snippet": "hashfunc=partial(hashlib.new, \"SHA256\"),",
+      "weak": false
+     },
+     {
+      "algorithm": "SHA2-256",
+      "algorithms": [
+       "SHA2-256"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/test_pyecdsa.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-70453d46654ac4f5",
+      "kind": "crypto_call",
+      "line": 1956,
+      "name": "hashlib.sha256",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "hsh=hashlib.sha256(b\"sample\").digest(),",
+      "weak": false
+     },
+     {
+      "algorithm": "SHA2-256",
+      "algorithms": [
+       "SHA2-256"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/test_pyecdsa.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-1be1bcc299951be0",
+      "kind": "crypto_call",
+      "line": 1957,
+      "name": "hashlib.sha256",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "hash_func=hashlib.sha256,",
+      "weak": false
+     },
+     {
+      "algorithm": "SHA2-256",
+      "algorithms": [
+       "SHA2-256"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/test_pyecdsa.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-02f44a600f73e468",
+      "kind": "crypto_call",
+      "line": 1971,
+      "name": "hashlib.sha256",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "hsh=hashlib.sha256(b\"sample\").digest(),",
+      "weak": false
+     },
+     {
+      "algorithm": "SHA2-256",
+      "algorithms": [
+       "SHA2-256"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/test_pyecdsa.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-57f91e98907f9933",
+      "kind": "crypto_call",
+      "line": 1972,
+      "name": "hashlib.sha256",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "hash_func=hashlib.sha256,",
+      "weak": false
+     },
+     {
+      "algorithm": "SHA2-256",
+      "algorithms": [
+       "SHA2-256"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/test_pyecdsa.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-e1492473f5997c9c",
+      "kind": "crypto_call",
+      "line": 1983,
+      "name": "hashlib.sha256",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "hsh=hashlib.sha256(b\"Satoshi Nakamoto\").digest(),",
+      "weak": false
+     },
+     {
+      "algorithm": "SHA2-256",
+      "algorithms": [
+       "SHA2-256"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/test_pyecdsa.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-e7c9963b8216255f",
+      "kind": "crypto_call",
+      "line": 1984,
+      "name": "hashlib.sha256",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "hash_func=hashlib.sha256,",
+      "weak": false
+     },
+     {
+      "algorithm": "SHA2-256",
+      "algorithms": [
+       "SHA2-256"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/test_pyecdsa.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-a60033fc8921c75d",
+      "kind": "crypto_call",
+      "line": 1992,
+      "name": "hashlib.sha256",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "hsh=hashlib.sha256(",
+      "weak": false
+     },
+     {
+      "algorithm": "SHA2-256",
+      "algorithms": [
+       "SHA2-256"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/test_pyecdsa.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-720274c05519a628",
+      "kind": "crypto_call",
+      "line": 1995,
+      "name": "hashlib.sha256",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "hash_func=hashlib.sha256,",
+      "weak": false
+     },
+     {
+      "algorithm": "SHA2-256",
+      "algorithms": [
+       "SHA2-256"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/test_pyecdsa.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-517c2433b17df6b8",
+      "kind": "crypto_call",
+      "line": 2003,
+      "name": "hashlib.sha256",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "hsh=hashlib.sha256(b\"Satoshi Nakamoto\").digest(),",
+      "weak": false
+     },
+     {
+      "algorithm": "SHA2-256",
+      "algorithms": [
+       "SHA2-256"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/test_pyecdsa.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-09f615d020d4cf94",
+      "kind": "crypto_call",
+      "line": 2004,
+      "name": "hashlib.sha256",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "hash_func=hashlib.sha256,",
+      "weak": false
+     },
+     {
+      "algorithm": "SHA2-256",
+      "algorithms": [
+       "SHA2-256"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/test_pyecdsa.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-ac37e6d5e8cc9afe",
+      "kind": "crypto_call",
+      "line": 2012,
+      "name": "hashlib.sha256",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "hsh=hashlib.sha256(b\"Alan Turing\").digest(),",
+      "weak": false
+     },
+     {
+      "algorithm": "SHA2-256",
+      "algorithms": [
+       "SHA2-256"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/test_pyecdsa.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-c7358c887574f7e6",
+      "kind": "crypto_call",
+      "line": 2013,
+      "name": "hashlib.sha256",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "hash_func=hashlib.sha256,",
+      "weak": false
+     },
+     {
+      "algorithm": "SHA2-256",
+      "algorithms": [
+       "SHA2-256"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/test_pyecdsa.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-c3d5cb177963e1d2",
+      "kind": "crypto_call",
+      "line": 2030,
+      "name": "hashlib.sha256",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "hash_func=hashlib.sha256,",
+      "weak": false
+     },
+     {
+      "algorithm": "SHA1",
+      "algorithms": [
+       "SHA1"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/test_pyecdsa.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-caa8e6a52ec1671b",
+      "kind": "crypto_call",
+      "line": 2038,
+      "name": "hashlib.sha1",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [
+        "sha1"
+       ],
+       "status": "weak"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "hsh=hashlib.sha1(b\"sample\").digest(),",
+      "weak": true
+     },
+     {
+      "algorithm": "SHA1",
+      "algorithms": [
+       "SHA1"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/test_pyecdsa.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-2f9f6efebbb2982c",
+      "kind": "crypto_call",
+      "line": 2039,
+      "name": "hashlib.sha1",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [
+        "sha1"
+       ],
+       "status": "weak"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "hash_func=hashlib.sha1,",
+      "weak": true
+     },
+     {
+      "algorithm": "SHA2-256",
+      "algorithms": [
+       "SHA2-256"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/test_pyecdsa.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-414c0f4d49eda66c",
+      "kind": "crypto_call",
+      "line": 2049,
+      "name": "hashlib.sha256",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "hsh=hashlib.sha256(b\"sample\").digest(),",
+      "weak": false
+     },
+     {
+      "algorithm": "SHA2-256",
+      "algorithms": [
+       "SHA2-256"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/test_pyecdsa.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-72b48779556389fc",
+      "kind": "crypto_call",
+      "line": 2050,
+      "name": "hashlib.sha256",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "hash_func=hashlib.sha256,",
+      "weak": false
+     },
+     {
+      "algorithm": "SHA2-512",
+      "algorithms": [
+       "SHA2-512"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/test_pyecdsa.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-2b5ce713c40c29b4",
+      "kind": "crypto_call",
+      "line": 2060,
+      "name": "hashlib.sha512",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "hsh=hashlib.sha512(b\"sample\").digest(),",
+      "weak": false
+     },
+     {
+      "algorithm": "SHA2-512",
+      "algorithms": [
+       "SHA2-512"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/test_pyecdsa.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-5b50d3e5d567557f",
+      "kind": "crypto_call",
+      "line": 2061,
+      "name": "hashlib.sha512",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "hash_func=hashlib.sha512,",
+      "weak": false
+     },
+     {
+      "algorithm": "SHA1",
+      "algorithms": [
+       "SHA1"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/test_pyecdsa.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-b9d0a370e109be13",
+      "kind": "crypto_call",
+      "line": 2071,
+      "name": "hashlib.sha1",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [
+        "sha1"
+       ],
+       "status": "weak"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "hsh=hashlib.sha1(b\"test\").digest(),",
+      "weak": true
+     },
+     {
+      "algorithm": "SHA1",
+      "algorithms": [
+       "SHA1"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/test_pyecdsa.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-08b8e8669b620552",
+      "kind": "crypto_call",
+      "line": 2072,
+      "name": "hashlib.sha1",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [
+        "sha1"
+       ],
+       "status": "weak"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "hash_func=hashlib.sha1,",
+      "weak": true
+     },
+     {
+      "algorithm": "SHA2-256",
+      "algorithms": [
+       "SHA2-256"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/test_pyecdsa.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-b580e162434a6347",
+      "kind": "crypto_call",
+      "line": 2082,
+      "name": "hashlib.sha256",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "hsh=hashlib.sha256(b\"test\").digest(),",
+      "weak": false
+     },
+     {
+      "algorithm": "SHA2-256",
+      "algorithms": [
+       "SHA2-256"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/test_pyecdsa.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-a270c1112ce936a4",
+      "kind": "crypto_call",
+      "line": 2083,
+      "name": "hashlib.sha256",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "hash_func=hashlib.sha256,",
+      "weak": false
+     },
+     {
+      "algorithm": "SHA2-512",
+      "algorithms": [
+       "SHA2-512"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/test_pyecdsa.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-25f2810ccc536f27",
+      "kind": "crypto_call",
+      "line": 2093,
+      "name": "hashlib.sha512",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "hsh=hashlib.sha512(b\"test\").digest(),",
+      "weak": false
+     },
+     {
+      "algorithm": "SHA2-512",
+      "algorithms": [
+       "SHA2-512"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/test_pyecdsa.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-28613818ef2a3b3d",
+      "kind": "crypto_call",
+      "line": 2094,
+      "name": "hashlib.sha512",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "hash_func=hashlib.sha512,",
+      "weak": false
+     },
+     {
+      "algorithm": "SHA1",
+      "algorithms": [
+       "SHA1"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/test_pyecdsa.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-20c319e9c9927488",
+      "kind": "crypto_call",
+      "line": 2107,
+      "name": "hashlib.sha1",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [
+        "sha1"
+       ],
+       "status": "weak"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "hsh=hashlib.sha1(b\"sample\").digest(),",
+      "weak": true
+     },
+     {
+      "algorithm": "SHA1",
+      "algorithms": [
+       "SHA1"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/test_pyecdsa.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-72e4d155c170c5f5",
+      "kind": "crypto_call",
+      "line": 2108,
+      "name": "hashlib.sha1",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [
+        "sha1"
+       ],
+       "status": "weak"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "hash_func=hashlib.sha1,",
+      "weak": true
+     },
+     {
+      "algorithm": "SHA2-256",
+      "algorithms": [
+       "SHA2-256"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/test_pyecdsa.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-c0a6585b8339c526",
+      "kind": "crypto_call",
+      "line": 2122,
+      "name": "hashlib.sha256",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "hsh=hashlib.sha256(b\"sample\").digest(),",
+      "weak": false
+     },
+     {
+      "algorithm": "SHA2-256",
+      "algorithms": [
+       "SHA2-256"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/test_pyecdsa.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-811303d13b430180",
+      "kind": "crypto_call",
+      "line": 2123,
+      "name": "hashlib.sha256",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "hash_func=hashlib.sha256,",
+      "weak": false
+     },
+     {
+      "algorithm": "SHA2-512",
+      "algorithms": [
+       "SHA2-512"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/test_pyecdsa.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-69c287d55ddcc0d3",
+      "kind": "crypto_call",
+      "line": 2137,
+      "name": "hashlib.sha512",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "hsh=hashlib.sha512(b\"test\").digest(),",
+      "weak": false
+     },
+     {
+      "algorithm": "SHA2-512",
+      "algorithms": [
+       "SHA2-512"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/test_pyecdsa.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-e066a55313ce6aeb",
+      "kind": "crypto_call",
+      "line": 2138,
+      "name": "hashlib.sha512",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "hash_func=hashlib.sha512,",
+      "weak": false
+     },
+     {
+      "algorithm": "SHA2-256",
+      "algorithms": [
+       "SHA2-256"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/test_pyecdsa.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-8625c34b1554b0b8",
+      "kind": "crypto_call",
+      "line": 2506,
+      "name": "hashlib.sha256",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "hashlib.sha256,",
+      "weak": false
+     },
+     {
+      "algorithm": "SHA2-384",
+      "algorithms": [
+       "SHA2-384"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/test_pyecdsa.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-32af6c5a27d10e9f",
+      "kind": "crypto_call",
+      "line": 2522,
+      "name": "hashlib.sha384",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "hashlib.sha384,",
+      "weak": false
+     },
+     {
+      "algorithm": "SHA2-512",
+      "algorithms": [
+       "SHA2-512"
+      ],
+      "category": "hash",
+      "file": "src/ecdsa/test_pyecdsa.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-b0e1e05f5ed498fe",
+      "kind": "crypto_call",
+      "line": 2544,
+      "name": "hashlib.sha512",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "hashlib.sha512,",
+      "weak": false
+     }
+    ]
+   },
+   "event": "findings"
+  },
+  {
+   "at_ms": 16000,
+   "data": {
+    "done": 33,
+    "total": 34
+   },
+   "event": "parse_progress"
+  },
+  {
+   "at_ms": 16000,
+   "data": {
+    "done": 34,
+    "total": 34
+   },
+   "event": "parse_progress"
+  },
+  {
+   "at_ms": 16015,
+   "data": {
+    "file": "src/ecdsa/keys.py",
+    "items": [
+     {
+      "algorithm": "ECDSA",
+      "algorithms": [
+       "ECDSA"
+      ],
+      "category": "key_loading",
+      "file": "src/ecdsa/keys.py",
+      "form": "implementation",
+      "free": false,
+      "id": "crypto_call-55bf705a9b052ea6",
+      "kind": "crypto_call",
+      "line": 219,
+      "name": "ecdsa.keys.VerifyingKey.from_string",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+       "assumed": false,
+       "exposure": [
+        "signature"
+       ],
+       "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "literal",
+      "snippet": "def from_string(",
+      "weak": false
+     },
+     {
+      "algorithm": "ECDSA",
+      "algorithms": [
+       "ECDSA"
+      ],
+      "category": "key_loading",
+      "file": "src/ecdsa/keys.py",
+      "form": "implementation",
+      "free": false,
+      "id": "crypto_call-55797d4fae3fae6b",
+      "kind": "crypto_call",
+      "line": 284,
+      "name": "ecdsa.keys.VerifyingKey.from_pem",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+       "assumed": false,
+       "exposure": [
+        "signature"
+       ],
+       "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "literal",
+      "snippet": "def from_pem(",
+      "weak": false
+     },
+     {
+      "algorithm": "ECDSA",
+      "algorithms": [
+       "ECDSA"
+      ],
+      "category": "key_loading",
+      "file": "src/ecdsa/keys.py",
+      "form": "implementation",
+      "free": false,
+      "id": "crypto_call-a2303ef477d6d7d3",
+      "kind": "crypto_call",
+      "line": 326,
+      "name": "ecdsa.keys.VerifyingKey.from_der",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+       "assumed": false,
+       "exposure": [
+        "signature"
+       ],
+       "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "literal",
+      "snippet": "def from_der(",
+      "weak": false
+     },
+     {
+      "algorithm": "ECDSA",
+      "algorithms": [
+       "ECDSA"
+      ],
+      "category": "signature",
+      "file": "src/ecdsa/keys.py",
+      "form": "implementation",
+      "free": false,
+      "id": "crypto_call-e56893931e88c714",
+      "kind": "crypto_call",
+      "line": 629,
+      "name": "ecdsa.keys.VerifyingKey.verify",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+       "assumed": false,
+       "exposure": [
+        "signature"
+       ],
+       "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "literal",
+      "snippet": "def verify(",
+      "weak": false
+     },
+     {
+      "algorithm": "ECDSA",
+      "algorithms": [
+       "ECDSA"
+      ],
+      "category": "signature",
+      "file": "src/ecdsa/keys.py",
+      "form": "implementation",
+      "free": false,
+      "id": "crypto_call-0d1e8ade35ce0af2",
+      "kind": "crypto_call",
+      "line": 687,
+      "name": "ecdsa.keys.VerifyingKey.verify_digest",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+       "assumed": false,
+       "exposure": [
+        "signature"
+       ],
+       "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "literal",
+      "snippet": "def verify_digest(",
+      "weak": false
+     },
+     {
+      "algorithm": "ECDSA",
+      "algorithms": [
+       "ECDSA"
+      ],
+      "category": "key_generation",
+      "file": "src/ecdsa/keys.py",
+      "form": "implementation",
+      "free": false,
+      "id": "crypto_call-29f0310826dc4a71",
+      "kind": "crypto_call",
+      "line": 810,
+      "name": "ecdsa.keys.SigningKey.generate",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+       "assumed": false,
+       "exposure": [
+        "signature"
+       ],
+       "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "literal",
+      "snippet": "def generate(cls, curve=NIST192p, entropy=None, hashfunc=sha1):",
+      "weak": false
+     },
+     {
+      "algorithm": "ECDSA",
+      "algorithms": [
+       "ECDSA"
+      ],
+      "category": "key_loading",
+      "file": "src/ecdsa/keys.py",
+      "form": "implementation",
+      "free": false,
+      "id": "crypto_call-2e3cd172d04ea68f",
+      "kind": "crypto_call",
+      "line": 885,
+      "name": "ecdsa.keys.SigningKey.from_string",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+       "assumed": false,
+       "exposure": [
+        "signature"
+       ],
+       "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "literal",
+      "snippet": "def from_string(cls, string, curve=NIST192p, hashfunc=sha1):",
+      "weak": false
+     },
+     {
+      "algorithm": "ECDSA",
+      "algorithms": [
+       "ECDSA"
+      ],
+      "category": "key_loading",
+      "file": "src/ecdsa/keys.py",
+      "form": "implementation",
+      "free": false,
+      "id": "crypto_call-d2625f47f0a60241",
+      "kind": "crypto_call",
+      "line": 931,
+      "name": "ecdsa.keys.SigningKey.from_pem",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+       "assumed": false,
+       "exposure": [
+        "signature"
+       ],
+       "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "literal",
+      "snippet": "def from_pem(cls, string, hashfunc=sha1, valid_curve_encodings=None):",
+      "weak": false
+     },
+     {
+      "algorithm": "ECDSA",
+      "algorithms": [
+       "ECDSA"
+      ],
+      "category": "key_loading",
+      "file": "src/ecdsa/keys.py",
+      "form": "implementation",
+      "free": false,
+      "id": "crypto_call-f3648d44218aa320",
+      "kind": "crypto_call",
+      "line": 983,
+      "name": "ecdsa.keys.SigningKey.from_der",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+       "assumed": false,
+       "exposure": [
+        "signature"
+       ],
+       "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "literal",
+      "snippet": "def from_der(cls, string, hashfunc=sha1, valid_curve_encodings=None):",
+      "weak": false
+     },
+     {
+      "algorithm": "ECDSA",
+      "algorithms": [
+       "ECDSA"
+      ],
+      "category": "signature",
+      "file": "src/ecdsa/keys.py",
+      "form": "implementation",
+      "free": false,
+      "id": "crypto_call-6d12f0466413b3cc",
+      "kind": "crypto_call",
+      "line": 1315,
+      "name": "ecdsa.keys.SigningKey.sign_deterministic",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+       "assumed": false,
+       "exposure": [
+        "signature"
+       ],
+       "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "literal",
+      "snippet": "def sign_deterministic(",
+      "weak": false
+     },
+     {
+      "algorithm": "ECDSA",
+      "algorithms": [
+       "ECDSA"
+      ],
+      "category": "signature",
+      "file": "src/ecdsa/keys.py",
+      "form": "implementation",
+      "free": false,
+      "id": "crypto_call-e683ab53ee27b894",
+      "kind": "crypto_call",
+      "line": 1378,
+      "name": "ecdsa.keys.SigningKey.sign_digest_deterministic",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+       "assumed": false,
+       "exposure": [
+        "signature"
+       ],
+       "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "literal",
+      "snippet": "def sign_digest_deterministic(",
+      "weak": false
+     },
+     {
+      "algorithm": "ECDSA",
+      "algorithms": [
+       "ECDSA"
+      ],
+      "category": "signature",
+      "file": "src/ecdsa/keys.py",
+      "form": "implementation",
+      "free": false,
+      "id": "crypto_call-c683f8183dc0b577",
+      "kind": "crypto_call",
+      "line": 1457,
+      "name": "ecdsa.keys.SigningKey.sign",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+       "assumed": false,
+       "exposure": [
+        "signature"
+       ],
+       "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "literal",
+      "snippet": "def sign(",
+      "weak": false
+     },
+     {
+      "algorithm": "ECDSA",
+      "algorithms": [
+       "ECDSA"
+      ],
+      "category": "signature",
+      "file": "src/ecdsa/keys.py",
+      "form": "implementation",
+      "free": false,
+      "id": "crypto_call-3a2e6b195c0d3e97",
+      "kind": "crypto_call",
+      "line": 1539,
+      "name": "ecdsa.keys.SigningKey.sign_digest",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+       "assumed": false,
+       "exposure": [
+        "signature"
+       ],
+       "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "literal",
+      "snippet": "def sign_digest(",
+      "weak": false
+     },
+     {
+      "algorithm": "ECDSA",
+      "algorithms": [
+       "ECDSA"
+      ],
+      "category": "signature",
+      "file": "src/ecdsa/keys.py",
+      "form": "implementation",
+      "free": false,
+      "id": "crypto_call-ee497c12ac9b48d0",
+      "kind": "crypto_call",
+      "line": 1597,
+      "name": "ecdsa.keys.SigningKey.sign_number",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+       "assumed": false,
+       "exposure": [
+        "signature"
+       ],
+       "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "literal",
+      "snippet": "def sign_number(self, number, entropy=None, k=None):",
+      "weak": false
+     }
+    ]
+   },
+   "event": "findings"
+  },
+  {
+   "at_ms": 16015,
+   "data": {
+    "duration_ms": 11469,
+    "evidence": [
+     {
+      "label": "Execution",
+      "ok": true,
+      "value": "parsed only, never imported, never executed"
+     },
+     {
+      "label": "Files parsed",
+      "ok": null,
+      "value": "34 (20 shipped)"
+     },
+     {
+      "label": "Read, not parsed",
+      "ok": null,
+      "value": "5 test or docs files that name no crypto library"
+     },
+     {
+      "label": "Crypto sites",
+      "ok": null,
+      "value": "102"
+     },
+     {
+      "label": "Sites by file role",
+      "ok": null,
+      "value": "source 40, test 62"
+     },
+     {
+      "label": "Algorithm literals",
+      "ok": null,
+      "value": "4"
+     },
+     {
+      "label": "Configuration reads",
+      "ok": null,
+      "value": "0"
+     },
+     {
+      "label": "Crypto library calls recognised",
+      "ok": true,
+      "value": "13 of 13 (100%)"
+     },
+     {
+      "label": "Ruleset version",
+      "ok": null,
+      "value": "2026.11.01"
+     },
+     {
+      "label": "Weak primitives",
+      "ok": false,
+      "value": "20 (MD5/SHA1/3DES/RC4)"
+     },
+     {
+      "label": "Quantum-vulnerable",
+      "ok": false,
+      "value": "15 sites"
+     }
+    ],
+    "id": "parse",
+    "status": "done",
+    "summary": "102 cryptographic sites detected",
+    "title": "Parse and detect crypto"
+   },
+   "event": "step"
+  },
+  {
+   "at_ms": 16015,
+   "data": {
+    "duration_ms": 0,
+    "evidence": [],
+    "id": "graph",
+    "status": "running",
+    "summary": "",
+    "title": "Build the dependency graph"
+   },
+   "event": "step"
+  },
+  {
+   "at_ms": 16062,
+   "data": {
+    "duration_ms": 47,
+    "evidence": [
+     {
+      "label": "Nodes",
+      "ok": null,
+      "value": "1,039 \u2014 algo_literal 4, crypto_call 102, function 899, module 34"
+     },
+     {
+      "label": "Edges",
+      "ok": null,
+      "value": "1,681 \u2014 binding 1005, call 651, import 21, value_flow 4"
+     },
+     {
+      "label": "Low-confidence edges",
+      "ok": true,
+      "value": "651 (every 'call' edge, by rule)"
+     },
+     {
+      "label": "Callees resolved",
+      "ok": null,
+      "value": "953 of 4,911"
+     },
+     {
+      "label": "Callees dropped, not guessed",
+      "ok": true,
+      "value": "48 ambiguous, 3,910 unresolvable"
+     },
+     {
+      "label": "Imports",
+      "ok": null,
+      "value": "21 internal, 417 external"
+     }
+    ],
+    "id": "graph",
+    "status": "done",
+    "summary": "1,039 nodes, 1,681 edges",
+    "title": "Build the dependency graph"
+   },
+   "event": "step"
+  },
+  {
+   "at_ms": 16062,
+   "data": {
+    "duration_ms": 0,
+    "evidence": [],
+    "id": "score",
+    "status": "running",
+    "summary": "",
+    "title": "Compute the Agility Score"
+   },
+   "event": "step"
+  },
+  {
+   "at_ms": 16077,
+   "data": {
+    "duration_ms": 15,
+    "evidence": [
+     {
+      "label": "Metric",
+      "ok": true,
+      "value": "metric-v2, weights weights-v1"
+     },
+     {
+      "label": "call_sites",
+      "ok": null,
+      "value": "raw 26 -> 1 / (1 + log10(1 + n)) -> 0.41 x 0.30 = 12.34"
+     },
+     {
+      "label": "isolation_layer",
+      "ok": null,
+      "value": "raw 3.634409 -> sum over crypto modules of (n_m / n)^2 -> 0.28 x 0.30 = 8.25"
+     },
+     {
+      "label": "selection_source",
+      "ok": null,
+      "value": "raw configured_share -> configured / (configured + literal) -> 0.00 x 0.20 = 0.00"
+     },
+     {
+      "label": "propagation_depth",
+      "ok": null,
+      "value": "raw 11 -> 1 - (|C| + |D|) / |M| -> 0.45 x 0.20 = 9.00"
+     },
+     {
+      "label": "Result",
+      "ok": null,
+      "value": "Agility Score 29.6 / 100"
+     },
+     {
+      "label": "-17.66 call_sites",
+      "ok": false,
+      "value": "26 cryptographic touchpoints in shipped code must each be edited to change an algorithm. [speed.py:63, src/ecdsa/_sha3.py:8, src/ecdsa/_sha3.py:11]"
+     },
+     {
+      "label": "-21.75 isolation_layer",
+      "ok": false,
+      "value": "Cryptography is spread over 7 modules (effective number 3.6). 15 of 26 touchpoints are outside src.ecdsa.keys. [speed.py:63, src/ecdsa/_sha3.py:8, src/ecdsa/_sha3.py:11]"
+     },
+     {
+      "label": "-20.00 selection_source",
+      "ok": false,
+      "value": "19 of 19 algorithm choices are fixed in code. [speed.py:63, src/ecdsa/_sha3.py:8, src/ecdsa/_sha3.py:11]"
+     },
+     {
+      "label": "-11.00 propagation_depth",
+      "ok": false,
+      "value": "11 of 20 shipped modules contain cryptography or call a module that does. [src/ecdsa/curves.py:4, src/ecdsa/curves.py:72, src/ecdsa/curves.py:137]"
+     }
+    ],
+    "id": "score",
+    "status": "done",
+    "summary": "Agility Score 29.6 / 100",
+    "title": "Compute the Agility Score"
+   },
+   "event": "step"
+  },
+  {
+   "at_ms": 16077,
+   "data": {
+    "duration_ms": 0,
+    "evidence": [],
+    "id": "render",
+    "status": "running",
+    "summary": "",
+    "title": "Render artifacts"
+   },
+   "event": "step"
+  },
+  {
+   "at_ms": 17170,
+   "data": {
+    "changes": [
+     {
+      "after": "sha256",
+      "before": "sha1",
+      "extra": [
+       {
+        "after": "sha256",
+        "before": "sha1",
+        "end": 10247,
+        "start": 10243
+       }
+      ],
+      "id": "cabc6d5a5bbe1c49e159e8f4",
+      "line": 327,
+      "line_after": "    return string_to_int(sha256(int_to_string(m)).digest())",
+      "line_before": "    return string_to_int(sha1(int_to_string(m)).digest())",
+      "note": "SHA-256 changes digest values and length. Check stored hashes, signatures, protocols, fixtures and consumers before merging. It is not a password hashing scheme.",
+      "rule": "weak-hash-to-sha256"
+     }
+    ],
+    "path": "src/ecdsa/ecdsa.py"
+   },
+   "event": "proposals"
+  },
+  {
+   "at_ms": 23000,
+   "data": {
+    "duration_ms": 6922,
+    "evidence": [
+     {
+      "label": "Report size",
+      "ok": null,
+      "value": "26,063 bytes"
+     },
+     {
+      "label": "External requests",
+      "ok": true,
+      "value": "0 \u2014 inline SVG and inline CSS"
+     },
+     {
+      "label": "Opens from",
+      "ok": true,
+      "value": "file:// with no server and no network"
+     },
+     {
+      "label": "Artifacts",
+      "ok": null,
+      "value": "cdg.json, score.json, meta.json, report.html"
+     }
+    ],
+    "id": "render",
+    "status": "done",
+    "summary": "report.html rendered, self-contained",
+    "title": "Render artifacts"
+   },
+   "event": "step"
+  },
+  {
+   "at_ms": 23015,
+   "data": {
+    "duration_ms": 0,
+    "evidence": [],
+    "id": "cleanup",
+    "status": "running",
+    "summary": "",
+    "title": "Delete the working copy"
+   },
+   "event": "step"
+  },
+  {
+   "at_ms": 23015,
+   "data": {
+    "duration_ms": 0,
+    "evidence": [
+     {
+      "label": "Clone directory",
+      "ok": true,
+      "value": "removed"
+     },
+     {
+      "label": "Source retained",
+      "ok": true,
+      "value": "only bounded files with reviewable fix proposals"
+     },
+     {
+      "label": "Applies to",
+      "ok": true,
+      "value": "success, failure and timeout paths alike"
+     }
+    ],
+    "id": "cleanup",
+    "status": "done",
+    "summary": "working copy deleted",
+    "title": "Delete the working copy"
+   },
+   "event": "step"
+  },
+  {
+   "at_ms": 23015,
+   "data": {
+    "agility_score": 29.593192,
+    "status": "succeeded"
+   },
+   "event": "done"
+  }
+ ]
+}

@@ -2,30 +2,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Quanta — mpdavis/python-jose</title>
 <style>
+  /* The web product's palette (site.css): dark by default, light when printed or asked. */
   :root {
-    --bg: #ffffff; --fg: #1a1d21; --muted: #5c6470; --line: #dfe3e8;
-    --card: #f7f8fa; --accent: #3b5b8c; --bad: #a33b3b; --good: #4a7c59;
+    --bg: #000000; --fg: #ededed; --muted: #a1a1a1; --line: #1f1f1f;
+    --card: #0a0a0a; --accent: #52a8ff; --bad: #ff6166; --good: #62c073;
   }
-  @media (prefers-color-scheme: dark) {
+  @media (prefers-color-scheme: light), print {
     :root {
-      --bg: #14171a; --fg: #e6e9ed; --muted: #9aa3b0; --line: #2b3138;
-      --card: #1b1f24; --accent: #7aa2d6; --bad: #d98080; --good: #86c39a;
+      --bg: #ffffff; --fg: #171717; --muted: #4d4d4d; --line: #eaeaea;
+      --card: #fafafa; --accent: #0068d6; --bad: #d8323a; --good: #297a3a;
     }
   }
   * { box-sizing: border-box; }
   body {
     margin: 0; padding: 2rem 1.25rem; background: var(--bg); color: var(--fg);
-    font: 15px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font: 15px/1.6 Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
   }
   main { max-width: 1180px; margin: 0 auto; }
-  h1 { font-size: 1.5rem; margin: 0 0 .25rem; }
-  h2 { font-size: 1.05rem; margin: 2.25rem 0 .75rem; padding-bottom: .35rem;
-       border-bottom: 1px solid var(--line); }
+  h1 { font-size: 1.75rem; font-weight: 600; letter-spacing: -0.03em; margin: 0 0 .25rem; }
+  h2 { font-size: 1.1rem; font-weight: 600; letter-spacing: -0.01em; margin: 2.5rem 0 .75rem;
+       padding-bottom: .5rem; border-bottom: 1px solid var(--line); }
   code, .mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .86em; }
   .sub { color: var(--muted); margin: 0 0 1.5rem; }
   .scorecard { display: flex; align-items: baseline; gap: 1rem; background: var(--card);
-               border: 1px solid var(--line); border-radius: 10px; padding: 1.25rem 1.5rem; }
-  .scorecard .value { font-size: 3rem; font-weight: 650; line-height: 1; }
+               box-shadow: 0 0 0 1px var(--line); border-radius: 12px; padding: 1.25rem 1.5rem; }
+  .scorecard .value { font-size: 3.25rem; font-weight: 600; letter-spacing: -0.04em; line-height: 1; }
   .scorecard .of { color: var(--muted); }
   table { border-collapse: collapse; width: 100%; }
   th, td { text-align: left; padding: .5rem .6rem; border-bottom: 1px solid var(--line);
@@ -33,25 +35,24 @@
   th { color: var(--muted); font-weight: 600; font-size: .82rem; text-transform: uppercase;
        letter-spacing: .04em; }
   td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
-  .deduction { border-left: 3px solid var(--bad); padding: .6rem .9rem; margin: .6rem 0;
-               background: var(--card); border-radius: 0 6px 6px 0; }
+  .deduction { box-shadow: inset 2px 0 0 var(--bad); padding: .7rem 1rem; margin: .6rem 0;
+               background: var(--card); border-radius: 8px; }
   .deduction .head { display: flex; justify-content: space-between; gap: 1rem;
                      font-weight: 600; }
   .cites { margin: .45rem 0 0; padding: 0; list-style: none; display: flex;
            flex-wrap: wrap; gap: .35rem; }
-  .cites li { background: var(--bg); border: 1px solid var(--line); border-radius: 4px;
-              padding: .1rem .4rem; }
-  .rec { border-left: 3px solid var(--good); padding: .6rem .9rem; margin: .6rem 0;
-         background: var(--card); border-radius: 0 6px 6px 0; }
-  .figure { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px;
+  .cites li { background: var(--line); border-radius: 4px; padding: .1rem .4rem; }
+  .rec { box-shadow: inset 2px 0 0 var(--good); padding: .7rem 1rem; margin: .6rem 0;
+         background: var(--card); border-radius: 8px; }
+  .figure { overflow-x: auto; box-shadow: 0 0 0 1px var(--line); border-radius: 12px;
             background: var(--card); padding: .5rem; }
   .legend { display: flex; flex-wrap: wrap; gap: 1rem; margin: .6rem 0 0; padding: 0;
             list-style: none; color: var(--muted); font-size: .85rem; }
   .legend .swatch { display: inline-block; width: .7rem; height: .7rem; border-radius: 2px;
                     margin-right: .35rem; vertical-align: baseline; }
   .note { color: var(--muted); font-size: .88rem; }
-  .warn { border-left: 3px solid #b08a3c; padding: .6rem .9rem; background: var(--card);
-          border-radius: 0 6px 6px 0; }
+  .warn { box-shadow: inset 2px 0 0 #f2a93b; padding: .7rem 1rem; background: var(--card);
+          border-radius: 8px; }
   footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--line);
            color: var(--muted); font-size: .84rem; }
 </style>
@@ -60,10 +61,12 @@
   <h1>Cryptographic Agility Report</h1>
   <p class="sub mono">mpdavis/python-jose @ 018b310ddb8b</p>
 
-  <div class="scorecard">
-    <div class="value">30.6</div>
-    <div class="of">/ 100 &nbsp;·&nbsp; Agility Score</div>
+  
+  <div class="warn">
+    <strong>No score (LOW_DETECTION_COVERAGE).</strong> Quanta recognised 52 of 161 calls into cryptography libraries. Below 60�, the score would describe a small part of the code.
+    The inventory below is still complete for what was recognised.
   </div>
+  
   <p class="note" style="margin-top:.6rem">
     This measures <strong>source-edit difficulty</strong> only. It is not a migration-cost
     estimate: real cost is dominated by certificates, protocols, hardware, external
@@ -71,123 +74,228 @@
     cryptographic security review.
   </p>
 
-  <h2>Factors</h2>
+  
+  <h2>Post-quantum readiness</h2>
+  <p><strong>At risk: quantum-vulnerable or weak cryptography with no post-quantum path yet.</strong> The earliest published deadline that applies is
+  2030.</p>
+  
+    
+    <div class="rec">
+      <div>Move key exchange and TLS to hybrid ML-KEM (X25519MLKEM768).</div>
+      <div class="note">
+        2 sites · by 2030 · sources:
+        NIST IR 8547 (Initial Public Draft), Transition to Post-Quantum Cryptography Standards; NIS Cooperation Group and European Commission A Coordinated Implementation Roadmap for the Transition to Post-Quantum Cryptography; National Cybersecurity Authority (Saudi Arabia) National Cryptographic Standards NCS-2:2025 (public consultation draft)
+      </div>
+      <ul class="cites">
+        <li class="mono">jose/backends/rsa_backend.py:275</li><li class="mono">jose/backends/rsa_backend.py:280</li>
+        
+      </ul>
+    </div>
+    
+    <div class="rec">
+      <div>Plan the move of signatures to ML-DSA or SLH-DSA.</div>
+      <div class="note">
+        32 sites · by 2030 · sources:
+        NIST IR 8547 (Initial Public Draft), Transition to Post-Quantum Cryptography Standards; NSA Commercial National Security Algorithm Suite 2.0 (Cybersecurity Advisory); UK NCSC Timelines for migration to post-quantum cryptography
+      </div>
+      <ul class="cites">
+        <li class="mono">jose/backends/cryptography_backend.py:102</li><li class="mono">jose/backends/cryptography_backend.py:104</li><li class="mono">jose/backends/cryptography_backend.py:106</li><li class="mono">jose/backends/cryptography_backend.py:139</li><li class="mono">jose/backends/cryptography_backend.py:145</li><li class="mono">jose/backends/cryptography_backend.py:250</li><li class="mono">jose/backends/cryptography_backend.py:252</li><li class="mono">jose/backends/cryptography_backend.py:265</li><li class="mono">jose/backends/cryptography_backend.py:268</li><li class="mono">jose/backends/cryptography_backend.py:291</li><li class="mono">jose/backends/cryptography_backend.py:292</li><li class="mono">jose/backends/cryptography_backend.py:293</li>
+        <li>+20 more</li>
+      </ul>
+    </div>
+    
+    <div class="rec">
+      <div>Confirm the algorithm at sites where the parser could not see it.</div>
+      <div class="note">
+        11 sites · sources:
+        NIST IR 8547 (Initial Public Draft), Transition to Post-Quantum Cryptography Standards
+      </div>
+      <ul class="cites">
+        <li class="mono">jose/backends/cryptography_backend.py:139</li><li class="mono">jose/backends/cryptography_backend.py:145</li><li class="mono">jose/backends/cryptography_backend.py:250</li><li class="mono">jose/backends/cryptography_backend.py:252</li><li class="mono">jose/backends/cryptography_backend.py:301</li><li class="mono">jose/backends/cryptography_backend.py:306</li><li class="mono">jose/backends/cryptography_backend.py:380</li><li class="mono">jose/backends/cryptography_backend.py:388</li><li class="mono">jose/backends/cryptography_backend.py:582</li><li class="mono">jose/backends/cryptography_backend.py:72</li><li class="mono">jose/backends/cryptography_backend.py:74</li>
+        
+      </ul>
+    </div>
+    
+  
   <table>
-    <thead>
-      <tr>
-        <th>Factor</th><th>Raw</th>
-        <th class="num">Normalised</th><th class="num">Weight</th><th class="num">Contribution</th>
-      </tr>
-    </thead>
+    <thead><tr><th>Milestone</th><th>Source</th><th class="num">Year</th><th class="num">Sites</th><th>State</th></tr></thead>
     <tbody>
       
       <tr>
-        <td>Call sites</td>
-        <td class="mono">10</td>
-        <td class="num">0.49</td>
-        <td class="num">0.30</td>
-        <td class="num">14.70</td>
+        <td class="mono">nist-kex-deprecated</td>
+        <td>NIST, IR 8547 (Initial Public Draft), Transition to Post-Quantum Cryptography Standards</td>
+        <td class="num">2030</td>
+        <td class="num">2</td>
+        <td>affected</td>
       </tr>
       
       <tr>
-        <td>Isolation layer</td>
-        <td class="mono">False</td>
-        <td class="num">0.12</td>
-        <td class="num">0.30</td>
-        <td class="num">3.75</td>
+        <td class="mono">nist-kex-disallowed</td>
+        <td>NIST, IR 8547 (Initial Public Draft), Transition to Post-Quantum Cryptography Standards</td>
+        <td class="num">2035</td>
+        <td class="num">2</td>
+        <td>affected</td>
       </tr>
       
       <tr>
-        <td>Algorithm selection</td>
-        <td class="mono">hardcoded</td>
-        <td class="num">0.00</td>
-        <td class="num">0.20</td>
-        <td class="num">0.00</td>
+        <td class="mono">nist-sig-deprecated</td>
+        <td>NIST, IR 8547 (Initial Public Draft), Transition to Post-Quantum Cryptography Standards</td>
+        <td class="num">2030</td>
+        <td class="num">32</td>
+        <td>affected</td>
       </tr>
       
       <tr>
-        <td>Propagation depth</td>
-        <td class="mono">15</td>
-        <td class="num">0.61</td>
-        <td class="num">0.20</td>
-        <td class="num">12.11</td>
+        <td class="mono">nist-sig-disallowed</td>
+        <td>NIST, IR 8547 (Initial Public Draft), Transition to Post-Quantum Cryptography Standards</td>
+        <td class="num">2035</td>
+        <td class="num">32</td>
+        <td>affected</td>
+      </tr>
+      
+      <tr>
+        <td class="mono">nist-sha1</td>
+        <td>NIST, NIST Transitioning Away from SHA-1 for All Applications</td>
+        <td class="num">2030</td>
+        <td class="num">0</td>
+        <td>not affected</td>
+      </tr>
+      
+      <tr>
+        <td class="mono">nist-md5</td>
+        <td>NIST, SP 800-131A Rev. 2, Transitioning the Use of Cryptographic Algorithms and Key Lengths</td>
+        <td class="num">2019</td>
+        <td class="num">0</td>
+        <td>not affected</td>
+      </tr>
+      
+      <tr>
+        <td class="mono">nist-tdea</td>
+        <td>NIST, SP 800-131A Rev. 2, Transitioning the Use of Cryptographic Algorithms and Key Lengths</td>
+        <td class="num">2023</td>
+        <td class="num">0</td>
+        <td>not affected</td>
+      </tr>
+      
+      <tr>
+        <td class="mono">nsa-signing</td>
+        <td>NSA, Commercial National Security Algorithm Suite 2.0 (Cybersecurity Advisory)</td>
+        <td class="num">2030</td>
+        <td class="num">32</td>
+        <td>affected</td>
+      </tr>
+      
+      <tr>
+        <td class="mono">nsa-web</td>
+        <td>NSA, Commercial National Security Algorithm Suite 2.0 (Cybersecurity Advisory)</td>
+        <td class="num">2033</td>
+        <td class="num">2</td>
+        <td>affected</td>
+      </tr>
+      
+      <tr>
+        <td class="mono">nsa-custom</td>
+        <td>NSA, Commercial National Security Algorithm Suite 2.0 (Cybersecurity Advisory)</td>
+        <td class="num">2033</td>
+        <td class="num">34</td>
+        <td>affected</td>
+      </tr>
+      
+      <tr>
+        <td class="mono">eu-first-steps</td>
+        <td>NIS Cooperation Group and European Commission, A Coordinated Implementation Roadmap for the Transition to Post-Quantum Cryptography</td>
+        <td class="num">2026</td>
+        <td class="num">0</td>
+        <td>met by this inventory</td>
+      </tr>
+      
+      <tr>
+        <td class="mono">eu-high-risk</td>
+        <td>NIS Cooperation Group and European Commission, A Coordinated Implementation Roadmap for the Transition to Post-Quantum Cryptography</td>
+        <td class="num">2030</td>
+        <td class="num">34</td>
+        <td>affected</td>
+      </tr>
+      
+      <tr>
+        <td class="mono">eu-full</td>
+        <td>NIS Cooperation Group and European Commission, A Coordinated Implementation Roadmap for the Transition to Post-Quantum Cryptography</td>
+        <td class="num">2035</td>
+        <td class="num">34</td>
+        <td>affected</td>
+      </tr>
+      
+      <tr>
+        <td class="mono">uk-discovery</td>
+        <td>UK NCSC, Timelines for migration to post-quantum cryptography</td>
+        <td class="num">2028</td>
+        <td class="num">0</td>
+        <td>met by this inventory</td>
+      </tr>
+      
+      <tr>
+        <td class="mono">uk-priority</td>
+        <td>UK NCSC, Timelines for migration to post-quantum cryptography</td>
+        <td class="num">2031</td>
+        <td class="num">34</td>
+        <td>affected</td>
+      </tr>
+      
+      <tr>
+        <td class="mono">uk-complete</td>
+        <td>UK NCSC, Timelines for migration to post-quantum cryptography</td>
+        <td class="num">2035</td>
+        <td class="num">34</td>
+        <td>affected</td>
+      </tr>
+      
+      <tr>
+        <td class="mono">us-kex</td>
+        <td>The White House, Executive Order 14412, Securing the Nation Against Advanced Cryptographic Attacks</td>
+        <td class="num">2030</td>
+        <td class="num">2</td>
+        <td>affected</td>
+      </tr>
+      
+      <tr>
+        <td class="mono">us-sig</td>
+        <td>The White House, Executive Order 14412, Securing the Nation Against Advanced Cryptographic Attacks</td>
+        <td class="num">2031</td>
+        <td class="num">32</td>
+        <td>affected</td>
+      </tr>
+      
+      <tr>
+        <td class="mono">nca-hybrid</td>
+        <td>National Cybersecurity Authority (Saudi Arabia), National Cryptographic Standards NCS-2:2025 (public consultation draft)</td>
+        <td class="num"></td>
+        <td class="num">0</td>
+        <td>not affected</td>
       </tr>
       
     </tbody>
   </table>
   <p class="note">
-    Weights are pre-registered and git-tagged <code>weights-v1</code>, fixed before any
-    result was observed. The four factors are expected to be partially collinear — an
-    insulation layer mechanically implies fewer call sites and shallower propagation — so
-    the corpus-level analysis reports a factor correlation matrix rather than assuming
-    independence.
+    Rules as published, checked 2026-09-24. An asymmetric call whose algorithm
+    could not be read is assumed classical and listed for confirmation. Only shipped code
+    counts; tests and examples do not.
   </p>
+  
+
+  
 
   <h2>Deductions</h2>
   
-    
-    <div class="deduction">
-      <div class="head">
-        <span>Call sites</span>
-        <span>−15.30</span>
-      </div>
-      <div>10 cryptographic call sites must each be edited to change algorithm</div>
-      <ul class="cites">
-        <li class="mono">jose/backends/cryptography_backend.py:462</li><li class="mono">jose/backends/cryptography_backend.py:467</li><li class="mono">jose/backends/cryptography_backend.py:486</li><li class="mono">jose/backends/cryptography_backend.py:493</li><li class="mono">jose/backends/cryptography_backend.py:571</li><li class="mono">jose/backends/cryptography_backend.py:579</li><li class="mono">jose/backends/native.py:59</li><li class="mono">tests/algorithms/test_EC.py:111</li><li class="mono">tests/algorithms/test_EC.py:238</li><li class="mono">tests/algorithms/test_EC.py:247</li>
-      </ul>
-    </div>
-    
-    <div class="deduction">
-      <div class="head">
-        <span>Isolation layer</span>
-        <span>−26.25</span>
-      </div>
-      <div>Crypto APIs invoked directly from 3 modules with no common wrapper� 7 nodes must be cut to decouple cryptography</div>
-      <ul class="cites">
-        <li class="mono">jose/backends/cryptography_backend.py:462</li><li class="mono">jose/backends/cryptography_backend.py:467</li><li class="mono">jose/backends/cryptography_backend.py:486</li><li class="mono">jose/backends/cryptography_backend.py:493</li><li class="mono">jose/backends/cryptography_backend.py:571</li><li class="mono">jose/backends/cryptography_backend.py:579</li><li class="mono">jose/backends/native.py:59</li><li class="mono">tests/algorithms/test_EC.py:111</li><li class="mono">tests/algorithms/test_EC.py:238</li><li class="mono">tests/algorithms/test_EC.py:247</li>
-      </ul>
-    </div>
-    
-    <div class="deduction">
-      <div class="head">
-        <span>Algorithm selection</span>
-        <span>−20.00</span>
-      </div>
-      <div>4 algorithm selections are hard-coded rather than read from configuration</div>
-      <ul class="cites">
-        <li class="mono">jose/backends/cryptography_backend.py:467</li><li class="mono">jose/backends/cryptography_backend.py:493</li><li class="mono">tests/algorithms/test_EC.py:238</li><li class="mono">tests/algorithms/test_EC.py:247</li>
-      </ul>
-    </div>
-    
-    <div class="deduction">
-      <div class="head">
-        <span>Propagation depth</span>
-        <span>−7.89</span>
-      </div>
-      <div>15 graph nodes can reach cryptography, so a change propagates well beyond the call sites themselves</div>
-      <ul class="cites">
-        <li class="mono">jose/backends/cryptography_backend.py:467</li><li class="mono">jose/backends/cryptography_backend.py:493</li><li class="mono">jose/backends/cryptography_backend.py:462</li><li class="mono">jose/backends/cryptography_backend.py:486</li><li class="mono">jose/backends/cryptography_backend.py:571</li><li class="mono">jose/backends/cryptography_backend.py:579</li><li class="mono">jose/backends/native.py:59</li><li class="mono">tests/algorithms/test_EC.py:238</li><li class="mono">tests/algorithms/test_EC.py:247</li><li class="mono">tests/algorithms/test_EC.py:111</li>
-      </ul>
-    </div>
-    
+    <p class="note">No deductions, because no score was computed.</p>
   
 
   
   <h2>Recommendations</h2>
     
     <div class="rec">
-      <div>Introduce a crypto facade module fronting the cryptographic primitives, so algorithm changes are made in one place</div>
+      <div>Plan migration of quantum-vulnerable key establishment and signatures (ML-KEM, ML-DSA, ideally hybrid).</div>
       <div class="note">
-        Affects 10 sites · recovers at most
-        26.2 points
-      </div>
-    </div>
-    
-    <div class="rec">
-      <div>Move algorithm selection into configuration so the algorithm is policy rather than a code literal (NIST CSWP 39)</div>
-      <div class="note">
-        Affects 4 sites · recovers at most
-        20.0 points
+        Affects 23 sites
       </div>
     </div>
     
@@ -198,7 +306,7 @@
   
 
   <h2>Cryptographic Dependency Graph</h2>
-  <div class="figure"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1298 2292" width="100%" height="2292" role="img" aria-label="Cryptographic Dependency Graph"><line x1="974" y1="35" x2="524" y2="137" stroke="#4a7c59" stroke-width="1" opacity="0.55"/><line x1="974" y1="69" x2="524" y2="341" stroke="#4a7c59" stroke-width="1" opacity="0.55"/><line x1="974" y1="103" x2="524" y2="239" stroke="#4a7c59" stroke-width="1" opacity="0.55"/><line x1="974" y1="137" x2="524" y2="205" stroke="#4a7c59" stroke-width="1" opacity="0.55"/><line x1="474" y1="137" x2="274" y2="307" stroke="#b08a3c" stroke-width="1" stroke-dasharray="4 3" opacity="0.55"/><line x1="474" y1="137" x2="274" y2="1701" stroke="#b08a3c" stroke-width="1" stroke-dasharray="4 3" opacity="0.55"/><line x1="474" y1="239" x2="274" y2="545" stroke="#b08a3c" stroke-width="1" stroke-dasharray="4 3" opacity="0.55"/><line x1="474" y1="919" x2="274" y2="545" stroke="#b08a3c" stroke-width="1" stroke-dasharray="4 3" opacity="0.55"/><line x1="474" y1="1089" x2="274" y2="545" stroke="#b08a3c" stroke-width="1" stroke-dasharray="4 3" opacity="0.55"/><line x1="474" y1="1633" x2="274" y2="545" stroke="#b08a3c" stroke-width="1" stroke-dasharray="4 3" opacity="0.55"/><line x1="474" y1="1667" x2="274" y2="545" stroke="#b08a3c" stroke-width="1" stroke-dasharray="4 3" opacity="0.55"/><line x1="474" y1="2041" x2="524" y2="307" stroke="#8b93a3" stroke-width="1" opacity="0.55"/><line x1="474" y1="2075" x2="774" y2="35" stroke="#8b93a3" stroke-width="1" opacity="0.55"/><line x1="474" y1="2075" x2="524" y2="137" stroke="#8b93a3" stroke-width="1" opacity="0.55"/><line x1="474" y1="2075" x2="524" y2="273" stroke="#8b93a3" stroke-width="1" opacity="0.55"/><line x1="474" y1="2109" x2="524" y2="35" stroke="#8b93a3" stroke-width="1" opacity="0.55"/><line x1="474" y1="2143" x2="774" y2="69" stroke="#8b93a3" stroke-width="1" opacity="0.55"/><line x1="474" y1="2143" x2="774" y2="137" stroke="#8b93a3" stroke-width="1" opacity="0.55"/><line x1="474" y1="2143" x2="524" y2="205" stroke="#8b93a3" stroke-width="1" opacity="0.55"/><line x1="474" y1="2143" x2="524" y2="341" stroke="#8b93a3" stroke-width="1" opacity="0.55"/><line x1="474" y1="2177" x2="524" y2="171" stroke="#8b93a3" stroke-width="1" opacity="0.55"/><line x1="474" y1="2211" x2="774" y2="103" stroke="#8b93a3" stroke-width="1" opacity="0.55"/><line x1="474" y1="2211" x2="524" y2="69" stroke="#8b93a3" stroke-width="1" opacity="0.55"/><line x1="474" y1="2211" x2="524" y2="239" stroke="#8b93a3" stroke-width="1" opacity="0.55"/><line x1="474" y1="2245" x2="524" y2="103" stroke="#8b93a3" stroke-width="1" opacity="0.55"/><g><title>jose/backends/cryptography_backend.py:467 algorithms.AES</title><rect x="774" y="24" width="200" height="22" rx="4" fill="#8a6d992" opacity="0.9"/><text x="782" y="39" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">algorithms.AES</text></g><g><title>tests/algorithms/test_EC.py:238 CryptographyEc.SECP256R1</title><rect x="774" y="58" width="200" height="22" rx="4" fill="#8a6d992" opacity="0.9"/><text x="782" y="73" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">CryptographyEc.SECP256R1</text></g><g><title>jose/backends/cryptography_backend.py:493 algorithms.AES</title><rect x="774" y="92" width="200" height="22" rx="4" fill="#8a6d992" opacity="0.9"/><text x="782" y="107" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">algorithms.AES</text></g><g><title>tests/algorithms/test_EC.py:247 hashes.SHA256</title><rect x="774" y="126" width="200" height="22" rx="4" fill="#8a6d992" opacity="0.9"/><text x="782" y="141" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">hashes.SHA256</text></g><g><title>jose/backends/native.py:59 hmac.new</title><rect x="524" y="24" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="39" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">hmac.new</text></g><g><title>jose/backends/cryptography_backend.py:486 cryptography.hazmat.primitives.ciphers.aead.AESGCM</title><rect x="524" y="58" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="73" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">cryptography.hazmat.primitives.ci…</text></g><g><title>jose/backends/cryptography_backend.py:571 cryptography.hazmat.primitives.hmac.HMAC</title><rect x="524" y="92" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="107" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">cryptography.hazmat.primitives.hm…</text></g><g><title>jose/backends/cryptography_backend.py:467 cryptography.hazmat.primitives.ciphers.Cipher</title><rect x="524" y="126" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="141" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">cryptography.hazmat.primitives.ci…</text></g><g><title>tests/algorithms/test_EC.py:111 cryptography.hazmat.primitives.asymmetric.ec.generate_private_key</title><rect x="524" y="160" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="175" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">cryptography.hazmat.primitives.as…</text></g><g><title>tests/algorithms/test_EC.py:247 cryptography.hazmat.primitives.hmac.HMAC</title><rect x="524" y="194" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="209" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">cryptography.hazmat.primitives.hm…</text></g><g><title>jose/backends/cryptography_backend.py:493 cryptography.hazmat.primitives.ciphers.Cipher</title><rect x="524" y="228" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="243" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">cryptography.hazmat.primitives.ci…</text></g><g><title>jose/backends/cryptography_backend.py:462 cryptography.hazmat.primitives.ciphers.aead.AESGCM</title><rect x="524" y="262" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="277" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">cryptography.hazmat.primitives.ci…</text></g><g><title>jose/backends/cryptography_backend.py:579 cryptography.hazmat.primitives.hmac.HMAC</title><rect x="524" y="296" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="311" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">cryptography.hazmat.primitives.hm…</text></g><g><title>tests/algorithms/test_EC.py:238 cryptography.hazmat.primitives.asymmetric.ec.generate_private_key</title><rect x="524" y="330" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="345" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">cryptography.hazmat.primitives.as…</text></g><g><title>jose/backends/cryptography_backend.py:311 jose.backends.cryptography_backend.CryptographyRSAKey.verify</title><rect x="274" y="24" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="39" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.backends.cryptography_backen…</text></g><g><title>jose/backends/cryptography_backend.py:121 jose.backends.cryptography_backend.CryptographyECKey._raw_to_der</title><rect x="274" y="58" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="73" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.backends.cryptography_backen…</text></g><g><title>tests/algorithms/test_RSA_compat.py:58 tests.algorithms.test_RSA_compat.TestBackendRsaCompatibility.test_private_key_to_pem</title><rect x="274" y="92" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="107" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">tests.algorithms.test_RSA_compat.…</text></g><g><title>jose/jwt.py:475 jose.jwt._validate_claims</title><rect x="274" y="126" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="141" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jwt._validate_claims</text></g><g><title>tests/test_jwt.py:109 tests.test_jwt.TestJWT.test_no_alg_default_headers</title><rect x="274" y="160" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="175" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">tests.test_jwt.TestJWT.test_no_al…</text></g><g><title>jose/backends/rsa_backend.py:175 jose.backends.rsa_backend.RSAKey._process_jwk</title><rect x="274" y="194" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="209" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.backends.rsa_backend.RSAKey.…</text></g><g><title>tests/test_jwe.py:530 tests.test_jwe.TestEncrypt.test_jwe_with_excessive_data</title><rect x="274" y="228" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="243" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">tests.test_jwe.TestEncrypt.test_j…</text></g><g><title>tests/test_jws.py:54 tests.test_jws.TestJWS.test_header_invalid_padding</title><rect x="274" y="262" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="277" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">tests.test_jws.TestJWS.test_heade…</text></g><g><title>jose/jwt.py:440 jose.jwt._validate_at_hash</title><rect x="274" y="296" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="311" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jwt._validate_at_hash</text></g><g><title>tests/algorithms/test_RSA.py:195 tests.algorithms.test_RSA.TestPurePythonRsa.test_python_rsa_legacy_pem_read</title><rect x="274" y="330" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="345" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">tests.algorithms.test_RSA.TestPur…</text></g><g><title>tests/algorithms/test_AES.py:46 tests.algorithms.test_AES.TestCryptographyAesKeywrap.test_wrap</title><rect x="274" y="364" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="379" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">tests.algorithms.test_AES.TestCry…</text></g><g><title>tests/test_jwt.py:356 tests.test_jwt.TestJWT.test_aud_empty_claim</title><rect x="274" y="398" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="413" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">tests.test_jwt.TestJWT.test_aud_e…</text></g><g><title>tests/test_jwt.py:25 tests.test_jwt.key</title><rect x="274" y="432" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="447" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">tests.test_jwt.key</text></g><g><title>tests/test_jwt.py:156 tests.test_jwt.TestJWT.test_encode</title><rect x="274" y="466" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="481" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">tests.test_jwt.TestJWT.test_encode</text></g><g><title>jose/backends/rsa_backend.py:245 jose.backends.rsa_backend.RSAKey.to_dict</title><rect x="274" y="500" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="515" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.backends.rsa_backend.RSAKey.…</text></g><g><title>jose/utils.py:66 jose.utils.base64url_decode</title><rect x="274" y="534" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="549" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.utils.base64url_decode</text></g><g><title>tests/algorithms/test_RSA.py:341 tests.algorithms.test_RSA.TestRSAAlgorithm.assert_parameters</title><rect x="274" y="568" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="583" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">tests.algorithms.test_RSA.TestRSA…</text></g><g><title>tests/test_jws.py:284 tests.test_jws.TestGetKeys.test_tuple</title><rect x="274" y="602" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="617" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">tests.test_jws.TestGetKeys.test_t…</text></g><g><title>jose/backends/ecdsa_backend.py:36 jose.backends.ecdsa_backend.ECDSAECKey.__init__</title><rect x="274" y="636" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="651" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.backends.ecdsa_backend.ECDSA…</text></g><g><title>jose/backends/cryptography_backend.py:562 jose.backends.cryptography_backend.CryptographyHMACKey.to_dict</title><rect x="274" y="670" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="685" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.backends.cryptography_backen…</text></g><g><title>tests/algorithms/test_base.py:12 tests.algorithms.test_base.TestBaseAlgorithm.test_sign_is_interface</title><rect x="274" y="704" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="719" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">tests.algorithms.test_base.TestBa…</text></g><g><title>tests/test_jws.py:28 tests.test_jws.TestJWS.test_multiple_keys</title><rect x="274" y="738" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="753" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">tests.test_jws.TestJWS.test_multi…</text></g><g><title>tests/algorithms/test_base.py:20 tests.algorithms.test_base.TestBaseAlgorithm.test_encrypt_is_interface</title><rect x="274" y="772" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="787" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">tests.algorithms.test_base.TestBa…</text></g><g><title>tests/algorithms/test_EC.py:131 tests.algorithms.test_EC.TestECAlgorithm.test_key_from_pem</title><rect x="274" y="806" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="821" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">tests.algorithms.test_EC.TestECAl…</text></g><g><title>jose/jwe.py:444 jose.jwe._decompress</title><rect x="274" y="840" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="855" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jwe._decompress</text></g><g><title>jose/backends/cryptography_backend.py:259 jose.backends.cryptography_backend.CryptographyRSAKey._process_jwk</title><rect x="274" y="874" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="889" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.backends.cryptography_backen…</text></g><g><title>tests/test_jwe.py:522 tests.test_jwe.TestEncrypt.test_kid_header_not_present_when_not_provided</title><rect x="274" y="908" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="923" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">tests.test_jwe.TestEncrypt.test_k…</text></g><g><title>tests/test_jwe.py:117 tests.test_jwe.TestGetUnverifiedHeader.test_wrong_auth_tag_is_ignored</title><rect x="274" y="942" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="957" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">tests.test_jwe.TestGetUnverifiedH…</text></g><g><title>jose/jwt.py:187 jose.jwt.get_unverified_header</title><rect x="274" y="976" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="991" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jwt.get_unverified_header</text></g><g><title>jose/backends/cryptography_backend.py:171 jose.backends.cryptography_backend.CryptographyECKey.to_dict</title><rect x="274" y="1010" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="1025" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.backends.cryptography_backen…</text></g><g><title>tests/test_jws.py:211 tests.test_jws.jwk_set</title><rect x="274" y="1044" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="1059" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">tests.test_jws.jwk_set</text></g><g><title>tests/test_jwt.py:124 tests.test_jwt.TestJWT.test_deterministic_headers</title><rect x="274" y="1078" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="1093" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">tests.test_jwt.TestJWT.test_deter…</text></g><g><title>jose/backends/base.py:40 jose.backends.base.Key.decrypt</title><rect x="274" y="1112" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="1127" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.backends.base.Key.decrypt</text></g><g><title>tests/test_jws.py:269 tests.test_jws.TestGetKeys.test_RFC7517_string</title><rect x="274" y="1146" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="1161" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">tests.test_jws.TestGetKeys.test_R…</text></g><g><title>jose/backends/cryptography_backend.py:108 jose.backends.cryptography_backend.CryptographyECKey._sig_component_length</title><rect x="274" y="1180" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="1195" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.backends.cryptography_backen…</text></g><g><title>tests/test_jws.py:85 tests.test_jws.TestJWS.test_round_trip_with_different_key_types</title><rect x="274" y="1214" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="1229" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">tests.test_jws.TestJWS.test_round…</text></g><g><title>tests/test_jwt.py:262 tests.test_jwt.TestJWT.test_exp_not_int</title><rect x="274" y="1248" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="1263" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">tests.test_jwt.TestJWT.test_exp_n…</text></g><g><title>jose/utils.py:157 jose.utils.is_ssh_key</title><rect x="274" y="1282" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="1297" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.utils.is_ssh_key</text></g><g><title>tests/test_jwt.py:371 tests.test_jwt.TestJWT.test_aud_given_number</title><rect x="274" y="1316" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="1331" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">tests.test_jwt.TestJWT.test_aud_g…</text></g><g><title>jose/backends/base.py:21 jose.backends.base.Key.to_pem</title><rect x="274" y="1350" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="1365" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.backends.base.Key.to_pem</text></g><g><title>tests/test_asn1.py:157 tests.test_asn1.test_rsa_public_key_pkcs1_to_pkcs8</title><rect x="274" y="1384" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="1399" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">tests.test_asn1.test_rsa_public_k…</text></g><g><title>tests/test_jwt.py:202 tests.test_jwt.TestJWT.test_iat_not_int</title><rect x="274" y="1418" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="1433" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">tests.test_jwt.TestJWT.test_iat_n…</text></g><g><title>tests/test_jwt.py:438 tests.test_jwt.TestJWT.test_sub_incorrect</title><rect x="274" y="1452" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="1467" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">tests.test_jwt.TestJWT.test_sub_i…</text></g><g><title>tests/test_jwt.py:470 tests.test_jwt.TestJWT.test_at_hash_invalid</title><rect x="274" y="1486" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="1501" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">tests.test_jwt.TestJWT.test_at_ha…</text></g><g><title>tests/algorithms/test_EC.py:148 tests.algorithms.test_EC.TestECAlgorithm.test_get_public_key</title><rect x="274" y="1520" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="1535" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">tests.algorithms.test_EC.TestECAl…</text></g><g><title>tests/algorithms/test_EC.py:204 tests.algorithms.test_EC.TestECAlgorithm.assert_parameters</title><rect x="274" y="1554" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="1569" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">tests.algorithms.test_EC.TestECAl…</text></g><g><title>jose/backends/cryptography_backend.py:386 jose.backends.cryptography_backend.CryptographyRSAKey.unwrap_key</title><rect x="274" y="1588" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="1603" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.backends.cryptography_backen…</text></g><g><title>jose/backends/native.py:47 jose.backends.native.HMACKey._process_jwk</title><rect x="274" y="1622" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="1637" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.backends.native.HMACKey._pro…</text></g><g><title>tests/test_jwe.py:506 tests.test_jwe.TestEncrypt.test_zip_header_not_present_when_none</title><rect x="274" y="1656" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="1671" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">tests.test_jwe.TestEncrypt.test_z…</text></g><g><title>jose/utils.py:91 jose.utils.timedelta_total_seconds</title><rect x="274" y="1690" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="1705" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.utils.timedelta_total_seconds</text></g><g><title>tests/algorithms/test_EC_compat.py:52 tests.algorithms.test_EC_compat.TestBackendEcdsaCompatibility.test_public_key_load_cycle</title><rect x="274" y="1724" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="1739" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">tests.algorithms.test_EC_compat.T…</text></g><g><title>tests/algorithms/test_EC.py:143 tests.algorithms.test_EC.TestECAlgorithm.test_key_too_short</title><rect x="274" y="1758" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="1773" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">tests.algorithms.test_EC.TestECAl…</text></g><g><title>tests/test_jws.py:290 tests.test_jws.TestGetKeys.test_jwk</title><rect x="274" y="1792" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="1807" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">tests.test_jws.TestGetKeys.test_j…</text></g><g><title>tests/test_jws.py:110 tests.test_jws.TestHMAC.testHMAC512</title><rect x="274" y="1826" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="1841" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">tests.test_jws.TestHMAC.testHMAC5…</text></g><g><title>tests/test_jwe.py:296 tests.test_jwe.TestDecrypt.test_decrypt_rsa_key_wrap</title><rect x="274" y="1860" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="1875" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">tests.test_jwe.TestDecrypt.test_d…</text></g><g><title>tests/algorithms/test_RSA.py:260 tests.algorithms.test_RSA.TestRSAAlgorithm.test_string_secret</title><rect x="274" y="1894" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="1909" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">tests.algorithms.test_RSA.TestRSA…</text></g><g><title>tests/test_jwt.py:19 tests.test_jwt.claims</title><rect x="274" y="1928" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="1943" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">tests.test_jwt.claims</text></g><g><title>tests/test_jwt.py:180 tests.test_jwt.TestJWT.test_round_trip_with_different_key_types</title><rect x="274" y="1962" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="1977" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">tests.test_jwt.TestJWT.test_round…</text></g><g><title>tests/test_jws.py:114 tests.test_jws.TestHMAC.test_wrong_alg</title><rect x="274" y="1996" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="2011" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">tests.test_jws.TestHMAC.test_wron…</text></g><g><title>jose/backends/cryptography_backend.py:576 jose.backends.cryptography_backend.CryptographyHMACKey.verify</title><rect x="274" y="2030" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="2045" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.backends.cryptography_backen…</text></g><g><title>jose/backends/cryptography_backend.py:455 jose.backends.cryptography_backend.CryptographyAESKey.encrypt</title><rect x="274" y="2064" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="2079" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.backends.cryptography_backen…</text></g><g><title>jose/backends/native.py:58 jose.backends.native.HMACKey.sign</title><rect x="274" y="2098" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="2113" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.backends.native.HMACKey.sign</text></g><g><title>tests/algorithms/test_EC.py:234 tests.algorithms.test_EC.test_incorrect_public_key_hmac_signing</title><rect x="274" y="2132" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="2147" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">tests.algorithms.test_EC.test_inc…</text></g><g><title>tests/algorithms/test_EC.py:103 tests.algorithms.test_EC.test_cryptography_sig_component_length</title><rect x="274" y="2166" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="2181" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">tests.algorithms.test_EC.test_cry…</text></g><g><title>jose/backends/cryptography_backend.py:478 jose.backends.cryptography_backend.CryptographyAESKey.decrypt</title><rect x="274" y="2200" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="2215" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.backends.cryptography_backen…</text></g><g><title>jose/backends/cryptography_backend.py:569 jose.backends.cryptography_backend.CryptographyHMACKey.sign</title><rect x="274" y="2234" width="200" height="22" rx="4" fill="#4a7c59" opacity="0.9"/><text x="282" y="2249" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.backends.cryptography_backen…</text></g></svg></div>
+  <div class="figure"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1298 2768" width="100%" height="2768" role="img" aria-label="Cryptographic Dependency Graph"><g><title>tests/test_jws.py:327 jose.jws.sign</title><rect x="524" y="24" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="39" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jws.sign</text></g><g><title>jose/backends/ecdsa_backend.py:23 hashlib.sha512</title><rect x="524" y="58" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="73" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">hashlib.sha512</text></g><g><title>jose/backends/cryptography_backend.py:494 cryptography.hazmat.primitives.ciphers.aead.AESGCM.decryptor</title><rect x="524" y="92" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="107" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">cryptography.hazmat.primitives.ci…</text></g><g><title>tests/test_jwt.py:70 jose.jws.verify</title><rect x="524" y="126" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="141" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jws.verify</text></g><g><title>tests/test_jwt.py:345 jose.jwt.decode</title><rect x="524" y="160" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="175" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jwt.decode</text></g><g><title>tests/test_jwt.py:312 jose.jwt.decode</title><rect x="524" y="194" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="209" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jwt.decode</text></g><g><title>tests/test_jwt.py:327 jose.jwt.encode</title><rect x="524" y="228" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="243" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jwt.encode</text></g><g><title>tests/test_jwt.py:352 jose.jwt.encode</title><rect x="524" y="262" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="277" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jwt.encode</text></g><g><title>tests/test_jwt.py:319 jose.jwt.encode</title><rect x="524" y="296" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="311" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jwt.encode</text></g><g><title>tests/test_jwt.py:402 jose.jwt.decode</title><rect x="524" y="330" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="345" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jwt.decode</text></g><g><title>tests/test_jwt.py:147 jose.jwt.encode</title><rect x="524" y="364" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="379" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jwt.encode</text></g><g><title>tests/test_jwt.py:298 jose.jwt.decode</title><rect x="524" y="398" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="413" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jwt.decode</text></g><g><title>tests/test_jwt.py:295 jose.jwt.encode</title><rect x="524" y="432" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="447" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jwt.encode</text></g><g><title>tests/test_jwt.py:473 jose.jwt.decode</title><rect x="524" y="466" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="481" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jwt.decode</text></g><g><title>jose/jwt.py:159 jose.jws.verify</title><rect x="524" y="500" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="515" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jws.verify</text></g><g><title>tests/test_jws.py:311 jose.jws.verify</title><rect x="524" y="534" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="549" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jws.verify</text></g><g><title>tests/test_jwt.py:401 jose.jwt.encode</title><rect x="524" y="568" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="583" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jwt.encode</text></g><g><title>jose/backends/cryptography_backend.py:388 cryptography.hazmat.primitives.serialization.load_pem_public_key.decrypt</title><rect x="524" y="602" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="617" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">cryptography.hazmat.primitives.se…</text></g><g><title>tests/test_jwt.py:418 jose.jwt.encode</title><rect x="524" y="636" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="651" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jwt.encode</text></g><g><title>tests/test_jws.py:86 jose.jws.sign</title><rect x="524" y="670" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="685" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jws.sign</text></g><g><title>jose/constants.py:83 hashlib.sha512</title><rect x="524" y="704" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="719" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">hashlib.sha512</text></g><g><title>tests/test_jwt.py:482 jose.jwt.decode</title><rect x="524" y="738" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="753" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jwt.decode</text></g><g><title>jose/backends/ecdsa_backend.py:65 ecdsa.VerifyingKey.from_pem</title><rect x="524" y="772" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="787" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">ecdsa.VerifyingKey.from_pem</text></g><g><title>tests/rfc/test_rfc7520.py:53 jose.jws.verify</title><rect x="524" y="806" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="821" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jws.verify</text></g><g><title>tests/test_firebase.py:41 jose.jwt.decode</title><rect x="524" y="840" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="855" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jwt.decode</text></g><g><title>tests/test_jwt.py:343 jose.jwt.encode</title><rect x="524" y="874" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="889" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jwt.encode</text></g><g><title>tests/test_jwt.py:411 jose.jwt.decode</title><rect x="524" y="908" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="923" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jwt.decode</text></g><g><title>tests/test_jws.py:390 jose.jws.verify</title><rect x="524" y="942" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="957" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jws.verify</text></g><g><title>jose/backends/cryptography_backend.py:74 cryptography.hazmat.primitives.serialization.load_pem_private_key</title><rect x="524" y="976" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="991" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">cryptography.hazmat.primitives.se…</text></g><g><title>tests/algorithms/test_EC.py:255 jose.jwt.decode</title><rect x="524" y="1010" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="1025" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jwt.decode</text></g><g><title>tests/test_jwt.py:253 jose.jwt.encode</title><rect x="524" y="1044" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="1059" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jwt.encode</text></g><g><title>jose/backends/cryptography_backend.py:298 cryptography.hazmat.primitives.asymmetric.rsa.RSAPrivateNumbers.private_key</title><rect x="524" y="1078" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="1093" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">cryptography.hazmat.primitives.as…</text></g><g><title>tests/test_jwt.py:359 jose.jwt.encode</title><rect x="524" y="1112" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="1127" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jwt.encode</text></g><g><title>tests/test_jwt.py:223 jose.jwt.encode</title><rect x="524" y="1146" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="1161" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jwt.encode</text></g><g><title>tests/test_jwt.py:369 jose.jwt.decode</title><rect x="524" y="1180" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="1195" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jwt.decode</text></g><g><title>jose/backends/native.py:59 hmac.new</title><rect x="524" y="1214" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="1229" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">hmac.new</text></g><g><title>tests/test_jwt.py:481 jose.jwt.encode</title><rect x="524" y="1248" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="1263" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jwt.encode</text></g><g><title>tests/test_jwt.py:378 jose.jwt.decode</title><rect x="524" y="1282" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="1297" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jwt.decode</text></g><g><title>jose/backends/rsa_backend.py:152 rsa.PublicKey.load_pkcs1</title><rect x="524" y="1316" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="1331" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">rsa.PublicKey.load_pkcs1</text></g><g><title>tests/test_jwt.py:169 jose.jwt.decode</title><rect x="524" y="1350" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="1365" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jwt.decode</text></g><g><title>jose/backends/cryptography_backend.py:294 cryptography.hazmat.primitives.asymmetric.rsa.rsa_crt_iqmp</title><rect x="524" y="1384" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="1399" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">cryptography.hazmat.primitives.as…</text></g><g><title>tests/test_jwt.py:460 jose.jwt.encode</title><rect x="524" y="1418" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="1433" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jwt.encode</text></g><g><title>tests/test_jws.py:395 jose.jws.verify</title><rect x="524" y="1452" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="1467" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jws.verify</text></g><g><title>tests/test_jws.py:315 jose.jws.verify</title><rect x="524" y="1486" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="1501" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jws.verify</text></g><g><title>tests/test_jwt.py:162 jose.jwt.encode</title><rect x="524" y="1520" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="1535" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jwt.encode</text></g><g><title>tests/test_jwt.py:506 jose.jwt.encode</title><rect x="524" y="1554" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="1569" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jwt.encode</text></g><g><title>jose/backends/cryptography_backend.py:486 cryptography.hazmat.primitives.ciphers.aead.AESGCM</title><rect x="524" y="1588" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="1603" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">cryptography.hazmat.primitives.ci…</text></g><g><title>tests/test_jwt.py:466 jose.jwt.encode</title><rect x="524" y="1622" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="1637" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jwt.encode</text></g><g><title>tests/test_jwt.py:426 jose.jwt.encode</title><rect x="524" y="1656" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="1671" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jwt.encode</text></g><g><title>jose/backends/cryptography_backend.py:250 cryptography.hazmat.primitives.serialization.load_pem_public_key</title><rect x="524" y="1690" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="1705" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">cryptography.hazmat.primitives.se…</text></g><g><title>jose/constants.py:76 hashlib.sha384</title><rect x="524" y="1724" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="1739" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">hashlib.sha384</text></g><g><title>tests/test_jwt.py:256 jose.jwt.decode</title><rect x="524" y="1758" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="1773" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jwt.decode</text></g><g><title>tests/test_jws.py:26 jose.jws.verify</title><rect x="524" y="1792" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="1807" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jws.verify</text></g><g><title>tests/rfc/test_rfc7520.py:61 jose.jws.verify</title><rect x="524" y="1826" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="1841" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jws.verify</text></g><g><title>jose/backends/rsa_backend.py:169 rsa.PrivateKey.load_pkcs1</title><rect x="524" y="1860" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="1875" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">rsa.PrivateKey.load_pkcs1</text></g><g><title>tests/test_jwt.py:328 jose.jwt.decode</title><rect x="524" y="1894" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="1909" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jwt.decode</text></g><g><title>jose/backends/cryptography_backend.py:380 cryptography.hazmat.primitives.serialization.load_pem_public_key.encrypt</title><rect x="524" y="1928" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="1943" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">cryptography.hazmat.primitives.se…</text></g><g><title>tests/test_jwt.py:260 jose.jwt.decode</title><rect x="524" y="1962" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="1977" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jwt.decode</text></g><g><title>tests/test_jwt.py:66 jose.jwt.decode</title><rect x="524" y="1996" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="2011" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jwt.decode</text></g><g><title>tests/test_jwt.py:462 jose.jwt.decode</title><rect x="524" y="2030" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="2045" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jwt.decode</text></g><g><title>jose/backends/cryptography_backend.py:106 cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePublicNumbers.public_key</title><rect x="524" y="2064" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="2079" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">cryptography.hazmat.primitives.as…</text></g><g><title>tests/test_jwt.py:428 jose.jwt.decode</title><rect x="524" y="2098" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="2113" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jwt.decode</text></g><g><title>tests/test_jwt.py:205 jose.jwt.encode</title><rect x="524" y="2132" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="2147" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jwt.encode</text></g><g><title>tests/test_jws.py:57 jose.jws.verify</title><rect x="524" y="2166" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="2181" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jws.verify</text></g><g><title>tests/test_firebase.py:27 jose.jwt.decode</title><rect x="524" y="2200" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="2215" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jwt.decode</text></g><g><title>tests/test_jws.py:372 jose.jws.sign</title><rect x="524" y="2234" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="2249" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jws.sign</text></g><g><title>jose/backends/cryptography_backend.py:571 cryptography.hazmat.primitives.hmac.HMAC</title><rect x="524" y="2268" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="2283" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">cryptography.hazmat.primitives.hm…</text></g><g><title>jose/backends/rsa_backend.py:275 rsa.encrypt</title><rect x="524" y="2302" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="2317" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">rsa.encrypt</text></g><g><title>jose/backends/rsa_backend.py:280 rsa.decrypt</title><rect x="524" y="2336" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="2351" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">rsa.decrypt</text></g><g><title>tests/rfc/test_rfc7520.py:45 jose.jws.verify</title><rect x="524" y="2370" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="2385" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jws.verify</text></g><g><title>jose/backends/cryptography_backend.py:301 cryptography.x509.load_pem_x509_certificate</title><rect x="524" y="2404" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="2419" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">cryptography.x509.load_pem_x509_c…</text></g><g><title>tests/test_jwt.py:105 jose.jwt.encode</title><rect x="524" y="2438" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="2453" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jwt.encode</text></g><g><title>tests/test_jwt.py:80 jose.jwt.decode</title><rect x="524" y="2472" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="2487" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jwt.decode</text></g><g><title>tests/test_jwt.py:532 jose.jwt.encode</title><rect x="524" y="2506" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="2521" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jwt.encode</text></g><g><title>tests/test_jwt.py:265 jose.jwt.encode</title><rect x="524" y="2540" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="2555" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jwt.encode</text></g><g><title>tests/test_jws.py:62 jose.jws.verify</title><rect x="524" y="2574" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="2589" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jws.verify</text></g><g><title>jose/backends/cryptography_backend.py:293 cryptography.hazmat.primitives.asymmetric.rsa.rsa_crt_dmq1</title><rect x="524" y="2608" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="2623" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">cryptography.hazmat.primitives.as…</text></g><g><title>jose/backends/ecdsa_backend.py:22 hashlib.sha384</title><rect x="524" y="2642" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="2657" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">hashlib.sha384</text></g><g><title>tests/test_jwt.py:471 jose.jwt.encode</title><rect x="524" y="2676" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="2691" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">jose.jwt.encode</text></g><g><title>jose/backends/native.py:21 hashlib.sha512</title><rect x="524" y="2710" width="200" height="22" rx="4" fill="#a33b3b" opacity="0.9"/><text x="532" y="2725" font-family="ui-monospace,monospace" font-size="11" fill="#ffffff">hashlib.sha512</text></g></svg></div>
   <ul class="legend">
     
     <li><span class="swatch" style="background: #3b5b8c"></span>module</li>
@@ -207,15 +315,15 @@
     
     <li><span class="swatch" style="background: #a33b3b"></span>crypto call</li>
     
-    <li><span class="swatch" style="background: #8a6d992"></span>algorithm literal</li>
+    <li><span class="swatch" style="background: #8a6d99"></span>algorithm literal</li>
     
     <li><span class="swatch" style="background: #6d6a8a"></span>config read</li>
     
     <li><span class="swatch" style="background: #b08a3c"></span>dashed = low confidence</li>
   </ul>
   <p class="note">
-    407 nodes, 731 edges,
-    341 of them low confidence. 327 further nodes are omitted from the figure
+    668 nodes, 1007 edges,
+    341 of them low confidence. 588 further nodes are omitted from the figure
     for legibility; <code>cdg.json</code> contains the complete graph.
     Every <code>call</code> edge is low confidence: one-hop qualified-name resolution
     approximates value flow, and that is the honest label for it. Dynamic dispatch,
@@ -227,11 +335,37 @@
   <table>
     <tbody>
       <tr><td>Files scanned</td><td class="num">38</td></tr>
+      <tr><td>Shipped (source) files</td><td class="num">16</td></tr>
+      <tr><td>Touchpoints in shipped code</td><td class="num">68</td></tr>
+      <tr><td>Crypto library calls recognised</td><td class="num">52 of 161</td></tr>
+      <tr><td>Coverage ratio</td><td class="num">32%</td></tr>
+      
+      <tr><td>Sites in source files</td><td class="num">62</td></tr>
+      
+      <tr><td>Sites in test files</td><td class="num">160</td></tr>
+      
+      <tr><td>Sites in docs files</td><td class="num">0</td></tr>
+      
+      <tr><td>Sites in example files</td><td class="num">0</td></tr>
+      
+      <tr><td>Sites in vendored files</td><td class="num">0</td></tr>
+      
+      <tr><td>Sites in tooling files</td><td class="num">0</td></tr>
+      
       <tr><td>Files unparseable</td><td class="num">0</td></tr>
       <tr><td>Truncated</td><td class="num">no</td></tr>
     </tbody>
   </table>
+  <p class="note">Calls on key or context objects are not counted. Only shipped code is scored;
+    tests, docs, examples, vendored and tooling code are listed in the inventory.</p>
+  
+  <p class="note">Calls into cryptography libraries that the ruleset does not recognise:
+    <code>jose.exceptions.JWKError</code> (18), <code>jose.exceptions.JWSError</code> (12), <code>jose.utils.long_to_base64</code> (11), <code>jose.utils.long_to_base64.decode</code> (11), <code>jose.utils.base64_to_long</code> (8), <code>cryptography.utils.int_to_bytes</code> (4), <code>jose.utils.base64url_decode</code> (4), <code>jose.utils.base64url_encode</code> (4), <code>rsa.pem.save_pem</code> (4), <code>cryptography.hazmat.primitives.padding.PKCS7</code> (2), <code>jose.jwk.construct</code> (2), <code>rsa.PrivateKey</code> (2), <code>rsa.PublicKey</code> (2), <code>cryptography.hazmat.primitives.asymmetric.utils.decode_dss_signature</code> (1), <code>cryptography.hazmat.primitives.asymmetric.utils.encode_dss_signature</code> (1), <code>cryptography.hazmat.primitives.keywrap.aes_key_unwrap</code> (1), <code>cryptography.hazmat.primitives.keywrap.aes_key_wrap</code> (1), <code>cryptography.hazmat.primitives.padding.PKCS7.padder</code> (1), <code>cryptography.hazmat.primitives.padding.PKCS7.unpadder</code> (1), <code>ecdsa.ecdsa.point_is_valid</code> (1).</p>
+  
 
+  
+
+  
   
 
   
@@ -241,8 +375,10 @@
       Provenance ·
       <span class="mono">mpdavis/python-jose</span> @
       <span class="mono">018b310ddb8b50dcfd09a0c152117835a21dd656</span> ·
-      analyzer <span class="mono">0.1.0+rules.2026.08.01</span> ·
-      ruleset <span class="mono">2026.08.01</span> ·
+      analyzer <span class="mono">0.5.0+rules.2026.11.01</span> ·
+      ruleset <span class="mono">2026.11.01</span> ·
+      metric <span class="mono">metric-v2</span> ·
+      weights <span class="mono">weights-v1</span> ·
       renderer <span class="mono">builtin</span>
     </p>
     <p>

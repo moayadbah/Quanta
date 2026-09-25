@@ -184,8 +184,8 @@
           "ar": "هذه المجموعة هي ما يُعرف بـ<term data-term=\"min-cut\">minimum node cut</term>. فإن كانت صغيرة، فثمّة غلاف يعزل التشفير بالفعل، وإن كانت كبيرة، فالتشفير منتشر في أنحاء الشيفرة."
         },
         {
-          "en": "This is the same program, written three ways. Same six cryptographic calls every time. Only the architecture changes.",
-          "ar": "أمامك البرنامج نفسه مكتوبًا بثلاث طرق، وفيه ستة استدعاءات تشفير في كل مرة، والبنية وحدها هي المتغيّرة."
+          "en": "This is the same program, written three ways. Same eight cryptographic calls every time. Only the architecture changes.",
+          "ar": "أمامك البرنامج نفسه مكتوبًا بثلاث طرق، وفيه ثمانية استدعاءات تشفير في كل مرة، والبنية وحدها هي المتغيّرة."
         }
       ],
       "punch": {
@@ -206,8 +206,8 @@
         "ar": "نتحقق من التشفير الجديد بمقارنته بقيم اختبار منشورة"
       },
       "lead": {
-        "en": "Quanta replaces old key exchange with <term data-term=\"x-wing\">X-Wing</term>, a <term data-term=\"hybrid\">hybrid</term> <term data-term=\"kem\">KEM</term>. It stays safe if either half stays safe.",
-        "ar": "تستعيض Quanta عن تبادل المفاتيح القديم بـ<term data-term=\"x-wing\">X-Wing</term>، وهو <term data-term=\"kem\">KEM</term> <term data-term=\"hybrid\">هجين</term> يبقى آمنًا ما دام أحد نصفيه آمنًا."
+        "en": "Quanta ships a <term data-term=\"hybrid\">hybrid</term> <term data-term=\"kem\">KEM</term> module, MLKEM768-X25519 (the design first published as <term data-term=\"x-wing\">X-Wing</term>), for a project to adopt. It stays safe if either half stays safe. Quanta does not rewire existing key exchange: both ends of a protocol must change together.",
+        "ar": "يوفّر Quanta وحدة <term data-term=\"kem\">KEM</term> <term data-term=\"hybrid\">هجينة</term> باسم MLKEM768-X25519 (التصميم الذي نُشر أولًا باسم <term data-term=\"x-wing\">X-Wing</term>) ليعتمدها المشروع، وتبقى آمنة ما دام أحد نصفيها آمنًا. ولا يعيد Quanta توصيل تبادل المفاتيح القائم، لأن طرفي البروتوكول يجب أن يتغيّرا معًا."
       },
       "body": [
         {
@@ -238,8 +238,8 @@
       },
       "body": [
         {
-          "en": "Your code is only read. Quanta never runs it, never installs it, and deletes the copy when it finishes.",
-          "ar": "لا تفعل Quanta بشيفرتك أكثر من قراءتها: لا تشغّلها ولا تثبّتها، وتحذف نسختها فور انتهائها."
+          "en": "Analysis only reads your code: it never runs or installs it, and deletes the copy when it finishes. Your tests run only if you ask for verification, in a sealed container with no network.",
+          "ar": "التحليل يقرأ شيفرتك فقط: لا يشغّلها ولا يثبّتها، ويحذف نسختها فور انتهائه. ولا تُشغَّل اختباراتك إلا إذا طلبت التحقق، داخل حاوية معزولة بلا اتصال بالشبكة."
         }
       ],
       "punch": {

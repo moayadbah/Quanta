@@ -1,0 +1,53 @@
+{
+  "_about": "Guided migrations for findings that need action but have no safe automatic patch. Every example is executed by tests/unit/test_migrations.py against the installed cryptography package, so none can ship broken. Prose lives in content/site.json under guide.<id>.*; sources are ids from standards.json.",
+  "guides": [
+    {
+      "id": "signature-hybrid-ml-dsa",
+      "to": "ML-DSA-65 beside the classical signature",
+      "sources": ["nist-ir-8547", "nsa-cnsa-2", "nca-ncs-2-2025"],
+      "example": "from cryptography.exceptions import InvalidSignature\nfrom cryptography.hazmat.primitives import hashes\nfrom cryptography.hazmat.primitives.asymmetric import ec, mldsa\n\n# Keep the classical key and add a post-quantum one. Sign with both.\nclassical_key = ec.generate_private_key(ec.SECP256R1())\npq_key = mldsa.MLDSA65PrivateKey.generate()\n\n\ndef sign(message: bytes) -> tuple[bytes, bytes]:\n    return (\n        classical_key.sign(message, ec.ECDSA(hashes.SHA256())),\n        pq_key.sign(message),\n    )\n\n\ndef verify(message: bytes, signatures: tuple[bytes, bytes]) -> None:\n    classical_sig, pq_sig = signatures\n    # Accept only if both verify; each raises InvalidSignature otherwise.\n    classical_key.public_key().verify(classical_sig, message, ec.ECDSA(hashes.SHA256()))\n    pq_key.public_key().verify(pq_sig, message)\n\n\nsignatures = sign(b\"release-1.4.2.tar.gz\")\nverify(b\"release-1.4.2.tar.gz\", signatures)\ntry:\n    verify(b\"tampered\", signatures)\n    raise AssertionError(\"a tampered message must not verify\")\nexcept InvalidSignature:\n    pass\n"
+    },
+    {
+      "id": "key-exchange-hybrid-ml-kem",
+      "to": "X25519 combined with ML-KEM-768",
+      "sources": ["nist-ir-8547", "eu-pqc-roadmap", "nca-ncs-2-2025"],
+      "example": "from cryptography.hazmat.primitives import hashes\nfrom cryptography.hazmat.primitives.asymmetric import mlkem, x25519\nfrom cryptography.hazmat.primitives.kdf.hkdf import HKDF\n\n\ndef combine(classical_secret: bytes, pq_secret: bytes) -> bytes:\n    # Both secrets feed one KDF: the session key stays safe while either holds.\n    return HKDF(hashes.SHA256(), 32, salt=None, info=b\"example-app hybrid v1\").derive(\n        classical_secret + pq_secret\n    )\n\n\n# Receiver publishes an X25519 key and an ML-KEM-768 key.\nreceiver_x25519 = x25519.X25519PrivateKey.generate()\nreceiver_mlkem = mlkem.MLKEM768PrivateKey.generate()\n\n# Sender\nsender_x25519 = x25519.X25519PrivateKey.generate()\npq_secret, encapsulated = receiver_mlkem.public_key().encapsulate()\nsender_key = combine(sender_x25519.exchange(receiver_x25519.public_key()), pq_secret)\n\n# Receiver, after getting the sender's X25519 public key and `encapsulated`\nreceiver_key = combine(\n    receiver_x25519.exchange(sender_x25519.public_key()),\n    receiver_mlkem.decapsulate(encapsulated),\n)\nassert sender_key == receiver_key\n"
+    },
+    {
+      "id": "tls-hybrid",
+      "to": "X25519MLKEM768 in TLS 1.3",
+      "sources": ["openssl-3-5", "nist-ir-8547", "eu-pqc-roadmap"],
+      "example": "import ssl\n\n# OpenSSL 3.5 and later offer X25519MLKEM768 by default in TLS 1.3, so no code\n# change is needed once the runtime links it. Fail loudly where it does not.\nHYBRID_READY = ssl.OPENSSL_VERSION_INFO >= (3, 5)\n\ncontext = ssl.create_default_context()\ncontext.minimum_version = ssl.TLSVersion.TLSv1_3\nif not HYBRID_READY:\n    print(\"Upgrade the Python runtime to one built with OpenSSL 3.5+:\", ssl.OPENSSL_VERSION)\n"
+    },
+    {
+      "id": "rsa-encryption-ml-kem",
+      "to": "ML-KEM-768 with AES-256-GCM",
+      "sources": ["nist-ir-8547", "nca-ncs-2-2025"],
+      "example": "import os\n\nfrom cryptography.hazmat.primitives.asymmetric import mlkem\nfrom cryptography.hazmat.primitives.ciphers.aead import AESGCM\n\n# Instead of encrypting with RSA-OAEP, encapsulate a fresh key and use AES-GCM.\nrecipient = mlkem.MLKEM768PrivateKey.generate()\n\nshared_key, encapsulated = recipient.public_key().encapsulate()\nnonce = os.urandom(12)\nciphertext = AESGCM(shared_key).encrypt(nonce, b\"account export\", None)\n\n# Recipient side: send (encapsulated, nonce, ciphertext).\nplaintext = AESGCM(recipient.decapsulate(encapsulated)).decrypt(nonce, ciphertext, None)\nassert plaintext == b\"account export\"\n"
+    },
+    {
+      "id": "weak-hash-manual",
+      "to": "SHA-256",
+      "sources": ["nist-sha1-retirement", "nist-sp-800-131a-r2"],
+      "example": "import hashlib\nimport hmac\n\ndata, key = b\"payload\", b\"shared secret\"\n\n# Before: hashlib.sha1(data) and hmac.new(key, data, hashlib.sha1)\ndigest = hashlib.sha256(data).hexdigest()\ntag = hmac.new(key, data, hashlib.sha256).hexdigest()\n\n# Stored values and peers expect the old length: migrate them together, for\n# example by writing both digests during a transition period.\nassert len(digest) == 64 and len(tag) == 64\n"
+    },
+    {
+      "id": "legacy-cipher-aes-gcm",
+      "to": "AES-256-GCM",
+      "sources": ["nist-sp-800-131a-r2"],
+      "example": "import os\n\nfrom cryptography.hazmat.primitives.ciphers.aead import AESGCM\n\n# Before: Triple DES, RC4, DES or any cipher in ECB mode.\nkey = AESGCM.generate_key(bit_length=256)\nnonce = os.urandom(12)  # never reuse a nonce with the same key\nciphertext = AESGCM(key).encrypt(nonce, b\"record\", b\"record-id-42\")\nassert AESGCM(key).decrypt(nonce, ciphertext, b\"record-id-42\") == b\"record\"\n"
+    },
+    {
+      "id": "implements-classical-primitive",
+      "to": "ML-DSA or ML-KEM offered beside the classical scheme",
+      "sources": ["nist-ir-8547", "nsa-cnsa-2", "nca-ncs-2-2025"],
+      "example": "from cryptography.hazmat.primitives.asymmetric import mldsa\n\n# This project implements a classical scheme itself. Its users can only migrate if\n# it offers a post-quantum signer too. A small wrapper keeps both in one object.\n\n\nclass HybridSigningKey:\n    def __init__(self, classical_key) -> None:  # the library's own signing key\n        self.classical = classical_key\n        self.post_quantum = mldsa.MLDSA65PrivateKey.generate()\n\n    def sign(self, message: bytes) -> tuple[bytes, bytes]:\n        return self.classical.sign(message), self.post_quantum.sign(message)\n\n\nclass _Classical:  # stands in for the library's key class in this example\n    def sign(self, message: bytes) -> bytes:\n        return b\"classical-signature\"\n\n\nclassical_sig, pq_sig = HybridSigningKey(_Classical()).sign(b\"message\")\nassert classical_sig and len(pq_sig) == 3309\n"
+    },
+    {
+      "id": "confirm-algorithm",
+      "to": "the matching guide once the algorithm is known",
+      "sources": ["nist-ir-8547"],
+      "example": "from cryptography.hazmat.primitives.asymmetric import ec, ed25519, rsa\n\n\ndef describe(key) -> str:\n    # Quanta could not see which algorithm this key uses. Check it where it is loaded.\n    if isinstance(key, (rsa.RSAPrivateKey, rsa.RSAPublicKey)):\n        return \"RSA: quantum-vulnerable, see the signature or encryption guide\"\n    if isinstance(key, (ec.EllipticCurvePrivateKey, ec.EllipticCurvePublicKey)):\n        return \"Elliptic curve: quantum-vulnerable, see the signature or key exchange guide\"\n    if isinstance(key, (ed25519.Ed25519PrivateKey, ed25519.Ed25519PublicKey)):\n        return \"Ed25519: quantum-vulnerable, see the signature guide\"\n    return type(key).__name__\n\n\nassert describe(ed25519.Ed25519PrivateKey.generate()).startswith(\"Ed25519\")\n"
+    }
+  ]
+}

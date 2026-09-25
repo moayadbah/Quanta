@@ -1,224 +1,201 @@
 {#
-  Canonical Quanta report. Self-contained by contract: inline CSS, inline SVG, no external
-  requests of any kind, so it opens from file:// with no network (NFR-07, DoD-C5).
+  Quanta post-quantum readiness report. Self-contained by contract: inline CSS and SVG, no
+  scripts, no external requests, so it opens from file:// with no network. The same data
+  renders the PDF (core/pdf.py); both come from core/report_data.py.
 
-  Autoescaping is ON for every value here. Repository content is never interpolated — only
-  paths, line numbers and qualified names, each already reduced to a safe character class
-  by report.safe_text. The `svg` value is the one deliberate Markup, and it is built from
-  our own graph data with html.escape applied to every label (T5).
-#}<meta charset="utf-8">
+  Autoescaping is ON for every value. Repository content appears only as paths, line
+  numbers, qualified names and single source lines, all escaped.
+#}<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Quanta — {{ safe(score.provenance.repo) }}</title>
+<title>{{ r.L.html_title }}</title>
 <style>
-  :root {
-    --bg: #ffffff; --fg: #1a1d21; --muted: #5c6470; --line: #dfe3e8;
-    --card: #f7f8fa; --accent: #3b5b8c; --bad: #a33b3b; --good: #4a7c59;
+  @page { size: A4; margin: 18mm 16mm 20mm;
+    @top-left { content: "Quanta · Post-quantum readiness"; font: 8.5pt Inter, "Segoe UI", sans-serif; color: #8a8a8a; }
+    @top-right { content: "{{ r.repo }}"; font: 8.5pt Inter, "Segoe UI", sans-serif; color: #8a8a8a; }
+    @bottom-right { content: "Page " counter(page) " of " counter(pages); font: 8.5pt Inter, "Segoe UI", sans-serif; color: #8a8a8a; }
   }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #14171a; --fg: #e6e9ed; --muted: #9aa3b0; --line: #2b3138;
-      --card: #1b1f24; --accent: #7aa2d6; --bad: #d98080; --good: #86c39a;
-    }
-  }
+  :root { --fg: #111; --muted: #5f6368; --line: #e6e6e6; --soft: #f6f6f6;
+          --bad: #c9302c; --warn: #b7791f; --ok: #2f7d4a; --info: #1f5fbf; }
   * { box-sizing: border-box; }
-  body {
-    margin: 0; padding: 2rem 1.25rem; background: var(--bg); color: var(--fg);
-    font: 15px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  }
-  main { max-width: 1180px; margin: 0 auto; }
-  h1 { font-size: 1.5rem; margin: 0 0 .25rem; }
-  h2 { font-size: 1.05rem; margin: 2.25rem 0 .75rem; padding-bottom: .35rem;
-       border-bottom: 1px solid var(--line); }
-  code, .mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .86em; }
-  .sub { color: var(--muted); margin: 0 0 1.5rem; }
-  .scorecard { display: flex; align-items: baseline; gap: 1rem; background: var(--card);
-               border: 1px solid var(--line); border-radius: 10px; padding: 1.25rem 1.5rem; }
-  .scorecard .value { font-size: 3rem; font-weight: 650; line-height: 1; }
-  .scorecard .of { color: var(--muted); }
-  table { border-collapse: collapse; width: 100%; }
-  th, td { text-align: left; padding: .5rem .6rem; border-bottom: 1px solid var(--line);
-           vertical-align: top; }
-  th { color: var(--muted); font-weight: 600; font-size: .82rem; text-transform: uppercase;
-       letter-spacing: .04em; }
-  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
-  .deduction { border-left: 3px solid var(--bad); padding: .6rem .9rem; margin: .6rem 0;
-               background: var(--card); border-radius: 0 6px 6px 0; }
-  .deduction .head { display: flex; justify-content: space-between; gap: 1rem;
-                     font-weight: 600; }
-  .cites { margin: .45rem 0 0; padding: 0; list-style: none; display: flex;
-           flex-wrap: wrap; gap: .35rem; }
-  .cites li { background: var(--bg); border: 1px solid var(--line); border-radius: 4px;
-              padding: .1rem .4rem; }
-  .rec { border-left: 3px solid var(--good); padding: .6rem .9rem; margin: .6rem 0;
-         background: var(--card); border-radius: 0 6px 6px 0; }
-  .figure { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px;
-            background: var(--card); padding: .5rem; }
-  .legend { display: flex; flex-wrap: wrap; gap: 1rem; margin: .6rem 0 0; padding: 0;
-            list-style: none; color: var(--muted); font-size: .85rem; }
-  .legend .swatch { display: inline-block; width: .7rem; height: .7rem; border-radius: 2px;
-                    margin-right: .35rem; vertical-align: baseline; }
-  .note { color: var(--muted); font-size: .88rem; }
-  .warn { border-left: 3px solid #b08a3c; padding: .6rem .9rem; background: var(--card);
-          border-radius: 0 6px 6px 0; }
-  footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--line);
-           color: var(--muted); font-size: .84rem; }
+  html { background: #fff; }
+  body { margin: 0; color: var(--fg); font: 10.5pt/1.55 Inter, -apple-system, "Segoe UI", Roboto, sans-serif;
+         -webkit-font-smoothing: antialiased; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  main { max-width: 860px; margin: 0 auto; padding: 40px 28px 64px; }
+  h1 { font-size: 22pt; line-height: 1.15; letter-spacing: -0.02em; margin: 0; }
+  h2 { font-size: 13.5pt; letter-spacing: -0.01em; margin: 34px 0 10px; padding-top: 14px; border-top: 1px solid var(--line); break-after: avoid; }
+  h3 { font-size: 11pt; margin: 18px 0 6px; break-after: avoid; }
+  p { margin: 0 0 8px; }
+  .muted { color: var(--muted); }
+  .small { font-size: 9pt; color: var(--muted); }
+  code, .mono { font-family: "Geist Mono", ui-monospace, Consolas, Menlo, monospace; font-size: 8.8pt; }
+  .brand { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 11pt; }
+  .brand svg { width: 20px; height: 20px; color: var(--fg); }
+  .cover { display: grid; gap: 18px; padding-bottom: 22px; }
+  .facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+  .facts div { padding: 10px 12px; background: var(--soft); border-radius: 8px; }
+  .facts dt { font-size: 8.5pt; color: var(--muted); margin: 0 0 2px; }
+  .facts dd { margin: 0; font-weight: 600; overflow-wrap: anywhere; }
+  .verdict { display: flex; align-items: center; gap: 10px; font-size: 16pt; font-weight: 600; }
+  .dot { width: 11px; height: 11px; border-radius: 50%; background: #9aa0a6; flex: none; }
+  .dot.at_risk, .dot.vulnerable { background: var(--bad); }
+  .dot.in_transition, .dot.weak, .dot.review { background: var(--warn); }
+  .dot.ready, .dot.pq { background: var(--ok); }
+  .note { padding: 9px 12px; background: var(--soft); border-radius: 8px; margin: 10px 0; }
+  .note.warn { background: #fff6e5; }
+  .bar { display: flex; height: 12px; border-radius: 6px; overflow: hidden; background: var(--soft); margin: 12px 0 8px; }
+  .legend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 9pt; }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .legend .dot { width: 8px; height: 8px; }
+  table { width: 100%; border-collapse: collapse; margin: 6px 0 4px; }
+  th { text-align: left; font-size: 8.5pt; font-weight: 600; color: var(--muted); padding: 6px 8px 6px 0; border-bottom: 1px solid var(--line); }
+  td { padding: 6px 8px 6px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+  tr { break-inside: avoid; }
+  td.num { white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .pill { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: 8.5pt; background: var(--soft); white-space: nowrap; }
+  .pill.bad { background: #fde8e7; color: var(--bad); }
+  .pill.warn { background: #fdf1dc; color: #8a5a12; }
+  .action { display: grid; grid-template-columns: 22px minmax(0, 1fr) auto; gap: 4px 10px; padding: 9px 0; border-bottom: 1px solid var(--line); break-inside: avoid; }
+  .action .rank { color: var(--muted); }
+  .diff { font-family: "Geist Mono", ui-monospace, Consolas, monospace; font-size: 8.6pt; background: var(--soft); border-radius: 8px; padding: 6px 10px; margin: 4px 0 10px; white-space: pre-wrap; overflow-wrap: anywhere; break-inside: avoid; }
+  .diff .del { color: #9b1c1c; }
+  .diff .add { color: #1d6b3a; }
+  pre { font-family: "Geist Mono", ui-monospace, Consolas, monospace; font-size: 8.4pt; line-height: 1.5; background: var(--soft); border-radius: 8px; padding: 10px 12px; white-space: pre-wrap; overflow-wrap: anywhere; margin: 6px 0 8px; }
+  .guide { padding: 10px 0 14px; border-bottom: 1px solid var(--line); }
+  .guide pre { break-inside: auto; }
+  .sites { font-family: "Geist Mono", ui-monospace, Consolas, monospace; font-size: 8.4pt; color: var(--muted); }
+  footer { margin-top: 40px; padding-top: 12px; border-top: 1px solid var(--line); font-size: 8.5pt; color: var(--muted); }
+  @media print { main { max-width: none; padding: 0; } a { color: inherit; text-decoration: none; } h2 { break-before: auto; } }
+  @media (max-width: 640px) { .facts { grid-template-columns: 1fr 1fr; } }
 </style>
 
 <main>
-  <h1>Cryptographic Agility Report</h1>
-  <p class="sub mono">{{ safe(score.provenance.repo) }} @ {{ safe(score.provenance.commit_sha[:12]) }}</p>
+  <section class="cover">
+    <div class="brand"><svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M45.6 46.6A22 22 0 1 1 51.9 31" stroke="currentColor" stroke-width="10"/><path d="M31 31h13l16 25H47z" fill="currentColor"/></svg>Quanta</div>
+    <h1>{{ r.L.title }}</h1>
+    <dl class="facts">
+      <div><dt>{{ r.L.fact_repo }}</dt><dd class="mono">{{ r.repo }}</dd></div>
+      <div><dt>{{ r.L.fact_commit }}</dt><dd class="mono">{{ r.commit if r.real_commit else r.L.recorded }}</dd></div>
+      <div><dt>{{ r.L.fact_date }}</dt><dd>{{ r.date }}</dd></div>
+      <div><dt>{{ r.L.fact_verdict }}</dt><dd><span class="dot {{ r.verdict }}" style="display:inline-block;margin-right:6px"></span>{{ r.verdict_label }}</dd></div>
+    </dl>
+  </section>
 
-  <div class="scorecard">
-    <div class="value">{{ '%.1f'|format(score.agility_score) }}</div>
-    <div class="of">/ 100 &nbsp;·&nbsp; Agility Score</div>
+  <h2>{{ r.L.s1 }}</h2>
+  <div class="verdict"><span class="dot {{ r.verdict }}"></span>{{ r.verdict_label }}</div>
+  <p class="muted">{{ r.L.verdict_line }}</p>
+  {% if r.implements %}
+  <div class="note"><strong>{{ r.L.implements }}</strong> {{ r.L.implements_body }}</div>
+  {% endif %}
+  {% if r.truncation %}
+  <div class="note warn"><strong>{{ r.L.partial_title }}</strong> {{ r.L.truncation }}</div>
+  {% endif %}
+  {% if not r.complete %}
+  <div class="note warn"><strong>{{ r.L.partial_title }}</strong> {{ r.L.partial }}</div>
+  {% endif %}
+  {% if r.sites %}
+  <div class="bar" role="img" aria-label="{{ r.L.bar_label }}">
+    {% for s in ["vulnerable", "weak", "review", "pq", "safe"] %}{% if r.tally[s] %}<span class="dot {{ s }}" style="border-radius:0;height:12px;width:{{ (100 * r.tally[s] / r.sites) | round(2) }}%"></span>{% endif %}{% endfor %}
   </div>
-  <p class="note" style="margin-top:.6rem">
-    This measures <strong>source-edit difficulty</strong> only. It is not a migration-cost
-    estimate: real cost is dominated by certificates, protocols, hardware, external
-    dependencies and compliance, none of which are in scope. It is also not a
-    cryptographic security review.
-  </p>
+  <div class="legend">
+    {% for s in ["vulnerable", "weak", "review", "pq", "safe"] %}<span><span class="dot {{ s }}"></span>{{ r.tally_labels[s] }}: <strong>{{ r.tally[s] }}</strong></span>{% endfor %}
+  </div>
+  <p class="small">{{ r.L.counted }}</p>
+  {% endif %}
 
-  <h2>Factors</h2>
+  {% if r.actions %}
+  <h3>{{ r.L.actions }}</h3>
+  {% for a in r.actions %}
+  <div class="action">
+    <span class="rank">{{ a.rank }}</span>
+    <div><strong>{{ a.title }}</strong><div class="small">{{ a.body }}</div>
+      <div class="small">{{ a.sources_line }}</div></div>
+    <div style="text-align:right"><span class="pill {{ 'bad' if a.overdue else 'warn' }}">{{ a.when }}</span><div class="small">{{ a.sites_label }}</div></div>
+  </div>
+  {% endfor %}
+  {% endif %}
+
+  <h2>{{ r.L.s2 }}</h2>
+  {% if r.findings %}
+  <p class="small">{{ r.L.findings_note }}</p>
   <table>
-    <thead>
-      <tr>
-        <th>Factor</th><th>Raw</th>
-        <th class="num">Normalised</th><th class="num">Weight</th><th class="num">Contribution</th>
-      </tr>
-    </thead>
+    <thead><tr><th>{{ r.L.col_where }}</th><th>{{ r.L.col_call }}</th><th>{{ r.L.col_algorithm }}</th><th>{{ r.L.col_status }}</th><th>{{ r.L.col_entry }}</th></tr></thead>
     <tbody>
-      {% for key, factor in score.factors.items() %}
-      <tr>
-        <td>{{ factor_titles.get(key, key) }}</td>
-        <td class="mono">{{ safe(factor.raw) }}</td>
-        <td class="num">{{ '%.2f'|format(factor.normalised) }}</td>
-        <td class="num">{{ '%.2f'|format(factor.weight) }}</td>
-        <td class="num">{{ '%.2f'|format(factor.contribution) }}</td>
-      </tr>
-      {% endfor %}
+    {% for f in r.findings %}
+      <tr><td class="mono">{{ f.where }}</td><td class="mono">{{ f.name }}</td><td>{{ f.algorithm }}</td>
+          <td><span class="pill {{ 'bad' if f.status == 'vulnerable' else 'warn' }}">{{ f.status_label }}</span></td><td>{{ f.entry }}</td></tr>
+    {% endfor %}
     </tbody>
   </table>
-  <p class="note">
-    Weights are pre-registered and git-tagged <code>weights-v1</code>, fixed before any
-    result was observed. The four factors are expected to be partially collinear — an
-    insulation layer mechanically implies fewer call sites and shallower propagation — so
-    the corpus-level analysis reports a factor correlation matrix rather than assuming
-    independence.
-  </p>
-
-  <h2>Deductions</h2>
-  {% if score.deductions %}
-    {% for d in score.deductions %}
-    <div class="deduction">
-      <div class="head">
-        <span>{{ factor_titles.get(d.factor, d.factor) }}</span>
-        <span>−{{ '%.2f'|format(d.points) }}</span>
-      </div>
-      <div>{{ safe(d.reason, 400) }}</div>
-      <ul class="cites">
-        {% for c in d.citations %}<li class="mono">{{ safe(c) }}</li>{% endfor %}
-      </ul>
-    </div>
-    {% endfor %}
   {% else %}
-    <p class="note">No deductions — no cryptographic call sites were detected.</p>
+  <p class="muted">{{ r.L.findings_none }}</p>
   {% endif %}
 
-  {% if score.recommendations %}
-  <h2>Recommendations</h2>
-    {% for r in score.recommendations %}
-    <div class="rec">
-      <div>{{ safe(r.action, 400) }}</div>
-      <div class="note">
-        Affects {{ r.affected_sites }} site{{ '' if r.affected_sites == 1 else 's' }}
-        {%- if r.estimated_score_gain > 0 %} · recovers at most
-        {{ '%.1f'|format(r.estimated_score_gain) }} points{% endif %}
-      </div>
-    </div>
-    {% endfor %}
-  <p class="note">
-    Point estimates are upper bounds on what the corresponding factor is currently losing,
-    not predictions.
-  </p>
+  <h2>{{ r.L.s3 }}</h2>
+  <p class="muted">{{ r.L.changes_lede }}</p>
+  <p class="small">{{ r.L.changes_counts }}</p>
+  {% if r.patches %}
+  <h3>{{ r.L.patches }}</h3>
+  {% for p in r.patches %}
+  <div class="small mono">{{ p.where }}</div>
+  <div class="diff"><span class="del">- {{ p.before }}</span>
+<span class="add">+ {{ p.after }}</span></div>
+  {% endfor %}
   {% endif %}
-
-  <h2>Cryptographic Dependency Graph</h2>
-  <div class="figure">{{ svg }}</div>
-  <ul class="legend">
-    {% for item in legend %}
-    <li><span class="swatch" style="background: {{ item.color }}"></span>{{ item.label }}</li>
-    {% endfor %}
-    <li><span class="swatch" style="background: #b08a3c"></span>dashed = low confidence</li>
-  </ul>
-  <p class="note">
-    {{ graph_nodes }} nodes, {{ graph_edges }} edges,
-    {{ low_confidence_edges }} of them low confidence.
-    {%- if omitted_nodes %} {{ omitted_nodes }} further nodes are omitted from the figure
-    for legibility; <code>cdg.json</code> contains the complete graph.{% endif %}
-    Every <code>call</code> edge is low confidence: one-hop qualified-name resolution
-    approximates value flow, and that is the honest label for it. Dynamic dispatch,
-    <code>getattr</code>, conditional imports, monkey-patching and <code>**kwargs</code>
-    forwarding all defeat this analysis.
-  </p>
-
-  <h2>Coverage</h2>
-  <table>
-    <tbody>
-      <tr><td>Files scanned</td><td class="num">{{ score.coverage.files_scanned }}</td></tr>
-      <tr><td>Files unparseable</td><td class="num">{{ score.coverage.files_unparseable }}</td></tr>
-      <tr><td>Truncated</td><td class="num">{{ 'yes' if score.coverage.truncated else 'no' }}</td></tr>
-    </tbody>
-  </table>
-
-  {% if meta.truncation %}
-  <div class="warn" style="margin-top:.75rem">
-    <strong>Declared truncation.</strong> The corpus budget
-    <code>{{ safe(meta.truncation.reason) }}</code> was reached
-    (limit {{ meta.truncation.limit }}, observed {{ meta.truncation.observed }}). Results
-    below cover part of the repository only.
+  {% if r.guides %}
+  <h3>{{ r.L.guides }}</h3>
+  {% for g in r.guides %}
+  <div class="guide">
+    <strong>{{ g.title }}</strong> <span class="pill">{{ g.sites_label }}</span>
+    <p class="small">{{ g.body }} {{ g.target }}</p>
+    <pre>{{ g.example }}</pre>
+    <div class="sites">{{ g.sites_line }}</div>
+    <div class="small">{{ g.sources_line }}</div>
   </div>
+  {% endfor %}
   {% endif %}
-
-  {% if meta.cbom_sha256 %}
-  <p class="note">External CycloneDX 1.6 input: <code>{{ meta.cbom_sha256 }}</code>.
-    {{ meta.cbom_unlocated }} assets or occurrences had no usable source location and are excluded
-    from source scoring. Imported graph nodes carry <code>source: cbom</code>.</p>
-  {% endif %}
-  {% if meta.truncations|length > 1 %}
-  <ul>{% for item in meta.truncations %}
-    <li>{{ safe(item.reason) }}: limit {{ item.limit }}, observed {{ item.observed }}</li>
-  {% endfor %}</ul>
-  {% endif %}
-
-  {% if meta.unparseable %}
-  <h2>Unparseable files</h2>
+  {% if r.refusals %}
+  <h3>{{ r.L.refusals }}</h3>
   <table>
-    <thead><tr><th>File</th><th>Reason</th></tr></thead>
+    <thead><tr><th>{{ r.L.col_where }}</th><th>{{ r.L.col_reason }}</th></tr></thead>
     <tbody>
-      {% for u in meta.unparseable %}
-      <tr><td class="mono">{{ safe(u.file) }}</td><td>{{ safe(u.reason) }}</td></tr>
-      {% endfor %}
+    {% for x in r.refusals %}
+      <tr><td class="mono">{{ x.where }}</td><td><strong>{{ x.title }}.</strong> <span class="muted">{{ x.detail }}</span></td></tr>
+    {% endfor %}
     </tbody>
   </table>
-  <p class="note">
-    Unparseable files are excluded from the denominator but listed here rather than
-    dropped: a silently skipped file is an unmeasured false negative.
-  </p>
   {% endif %}
 
-  <footer>
-    <p>
-      Provenance ·
-      <span class="mono">{{ safe(score.provenance.repo) }}</span> @
-      <span class="mono">{{ safe(score.provenance.commit_sha) }}</span> ·
-      analyzer <span class="mono">{{ safe(score.provenance.analyzer_version) }}</span> ·
-      ruleset <span class="mono">{{ safe(score.provenance.crypto_ruleset_version) }}</span> ·
-      renderer <span class="mono">{{ safe(renderer) }}</span>
-    </p>
-    <p>
-      Generated by Quanta. Static analysis only — no code from the analysed repository was
-      imported, executed or installed at any point.
-    </p>
-  </footer>
+  <h2>{{ r.L.s4 }}</h2>
+  {% if r.deadlines %}
+  <table>
+    <thead><tr><th>{{ r.L.col_framework }}</th><th>{{ r.L.col_rule }}</th><th>{{ r.L.col_year }}</th><th>{{ r.L.col_sites }}</th><th>{{ r.L.col_status }}</th></tr></thead>
+    <tbody>
+    {% for d in r.deadlines %}
+      <tr><td><strong>{{ d.framework }}</strong></td><td>{{ d.rule }}<div class="small">{{ d.source.title }}</div></td>
+          <td class="num">{{ d.year }}</td><td class="num">{{ d.sites }}</td>
+          <td><span class="pill {{ 'bad' if d.state == 'overdue' else 'warn' }}">{{ d.state_label }}</span></td></tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  <p class="small">{{ r.L.deadlines_note }}</p>
+  {% else %}
+  <p class="muted">{{ r.L.deadlines_none }}</p>
+  {% endif %}
+
+  <h2>{{ r.L.s5 }}</h2>
+  <table>
+    <tbody>
+      <tr><td>{{ r.L.m_files }}</td><td>{{ r.L.m_files_value }}</td></tr>
+      <tr><td>{{ r.L.m_how }}</td><td>{{ r.L.m_how_value }}</td></tr>
+      <tr><td>{{ r.L.m_readiness }}</td><td>{{ r.L.m_readiness_value }}</td></tr>
+      <tr><td>{{ r.L.m_score }}</td><td>{{ r.L.m_score_value }}</td></tr>
+      <tr><td>{{ r.L.m_versions }}</td><td class="mono">{{ r.L.m_versions_value }}</td></tr>
+    </tbody>
+  </table>
+  <p class="small">{{ r.L.scope }}</p>
+
+  <footer>{{ r.L.footer }}</footer>
 </main>
+</html>

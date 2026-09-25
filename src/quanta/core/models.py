@@ -24,9 +24,9 @@ import re
 from pathlib import Path
 from typing import Annotated, Any, Literal
 
-from pydantic import BaseModel, ConfigDict, Field, field_validator
+from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
-SCHEMA_VERSION = "1.0"
+SCHEMA_VERSION = "2.0"
 
 #: Decimal places retained on every emitted float. Six is far beyond meaningful precision
 #: for a 0-100 score and well inside the range where float64 is exact across platforms.
@@ -47,6 +47,10 @@ NodeKind = Literal["crypto_call", "algo_literal", "config_read", "function", "mo
 EdgeKind = Literal["binding", "value_flow", "import", "call"]
 Confidence = Literal["high", "low"]
 SiteSource = Literal["static", "cbom"]
+RoleName = Literal["source", "test", "docs", "example", "vendored", "tooling"]
+SiteForm = Literal["call", "reference", "operation", "implementation"]
+Selection = Literal["configured", "literal", "forwarded", "unspecified"]
+ScoreStatus = Literal["scored", "refused", "no_crypto_detected"]
 
 
 class _Base(BaseModel):
@@ -69,12 +73,27 @@ class Provenance(_Base):
     commit_sha: str
     analyzer_version: str
     crypto_ruleset_version: str
+    metric_version: str = "metric-v2"
+    weights_version: str = "weights-v1"
+    cbom_sha256: str | None = None
 
     def cache_key(self) -> str:
-        """``sha256("owner/name@sha#analyzer_version")`` — the ``analysis_cache`` key."""
+        """The ``analysis_cache`` key (Master Plan 11.2, fixes D12).
+
+        Metric and weights versions are part of the key, so a cached score can never be
+        served under a different score definition than the one that produced it.
+        """
         import hashlib
 
-        material = f"{self.repo}@{self.commit_sha}#{self.analyzer_version}"
+        material = "#".join(
+            [
+                f"{self.repo}@{self.commit_sha}",
+                self.analyzer_version,
+                self.metric_version,
+                self.weights_version,
+                self.cbom_sha256 or "",
+            ]
+        )
         return hashlib.sha256(material.encode()).hexdigest()
 
 
@@ -103,6 +122,20 @@ class CryptoSite(_Base):
     enclosing_function: str | None = None
     #: For ``algo_literal`` and ``config_read`` nodes: the ``crypto_call`` they select for.
     parent_site_id: str | None = None
+    #: File role (Master Plan 7.2). Only ``source`` sites count toward the score.
+    role: RoleName = "source"
+    #: ``reference`` when a crypto callable is named without being called (7.4).
+    form: SiteForm = "call"
+    #: Ruleset v2 category, for example ``hash``, ``tls`` or ``signature``.
+    category: str | None = None
+    #: Every algorithm a site selects, for example one per element of ``algorithms=[...]``.
+    algorithms: tuple[str, ...] = ()
+    #: How the algorithm is chosen (7.6). ``None`` for non-site nodes.
+    selection: Selection | None = None
+    #: A selector found outside any site's selector position (7.6).
+    free: bool = False
+    #: ``False`` for inventory-only rules (randomness, key loading, certificates).
+    scored: bool = True
 
     @property
     def citation(self) -> str:
@@ -133,10 +166,29 @@ class TruncationRecord(_Base):
     observed: int
 
 
+class UnmatchedName(_Base):
+    name: str
+    count: int
+
+
 class Coverage(_Base):
     files_scanned: int = 0
     files_unparseable: int = 0
+    files_unparseable_source: int = 0
     truncated: bool = False
+    source_files: int = 0
+    sites_by_role: dict[str, int] = Field(default_factory=dict)
+    touchpoints: int = 0
+    crypto_api_calls_matched: int = 0
+    crypto_api_calls_unmatched: int = 0
+    coverage_ratio: float | None = None
+    unmatched_top: tuple[UnmatchedName, ...] = ()
+    method_calls_note: str = "Calls on key or context objects are not counted."
+
+    @field_validator("coverage_ratio", mode="after")
+    @classmethod
+    def _quantise_ratio(cls, v: float | None) -> float | None:
+        return None if v is None else _round(v)
 
 
 # ---------------------------------------------------------------------------------------
@@ -181,12 +233,14 @@ class CdgEdge(_Base):
 
 
 class Factor(_Base):
-    """One of the four Agility Score factors (§5.3.3)."""
+    """One of the four Agility Score factors (Master Plan 8.3 to 8.6)."""
 
     raw: int | float | bool | str
     normalised: Rounded
     weight: Rounded
     contribution: Rounded
+    formula: str = ""
+    inputs: dict[str, int | float | str] = Field(default_factory=dict)
 
     @field_validator("normalised", "weight", "contribution", mode="after")
     @classmethod
@@ -227,9 +281,18 @@ class Deduction(_Base):
 
 
 class Recommendation(_Base):
+    """A refactor, and the most points its factor can recover.
+
+    ``estimated_score_gain`` is an **upper bound for one factor**, never a prediction of
+    the new score. Round two measured the v1 version of this number at +25.71 for a
+    facade that moved the v1 score by 0.00; the label exists so that cannot recur quietly.
+    """
+
     action: str
     estimated_score_gain: Rounded
     affected_sites: int
+    pattern: str = ""
+    bound: str = "upper bound for this factor"
 
     @field_validator("estimated_score_gain", mode="after")
     @classmethod
@@ -237,23 +300,56 @@ class Recommendation(_Base):
         return _round(v)
 
 
+class Refusal(_Base):
+    """Why no score was emitted (Master Plan 8.2). Quanta prefers no answer to a weak one."""
+
+    code: str
+    message: str
+    values: dict[str, int | float | str | None] = Field(default_factory=dict)
+
+
+class InventorySummary(_Base):
+    weak: int = 0
+    quantum_vulnerable: int = 0
+    pq: int = 0
+    by_algorithm: dict[str, int] = Field(default_factory=dict)
+    by_category: dict[str, int] = Field(default_factory=dict)
+
+
 class ScoreReport(_Base):
-    """``score.json`` — the single contract consumed by the frontend, report and experiment."""
+    """``score.json`` 2.0: the single contract consumed by the frontend, report and experiment.
+
+    ``agility_score`` is ``None`` unless ``status == "scored"``. A repository in which
+    nothing was detected is ``no_crypto_detected``, never 100 (fixes D11).
+    """
 
     schema_version: str = SCHEMA_VERSION
+    status: ScoreStatus = "scored"
+    refusal: Refusal | None = None
     provenance: Provenance
-    agility_score: Rounded
-    factors: dict[str, Factor]
+    agility_score: Rounded | None
+    factors: dict[str, Factor] = Field(default_factory=dict)
     deductions: tuple[Deduction, ...] = ()
     recommendations: tuple[Recommendation, ...] = ()
     coverage: Coverage = Coverage()
+    inventory_summary: InventorySummary = InventorySummary()
 
     @field_validator("agility_score", mode="after")
     @classmethod
-    def _quantise_and_bound(cls, v: float) -> float:
+    def _quantise_and_bound(cls, v: float | None) -> float | None:
+        if v is None:
+            return None
         if not 0.0 <= v <= 100.0:
             raise ValueError(f"agility score must lie in [0, 100], got {v}")
         return _round(v)
+
+    @model_validator(mode="after")
+    def _status_consistent(self) -> ScoreReport:
+        if (self.agility_score is None) == (self.status == "scored"):
+            raise ValueError("agility_score must be set exactly when status == 'scored'")
+        if (self.refusal is None) == (self.status == "refused"):
+            raise ValueError("refusal must be present exactly when status == 'refused'")
+        return self
 
 
 # ---------------------------------------------------------------------------------------
@@ -343,4 +439,6 @@ def dump_canonical_json(payload: Any) -> str:
 
 def write_canonical_json(path: Path, payload: Any) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(dump_canonical_json(payload), encoding="utf-8")
+    # newline="\n": Windows would otherwise write CRLF and break cross-OS byte identity
+    # (round two, Master Plan 22.8).
+    path.write_text(dump_canonical_json(payload), encoding="utf-8", newline="\n")

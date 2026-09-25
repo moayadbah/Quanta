@@ -64,6 +64,23 @@ CREATE TABLE IF NOT EXISTS artifact_blobs (
  job_id TEXT NOT NULL REFERENCES jobs(id) ON DELETE CASCADE,
  name TEXT NOT NULL, data TEXT NOT NULL, PRIMARY KEY(job_id,name)
 );
+CREATE TABLE IF NOT EXISTS finding_feedback (
+ job_id TEXT NOT NULL REFERENCES jobs(id) ON DELETE CASCADE,
+ user_id TEXT NOT NULL, finding_id TEXT NOT NULL,
+ verdict TEXT NOT NULL CHECK(verdict IN ('agree','disagree')),
+ reason TEXT NOT NULL DEFAULT '', updated_at TEXT NOT NULL,
+ PRIMARY KEY(job_id,user_id,finding_id)
+);
+CREATE TABLE IF NOT EXISTS verifications (
+ id TEXT PRIMARY KEY, job_id TEXT NOT NULL REFERENCES jobs(id) ON DELETE CASCADE,
+ user_id TEXT NOT NULL, digest TEXT NOT NULL, selected TEXT NOT NULL,
+ status TEXT NOT NULL CHECK(status IN ('queued','running','done','failed')),
+ verdict TEXT, result TEXT, worker_id TEXT, created_at TEXT NOT NULL, finished_at TEXT
+);
+CREATE INDEX IF NOT EXISTS idx_verifications_queue ON verifications(status, created_at);
+CREATE TABLE IF NOT EXISTS capabilities (
+ name TEXT PRIMARY KEY, value TEXT NOT NULL, updated_at TEXT NOT NULL
+);
 """
 
 TABLE_NAMES = tuple(re.findall(r"CREATE TABLE IF NOT EXISTS (\w+)", SCHEMA))

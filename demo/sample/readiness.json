@@ -1,0 +1,278 @@
+{
+  "actions": [
+    {
+      "by": 2030,
+      "citations": [
+        "speed.py:63",
+        "src/ecdsa/keys.py:1315",
+        "src/ecdsa/keys.py:1378",
+        "src/ecdsa/keys.py:1457",
+        "src/ecdsa/keys.py:1539",
+        "src/ecdsa/keys.py:1597",
+        "src/ecdsa/keys.py:219",
+        "src/ecdsa/keys.py:284",
+        "src/ecdsa/keys.py:326",
+        "src/ecdsa/keys.py:629",
+        "src/ecdsa/keys.py:687",
+        "src/ecdsa/keys.py:810",
+        "src/ecdsa/keys.py:885",
+        "src/ecdsa/keys.py:931",
+        "src/ecdsa/keys.py:983"
+      ],
+      "id": "pq_signatures",
+      "in_force": false,
+      "priority": 3,
+      "sites": 15,
+      "sources": [
+        "nist-ir-8547",
+        "nsa-cnsa-2",
+        "uk-ncsc-pqc"
+      ]
+    },
+    {
+      "by": 2030,
+      "citations": [
+        "src/ecdsa/ecdsa.py:327",
+        "src/ecdsa/keys.py:136",
+        "src/ecdsa/keys.py:223",
+        "src/ecdsa/keys.py:287",
+        "src/ecdsa/keys.py:329",
+        "src/ecdsa/keys.py:420",
+        "src/ecdsa/keys.py:472",
+        "src/ecdsa/keys.py:810",
+        "src/ecdsa/keys.py:834",
+        "src/ecdsa/keys.py:885",
+        "src/ecdsa/keys.py:931",
+        "src/ecdsa/keys.py:983"
+      ],
+      "id": "retire_sha1",
+      "in_force": false,
+      "priority": 4,
+      "sites": 12,
+      "sources": [
+        "nist-sha1-retirement",
+        "nist-sp-800-131a-r2"
+      ]
+    }
+  ],
+  "checked": "2026-09-25",
+  "complete": true,
+  "counts": {
+    "key_exchange": 0,
+    "pq": 0,
+    "review": 0,
+    "safe": 13,
+    "signature": 15,
+    "sites": 40,
+    "tls": 0,
+    "vulnerable": 15,
+    "weak": 12
+  },
+  "earliest_milestone": "eu-high-risk",
+  "earliest_year": 2030,
+  "frameworks": [
+    "nist",
+    "nsa",
+    "nca",
+    "eu",
+    "uk",
+    "us"
+  ],
+  "milestones": [
+    {
+      "framework": "nist",
+      "id": "nist-kex-deprecated",
+      "in_force": false,
+      "rule": "deprecated",
+      "sites": 0,
+      "source": "nist-ir-8547",
+      "state": "clear",
+      "year": 2030
+    },
+    {
+      "framework": "nist",
+      "id": "nist-kex-disallowed",
+      "in_force": false,
+      "rule": "disallowed",
+      "sites": 0,
+      "source": "nist-ir-8547",
+      "state": "clear",
+      "year": 2035
+    },
+    {
+      "framework": "nist",
+      "id": "nist-sig-deprecated",
+      "in_force": false,
+      "rule": "deprecated",
+      "sites": 0,
+      "source": "nist-ir-8547",
+      "state": "clear",
+      "year": 2030
+    },
+    {
+      "framework": "nist",
+      "id": "nist-sig-disallowed",
+      "in_force": false,
+      "rule": "disallowed",
+      "sites": 15,
+      "source": "nist-ir-8547",
+      "state": "due",
+      "year": 2035
+    },
+    {
+      "framework": "nist",
+      "id": "nist-sha1",
+      "in_force": false,
+      "rule": "retired",
+      "sites": 12,
+      "source": "nist-sha1-retirement",
+      "state": "due",
+      "year": 2030
+    },
+    {
+      "framework": "nist",
+      "id": "nist-md5",
+      "in_force": true,
+      "rule": "not_approved",
+      "sites": 0,
+      "source": "nist-sp-800-131a-r2",
+      "state": "clear",
+      "year": null
+    },
+    {
+      "framework": "nist",
+      "id": "nist-tdea",
+      "in_force": true,
+      "rule": "disallowed",
+      "sites": 0,
+      "source": "nist-sp-800-131a-r2",
+      "state": "clear",
+      "year": 2023
+    },
+    {
+      "framework": "nsa",
+      "id": "nsa-signing",
+      "in_force": false,
+      "rule": "exclusive",
+      "sites": 15,
+      "source": "nsa-cnsa-2",
+      "state": "due",
+      "year": 2030
+    },
+    {
+      "framework": "nsa",
+      "id": "nsa-web",
+      "in_force": false,
+      "rule": "exclusive",
+      "sites": 0,
+      "source": "nsa-cnsa-2",
+      "state": "clear",
+      "year": 2033
+    },
+    {
+      "framework": "nsa",
+      "id": "nsa-custom",
+      "in_force": false,
+      "rule": "replace",
+      "sites": 15,
+      "source": "nsa-cnsa-2",
+      "state": "due",
+      "year": 2033
+    },
+    {
+      "framework": "eu",
+      "id": "eu-first-steps",
+      "in_force": false,
+      "rule": "first_steps",
+      "sites": 0,
+      "source": "eu-pqc-roadmap",
+      "state": "met",
+      "year": 2026
+    },
+    {
+      "framework": "eu",
+      "id": "eu-high-risk",
+      "in_force": false,
+      "rule": "high_risk",
+      "sites": 15,
+      "source": "eu-pqc-roadmap",
+      "state": "due",
+      "year": 2030
+    },
+    {
+      "framework": "eu",
+      "id": "eu-full",
+      "in_force": false,
+      "rule": "full",
+      "sites": 15,
+      "source": "eu-pqc-roadmap",
+      "state": "due",
+      "year": 2035
+    },
+    {
+      "framework": "uk",
+      "id": "uk-discovery",
+      "in_force": false,
+      "rule": "discovery",
+      "sites": 0,
+      "source": "uk-ncsc-pqc",
+      "state": "met",
+      "year": 2028
+    },
+    {
+      "framework": "uk",
+      "id": "uk-priority",
+      "in_force": false,
+      "rule": "priority",
+      "sites": 15,
+      "source": "uk-ncsc-pqc",
+      "state": "due",
+      "year": 2031
+    },
+    {
+      "framework": "uk",
+      "id": "uk-complete",
+      "in_force": false,
+      "rule": "complete",
+      "sites": 15,
+      "source": "uk-ncsc-pqc",
+      "state": "due",
+      "year": 2035
+    },
+    {
+      "framework": "us",
+      "id": "us-kex",
+      "in_force": false,
+      "rule": "federal",
+      "sites": 0,
+      "source": "us-eo-14412",
+      "state": "clear",
+      "year": 2030
+    },
+    {
+      "framework": "us",
+      "id": "us-sig",
+      "in_force": false,
+      "rule": "federal",
+      "sites": 15,
+      "source": "us-eo-14412",
+      "state": "due",
+      "year": 2031
+    },
+    {
+      "framework": "nca",
+      "id": "nca-hybrid",
+      "in_force": false,
+      "rule": "hybrid_required",
+      "sites": 0,
+      "source": "nca-ncs-2-2025",
+      "state": "clear",
+      "year": null
+    }
+  ],
+  "overdue": [],
+  "reference_year": 2026,
+  "source_unread": 0,
+  "verdict": "at_risk",
+  "version": 1
+}

@@ -19,18 +19,20 @@ from pathlib import Path
 import structlog
 from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
-from fastapi.responses import JSONResponse, Response
+from fastapi.responses import FileResponse, JSONResponse, Response
 from fastapi.staticfiles import StaticFiles
 from starlette.exceptions import HTTPException
 
 from quanta.config import get_settings
 from quanta.errors import Reject
+from quanta.resources import asset_path
 from quanta.version import __version__
 from quanta.web.auth import Auth
 from quanta.web.auth import router as auth_router
 from quanta.web.cloud import router as cloud_router
 from quanta.web.jobs import JobRegistry
 from quanta.web.product import router as product_router
+from quanta.web.review import router as review_router
 from quanta.web.routes import router
 
 log = structlog.get_logger()
@@ -46,7 +48,8 @@ SPA_CSP = (
     "script-src 'self'; "
     "style-src 'self'; "
     "connect-src 'self'; "
-    "img-src 'self' data:; "
+    # Signed-in users see their GitHub avatar; images only, no other external origin.
+    "img-src 'self' data: https://avatars.githubusercontent.com; "
     "font-src 'self'; "
     "frame-src 'self'; "
     "base-uri 'none'; "
@@ -168,8 +171,18 @@ def create_app(artifact_root: Path | None = None, db_path: Path | None = None) -
 
     app.include_router(auth_router)
     app.include_router(product_router, prefix="/api/v1")
+    app.include_router(review_router, prefix="/api/v1")
     app.include_router(cloud_router, prefix="/api/v1")
     app.include_router(router, prefix="/api/v1")
+
+    @app.get("/content/site.json", include_in_schema=False)
+    def site_content() -> FileResponse:
+        """Every visible string, in English and Arabic (``content/site.json``)."""
+        return FileResponse(
+            asset_path("content/site.json"),
+            media_type="application/json",
+            headers={"Cache-Control": "no-cache"},
+        )
 
     if STATIC_DIR.is_dir():
         app.mount("/", StaticFiles(directory=str(STATIC_DIR), html=True), name="spa")

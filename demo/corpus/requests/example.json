@@ -1,0 +1,11 @@
+{
+  "agility_score": 63.871456,
+  "commit_sha": "611c6162cbc4ac2020a2f91c7cfa4f3abf9bbb60",
+  "findings": 9,
+  "proposals": 0,
+  "refusals": 3,
+  "repo": "psf/requests",
+  "sites": 9,
+  "status": "scored",
+  "steps": 9
+}

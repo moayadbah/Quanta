@@ -39,7 +39,7 @@ def test_cbom_is_merged_and_changes_provenance(tmp_path: Path) -> None:
     graph = json.loads((out / "cdg.json").read_text())
     assert sum(n["kind"] == "crypto_call" and n["source"] == "cbom" for n in graph["nodes"]) == 1
     meta = json.loads((out / "meta.json").read_text())
-    assert meta["cbom_sha256"] in meta["provenance"]["analyzer_version"]
+    assert meta["cbom_sha256"] == meta["provenance"]["cbom_sha256"]
     assert meta["cbom_unlocated"] == 0
     assert "SHA1" in (out / "report.html").read_text()
 

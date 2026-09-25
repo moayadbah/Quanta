@@ -28,6 +28,7 @@ from __future__ import annotations
 
 import hashlib
 from collections import defaultdict
+from collections.abc import Callable
 from dataclasses import dataclass
 from typing import Any
 
@@ -38,6 +39,10 @@ from quanta.core.detect import DetectionResult
 #: NetworkX renamed the node-link edge key; pinning it keeps ``cdg.json`` stable across
 #: library upgrades, which NFR-03 and DoD-C3 both depend on.
 _EDGES_KEY = "links"
+
+#: Master Plan 11.2. Nodes carry role, form, category, algorithms, selection and free;
+#: import and call edges carry the file and line that created them, for citations.
+CDG_SCHEMA_VERSION = "cdg-2.0"
 
 
 @dataclass
@@ -87,16 +92,18 @@ def build_cdg(detection: DetectionResult, stats: ResolutionStats | None = None) 
     of the return value, and out of ``cdg.json``, so adding this instrumentation changes
     no artifact and cannot perturb NFR-03.
     """
-    graph: nx.DiGraph = nx.DiGraph()
+    graph: nx.DiGraph = nx.DiGraph(schema_version=CDG_SCHEMA_VERSION)
     counters = stats if stats is not None else ResolutionStats()
 
-    module_files: dict[str, str] = {}
+    module_files: dict[str, str] = dict(detection.module_files)
     for record in detection.functions:
         module_files.setdefault(record.module, record.file)
     for site in detection.sites:
         module_files.setdefault(site.module, site.file)
     for module in detection.modules:
         module_files.setdefault(module, "")
+    module_roles = detection.module_roles
+    site_roles = {s.module: s.role for s in detection.sites}
 
     # -- module nodes -------------------------------------------------------------
     module_nodes: dict[str, str] = {}
@@ -113,6 +120,7 @@ def build_cdg(detection: DetectionResult, stats: ResolutionStats | None = None) 
             module=module,
             source="static",
             algorithm=None,
+            role=module_roles.get(module) or site_roles.get(module, "source"),
         )
 
     # -- function nodes -----------------------------------------------------------
@@ -132,6 +140,7 @@ def build_cdg(detection: DetectionResult, stats: ResolutionStats | None = None) 
             module=record.module,
             source="static",
             algorithm=None,
+            role=module_roles.get(record.module, "source"),
         )
         if record.module in module_nodes:
             graph.add_edge(module_nodes[record.module], node, kind="binding", confidence="high")
@@ -148,6 +157,13 @@ def build_cdg(detection: DetectionResult, stats: ResolutionStats | None = None) 
             module=site.module,
             source=site.source,
             algorithm=site.algorithm,
+            role=site.role,
+            form=site.form,
+            category=site.category,
+            algorithms=list(site.algorithms),
+            selection=site.selection,
+            free=site.free,
+            scored=site.scored,
         )
 
         # Attach each site to the tightest enclosing scope we know about.
@@ -166,11 +182,16 @@ def build_cdg(detection: DetectionResult, stats: ResolutionStats | None = None) 
             # flow runs from the selector into the call.
             graph.add_edge(site.site_id, site.parent_site_id, kind="value_flow", confidence="high")
 
+    def role_of(module: str) -> str:
+        return module_roles.get(module) or site_roles.get(module, "source")
+
     # -- import edges -------------------------------------------------------------
     module_index = _suffix_index(sorted(module_nodes))
     for imp in detection.imports:
         target_name = imp.target.lstrip(".")
-        module_candidates = module_index.get(target_name, set())
+        module_candidates = _prefer_role(
+            module_index.get(target_name, set()), role_of(imp.module), role_of
+        )
         if len(module_candidates) != 1:
             # Third-party or ambiguous. Counted, because "how much of this repository's
             # dependency surface is external?" is a real question the trace can answer.
@@ -180,16 +201,21 @@ def build_cdg(detection: DetectionResult, stats: ResolutionStats | None = None) 
         if resolved == imp.module:
             continue
         counters.imports_resolved += 1
-        graph.add_edge(
-            module_nodes[imp.module], module_nodes[resolved], kind="import", confidence="high"
+        _add_cited_edge(
+            graph, module_nodes[imp.module], module_nodes[resolved], "import", "high", imp
         )
 
     # -- one-hop call edges (always low confidence) --------------------------------
     function_index = _suffix_index(sorted(function_nodes))
+    function_module = {r.qualname: r.module for r in detection.functions}
     for call in detection.calls:
         counters.callees_seen += 1
         callee = call.callee.lstrip(".")
-        call_candidates = function_index.get(callee, set())
+        call_candidates = _prefer_role(
+            function_index.get(callee, set()),
+            role_of(call.caller_module),
+            lambda q: role_of(function_module.get(q, "")),
+        )
         if len(call_candidates) != 1:
             # Zero candidates means the callee is third-party or unresolvable; more than
             # one means the name is ambiguous. §5.3.2 forbids guessing in either case.
@@ -204,9 +230,48 @@ def build_cdg(detection: DetectionResult, stats: ResolutionStats | None = None) 
         target_node = function_nodes[target_qualname]
         if caller is None or caller == target_node:
             continue
-        graph.add_edge(caller, target_node, kind="call", confidence="low")
+        _add_cited_edge(graph, caller, target_node, "call", "low", call)
 
     return graph
+
+
+def _prefer_role(candidates: set[str], role: str, role_of: Callable[[str], str]) -> set[str]:
+    """Among ambiguous candidates, keep those with the importer's own file role.
+
+    Shipped code imports shipped code, not the copy of it under ``docs/`` or
+    ``examples/``. Without this, copying a package into ``docs/`` made every import of
+    it ambiguous and silently changed the shipped architecture's score (metamorphic
+    relation MR5, Master Plan 8.9). Still no guessing: if more than one candidate shares
+    the role, the edge is dropped as before.
+    """
+    if len(candidates) <= 1:
+        return candidates
+    same = {c for c in candidates if role_of(c) == role}
+    return same if len(same) == 1 else candidates
+
+
+def _add_cited_edge(
+    graph: nx.DiGraph, source: str, target: str, kind: str, confidence: str, record: Any
+) -> None:
+    """Add an edge carrying ``file`` and ``line``; keep the earliest citation if repeated.
+
+    Input order is sorted, but the rule is explicit so the choice cannot depend on it.
+    """
+    citation = (record.file, record.line)
+    if graph.has_edge(source, target):
+        data = graph.edges[source, target]
+        if data.get("kind") == kind and (data.get("file", ""), data.get("line", 0)) <= citation:
+            return
+        if data.get("kind") != kind:
+            return
+    graph.add_edge(
+        source,
+        target,
+        kind=kind,
+        confidence=confidence,
+        file=record.file,
+        line=record.line,
+    )
 
 
 # ---------------------------------------------------------------------------------------

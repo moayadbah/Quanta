@@ -7,6 +7,7 @@ convenience — every constant below bounds untrusted input.
 
 from __future__ import annotations
 
+import tempfile
 import tomllib
 from functools import lru_cache
 from pathlib import Path
@@ -25,7 +26,8 @@ class IngestSettings(BaseModel):
     allowed_hosts: tuple[str, ...] = ("github.com",)
     # Operator-supplied CONNECT proxy; never inherited from the submitting client.
     proxy_url: str | None = None
-    max_repo_kb: int = 200_000
+    # GitHub's `size` counts all history; the clone fetches only Python files at one commit.
+    max_repo_kb: int = 5_000_000
     clone_timeout_s: int = 180
     max_files: int = 20_000
     max_file_bytes: int = 2_000_000
@@ -47,6 +49,9 @@ class IngestSettings(BaseModel):
 
 class AnalysisSettings(BaseModel):
     parse_timeout_s: int = 5
+    #: Processes that parse a large repository in parallel (round four). Each parses text
+    #: only, exactly as the single-process path does; results are merged in file order.
+    parse_workers: int = Field(default=8, ge=1, le=16)
     max_job_seconds: int = 600
     blast_radius_max: int = 25
 
@@ -91,6 +96,16 @@ class Weights(BaseModel):
             raise ValueError(f"agility score weights must sum to 1.00, got {total!r}")
 
 
+class MetricSettings(BaseModel):
+    """Gate thresholds (Master Plan 8.2), pre-registered with the metric. Never tuned."""
+
+    version: str = "metric-v2"
+    coverage_min: float = 0.60
+    coverage_min_sample: int = 5
+    max_unparseable_ratio: float = 0.10
+    min_source_modules: int = 3
+
+
 class ReportSettings(BaseModel):
     #: "builtin" is a deterministic pure-Python SVG emitter (ADR-018). "graphviz" uses
     #: pydot and requires the `dot` binary on PATH.
@@ -113,11 +128,32 @@ class ProductSettings(BaseModel):
     max_fix_bytes: int = Field(default=500_000, ge=1000, le=1_000_000)
 
 
+class VerifySettings(BaseModel):
+    #: "auto": the local worker runs verification when Docker answers; a pull request for
+    #: a proposal then requires a finished verification (PROTOCOL-R3 K1). "off": never run
+    #: it, and pull requests say plainly that repository tests were not run.
+    mode: Literal["auto", "off"] = "auto"
+    #: Offer verification in the web product. Off since round four: the web product
+    #: promises three things (find, propose, assess readiness). Verification stays whole
+    #: in ``quanta verify``, ``quanta trace-check`` and the API, and returns to the web by
+    #: setting QUANTA_VERIFY__WEB=true.
+    web: bool = False
+    max_seconds: int = Field(default=5400, ge=300, le=14_400)
+
+
 class CloudSettings(BaseModel):
     enabled: bool = False
     database_url: SecretStr = SecretStr("")
     sandbox_snapshot: str = ""
     timeout_seconds: int = Field(default=180, ge=30, le=240)
+
+
+def _home() -> Path:
+    """The user's home, or the temp directory inside the scrubbed analyzer environment."""
+    try:
+        return Path.home()
+    except RuntimeError:
+        return Path(tempfile.gettempdir())
 
 
 class Settings(BaseSettings):
@@ -134,14 +170,19 @@ class Settings(BaseSettings):
     retention: RetentionSettings = Field(default_factory=RetentionSettings)
     stats: StatsSettings = Field(default_factory=StatsSettings)
     weights: Weights = Field(default_factory=Weights)
+    metric: MetricSettings = Field(default_factory=MetricSettings)
     report: ReportSettings = Field(default_factory=ReportSettings)
     auth: AuthSettings = Field(default_factory=AuthSettings)
     product: ProductSettings = Field(default_factory=ProductSettings)
     cloud: CloudSettings = Field(default_factory=CloudSettings)
+    verify: VerifySettings = Field(default_factory=VerifySettings)
 
-    db: Path = Path.home() / ".quanta" / "quanta.db"
-    artifact_root: Path = Path.home() / ".quanta" / "artifacts"
-    scratch_root: Path = Path.home() / ".quanta" / "scratch"
+    # Factories, not import-time values: the analyzer runs with a scrubbed environment in
+    # which the home directory cannot be resolved (Windows needs USERPROFILE), and its parse
+    # workers and large-file parsers build Settings there.
+    db: Path = Field(default_factory=lambda: _home() / ".quanta" / "quanta.db")
+    artifact_root: Path = Field(default_factory=lambda: _home() / ".quanta" / "artifacts")
+    scratch_root: Path = Field(default_factory=lambda: _home() / ".quanta" / "scratch")
     require_sandbox: bool = False
     deployment: Literal["local", "vercel"] = "local"
 
@@ -163,6 +204,7 @@ class Settings(BaseSettings):
             ingest=self.ingest.model_copy(),
             analysis=self.analysis.model_copy(),
             weights=self.weights.model_copy(),
+            metric=self.metric.model_copy(),
             report=self.report.model_copy(),
             product=self.product.model_copy(),
             require_sandbox=self.require_sandbox,

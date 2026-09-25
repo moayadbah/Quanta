@@ -142,7 +142,9 @@ class JobRegistry:
             if payload["event"] == "plan":
                 job.steps.clear()
             elif payload["event"] == "step":
-                step = StepRecord.model_validate(payload["data"])
+                # A recorded sample carries its time offset beside the step; it is not a field.
+                fields = {k: v for k, v in payload["data"].items() if k != "at_ms"}
+                step = StepRecord.model_validate(fields)
                 job.steps = [s for s in job.steps if s.id != step.id] + [step]
             elif payload["event"] == "error":
                 job.error_detail = payload["data"].get("detail")
