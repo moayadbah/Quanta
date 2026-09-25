@@ -447,6 +447,10 @@
       "en": "{n} could not be parsed and are listed in meta.json",
       "ar": "{n} تعذّر تحليلها وهي مدرجة في meta.json"
     },
+    "doc.m_unparseable_paths": {
+      "en": "Skipped files: {paths}",
+      "ar": "الملفات التي تعذّر تحليلها: {paths}"
+    },
     "doc.m_versions": {
       "en": "Versions",
       "ar": "الإصدارات"

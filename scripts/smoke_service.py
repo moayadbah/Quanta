@@ -45,7 +45,8 @@ cached = request("/examples/click/replay", {})
 job_id = cached["job_id"]
 if request(f"/analyses/{job_id}")["status"] != "succeeded":
     raise SystemExit("Cached analysis did not succeed.")
-if request(f"/analyses/{job_id}/score")["agility_score"] != 100:
+cached_score = request(f"/analyses/{job_id}/score")
+if cached_score["status"] != "no_crypto_detected" or cached_score["agility_score"] is not None:
     raise SystemExit("Cached score did not match.")
 
 if args.live:
