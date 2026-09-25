@@ -150,9 +150,11 @@ function renderWelcome() {
     return;
   }
   $("avatar-sk").hidden = true;
-  $("welcome-title").textContent = signed
+  const title = signed
     ? t("ws.welcome", { name: firstName(me?.name) || state.session.user.login })
     : t("ws.scan_title");
+  // The server may already have drawn this title; rewriting it would repaint it for nothing.
+  if ($("welcome-title").textContent !== title) $("welcome-title").textContent = title;
   const avatar = $("avatar");
   avatar.hidden = !(signed && me?.avatar_url);
   if (!avatar.hidden) {

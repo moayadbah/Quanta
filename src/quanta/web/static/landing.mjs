@@ -48,20 +48,32 @@ function drawAscii() {
   ctx.clearRect(0, 0, rect.width, rect.height);
   ctx.font = `500 ${cell + 1}px "Geist Mono", monospace`;
   ctx.textBaseline = "top";
-  for (let y = 0; y < rows; y++) {
-    for (let x = 0; x < cols; x++) {
-      const i = (y * cols + x) * 4;
-      const r = pixels[i], g = pixels[i + 1], b = pixels[i + 2];
-      const light = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
-      if (light < 0.06) continue;
-      ctx.fillStyle = `rgb(${r},${g},${b})`;
-      ctx.fillText(RAMP[Math.min(RAMP.length - 1, Math.floor(light * RAMP.length))], x * cell, y * cell);
+  // Drawn a few rows at a time, yielding between slices, so the page never has a long task.
+  const token = (drawAscii.token = (drawAscii.token || 0) + 1);
+  let y = 0;
+  const slice = () => {
+    if (token !== drawAscii.token) return;
+    const start = performance.now();
+    for (; y < rows && performance.now() - start < 8; y++) {
+      for (let x = 0; x < cols; x++) {
+        const i = (y * cols + x) * 4;
+        const r = pixels[i], g = pixels[i + 1], b = pixels[i + 2];
+        const light = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
+        if (light < 0.06) continue;
+        ctx.fillStyle = `rgb(${r},${g},${b})`;
+        ctx.fillText(RAMP[Math.min(RAMP.length - 1, Math.floor(light * RAMP.length))], x * cell, y * cell);
+      }
     }
-  }
-  requestAnimationFrame(() => {
-    canvas.classList.add("ready");
-    media.classList.add("has-ascii");
-  });
+    if (y < rows) {
+      setTimeout(slice, 0);
+      return;
+    }
+    requestAnimationFrame(() => {
+      canvas.classList.add("ready");
+      media.classList.add("has-ascii");
+    });
+  };
+  slice();
 }
 
 function mountHero() {
@@ -70,7 +82,11 @@ function mountHero() {
   if (!image || !media) return;
   const start = () => {
     media.classList.add("photo");
-    document.fonts.ready.then(() => setTimeout(drawAscii, 250));
+    // The hex field is decoration: it is drawn once the page is loaded and idle.
+    const idle = window.requestIdleCallback || ((fn) => setTimeout(fn, 400));
+    const later = () => document.fonts.ready.then(() => idle(drawAscii, { timeout: 1500 }));
+    if (document.readyState === "complete") later();
+    else window.addEventListener("load", later, { once: true });
   };
   if (image.complete && image.naturalWidth) start();
   else image.addEventListener("load", start, { once: true });

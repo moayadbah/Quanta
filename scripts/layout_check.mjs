@@ -142,7 +142,14 @@ const PROBE = String.raw`(() => {
 })()`;
 
 const HIDE_TEXT = `(() => { const s = document.createElement("style"); s.id = "hide-text"; s.textContent = "*, *::before, *::after { color: transparent !important; text-shadow: none !important; caret-color: transparent !important; -webkit-text-fill-color: transparent !important; } ::placeholder { color: transparent !important; } svg { visibility: hidden !important; }"; document.head.append(s); return true; })()`;
-const SETTLE = `(async () => { document.querySelectorAll(".reveal").forEach((e) => e.classList.add("in")); await document.fonts.ready; await new Promise((r) => setTimeout(r, 900)); return true; })()`;
+const SETTLE = `(async () => {
+  document.querySelectorAll(".reveal").forEach((e) => e.classList.add("in"));
+  await document.fonts.ready;
+  // The hex field behind the hero is drawn once the page is idle: measure with it present.
+  for (let i = 0; i < 40 && document.querySelector(".hero-ascii:not(.ready)"); i++) await new Promise((r) => setTimeout(r, 150));
+  await new Promise((r) => setTimeout(r, 900));
+  return true;
+})()`;
 
 async function shoot(page, file) {
   const shot = await page.send("Page.captureScreenshot", { format: "png" });

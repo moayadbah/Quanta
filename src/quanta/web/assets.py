@@ -80,9 +80,8 @@ FIRST_FONTS = {
         "inter-500-latin.woff2",
         "inter-600-latin.woff2",
         "inter-display-medium-latin.woff2",
-        "geist-mono-400-latin.woff2",
     ),
-    "ar": ("readex-pro-arabic.woff2", "geist-mono-400-latin.woff2"),
+    "ar": ("readex-pro-arabic.woff2",),
 }
 _IMPORT = re.compile(r'^\s*import\b[^;]*?\bfrom\s+"\./([\w.-]+\.mjs)"', re.MULTILINE)
 
