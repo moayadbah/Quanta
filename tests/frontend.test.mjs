@@ -303,6 +303,41 @@ test('artifact fetch failure can recover through polling', async () => {
   assert.equal(f.watcher.stopped, true);
 });
 
+test('browser-native transports recover a report and cancel retries with their global receiver', async (t) => {
+  const timers = new Map();
+  let next = 0, attempts = 0;
+  const requireGlobal = (receiver) => {
+    if (receiver !== globalThis) throw new TypeError('Illegal invocation');
+  };
+  t.mock.method(globalThis, 'setTimeout', function (fn) {
+    requireGlobal(this);
+    timers.set(++next, fn);
+    return next;
+  });
+  t.mock.method(globalThis, 'clearTimeout', function (id) {
+    requireGlobal(this);
+    timers.delete(id);
+  });
+  t.mock.method(globalThis, 'fetch', async function () {
+    requireGlobal(this);
+    return { ok: true, status: 200, json: async () => ({ status: 'succeeded' }) };
+  });
+  const transport = { EventSource: class {} };
+  const watcher = new AnalysisWatcher('job', {
+    done: async () => { if (++attempts === 1) throw new Error('interrupted report download'); },
+  }, transport);
+  await watcher.finish();
+  const [id, tick] = timers.entries().next().value;
+  timers.delete(id);
+  await tick();
+  assert.equal(attempts, 2);
+  assert.equal(watcher.stopped, true);
+  const cancelled = new AnalysisWatcher('another-job', {}, transport);
+  cancelled.poll();
+  cancelled.stop();
+  assert.equal(timers.size, 0);
+});
+
 test('the workspace entrypoint is served as a module so its imports can load', async () => {
   const { readFile } = await import('node:fs/promises');
   const html = await readFile(new URL('../src/quanta/web/static/workspace.html', import.meta.url), 'utf8');

@@ -3,10 +3,11 @@ export class AnalysisWatcher {
   constructor(jobId, callbacks, transport = {}) {
     this.jobId = jobId;
     this.callbacks = callbacks;
-    this.fetch = transport.fetch || fetch;
+    this.fetch = transport.fetch || globalThis.fetch.bind(globalThis);
     this.EventSource = transport.EventSource || EventSource;
-    this.schedule = transport.setTimeout || setTimeout;
-    this.unschedule = transport.clearTimeout || clearTimeout;
+    // Browser globals require the Window receiver even when used as instance methods.
+    this.schedule = transport.setTimeout || globalThis.setTimeout.bind(globalThis);
+    this.unschedule = transport.clearTimeout || globalThis.clearTimeout.bind(globalThis);
     this.source = null;
     this.timer = null;
     this.stopped = false;
