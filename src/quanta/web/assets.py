@@ -23,7 +23,7 @@ from pathlib import Path
 from typing import Any
 
 STATIC_DIR = Path(__file__).resolve().parent / "static"
-PAGES = ("index.html", "workspace.html", "privacy.html")
+PAGES = ("index.html", "workspace.html", "privacy.html", "references.html")
 IMMUTABLE = "public, max-age=31536000, s-maxage=31536000, immutable"
 REVALIDATE = "public, max-age=0, must-revalidate"
 

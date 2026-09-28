@@ -22,7 +22,7 @@ from quanta.errors import ERROR_CODES
 ROOT = Path(__file__).resolve().parents[2]
 CONTENT = ROOT / "content" / "site.json"
 STATIC = ROOT / "src" / "quanta" / "web" / "static"
-PAGES = ("index.html", "workspace.html", "privacy.html")
+PAGES = ("index.html", "workspace.html", "privacy.html", "references.html")
 SCRIPTS = ("landing.mjs", "workspace.mjs", "i18n.mjs", "chrome.mjs", "page.mjs")
 
 

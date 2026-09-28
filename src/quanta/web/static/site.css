@@ -592,6 +592,53 @@ dialog.sheet::backdrop { background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(2
 .page .h3 { margin-top: 24px; }
 .page p { margin: 0; color: var(--muted); line-height: 1.75; }
 
+/* References: one hairline row per source (date, then the source and what Quanta took from
+   it), the same rows as the FAQ. Source titles are the originals and stay left to right in
+   both languages; dates and figures are digits, which bidi already keeps in order. */
+.page.references { max-width: calc(880px + 2 * var(--pad)); }
+.ref-stats { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 16px 48px; margin: 8px 0 0; }
+.ref-stats > div { display: flex; flex-direction: column-reverse; gap: 4px; }
+.ref-stats dt { color: var(--muted); font-size: 13px; }
+.ref-stats dd { margin: 0; font: 500 36px/1 var(--font-display); letter-spacing: -0.045em; color: var(--fg-strong); unicode-bidi: isolate; font-variant-numeric: tabular-nums; }
+.ref-stats dd.date { font: 400 17px/1.4 var(--font-mono); letter-spacing: 0; color: var(--fg); }
+.ref-index { display: flex; flex-wrap: wrap; gap: 0 20px; margin-block: -6px; }
+.ref-index a { display: inline-flex; align-items: center; min-height: 44px; color: var(--muted); font-size: 14px; transition: color var(--fast) var(--ease); }
+@media (hover: hover) { .ref-index a:hover { color: var(--fg); } }
+.ref-group { display: grid; gap: 16px; margin-top: 36px; }
+.page .ref-group .h3 { margin-top: 0; display: flex; align-items: baseline; gap: 10px; }
+.ref-group .num { font: 400 13px/1 var(--font-mono); color: var(--subtle); letter-spacing: 0; }
+.refs, .checks { list-style: none; margin: 0; padding: 0; display: grid; }
+.ref, .check { display: grid; column-gap: 24px; row-gap: 4px; padding: 16px 0; box-shadow: 0 1px 0 var(--line); }
+.refs > .ref:first-child, .checks > .check:first-child { box-shadow: 0 -1px 0 var(--line), 0 1px 0 var(--line); }
+.ref { grid-template-columns: 96px minmax(0, 1fr); }
+.ref-date { grid-row: 1 / span 2; padding-top: 2px; font: 400 13px/1.6 var(--font-mono); color: var(--subtle); unicode-bidi: isolate; font-variant-numeric: tabular-nums; }
+.page .ref-source { color: var(--fg); font-size: 15px; line-height: 1.5; }
+/* The link is the original title, left to right in both languages. Its icon sits in the end
+   padding of the last line, so a wrapping title never leaves the icon alone on a line. */
+.ref-link { position: relative; padding-block: 11px; padding-inline-end: 18px; direction: ltr; unicode-bidi: isolate; font-weight: 500; text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 3px; transition: text-decoration-color var(--fast) var(--ease); }
+@media (hover: hover) { .ref-link:hover { text-decoration-color: var(--ring-strong); } }
+.ref-link .arrow, .check-evidence .arrow { display: inline-block; width: 12px; height: 12px; color: var(--subtle); }
+.ref-link .arrow { position: absolute; right: 0; bottom: 14px; }
+:root[dir="rtl"] a.ref-link > .arrow { transform: none; }
+@media (hover: hover) { :root[dir="rtl"] a.ref-link:hover > .arrow { transform: translateX(2px); } }
+.ref-source .tag, .check .tag { margin-inline-start: 8px; vertical-align: 1px; }
+.page .ref-took { font-size: 14px; line-height: 1.6; }
+.ref-group#validation { margin-top: 72px; }
+.checks { margin-top: 12px; }
+.check { grid-template-columns: minmax(0, 1fr) auto; align-items: center; }
+.check .h4 { grid-column: 1; color: var(--muted); font-size: 14px; font-weight: 400; line-height: 1.5; }
+.page .check-result { grid-column: 1; color: var(--fg); font-size: 16px; font-weight: 500; line-height: 1.55; }
+.page .check-evidence { grid-column: 2; grid-row: 1 / span 2; display: flex; gap: 20px; color: var(--subtle); font-size: 13px; white-space: nowrap; }
+.check-evidence .link { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; }
+:root[lang="ar"] .page .check-result { line-height: 1.8; }
+@media (max-width: 640px) {
+  .ref { grid-template-columns: minmax(0, 1fr); }
+  .ref-date { grid-row: auto; padding-top: 0; }
+  .check { grid-template-columns: minmax(0, 1fr); }
+  .page .check-evidence { grid-column: 1; grid-row: auto; flex-wrap: wrap; margin-block: -8px; }
+  .ref-stats { gap: 16px 32px; }
+}
+
 /* Round five: workspace doors, dashboard, findings scope, guided migrations ------------------ */
 .doors { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
 .door { padding: 28px; display: grid; gap: 12px; align-content: start; grid-template-rows: auto 1fr auto; }
