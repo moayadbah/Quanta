@@ -17,7 +17,7 @@ def _client(tmp_path: Path) -> TestClient:
 
 def test_every_page_is_sent_with_its_text_in_the_readers_language(tmp_path: Path) -> None:
     with _client(tmp_path) as client:
-        for path in ("/", "/workspace.html", "/privacy.html"):
+        for path in ("/", "/workspace.html", "/privacy.html", "/references"):
             english = client.get(path).text
             # No element that holds a string is left empty for a script to fill later.
             assert not re.search(r'data-t="[^"]+"></', english), path

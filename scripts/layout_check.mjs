@@ -208,6 +208,7 @@ const STATES = [
   { id: "home", url: (l) => `${BASE}/?lang=${l}` },
   { id: "menu", url: (l) => `${BASE}/?lang=${l}`, phone: true, act: `document.getElementById("menu-open")?.click(); true` },
   { id: "privacy", url: (l) => `${BASE}/privacy.html?lang=${l}` },
+  { id: "references", url: (l) => `${BASE}/references?lang=${l}` },
   { id: "signin", url: (l) => `${BASE}/workspace.html?lang=${l}` },
   ...(LOCAL ? [{ id: "dashboard", url: (l) => `${LOCAL}/workspace.html?lang=${l}` }] : []),
   { id: "run", url: (l) => `${BASE}/workspace.html?lang=${l}#sample`, run: true },
