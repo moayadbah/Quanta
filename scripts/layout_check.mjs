@@ -28,6 +28,9 @@ const CHROME = args.chrome || "C:/Program Files/Google/Chrome/Application/chrome
 export const SIZES = [
   [320, 568], [360, 780], [375, 812], [390, 844], [414, 896], [768, 1024], [1024, 768], [1440, 900], [844, 390],
 ];
+const ONLY = args.states ? args.states.split(",") : null;
+// Seconds to wait for the recorded sample to finish (a hosted run can take longer).
+const RUN_WAIT = Number(args["run-wait"] || 60);
 const sizes = args.sizes ? SIZES.filter(([w, h]) => args.sizes.split(",").includes(`${w}x${h}`)) : SIZES;
 mkdirSync(OUT, { recursive: true });
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -205,6 +208,7 @@ const STATES = [
   { id: "home", url: (l) => `${BASE}/?lang=${l}` },
   { id: "menu", url: (l) => `${BASE}/?lang=${l}`, phone: true, act: `document.getElementById("menu-open")?.click(); true` },
   { id: "privacy", url: (l) => `${BASE}/privacy.html?lang=${l}` },
+  { id: "references", url: (l) => `${BASE}/references?lang=${l}` },
   { id: "signin", url: (l) => `${BASE}/workspace.html?lang=${l}` },
   ...(LOCAL ? [{ id: "dashboard", url: (l) => `${LOCAL}/workspace.html?lang=${l}` }] : []),
   { id: "run", url: (l) => `${BASE}/workspace.html?lang=${l}#sample`, run: true },
@@ -218,6 +222,7 @@ for (const lang of LANGS) {
     const tag = `${size[0]}x${size[1]}`;
     for (const state of STATES) {
       if (state.phone && size[0] >= 768) continue;
+      if (ONLY && !ONLY.includes(state.id)) continue;
       await open(page, state.url(lang), size);
       if (state.act) { await page.evaluate(state.act); await sleep(500); }
       if (!state.run) {
@@ -227,7 +232,7 @@ for (const lang of LANGS) {
       }
       // The recorded sample: wait until the run is done, then every tab and the report.
       let finished = false;
-      for (let i = 0; i < 120 && !finished; i++) {
+      for (let i = 0; i < RUN_WAIT * 2 && !finished; i++) {
         await sleep(500);
         finished = await page.evaluate(`!!document.querySelector("#result .verdict")`);
       }

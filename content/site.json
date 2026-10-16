@@ -1239,10 +1239,6 @@
       "en": "Per-repository measurements",
       "ar": "القياسات لكل مستودع"
     },
-    "footer.api": {
-      "en": "API",
-      "ar": "واجهة البرمجة"
-    },
     "footer.label": {
       "en": "Footer",
       "ar": "تذييل الصفحة"
@@ -1250,6 +1246,10 @@
     "footer.privacy": {
       "en": "Privacy",
       "ar": "الخصوصية"
+    },
+    "footer.references": {
+      "en": "References",
+      "ar": "المراجع"
     },
     "fw.eu": {
       "en": "European Union",
@@ -1962,6 +1962,782 @@
     "rec.other": {
       "en": "Recommended change. Sites: {n}",
       "ar": "تغيير موصى به. المواضع: {n}"
+    },
+    "refs.agents.date": {
+      "en": "2025-12-15",
+      "ar": "2025-12-15"
+    },
+    "refs.agents.title": {
+      "en": "Alquwayfili, A.: Can Coding Agents Migrate to Post-Quantum Cryptography?",
+      "ar": "Alquwayfili, A.: Can Coding Agents Migrate to Post-Quantum Cryptography?"
+    },
+    "refs.agents.took": {
+      "en": "Agent patches passed local checks yet failed external requirements, so a person reviews every Quanta change.",
+      "ar": "اجتازت تعديلات الوكلاء الفحوص المحلية وأخفقت في المتطلبات الخارجية، لذا يراجع شخص كل تغيير يقترحه Quanta."
+    },
+    "refs.agility.date": {
+      "en": "2026-06-11",
+      "ar": "2026-06-11"
+    },
+    "refs.agility.title": {
+      "en": "Rameshan, N., Messmer, G.: An Assessment Framework for Application-Level Cryptographic Agility",
+      "ar": "Rameshan, N., Messmer, G.: An Assessment Framework for Application-Level Cryptographic Agility"
+    },
+    "refs.agility.took": {
+      "en": "Assessing crypto agility at the level of the application.",
+      "ar": "تقييم المرونة التشفيرية على مستوى التطبيق."
+    },
+    "refs.aramco.date": {
+      "en": "2026-05-18",
+      "ar": "2026-05-18"
+    },
+    "refs.aramco.title": {
+      "en": "Aramco and Pasqal launch Saudi Arabia's first quantum computer",
+      "ar": "Aramco and Pasqal launch Saudi Arabia's first quantum computer"
+    },
+    "refs.aramco.took": {
+      "en": "Saudi Arabia's first quantum computer is running.",
+      "ar": "أول حاسوب كمي في السعودية يعمل الآن."
+    },
+    "refs.back": {
+      "en": "Back to Quanta",
+      "ar": "العودة إلى Quanta"
+    },
+    "refs.bandit.date": {
+      "en": "2026-09-28",
+      "ar": "2026-09-28"
+    },
+    "refs.bandit.title": {
+      "en": "Bandit: B324 hashlib",
+      "ar": "Bandit: B324 hashlib"
+    },
+    "refs.bandit.took": {
+      "en": "Flags weak hashes but proposes no change.",
+      "ar": "ينبّه إلى دوال التجزئة الضعيفة دون أن يقترح تغييرًا."
+    },
+    "refs.bls.date": {
+      "en": "2025-05",
+      "ar": "2025-05"
+    },
+    "refs.bls.title": {
+      "en": "US Bureau of Labor Statistics: Occupational Outlook Handbook, Software Developers",
+      "ar": "US Bureau of Labor Statistics: Occupational Outlook Handbook, Software Developers"
+    },
+    "refs.bls.took": {
+      "en": "Median wage $135,980 a year ($65.38 an hour), behind the $5,007.",
+      "ar": "الأجر الوسيط 135,980 دولارًا سنويًا (65.38 دولارًا للساعة)، وراء رقم 5,007 دولارات."
+    },
+    "refs.cbomkit.date": {
+      "en": "2026-09-28",
+      "ar": "2026-09-28"
+    },
+    "refs.cbomkit.title": {
+      "en": "CBOMkit: A toolset for dealing with Cryptography Bill of Materials",
+      "ar": "CBOMkit: A toolset for dealing with Cryptography Bill of Materials"
+    },
+    "refs.cbomkit.took": {
+      "en": "Inventory to CBOM without code changes. Quanta imports its CBOMs.",
+      "ar": "جرد إلى CBOM دون تعديل الشيفرة، ويستورد Quanta ملفاته."
+    },
+    "refs.check.determinism.name": {
+      "en": "Determinism across operating systems",
+      "ar": "الحتمية عبر أنظمة التشغيل"
+    },
+    "refs.check.determinism.result": {
+      "en": "30 of 30 outputs byte-identical on Windows and Linux, 6 repositories.",
+      "ar": "30 من 30 مخرجًا متطابقة بايتًا ببايت على Windows وLinux، في 6 مستودعات."
+    },
+    "refs.check.harness.name": {
+      "en": "Verification harness",
+      "ar": "منظومة التحقق"
+    },
+    "refs.check.harness.result": {
+      "en": "A planted fault passed all 8 project tests. The output comparison caught it.",
+      "ar": "خطأ مزروع اجتاز اختبارات المشروع الثمانية كلها، وكشفته مقارنة المخرجات."
+    },
+    "refs.check.heldout.name": {
+      "en": "Held-out set: 20 repositories never seen, scored once",
+      "ar": "مجموعة محجوبة: 20 مستودعًا لم تُرَ من قبل، قيست مرة واحدة"
+    },
+    "refs.check.heldout.result": {
+      "en": "71 of 71 findings correct. 70 of 74 labelled calls found (94.6%).",
+      "ar": "71 من 71 نتيجة صحيحة. وُجد 70 من 74 استدعاءً موسومًا (94.6%)."
+    },
+    "refs.check.layout.name": {
+      "en": "Layout check: 8 widths plus landscape, English and Arabic",
+      "ar": "فحص التخطيط: 8 عروض مع الوضع الأفقي، بالعربية والإنجليزية"
+    },
+    "refs.check.layout.result": {
+      "en": "172 screen states: no overlap, overflow, sideways scroll, small tap target or contrast failure.",
+      "ar": "172 حالة شاشة: لا تداخل ولا فيض ولا تمرير جانبي ولا هدف لمس صغير ولا ضعف في التباين."
+    },
+    "refs.check.pktls.name": {
+      "en": "Public key and TLS, same set",
+      "ar": "المفاتيح العامة وTLS، المجموعة نفسها"
+    },
+    "refs.check.pktls.result": {
+      "en": "4 of 8 found. Our known weak spot.",
+      "ar": "وُجد 4 من 8. نقطة ضعفنا المعروفة."
+    },
+    "refs.check.release.name": {
+      "en": "Design and development sets: 40 repositories, rechecked at release",
+      "ar": "مجموعتا التصميم والتطوير: 40 مستودعًا، أعيد فحصها عند الإصدار"
+    },
+    "refs.check.release.result": {
+      "en": "203 of 213 findings correct. 200 of 201 labelled calls found.",
+      "ar": "203 من 213 نتيجة صحيحة. وُجد 200 من 201 استدعاءً موسومًا."
+    },
+    "refs.check.suite.name": {
+      "en": "Automated test suite",
+      "ar": "مجموعة الاختبارات الآلية"
+    },
+    "refs.check.suite.result": {
+      "en": "1,360 engine and 20 front-end tests pass. Lint and type checks clean.",
+      "ar": "تنجح 1,360 اختبارًا للمحرك و20 اختبارًا للواجهة. فحوص الأسلوب والأنواع نظيفة."
+    },
+    "refs.check.sweep.name": {
+      "en": "Repository sweep: 25 public repositories through the product",
+      "ar": "مسح المستودعات: 25 مستودعًا عامًا عبر المنتج"
+    },
+    "refs.check.sweep.result": {
+      "en": "From empty repositories to very large monorepos. 9 failures found and fixed.",
+      "ar": "من مستودعات فارغة إلى مستودعات ضخمة. اكتُشفت 9 أعطال وأُصلحت."
+    },
+    "refs.check.timecost.name": {
+      "en": "Time and cost: 60 labelled repositories",
+      "ar": "الوقت والتكلفة: 60 مستودعًا موسومًا"
+    },
+    "refs.check.timecost.result": {
+      "en": "Median scan 15.3 seconds. 80 calls already past a published deadline.",
+      "ar": "وسيط زمن الفحص 15.3 ثانية. 80 استدعاءً تجاوزت موعدًا منشورًا."
+    },
+    "refs.check.trace.name": {
+      "en": "Trace check against the projects' own tests",
+      "ar": "فحص التتبّع مقابل اختبارات المشاريع نفسها"
+    },
+    "refs.check.trace.result": {
+      "en": "47 of 56 crypto lines the tests ran were in Quanta's inventory.",
+      "ar": "47 من 56 سطرًا تشفيريًا نفّذتها الاختبارات كانت في جرد Quanta."
+    },
+    "refs.cisa.date": {
+      "en": "2024-08-15",
+      "ar": "2024-08-15"
+    },
+    "refs.cisa.title": {
+      "en": "CISA: Strategy for Migrating to Automated Post-Quantum Cryptography Discovery and Inventory Tools",
+      "ar": "CISA: Strategy for Migrating to Automated Post-Quantum Cryptography Discovery and Inventory Tools"
+    },
+    "refs.cisa.took": {
+      "en": "Existing tools may miss algorithms embedded in custom software, so Quanta reads the code itself.",
+      "ar": "قد تُغفل الأدوات الحالية الخوارزميات المضمّنة في البرمجيات المخصّصة، لذا يقرأ Quanta الشيفرة نفسها."
+    },
+    "refs.cli": {
+      "en": "CLI only",
+      "ar": "سطر الأوامر فقط"
+    },
+    "refs.cloudflare.date": {
+      "en": "2026-02-27",
+      "ar": "2026-02-27"
+    },
+    "refs.cloudflare.title": {
+      "en": "Cloudflare: Bringing more transparency to post-quantum usage, encrypted messaging, and routing security",
+      "ar": "Cloudflare: Bringing more transparency to post-quantum usage, encrypted messaging, and routing security"
+    },
+    "refs.cloudflare.took": {
+      "en": "Client support for post-quantum key agreement passed 60%.",
+      "ar": "تجاوز دعم العملاء لاتفاق المفاتيح ما بعد الكمي 60%."
+    },
+    "refs.cnsa2.date": {
+      "en": "2022-09",
+      "ar": "2022-09"
+    },
+    "refs.cnsa2.title": {
+      "en": "NSA: Announcing the Commercial National Security Algorithm Suite 2.0 (CNSA 2.0)",
+      "ar": "NSA: Announcing the Commercial National Security Algorithm Suite 2.0 (CNSA 2.0)"
+    },
+    "refs.cnsa2.took": {
+      "en": "Signing on CNSA 2.0 by 2030; web services and custom applications by 2033.",
+      "ar": "التوقيع وفق CNSA 2.0 بحلول 2030، وخدمات الويب والتطبيقات المخصّصة بحلول 2033."
+    },
+    "refs.crylogger.date": {
+      "en": "2021",
+      "ar": "2021"
+    },
+    "refs.crylogger.title": {
+      "en": "Piccolboni, L. et al.: CRYLOGGER: Detecting Crypto Misuses Dynamically (IEEE S&P 2021)",
+      "ar": "Piccolboni, L. et al.: CRYLOGGER: Detecting Crypto Misuses Dynamically (IEEE S&P 2021)"
+    },
+    "refs.crylogger.took": {
+      "en": "Runtime crypto monitoring exists for Java; Quanta uses test-time traces to measure what its inventory misses.",
+      "ar": "المراقبة التشفيرية أثناء التشغيل موجودة في Java، ويستخدم Quanta تتبّع الاختبارات لقياس ما يفوته جرده."
+    },
+    "refs.cswp39.date": {
+      "en": "2026-06-29",
+      "ar": "2026-06-29"
+    },
+    "refs.cswp39.title": {
+      "en": "NIST CSWP 39: Considerations for Achieving Crypto Agility: Strategies and Practices",
+      "ar": "NIST CSWP 39: Considerations for Achieving Crypto Agility: Strategies and Practices"
+    },
+    "refs.cswp39.took": {
+      "en": "What crypto agility means; the basis of the secondary agility score.",
+      "ar": "معنى المرونة التشفيرية، وأساس درجة المرونة الثانوية."
+    },
+    "refs.cyclonedx.date": {
+      "en": "2026-06-02",
+      "ar": "2026-06-02"
+    },
+    "refs.cyclonedx.title": {
+      "en": "CycloneDX specification releases (1.6.2)",
+      "ar": "CycloneDX specification releases (1.6.2)"
+    },
+    "refs.cyclonedx.took": {
+      "en": "The CBOM format Quanta imports, version 1.6.",
+      "ar": "صيغة CBOM التي يستوردها Quanta، الإصدار 1.6."
+    },
+    "refs.draft": {
+      "en": "Draft",
+      "ar": "مسودة"
+    },
+    "refs.ecc2.date": {
+      "en": "2024",
+      "ar": "2024"
+    },
+    "refs.ecc2.title": {
+      "en": "NCA: Essential Cybersecurity Controls ECC-2:2024",
+      "ar": "NCA: Essential Cybersecurity Controls ECC-2:2024"
+    },
+    "refs.ecc2.took": {
+      "en": "Control 2-8-3: cryptography must meet the National Cryptographic Standards.",
+      "ar": "الضابط 2-8-3: يجب أن يستوفي التشفير المعايير الوطنية للتشفير."
+    },
+    "refs.eo14412.date": {
+      "en": "2026-06-22",
+      "ar": "2026-06-22"
+    },
+    "refs.eo14412.title": {
+      "en": "The White House: Executive Order 14412, Securing the Nation Against Advanced Cryptographic Attacks",
+      "ar": "The White House: Executive Order 14412, Securing the Nation Against Advanced Cryptographic Attacks"
+    },
+    "refs.eo14412.took": {
+      "en": "US federal high-value systems: post-quantum key establishment by 2030, signatures by 2031.",
+      "ar": "الأنظمة الفيدرالية الأمريكية عالية القيمة: إنشاء المفاتيح ما بعد الكمي بحلول 2030، والتوقيعات بحلول 2031."
+    },
+    "refs.eu.date": {
+      "en": "2025-06-23",
+      "ar": "2025-06-23"
+    },
+    "refs.eu.title": {
+      "en": "NIS Cooperation Group and European Commission: A Coordinated Implementation Roadmap for the Transition to Post-Quantum Cryptography",
+      "ar": "NIS Cooperation Group and European Commission: A Coordinated Implementation Roadmap for the Transition to Post-Quantum Cryptography"
+    },
+    "refs.eu.took": {
+      "en": "EU: first steps by 2026, high-risk systems by 2030, medium-risk by 2035.",
+      "ar": "الاتحاد الأوروبي: الخطوات الأولى بحلول 2026، والأنظمة عالية المخاطر بحلول 2030، ومتوسطة المخاطر بحلول 2035."
+    },
+    "refs.ev.code": {
+      "en": "Code",
+      "ar": "الشيفرة"
+    },
+    "refs.ev.method": {
+      "en": "Method",
+      "ar": "المنهجية"
+    },
+    "refs.ev.none": {
+      "en": "Record not public",
+      "ar": "السجل غير منشور"
+    },
+    "refs.ev.protocol": {
+      "en": "Protocol",
+      "ar": "البروتوكول"
+    },
+    "refs.ev.results": {
+      "en": "Results",
+      "ar": "النتائج"
+    },
+    "refs.ev.runs": {
+      "en": "CI runs",
+      "ar": "تشغيلات CI"
+    },
+    "refs.ev.script": {
+      "en": "Script",
+      "ar": "السكربت"
+    },
+    "refs.fips203.date": {
+      "en": "2024-08-13",
+      "ar": "2024-08-13"
+    },
+    "refs.fips203.title": {
+      "en": "NIST FIPS 203: Module-Lattice-Based Key-Encapsulation Mechanism Standard (ML-KEM)",
+      "ar": "NIST FIPS 203: Module-Lattice-Based Key-Encapsulation Mechanism Standard (ML-KEM)"
+    },
+    "refs.fips203.took": {
+      "en": "ML-KEM, the key exchange Quanta's migration guides move to.",
+      "ar": "ML-KEM، تبادل المفاتيح الذي تنقل إليه أدلة الترحيل في Quanta."
+    },
+    "refs.fips204.date": {
+      "en": "2024-08-13",
+      "ar": "2024-08-13"
+    },
+    "refs.fips204.title": {
+      "en": "NIST FIPS 204: Module-Lattice-Based Digital Signature Standard (ML-DSA)",
+      "ar": "NIST FIPS 204: Module-Lattice-Based Digital Signature Standard (ML-DSA)"
+    },
+    "refs.fips204.took": {
+      "en": "ML-DSA, the signature scheme the migration guides move to.",
+      "ar": "ML-DSA، مخطط التوقيع الذي تنقل إليه أدلة الترحيل."
+    },
+    "refs.fips205.date": {
+      "en": "2024-08-13",
+      "ar": "2024-08-13"
+    },
+    "refs.fips205.title": {
+      "en": "NIST FIPS 205: Stateless Hash-Based Digital Signature Standard (SLH-DSA)",
+      "ar": "NIST FIPS 205: Stateless Hash-Based Digital Signature Standard (SLH-DSA)"
+    },
+    "refs.fips205.took": {
+      "en": "SLH-DSA, counted as post-quantum when a scan finds it.",
+      "ar": "SLH-DSA، يُحسب ما بعد كمي حين يجده الفحص."
+    },
+    "refs.github.date": {
+      "en": "2026-09-28",
+      "ar": "2026-09-28"
+    },
+    "refs.github.title": {
+      "en": "GitHub REST API: Search repositories",
+      "ar": "GitHub REST API: Search repositories"
+    },
+    "refs.github.took": {
+      "en": "The frame of 21,231 repositories our random samples were drawn from.",
+      "ar": "الإطار الذي سُحبت منه عيّناتنا العشوائية: 21,231 مستودعًا."
+    },
+    "refs.gri.date": {
+      "en": "2026-03-09",
+      "ar": "2026-03-09"
+    },
+    "refs.gri.title": {
+      "en": "Global Risk Institute: Quantum Threat Timeline Report 2025",
+      "ar": "Global Risk Institute: Quantum Threat Timeline Report 2025"
+    },
+    "refs.gri.took": {
+      "en": "Experts put a cryptographically relevant quantum computer within 10 years at 28 to 49%.",
+      "ar": "يقدّر الخبراء احتمال ظهور حاسوب كمي قادر على كسر التشفير خلال 10 سنوات بين 28 و49%."
+    },
+    "refs.group.context": {
+      "en": "Why now",
+      "ar": "لماذا الآن"
+    },
+    "refs.group.deadlines": {
+      "en": "Deadlines and rules",
+      "ar": "المواعيد والقواعد"
+    },
+    "refs.group.discovery": {
+      "en": "Discovery and agility",
+      "ar": "الحصر والمرونة"
+    },
+    "refs.group.figures": {
+      "en": "Time, cost and sampling",
+      "ar": "الوقت والتكلفة والعينات"
+    },
+    "refs.group.prior": {
+      "en": "Prior work",
+      "ar": "أعمال سابقة"
+    },
+    "refs.group.standards": {
+      "en": "Post-quantum standards",
+      "ar": "معايير ما بعد الكم"
+    },
+    "refs.heading": {
+      "en": "References",
+      "ar": "المراجع"
+    },
+    "refs.hybridkem.date": {
+      "en": "2026-07-06",
+      "ar": "2026-07-06"
+    },
+    "refs.hybridkem.title": {
+      "en": "IRTF CFRG draft-irtf-cfrg-concrete-hybrid-kems-04: Concrete Hybrid PQ/T Key Encapsulation Mechanisms",
+      "ar": "IRTF CFRG draft-irtf-cfrg-concrete-hybrid-kems-04: Concrete Hybrid PQ/T Key Encapsulation Mechanisms"
+    },
+    "refs.hybridkem.took": {
+      "en": "MLKEM768-X25519, the construction in Quanta's hybrid code template.",
+      "ar": "MLKEM768-X25519، البناء المستخدم في قالب Quanta الهجين."
+    },
+    "refs.ibm.date": {
+      "en": "2026-08-25",
+      "ar": "2026-08-25"
+    },
+    "refs.ibm.title": {
+      "en": "IBM Quantum Safe Remediator 1.1.x: Quantum-safe remediation patterns",
+      "ar": "IBM Quantum Safe Remediator 1.1.x: Quantum-safe remediation patterns"
+    },
+    "refs.ibm.took": {
+      "en": "Documented remediation patterns for applications.",
+      "ar": "أنماط معالجة موثّقة للتطبيقات."
+    },
+    "refs.index_label": {
+      "en": "On this page",
+      "ar": "في هذه الصفحة"
+    },
+    "refs.ir8547.date": {
+      "en": "2024-11-12",
+      "ar": "2024-11-12"
+    },
+    "refs.ir8547.title": {
+      "en": "NIST IR 8547 (Initial Public Draft): Transition to Post-Quantum Cryptography Standards",
+      "ar": "NIST IR 8547 (Initial Public Draft): Transition to Post-Quantum Cryptography Standards"
+    },
+    "refs.ir8547.took": {
+      "en": "RSA and finite-field DH at 112 bits deprecated after 2030; all quantum-vulnerable algorithms disallowed after 2035.",
+      "ar": "إيقاف RSA وDH ذي الحقل المنتهي بقوة 112 بت بعد 2030، وحظر كل الخوارزميات المعرّضة للحوسبة الكمية بعد 2035."
+    },
+    "refs.isaca.date": {
+      "en": "2025-04-28",
+      "ar": "2025-04-28"
+    },
+    "refs.isaca.title": {
+      "en": "ISACA: Organizations Lack a Quantum Computing Roadmap (Quantum Pulse Poll 2025)",
+      "ar": "ISACA: Organizations Lack a Quantum Computing Roadmap (Quantum Pulse Poll 2025)"
+    },
+    "refs.isaca.took": {
+      "en": "62% of over 2,600 professionals worry quantum will break today's internet encryption.",
+      "ar": "62% من أكثر من 2,600 مختص يخشون أن تكسر الحوسبة الكمية تشفير الإنترنت الحالي."
+    },
+    "refs.kacst.date": {
+      "en": "2026-08-31",
+      "ar": "2026-08-31"
+    },
+    "refs.kacst.title": {
+      "en": "Saudi Press Agency: KACST, Pasqal Strengthen Research Collaboration in Quantum-Secure Encryption",
+      "ar": "Saudi Press Agency: KACST, Pasqal Strengthen Research Collaboration in Quantum-Secure Encryption"
+    },
+    "refs.kacst.took": {
+      "en": "KACST's quantum research puts quantum-secure encryption first.",
+      "ar": "يضع البحث الكمي في KACST التشفير الآمن كميًا في المقدمة."
+    },
+    "refs.kemerer.date": {
+      "en": "2009",
+      "ar": "2009"
+    },
+    "refs.kemerer.title": {
+      "en": "Kemerer, C. F., Paulk, M. C.: The Impact of Design and Code Reviews on Software Quality. IEEE TSE 35(4)",
+      "ar": "Kemerer, C. F., Paulk, M. C.: The Impact of Design and Code Reviews on Software Quality. IEEE TSE 35(4)"
+    },
+    "refs.kemerer.took": {
+      "en": "200 lines an hour, the effective review rate behind the 77 hours.",
+      "ar": "200 سطر في الساعة، معدل المراجعة الفعّال وراء رقم 77 ساعة."
+    },
+    "refs.kyberslash.date": {
+      "en": "2024",
+      "ar": "2024"
+    },
+    "refs.kyberslash.title": {
+      "en": "Bernstein, D. J. et al.: KyberSlash: Exploiting secret-dependent division timings in Kyber implementations (IACR ePrint 2024/1049)",
+      "ar": "Bernstein, D. J. et al.: KyberSlash: Exploiting secret-dependent division timings in Kyber implementations (IACR ePrint 2024/1049)"
+    },
+    "refs.kyberslash.took": {
+      "en": "Timing leaks in Kyber code: why a migration must stay easy to change again.",
+      "ar": "تسرّب توقيت في شيفرة Kyber: لذا يجب أن يبقى الترحيل سهل التغيير من جديد."
+    },
+    "refs.lede": {
+      "en": "The standards, research and measurements Quanta stands on. Every entry opens the original.",
+      "ar": "المعايير والأبحاث والقياسات التي يقوم عليها Quanta. كل مرجع يفتح وثيقته الأصلية."
+    },
+    "refs.legend": {
+      "en": "Dates are publication dates. Undated pages show the day we checked them.",
+      "ar": "التواريخ تواريخ النشر، والصفحات غير المؤرخة تحمل تاريخ فحصنا لها."
+    },
+    "refs.licma.date": {
+      "en": "2021",
+      "ar": "2021"
+    },
+    "refs.licma.title": {
+      "en": "Wickert, A.-K. et al.: Python Crypto Misuses in the Wild (ESEM 2021)",
+      "ar": "Wickert, A.-K. et al.: Python Crypto Misuses in the Wild (ESEM 2021)"
+    },
+    "refs.licma.took": {
+      "en": "Only 7% of crypto misuses sat in application code; the rest came from dependencies.",
+      "ar": "7% فقط من أخطاء استخدام التشفير كانت في شيفرة التطبيق، والباقي من الاعتماديات."
+    },
+    "refs.mosca.date": {
+      "en": "2018",
+      "ar": "2018"
+    },
+    "refs.mosca.title": {
+      "en": "Mosca, M.: Cybersecurity in an Era with Quantum Computers: Will We Be Ready? IEEE Security & Privacy 16(5)",
+      "ar": "Mosca, M.: Cybersecurity in an Era with Quantum Computers: Will We Be Ready? IEEE Security & Privacy 16(5)"
+    },
+    "refs.mosca.took": {
+      "en": "If migration time plus data lifetime exceeds the time to a quantum computer, the data is already at risk.",
+      "ar": "إذا تجاوز زمن الترحيل مع عمر البيانات الزمنَ حتى ظهور الحاسوب الكمي، فالبيانات في خطر منذ الآن."
+    },
+    "refs.ncs2.date": {
+      "en": "2025-12-25",
+      "ar": "2025-12-25"
+    },
+    "refs.ncs2.title": {
+      "en": "NCA: National Cryptographic Standards NCS-2:2025 (public consultation draft)",
+      "ar": "NCA: National Cryptographic Standards NCS-2:2025 (public consultation draft)"
+    },
+    "refs.ncs2.took": {
+      "en": "Saudi Arabia: post-quantum algorithms only in hybrid with approved classical ones (clause 2-5-5-1).",
+      "ar": "السعودية: خوارزميات ما بعد الكم لا تُستخدم إلا هجينةً مع خوارزميات تقليدية معتمدة (البند 2-5-5-1)."
+    },
+    "refs.omb.date": {
+      "en": "2024-07",
+      "ar": "2024-07"
+    },
+    "refs.omb.title": {
+      "en": "OMB: Report on Post-Quantum Cryptography",
+      "ar": "OMB: Report on Post-Quantum Cryptography"
+    },
+    "refs.omb.took": {
+      "en": "Context only: $7.1 billion to migrate US federal civilian systems, 2025 to 2035.",
+      "ar": "للسياق فقط: 7.1 مليار دولار لترحيل الأنظمة المدنية الفيدرالية الأمريكية بين 2025 و2035."
+    },
+    "refs.openssl.date": {
+      "en": "2025-04-08",
+      "ar": "2025-04-08"
+    },
+    "refs.openssl.title": {
+      "en": "OpenSSL 3.5 Series Release Notes",
+      "ar": "OpenSSL 3.5 Series Release Notes"
+    },
+    "refs.openssl.took": {
+      "en": "Hybrid ML-KEM is the default TLS key share, so code on OpenSSL 3.5 needs no change.",
+      "ar": "ML-KEM الهجين هو مشاركة المفتاح الافتراضية في TLS، فلا تحتاج الشيفرة المرتبطة بـ OpenSSL 3.5 إلى تعديل."
+    },
+    "refs.pallares.date": {
+      "en": "2026-06-05",
+      "ar": "2026-06-05"
+    },
+    "refs.pallares.title": {
+      "en": "Pallarés de Bonrostro, J. et al.: Empirical Evaluation of Large Language Models for Migration of Code Fragments to Post-Quantum Cryptography",
+      "ar": "Pallarés de Bonrostro, J. et al.: Empirical Evaluation of Large Language Models for Migration of Code Fragments to Post-Quantum Cryptography"
+    },
+    "refs.pallares.took": {
+      "en": "A fine-tuned model reached 92.5% functional correctness on 800 code fragments.",
+      "ar": "بلغ نموذج مضبوط 92.5% من الصحة الوظيفية على 800 مقطع شيفرة."
+    },
+    "refs.pep669.date": {
+      "en": "2021-08-18",
+      "ar": "2021-08-18"
+    },
+    "refs.pep669.title": {
+      "en": "PEP 669: Low Impact Monitoring for CPython",
+      "ar": "PEP 669: Low Impact Monitoring for CPython"
+    },
+    "refs.pep669.took": {
+      "en": "The low-overhead monitoring the trace check runs on.",
+      "ar": "آلية المراقبة منخفضة الكلفة التي يعمل عليها فحص التتبّع."
+    },
+    "refs.preprint": {
+      "en": "Preprint",
+      "ar": "نسخة أولية"
+    },
+    "refs.rainbow.date": {
+      "en": "2022",
+      "ar": "2022"
+    },
+    "refs.rainbow.title": {
+      "en": "Beullens, W.: Breaking Rainbow Takes a Weekend on a Laptop (IACR ePrint 2022/214)",
+      "ar": "Beullens, W.: Breaking Rainbow Takes a Weekend on a Laptop (IACR ePrint 2022/214)"
+    },
+    "refs.rainbow.took": {
+      "en": "Rainbow, a round-three finalist, fell in about 53 hours on a laptop.",
+      "ar": "سقط Rainbow، أحد المتأهلين للجولة الثالثة، في نحو 53 ساعة على حاسوب محمول."
+    },
+    "refs.readiness.date": {
+      "en": "2023-08-21",
+      "ar": "2023-08-21"
+    },
+    "refs.readiness.title": {
+      "en": "CISA, NSA and NIST: Quantum-Readiness: Migration to Post-Quantum Cryptography",
+      "ar": "CISA, NSA and NIST: Quantum-Readiness: Migration to Post-Quantum Cryptography"
+    },
+    "refs.readiness.took": {
+      "en": "Start with a cryptographic inventory; data captured today can be decrypted later.",
+      "ar": "ابدأ بجرد التشفير، فالبيانات الملتقطة اليوم قد تُفكّ لاحقًا."
+    },
+    "refs.rfc10024.date": {
+      "en": "2026-08",
+      "ar": "2026-08"
+    },
+    "refs.rfc10024.title": {
+      "en": "IETF RFC 10024: Post-Quantum Traditional (PQ/T) Hybrid Key Agreement Mechanisms for TLS 1.3",
+      "ar": "IETF RFC 10024: Post-Quantum Traditional (PQ/T) Hybrid Key Agreement Mechanisms for TLS 1.3"
+    },
+    "refs.rfc10024.took": {
+      "en": "X25519MLKEM768, the hybrid TLS group the guides name.",
+      "ar": "X25519MLKEM768، مجموعة TLS الهجينة التي تسمّيها الأدلة."
+    },
+    "refs.rvsec.date": {
+      "en": "2023",
+      "ar": "2023"
+    },
+    "refs.rvsec.title": {
+      "en": "Torres, A. et al.: Runtime Verification of Crypto APIs: An Empirical Study (IEEE TSE)",
+      "ar": "Torres, A. et al.: Runtime Verification of Crypto APIs: An Empirical Study (IEEE TSE)"
+    },
+    "refs.rvsec.took": {
+      "en": "Crypto rules monitored while tests run, for Java.",
+      "ar": "مراقبة قواعد التشفير أثناء تشغيل الاختبارات، في Java."
+    },
+    "refs.semgrep.date": {
+      "en": "2026-09-28",
+      "ar": "2026-09-28"
+    },
+    "refs.semgrep.title": {
+      "en": "Semgrep: Rule-defined fix",
+      "ar": "Semgrep: Rule-defined fix"
+    },
+    "refs.semgrep.took": {
+      "en": "Rule-based tools can edit code too; Quanta does not claim otherwise.",
+      "ar": "أدوات القواعد تستطيع تعديل الشيفرة أيضًا، ولا يدّعي Quanta خلاف ذلك."
+    },
+    "refs.sha1.date": {
+      "en": "2022-12-15",
+      "ar": "2022-12-15"
+    },
+    "refs.sha1.title": {
+      "en": "NIST: Transitioning Away from SHA-1 for All Applications",
+      "ar": "NIST: Transitioning Away from SHA-1 for All Applications"
+    },
+    "refs.sha1.took": {
+      "en": "SHA-1 retired from all applications by 31 December 2030.",
+      "ar": "إخراج SHA-1 من كل التطبيقات بحلول 31 ديسمبر 2030."
+    },
+    "refs.shawaudit.date": {
+      "en": "2026-04-01",
+      "ar": "2026-04-01"
+    },
+    "refs.shawaudit.title": {
+      "en": "Shaw, A.: Quantum-Safe Code Auditing: LLM-Assisted Static Analysis and Quantum-Aware Risk Scoring for Post-Quantum Cryptography Migration",
+      "ar": "Shaw, A.: Quantum-Safe Code Auditing: LLM-Assisted Static Analysis and Quantum-Aware Risk Scoring for Post-Quantum Cryptography Migration"
+    },
+    "refs.shawaudit.took": {
+      "en": "Model-assisted auditing for post-quantum migration.",
+      "ar": "تدقيق بمساعدة النماذج اللغوية لترحيل ما بعد الكم."
+    },
+    "refs.shawlib.date": {
+      "en": "2026-05-16",
+      "ar": "2026-05-16"
+    },
+    "refs.shawlib.title": {
+      "en": "Shaw, A.: quantum-safe: Bridging the Post-Quantum Production Gap with a Hybrid-by-Default Python Cryptography Library",
+      "ar": "Shaw, A.: quantum-safe: Bridging the Post-Quantum Production Gap with a Hybrid-by-Default Python Cryptography Library"
+    },
+    "refs.shawlib.took": {
+      "en": "Across nine post-quantum libraries, migration tooling coverage was 22% and hybrid KEM support 11%.",
+      "ar": "في تسع مكتبات لما بعد الكم، بلغت تغطية أدوات الترحيل 22% ودعم الآليات الهجينة 11%."
+    },
+    "refs.sidh.date": {
+      "en": "2022",
+      "ar": "2022"
+    },
+    "refs.sidh.title": {
+      "en": "Castryck, W., Decru, T.: An efficient key recovery attack on SIDH (IACR ePrint 2022/975)",
+      "ar": "Castryck, W., Decru, T.: An efficient key recovery attack on SIDH (IACR ePrint 2022/975)"
+    },
+    "refs.sidh.took": {
+      "en": "SIKE, a round-four NIST candidate, fell in about ten minutes on one core.",
+      "ar": "سقط SIKE، المرشّح في الجولة الرابعة لدى NIST، في نحو عشر دقائق على نواة واحدة."
+    },
+    "refs.sonar.date": {
+      "en": "2026-09-28",
+      "ar": "2026-09-28"
+    },
+    "refs.sonar.title": {
+      "en": "Sonar Cryptography Plugin",
+      "ar": "Sonar Cryptography Plugin"
+    },
+    "refs.sonar.took": {
+      "en": "Detects cryptographic assets in source code and emits a CBOM.",
+      "ar": "يكشف الأصول التشفيرية في الشيفرة ويُخرج CBOM."
+    },
+    "refs.sp1800.date": {
+      "en": "2023-12",
+      "ar": "2023-12"
+    },
+    "refs.sp1800.title": {
+      "en": "NIST SP 1800-38B (preliminary draft): Migration to Post-Quantum Cryptography, Cryptographic Discovery",
+      "ar": "NIST SP 1800-38B (preliminary draft): Migration to Post-Quantum Cryptography, Cryptographic Discovery"
+    },
+    "refs.sp1800.took": {
+      "en": "Cryptographic discovery as the first step of migration.",
+      "ar": "حصر التشفير خطوةً أولى في الترحيل."
+    },
+    "refs.sp800131a.date": {
+      "en": "2019-03-21",
+      "ar": "2019-03-21"
+    },
+    "refs.sp800131a.title": {
+      "en": "NIST SP 800-131A Rev. 2: Transitioning the Use of Cryptographic Algorithms and Key Lengths",
+      "ar": "NIST SP 800-131A Rev. 2: Transitioning the Use of Cryptographic Algorithms and Key Lengths"
+    },
+    "refs.sp800131a.took": {
+      "en": "Triple DES disallowed after 2023. MD5 is not an approved hash.",
+      "ar": "حظر Triple DES بعد 2023، وMD5 ليست دالة تجزئة معتمدة."
+    },
+    "refs.stat.checked": {
+      "en": "links last checked",
+      "ar": "آخر فحص للروابط"
+    },
+    "refs.stat.checked_on": {
+      "en": "2026-09-28",
+      "ar": "2026-09-28"
+    },
+    "refs.stat.sources": {
+      "en": "sources",
+      "ar": "مرجعًا"
+    },
+    "refs.stat.sources_n": {
+      "en": "48",
+      "ar": "48"
+    },
+    "refs.stat.tests": {
+      "en": "validation tests",
+      "ar": "اختبار تحقق"
+    },
+    "refs.stat.tests_n": {
+      "en": "10",
+      "ar": "10"
+    },
+    "refs.title": {
+      "en": "Quanta: references and validation",
+      "ar": "Quanta: المراجع والتحقق"
+    },
+    "refs.trl.date": {
+      "en": "2014",
+      "ar": "2014"
+    },
+    "refs.trl.title": {
+      "en": "European Commission: Horizon 2020 Work Programme, Annex G, Technology readiness levels",
+      "ar": "European Commission: Horizon 2020 Work Programme, Annex G, Technology readiness levels"
+    },
+    "refs.trl.took": {
+      "en": "The TRL scale we use to state Quanta's readiness level.",
+      "ar": "مقياس TRL الذي نصف به مستوى جاهزية Quanta."
+    },
+    "refs.uk.date": {
+      "en": "2025-03-20",
+      "ar": "2025-03-20"
+    },
+    "refs.uk.title": {
+      "en": "UK NCSC: Timelines for migration to post-quantum cryptography",
+      "ar": "UK NCSC: Timelines for migration to post-quantum cryptography"
+    },
+    "refs.uk.took": {
+      "en": "UK: discovery by 2028, priority migration by 2031, all systems by 2035.",
+      "ar": "المملكة المتحدة: الحصر بحلول 2028، وترحيل الأولويات بحلول 2031، وكل الأنظمة بحلول 2035."
+    },
+    "refs.valid.lede": {
+      "en": "Rules were written and hashed before each measurement. Results as measured.",
+      "ar": "كُتبت القواعد وثُبّتت ببصمة قبل كل قياس، والنتائج كما قيست."
+    },
+    "refs.valid.title": {
+      "en": "How we validated Quanta",
+      "ar": "كيف تحققنا من Quanta"
     },
     "refusal.MIXED_USE.body": {
       "en": "The same code passes this hash to another function as a value. Changing one call and not the other would make them disagree.",
