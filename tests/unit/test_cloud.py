@@ -105,6 +105,57 @@ def test_cloud_scan_is_isolated_persistent_bounded_and_deduplicated(
     assert registry.enqueue(metadata, "1").id == job.id
 
 
+def test_cloud_scan_reports_every_step_in_order(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """The page follows the scan: fetch, then analysis, then cleanup, then done."""
+    registry = JobRegistry(tmp_path / "artifacts")
+    registry.settings.cloud.enabled = True
+    registry.settings.cloud.sandbox_snapshot = "snap-test"
+    registry.store = DatabaseArtifactStore(tmp_path / "artifacts", registry.db)
+    metadata = RepoMetadata(
+        owner="sample", name="clinic", commit_sha="0" * 40, default_branch="main", size_kb=1
+    )
+    job = registry.enqueue(metadata, "1")
+    write_artifacts(sample_outcome(), tmp_path / "output")
+    box = Box({name: (tmp_path / "output" / name).read_bytes() for name in ARTIFACT_NAMES})
+    monkeypatch.setattr("quanta.web.cloud.sandbox.create_sandbox", lambda **kwargs: box)
+    asyncio.run(execute(registry, job.id))
+    with registry.db.connect() as conn:
+        events = [
+            json.loads(row[0])
+            for row in conn.execute(
+                "SELECT message FROM job_events WHERE job_id=? ORDER BY id", (job.id,)
+            )
+        ]
+    marks = [
+        f"{e['data']['id']}:{e['data']['status']}" if e["event"] == "step" else e["event"]
+        for e in events
+        if e["event"] in {"step", "done"} or e["data"].get("phase") == "analyze"
+    ]
+    finished = [m.split(":")[0] for m in marks if m.endswith(":done")]
+    assert finished == [
+        "validate",
+        "resolve",
+        "clone",
+        "walk",
+        "parse",
+        "graph",
+        "score",
+        "render",
+        "cleanup",
+    ]
+    assert marks.index("clone:running") < marks.index("clone:done") < marks.index("progress")
+    assert marks[-1] == "done"
+    clone = next(
+        e["data"]
+        for e in events
+        if e["data"].get("id") == "clone" and e["data"]["status"] == "done"
+    )
+    assert any(ev["label"] == "Checked-out HEAD" for ev in clone["evidence"])
+    assert registry.enqueue(metadata, "1").id == job.id
+
+
 def test_provider_failure_is_terminal_and_does_not_publish_artifacts(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:

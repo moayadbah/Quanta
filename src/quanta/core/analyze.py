@@ -208,6 +208,46 @@ def _clone_evidence(settings: Settings, sha: str) -> list[StepEvidence]:
     ]
 
 
+# The fetch and cleanup steps, shared by the local pipeline and the hosted runner, which
+# validates and resolves at submission and clones and cleans up inside its sandbox.
+
+
+def finish_validate(trace: Tracer, owner: str, name: str, settings: Settings) -> None:
+    trace.finish(
+        "validate",
+        f"{owner}/{name} accepted, with no network call made",
+        _validation_evidence(owner, name, settings),
+    )
+
+
+def finish_resolve(trace: Tracer, metadata: RepoMetadata, settings: Settings) -> None:
+    trace.finish(
+        "resolve",
+        f"public, {metadata.size_kb:,} KB, pinned to {metadata.commit_sha[:12]}",
+        _metadata_evidence(metadata, settings),
+    )
+
+
+def finish_clone(trace: Tracer, settings: Settings, sha: str, clone_ms: int) -> None:
+    trace.finish(
+        "clone", f"shallow clone at {sha[:12]} in {clone_ms} ms", _clone_evidence(settings, sha)
+    )
+
+
+def finish_cleanup(trace: Tracer, *extra: StepEvidence) -> None:
+    trace.start("cleanup")
+    trace.finish(
+        "cleanup",
+        "working copy deleted",
+        [
+            _ev("Clone directory", "removed", ok=True),
+            _ev("Source retained", "only bounded files with reviewable fix proposals", ok=True),
+            _ev("Applies to", "success, failure and timeout paths alike", ok=True),
+            *extra,
+        ],
+    )
+
+
 def _walk_evidence(walk: WalkResult, settings: Settings) -> list[StepEvidence]:
     cfg = settings.ingest
     evidence = [
@@ -602,11 +642,7 @@ def analyze_repository(
 
     trace.start("validate")
     owner, name = parse_repo_url(repo_url, cfg)  # no network yet — this is the SSRF control
-    trace.finish(
-        "validate",
-        f"{owner}/{name} accepted, with no network call made",
-        _validation_evidence(owner, name, cfg),
-    )
+    finish_validate(trace, owner, name, cfg)
 
     trace.start("resolve")
     if metadata is None:
@@ -617,11 +653,7 @@ def analyze_repository(
         from quanta.errors import Reject
 
         raise Reject("SHA_MISMATCH", "metadata does not match repository")
-    trace.finish(
-        "resolve",
-        f"public, {metadata.size_kb:,} KB, pinned to {metadata.commit_sha[:12]}",
-        _metadata_evidence(metadata, cfg),
-    )
+    finish_resolve(trace, metadata, cfg)
 
     provenance = Provenance(
         repo=metadata.slug,
@@ -637,12 +669,7 @@ def analyze_repository(
         trace.start("clone")
         mark = time.monotonic()
         clone_pinned(owner, name, metadata.commit_sha, clone_root, cfg)
-        clone_ms = int((time.monotonic() - mark) * 1000)
-        trace.finish(
-            "clone",
-            f"shallow clone at {metadata.commit_sha[:12]} in {clone_ms} ms",
-            _clone_evidence(cfg, metadata.commit_sha),
-        )
+        finish_clone(trace, cfg, metadata.commit_sha, int((time.monotonic() - mark) * 1000))
 
         if after_clone is not None:
             after_clone()
@@ -660,16 +687,7 @@ def analyze_repository(
         )
 
     # scratch_dir has now removed the tree, unconditionally (INGEST-09).
-    trace.start("cleanup")
-    trace.finish(
-        "cleanup",
-        "working copy deleted",
-        [
-            _ev("Clone directory", "removed", ok=True),
-            _ev("Source retained", "only bounded files with reviewable fix proposals", ok=True),
-            _ev("Applies to", "success, failure and timeout paths alike", ok=True),
-        ],
-    )
+    finish_cleanup(trace)
 
     # replace(), not a field-by-field copy: a new outcome field can never be dropped here.
     return replace(outcome, meta=outcome.meta.model_copy(update={"steps": tuple(trace.steps)}))
