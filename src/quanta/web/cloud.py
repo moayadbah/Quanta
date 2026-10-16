@@ -12,7 +12,15 @@ from fastapi import APIRouter, Request
 from vercel import sandbox
 from vercel.sandbox import NetworkPolicy, SandboxResources, SnapshotSource
 
-from quanta.core.models import AnalysisMeta, Provenance, ScoreReport
+from quanta.core.analyze import (
+    Tracer,
+    finish_cleanup,
+    finish_clone,
+    finish_resolve,
+    finish_validate,
+)
+from quanta.core.ingest import RepoMetadata
+from quanta.core.models import AnalysisMeta, Provenance, ScoreReport, StepEvidence, StepRecord
 from quanta.errors import Reject
 from quanta.web.auth import auth
 from quanta.web.db import event, timestamp
@@ -70,6 +78,26 @@ async def execute(registry: JobRegistry, job_id: str) -> None:
             return
         metadata = dict(row)
         event(conn, job_id, "status", {"status": "running"})
+
+    def emit(step: StepRecord) -> None:
+        with registry.db.connect(write=True) as conn:
+            event(conn, job_id, "step", step.model_dump(mode="json"))
+
+    # The sandbox reports only the analysis steps, and only when it ends. The URL and the
+    # metadata were checked at submission, and the clone runs as its own phase, so those
+    # steps are reported here as they happen and the page can follow the scan in order.
+    trace = Tracer(emit)
+    repo = RepoMetadata(
+        owner=metadata["repo_owner"],
+        name=metadata["repo_name"],
+        default_branch=metadata["default_branch"],
+        commit_sha=metadata["commit_sha"],
+        size_kb=metadata["size_kb"],
+    )
+    trace.start("validate")
+    finish_validate(trace, repo.owner, repo.name, cfg)
+    trace.start("resolve")
+    finish_resolve(trace, repo, cfg)
     try:
         async with asyncio.timeout(cfg.cloud.timeout_seconds + 30):
             async with sandbox.create_sandbox(
@@ -89,7 +117,13 @@ async def execute(registry: JobRegistry, job_id: str) -> None:
                 }
                 await box.fs.write_text("quanta-input.json", json.dumps(payload))
                 for phase in ("acquire", "analyze"):
-                    if phase == "analyze":
+                    if phase == "acquire":
+                        trace.start("clone")
+                        cloning = time.monotonic()
+                    else:
+                        finish_clone(
+                            trace, cfg, repo.commit_sha, int((time.monotonic() - cloning) * 1000)
+                        )
                         await box.update_network_policy(NetworkPolicy.deny_all())
                     with registry.db.connect(write=True) as conn:
                         event(
@@ -145,8 +179,18 @@ async def execute(registry: JobRegistry, job_id: str) -> None:
                         )
                     for name, data in artifacts.items():
                         registry.store.put_in_transaction(conn, job_id, name, data)
-                    for step in meta.steps:
+
+                    def record(step: StepRecord) -> None:
                         event(conn, job_id, "step", step.model_dump(mode="json"))
+
+                    for step in meta.steps:
+                        record(step)
+                    # The scanner deletes its working copy when the analysis ends, and the
+                    # microVM is destroyed with it.
+                    finish_cleanup(
+                        Tracer(record),
+                        StepEvidence(label="Sandbox", value="destroyed after the scan", ok=True),
+                    )
                     conn.execute(
                         "UPDATE jobs SET status='succeeded',finished_at=?,"
                         "agility_score=?,truncated=? "

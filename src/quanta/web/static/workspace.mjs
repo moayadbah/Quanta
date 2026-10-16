@@ -21,6 +21,8 @@ const STAGES = [
   { id: "cleanup", steps: ["cleanup"] },
 ];
 const TABS = ["readiness", "findings", "changes", "report"];
+// How long each step change stays on screen when several arrive at once.
+const STEP_PACE_MS = 180;
 const STATUSES = ["vulnerable", "weak", "review", "pq", "safe"];
 const STATUS_KIND = { vulnerable: "bad", weak: "warn", review: "warn", pq: "ok", safe: "plain" };
 const VERDICT_RING = { at_risk: "bad", in_transition: "warn", ready: "ok", no_crypto: "none", no_source: "none" };
@@ -64,7 +66,53 @@ function newJob(id) {
     filter: "all",
     openStages: new Set(),
     openEvidence: new Set(),
+    queue: [],
+    pacer: null,
+    live: null,
   };
+}
+
+/* Pacing: the hosted scanner reports its analysis steps together when it ends. Each step
+   change is held on screen briefly, in order, so every stage visibly runs and completes.
+   Steps that already stream one by one are shown as they come. ----------------------- */
+function pace(job, apply) {
+  job.queue.push(apply);
+  if (job.pacer === null) drain(job);
+}
+
+function drain(job) {
+  job.pacer = null;
+  if (state.job !== job) return;
+  const apply = job.queue.shift();
+  if (!apply) return;
+  // An update that changes nothing on screen (false) does not hold the next one.
+  const changed = apply() !== false;
+  job.pacer = setTimeout(() => drain(job), changed ? STEP_PACE_MS : 0);
+}
+
+function showStep(job, step) {
+  const shown = job.steps.get(step.id)?.status;
+  job.steps.set(step.id, step);
+  if (step.id === "resolve" && step.status === "done") {
+    const pinned = (step.evidence || []).find((e) => e.label === "Head commit");
+    if (pinned) job.sha = pinned.value;
+  }
+  job.status = job.status === "queued" ? "running" : job.status;
+  renderHead();
+  renderStages();
+  return shown !== step.status;
+}
+
+function receiveStep(job, step) {
+  pace(job, () => {
+    const shown = job.steps.get(step.id)?.status;
+    // A step reported only once it finished is shown running first, so it is seen to run.
+    if (step.status === "done" && shown !== "running" && shown !== "done") {
+      job.queue.unshift(() => showStep(job, step));
+      return showStep(job, { id: step.id, title: step.title, status: "running" });
+    }
+    return showStep(job, step);
+  });
 }
 
 /* API ------------------------------------------------------------------------------------ */
@@ -331,16 +379,7 @@ async function openJob(id, { keepHash = false } = {}) {
       for (const step of data.steps) if (!job.steps.has(step.id)) job.steps.set(step.id, { id: step.id, status: "pending" });
       renderStages();
     },
-    step: (step) => {
-      job.steps.set(step.id, step);
-      if (step.id === "resolve" && step.status === "done") {
-        const pinned = (step.evidence || []).find((e) => e.label === "Head commit");
-        if (pinned) job.sha = pinned.value;
-      }
-      job.status = job.status === "queued" ? "running" : job.status;
-      renderHead();
-      renderStages();
-    },
+    step: (step) => receiveStep(job, step),
     status: (data) => {
       job.status = data.status || job.status;
       if (data.status === "queued" && state.workspace?.hosted && !hostedRun) {
@@ -349,7 +388,15 @@ async function openJob(id, { keepHash = false } = {}) {
       }
       renderHead();
     },
-    progress: () => renderHead(),
+    progress: (pct, phase) => {
+      // The hosted scanner starts its analysis: the scan stage runs from now on.
+      if (phase === "analyze") pace(job, () => {
+        const walk = job.steps.get("walk");
+        if (walk && walk.status !== "pending") return false;
+        return showStep(job, { id: "walk", title: walk?.title || "", status: "running" });
+      });
+      renderHead();
+    },
     parseProgress: (data) => {
       job.parse = data;
       renderHead();
@@ -371,14 +418,16 @@ async function openJob(id, { keepHash = false } = {}) {
       job.truncated = true;
       renderHead();
     },
-    done: () => finish(job),
-    failure: (data) => {
+    // The result opens after the steps before it have been shown.
+    done: () => new Promise((resolve) => pace(job, () => { resolve(finish(job)); return false; })),
+    failure: (data) => pace(job, () => {
       job.failed = data || {};
       job.status = "failed";
       job.finishedAt = Date.now();
       renderHead();
       renderStages();
-    },
+      return false;
+    }),
   }).start();
 }
 
@@ -404,7 +453,10 @@ function statusText(job) {
   if (job.failed) return tk(`error.${job.failed.error_code}`, "error.analysis_failed");
   if (job.done) return t("live.done", { seconds: numberText(elapsed(job), 1), n: findingsCount(job) });
   const step = currentStep(job);
+  // Between one step finishing and the next starting, the line keeps the last step's text.
+  if (!step && job.live) return tk(`live.${job.live}`, "live.working");
   if (!step) return t(job.status === "queued" ? "live.queued" : "live.starting");
+  job.live = step.id;
   if (step.id === "parse" && job.parse) {
     return t("live.parse_progress", { done: numberText(job.parse.done), total: numberText(job.parse.total), n: findingsCount(job) });
   }
