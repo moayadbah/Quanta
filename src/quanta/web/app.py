@@ -258,6 +258,12 @@ def create_app(artifact_root: Path | None = None, db_path: Path | None = None) -
     def privacy(request: Request) -> Response:
         return _page(request, "privacy.html")
 
+    # Printed on the poster as a QR code: the short address must never change.
+    @app.get("/references", include_in_schema=False)
+    @app.get("/references.html", include_in_schema=False)
+    def references(request: Request) -> Response:
+        return _page(request, "references.html")
+
     if STATIC_DIR.is_dir():
         app.mount("/", StaticFiles(directory=str(STATIC_DIR), html=True), name="spa")
 
