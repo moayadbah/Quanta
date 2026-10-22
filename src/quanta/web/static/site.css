@@ -456,13 +456,12 @@ button.back { border: 0; background: none; padding: 0; justify-self: start; }
 /* One panel for both engines: the top three numbers move from the previous engine to v9 and
    light up; the bottom three, which did not change, step back under a light shade. */
 .eng-stage { position: relative; display: grid; }
-.eng-panel { grid-area: 1 / 1; display: none; position: relative; z-index: 1; }
-.eng-panel.on { display: block; animation: eng-in 420ms var(--ease); }
-@keyframes eng-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
-/* While the scene changes, both panels share one cell, so the stage keeps the taller one's
-   height and nothing below it jumps. */
-.eng-stage.moving > .eng-panel { display: block; }
-.eng-stage.moving > .eng-panel:not(.on):not(.leaving) { visibility: hidden; animation: none; }
+/* Both panels always share one cell, the one not shown hidden in it, so the stage keeps the
+   taller one's height and nothing below it jumps when the scene changes. No entry animation
+   of their own: the transitions below bring them in, and one here would replay the moment
+   they end and take their class away. */
+.eng-panel { grid-area: 1 / 1; position: relative; z-index: 1; }
+.eng-panel:not(.on):not(.leaving) { visibility: hidden; }
 /* The video's timings: the old scene fades, drops and blurs in 0.26 s; the new one rises
    out of a blur, its second part 0.2 s after the first; leaving coming next, the page
    collapses into the horizon line in 0.3 s. */
@@ -504,12 +503,12 @@ button.back { border: 0; background: none; padding: 0; justify-self: start; }
 .eng-note { margin: 28px 0 0; color: var(--subtle); font-size: 14px; line-height: 1.8; }
 
 /* Coming next opens like the demo video at 0:20: a beam lies down, becomes the horizon, and
-   the horizon draws itself in hex digits. Both are drawn on canvases the width of the stage:
-   the horizon behind the cards, its sides fading out; the beam and its bloom in front, where
-   the line runs to both edges as it did in the video. */
+   the horizon draws itself in hex digits over every card, then opens from its middle onto the
+   new scene. Both are drawn on canvases the width of the stage, in front of the cards: the
+   horizon with only its outer edges softened; the beam and its bloom over it, where the line
+   runs to both edges as it did in the video. */
 .eng-hz, .eng-light { position: absolute; left: 0; top: 0; width: 100%; height: auto; pointer-events: none; }
-.eng-hz { z-index: 0; -webkit-mask-image: linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent); mask-image: linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent); }
-.eng-hz.fading { opacity: 0; transition: opacity 1200ms cubic-bezier(0.4, 0, 0.2, 1); }
+.eng-hz { z-index: 2; -webkit-mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent); mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent); }
 .eng-light { z-index: 3; mix-blend-mode: screen; }
 @media (max-width: 960px) { .eng-road { grid-template-columns: 1fr; } }
 @media (max-width: 520px) { .eng-tab { flex: 1 1 100%; justify-content: center; } }
