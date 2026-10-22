@@ -1,0 +1,67 @@
+{
+ "v9": {
+  "total_s_per_run": [
+   243.0,
+   231.1,
+   235.5
+  ],
+  "median_total_s": 235.5,
+  "median_repo_s": 9.07,
+  "per_repo_median_s": {
+   "alicevision__Meshroom": 9.7,
+   "beancount__beancount": 9.32,
+   "bespokelabsai__nimble": 9.24,
+   "bmuller__kademlia": 3.63,
+   "chengyumeng__spider163": 4.68,
+   "chenxin-dlut__TransT": 9.07,
+   "djaodjin__djaodjin-saas": 13.89,
+   "EDCD__EDMarketConnector": 9.42,
+   "flipkart-incubator__Astra": 2.59,
+   "HuQi2018__BiSheServer": 6.3,
+   "jixiaozhong__Sonic": 8.8,
+   "joshavant__clawbox": 7.46,
+   "langchain-ai__open-swe": 20.7,
+   "microsoft__causica": 10.74,
+   "piccolomo__plotext": 7.77,
+   "plaid__plaid-python": 50.47,
+   "pypa__setuptools": 18.54,
+   "rmountjoy92__DashMachine": 5.46,
+   "theupdateframework__python-tuf": 7.55,
+   "XiaoYouChR__Ghost-Downloader-3": 12.44,
+   "Z4nzu__hackingtool": 7.03
+  }
+ },
+ "v10": {
+  "total_s_per_run": [
+   239.8,
+   237.5,
+   241.5
+  ],
+  "median_total_s": 239.8,
+  "median_repo_s": 8.64,
+  "per_repo_median_s": {
+   "alicevision__Meshroom": 9.92,
+   "beancount__beancount": 10.14,
+   "bespokelabsai__nimble": 8.69,
+   "bmuller__kademlia": 3.65,
+   "chengyumeng__spider163": 4.6,
+   "chenxin-dlut__TransT": 9.66,
+   "djaodjin__djaodjin-saas": 14.15,
+   "EDCD__EDMarketConnector": 8.64,
+   "flipkart-incubator__Astra": 2.43,
+   "HuQi2018__BiSheServer": 6.62,
+   "jixiaozhong__Sonic": 8.64,
+   "joshavant__clawbox": 6.98,
+   "langchain-ai__open-swe": 21.31,
+   "microsoft__causica": 10.82,
+   "piccolomo__plotext": 8.18,
+   "plaid__plaid-python": 52.96,
+   "pypa__setuptools": 19.02,
+   "rmountjoy92__DashMachine": 5.11,
+   "theupdateframework__python-tuf": 8.43,
+   "XiaoYouChR__Ghost-Downloader-3": 13.45,
+   "Z4nzu__hackingtool": 6.89
+  }
+ },
+ "change_total_pct": 1.8
+}

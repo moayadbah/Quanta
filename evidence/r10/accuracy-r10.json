@@ -1,0 +1,536 @@
+{
+ "v5 (2026.11.01)": {
+  "time": "2026-10-19T00:13:28+00:00",
+  "pooled": {
+   "precision": {
+    "found": 145,
+    "total": 148,
+    "rate": 0.9797,
+    "ci": [
+     0.9421,
+     0.9931
+    ]
+   },
+   "recall_A": {
+    "found": 142,
+    "total": 181,
+    "rate": 0.7845,
+    "ci": [
+     0.7191,
+     0.8382
+    ]
+   },
+   "recall_AB": {
+    "found": 147,
+    "total": 198,
+    "rate": 0.7424,
+    "ci": [
+     0.6773,
+     0.7983
+    ]
+   },
+   "pktls_A": {
+    "found": 37,
+    "total": 66,
+    "rate": 0.5606,
+    "ci": [
+     0.4408,
+     0.6737
+    ]
+   },
+   "pktls_AB": {
+    "found": 39,
+    "total": 77,
+    "rate": 0.5065,
+    "ci": [
+     0.3972,
+     0.6152
+    ]
+   }
+  },
+  "stratum_G": {
+   "precision": {
+    "found": 24,
+    "total": 24,
+    "rate": 1.0,
+    "ci": [
+     0.862,
+     1.0
+    ]
+   },
+   "recall_A": {
+    "found": 24,
+    "total": 27,
+    "rate": 0.8889,
+    "ci": [
+     0.7194,
+     0.9615
+    ]
+   },
+   "recall_AB": {
+    "found": 24,
+    "total": 27,
+    "rate": 0.8889,
+    "ci": [
+     0.7194,
+     0.9615
+    ]
+   },
+   "pktls_A": {
+    "found": 0,
+    "total": 0,
+    "rate": null,
+    "ci": null
+   },
+   "pktls_AB": {
+    "found": 0,
+    "total": 0,
+    "rate": null,
+    "ci": null
+   }
+  },
+  "stratum_P": {
+   "precision": {
+    "found": 121,
+    "total": 124,
+    "rate": 0.9758,
+    "ci": [
+     0.9313,
+     0.9917
+    ]
+   },
+   "recall_A": {
+    "found": 118,
+    "total": 154,
+    "rate": 0.7662,
+    "ci": [
+     0.6934,
+     0.8261
+    ]
+   },
+   "recall_AB": {
+    "found": 123,
+    "total": 171,
+    "rate": 0.7193,
+    "ci": [
+     0.6477,
+     0.7813
+    ]
+   },
+   "pktls_A": {
+    "found": 37,
+    "total": 66,
+    "rate": 0.5606,
+    "ci": [
+     0.4408,
+     0.6737
+    ]
+   },
+   "pktls_AB": {
+    "found": 39,
+    "total": 77,
+    "rate": 0.5065,
+    "ci": [
+     0.3972,
+     0.6152
+    ]
+   }
+  },
+  "missed": [
+   "aws/chalice tests/unit/test_test.py:77 [A random] os.urandom",
+   "pennersr/django-allauth allauth/idp/oidc/internal/tokens.py:17 [A token] jwt.get_unverified_header",
+   "pennersr/django-allauth allauth/idp/oidc/internal/tokens.py:36 [A token] jwt.decode",
+   "pennersr/django-allauth allauth/idp/oidc/internal/tokens.py:38 [A key_handling] private_key.public_key",
+   "pennersr/django-allauth allauth/socialaccount/adapter.py:427 [B random] get_random_string",
+   "Rapptz/discord.py discord/ui/modal.py:143 [A random] os.urandom",
+   "Rapptz/discord.py discord/ui/select.py:251 [A random] os.urandom",
+   "Lightning-AI/litData src/litdata/utilities/encryption.py:77 [A random] os.urandom",
+   "Lightning-AI/litData src/litdata/utilities/encryption.py:155 [A key_handling] private_key.public_key",
+   "Lightning-AI/litData src/litdata/utilities/encryption.py:195 [A key_handling] self.private_key.private_bytes",
+   "Lightning-AI/litData src/litdata/utilities/encryption.py:202 [A key_handling] self.public_key.public_bytes",
+   "Lightning-AI/litData tests/raw/test_fork_safety.py:381 [A random] os.urandom",
+   "Lightning-AI/litData tests/raw/test_fork_safety.py:497 [A random] os.urandom",
+   "Lightning-AI/litData tests/utilities/test_encryption.py:23 [A random] os.urandom",
+   "pickles4evaaaa/mybibliotheca app/forms.py:174 [B token] generate_csrf",
+   "pickles4evaaaa/mybibliotheca app/auth.py:105 [B token] generate_csrf",
+   "pickles4evaaaa/mybibliotheca app/auth.py:1038 [B tls] server.starttls",
+   "pickles4evaaaa/mybibliotheca app/admin.py:1495 [B tls] server.starttls",
+   "ysrc/GourdScanV2 proxy/mix_proxy.py:30 [A tls] ssl.SSLContext",
+   "ysrc/GourdScanV2 proxy/mix_proxy.py:31 [A tls] context.load_cert_chain",
+   "ysrc/GourdScanV2 proxy/mix_proxy.py:32 [A tls] context.wrap_socket",
+   "s3rgeym/hh-applicant-tool src/hh_applicant_tool/tool.py:671 [B tls] client_cls",
+   "s3rgeym/hh-applicant-tool src/hh_applicant_tool/tool.py:674 [B tls] server.starttls",
+   "gyoisamurai/GyoiThon util.py:263 [A tls] ctx.set_ciphers",
+   "gyoisamurai/GyoiThon util.py:285 [B tls] urllib3.PoolManager",
+   "gyoisamurai/GyoiThon util.py:291 [B tls] urllib3.PoolManager",
+   "gyoisamurai/GyoiThon modules/Gyoi_CveExplorerNVD.py:189 [A tls] ctx.set_ciphers",
+   "gyoisamurai/GyoiThon modules/Gyoi_CveExplorerNVD.py:204 [B tls] urllib3.PoolManager",
+   "AgriciDaniel/codex-seo scripts/google_auth.py:156 [B key_handling] service_account.Credentials.from_service_account_file",
+   "realiti4/claude-swap src/claude_swap/cli.py:933 [A tls] truststore.inject_into_ssl",
+   "SeldomQA/seldom seldom/utils/encrypt.py:405 [A key_handling] key.export_key",
+   "SeldomQA/seldom seldom/utils/encrypt.py:406 [A key_handling] key.publickey",
+   "SeldomQA/seldom seldom/utils/encrypt.py:406 [A key_handling] export_key",
+   "SeldomQA/seldom seldom/utils/encrypt.py:424 [A public_key] PKCS1_OAEP.new",
+   "SeldomQA/seldom seldom/utils/encrypt.py:425 [A public_key] cipher.encrypt",
+   "SeldomQA/seldom seldom/utils/encrypt.py:443 [A public_key] PKCS1_OAEP.new",
+   "SeldomQA/seldom seldom/utils/encrypt.py:445 [A public_key] cipher.decrypt",
+   "guelfoweb/knockpy knockpy/engine/runtime.py:1031 [A tls] ctx.set_alpn_protocols",
+   "guelfoweb/knockpy knockpy/engine/runtime.py:1055 [A tls] ctx.set_alpn_protocols",
+   "guelfoweb/knockpy knockpy/engine/runtime.py:1088 [A key_handling] x509.get_pubkey",
+   "guelfoweb/knockpy knockpy/engine/runtime.py:2423 [A tls] context.set_ciphers",
+   "tiantianGPU/reg-factory vendor/gopay_engine/app/src/opai/core/gopay_signer_v2.py:67 [A random] os.urandom",
+   "bybit-exchange/pybit pybit/_http_manager.py:59 [A public_key] PKCS1_v1_5.new",
+   "bybit-exchange/pybit pybit/_http_manager.py:59 [A key_handling] RSA.importKey",
+   "bybit-exchange/pybit pybit/_http_manager.py:59 [A public_key] sign",
+   "bybit-exchange/pybit pybit/_http_manager.py:83 [A public_key] PKCS1_v1_5.new",
+   "bybit-exchange/pybit pybit/_http_manager.py:83 [A key_handling] RSA.importKey",
+   "bybit-exchange/pybit pybit/_http_manager.py:83 [A public_key] sign",
+   "dmMaze/BallonsTranslator ballontranslator/utils/download_util.py:208 [A tls] ssl_context.load_verify_locations",
+   "dmMaze/BallonsTranslator ballontranslator/utils/download_util.py:209 [B tls] urlopen",
+   "dmMaze/BallonsTranslator ballontranslator/modules/codex.py:400 [A key_handling] Fernet.generate_key"
+  ],
+  "false_positives": [
+   "Lightning-AI/litData src/litdata/utilities/encryption.py:190 cryptography.hazmat.primitives.serialization.BestAvailableEncryption",
+   "s3rgeym/hh-applicant-tool src/hh_applicant_tool/tool.py:670 smtplib.SMTP_SSL",
+   "SeldomQA/seldom seldom/cli.py:24 ssl._create_unverified_context"
+  ]
+ },
+ "v9 (2026.11.05)": {
+  "time": "2026-10-19T00:13:28+00:00",
+  "pooled": {
+   "precision": {
+    "found": 184,
+    "total": 193,
+    "rate": 0.9534,
+    "ci": [
+     0.9138,
+     0.9753
+    ]
+   },
+   "recall_A": {
+    "found": 174,
+    "total": 181,
+    "rate": 0.9613,
+    "ci": [
+     0.9223,
+     0.9811
+    ]
+   },
+   "recall_AB": {
+    "found": 184,
+    "total": 198,
+    "rate": 0.9293,
+    "ci": [
+     0.8848,
+     0.9574
+    ]
+   },
+   "pktls_A": {
+    "found": 61,
+    "total": 66,
+    "rate": 0.9242,
+    "ci": [
+     0.8346,
+     0.9672
+    ]
+   },
+   "pktls_AB": {
+    "found": 68,
+    "total": 77,
+    "rate": 0.8831,
+    "ci": [
+     0.7925,
+     0.9373
+    ]
+   }
+  },
+  "stratum_G": {
+   "precision": {
+    "found": 27,
+    "total": 27,
+    "rate": 1.0,
+    "ci": [
+     0.8754,
+     1.0
+    ]
+   },
+   "recall_A": {
+    "found": 27,
+    "total": 27,
+    "rate": 1.0,
+    "ci": [
+     0.8754,
+     1.0
+    ]
+   },
+   "recall_AB": {
+    "found": 27,
+    "total": 27,
+    "rate": 1.0,
+    "ci": [
+     0.8754,
+     1.0
+    ]
+   },
+   "pktls_A": {
+    "found": 0,
+    "total": 0,
+    "rate": null,
+    "ci": null
+   },
+   "pktls_AB": {
+    "found": 0,
+    "total": 0,
+    "rate": null,
+    "ci": null
+   }
+  },
+  "stratum_P": {
+   "precision": {
+    "found": 157,
+    "total": 166,
+    "rate": 0.9458,
+    "ci": [
+     0.9002,
+     0.9712
+    ]
+   },
+   "recall_A": {
+    "found": 147,
+    "total": 154,
+    "rate": 0.9545,
+    "ci": [
+     0.9092,
+     0.9778
+    ]
+   },
+   "recall_AB": {
+    "found": 157,
+    "total": 171,
+    "rate": 0.9181,
+    "ci": [
+     0.8673,
+     0.9506
+    ]
+   },
+   "pktls_A": {
+    "found": 61,
+    "total": 66,
+    "rate": 0.9242,
+    "ci": [
+     0.8346,
+     0.9672
+    ]
+   },
+   "pktls_AB": {
+    "found": 68,
+    "total": 77,
+    "rate": 0.8831,
+    "ci": [
+     0.7925,
+     0.9373
+    ]
+   }
+  },
+  "missed": [
+   "pennersr/django-allauth allauth/idp/oidc/internal/tokens.py:17 [A token] jwt.get_unverified_header",
+   "pennersr/django-allauth allauth/idp/oidc/internal/tokens.py:36 [A token] jwt.decode",
+   "pennersr/django-allauth allauth/idp/oidc/internal/tokens.py:38 [A key_handling] private_key.public_key",
+   "pennersr/django-allauth allauth/socialaccount/adapter.py:427 [B random] get_random_string",
+   "pickles4evaaaa/mybibliotheca app/forms.py:174 [B token] generate_csrf",
+   "pickles4evaaaa/mybibliotheca app/auth.py:105 [B token] generate_csrf",
+   "ysrc/GourdScanV2 proxy/mix_proxy.py:30 [A tls] ssl.SSLContext",
+   "ysrc/GourdScanV2 proxy/mix_proxy.py:31 [A tls] context.load_cert_chain",
+   "ysrc/GourdScanV2 proxy/mix_proxy.py:32 [A tls] context.wrap_socket",
+   "s3rgeym/hh-applicant-tool src/hh_applicant_tool/tool.py:671 [B tls] client_cls",
+   "gyoisamurai/GyoiThon util.py:285 [B tls] urllib3.PoolManager",
+   "gyoisamurai/GyoiThon util.py:291 [B tls] urllib3.PoolManager",
+   "gyoisamurai/GyoiThon modules/Gyoi_CveExplorerNVD.py:204 [B tls] urllib3.PoolManager",
+   "guelfoweb/knockpy knockpy/engine/runtime.py:1088 [A key_handling] x509.get_pubkey"
+  ],
+  "false_positives": [
+   "Lightning-AI/litData src/litdata/utilities/encryption.py:190 cryptography.hazmat.primitives.serialization.BestAvailableEncryption",
+   "s3rgeym/hh-applicant-tool src/hh_applicant_tool/tool.py:670 smtplib.SMTP_SSL",
+   "SeldomQA/seldom seldom/cli.py:24 ssl._create_unverified_context",
+   "SeldomQA/seldom seldom/utils/encrypt.py:150 Crypto.Util.Padding.pad",
+   "SeldomQA/seldom seldom/utils/encrypt.py:196 Crypto.Util.Padding.unpad",
+   "SeldomQA/seldom seldom/utils/encrypt.py:238 Crypto.Util.Padding.pad",
+   "SeldomQA/seldom seldom/utils/encrypt.py:284 Crypto.Util.Padding.unpad",
+   "SeldomQA/seldom seldom/utils/encrypt.py:326 Crypto.Util.Padding.pad",
+   "SeldomQA/seldom seldom/utils/encrypt.py:372 Crypto.Util.Padding.unpad"
+  ]
+ },
+ "v10 (2026.11.06)": {
+  "time": "2026-10-19T00:13:29+00:00",
+  "pooled": {
+   "precision": {
+    "found": 184,
+    "total": 192,
+    "rate": 0.9583,
+    "ci": [
+     0.9199,
+     0.9787
+    ]
+   },
+   "recall_A": {
+    "found": 174,
+    "total": 181,
+    "rate": 0.9613,
+    "ci": [
+     0.9223,
+     0.9811
+    ]
+   },
+   "recall_AB": {
+    "found": 184,
+    "total": 198,
+    "rate": 0.9293,
+    "ci": [
+     0.8848,
+     0.9574
+    ]
+   },
+   "pktls_A": {
+    "found": 61,
+    "total": 66,
+    "rate": 0.9242,
+    "ci": [
+     0.8346,
+     0.9672
+    ]
+   },
+   "pktls_AB": {
+    "found": 68,
+    "total": 77,
+    "rate": 0.8831,
+    "ci": [
+     0.7925,
+     0.9373
+    ]
+   }
+  },
+  "stratum_G": {
+   "precision": {
+    "found": 27,
+    "total": 27,
+    "rate": 1.0,
+    "ci": [
+     0.8754,
+     1.0
+    ]
+   },
+   "recall_A": {
+    "found": 27,
+    "total": 27,
+    "rate": 1.0,
+    "ci": [
+     0.8754,
+     1.0
+    ]
+   },
+   "recall_AB": {
+    "found": 27,
+    "total": 27,
+    "rate": 1.0,
+    "ci": [
+     0.8754,
+     1.0
+    ]
+   },
+   "pktls_A": {
+    "found": 0,
+    "total": 0,
+    "rate": null,
+    "ci": null
+   },
+   "pktls_AB": {
+    "found": 0,
+    "total": 0,
+    "rate": null,
+    "ci": null
+   }
+  },
+  "stratum_P": {
+   "precision": {
+    "found": 157,
+    "total": 165,
+    "rate": 0.9515,
+    "ci": [
+     0.9073,
+     0.9752
+    ]
+   },
+   "recall_A": {
+    "found": 147,
+    "total": 154,
+    "rate": 0.9545,
+    "ci": [
+     0.9092,
+     0.9778
+    ]
+   },
+   "recall_AB": {
+    "found": 157,
+    "total": 171,
+    "rate": 0.9181,
+    "ci": [
+     0.8673,
+     0.9506
+    ]
+   },
+   "pktls_A": {
+    "found": 61,
+    "total": 66,
+    "rate": 0.9242,
+    "ci": [
+     0.8346,
+     0.9672
+    ]
+   },
+   "pktls_AB": {
+    "found": 68,
+    "total": 77,
+    "rate": 0.8831,
+    "ci": [
+     0.7925,
+     0.9373
+    ]
+   }
+  },
+  "missed": [
+   "pennersr/django-allauth allauth/idp/oidc/internal/tokens.py:17 [A token] jwt.get_unverified_header",
+   "pennersr/django-allauth allauth/idp/oidc/internal/tokens.py:36 [A token] jwt.decode",
+   "pennersr/django-allauth allauth/idp/oidc/internal/tokens.py:38 [A key_handling] private_key.public_key",
+   "pennersr/django-allauth allauth/socialaccount/adapter.py:427 [B random] get_random_string",
+   "pickles4evaaaa/mybibliotheca app/forms.py:174 [B token] generate_csrf",
+   "pickles4evaaaa/mybibliotheca app/auth.py:105 [B token] generate_csrf",
+   "ysrc/GourdScanV2 proxy/mix_proxy.py:30 [A tls] ssl.SSLContext",
+   "ysrc/GourdScanV2 proxy/mix_proxy.py:31 [A tls] context.load_cert_chain",
+   "ysrc/GourdScanV2 proxy/mix_proxy.py:32 [A tls] context.wrap_socket",
+   "s3rgeym/hh-applicant-tool src/hh_applicant_tool/tool.py:671 [B tls] client_cls",
+   "gyoisamurai/GyoiThon util.py:285 [B tls] urllib3.PoolManager",
+   "gyoisamurai/GyoiThon util.py:291 [B tls] urllib3.PoolManager",
+   "gyoisamurai/GyoiThon modules/Gyoi_CveExplorerNVD.py:204 [B tls] urllib3.PoolManager",
+   "guelfoweb/knockpy knockpy/engine/runtime.py:1088 [A key_handling] x509.get_pubkey"
+  ],
+  "false_positives": [
+   "Lightning-AI/litData src/litdata/utilities/encryption.py:190 cryptography.hazmat.primitives.serialization.BestAvailableEncryption",
+   "s3rgeym/hh-applicant-tool src/hh_applicant_tool/tool.py:670 smtplib.SMTP_SSL",
+   "SeldomQA/seldom seldom/utils/encrypt.py:150 Crypto.Util.Padding.pad",
+   "SeldomQA/seldom seldom/utils/encrypt.py:196 Crypto.Util.Padding.unpad",
+   "SeldomQA/seldom seldom/utils/encrypt.py:238 Crypto.Util.Padding.pad",
+   "SeldomQA/seldom seldom/utils/encrypt.py:284 Crypto.Util.Padding.unpad",
+   "SeldomQA/seldom seldom/utils/encrypt.py:326 Crypto.Util.Padding.pad",
+   "SeldomQA/seldom seldom/utils/encrypt.py:372 Crypto.Util.Padding.unpad"
+  ]
+ },
+ "decision": {
+  "recall_AB_exceeds_v9": false,
+  "pktls_AB_exceeds_v9": false,
+  "no_new_false_positive": true,
+  "precision_wilson_lower_ge_0_95": false,
+  "precision_wilson_lower": 0.9199,
+  "speed_within_5pct": true,
+  "speed_change_pct": 1.8
+ }
+}

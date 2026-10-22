@@ -1,0 +1,35 @@
+{
+ "repo": "pmaupin/pdfrw",
+ "commit": "6c892160e7e976b243db0c12c3e56ed8c78afc5a",
+ "annotator": "agent-4",
+ "files": {
+  "tests/test_roundtrip.py": [
+   {"line_start": 88, "line_end": 88, "name": "hashlib.md5", "class": "A", "kind": "hash"}
+  ],
+  "tests/checkdiffs.py": [
+   {"line_start": 30, "line_end": 30, "name": "hashlib.md5", "class": "A", "kind": "hash"}
+  ],
+  "tests/update_expected.py": [
+   {"line_start": 43, "line_end": 43, "name": "hashlib.md5", "class": "A", "kind": "hash"}
+  ],
+  "tests/test_examples.py": [
+   {"line_start": 104, "line_end": 104, "name": "hashlib.md5", "class": "A", "kind": "hash"}
+  ],
+  "pdfrw/crypt.py": [
+   {"line_start": 33, "line_end": 33, "name": "hashlib.md5", "class": "A", "kind": "hash", "note": "hasher.update/digest on lines 34-38 only feed or read it"},
+   {"line_start": 42, "line_end": 42, "name": "hashlib.md5", "class": "A", "kind": "hash"},
+   {"line_start": 51, "line_end": 51, "name": "ARC4.new", "class": "A", "kind": "symmetric"},
+   {"line_start": 52, "line_end": 52, "name": "cipher.encrypt", "class": "A", "kind": "symmetric"},
+   {"line_start": 54, "line_end": 54, "name": "hashlib.md5", "class": "A", "kind": "hash"},
+   {"line_start": 61, "line_end": 61, "name": "ARC4.new", "class": "A", "kind": "symmetric"},
+   {"line_start": 62, "line_end": 62, "name": "cipher.encrypt", "class": "A", "kind": "symmetric"},
+   {"line_start": 88, "line_end": 88, "name": "hashlib.md5", "class": "A", "kind": "hash"},
+   {"line_start": 91, "line_end": 91, "name": "AES.new", "class": "A", "kind": "symmetric"},
+   {"line_start": 92, "line_end": 92, "name": "cipher.decrypt", "class": "A", "kind": "symmetric"},
+   {"line_start": 111, "line_end": 111, "name": "hashlib.md5", "class": "A", "kind": "hash"},
+   {"line_start": 113, "line_end": 113, "name": "ARC4.new", "class": "A", "kind": "symmetric"},
+   {"line_start": 114, "line_end": 114, "name": "cipher.decrypt", "class": "A", "kind": "symmetric"}
+  ],
+  "pdfrw/pdfreader.py": []
+ }
+}

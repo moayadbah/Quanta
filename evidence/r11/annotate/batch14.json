@@ -1,0 +1,17 @@
+[
+ {
+  "repo": "CrimsonForge-io/king-phisher",
+  "commit": "94823fbb7b1b4557f78c563e217dd21c758edbce",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/CrimsonForge-io__king-phisher",
+  "files": [
+   "docs/source/conf.py",
+   "king_phisher/client/dialogs/ssh_host_key.py",
+   "king_phisher/ics.py",
+   "king_phisher/server/letsencrypt.py",
+   "king_phisher/server/graphql/types/ssl.py",
+   "king_phisher/server/server.py",
+   "tests/server/server_rpc.py",
+   "king_phisher/server/graphql/schema.py"
+  ]
+ }
+]

@@ -1,0 +1,10 @@
+{
+ "repo": "deepseek-ai/DeepSpec",
+ "commit": "005e03b81cec38b7da6399833d609ee89a2587f2",
+ "annotator": "agent-6",
+ "files": {
+  "deepspec/data/jsonl_dataset.py": [
+   {"line_start": 76, "line_end": 76, "name": "hashlib.blake2b", "class": "A", "kind": "hash"}
+  ]
+ }
+}

@@ -1,0 +1,71 @@
+[
+ {
+  "repo": "GACWR/OpenUBA",
+  "commit": "6d7b9cf85d6bff3e16eb5230791252ff2a3bd0ec",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/GACWR__OpenUBA",
+  "files": [
+   "core/services/data_ingestion.py",
+   "core/model_library/ssh-login-anomaly-detector/MODEL.py",
+   "docker/model-runner/runner.py",
+   "sdk/examples/quickstart.py",
+   "images/diagram/generate.py",
+   "core/model_library/SSH Anomaly Detector E2E Test/MODEL.py",
+   "core/tests/e2e/test_workspace_notebooks.py",
+   "core/api_routers/auth.py"
+  ]
+ },
+ {
+  "repo": "lnbits/lnbits",
+  "commit": "04b37f0d761222561bc8606cfe7edc86cabcce35",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/lnbits__lnbits",
+  "files": [
+   "tests/unit/test_decorators.py",
+   "tests/unit/onchain/test_psbt.py",
+   "lnbits/core/migrations.py",
+   "tests/unit/test_helpers.py",
+   "lnbits/wallets/breez.py",
+   "lnbits/core/views/auth_api.py",
+   "tests/conftest.py",
+   "tests/api/test_onchain_wallet.py"
+  ]
+ },
+ {
+  "repo": "kivy/python-for-android",
+  "commit": "8ef9d1dbbf769d2c14681dbc3c116c85e2e93bae",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/kivy__python-for-android",
+  "files": [
+   "pythonforandroid/recipes/android/src/android/activity.py",
+   "pythonforandroid/toolchain.py",
+   "pythonforandroid/recipes/libcurl/__init__.py",
+   "tests/test_pythonpackage_basic.py",
+   "pythonforandroid/recipes/openssl/__init__.py",
+   "pythonforandroid/recipe.py",
+   "pythonforandroid/bootstraps/common/build/build.py",
+   "testapps/on_device_unit_tests/test_app/tests/test_requirements.py"
+  ]
+ },
+ {
+  "repo": "thisjam/sd-webui-oldsix-prompt",
+  "commit": "9fb665c34bf8d4d06df8952189923de925913849",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/thisjam__sd-webui-oldsix-prompt",
+  "files": [
+   "scripts/transerver/Translator.py"
+  ]
+ },
+ {
+  "repo": "Windy3f3f3f3f/claude-code-from-scratch",
+  "commit": "0b452360866433fde0dc77cd37ada9d303546592",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/Windy3f3f3f3f__claude-code-from-scratch",
+  "files": [
+   "python/mini_claude/memory.py"
+  ]
+ },
+ {
+  "repo": "TeamHG-Memex/tensorboard_logger",
+  "commit": "203aca7a52066f84ef15046b0d0b1ea69dc59e12",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/TeamHG-Memex__tensorboard_logger",
+  "files": [
+   "travis_pypi_setup.py"
+  ]
+ }
+]

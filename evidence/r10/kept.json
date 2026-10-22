@@ -1,0 +1,182 @@
+[
+ {
+  "repo": "nengo/nengo",
+  "stratum": "G",
+  "commit": "440db6363f690ea4df52be29b2fa01a5a41399f8",
+  "py_files": 191
+ },
+ {
+  "repo": "vllm-project/speculators",
+  "stratum": "G",
+  "commit": "7ec7aba9450b533334e8f7992baf4e93be3c1a57",
+  "py_files": 257
+ },
+ {
+  "repo": "aws/chalice",
+  "stratum": "G",
+  "commit": "702dc5e198b8c84ce09b08dc8409130b57d50819",
+  "py_files": 136
+ },
+ {
+  "repo": "abhishekkrthakur/diffuzers",
+  "stratum": "G",
+  "commit": "71f710a1940c22637561809387b1c8622be1a48b",
+  "py_files": 29
+ },
+ {
+  "repo": "octo-models/octo",
+  "stratum": "G",
+  "commit": "241fb3514b7c40957a86d869fecb7c7fc353f540",
+  "py_files": 48
+ },
+ {
+  "repo": "spark-arena/sparkrun",
+  "stratum": "P",
+  "commit": "d54423cef9419751ecc19db7e0e63118f1aecdc1",
+  "py_files": 952
+ },
+ {
+  "repo": "hvac/hvac",
+  "stratum": "P",
+  "commit": "09902dea41c2c6313cd7844be4d984c1514bd822",
+  "py_files": 167
+ },
+ {
+  "repo": "pennersr/django-allauth",
+  "stratum": "P",
+  "commit": "5ea117e72397adbd8ca6bc61c692d64ecca4d31b",
+  "py_files": 1294
+ },
+ {
+  "repo": "Rapptz/discord.py",
+  "stratum": "G",
+  "commit": "65232c38702be5844cf2ce865a4777eb1928b5d0",
+  "py_files": 201
+ },
+ {
+  "repo": "maks-sh/scikit-uplift",
+  "stratum": "G",
+  "commit": "0038e659428f6e7a49b935b850651cd9a9db3f54",
+  "py_files": 20
+ },
+ {
+  "repo": "Lightning-AI/litData",
+  "stratum": "P",
+  "commit": "c6f075ca7448ede4c383122678ee790e359d3711",
+  "py_files": 216
+ },
+ {
+  "repo": "pickles4evaaaa/mybibliotheca",
+  "stratum": "P",
+  "commit": "6db6bbe205f500327732a6af50a2ee74942465b2",
+  "py_files": 149
+ },
+ {
+  "repo": "skydiscover-ai/skydiscover",
+  "stratum": "G",
+  "commit": "0d932b690670a7e544388ad362e9876c8bd256a0",
+  "py_files": 333
+ },
+ {
+  "repo": "ysrc/GourdScanV2",
+  "stratum": "P",
+  "commit": "79bf4cb59a5b3594b51a47a6660b79476ffbcbc4",
+  "py_files": 19
+ },
+ {
+  "repo": "algorithmicsuperintelligence/optillm",
+  "stratum": "G",
+  "commit": "c0dc4f011ad644ce44aea884c43fbb0de6beb0e3",
+  "py_files": 139
+ },
+ {
+  "repo": "deepseek-ai/DeepSpec",
+  "stratum": "G",
+  "commit": "005e03b81cec38b7da6399833d609ee89a2587f2",
+  "py_files": 69
+ },
+ {
+  "repo": "s3rgeym/hh-applicant-tool",
+  "stratum": "P",
+  "commit": "32fdf1a571d66b32ca575e84925ab4fa1e6f3092",
+  "py_files": 41
+ },
+ {
+  "repo": "yeti-platform/yeti",
+  "stratum": "P",
+  "commit": "da813e2110efc63db17d6774ea242bd22b7a1b2d",
+  "py_files": 324
+ },
+ {
+  "repo": "ancoleman/ai-design-components",
+  "stratum": "P",
+  "commit": "76551b7b19ebc667764ec75da14990d0aef8b6e5",
+  "py_files": 189
+ },
+ {
+  "repo": "dustinkirkland/byobu",
+  "stratum": "P",
+  "commit": "41c285e7eaf36bed88204c75314fb21a444b031a",
+  "py_files": 21
+ },
+ {
+  "repo": "gyoisamurai/GyoiThon",
+  "stratum": "P",
+  "commit": "8dec26aabdbf9ee999e7cc5b5eee9222f01bae13",
+  "py_files": 24
+ },
+ {
+  "repo": "AgriciDaniel/codex-seo",
+  "stratum": "P",
+  "commit": "9a644f68d39d242a7a41a0017f7286dd0512fc3b",
+  "py_files": 69
+ },
+ {
+  "repo": "realiti4/claude-swap",
+  "stratum": "P",
+  "commit": "5a837605947d0ab87a87f471689867ff4288fa5c",
+  "py_files": 81
+ },
+ {
+  "repo": "SeldomQA/seldom",
+  "stratum": "P",
+  "commit": "f02179a1c95023ed35d56c2463349cef9f0af0e1",
+  "py_files": 145
+ },
+ {
+  "repo": "guelfoweb/knockpy",
+  "stratum": "P",
+  "commit": "da43fdd2399f9ca5a39229cb8ba3e51249f53e30",
+  "py_files": 28
+ },
+ {
+  "repo": "tiantianGPU/reg-factory",
+  "stratum": "P",
+  "commit": "675f30b7b1feb1336fa158b6ef1f3e16b6976eb4",
+  "py_files": 201
+ },
+ {
+  "repo": "bybit-exchange/pybit",
+  "stratum": "P",
+  "commit": "c3309e14e577b1d5610c1f288a413df6990a6d25",
+  "py_files": 79
+ },
+ {
+  "repo": "SpaceZephyr/creator-buddy",
+  "stratum": "P",
+  "commit": "edf46c567ff54b72ee2157d06f3a02dbd67aaa9c",
+  "py_files": 21
+ },
+ {
+  "repo": "gaubert/gmvault",
+  "stratum": "P",
+  "commit": "236fa56ddf0c299bc51b68ad467c522351b6203c",
+  "py_files": 53
+ },
+ {
+  "repo": "dmMaze/BallonsTranslator",
+  "stratum": "P",
+  "commit": "fa3e1374b4ca7c040a1a04effb96c95aac2a5e5c",
+  "py_files": 372
+ }
+]

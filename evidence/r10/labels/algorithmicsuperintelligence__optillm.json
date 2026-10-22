@@ -1,0 +1,15 @@
+{
+ "repo": "algorithmicsuperintelligence/optillm",
+ "commit": "c0dc4f011ad644ce44aea884c43fbb0de6beb0e3",
+ "annotator": "agent-2",
+ "files": {
+  "optillm/plugins/proxy/approach_handler.py": [],
+  "optillm/plugins/readurls_plugin.py": [],
+  "tests/test_ssl_config.py": [],
+  "optillm/plugins/deep_research_plugin.py": [],
+  "tests/test_approaches.py": [],
+  "scripts/train_optillm_classifier.py": [],
+  "optillm/mars/prompts.py": [],
+  "optillm/mars/aggregator.py": []
+ }
+}

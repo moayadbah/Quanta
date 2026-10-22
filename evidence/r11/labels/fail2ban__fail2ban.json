@@ -1,0 +1,46 @@
+{
+ "repo": "fail2ban/fail2ban",
+ "commit": "6c88de71d201f864a2bec198217fd07ce47869b3",
+ "annotator": "agent-8",
+ "files": {
+  "config/action.d/smtp.py": [
+   {
+    "line_start": 170,
+    "line_end": 170,
+    "name": "smtp.starttls",
+    "class": "B",
+    "kind": "tls"
+   }
+  ],
+  "fail2ban/tests/fail2banregextestcase.py": [],
+  "fail2ban/tests/action_d/test_smtp.py": [
+   {
+    "line_start": 276,
+    "line_end": 276,
+    "name": "ssl.create_default_context",
+    "class": "A",
+    "kind": "tls"
+   },
+   {
+    "line_start": 277,
+    "line_end": 277,
+    "name": "ssl_context.load_cert_chain",
+    "class": "A",
+    "kind": "tls"
+   },
+   {
+    "line_start": 282,
+    "line_end": 283,
+    "name": "Controller",
+    "class": "B",
+    "kind": "tls",
+    "note": "aiosmtpd Controller given tls_context via server_kwargs"
+   }
+  ],
+  "fail2ban/tests/actiontestcase.py": [],
+  "fail2ban/tests/filtertestcase.py": [],
+  "fail2ban/tests/fail2banclienttestcase.py": [],
+  "fail2ban/compat/asynchat.py": [],
+  "fail2ban/tests/clientreadertestcase.py": []
+ }
+}

@@ -1,0 +1,17 @@
+{
+ "repo": "mitogen-hq/mitogen",
+ "commit": "eb76a3aee54ea10ceaf6bf642ed410394b7ef119",
+ "annotator": "second-3",
+ "files": {
+  "mitogen/core.py": [],
+  "ansible_mitogen/runner.py": [],
+  "ansible_mitogen/target.py": [],
+  "tests/bench/throughput.py": [
+   {"line_start": 27, "line_end": 27, "name": "os.urandom", "class": "A", "kind": "random"}
+  ],
+  "examples/service/self_contained.py": [],
+  "tests/testlib.py": [],
+  "mitogen/compat/pkgutil.py": [],
+  "mitogen/fakessh.py": []
+ }
+}

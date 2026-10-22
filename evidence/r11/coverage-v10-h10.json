@@ -1,0 +1,342 @@
+{
+ "repositories": 169,
+ "unmatched": [
+  {
+   "name": "cryptography.hazmat.primitives.padding.PKCS7",
+   "repos": 1,
+   "calls": 2
+  },
+  {
+   "name": "Cryptodome.Protocol.SecretSharing.Shamir.combine",
+   "repos": 1,
+   "calls": 1
+  },
+  {
+   "name": "Cryptodome.Protocol.SecretSharing.Shamir.split",
+   "repos": 1,
+   "calls": 1
+  },
+  {
+   "name": "cryptography.hazmat.primitives.padding.PKCS7.padder",
+   "repos": 1,
+   "calls": 1
+  },
+  {
+   "name": "cryptography.hazmat.primitives.padding.PKCS7.unpadder",
+   "repos": 1,
+   "calls": 1
+  },
+  {
+   "name": "nacl.secret.Aead",
+   "repos": 1,
+   "calls": 1
+  },
+  {
+   "name": "nacl.utils.random",
+   "repos": 1,
+   "calls": 1
+  },
+  {
+   "name": "ssl.cert_time_to_seconds",
+   "repos": 1,
+   "calls": 1
+  }
+ ],
+ "tls_keyword_calls": [
+  {
+   "name": "requests.get",
+   "repos": 6,
+   "keywords": {
+    "verify": 9
+   }
+  },
+  {
+   "name": "__init__",
+   "repos": 4,
+   "keywords": {
+    "certfile": 2,
+    "verify": 3
+   }
+  },
+  {
+   "name": "httpx.AsyncClient",
+   "repos": 3,
+   "keywords": {
+    "verify": 5
+   }
+  },
+  {
+   "name": "requests.post",
+   "repos": 3,
+   "keywords": {
+    "verify": 3
+   }
+  },
+  {
+   "name": "Client",
+   "repos": 1,
+   "keywords": {
+    "verify": 2
+   }
+  },
+  {
+   "name": "PyMISP",
+   "repos": 1,
+   "keywords": {
+    "ssl": 2
+   }
+  },
+  {
+   "name": "RedisClient",
+   "repos": 1,
+   "keywords": {
+    "ssl": 1
+   }
+  },
+  {
+   "name": "_ensure",
+   "repos": 1,
+   "keywords": {
+    "verify": 1
+   }
+  },
+  {
+   "name": "_freeze",
+   "repos": 1,
+   "keywords": {
+    "verify": 1
+   }
+  },
+  {
+   "name": "_write_extraction",
+   "repos": 1,
+   "keywords": {
+    "verify": 3
+   }
+  },
+  {
+   "name": "adapter",
+   "repos": 1,
+   "keywords": {
+    "verify": 1
+   }
+  },
+  {
+   "name": "aiohttp.TCPConnector",
+   "repos": 1,
+   "keywords": {
+    "ssl": 1
+   }
+  },
+  {
+   "name": "aiohttp.request",
+   "repos": 1,
+   "keywords": {
+    "ssl": 1
+   }
+  },
+  {
+   "name": "aioredis.Redis",
+   "repos": 1,
+   "keywords": {
+    "ssl": 1
+   }
+  },
+  {
+   "name": "asyncio.to_thread",
+   "repos": 1,
+   "keywords": {
+    "tls": 1
+   }
+  },
+  {
+   "name": "chromadb.HttpClient",
+   "repos": 1,
+   "keywords": {
+    "ssl": 1
+   }
+  },
+  {
+   "name": "cls",
+   "repos": 1,
+   "keywords": {
+    "verify": 1
+   }
+  },
+  {
+   "name": "context.load_cert_chain",
+   "repos": 1,
+   "keywords": {
+    "certfile": 1
+   }
+  },
+  {
+   "name": "download_kubectl",
+   "repos": 1,
+   "keywords": {
+    "verify": 1
+   }
+  },
+  {
+   "name": "emit_daemon_serve_telemetry",
+   "repos": 1,
+   "keywords": {
+    "tls": 1
+   }
+  },
+  {
+   "name": "env.fault.update",
+   "repos": 1,
+   "keywords": {
+    "verify": 1
+   }
+  },
+  {
+   "name": "evidence_parts.append",
+   "repos": 1,
+   "keywords": {
+    "tls": 2
+   }
+  },
+  {
+   "name": "get",
+   "repos": 1,
+   "keywords": {
+    "verify": 2
+   }
+  },
+  {
+   "name": "httpx.Client",
+   "repos": 1,
+   "keywords": {
+    "verify": 3
+   }
+  },
+  {
+   "name": "mock_client_class.assert_called_once_with",
+   "repos": 1,
+   "keywords": {
+    "verify": 1
+   }
+  },
+  {
+   "name": "mock_httpx_client.assert_called_once_with",
+   "repos": 1,
+   "keywords": {
+    "verify": 3
+   }
+  },
+  {
+   "name": "mod_imap.MonkeyIMAPClient",
+   "repos": 1,
+   "keywords": {
+    "ssl": 1
+   }
+  },
+  {
+   "name": "mqtt_client.tls_set",
+   "repos": 1,
+   "keywords": {
+    "ca_certs": 1
+   }
+  },
+  {
+   "name": "param",
+   "repos": 1,
+   "keywords": {
+    "verify": 8
+   }
+  },
+  {
+   "name": "parts.append",
+   "repos": 1,
+   "keywords": {
+    "tls": 1
+   }
+  },
+  {
+   "name": "post",
+   "repos": 1,
+   "keywords": {
+    "verify": 1
+   }
+  },
+  {
+   "name": "requests.request",
+   "repos": 1,
+   "keywords": {
+    "verify": 1
+   }
+  },
+  {
+   "name": "resolve_cache_locations",
+   "repos": 1,
+   "keywords": {
+    "verify": 4
+   }
+  },
+  {
+   "name": "self._freeze",
+   "repos": 1,
+   "keywords": {
+    "verify": 1
+   }
+  },
+  {
+   "name": "self._make_request",
+   "repos": 1,
+   "keywords": {
+    "verify": 4
+   }
+  },
+  {
+   "name": "self.receipt",
+   "repos": 1,
+   "keywords": {
+    "verify": 1
+   }
+  },
+  {
+   "name": "self.session.request",
+   "repos": 1,
+   "keywords": {
+    "verify": 1
+   }
+  },
+  {
+   "name": "session.post",
+   "repos": 1,
+   "keywords": {
+    "verify": 1
+   }
+  },
+  {
+   "name": "ssl.wrap_socket",
+   "repos": 1,
+   "keywords": {
+    "certfile": 1
+   }
+  },
+  {
+   "name": "sync_redis.Redis",
+   "repos": 1,
+   "keywords": {
+    "ssl": 1
+   }
+  },
+  {
+   "name": "tornado.httpserver.HTTPServer",
+   "repos": 1,
+   "keywords": {
+    "ssl_options": 1
+   }
+  },
+  {
+   "name": "urllib3.PoolManager",
+   "repos": 1,
+   "keywords": {
+    "ssl_context": 3
+   }
+  }
+ ]
+}

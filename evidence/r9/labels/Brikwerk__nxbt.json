@@ -1,0 +1,22 @@
+{
+ "repo": "Brikwerk/nxbt",
+ "commit": "ec4b800ad6c55de96bb6c7f9f84b5bdc59a4c975",
+ "annotator": "agent-3",
+ "files": {
+  "nxbt/tui.py": [],
+  "nxbt/cli.py": [],
+  "nxbt/web/cert.py": [
+   {"line_start": 42, "line_end": 46, "name": "rsa.generate_private_key", "class": "A", "kind": "public_key", "note": "RSA key-pair generation; labelled public_key as an asymmetric-key operation, key_handling would also be defensible; default_backend() argument not a unit (B2f)"},
+   {"line_start": 70, "line_end": 70, "name": "x509.CertificateBuilder", "class": "A", "kind": "public_key", "note": "B2d: builder creation; chained setters on lines 71-78 are not units"},
+   {"line_start": 73, "line_end": 73, "name": "key.public_key", "class": "A", "kind": "key_handling", "note": "B2a: derives the public key; the builder setter .public_key(...) around it is not a unit"},
+   {"line_start": 79, "line_end": 79, "name": "sign", "class": "A", "kind": "public_key", "note": "B2d: CertificateBuilder(...).sign(key, hashes.SHA256(), default_backend()); hashes.SHA256() and default_backend() are parameters (B2f)"},
+   {"line_start": 81, "line_end": 81, "name": "cert.public_bytes", "class": "A", "kind": "key_handling", "note": "B2a: serialises the certificate to PEM"},
+   {"line_start": 82, "line_end": 86, "name": "key.private_bytes", "class": "A", "kind": "key_handling", "note": "B2a; serialization.NoEncryption() on line 85 treated as a parameter object, not a unit"}
+  ],
+  "vagrant_setup.py": [],
+  "nxbt/web/app.py": [
+   {"line_start": 24, "line_end": 24, "name": "os.urandom", "class": "A", "kind": "random"},
+   {"line_start": 154, "line_end": 155, "name": "eventlet.wrap_ssl", "class": "B", "kind": "tls", "note": "eventlet is not a crypto library; wrap_ssl wraps the listening socket in TLS with certfile/keyfile; enclosing eventlet.wsgi.server and eventlet.listen are not units"}
+  ]
+ }
+}

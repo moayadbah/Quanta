@@ -1,0 +1,18 @@
+{
+ "repo": "aio-libs/aiokafka",
+ "commit": "b4d63412ffbd76b76ac7d0450c8865ce7a225408",
+ "annotator": "agent-1",
+ "files": {
+  "aiokafka/consumer/consumer.py": [],
+  "examples/ssl_consume_produce.py": [],
+  "tests/test_helpers.py": [],
+  "tests/test_consumer.py": [],
+  "aiokafka/admin/client.py": [],
+  "tests/conftest.py": [],
+  "tests/test_producer.py": [],
+  "aiokafka/helpers.py": [
+   {"line_start": 74, "line_end": 76, "name": "create_default_context", "class": "A", "kind": "tls"},
+   {"line_start": 89, "line_end": 89, "name": "context.load_cert_chain", "class": "A", "kind": "tls"}
+  ]
+ }
+}

@@ -1,0 +1,19 @@
+{
+ "repo": "tiantianGPU/reg-factory",
+ "commit": "675f30b7b1feb1336fa158b6ef1f3e16b6976eb4",
+ "annotator": "agent-7",
+ "files": {
+  "config.py": [],
+  "register_grok.py": [],
+  "gmail_android/gmail_register_local.py": [],
+  "tests/test_outlook_graph_flow.py": [],
+  "common/traffic_saver.py": [],
+  "vendor/reauth_web/lib/chatgpt_client.py": [],
+  "vendor/gopay_engine/app/src/opai/core/gopay_signer_v2.py": [
+   {"line_start": 64, "line_end": 64, "name": "hashlib.md5", "class": "A", "kind": "hash"},
+   {"line_start": 67, "line_end": 67, "name": "os.urandom", "class": "A", "kind": "random"},
+   {"line_start": 84, "line_end": 86, "name": "hmac_mod.new", "class": "A", "kind": "mac"}
+  ],
+  "xconsole_client/__init__.py": []
+ }
+}

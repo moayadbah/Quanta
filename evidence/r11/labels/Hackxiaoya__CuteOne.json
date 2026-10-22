@@ -1,0 +1,21 @@
+{
+ "repo": "Hackxiaoya/CuteOne",
+ "commit": "b5fba55454d600e3ddc097de42dbd1c2aa44c772",
+ "annotator": "agent-10",
+ "files": {
+  "app/common.py": [
+   {"line_start": 36, "line_end": 36, "name": "hashlib.sha1", "class": "A", "kind": "hash"},
+   {"line_start": 37, "line_end": 37, "name": "hashlib.md5", "class": "A", "kind": "hash"}
+  ],
+  "app/main/users/views.py": [
+   {"line_start": 138, "line_end": 138, "name": "hashlib.sha1", "class": "A", "kind": "hash"}
+  ],
+  "app/admin/users/views.py": [
+   {"line_start": 135, "line_end": 135, "name": "hashlib.sha1", "class": "A", "kind": "hash"}
+  ],
+  "config.py": [
+   {"line_start": 8, "line_end": 8, "name": "os.urandom", "class": "A", "kind": "random"}
+  ],
+  "app/admin/drive/views.py": []
+ }
+}

@@ -1,0 +1,8 @@
+{
+ "repo": "refuel-ai/autolabel",
+ "commit": "404dcd014276b343ce6653670c0f75778e392e11",
+ "annotator": "agent-4",
+ "files": {
+  "src/autolabel/transforms/custom_api.py": []
+ }
+}

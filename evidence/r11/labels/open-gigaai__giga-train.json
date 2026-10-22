@@ -1,0 +1,13 @@
+{
+ "repo": "open-gigaai/giga-train",
+ "commit": "ace2d52979dafe272beb5cf7ba2c09a010058b85",
+ "annotator": "agent-3",
+ "files": {
+  "giga_train/distributed/__init__.py": [],
+  "giga_train/distributed/ssh.py": [
+   {"line_start": 16, "line_end": 16, "name": "paramiko.Transport", "class": "B", "kind": "other", "note": "SSH transport: a protocol client that always negotiates an encrypted session; counted by analogy with B2g (classes that always speak a secure protocol). Kind other because SSH is not TLS."},
+   {"line_start": 17, "line_end": 17, "name": "transport.connect", "class": "B", "kind": "other", "note": "Runs the SSH key exchange and authentication on the transport; counted by analogy with B2j (handshake)."},
+   {"line_start": 18, "line_end": 18, "name": "paramiko.SSHClient", "class": "B", "kind": "other", "note": "SSH session client; counted by analogy with B2g. Hard call: here it only wraps the already connected transport."}
+  ]
+ }
+}

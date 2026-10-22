@@ -1,0 +1,11 @@
+[
+ {
+  "repo": "superhedgy/AttackSurfaceMapper",
+  "commit": "8a402edebc9d45b53916ec05454c92a15d5df0ec",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/superhedgy__AttackSurfaceMapper",
+  "files": [
+   "modules/hosthunter.py",
+   "modules/screencapture.py"
+  ]
+ }
+]

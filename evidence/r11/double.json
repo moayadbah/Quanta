@@ -1,0 +1,16 @@
+{
+ "P": [
+  "speechbrain/speechbrain",
+  "mitogen-hq/mitogen",
+  "citizenlab/test-lists",
+  "Grim-es/material-combiner-addon",
+  "emmabostian/developer-portfolios",
+  "jertel/elastalert2",
+  "it-projects-llc/odoo-saas-tools"
+ ],
+ "G": [
+  "jina-ai/vectordb",
+  "sv3nbeast/ShiroScan",
+  "NoizAI/HelixWorld"
+ ]
+}

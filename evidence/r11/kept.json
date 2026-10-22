@@ -1,0 +1,362 @@
+[
+ {
+  "repo": "radude/rentry",
+  "stratum": "G",
+  "commit": "977ad2edb379434e0fa3b8d69df8ef6ac799808f",
+  "py_files": 13
+ },
+ {
+  "repo": "kunifujiwara/VoxCity",
+  "stratum": "G",
+  "commit": "0f615c625bf6223ca96c613eb87f4c1ab5814b32",
+  "py_files": 371
+ },
+ {
+  "repo": "ruc-datalab/DeepAnalyze",
+  "stratum": "G",
+  "commit": "d4dd5cf62ec7ec2579eb85bcab4f24e4782827b9",
+  "py_files": 911
+ },
+ {
+  "repo": "thisjam/sd-webui-oldsix-prompt",
+  "stratum": "G",
+  "commit": "9fb665c34bf8d4d06df8952189923de925913849",
+  "py_files": 10
+ },
+ {
+  "repo": "piercefreeman/mountaineer",
+  "stratum": "G",
+  "commit": "ded92b6944cb51c9b49b57456b0582d47b84df83",
+  "py_files": 145
+ },
+ {
+  "repo": "jasontang-ai/Context-Engineering",
+  "stratum": "G",
+  "commit": "6158def66a2d2174ed8356cf376e5f44e10d78ea",
+  "py_files": 31
+ },
+ {
+  "repo": "iszhanjiawei/indexTTS2",
+  "stratum": "G",
+  "commit": "bae9221fd0a1bc98e8409fb97b8d6bd6a119bb64",
+  "py_files": 192
+ },
+ {
+  "repo": "fgmacedo/python-statemachine",
+  "stratum": "G",
+  "commit": "ec5d8173f740b37941818df13727db9d64ef498d",
+  "py_files": 274
+ },
+ {
+  "repo": "Hackxiaoya/CuteOne",
+  "stratum": "G",
+  "commit": "b5fba55454d600e3ddc097de42dbd1c2aa44c772",
+  "py_files": 66
+ },
+ {
+  "repo": "Grim-es/material-combiner-addon",
+  "stratum": "P",
+  "commit": "eed9ca25baffe5463bdd6104360fcd9f6e32ba15",
+  "py_files": 34
+ },
+ {
+  "repo": "GACWR/OpenUBA",
+  "stratum": "P",
+  "commit": "6d7b9cf85d6bff3e16eb5230791252ff2a3bd0ec",
+  "py_files": 224
+ },
+ {
+  "repo": "SillyTavern/SillyTavern-Extras",
+  "stratum": "G",
+  "commit": "fdc1ec04b632b1d871cc0ad3a9aa132e985fc398",
+  "py_files": 450
+ },
+ {
+  "repo": "LeonChaoX/qinyan-academic-skills",
+  "stratum": "G",
+  "commit": "df5a498a81e0f9c8f79d814446dcf9e9b8f68888",
+  "py_files": 233
+ },
+ {
+  "repo": "MemoriLabs/Memori",
+  "stratum": "P",
+  "commit": "574b1ea3e876f100ef82c37817d603eb7e258e59",
+  "py_files": 309
+ },
+ {
+  "repo": "Meituan-Dianping/lyrebird",
+  "stratum": "G",
+  "commit": "91f0db7716dd66ade5b026a3545ed19ef6148cc7",
+  "py_files": 151
+ },
+ {
+  "repo": "Windy3f3f3f3f/claude-code-from-scratch",
+  "stratum": "G",
+  "commit": "0b452360866433fde0dc77cd37ada9d303546592",
+  "py_files": 31
+ },
+ {
+  "repo": "flexxui/flexx",
+  "stratum": "G",
+  "commit": "f18ec09eb35dc403881aca4a466e48e2dc4916d1",
+  "py_files": 192
+ },
+ {
+  "repo": "jina-ai/vectordb",
+  "stratum": "G",
+  "commit": "ad2b64a468c70be7970cf1606c83005a73547b2a",
+  "py_files": 33
+ },
+ {
+  "repo": "fqscfqj/Y2A-Auto",
+  "stratum": "P",
+  "commit": "d5617ac7d97278fbd63fb77dfbe877cc63353dda",
+  "py_files": 140
+ },
+ {
+  "repo": "sv3nbeast/ShiroScan",
+  "stratum": "G",
+  "commit": "5127f5b3dc06568e6a96bc2c6258965f06bc4d2d",
+  "py_files": 36
+ },
+ {
+  "repo": "NoizAI/HelixWorld",
+  "stratum": "G",
+  "commit": "fc8656ed76e25ff6c0dd44357bf3cdb006a1521d",
+  "py_files": 104
+ },
+ {
+  "repo": "mandarons/icloud-docker",
+  "stratum": "G",
+  "commit": "4978c2d15abc1ffc8fe1aa17b470de8ca232921d",
+  "py_files": 70
+ },
+ {
+  "repo": "yandex-research/tabm",
+  "stratum": "G",
+  "commit": "28e47ae301c92ec37787dde1ce923a0793f405b4",
+  "py_files": 15
+ },
+ {
+  "repo": "django-otp/django-otp",
+  "stratum": "G",
+  "commit": "1c77c58f6785b49da3250b01dedbbc77ed0429ae",
+  "py_files": 71
+ },
+ {
+  "repo": "Upsonic/Upsonic",
+  "stratum": "P",
+  "commit": "101f0313b0ddb96cd4078354879b2ff57005db29",
+  "py_files": 968
+ },
+ {
+  "repo": "airbnb/streamalert",
+  "stratum": "P",
+  "commit": "75ba140d2e1aa6e903313d88326920adcb8bff45",
+  "py_files": 411
+ },
+ {
+  "repo": "jertel/elastalert2",
+  "stratum": "P",
+  "commit": "162ba49d34485d375b4860694d21361a156cea18",
+  "py_files": 131
+ },
+ {
+  "repo": "jupyterhub/the-littlest-jupyterhub",
+  "stratum": "P",
+  "commit": "05637a2fe4bb5b1e91bcdb0efc0059ab4b30d543",
+  "py_files": 45
+ },
+ {
+  "repo": "ddean2009/MoneyPrinterPlus",
+  "stratum": "P",
+  "commit": "d2c6f397731586de6cdcfed2e325fa68e74e3959",
+  "py_files": 95
+ },
+ {
+  "repo": "CrimsonForge-io/king-phisher",
+  "stratum": "P",
+  "commit": "94823fbb7b1b4557f78c563e217dd21c758edbce",
+  "py_files": 163
+ },
+ {
+  "repo": "emmabostian/developer-portfolios",
+  "stratum": "P",
+  "commit": "e4c19b1124348a31e55d3f6f57c760d99803834a",
+  "py_files": 14
+ },
+ {
+  "repo": "gunnery/gunnery",
+  "stratum": "P",
+  "commit": "733a261cae6243a11883a40e18b14f57cf6e47b2",
+  "py_files": 79
+ },
+ {
+  "repo": "microsoft/msticpy",
+  "stratum": "P",
+  "commit": "a2fdc56734bd58f6ebc6acb04136a321af2a5be1",
+  "py_files": 445
+ },
+ {
+  "repo": "buckket/twtxt",
+  "stratum": "P",
+  "commit": "ec421d131d9aeb14e92b4c2ad19175a69639a8d1",
+  "py_files": 18
+ },
+ {
+  "repo": "refuel-ai/autolabel",
+  "stratum": "P",
+  "commit": "404dcd014276b343ce6653670c0f75778e392e11",
+  "py_files": 88
+ },
+ {
+  "repo": "JaniceWuo/MovieRecommend",
+  "stratum": "P",
+  "commit": "450d50677bec2e10fe81cb65ab5d20f23be014a2",
+  "py_files": 1159
+ },
+ {
+  "repo": "backblaze-labs/genblaze",
+  "stratum": "P",
+  "commit": "acb6e673905f7003ae89f7fcb490efca371ad927",
+  "py_files": 439
+ },
+ {
+  "repo": "lnbits/lnbits",
+  "stratum": "P",
+  "commit": "04b37f0d761222561bc8606cfe7edc86cabcce35",
+  "py_files": 334
+ },
+ {
+  "repo": "speechbrain/speechbrain",
+  "stratum": "P",
+  "commit": "c0241278f93ef02cd5191f03caf4e5f8e1292bf6",
+  "py_files": 740
+ },
+ {
+  "repo": "fail2ban/fail2ban",
+  "stratum": "P",
+  "commit": "6c88de71d201f864a2bec198217fd07ce47869b3",
+  "py_files": 81
+ },
+ {
+  "repo": "openstack/cinder",
+  "stratum": "P",
+  "commit": "270ba9ea896827272485526127c2cbcb3a16a3ee",
+  "py_files": 1335
+ },
+ {
+  "repo": "mitogen-hq/mitogen",
+  "stratum": "P",
+  "commit": "eb76a3aee54ea10ceaf6bf642ed410394b7ef119",
+  "py_files": 312
+ },
+ {
+  "repo": "mvanhorn/last30days-skill",
+  "stratum": "P",
+  "commit": "13a6cc5fd1f2d8a9b8420bbba6742599b2f4a077",
+  "py_files": 395
+ },
+ {
+  "repo": "pantsbuild/pants",
+  "stratum": "P",
+  "commit": "984eae61fdfeb5d390c62114874b10002b62b98d",
+  "py_files": 1870
+ },
+ {
+  "repo": "github/spec-kit",
+  "stratum": "P",
+  "commit": "c6a4c18f1d01a8bec241c618eb6dfea952508744",
+  "py_files": 648
+ },
+ {
+  "repo": "citizenlab/test-lists",
+  "stratum": "P",
+  "commit": "804afa8cda713cbb72ecf7a4e2c356dfdff7d475",
+  "py_files": 24
+ },
+ {
+  "repo": "open-gigaai/giga-train",
+  "stratum": "P",
+  "commit": "ace2d52979dafe272beb5cf7ba2c09a010058b85",
+  "py_files": 43
+ },
+ {
+  "repo": "walkingddd/TgtoDrive",
+  "stratum": "P",
+  "commit": "f7589e5a2eb1521ed20e9d43306ae900e23a286c",
+  "py_files": 14
+ },
+ {
+  "repo": "krahabb/meross_lan",
+  "stratum": "P",
+  "commit": "bafedb4f8563153f9e3494292073551bb28f5f9a",
+  "py_files": 95
+ },
+ {
+  "repo": "rom1504/img2dataset",
+  "stratum": "P",
+  "commit": "95523bc7579745a1749b8132d408b9fea89a338e",
+  "py_files": 23
+ },
+ {
+  "repo": "TeamHG-Memex/tensorboard_logger",
+  "stratum": "P",
+  "commit": "203aca7a52066f84ef15046b0d0b1ea69dc59e12",
+  "py_files": 10
+ },
+ {
+  "repo": "superhedgy/AttackSurfaceMapper",
+  "stratum": "P",
+  "commit": "8a402edebc9d45b53916ec05454c92a15d5df0ec",
+  "py_files": 14
+ },
+ {
+  "repo": "yuxian158/check",
+  "stratum": "P",
+  "commit": "723c834f121ff4eef2dec7afe521071a7efff1a9",
+  "py_files": 29
+ },
+ {
+  "repo": "respectlytics/respectaso",
+  "stratum": "P",
+  "commit": "93bbe7f3591815596034737e3e3c5627b2c0e783",
+  "py_files": 215
+ },
+ {
+  "repo": "timothy-odofin/agenthub-be",
+  "stratum": "P",
+  "commit": "fc386c23c90aab9897e87aa531c179a7266471fc",
+  "py_files": 311
+ },
+ {
+  "repo": "TgCatUB/catuserbot",
+  "stratum": "P",
+  "commit": "2e521b3227e9075979d0112f07e876f846910d3e",
+  "py_files": 222
+ },
+ {
+  "repo": "SpiderClub/weibospider",
+  "stratum": "P",
+  "commit": "e1f289871187da9e1c9096cd61984066c73625a8",
+  "py_files": 85
+ },
+ {
+  "repo": "facebook/facebook-python-business-sdk",
+  "stratum": "P",
+  "commit": "efd8423a2e595ea8d4c04eb824ce113f2f1d68cd",
+  "py_files": 1357
+ },
+ {
+  "repo": "kivy/python-for-android",
+  "stratum": "P",
+  "commit": "8ef9d1dbbf769d2c14681dbc3c116c85e2e93bae",
+  "py_files": 295
+ },
+ {
+  "repo": "it-projects-llc/odoo-saas-tools",
+  "stratum": "P",
+  "commit": "8e9ad4d06853b668a42a3e8177c8246fd946f0e9",
+  "py_files": 181
+ }
+]

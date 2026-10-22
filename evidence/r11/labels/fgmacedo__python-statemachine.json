@@ -1,0 +1,19 @@
+{
+ "repo": "fgmacedo/python-statemachine",
+ "commit": "ec5d8173f740b37941818df13727db9d64ef498d",
+ "annotator": "agent-5",
+ "files": {
+  "tests/uml/pssm/convert.py": [
+   {"line_start": 1258, "line_end": 1258, "name": "hashlib.sha256", "class": "A", "kind": "hash"}
+  ],
+  "statemachine/io/scxml/reader.py": [],
+  "statemachine/invoke.py": [],
+  "tests/test_signature.py": [],
+  "statemachine/statemachine.py": [],
+  "statemachine/dispatcher.py": [],
+  "statemachine/contrib/diagram/sphinx_ext.py": [
+   {"line_start": 257, "line_end": 257, "name": "hashlib.sha1", "class": "A", "kind": "hash"}
+  ],
+  "statemachine/signature.py": []
+ }
+}

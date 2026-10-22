@@ -1,0 +1,21 @@
+{
+ "repo": "gunnery/gunnery",
+ "commit": "733a261cae6243a11883a40e18b14f57cf6e47b2",
+ "annotator": "agent-10",
+ "files": {
+  "gunnery/backend/securefile.py": [
+   {"line_start": 33, "line_end": 33, "name": "md5", "class": "A", "kind": "hash"}
+  ],
+  "gunnery/backend/tasks.py": [],
+  "gunnery/account/backend.py": [
+   {"line_start": 19, "line_end": 19, "name": "user.check_password", "class": "B", "kind": "kdf", "note": "Django user object password-hash verification"}
+  ],
+  "gunnery/core/models.py": [
+   {"line_start": 139, "line_end": 139, "name": "pgcrypto.EncryptedTextField", "class": "A", "kind": "symmetric", "note": "field from django-pgcrypto that configures column encryption"}
+  ],
+  "gunnery/account/tests/test_views.py": [],
+  "gunnery/backend/ssh.py": [
+   {"line_start": 51, "line_end": 51, "name": "RSAKey", "class": "A", "kind": "key_handling"}
+  ]
+ }
+}

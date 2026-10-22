@@ -1,0 +1,18 @@
+{
+ "repo": "mvanhorn/last30days-skill",
+ "commit": "13a6cc5fd1f2d8a9b8420bbba6742599b2f4a077",
+ "annotator": "agent-11",
+ "files": {
+  "skills/last30days/scripts/lib/xurl_x.py": [],
+  "skills/last30days/scripts/lib/health.py": [],
+  "skills/last30days/scripts/last30days.py": [
+   {"line_start": 276, "line_end": 276, "name": "hashlib.sha1", "class": "A", "kind": "hash"},
+   {"line_start": 2860, "line_end": 2860, "name": "hashlib.sha256", "class": "A", "kind": "hash"}
+  ],
+  "skills/last30days/scripts/lib/http.py": [],
+  "tests/test_resolved_handles_wiring.py": [],
+  "skills/last30days/scripts/lib/providers.py": [],
+  "skills/last30days/scripts/lib/bluesky.py": [],
+  "tests/test_youtube_backstop.py": []
+ }
+}

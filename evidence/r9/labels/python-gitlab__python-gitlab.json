@@ -1,0 +1,15 @@
+{
+ "repo": "python-gitlab/python-gitlab",
+ "commit": "51eb17e6e67a25157e04b0abc649221bd8ecc7fe",
+ "annotator": "agent-2",
+ "files": {
+  "gitlab/v4/objects/commits.py": [],
+  "tests/unit/objects/test_secure_files.py": [],
+  "tests/functional/cli/test_cli_repository.py": [],
+  "tests/functional/api/test_repository.py": [],
+  "tests/unit/test_cli.py": [],
+  "gitlab/_backends/requests_backend.py": [],
+  "gitlab/v4/objects/issues.py": [],
+  "tests/functional/conftest.py": []
+ }
+}

@@ -1,0 +1,38 @@
+[
+ {
+  "repo": "speechbrain/speechbrain",
+  "commit": "c0241278f93ef02cd5191f03caf4e5f8e1292bf6",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/speechbrain__speechbrain",
+  "files": [
+   "recipes/LJSpeech/quantization/train.py",
+   "speechbrain/utils/checkpoints.py",
+   "tests/utils/recipe_tests.py",
+   "tests/utils/refactoring_checks.py",
+   "speechbrain/nnet/hypermixing.py",
+   "tests/utils/check_url.py",
+   "speechbrain/integrations/huggingface/weighted_ssl.py",
+   "speechbrain/processing/vocal_features.py"
+  ]
+ },
+ {
+  "repo": "it-projects-llc/odoo-saas-tools",
+  "commit": "8e9ad4d06853b668a42a3e8177c8246fd946f0e9",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/it-projects-llc__odoo-saas-tools",
+  "files": [
+   "saas.py",
+   "saas_sysadmin_mailgun/models/mailgun.py",
+   "saas_portal_signup/__manifest__.py",
+   "saas_server_backup_ftp/models/saas_server.py",
+   "saas_server_backup_ftp/models/res_config.py",
+   "saas_portal/models/saas_portal.py"
+  ]
+ },
+ {
+  "repo": "jina-ai/vectordb",
+  "commit": "ad2b64a468c70be7970cf1606c83005a73547b2a",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/jina-ai__vectordb",
+  "files": [
+   "vectordb/utils/push_to_hubble.py"
+  ]
+ }
+]

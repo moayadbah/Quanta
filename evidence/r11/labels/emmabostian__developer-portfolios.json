@@ -1,0 +1,11 @@
+{
+ "repo": "emmabostian/developer-portfolios",
+ "commit": "e4c19b1124348a31e55d3f6f57c760d99803834a",
+ "annotator": "agent-2",
+ "files": {
+  "src/check_parking_redirects.py": [
+   {"line_start": 84, "line_end": 84, "name": "ssl.create_default_context", "class": "A", "kind": "tls"},
+   {"line_start": 134, "line_end": 134, "name": "urllib.request.urlopen", "class": "B", "kind": "tls", "note": "passes a TLS context (context=...), counted under B2g"}
+  ]
+ }
+}

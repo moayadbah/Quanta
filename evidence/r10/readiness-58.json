@@ -1,0 +1,94 @@
+{
+ "repositories": 58,
+ "totals": {
+  "v9": {
+   "vulnerable": 171,
+   "weak": 116,
+   "review": 40,
+   "pq": 0,
+   "safe": 410
+  },
+  "v10": {
+   "vulnerable": 177,
+   "weak": 116,
+   "review": 40,
+   "pq": 0,
+   "safe": 410
+  }
+ },
+ "verdict_changes": {},
+ "count_changes": {
+  "crossbario__crossbar": {
+   "v9": {
+    "verdict": "at_risk",
+    "vulnerable": 23,
+    "weak": 1,
+    "review": 10,
+    "pq": 0,
+    "safe": 16
+   },
+   "v10": {
+    "verdict": "at_risk",
+    "vulnerable": 28,
+    "weak": 1,
+    "review": 10,
+    "pq": 0,
+    "safe": 16
+   }
+  },
+  "googleads__googleads-python-lib": {
+   "v9": {
+    "verdict": "at_risk",
+    "vulnerable": 5,
+    "weak": 0,
+    "review": 0,
+    "pq": 0,
+    "safe": 0
+   },
+   "v10": {
+    "verdict": "at_risk",
+    "vulnerable": 4,
+    "weak": 0,
+    "review": 0,
+    "pq": 0,
+    "safe": 0
+   }
+  },
+  "szczyglis-dev__py-gpt": {
+   "v9": {
+    "verdict": "at_risk",
+    "vulnerable": 30,
+    "weak": 7,
+    "review": 0,
+    "pq": 0,
+    "safe": 15
+   },
+   "v10": {
+    "verdict": "at_risk",
+    "vulnerable": 31,
+    "weak": 7,
+    "review": 0,
+    "pq": 0,
+    "safe": 15
+   }
+  },
+  "xuan32546__ios13-simulatetouch": {
+   "v9": {
+    "verdict": "at_risk",
+    "vulnerable": 41,
+    "weak": 14,
+    "review": 0,
+    "pq": 0,
+    "safe": 13
+   },
+   "v10": {
+    "verdict": "at_risk",
+    "vulnerable": 42,
+    "weak": 14,
+    "review": 0,
+    "pq": 0,
+    "safe": 13
+   }
+  }
+ }
+}

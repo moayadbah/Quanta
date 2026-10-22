@@ -1,0 +1,13 @@
+{
+ "repo": "NanmiCoder/NewsCrawler",
+ "commit": "25fb3b4a20186905f5ce38f7a7f854050d402253",
+ "annotator": "agent-3",
+ "files": {
+  ".claude/skills/news-extractor/scripts/crawlers/wechat.py": [
+   {"line_start": 374, "line_end": 374, "name": "hashlib.md5", "class": "A", "kind": "hash"}
+  ],
+  "news_crawler/wechat_news/wechat_news.py": [
+   {"line_start": 556, "line_end": 556, "name": "hashlib.md5", "class": "A", "kind": "hash"}
+  ]
+ }
+}

@@ -1,0 +1,17 @@
+{
+ "repo": "Upsonic/Upsonic",
+ "commit": "101f0313b0ddb96cd4078354879b2ff57005db29",
+ "annotator": "agent-12",
+ "files": {
+  "src/upsonic/interfaces/slack/slack.py": [
+   {"line_start": 200, "line_end": 204, "name": "hmac.new", "class": "A", "kind": "mac"}
+  ],
+  "src/upsonic/tools/schema.py": [],
+  "src/upsonic/graphv2/state_graph.py": [],
+  "src/upsonic/_parts_manager.py": [],
+  "src/upsonic/interfaces/mail/mail.py": [],
+  "src/upsonic/simulation/result.py": [],
+  "src/upsonic/utils/retry.py": [],
+  "src/upsonic/tools/wrappers.py": []
+ }
+}

@@ -1,0 +1,10 @@
+[
+ {
+  "repo": "ysrc/GourdScanV2",
+  "commit": "79bf4cb59a5b3594b51a47a6660b79476ffbcbc4",
+  "clone": "Downloads/Quanta-R10-draft/clones-h10/ysrc__GourdScanV2",
+  "files": [
+   "proxy/mix_proxy.py"
+  ]
+ }
+]

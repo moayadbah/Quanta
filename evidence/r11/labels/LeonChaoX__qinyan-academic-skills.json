@@ -1,0 +1,18 @@
+{
+ "repo": "LeonChaoX/qinyan-academic-skills",
+ "commit": "df5a498a81e0f9c8f79d814446dcf9e9b8f68888",
+ "annotator": "agent-8",
+ "files": {
+  "skills/07-临床医学与精准医疗/clinical-reports/scripts/check_deidentification.py": [],
+  "skills/07-临床医学与精准医疗/treatment-plans/scripts/check_completeness.py": [],
+  "skills/07-临床医学与精准医疗/fda-database/scripts/fda_query.py": [
+   {
+    "line_start": 62,
+    "line_end": 62,
+    "name": "hashlib.md5",
+    "class": "A",
+    "kind": "hash"
+   }
+  ]
+ }
+}

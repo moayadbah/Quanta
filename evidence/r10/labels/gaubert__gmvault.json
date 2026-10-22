@@ -1,0 +1,15 @@
+{
+ "repo": "gaubert/gmvault",
+ "commit": "236fa56ddf0c299bc51b68ad467c522351b6203c",
+ "annotator": "agent-1",
+ "files": {
+  "src/gmv_cmd_tests.py": [],
+  "src/gmv/imap_utils.py": [],
+  "src/gmvault_essential_tests.py": [],
+  "src/sandbox/common_gmvault.py": [],
+  "src/sandbox/gmvault_multiprocess.py": [],
+  "src/gmv/validation_tests.py": [],
+  "src/gmv/gmvault.py": [],
+  "src/sandbox_tests.py": []
+ }
+}

@@ -1,0 +1,20 @@
+{
+ "repo": "kr8s-org/kr8s",
+ "commit": "7aa27eeeeb0e2def16db7c9cdf1f3547cc54ace5",
+ "annotator": "agent-5",
+ "files": {
+  "kr8s/_api.py": [
+   {"line_start": 133, "line_end": 140, "name": "httpx.AsyncClient", "class": "B", "kind": "tls", "note": "B2e: verify= receives the SSLContext built by KubeAuth.ssl_context (a TLS context passed, not a plain verify flag or path)"},
+   {"line_start": 362, "line_end": 362, "name": "x509.load_pem_x509_certificate", "class": "A", "kind": "public_key", "note": "certificate parsing; kind public_key chosen for consistency with B2d (certificate creation)"}
+  ],
+  "kr8s/_auth.py": [
+   {"line_start": 99, "line_end": 99, "name": "ssl.SSLContext", "class": "A", "kind": "tls"},
+   {"line_start": 104, "line_end": 108, "name": "sslcontext.load_cert_chain", "class": "A", "kind": "tls"},
+   {"line_start": 110, "line_end": 110, "name": "sslcontext.load_verify_locations", "class": "A", "kind": "tls"}
+  ],
+  "kr8s/tests/test_objects.py": [],
+  "kr8s/conftest.py": [],
+  "kr8s/tests/test_auth.py": [],
+  "docs/conf.py": []
+ }
+}

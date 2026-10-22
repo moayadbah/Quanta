@@ -1,0 +1,381 @@
+{
+ "rackslab/Slurm-web": {
+  "stratum": "P",
+  "commit": "77b8c1dfd0ab4f36c5e9f895dacf57959bab6eb8",
+  "candidates": 31,
+  "files": [
+   "slurmweb/tests/apps/test_gateway.py",
+   "dev/lib/devenv/constants.py",
+   "slurmweb/tests/views/test_agent.py",
+   "dev/lib/crawler/slurmrestd.py",
+   "slurmweb/views/auth/anonymous.py",
+   "slurmweb/exec/main.py",
+   "slurmweb/apps/agent.py",
+   "slurmweb/apps/connect.py"
+  ]
+ },
+ "NullArray/AutoSploit": {
+  "stratum": "G",
+  "commit": "9a6a5efac31b488524f9f56f4e2c08f64ec87227",
+  "candidates": 2,
+  "files": [
+   "lib/creation/issue_creator.py",
+   "api_calls/zoomeye.py"
+  ]
+ },
+ "Youngestdev/fastapi-mongo": {
+  "stratum": "G",
+  "commit": "7ce51e3e1e5ad4dd6fb25e375ee7241125d1925c",
+  "candidates": 4,
+  "files": [
+   "routes/admin.py",
+   "config/config.py",
+   "auth/jwt_handler.py",
+   "auth/admin.py"
+  ]
+ },
+ "Brikwerk/nxbt": {
+  "stratum": "P",
+  "commit": "ec4b800ad6c55de96bb6c7f9f84b5bdc59a4c975",
+  "candidates": 5,
+  "files": [
+   "nxbt/tui.py",
+   "nxbt/cli.py",
+   "nxbt/web/cert.py",
+   "vagrant_setup.py",
+   "nxbt/web/app.py"
+  ]
+ },
+ "NanmiCoder/NewsCrawler": {
+  "stratum": "G",
+  "commit": "25fb3b4a20186905f5ce38f7a7f854050d402253",
+  "candidates": 2,
+  "files": [
+   ".claude/skills/news-extractor/scripts/crawlers/wechat.py",
+   "news_crawler/wechat_news/wechat_news.py"
+  ]
+ },
+ "python-gitlab/python-gitlab": {
+  "stratum": "G",
+  "commit": "51eb17e6e67a25157e04b0abc649221bd8ecc7fe",
+  "candidates": 18,
+  "files": [
+   "gitlab/v4/objects/commits.py",
+   "tests/unit/objects/test_secure_files.py",
+   "tests/functional/cli/test_cli_repository.py",
+   "tests/functional/api/test_repository.py",
+   "tests/unit/test_cli.py",
+   "gitlab/_backends/requests_backend.py",
+   "gitlab/v4/objects/issues.py",
+   "tests/functional/conftest.py"
+  ]
+ },
+ "cmu-db/dbdb.io": {
+  "stratum": "G",
+  "commit": "ed65e2856f1f16eef05c43a71625ec8fefa2ba94",
+  "candidates": 3,
+  "files": [
+   "dbdb/core/views/api.py",
+   "dbdb/core/tests/test_views.py",
+   "dbdb/core/views/auth.py"
+  ]
+ },
+ "pmaupin/pdfrw": {
+  "stratum": "G",
+  "commit": "6c892160e7e976b243db0c12c3e56ed8c78afc5a",
+  "candidates": 6,
+  "files": [
+   "tests/test_roundtrip.py",
+   "tests/checkdiffs.py",
+   "tests/update_expected.py",
+   "tests/test_examples.py",
+   "pdfrw/crypt.py",
+   "pdfrw/pdfreader.py"
+  ]
+ },
+ "MD-SEC/MDPOCS": {
+  "stratum": "P",
+  "commit": "4de61fc965525a3f6af6049ef28d0b1619a649c1",
+  "candidates": 3,
+  "files": [
+   "Yongyou_U8_OA_doUpload_Upload_File_Poc.py",
+   "Array_VPN_FileRead_Poc.py",
+   "YouDianCMS__Upload_File_Poc.py"
+  ]
+ },
+ "TheR1D/shell_gpt": {
+  "stratum": "G",
+  "commit": "a082bd5327ce0c4ef5a0284d9060e833be9444a6",
+  "candidates": 1,
+  "files": [
+   "sgpt/cache.py"
+  ]
+ },
+ "python-discord/bot": {
+  "stratum": "P",
+  "commit": "91f2b7b0a241a93359c332a7ff05843c2dd3d45e",
+  "candidates": 10,
+  "files": [
+   "bot/exts/filtering/_ui/search.py",
+   "bot/converters.py",
+   "bot/exts/info/doc/_html.py",
+   "bot/exts/filtering/filtering.py",
+   "bot/exts/filtering/_ui/filter_list.py",
+   "bot/exts/info/help.py",
+   "bot/utils/function.py",
+   "bot/exts/recruitment/talentpool/_review.py"
+  ]
+ },
+ "sligter/LandPPT": {
+  "stratum": "G",
+  "commit": "bac8497cc756d67bfda4ecd7b7219b42dc982c1c",
+  "candidates": 42,
+  "files": [
+   "src/landppt/services/slide/package_generation/workflow.py",
+   "src/landppt/services/editor_document_service.py",
+   "src/summeryanyfile/core/mineru_api_client.py",
+   "src/landppt/auth/github_oauth_service.py",
+   "src/landppt/services/prompt_asset_service.py",
+   "src/landppt/services/managed_provider_service.py",
+   "scripts/svg_experiment/check_edit_export.py",
+   "src/landppt/database/models.py"
+  ]
+ },
+ "VikParuchuri/textbook_quality": {
+  "stratum": "G",
+  "commit": "3548c557d595803c8dd24f9b7f9e19055c5bb8fb",
+  "candidates": 4,
+  "files": [
+   "app/services/service.py",
+   "app/services/network.py",
+   "app/components/parser.py",
+   "app/llm/llm.py"
+  ]
+ },
+ "holoviz/holoviews": {
+  "stratum": "G",
+  "commit": "e4168fd4b99446003bda9b219421b7422f8b50d0",
+  "candidates": 12,
+  "files": [
+   "holoviews/tests/core/test_dynamic.py",
+   "holoviews/plotting/plotly/dash.py",
+   "holoviews/util/transform.py",
+   "holoviews/core/data/__init__.py",
+   "holoviews/core/util/__init__.py",
+   "holoviews/core/io.py",
+   "holoviews/tests/core/test_callable.py",
+   "holoviews/element/tiles.py"
+  ]
+ },
+ "aio-libs/aiokafka": {
+  "stratum": "P",
+  "commit": "b4d63412ffbd76b76ac7d0450c8865ce7a225408",
+  "candidates": 13,
+  "files": [
+   "aiokafka/consumer/consumer.py",
+   "examples/ssl_consume_produce.py",
+   "tests/test_helpers.py",
+   "tests/test_consumer.py",
+   "aiokafka/admin/client.py",
+   "tests/conftest.py",
+   "tests/test_producer.py",
+   "aiokafka/helpers.py"
+  ]
+ },
+ "ma1co/Sony-PMCA-RE": {
+  "stratum": "P",
+  "commit": "a82f5baaa8e9c3d9f28f94699e860fb2e48cc8e0",
+  "candidates": 10,
+  "files": [
+   "pmca/usb/driver/generic/__init__.py",
+   "pmca/commands/usb.py",
+   "pmca/spk/constants.py",
+   "pmca/marketserver/server.py",
+   "pmca/platform/android.py",
+   "pmca/usb/sony.py",
+   "pmca/apk/__init__.py",
+   "pmca/util/http.py"
+  ]
+ },
+ "xiamuceer-j/MuMuAINovel": {
+  "stratum": "P",
+  "commit": "743e5abec18beb8d73426527e6579538053bc6fd",
+  "candidates": 8,
+  "files": [
+   "backend/alembic/postgres/versions/20260320_0936_6eb27fce64de_\u65b0\u589estmp\u76f8\u5173\u914d\u7f6e.py",
+   "backend/app/services/onnx_embedding.py",
+   "backend/app/services/email_service.py",
+   "backend/app/models/settings.py",
+   "backend/alembic/sqlite/versions/20260320_0939_6ff45db05863_\u65b0\u589estmp\u76f8\u5173\u914d\u7f6e.py",
+   "backend/app/schemas/settings.py",
+   "backend/app/security.py",
+   "backend/app/api/settings.py"
+  ]
+ },
+ "masterking32/MasterHttpRelayVPN": {
+  "stratum": "P",
+  "commit": "0a019e172472a9bb1829ca32639c824e77decf8c",
+  "candidates": 13,
+  "files": [
+   "src/relay/domain_fronter.py",
+   "src/proxy/proxy_server.py",
+   "src/core/cert_installer.py",
+   "src/proxy/mitm.py",
+   "main.py",
+   "scripts/benchmark_transport.py",
+   "src/core/google_ip_scanner.py",
+   "src/relay/relay_response.py"
+  ]
+ },
+ "babybuddy/babybuddy": {
+  "stratum": "P",
+  "commit": "09629cf633cf3a2059a21ade4cea7ea4d846422f",
+  "candidates": 9,
+  "files": [
+   "babybuddy/models.py",
+   "babybuddy/settings/base.py",
+   "babybuddy/forms.py",
+   "webhooks/migrations/0001_initial.py",
+   "webhooks/tests/tests_delivery.py",
+   "babybuddy/settings/production.example.py",
+   "webhooks/models.py",
+   "webhooks/delivery.py"
+  ]
+ },
+ "intel/auto-round": {
+  "stratum": "P",
+  "commit": "ec10a649b073a084af79d2c2986e92840739d0df",
+  "candidates": 73,
+  "files": [
+   "auto_round/experimental/qmodules/fp4_utils.py",
+   "test/unit/test_cuda/auto_scheme/test_auto_scheme.py",
+   "test/unit/common/schemes/test_auto_scheme.py",
+   "auto_round_extension/ark/examples/flux_gen_bf16_sweep.py",
+   "auto_round/data_type/mxfp.py",
+   "auto_round/export/export_to_llmcompressor/export.py",
+   "auto_round/special_model_handler.py",
+   "test/unit/common/utils/test_calib_dataset_helpers.py"
+  ]
+ },
+ "Oshan96/monkey-dl": {
+  "stratum": "P",
+  "commit": "9757f7c8d1a094da61e0c0ac38a2a29bf1c21e28",
+  "candidates": 3,
+  "files": [
+   "anime_downloader/Anime_Downloader.py",
+   "anime_downloader/util/hls_downloader.py",
+   "anime_downloader/util/js_unpacker.py"
+  ]
+ },
+ "51bitquant/howtrader": {
+  "stratum": "P",
+  "commit": "fcad8e2d86825506b9d33441ab78be853c2c3bdd",
+  "candidates": 5,
+  "files": [
+   "howtrader/gateway/binance/binance_inverse_gateway.py",
+   "howtrader/gateway/binance/binance_spot_gateway.py",
+   "howtrader/api/rest/rest_client.py",
+   "howtrader/gateway/okx/okx_gateway.py",
+   "howtrader/gateway/binance/binance_usdt_gateway.py"
+  ]
+ },
+ "kr8s-org/kr8s": {
+  "stratum": "P",
+  "commit": "7aa27eeeeb0e2def16db7c9cdf1f3547cc54ace5",
+  "candidates": 6,
+  "files": [
+   "kr8s/_api.py",
+   "kr8s/_auth.py",
+   "kr8s/tests/test_objects.py",
+   "kr8s/conftest.py",
+   "kr8s/tests/test_auth.py",
+   "docs/conf.py"
+  ]
+ },
+ "bugy/script-server": {
+  "stratum": "P",
+  "commit": "62bd38a3942e73546ba701248253d043eb66dadd",
+  "candidates": 4,
+  "files": [
+   "src/model/server_conf.py",
+   "src/web/server.py",
+   "src/tests/server_conf_test.py",
+   "src/communications/destination_email.py"
+  ]
+ },
+ "Matteo842/SaveState": {
+  "stratum": "P",
+  "commit": "eaecd6e3ee094a0ca6c65a59194cd8d78f368635",
+  "candidates": 6,
+  "files": [
+   "cloud_utils/google_drive_manager.py",
+   "cloud_utils/ftp_config_dialog.py",
+   "cloud_utils/ftp_provider.py",
+   "cloud_utils/webdav_config_dialog.py",
+   "gui_components/icon_extractor.py",
+   "cloud_utils/webdav_provider.py"
+  ]
+ },
+ "alibaba/tidevice": {
+  "stratum": "P",
+  "commit": "7bfd4d64da636500db688befbb64851078913589",
+  "candidates": 6,
+  "files": [
+   "tidevice/_device.py",
+   "tidevice/_imagemounter.py",
+   "scripts/plistdump-tcp-proxy.py",
+   "tidevice/_safe_socket.py",
+   "tidevice/__main__.py",
+   "tidevice/_ca.py"
+  ]
+ },
+ "tensorflow/privacy": {
+  "stratum": "P",
+  "commit": "e0c409035f0d302483b480a92ac555c5ee30c7fe",
+  "candidates": 5,
+  "files": [
+   "tensorflow_privacy/privacy/optimizers/dp_optimizer_keras_sparse_distributed_test.py",
+   "research/dp_newton/src/dataset_loader.py",
+   "tensorflow_privacy/privacy/sparsity_preserving_noise/registry_functions/embedding.py",
+   "research/hyperparameters_2022/rdp_accountant.py",
+   "tensorflow_privacy/privacy/fast_gradient_clipping/gradient_clipping_utils.py"
+  ]
+ },
+ "torrinworx/Blend_My_NFTs": {
+  "stratum": "P",
+  "commit": "ad9f8cd3d3e00ea79e24c19ccb2b986837af8c30",
+  "candidates": 1,
+  "files": [
+   "main/exporter.py"
+  ]
+ },
+ "clinton-hall/nzbToMedia": {
+  "stratum": "P",
+  "commit": "ce111f42ac4a3352835c85cf7fa61e4809400826",
+  "candidates": 124,
+  "files": [
+   "libs/common/unidecode/x000.py",
+   "core/auto_process/managers/sickbeard.py",
+   "libs/common/urllib3/contrib/securetransport.py",
+   "libs/common/urllib3/contrib/pyopenssl.py",
+   "libs/win/pydantic/typing.py",
+   "libs/win/pydantic/utils.py",
+   "libs/win/pydantic/schema.py",
+   "libs/win/autocommand/autoparse.py"
+  ]
+ },
+ "garrettfoster13/sccmhunter": {
+  "stratum": "P",
+  "commit": "19f2f8a2eef93ab658fcbed3032fca0538e128a4",
+  "candidates": 7,
+  "files": [
+   "lib/attacks/relay.py",
+   "lib/scripts/sccmwtf.py",
+   "lib/scripts/pivot.py",
+   "lib/ldap.py",
+   "lib/scripts/addcomputer.py",
+   "lib/attacks/http.py",
+   "tests/test_policy_decryption.py"
+  ]
+ }
+}

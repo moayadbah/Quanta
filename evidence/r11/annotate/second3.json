@@ -1,0 +1,45 @@
+[
+ {
+  "repo": "mitogen-hq/mitogen",
+  "commit": "eb76a3aee54ea10ceaf6bf642ed410394b7ef119",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/mitogen-hq__mitogen",
+  "files": [
+   "mitogen/core.py",
+   "ansible_mitogen/runner.py",
+   "ansible_mitogen/target.py",
+   "tests/bench/throughput.py",
+   "examples/service/self_contained.py",
+   "tests/testlib.py",
+   "mitogen/compat/pkgutil.py",
+   "mitogen/fakessh.py"
+  ]
+ },
+ {
+  "repo": "citizenlab/test-lists",
+  "commit": "804afa8cda713cbb72ecf7a4e2c356dfdff7d475",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/citizenlab__test-lists",
+  "files": [
+   "scripts/legacy/lib/third_party/certifi/core.py",
+   "scripts/legacy/lib/third_party/ssl_match_hostname.py",
+   "scripts/legacy/lib/lists/https.py",
+   "scripts/legacy/lib/lists/services/tor/dir_auths.py"
+  ]
+ },
+ {
+  "repo": "Grim-es/material-combiner-addon",
+  "commit": "eed9ca25baffe5463bdd6104360fcd9f6e32ba15",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/Grim-es__material-combiner-addon",
+  "files": [
+   "addon_updater.py",
+   "addon_updater_ops.py"
+  ]
+ },
+ {
+  "repo": "emmabostian/developer-portfolios",
+  "commit": "e4c19b1124348a31e55d3f6f57c760d99803834a",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/emmabostian__developer-portfolios",
+  "files": [
+   "src/check_parking_redirects.py"
+  ]
+ }
+]

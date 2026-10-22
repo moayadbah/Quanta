@@ -1,0 +1,12 @@
+{
+ "repo": "tensorflow/privacy",
+ "commit": "e0c409035f0d302483b480a92ac555c5ee30c7fe",
+ "annotator": "agent-2",
+ "files": {
+  "tensorflow_privacy/privacy/optimizers/dp_optimizer_keras_sparse_distributed_test.py": [],
+  "research/dp_newton/src/dataset_loader.py": [],
+  "tensorflow_privacy/privacy/sparsity_preserving_noise/registry_functions/embedding.py": [],
+  "research/hyperparameters_2022/rdp_accountant.py": [],
+  "tensorflow_privacy/privacy/fast_gradient_clipping/gradient_clipping_utils.py": []
+ }
+}

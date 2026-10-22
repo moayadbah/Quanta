@@ -1,0 +1,18 @@
+{
+ "repo": "github/spec-kit",
+ "commit": "c6a4c18f1d01a8bec241c618eb6dfea952508744",
+ "annotator": "agent-1",
+ "files": {
+  "src/specify_cli/_operation_version.py": [],
+  "src/specify_cli/integrations/bob/__init__.py": [],
+  "src/specify_cli/integrations/_lifecycle.py": [
+   {"line_start": 76, "line_end": 76, "name": "hashlib.file_digest", "class": "A", "kind": "hash"},
+   {"line_start": 351, "line_end": 351, "name": "hashlib.sha256", "class": "A", "kind": "hash"}
+  ],
+  "tests/unit/test_condition_expression_block.py": [],
+  "tests/test_utils.py": [],
+  "src/specify_cli/workflows/_commands.py": [],
+  "src/specify_cli/command_version.py": [],
+  "tests/specify_cli/bundles/test_catalog_config.py": []
+ }
+}

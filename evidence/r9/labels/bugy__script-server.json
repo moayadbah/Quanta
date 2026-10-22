@@ -1,0 +1,17 @@
+{
+ "repo": "bugy/script-server",
+ "commit": "62bd38a3942e73546ba701248253d043eb66dadd",
+ "annotator": "agent-5",
+ "files": {
+  "src/model/server_conf.py": [],
+  "src/web/server.py": [
+   {"line_start": 838, "line_end": 838, "name": "ssl.create_default_context", "class": "A", "kind": "tls"},
+   {"line_start": 839, "line_end": 840, "name": "ssl_context.load_cert_chain", "class": "A", "kind": "tls"},
+   {"line_start": 923, "line_end": 926, "name": "httpserver.HTTPServer", "class": "B", "kind": "tls", "note": "B2e: tornado HTTPServer given ssl_options=ssl_context (a TLS context)"}
+  ],
+  "src/tests/server_conf_test.py": [],
+  "src/communications/destination_email.py": [
+   {"line_start": 102, "line_end": 102, "name": "server.starttls", "class": "B", "kind": "tls", "note": "B2g: starttls() on an smtplib.SMTP client; the plain smtplib.SMTP(...) on line 98 is not a unit"}
+  ]
+ }
+}

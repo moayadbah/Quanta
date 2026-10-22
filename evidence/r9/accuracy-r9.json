@@ -1,0 +1,778 @@
+{
+ "v5 (2026.11.01)": {
+  "time": "2026-10-18T01:40:51+00:00",
+  "pooled": {
+   "precision": {
+    "found": 161,
+    "total": 163,
+    "rate": 0.9877,
+    "ci": [
+     0.9564,
+     0.9966
+    ]
+   },
+   "recall_A": {
+    "found": 156,
+    "total": 241,
+    "rate": 0.6473,
+    "ci": [
+     0.5851,
+     0.7049
+    ]
+   },
+   "recall_AB": {
+    "found": 162,
+    "total": 274,
+    "rate": 0.5912,
+    "ci": [
+     0.5322,
+     0.6478
+    ]
+   },
+   "pktls_A": {
+    "found": 48,
+    "total": 131,
+    "rate": 0.3664,
+    "ci": [
+     0.2888,
+     0.4516
+    ]
+   },
+   "pktls_AB": {
+    "found": 54,
+    "total": 160,
+    "rate": 0.3375,
+    "ci": [
+     0.2688,
+     0.4138
+    ]
+   }
+  },
+  "stratum_G": {
+   "precision": {
+    "found": 62,
+    "total": 62,
+    "rate": 1.0,
+    "ci": [
+     0.9417,
+     1.0
+    ]
+   },
+   "recall_A": {
+    "found": 62,
+    "total": 63,
+    "rate": 0.9841,
+    "ci": [
+     0.9154,
+     0.9972
+    ]
+   },
+   "recall_AB": {
+    "found": 62,
+    "total": 63,
+    "rate": 0.9841,
+    "ci": [
+     0.9154,
+     0.9972
+    ]
+   },
+   "pktls_A": {
+    "found": 0,
+    "total": 0,
+    "rate": null,
+    "ci": null
+   },
+   "pktls_AB": {
+    "found": 0,
+    "total": 0,
+    "rate": null,
+    "ci": null
+   }
+  },
+  "stratum_P": {
+   "precision": {
+    "found": 99,
+    "total": 101,
+    "rate": 0.9802,
+    "ci": [
+     0.9307,
+     0.9946
+    ]
+   },
+   "recall_A": {
+    "found": 94,
+    "total": 178,
+    "rate": 0.5281,
+    "ci": [
+     0.4549,
+     0.6001
+    ]
+   },
+   "recall_AB": {
+    "found": 100,
+    "total": 211,
+    "rate": 0.4739,
+    "ci": [
+     0.4076,
+     0.5412
+    ]
+   },
+   "pktls_A": {
+    "found": 48,
+    "total": 131,
+    "rate": 0.3664,
+    "ci": [
+     0.2888,
+     0.4516
+    ]
+   },
+   "pktls_AB": {
+    "found": 54,
+    "total": 160,
+    "rate": 0.3375,
+    "ci": [
+     0.2688,
+     0.4138
+    ]
+   }
+  },
+  "missed": [
+   "rackslab/Slurm-web dev/lib/crawler/slurmrestd.py:282 [B token] self.auth.jwt_manager.generate",
+   "rackslab/Slurm-web slurmweb/views/auth/anonymous.py:23 [B token] current_app.jwt.generate",
+   "rackslab/Slurm-web slurmweb/apps/agent.py:71 [B token] RFLTokenizedRBACWebApp.__init__",
+   "Brikwerk/nxbt nxbt/web/cert.py:73 [A key_handling] key.public_key",
+   "Brikwerk/nxbt nxbt/web/cert.py:79 [A public_key] sign",
+   "Brikwerk/nxbt nxbt/web/cert.py:81 [A key_handling] cert.public_bytes",
+   "Brikwerk/nxbt nxbt/web/cert.py:82 [A key_handling] key.private_bytes",
+   "Brikwerk/nxbt nxbt/web/app.py:24 [A random] os.urandom",
+   "Brikwerk/nxbt nxbt/web/app.py:154 [B tls] eventlet.wrap_ssl",
+   "pmaupin/pdfrw tests/update_expected.py:43 [A hash] hashlib.md5",
+   "aio-libs/aiokafka aiokafka/helpers.py:89 [A tls] context.load_cert_chain",
+   "ma1co/Sony-PMCA-RE pmca/marketserver/server.py:52 [A public_key] tlslite.X509CertChain",
+   "ma1co/Sony-PMCA-RE pmca/marketserver/server.py:53 [A public_key] self.certChain.parsePemList",
+   "ma1co/Sony-PMCA-RE pmca/marketserver/server.py:54 [A key_handling] tlslite.parsePEMKey",
+   "ma1co/Sony-PMCA-RE pmca/marketserver/server.py:58 [A tls] sock.handshakeServer",
+   "ma1co/Sony-PMCA-RE pmca/apk/__init__.py:28 [A public_key] ContentInfo.load",
+   "xiamuceer-j/MuMuAINovel backend/app/services/onnx_embedding.py:129 [B tls] urllib.request.urlopen",
+   "xiamuceer-j/MuMuAINovel backend/app/services/email_service.py:46 [B tls] aiosmtplib.send",
+   "masterking32/MasterHttpRelayVPN src/relay/domain_fronter.py:409 [A tls] ctx.load_verify_locations",
+   "masterking32/MasterHttpRelayVPN src/relay/domain_fronter.py:557 [B tls] asyncio.open_connection",
+   "masterking32/MasterHttpRelayVPN src/relay/domain_fronter.py:661 [B tls] asyncio.open_connection",
+   "masterking32/MasterHttpRelayVPN src/proxy/proxy_server.py:901 [B tls] loop.start_tls",
+   "masterking32/MasterHttpRelayVPN src/proxy/proxy_server.py:914 [B tls] asyncio.open_connection",
+   "masterking32/MasterHttpRelayVPN src/proxy/proxy_server.py:967 [B tls] loop.start_tls",
+   "masterking32/MasterHttpRelayVPN src/proxy/proxy_server.py:1233 [B tls] asyncio.open_connection",
+   "masterking32/MasterHttpRelayVPN src/proxy/mitm.py:82 [A key_handling] self._ca_key.public_key",
+   "masterking32/MasterHttpRelayVPN src/proxy/mitm.py:103 [A public_key] sign",
+   "masterking32/MasterHttpRelayVPN src/proxy/mitm.py:108 [A key_handling] self._ca_key.private_bytes",
+   "masterking32/MasterHttpRelayVPN src/proxy/mitm.py:122 [A key_handling] self._ca_cert.public_bytes",
+   "masterking32/MasterHttpRelayVPN src/proxy/mitm.py:135 [A key_handling] self._ca_cert.public_bytes",
+   "masterking32/MasterHttpRelayVPN src/proxy/mitm.py:150 [A tls] ctx.set_alpn_protocols",
+   "masterking32/MasterHttpRelayVPN src/proxy/mitm.py:151 [A tls] ctx.load_cert_chain",
+   "masterking32/MasterHttpRelayVPN src/proxy/mitm.py:176 [A key_handling] key.public_key",
+   "masterking32/MasterHttpRelayVPN src/proxy/mitm.py:184 [A public_key] sign",
+   "masterking32/MasterHttpRelayVPN src/proxy/mitm.py:187 [A key_handling] key.private_bytes",
+   "masterking32/MasterHttpRelayVPN src/proxy/mitm.py:192 [A key_handling] cert.public_bytes",
+   "masterking32/MasterHttpRelayVPN scripts/benchmark_transport.py:67 [A tls] ctx.load_verify_locations",
+   "masterking32/MasterHttpRelayVPN scripts/benchmark_transport.py:70 [A tls] ctx.set_alpn_protocols",
+   "masterking32/MasterHttpRelayVPN scripts/benchmark_transport.py:87 [B tls] asyncio.open_connection",
+   "masterking32/MasterHttpRelayVPN scripts/benchmark_transport.py:132 [B tls] asyncio.open_connection",
+   "masterking32/MasterHttpRelayVPN scripts/benchmark_transport.py:218 [B tls] quic_cfg.QuicConfiguration",
+   "masterking32/MasterHttpRelayVPN scripts/benchmark_transport.py:226 [B tls] cfg.load_verify_locations",
+   "masterking32/MasterHttpRelayVPN scripts/benchmark_transport.py:231 [B tls] quic_asyncio.connect",
+   "masterking32/MasterHttpRelayVPN scripts/benchmark_transport.py:402 [B tls] asyncio.open_connection",
+   "masterking32/MasterHttpRelayVPN scripts/benchmark_transport.py:482 [B tls] asyncio.open_connection",
+   "masterking32/MasterHttpRelayVPN src/core/google_ip_scanner.py:63 [B tls] asyncio.open_connection",
+   "kr8s-org/kr8s kr8s/_api.py:133 [B tls] httpx.AsyncClient",
+   "kr8s-org/kr8s kr8s/_auth.py:104 [A tls] sslcontext.load_cert_chain",
+   "kr8s-org/kr8s kr8s/_auth.py:110 [A tls] sslcontext.load_verify_locations",
+   "bugy/script-server src/web/server.py:839 [A tls] ssl_context.load_cert_chain",
+   "bugy/script-server src/web/server.py:923 [B tls] httpserver.HTTPServer",
+   "bugy/script-server src/communications/destination_email.py:102 [B tls] server.starttls",
+   "Matteo842/SaveState cloud_utils/ftp_provider.py:162 [B tls] self._ftp.prot_p",
+   "alibaba/tidevice scripts/plistdump-tcp-proxy.py:108 [A tls] self.sslctx.load_cert_chain",
+   "alibaba/tidevice scripts/plistdump-tcp-proxy.py:146 [A tls] C.SSL_CTX_set_quiet_shutdown",
+   "alibaba/tidevice tidevice/_safe_socket.py:163 [A tls] context.set_ciphers",
+   "alibaba/tidevice tidevice/_safe_socket.py:169 [A tls] context.load_cert_chain",
+   "alibaba/tidevice tidevice/_ca.py:30 [A key_handling] root_key.generate_key",
+   "alibaba/tidevice tidevice/_ca.py:38 [A key_handling] dump_certificate",
+   "alibaba/tidevice tidevice/_ca.py:38 [A key_handling] dump_privatekey",
+   "alibaba/tidevice tidevice/_ca.py:38 [A key_handling] dump_certificate",
+   "alibaba/tidevice tidevice/_ca.py:82 [A public_key] X509Req",
+   "alibaba/tidevice tidevice/_ca.py:89 [A public_key] req.sign",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:381 [A tls] Security.SSLSetEnabledCiphers",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:394 [A tls] Security.SSLSetALPNProtocols",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:456 [A tls] Security.SecTrustSetAnchorCertificates",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:459 [A tls] Security.SecTrustSetAnchorCertificatesOnly",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:463 [A tls] Security.SecTrustEvaluate",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:492 [A tls] Security.SSLCreateContext",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:495 [A tls] Security.SSLSetIOFuncs",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:509 [A tls] Security.SSLSetConnection",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:517 [A tls] Security.SSLSetPeerDomainName",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:529 [A tls] Security.SSLSetProtocolVersionMin",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:532 [A tls] Security.SSLSetProtocolVersionMax",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:540 [A tls] Security.SSLSetSessionOption",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:551 [A tls] Security.SSLSetCertificate",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:556 [A tls] Security.SSLHandshake",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:722 [A key_handling] Security.SecCertificateCopyData",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:229 [A key_handling] peer_cert.to_cryptography",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:231 [A key_handling] OpenSSL.crypto.dump_certificate",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:391 [A key_handling] OpenSSL.crypto.dump_certificate",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:443 [A tls] self._ctx.set_options",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:451 [A tls] self._ctx.set_verify",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:454 [A tls] self._ctx.set_default_verify_paths",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:459 [A tls] self._ctx.set_cipher_list",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:467 [A tls] self._ctx.load_verify_locations",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:469 [A tls] self._ctx.load_verify_locations",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:474 [A tls] self._ctx.use_certificate_chain_file",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:478 [A tls] self._ctx.set_passwd_cb",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:479 [A tls] self._ctx.use_privatekey_file",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:483 [A tls] self._ctx.set_alpn_protos",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:493 [A tls] OpenSSL.SSL.Connection",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:499 [A tls] cnx.set_tlsext_host_name",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:501 [A tls] cnx.set_connect_state",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:505 [A tls] cnx.do_handshake",
+   "garrettfoster13/sccmhunter lib/scripts/sccmwtf.py:96 [A key_handling] key.public_key",
+   "garrettfoster13/sccmhunter lib/scripts/sccmwtf.py:112 [A public_key] sign",
+   "garrettfoster13/sccmhunter lib/scripts/sccmwtf.py:128 [A key_handling] key.public_key",
+   "garrettfoster13/sccmhunter lib/scripts/sccmwtf.py:134 [A public_key] key.sign",
+   "garrettfoster13/sccmhunter lib/scripts/sccmwtf.py:142 [A public_key] key.sign",
+   "garrettfoster13/sccmhunter lib/scripts/sccmwtf.py:149 [A public_key] key.decrypt",
+   "garrettfoster13/sccmhunter lib/scripts/sccmwtf.py:350 [A key_handling] self.cert.public_bytes",
+   "garrettfoster13/sccmhunter lib/scripts/sccmwtf.py:353 [A key_handling] self.cert.public_bytes",
+   "garrettfoster13/sccmhunter lib/scripts/sccmwtf.py:444 [A public_key] self.key.decrypt",
+   "garrettfoster13/sccmhunter lib/scripts/sccmwtf.py:446 [A public_key] self.key.decrypt",
+   "garrettfoster13/sccmhunter lib/ldap.py:84 [B tls] ldap3.Tls",
+   "garrettfoster13/sccmhunter lib/ldap.py:89 [B tls] ldap3.Server",
+   "garrettfoster13/sccmhunter lib/ldap.py:332 [B symmetric] cipher.encrypt",
+   "garrettfoster13/sccmhunter tests/test_policy_decryption.py:51 [A public_key] recipient_public_key.encrypt",
+   "garrettfoster13/sccmhunter tests/test_policy_decryption.py:111 [A key_handling] self.key.public_key",
+   "garrettfoster13/sccmhunter tests/test_policy_decryption.py:128 [A key_handling] self.key.public_key",
+   "garrettfoster13/sccmhunter tests/test_policy_decryption.py:136 [A key_handling] self.key.public_key"
+  ],
+  "false_positives": [
+   "Oshan96/monkey-dl anime_downloader/Anime_Downloader.py:116 ssl._create_unverified_context",
+   "tensorflow/privacy research/dp_newton/src/dataset_loader.py:36 ssl._create_unverified_context"
+  ]
+ },
+ "v8 (2026.11.04)": {
+  "time": "2026-10-18T01:40:51+00:00",
+  "pooled": {
+   "precision": {
+    "found": 196,
+    "total": 198,
+    "rate": 0.9899,
+    "ci": [
+     0.9639,
+     0.9972
+    ]
+   },
+   "recall_A": {
+    "found": 180,
+    "total": 241,
+    "rate": 0.7469,
+    "ci": [
+     0.6884,
+     0.7976
+    ]
+   },
+   "recall_AB": {
+    "found": 197,
+    "total": 274,
+    "rate": 0.719,
+    "ci": [
+     0.663,
+     0.7689
+    ]
+   },
+   "pktls_A": {
+    "found": 71,
+    "total": 131,
+    "rate": 0.542,
+    "ci": [
+     0.4567,
+     0.6249
+    ]
+   },
+   "pktls_AB": {
+    "found": 88,
+    "total": 160,
+    "rate": 0.55,
+    "ci": [
+     0.4726,
+     0.625
+    ]
+   }
+  },
+  "stratum_G": {
+   "precision": {
+    "found": 62,
+    "total": 62,
+    "rate": 1.0,
+    "ci": [
+     0.9417,
+     1.0
+    ]
+   },
+   "recall_A": {
+    "found": 62,
+    "total": 63,
+    "rate": 0.9841,
+    "ci": [
+     0.9154,
+     0.9972
+    ]
+   },
+   "recall_AB": {
+    "found": 62,
+    "total": 63,
+    "rate": 0.9841,
+    "ci": [
+     0.9154,
+     0.9972
+    ]
+   },
+   "pktls_A": {
+    "found": 0,
+    "total": 0,
+    "rate": null,
+    "ci": null
+   },
+   "pktls_AB": {
+    "found": 0,
+    "total": 0,
+    "rate": null,
+    "ci": null
+   }
+  },
+  "stratum_P": {
+   "precision": {
+    "found": 134,
+    "total": 136,
+    "rate": 0.9853,
+    "ci": [
+     0.948,
+     0.996
+    ]
+   },
+   "recall_A": {
+    "found": 118,
+    "total": 178,
+    "rate": 0.6629,
+    "ci": [
+     0.5907,
+     0.7283
+    ]
+   },
+   "recall_AB": {
+    "found": 135,
+    "total": 211,
+    "rate": 0.6398,
+    "ci": [
+     0.5731,
+     0.7016
+    ]
+   },
+   "pktls_A": {
+    "found": 71,
+    "total": 131,
+    "rate": 0.542,
+    "ci": [
+     0.4567,
+     0.6249
+    ]
+   },
+   "pktls_AB": {
+    "found": 88,
+    "total": 160,
+    "rate": 0.55,
+    "ci": [
+     0.4726,
+     0.625
+    ]
+   }
+  },
+  "missed": [
+   "rackslab/Slurm-web dev/lib/crawler/slurmrestd.py:282 [B token] self.auth.jwt_manager.generate",
+   "rackslab/Slurm-web slurmweb/views/auth/anonymous.py:23 [B token] current_app.jwt.generate",
+   "rackslab/Slurm-web slurmweb/apps/agent.py:71 [B token] RFLTokenizedRBACWebApp.__init__",
+   "Brikwerk/nxbt nxbt/web/cert.py:79 [A public_key] sign",
+   "Brikwerk/nxbt nxbt/web/cert.py:81 [A key_handling] cert.public_bytes",
+   "Brikwerk/nxbt nxbt/web/app.py:154 [B tls] eventlet.wrap_ssl",
+   "pmaupin/pdfrw tests/update_expected.py:43 [A hash] hashlib.md5",
+   "ma1co/Sony-PMCA-RE pmca/marketserver/server.py:52 [A public_key] tlslite.X509CertChain",
+   "ma1co/Sony-PMCA-RE pmca/marketserver/server.py:53 [A public_key] self.certChain.parsePemList",
+   "ma1co/Sony-PMCA-RE pmca/marketserver/server.py:54 [A key_handling] tlslite.parsePEMKey",
+   "ma1co/Sony-PMCA-RE pmca/marketserver/server.py:58 [A tls] sock.handshakeServer",
+   "ma1co/Sony-PMCA-RE pmca/apk/__init__.py:28 [A public_key] ContentInfo.load",
+   "xiamuceer-j/MuMuAINovel backend/app/services/onnx_embedding.py:129 [B tls] urllib.request.urlopen",
+   "masterking32/MasterHttpRelayVPN src/proxy/proxy_server.py:901 [B tls] loop.start_tls",
+   "masterking32/MasterHttpRelayVPN src/proxy/proxy_server.py:967 [B tls] loop.start_tls",
+   "masterking32/MasterHttpRelayVPN src/proxy/mitm.py:103 [A public_key] sign",
+   "masterking32/MasterHttpRelayVPN src/proxy/mitm.py:150 [A tls] ctx.set_alpn_protocols",
+   "masterking32/MasterHttpRelayVPN src/proxy/mitm.py:184 [A public_key] sign",
+   "masterking32/MasterHttpRelayVPN src/proxy/mitm.py:192 [A key_handling] cert.public_bytes",
+   "masterking32/MasterHttpRelayVPN scripts/benchmark_transport.py:70 [A tls] ctx.set_alpn_protocols",
+   "masterking32/MasterHttpRelayVPN scripts/benchmark_transport.py:218 [B tls] quic_cfg.QuicConfiguration",
+   "masterking32/MasterHttpRelayVPN scripts/benchmark_transport.py:231 [B tls] quic_asyncio.connect",
+   "kr8s-org/kr8s kr8s/_api.py:133 [B tls] httpx.AsyncClient",
+   "bugy/script-server src/web/server.py:923 [B tls] httpserver.HTTPServer",
+   "bugy/script-server src/communications/destination_email.py:102 [B tls] server.starttls",
+   "Matteo842/SaveState cloud_utils/ftp_provider.py:162 [B tls] self._ftp.prot_p",
+   "alibaba/tidevice scripts/plistdump-tcp-proxy.py:146 [A tls] C.SSL_CTX_set_quiet_shutdown",
+   "alibaba/tidevice tidevice/_ca.py:30 [A key_handling] root_key.generate_key",
+   "alibaba/tidevice tidevice/_ca.py:38 [A key_handling] dump_certificate",
+   "alibaba/tidevice tidevice/_ca.py:38 [A key_handling] dump_privatekey",
+   "alibaba/tidevice tidevice/_ca.py:38 [A key_handling] dump_certificate",
+   "alibaba/tidevice tidevice/_ca.py:82 [A public_key] X509Req",
+   "alibaba/tidevice tidevice/_ca.py:89 [A public_key] req.sign",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:381 [A tls] Security.SSLSetEnabledCiphers",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:394 [A tls] Security.SSLSetALPNProtocols",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:456 [A tls] Security.SecTrustSetAnchorCertificates",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:459 [A tls] Security.SecTrustSetAnchorCertificatesOnly",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:463 [A tls] Security.SecTrustEvaluate",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:492 [A tls] Security.SSLCreateContext",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:495 [A tls] Security.SSLSetIOFuncs",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:509 [A tls] Security.SSLSetConnection",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:517 [A tls] Security.SSLSetPeerDomainName",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:529 [A tls] Security.SSLSetProtocolVersionMin",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:532 [A tls] Security.SSLSetProtocolVersionMax",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:540 [A tls] Security.SSLSetSessionOption",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:551 [A tls] Security.SSLSetCertificate",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:556 [A tls] Security.SSLHandshake",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:722 [A key_handling] Security.SecCertificateCopyData",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:229 [A key_handling] peer_cert.to_cryptography",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:231 [A key_handling] OpenSSL.crypto.dump_certificate",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:391 [A key_handling] OpenSSL.crypto.dump_certificate",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:443 [A tls] self._ctx.set_options",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:451 [A tls] self._ctx.set_verify",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:454 [A tls] self._ctx.set_default_verify_paths",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:459 [A tls] self._ctx.set_cipher_list",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:474 [A tls] self._ctx.use_certificate_chain_file",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:478 [A tls] self._ctx.set_passwd_cb",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:479 [A tls] self._ctx.use_privatekey_file",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:483 [A tls] self._ctx.set_alpn_protos",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:493 [A tls] OpenSSL.SSL.Connection",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:499 [A tls] cnx.set_tlsext_host_name",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:501 [A tls] cnx.set_connect_state",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:505 [A tls] cnx.do_handshake",
+   "garrettfoster13/sccmhunter lib/scripts/sccmwtf.py:96 [A key_handling] key.public_key",
+   "garrettfoster13/sccmhunter lib/scripts/sccmwtf.py:112 [A public_key] sign",
+   "garrettfoster13/sccmhunter lib/scripts/sccmwtf.py:128 [A key_handling] key.public_key",
+   "garrettfoster13/sccmhunter lib/scripts/sccmwtf.py:134 [A public_key] key.sign",
+   "garrettfoster13/sccmhunter lib/scripts/sccmwtf.py:142 [A public_key] key.sign",
+   "garrettfoster13/sccmhunter lib/scripts/sccmwtf.py:149 [A public_key] key.decrypt",
+   "garrettfoster13/sccmhunter lib/scripts/sccmwtf.py:350 [A key_handling] self.cert.public_bytes",
+   "garrettfoster13/sccmhunter lib/scripts/sccmwtf.py:353 [A key_handling] self.cert.public_bytes",
+   "garrettfoster13/sccmhunter lib/scripts/sccmwtf.py:444 [A public_key] self.key.decrypt",
+   "garrettfoster13/sccmhunter lib/scripts/sccmwtf.py:446 [A public_key] self.key.decrypt",
+   "garrettfoster13/sccmhunter lib/ldap.py:84 [B tls] ldap3.Tls",
+   "garrettfoster13/sccmhunter lib/ldap.py:89 [B tls] ldap3.Server",
+   "garrettfoster13/sccmhunter lib/ldap.py:332 [B symmetric] cipher.encrypt",
+   "garrettfoster13/sccmhunter tests/test_policy_decryption.py:51 [A public_key] recipient_public_key.encrypt"
+  ],
+  "false_positives": [
+   "Oshan96/monkey-dl anime_downloader/Anime_Downloader.py:116 ssl._create_unverified_context",
+   "tensorflow/privacy research/dp_newton/src/dataset_loader.py:36 ssl._create_unverified_context"
+  ]
+ },
+ "v9 (2026.11.05)": {
+  "time": "2026-10-18T01:40:51+00:00",
+  "pooled": {
+   "precision": {
+    "found": 217,
+    "total": 219,
+    "rate": 0.9909,
+    "ci": [
+     0.9673,
+     0.9975
+    ]
+   },
+   "recall_A": {
+    "found": 196,
+    "total": 241,
+    "rate": 0.8133,
+    "ci": [
+     0.7593,
+     0.8574
+    ]
+   },
+   "recall_AB": {
+    "found": 218,
+    "total": 274,
+    "rate": 0.7956,
+    "ci": [
+     0.7439,
+     0.8391
+    ]
+   },
+   "pktls_A": {
+    "found": 87,
+    "total": 131,
+    "rate": 0.6641,
+    "ci": [
+     0.5796,
+     0.7393
+    ]
+   },
+   "pktls_AB": {
+    "found": 109,
+    "total": 160,
+    "rate": 0.6813,
+    "ci": [
+     0.6055,
+     0.7485
+    ]
+   }
+  },
+  "stratum_G": {
+   "precision": {
+    "found": 62,
+    "total": 62,
+    "rate": 1.0,
+    "ci": [
+     0.9417,
+     1.0
+    ]
+   },
+   "recall_A": {
+    "found": 62,
+    "total": 63,
+    "rate": 0.9841,
+    "ci": [
+     0.9154,
+     0.9972
+    ]
+   },
+   "recall_AB": {
+    "found": 62,
+    "total": 63,
+    "rate": 0.9841,
+    "ci": [
+     0.9154,
+     0.9972
+    ]
+   },
+   "pktls_A": {
+    "found": 0,
+    "total": 0,
+    "rate": null,
+    "ci": null
+   },
+   "pktls_AB": {
+    "found": 0,
+    "total": 0,
+    "rate": null,
+    "ci": null
+   }
+  },
+  "stratum_P": {
+   "precision": {
+    "found": 155,
+    "total": 157,
+    "rate": 0.9873,
+    "ci": [
+     0.9547,
+     0.9965
+    ]
+   },
+   "recall_A": {
+    "found": 134,
+    "total": 178,
+    "rate": 0.7528,
+    "ci": [
+     0.6845,
+     0.8104
+    ]
+   },
+   "recall_AB": {
+    "found": 156,
+    "total": 211,
+    "rate": 0.7393,
+    "ci": [
+     0.6762,
+     0.7939
+    ]
+   },
+   "pktls_A": {
+    "found": 87,
+    "total": 131,
+    "rate": 0.6641,
+    "ci": [
+     0.5796,
+     0.7393
+    ]
+   },
+   "pktls_AB": {
+    "found": 109,
+    "total": 160,
+    "rate": 0.6813,
+    "ci": [
+     0.6055,
+     0.7485
+    ]
+   }
+  },
+  "missed": [
+   "rackslab/Slurm-web dev/lib/crawler/slurmrestd.py:282 [B token] self.auth.jwt_manager.generate",
+   "rackslab/Slurm-web slurmweb/views/auth/anonymous.py:23 [B token] current_app.jwt.generate",
+   "rackslab/Slurm-web slurmweb/apps/agent.py:71 [B token] RFLTokenizedRBACWebApp.__init__",
+   "Brikwerk/nxbt nxbt/web/app.py:154 [B tls] eventlet.wrap_ssl",
+   "pmaupin/pdfrw tests/update_expected.py:43 [A hash] hashlib.md5",
+   "ma1co/Sony-PMCA-RE pmca/marketserver/server.py:52 [A public_key] tlslite.X509CertChain",
+   "ma1co/Sony-PMCA-RE pmca/marketserver/server.py:53 [A public_key] self.certChain.parsePemList",
+   "ma1co/Sony-PMCA-RE pmca/marketserver/server.py:54 [A key_handling] tlslite.parsePEMKey",
+   "ma1co/Sony-PMCA-RE pmca/marketserver/server.py:58 [A tls] sock.handshakeServer",
+   "ma1co/Sony-PMCA-RE pmca/apk/__init__.py:28 [A public_key] ContentInfo.load",
+   "masterking32/MasterHttpRelayVPN src/proxy/proxy_server.py:901 [B tls] loop.start_tls",
+   "masterking32/MasterHttpRelayVPN src/proxy/proxy_server.py:967 [B tls] loop.start_tls",
+   "masterking32/MasterHttpRelayVPN scripts/benchmark_transport.py:218 [B tls] quic_cfg.QuicConfiguration",
+   "masterking32/MasterHttpRelayVPN scripts/benchmark_transport.py:231 [B tls] quic_asyncio.connect",
+   "kr8s-org/kr8s kr8s/_api.py:133 [B tls] httpx.AsyncClient",
+   "Matteo842/SaveState cloud_utils/ftp_provider.py:162 [B tls] self._ftp.prot_p",
+   "alibaba/tidevice scripts/plistdump-tcp-proxy.py:146 [A tls] C.SSL_CTX_set_quiet_shutdown",
+   "alibaba/tidevice tidevice/_ca.py:30 [A key_handling] root_key.generate_key",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:381 [A tls] Security.SSLSetEnabledCiphers",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:394 [A tls] Security.SSLSetALPNProtocols",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:456 [A tls] Security.SecTrustSetAnchorCertificates",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:459 [A tls] Security.SecTrustSetAnchorCertificatesOnly",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:463 [A tls] Security.SecTrustEvaluate",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:492 [A tls] Security.SSLCreateContext",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:495 [A tls] Security.SSLSetIOFuncs",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:509 [A tls] Security.SSLSetConnection",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:517 [A tls] Security.SSLSetPeerDomainName",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:529 [A tls] Security.SSLSetProtocolVersionMin",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:532 [A tls] Security.SSLSetProtocolVersionMax",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:540 [A tls] Security.SSLSetSessionOption",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:551 [A tls] Security.SSLSetCertificate",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:556 [A tls] Security.SSLHandshake",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:722 [A key_handling] Security.SecCertificateCopyData",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:229 [A key_handling] peer_cert.to_cryptography",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:443 [A tls] self._ctx.set_options",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:451 [A tls] self._ctx.set_verify",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:454 [A tls] self._ctx.set_default_verify_paths",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:459 [A tls] self._ctx.set_cipher_list",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:474 [A tls] self._ctx.use_certificate_chain_file",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:478 [A tls] self._ctx.set_passwd_cb",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:479 [A tls] self._ctx.use_privatekey_file",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:483 [A tls] self._ctx.set_alpn_protos",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:499 [A tls] cnx.set_tlsext_host_name",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:501 [A tls] cnx.set_connect_state",
+   "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:505 [A tls] cnx.do_handshake",
+   "garrettfoster13/sccmhunter lib/scripts/sccmwtf.py:96 [A key_handling] key.public_key",
+   "garrettfoster13/sccmhunter lib/scripts/sccmwtf.py:128 [A key_handling] key.public_key",
+   "garrettfoster13/sccmhunter lib/scripts/sccmwtf.py:134 [A public_key] key.sign",
+   "garrettfoster13/sccmhunter lib/scripts/sccmwtf.py:142 [A public_key] key.sign",
+   "garrettfoster13/sccmhunter lib/scripts/sccmwtf.py:149 [A public_key] key.decrypt",
+   "garrettfoster13/sccmhunter lib/scripts/sccmwtf.py:350 [A key_handling] self.cert.public_bytes",
+   "garrettfoster13/sccmhunter lib/scripts/sccmwtf.py:353 [A key_handling] self.cert.public_bytes",
+   "garrettfoster13/sccmhunter lib/scripts/sccmwtf.py:444 [A public_key] self.key.decrypt",
+   "garrettfoster13/sccmhunter lib/scripts/sccmwtf.py:446 [A public_key] self.key.decrypt",
+   "garrettfoster13/sccmhunter lib/ldap.py:332 [B symmetric] cipher.encrypt",
+   "garrettfoster13/sccmhunter tests/test_policy_decryption.py:51 [A public_key] recipient_public_key.encrypt"
+  ],
+  "false_positives": [
+   "Oshan96/monkey-dl anime_downloader/Anime_Downloader.py:116 ssl._create_unverified_context",
+   "tensorflow/privacy research/dp_newton/src/dataset_loader.py:36 ssl._create_unverified_context"
+  ]
+ },
+ "decision": {
+  "recall_rule": "met: v9 recall A+B 218/274 (79.6%) > v8 197/274 (71.9%); PK+TLS A+B 109/160 (68.1%) > v8 88/160 (55.0%) (v5: 162/274, 54/160)",
+  "precision_rule_no_new_fp": "met: v9's 2 false positives are v8's 2 (and v5's 2)",
+  "precision_rule_lower_bound": "met: v9 precision 217/219 = 99.1%, Wilson lower bound 0.9673 >= 0.95 (v8 0.9639, v5 0.9564)",
+  "speed_rule": "met: v9 full analyze on 21 H4 clones 237.5 s vs v8 241.3 s (-1.6%), median of three alternating runs (evidence/r9/speed-h4.json)",
+  "false_positives": "the same 2 in all three engines: ssl._default_https_context = ssl._create_unverified_context assignments (B2i), which the engine reports as references (a TLS verification downgrade)",
+  "paired": {
+   "v9_vs_v8_new_misses": 0,
+   "v9_vs_v8_fixed": 20,
+   "v9_fp_not_in_v8": []
+  },
+  "size_rule_C3": "274 units (P 211, G 63), 160 PK+TLS: above 120 and 40",
+  "deviations": "evidence/DEVIATIONS-R9.md: annotator safeguard stops on offensive-security repositories (all labelled on a second attempt, none replaced) and a usage-limit pause",
+  "v9_misses_by_cause": {
+   "macOS Security framework through ctypes bindings the repository declares (urllib3's securetransport copy)": 15,
+   "pyOpenSSL SSL.Context / Connection methods on an object the engine does not follow (urllib3's pyopenssl copy)": 12,
+   "key objects passed between functions or held on attributes set elsewhere (sccmhunter)": 11,
+   "TLS libraries with no rule: tlslite, aioquic, eventlet.wrap_ssl, asyncio loop.start_tls, ftplib prot_p, cffi SSL_CTX, asn1crypto": 12,
+   "token libraries with no rule (Slurm-web's RFL JWT helpers)": 3,
+   "pyOpenSSL PKey.generate_key on a followed key": 1,
+   "httpx client given an SSL context through verify= (B2e excludes verify flags; the annotator read it as a context)": 1,
+   "other": 1
+  },
+  "v9_misses_by_cause_detail": {
+   "macOS Security framework through ctypes bindings the repository declares (urllib3's securetransport copy)": [
+    "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:381 [A tls] Security.SSLSetEnabledCiphers",
+    "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:394 [A tls] Security.SSLSetALPNProtocols",
+    "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:456 [A tls] Security.SecTrustSetAnchorCertificates",
+    "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:459 [A tls] Security.SecTrustSetAnchorCertificatesOnly",
+    "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:463 [A tls] Security.SecTrustEvaluate",
+    "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:492 [A tls] Security.SSLCreateContext",
+    "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:495 [A tls] Security.SSLSetIOFuncs",
+    "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:509 [A tls] Security.SSLSetConnection",
+    "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:517 [A tls] Security.SSLSetPeerDomainName",
+    "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:529 [A tls] Security.SSLSetProtocolVersionMin",
+    "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:532 [A tls] Security.SSLSetProtocolVersionMax",
+    "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:540 [A tls] Security.SSLSetSessionOption",
+    "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:551 [A tls] Security.SSLSetCertificate",
+    "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:556 [A tls] Security.SSLHandshake",
+    "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:722 [A key_handling] Security.SecCertificateCopyData"
+   ],
+   "pyOpenSSL SSL.Context / Connection methods on an object the engine does not follow (urllib3's pyopenssl copy)": [
+    "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:229 [A key_handling] peer_cert.to_cryptography",
+    "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:443 [A tls] self._ctx.set_options",
+    "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:451 [A tls] self._ctx.set_verify",
+    "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:454 [A tls] self._ctx.set_default_verify_paths",
+    "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:459 [A tls] self._ctx.set_cipher_list",
+    "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:474 [A tls] self._ctx.use_certificate_chain_file",
+    "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:478 [A tls] self._ctx.set_passwd_cb",
+    "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:479 [A tls] self._ctx.use_privatekey_file",
+    "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:483 [A tls] self._ctx.set_alpn_protos",
+    "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:499 [A tls] cnx.set_tlsext_host_name",
+    "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:501 [A tls] cnx.set_connect_state",
+    "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:505 [A tls] cnx.do_handshake"
+   ],
+   "key objects passed between functions or held on attributes set elsewhere (sccmhunter)": [
+    "garrettfoster13/sccmhunter lib/scripts/sccmwtf.py:96 [A key_handling] key.public_key",
+    "garrettfoster13/sccmhunter lib/scripts/sccmwtf.py:128 [A key_handling] key.public_key",
+    "garrettfoster13/sccmhunter lib/scripts/sccmwtf.py:134 [A public_key] key.sign",
+    "garrettfoster13/sccmhunter lib/scripts/sccmwtf.py:142 [A public_key] key.sign",
+    "garrettfoster13/sccmhunter lib/scripts/sccmwtf.py:149 [A public_key] key.decrypt",
+    "garrettfoster13/sccmhunter lib/scripts/sccmwtf.py:350 [A key_handling] self.cert.public_bytes",
+    "garrettfoster13/sccmhunter lib/scripts/sccmwtf.py:353 [A key_handling] self.cert.public_bytes",
+    "garrettfoster13/sccmhunter lib/scripts/sccmwtf.py:444 [A public_key] self.key.decrypt",
+    "garrettfoster13/sccmhunter lib/scripts/sccmwtf.py:446 [A public_key] self.key.decrypt",
+    "garrettfoster13/sccmhunter lib/ldap.py:332 [B symmetric] cipher.encrypt",
+    "garrettfoster13/sccmhunter tests/test_policy_decryption.py:51 [A public_key] recipient_public_key.encrypt"
+   ],
+   "TLS libraries with no rule: tlslite, aioquic, eventlet.wrap_ssl, asyncio loop.start_tls, ftplib prot_p, cffi SSL_CTX, asn1crypto": [
+    "Brikwerk/nxbt nxbt/web/app.py:154 [B tls] eventlet.wrap_ssl",
+    "ma1co/Sony-PMCA-RE pmca/marketserver/server.py:52 [A public_key] tlslite.X509CertChain",
+    "ma1co/Sony-PMCA-RE pmca/marketserver/server.py:53 [A public_key] self.certChain.parsePemList",
+    "ma1co/Sony-PMCA-RE pmca/marketserver/server.py:54 [A key_handling] tlslite.parsePEMKey",
+    "ma1co/Sony-PMCA-RE pmca/marketserver/server.py:58 [A tls] sock.handshakeServer",
+    "ma1co/Sony-PMCA-RE pmca/apk/__init__.py:28 [A public_key] ContentInfo.load",
+    "masterking32/MasterHttpRelayVPN src/proxy/proxy_server.py:901 [B tls] loop.start_tls",
+    "masterking32/MasterHttpRelayVPN src/proxy/proxy_server.py:967 [B tls] loop.start_tls",
+    "masterking32/MasterHttpRelayVPN scripts/benchmark_transport.py:218 [B tls] quic_cfg.QuicConfiguration",
+    "masterking32/MasterHttpRelayVPN scripts/benchmark_transport.py:231 [B tls] quic_asyncio.connect",
+    "Matteo842/SaveState cloud_utils/ftp_provider.py:162 [B tls] self._ftp.prot_p",
+    "alibaba/tidevice scripts/plistdump-tcp-proxy.py:146 [A tls] C.SSL_CTX_set_quiet_shutdown"
+   ],
+   "token libraries with no rule (Slurm-web's RFL JWT helpers)": [
+    "rackslab/Slurm-web dev/lib/crawler/slurmrestd.py:282 [B token] self.auth.jwt_manager.generate",
+    "rackslab/Slurm-web slurmweb/views/auth/anonymous.py:23 [B token] current_app.jwt.generate",
+    "rackslab/Slurm-web slurmweb/apps/agent.py:71 [B token] RFLTokenizedRBACWebApp.__init__"
+   ],
+   "pyOpenSSL PKey.generate_key on a followed key": [
+    "alibaba/tidevice tidevice/_ca.py:30 [A key_handling] root_key.generate_key"
+   ],
+   "httpx client given an SSL context through verify= (B2e excludes verify flags; the annotator read it as a context)": [
+    "kr8s-org/kr8s kr8s/_api.py:133 [B tls] httpx.AsyncClient"
+   ],
+   "other": [
+    "pmaupin/pdfrw tests/update_expected.py:43 [A hash] hashlib.md5"
+   ]
+  },
+  "not_published": "nothing on the website or README changes (PROTOCOL-R9 D3)"
+ }
+}

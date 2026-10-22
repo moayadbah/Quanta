@@ -1,0 +1,14 @@
+{
+ "repo": "citizenlab/test-lists",
+ "commit": "804afa8cda713cbb72ecf7a4e2c356dfdff7d475",
+ "annotator": "agent-7",
+ "files": {
+  "scripts/legacy/lib/third_party/certifi/core.py": [],
+  "scripts/legacy/lib/third_party/ssl_match_hostname.py": [],
+  "scripts/legacy/lib/lists/https.py": [
+   {"line_start": 26, "line_end": 29, "name": "ssl.wrap_socket", "class": "A", "kind": "tls"},
+   {"line_start": 38, "line_end": 38, "name": "urllib2.HTTPSHandler.__init__", "class": "B", "kind": "tls", "note": "base-class constructor of the standard-library HTTPS handler, a class that always speaks TLS (B2g by analogy)"}
+  ],
+  "scripts/legacy/lib/lists/services/tor/dir_auths.py": []
+ }
+}

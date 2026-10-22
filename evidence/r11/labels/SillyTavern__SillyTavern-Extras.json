@@ -1,0 +1,32 @@
+{
+ "repo": "SillyTavern/SillyTavern-Extras",
+ "commit": "fdc1ec04b632b1d871cc0ad3a9aa132e985fc398",
+ "annotator": "agent-7",
+ "files": {
+  "constants.py": [],
+  "talkinghead/tha3/app/postprocessor.py": [],
+  "modules/voice_conversion/fairseq/data/multilingual/sampled_multi_dataset.py": [
+   {"line_start": 405, "line_end": 407, "name": "hashlib.sha1", "class": "A", "kind": "hash"}
+  ],
+  "server.py": [
+   {"line_start": 642, "line_end": 642, "name": "hashlib.md5", "class": "A", "kind": "hash"},
+   {"line_start": 669, "line_end": 669, "name": "hashlib.md5", "class": "A", "kind": "hash"},
+   {"line_start": 693, "line_end": 693, "name": "hashlib.md5", "class": "A", "kind": "hash"},
+   {"line_start": 748, "line_end": 748, "name": "hashlib.md5", "class": "A", "kind": "hash"},
+   {"line_start": 797, "line_end": 797, "name": "hashlib.md5", "class": "A", "kind": "hash"},
+   {"line_start": 837, "line_end": 837, "name": "hashlib.md5", "class": "A", "kind": "hash"},
+   {"line_start": 1081, "line_end": 1083, "name": "webuiapi.WebUIApi", "class": "B", "kind": "tls", "note": "use_https=sd_remote_ssl turns TLS on when the flag is set; judged under B2e"},
+   {"line_start": 1273, "line_end": 1273, "name": "secrets.token_hex", "class": "A", "kind": "random"}
+  ],
+  "modules/voice_conversion/fairseq/data/plasma_utils.py": [
+   {"line_start": 147, "line_end": 147, "name": "hashlib.blake2b", "class": "A", "kind": "hash"}
+  ],
+  "modules/voice_conversion/fairseq/file_utils.py": [
+   {"line_start": 105, "line_end": 105, "name": "sha256", "class": "A", "kind": "hash"},
+   {"line_start": 110, "line_end": 110, "name": "sha256", "class": "A", "kind": "hash"}
+  ],
+  "modules/voice_conversion/fairseq/data/multilingual/sampled_multi_epoch_dataset.py": [
+   {"line_start": 153, "line_end": 155, "name": "hashlib.sha1", "class": "A", "kind": "hash"}
+  ]
+ }
+}

@@ -1,0 +1,16 @@
+{
+ "repo": "superhedgy/AttackSurfaceMapper",
+ "commit": "8a402edebc9d45b53916ec05454c92a15d5df0ec",
+ "annotator": "agent-15",
+ "files": {
+  "modules/hosthunter.py": [
+   {"line_start": 19, "line_end": 19, "name": "ssl.create_default_context", "class": "A", "kind": "tls"},
+   {"line_start": 22, "line_end": 22, "name": "context.load_default_certs", "class": "A", "kind": "tls"},
+   {"line_start": 28, "line_end": 28, "name": "ssl.get_server_certificate", "class": "A", "kind": "tls"},
+   {"line_start": 29, "line_end": 29, "name": "OpenSSL.crypto.load_certificate", "class": "A", "kind": "public_key"},
+   {"line_start": 82, "line_end": 82, "name": "ssl.get_server_certificate", "class": "A", "kind": "tls"},
+   {"line_start": 83, "line_end": 83, "name": "OpenSSL.crypto.load_certificate", "class": "A", "kind": "public_key"}
+  ],
+  "modules/screencapture.py": []
+ }
+}

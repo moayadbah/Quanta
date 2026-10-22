@@ -1,0 +1,25 @@
+{
+ "repo": "xiamuceer-j/MuMuAINovel",
+ "commit": "743e5abec18beb8d73426527e6579538053bc6fd",
+ "annotator": "agent-3",
+ "files": {
+  "backend/alembic/postgres/versions/20260320_0936_6eb27fce64de_新增stmp相关配置.py": [],
+  "backend/app/services/onnx_embedding.py": [
+   {"line_start": 49, "line_end": 49, "name": "ssl.create_default_context", "class": "A", "kind": "tls", "note": "certifi.where() passed as cafile is a parameter supplying a CA bundle path, not labelled as its own unit"},
+   {"line_start": 75, "line_end": 75, "name": "hashlib.sha256", "class": "A", "kind": "hash"},
+   {"line_start": 129, "line_end": 131, "name": "urllib.request.urlopen", "class": "B", "kind": "tls", "note": "B2g: passes context=SSL_CONTEXT"}
+  ],
+  "backend/app/services/email_service.py": [
+   {"line_start": 46, "line_end": 55, "name": "aiosmtplib.send", "class": "B", "kind": "tls", "note": "B2e: call carries use_tls=use_ssl and start_tls=use_tls switches (values from settings, SSL on by default); variable-valued flags rather than literal True"}
+  ],
+  "backend/app/models/settings.py": [],
+  "backend/alembic/sqlite/versions/20260320_0939_6ff45db05863_新增stmp相关配置.py": [],
+  "backend/app/schemas/settings.py": [],
+  "backend/app/security.py": [
+   {"line_start": 35, "line_end": 35, "name": "secrets.token_urlsafe", "class": "A", "kind": "random"},
+   {"line_start": 39, "line_end": 39, "name": "hmac.new", "class": "A", "kind": "mac"},
+   {"line_start": 48, "line_end": 48, "name": "hmac.new", "class": "A", "kind": "mac"}
+  ],
+  "backend/app/api/settings.py": []
+ }
+}

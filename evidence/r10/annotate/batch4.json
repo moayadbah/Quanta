@@ -1,0 +1,53 @@
+[
+ {
+  "repo": "pennersr/django-allauth",
+  "commit": "5ea117e72397adbd8ca6bc61c692d64ecca4d31b",
+  "clone": "Downloads/Quanta-R10-draft/clones-h10/pennersr__django-allauth",
+  "files": [
+   "allauth/socialaccount/providers/facebook/flows.py",
+   "allauth/idp/oidc/internal/tokens.py",
+   "tests/apps/idp/oidc/internal/test_tokens.py",
+   "allauth/headless/contrib/rest_framework/authentication.py",
+   "allauth/socialaccount/providers/saml/views.py",
+   "allauth/socialaccount/adapter.py",
+   "allauth/headless/tokens/strategies/jwt/__init__.py",
+   "allauth/socialaccount/providers/saml/utils.py"
+  ]
+ },
+ {
+  "repo": "ancoleman/ai-design-components",
+  "commit": "76551b7b19ebc667764ec75da14990d0aef8b6e5",
+  "clone": "Downloads/Quanta-R10-draft/clones-h10/ancoleman__ai-design-components",
+  "files": [
+   "skills/deploying-applications/scripts/generate_k8s_manifests.py",
+   "skills/providing-feedback/scripts/format_messages.py",
+   "skills/prompt-engineering/examples/langchain-examples.py",
+   "skills/secret-management/examples/dynamic-db-credentials/python-hvac.py",
+   "skills/securing-authentication/scripts/validate_oauth_config.py",
+   "skills/implementing-mlops/examples/mlflow_experiment_tracking.py",
+   "evaluation/evaluate.py",
+   "scripts/skill-fixes/update_docs_gerund.py"
+  ]
+ },
+ {
+  "repo": "vllm-project/speculators",
+  "commit": "7ec7aba9450b533334e8f7992baf4e93be3c1a57",
+  "clone": "Downloads/Quanta-R10-draft/clones-h10/vllm-project__speculators",
+  "files": [
+   "scripts/launch_vllm.py",
+   "src/speculators/convert/eagle/utils.py",
+   "tests/unit/scripts/test_vllm_provenance.py",
+   "scripts/evaluate/mrcr.py",
+   "src/speculators/cli/regenerate_responses.py",
+   "src/speculators/data_generation/render_client.py"
+  ]
+ },
+ {
+  "repo": "octo-models/octo",
+  "commit": "241fb3514b7c40957a86d869fecb7c7fc353f540",
+  "clone": "Downloads/Quanta-R10-draft/clones-h10/octo-models__octo",
+  "files": [
+   "octo/data/utils/data_utils.py"
+  ]
+ }
+]

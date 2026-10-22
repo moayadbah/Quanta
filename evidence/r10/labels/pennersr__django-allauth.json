@@ -1,0 +1,25 @@
+{
+ "repo": "pennersr/django-allauth",
+ "commit": "5ea117e72397adbd8ca6bc61c692d64ecca4d31b",
+ "annotator": "agent-4",
+ "files": {
+  "allauth/socialaccount/providers/facebook/flows.py": [
+   {"line_start": 34, "line_end": 34, "name": "hmac.new", "class": "A", "kind": "mac"}
+  ],
+  "allauth/idp/oidc/internal/tokens.py": [
+   {"line_start": 17, "line_end": 17, "name": "jwt.get_unverified_header", "class": "A", "kind": "token"},
+   {"line_start": 36, "line_end": 48, "name": "jwt.decode", "class": "A", "kind": "token"},
+   {"line_start": 38, "line_end": 38, "name": "private_key.public_key", "class": "A", "kind": "key_handling", "note": "key object comes from a repository helper (jwkkit.load_jwk_from_pem); counted under B2a as derivation of the public key on a library key object"}
+  ],
+  "tests/apps/idp/oidc/internal/test_tokens.py": [
+   {"line_start": 47, "line_end": 47, "name": "jwt.encode", "class": "A", "kind": "token"}
+  ],
+  "allauth/headless/contrib/rest_framework/authentication.py": [],
+  "allauth/socialaccount/providers/saml/views.py": [],
+  "allauth/socialaccount/adapter.py": [
+   {"line_start": 427, "line_end": 427, "name": "get_random_string", "class": "B", "kind": "random", "note": "django.utils.crypto secure random string"}
+  ],
+  "allauth/headless/tokens/strategies/jwt/__init__.py": [],
+  "allauth/socialaccount/providers/saml/utils.py": []
+ }
+}

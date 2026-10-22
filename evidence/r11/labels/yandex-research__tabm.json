@@ -1,0 +1,11 @@
+{
+ "repo": "yandex-research/tabm",
+ "commit": "28e47ae301c92ec37787dde1ce923a0793f405b4",
+ "annotator": "agent-2",
+ "files": {
+  "paper/lib/util.py": [],
+  "paper/lib/data.py": [
+   {"line_start": 377, "line_end": 377, "name": "hashlib.md5", "class": "A", "kind": "hash"}
+  ]
+ }
+}

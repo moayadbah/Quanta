@@ -1,0 +1,57 @@
+[
+ {
+  "repo": "mandarons/icloud-docker",
+  "commit": "4978c2d15abc1ffc8fe1aa17b470de8ca232921d",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/mandarons__icloud-docker",
+  "files": [
+   "src/sync.py",
+   "src/sync_photos.py",
+   "tests/data/__init__.py",
+   "src/icloud_sign.py",
+   "tests/test_config_parser.py",
+   "src/web.py",
+   "src/config_parser.py",
+   "src/notify.py"
+  ]
+ },
+ {
+  "repo": "mvanhorn/last30days-skill",
+  "commit": "13a6cc5fd1f2d8a9b8420bbba6742599b2f4a077",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/mvanhorn__last30days-skill",
+  "files": [
+   "skills/last30days/scripts/lib/xurl_x.py",
+   "skills/last30days/scripts/lib/health.py",
+   "skills/last30days/scripts/last30days.py",
+   "skills/last30days/scripts/lib/http.py",
+   "tests/test_resolved_handles_wiring.py",
+   "skills/last30days/scripts/lib/providers.py",
+   "skills/last30days/scripts/lib/bluesky.py",
+   "tests/test_youtube_backstop.py"
+  ]
+ },
+ {
+  "repo": "TgCatUB/catuserbot",
+  "commit": "2e521b3227e9075979d0112f07e876f846910d3e",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/TgCatUB__catuserbot",
+  "files": [
+   "userbot/plugins/direct_links.py",
+   "sample_config.py",
+   "userbot/helpers/google_tools.py",
+   "userbot/plugins/tools.py",
+   "userbot/helpers/google_image_download.py",
+   "userbot/helpers/memeshelper.py"
+  ]
+ },
+ {
+  "repo": "django-otp/django-otp",
+  "commit": "1c77c58f6785b49da3250b01dedbbc77ed0429ae",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/django-otp__django-otp",
+  "files": [
+   "src/django_otp/util.py",
+   "src/django_otp/oath.py",
+   "src/django_otp/plugins/otp_hotp/models.py",
+   "src/django_otp/plugins/otp_totp/models.py",
+   "src/django_otp/plugins/otp_static/models.py"
+  ]
+ }
+]

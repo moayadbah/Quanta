@@ -1,0 +1,19 @@
+{
+ "repo": "VikParuchuri/textbook_quality",
+ "commit": "3548c557d595803c8dd24f9b7f9e19055c5bb8fb",
+ "annotator": "agent-4",
+ "files": {
+  "app/services/service.py": [
+   {"line_start": 17, "line_end": 17, "name": "hashlib.sha512", "class": "A", "kind": "hash"}
+  ],
+  "app/services/network.py": [
+   {"line_start": 13, "line_end": 13, "name": "secrets.token_urlsafe", "class": "A", "kind": "random"}
+  ],
+  "app/components/parser.py": [
+   {"line_start": 76, "line_end": 76, "name": "secrets.token_hex", "class": "A", "kind": "random"}
+  ],
+  "app/llm/llm.py": [
+   {"line_start": 57, "line_end": 57, "name": "hashlib.sha512", "class": "A", "kind": "hash"}
+  ]
+ }
+}

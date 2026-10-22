@@ -1,0 +1,763 @@
+{
+ "radude/rentry": {
+  "stratum": "G",
+  "commit": "977ad2edb379434e0fa3b8d69df8ef6ac799808f",
+  "candidates": 1,
+  "files": [
+   "examples/edit_change_url.py"
+  ]
+ },
+ "kunifujiwara/VoxCity": {
+  "stratum": "G",
+  "commit": "0f615c625bf6223ca96c613eb87f4c1ab5814b32",
+  "candidates": 23,
+  "files": [
+   "tests/simulator_gpu/test_building_accepts_surface_override.py",
+   "tests/test_generator_citygml_dem_source.py",
+   "src/voxcity/simulator_gpu/solar/surface_override.py",
+   "src/voxcity/geoprocessor/draw/_common.py",
+   "tests/simulator_gpu/test_mesh_surface_mapping.py",
+   "src/voxcity/utils/weather/files.py",
+   "src/voxcity/downloader/ocean.py",
+   "tests/simulator_gpu/test_surface_override.py"
+  ]
+ },
+ "ruc-datalab/DeepAnalyze": {
+  "stratum": "G",
+  "commit": "d4dd5cf62ec7ec2579eb85bcab4f24e4782827b9",
+  "candidates": 27,
+  "files": [
+   "deepanalyze/ms-swift/swift/llm/infer/deploy.py",
+   "deepanalyze/ms-swift/swift/llm/infer/infer_engine/vllm_engine.py",
+   "deepanalyze/ms-swift/swift/llm/infer/rollout.py",
+   "deepanalyze/ms-swift/swift/llm/infer/infer_engine/sglang_engine.py",
+   "example/4c_competition/file_api.py",
+   "deepanalyze/ms-swift/swift/llm/infer/infer_engine/lmdeploy_engine.py",
+   "deepanalyze/ms-swift/swift/trainers/mixin.py",
+   "deepanalyze/ms-swift/swift/trainers/rlhf_trainer/gkd_trainer.py"
+  ]
+ },
+ "thisjam/sd-webui-oldsix-prompt": {
+  "stratum": "G",
+  "commit": "9fb665c34bf8d4d06df8952189923de925913849",
+  "candidates": 1,
+  "files": [
+   "scripts/transerver/Translator.py"
+  ]
+ },
+ "piercefreeman/mountaineer": {
+  "stratum": "G",
+  "commit": "ded92b6944cb51c9b49b57456b0582d47b84df83",
+  "candidates": 13,
+  "files": [
+   "mountaineer/__tests__/graph/test_app_graph.py",
+   "mountaineer/test_utilities.py",
+   "mountaineer/__tests__/dependencies/test_base.py",
+   "mountaineer/client_builder/parser.py",
+   "mountaineer/actions/sideeffect_dec.py",
+   "mountaineer/controller.py",
+   "mountaineer/actions/passthrough_dec.py",
+   "mountaineer/__tests__/test_app.py"
+  ]
+ },
+ "jasontang-ai/Context-Engineering": {
+  "stratum": "G",
+  "commit": "6158def66a2d2174ed8356cf376e5f44e10d78ea",
+  "candidates": 8,
+  "files": [
+   "20_templates/recursive_context.py",
+   "00_COURSE/01_context_retrieval_generation/labs/dynamic_assembly_lab.py",
+   "00_COURSE/03_context_management/labs/memory_management_lab.py",
+   "10_guides_zero_to_hero/04_rag_recipes.py",
+   "00_COURSE/01_context_retrieval_generation/templates/assembly_patterns.py",
+   "10_guides_zero_to_hero/07_recursive_patterns.py",
+   "10_guides_zero_to_hero/06_schema_design.py",
+   "10_guides_zero_to_hero/05_prompt_programs.py"
+  ]
+ },
+ "iszhanjiawei/indexTTS2": {
+  "stratum": "G",
+  "commit": "bae9221fd0a1bc98e8409fb97b8d6bd6a119bb64",
+  "candidates": 1,
+  "files": [
+   "indextts/s2mel/modules/openvoice/se_extractor.py"
+  ]
+ },
+ "fgmacedo/python-statemachine": {
+  "stratum": "G",
+  "commit": "ec5d8173f740b37941818df13727db9d64ef498d",
+  "candidates": 9,
+  "files": [
+   "tests/uml/pssm/convert.py",
+   "statemachine/io/scxml/reader.py",
+   "statemachine/invoke.py",
+   "tests/test_signature.py",
+   "statemachine/statemachine.py",
+   "statemachine/dispatcher.py",
+   "statemachine/contrib/diagram/sphinx_ext.py",
+   "statemachine/signature.py"
+  ]
+ },
+ "Hackxiaoya/CuteOne": {
+  "stratum": "G",
+  "commit": "b5fba55454d600e3ddc097de42dbd1c2aa44c772",
+  "candidates": 5,
+  "files": [
+   "app/common.py",
+   "app/main/users/views.py",
+   "app/admin/users/views.py",
+   "config.py",
+   "app/admin/drive/views.py"
+  ]
+ },
+ "Grim-es/material-combiner-addon": {
+  "stratum": "P",
+  "commit": "eed9ca25baffe5463bdd6104360fcd9f6e32ba15",
+  "candidates": 2,
+  "files": [
+   "addon_updater.py",
+   "addon_updater_ops.py"
+  ]
+ },
+ "GACWR/OpenUBA": {
+  "stratum": "P",
+  "commit": "6d7b9cf85d6bff3e16eb5230791252ff2a3bd0ec",
+  "candidates": 10,
+  "files": [
+   "core/services/data_ingestion.py",
+   "core/model_library/ssh-login-anomaly-detector/MODEL.py",
+   "docker/model-runner/runner.py",
+   "sdk/examples/quickstart.py",
+   "images/diagram/generate.py",
+   "core/model_library/SSH Anomaly Detector E2E Test/MODEL.py",
+   "core/tests/e2e/test_workspace_notebooks.py",
+   "core/api_routers/auth.py"
+  ]
+ },
+ "SillyTavern/SillyTavern-Extras": {
+  "stratum": "G",
+  "commit": "fdc1ec04b632b1d871cc0ad3a9aa132e985fc398",
+  "candidates": 7,
+  "files": [
+   "constants.py",
+   "talkinghead/tha3/app/postprocessor.py",
+   "modules/voice_conversion/fairseq/data/multilingual/sampled_multi_dataset.py",
+   "server.py",
+   "modules/voice_conversion/fairseq/data/plasma_utils.py",
+   "modules/voice_conversion/fairseq/file_utils.py",
+   "modules/voice_conversion/fairseq/data/multilingual/sampled_multi_epoch_dataset.py"
+  ]
+ },
+ "LeonChaoX/qinyan-academic-skills": {
+  "stratum": "G",
+  "commit": "df5a498a81e0f9c8f79d814446dcf9e9b8f68888",
+  "candidates": 3,
+  "files": [
+   "skills/07-\u4e34\u5e8a\u533b\u5b66\u4e0e\u7cbe\u51c6\u533b\u7597/clinical-reports/scripts/check_deidentification.py",
+   "skills/07-\u4e34\u5e8a\u533b\u5b66\u4e0e\u7cbe\u51c6\u533b\u7597/treatment-plans/scripts/check_completeness.py",
+   "skills/07-\u4e34\u5e8a\u533b\u5b66\u4e0e\u7cbe\u51c6\u533b\u7597/fda-database/scripts/fda_query.py"
+  ]
+ },
+ "MemoriLabs/Memori": {
+  "stratum": "P",
+  "commit": "574b1ea3e876f100ef82c37817d603eb7e258e59",
+  "candidates": 14,
+  "files": [
+   "memori/provisioning/_utils.py",
+   "tests/test_network.py",
+   "memori/_network.py",
+   "tests/provisioning/test_provisioning_models.py",
+   "examples/tidb/main.py",
+   "integrations/hermes/src/memori_hermes/__init__.py",
+   "tests/test_typing_dx.py",
+   "tests/provisioning/test_tidb_zero_provider.py"
+  ]
+ },
+ "Meituan-Dianping/lyrebird": {
+  "stratum": "G",
+  "commit": "91f0db7716dd66ade5b026a3545ed19ef6148cc7",
+  "candidates": 12,
+  "files": [
+   "lyrebird/examples/settings/proxy_white_list.py",
+   "lyrebird/compatibility.py",
+   "e2e_tests/test_flow_editor.py",
+   "lyrebird/event.py",
+   "lyrebird/mitm/proxy_server.py",
+   "lyrebird/base_server.py",
+   "e2e_tests/assets/serve.py",
+   "lyrebird/mock/dm/label.py"
+  ]
+ },
+ "Windy3f3f3f3f/claude-code-from-scratch": {
+  "stratum": "G",
+  "commit": "0b452360866433fde0dc77cd37ada9d303546592",
+  "candidates": 1,
+  "files": [
+   "python/mini_claude/memory.py"
+  ]
+ },
+ "flexxui/flexx": {
+  "stratum": "G",
+  "commit": "f18ec09eb35dc403881aca4a466e48e2dc4916d1",
+  "candidates": 8,
+  "files": [
+   "flexx/event/_action.py",
+   "flexx/event/_reaction.py",
+   "docs/scripts/uiexample.py",
+   "flexxamples/howtos/serve_ssl.py",
+   "flexx/app/tests/test_asset.py",
+   "flexx/app/bsdf_lite.py",
+   "flexx/app/_session.py",
+   "flexx/app/_tornadoserver.py"
+  ]
+ },
+ "jina-ai/vectordb": {
+  "stratum": "G",
+  "commit": "ad2b64a468c70be7970cf1606c83005a73547b2a",
+  "candidates": 1,
+  "files": [
+   "vectordb/utils/push_to_hubble.py"
+  ]
+ },
+ "fqscfqj/Y2A-Auto": {
+  "stratum": "P",
+  "commit": "d5617ac7d97278fbd63fb77dfbe877cc63353dda",
+  "candidates": 9,
+  "files": [
+   "modules/youtube_handler.py",
+   "modules/bili_sdk/clients/CurlCFFIClient.py",
+   "modules/acfun_uploader.py",
+   "modules/asr_api_client.py",
+   "modules/youtube_monitor.py",
+   "modules/bili_sdk/video_uploader.py",
+   "tests/test_youtube_monitor_quota_budget.py",
+   "modules/bili_sdk/utils/network.py"
+  ]
+ },
+ "sv3nbeast/ShiroScan": {
+  "stratum": "G",
+  "commit": "5127f5b3dc06568e6a96bc2c6258965f06bc4d2d",
+  "candidates": 32,
+  "files": [
+   "moule/plugins/CommonsCollections4.py",
+   "moule/plugins/CommonsCollectionsK1.py",
+   "moule/plugins/CommonsBeanutils1.py",
+   "moule/plugins/Myfaces1.py",
+   "moule/plugins/Jdk8u20.py",
+   "moule/plugins/CommonsCollections7.py",
+   "moule/plugins/CommonsCollections9.py",
+   "moule/plugins/URLDNS.py"
+  ]
+ },
+ "NoizAI/HelixWorld": {
+  "stratum": "G",
+  "commit": "fc8656ed76e25ff6c0dd44357bf3cdb006a1521d",
+  "candidates": 7,
+  "files": [
+   "code/LTX-2.3/packages/ltx-core/src/ltx_core/model/transformer/attention.py",
+   "code/LTX-2.3/packages/ltx-core/src/ltx_core/loader/registry.py",
+   "scripts/_common.py",
+   "code/LTX-2.3/projects/helixworld_runtime/scripts/context_cache.py",
+   "scripts/caption_pipeline.py",
+   "download_models.py",
+   "code/LTX-2.3/packages/ltx-core/src/ltx_core/model/model_protocol.py"
+  ]
+ },
+ "mandarons/icloud-docker": {
+  "stratum": "G",
+  "commit": "4978c2d15abc1ffc8fe1aa17b470de8ca232921d",
+  "candidates": 10,
+  "files": [
+   "src/sync.py",
+   "src/sync_photos.py",
+   "tests/data/__init__.py",
+   "src/icloud_sign.py",
+   "tests/test_config_parser.py",
+   "src/web.py",
+   "src/config_parser.py",
+   "src/notify.py"
+  ]
+ },
+ "yandex-research/tabm": {
+  "stratum": "G",
+  "commit": "28e47ae301c92ec37787dde1ce923a0793f405b4",
+  "candidates": 2,
+  "files": [
+   "paper/lib/util.py",
+   "paper/lib/data.py"
+  ]
+ },
+ "django-otp/django-otp": {
+  "stratum": "G",
+  "commit": "1c77c58f6785b49da3250b01dedbbc77ed0429ae",
+  "candidates": 5,
+  "files": [
+   "src/django_otp/util.py",
+   "src/django_otp/oath.py",
+   "src/django_otp/plugins/otp_hotp/models.py",
+   "src/django_otp/plugins/otp_totp/models.py",
+   "src/django_otp/plugins/otp_static/models.py"
+  ]
+ },
+ "Upsonic/Upsonic": {
+  "stratum": "P",
+  "commit": "101f0313b0ddb96cd4078354879b2ff57005db29",
+  "candidates": 41,
+  "files": [
+   "src/upsonic/interfaces/slack/slack.py",
+   "src/upsonic/tools/schema.py",
+   "src/upsonic/graphv2/state_graph.py",
+   "src/upsonic/_parts_manager.py",
+   "src/upsonic/interfaces/mail/mail.py",
+   "src/upsonic/simulation/result.py",
+   "src/upsonic/utils/retry.py",
+   "src/upsonic/tools/wrappers.py"
+  ]
+ },
+ "airbnb/streamalert": {
+  "stratum": "P",
+  "commit": "75ba140d2e1aa6e903313d88326920adcb8bff45",
+  "candidates": 12,
+  "files": [
+   "streamalert/alert_processor/outputs/output_base.py",
+   "streamalert/alert_processor/outputs/pagerduty.py",
+   "tests/unit/streamalert/alert_processor/outputs/test_pagerduty.py",
+   "tests/unit/streamalert/apps/test_apps/test_gsuite.py",
+   "streamalert/apps/_apps/duo.py",
+   "tests/unit/streamalert/apps/test_helpers.py",
+   "tests/unit/streamalert/apps/test_apps/test_duo.py",
+   "streamalert/apps/_apps/box.py"
+  ]
+ },
+ "jertel/elastalert2": {
+  "stratum": "P",
+  "commit": "162ba49d34485d375b4860694d21361a156cea18",
+  "candidates": 11,
+  "files": [
+   "elastalert/alerters/dingtalk.py",
+   "elastalert/create_index.py",
+   "tests/util_test.py",
+   "tests/alerters/email_test.py",
+   "tests/alerters/gelf_test.py",
+   "elastalert/alerters/gelf.py",
+   "elastalert/loaders.py",
+   "elastalert/alerters/tencentsms.py"
+  ]
+ },
+ "jupyterhub/the-littlest-jupyterhub": {
+  "stratum": "P",
+  "commit": "05637a2fe4bb5b1e91bcdb0efc0059ab4b30d543",
+  "candidates": 7,
+  "files": [
+   "tljh/configurer.py",
+   "integration-tests/test_proxy.py",
+   "tljh/apt.py",
+   "tests/test_traefik.py",
+   "tljh/installer.py",
+   "tljh/config_schema.py",
+   "tljh/traefik.py"
+  ]
+ },
+ "ddean2009/MoneyPrinterPlus": {
+  "stratum": "P",
+  "commit": "d2c6f397731586de6cdcfed2e325fa68e74e3959",
+  "candidates": 5,
+  "files": [
+   "services/alinls/websocket/_http.py",
+   "services/alinls/websocket/_ssl_compat.py",
+   "services/audio/flash_recognizer.py",
+   "services/alinls/websocket/_core.py",
+   "services/alinls/websocket/_app.py"
+  ]
+ },
+ "CrimsonForge-io/king-phisher": {
+  "stratum": "P",
+  "commit": "94823fbb7b1b4557f78c563e217dd21c758edbce",
+  "candidates": 28,
+  "files": [
+   "docs/source/conf.py",
+   "king_phisher/client/dialogs/ssh_host_key.py",
+   "king_phisher/ics.py",
+   "king_phisher/server/letsencrypt.py",
+   "king_phisher/server/graphql/types/ssl.py",
+   "king_phisher/server/server.py",
+   "tests/server/server_rpc.py",
+   "king_phisher/server/graphql/schema.py"
+  ]
+ },
+ "emmabostian/developer-portfolios": {
+  "stratum": "P",
+  "commit": "e4c19b1124348a31e55d3f6f57c760d99803834a",
+  "candidates": 1,
+  "files": [
+   "src/check_parking_redirects.py"
+  ]
+ },
+ "gunnery/gunnery": {
+  "stratum": "P",
+  "commit": "733a261cae6243a11883a40e18b14f57cf6e47b2",
+  "candidates": 6,
+  "files": [
+   "gunnery/backend/securefile.py",
+   "gunnery/backend/tasks.py",
+   "gunnery/account/backend.py",
+   "gunnery/core/models.py",
+   "gunnery/account/tests/test_views.py",
+   "gunnery/backend/ssh.py"
+  ]
+ },
+ "microsoft/msticpy": {
+  "stratum": "P",
+  "commit": "a2fdc56734bd58f6ebc6acb04136a321af2a5be1",
+  "candidates": 28,
+  "files": [
+   "msticpy/data/drivers/splunk_driver.py",
+   "msticpy/data/uploaders/loganalytics_uploader.py",
+   "msticpy/data/core/query_source.py",
+   "tests/auth/test_provider_secrets.py",
+   "tests/context/azure/test_sentinel_analytics.py",
+   "msticpy/context/tiproviders/mblookup.py",
+   "tests/context/test_vtlookupv3.py",
+   "msticpy/data/drivers/resource_graph_driver.py"
+  ]
+ },
+ "buckket/twtxt": {
+  "stratum": "P",
+  "commit": "ec421d131d9aeb14e92b4c2ad19175a69639a8d1",
+  "candidates": 1,
+  "files": [
+   "twtxt/twhttp.py"
+  ]
+ },
+ "refuel-ai/autolabel": {
+  "stratum": "P",
+  "commit": "404dcd014276b343ce6653670c0f75778e392e11",
+  "candidates": 1,
+  "files": [
+   "src/autolabel/transforms/custom_api.py"
+  ]
+ },
+ "JaniceWuo/MovieRecommend": {
+  "stratum": "P",
+  "commit": "450d50677bec2e10fe81cb65ab5d20f23be014a2",
+  "candidates": 67,
+  "files": [
+   "movierecommend/venv1/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/vcs/git.py",
+   "movierecommend/venv1/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/adapters.py",
+   "movierecommend/venv1/Lib/site-packages/django/db/models/fields/related_descriptors.py",
+   "movierecommend/venv1/Lib/site-packages/django/core/servers/basehttp.py",
+   "movierecommend/venv1/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/distlib/_backport/shutil.py",
+   "movierecommend/venv1/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/packages/ordered_dict.py",
+   "movierecommend/venv1/Lib/site-packages/django/db/backends/mysql/client.py",
+   "movierecommend/venv1/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/cmdoptions.py"
+  ]
+ },
+ "backblaze-labs/genblaze": {
+  "stratum": "P",
+  "commit": "acb6e673905f7003ae89f7fcb490efca371ad927",
+  "candidates": 48,
+  "files": [
+   "libs/connectors/nvidia/genblaze_nvidia/_probe.py",
+   "libs/core/tests/unit/test_embedder.py",
+   "libs/connectors/openai/genblaze_openai/dalle.py",
+   "examples/quickstart.py",
+   "libs/connectors/s3/genblaze_s3/_preflight_classify.py",
+   "libs/core/genblaze_core/_asset_url.py",
+   "libs/connectors/s3/tests/test_s3_backend.py",
+   "libs/connectors/s3/tests/test_presigned.py"
+  ]
+ },
+ "lnbits/lnbits": {
+  "stratum": "P",
+  "commit": "04b37f0d761222561bc8606cfe7edc86cabcce35",
+  "candidates": 55,
+  "files": [
+   "tests/unit/test_decorators.py",
+   "tests/unit/onchain/test_psbt.py",
+   "lnbits/core/migrations.py",
+   "tests/unit/test_helpers.py",
+   "lnbits/wallets/breez.py",
+   "lnbits/core/views/auth_api.py",
+   "tests/conftest.py",
+   "tests/api/test_onchain_wallet.py"
+  ]
+ },
+ "speechbrain/speechbrain": {
+  "stratum": "P",
+  "commit": "c0241278f93ef02cd5191f03caf4e5f8e1292bf6",
+  "candidates": 24,
+  "files": [
+   "recipes/LJSpeech/quantization/train.py",
+   "speechbrain/utils/checkpoints.py",
+   "tests/utils/recipe_tests.py",
+   "tests/utils/refactoring_checks.py",
+   "speechbrain/nnet/hypermixing.py",
+   "tests/utils/check_url.py",
+   "speechbrain/integrations/huggingface/weighted_ssl.py",
+   "speechbrain/processing/vocal_features.py"
+  ]
+ },
+ "fail2ban/fail2ban": {
+  "stratum": "P",
+  "commit": "6c88de71d201f864a2bec198217fd07ce47869b3",
+  "candidates": 9,
+  "files": [
+   "config/action.d/smtp.py",
+   "fail2ban/tests/fail2banregextestcase.py",
+   "fail2ban/tests/action_d/test_smtp.py",
+   "fail2ban/tests/actiontestcase.py",
+   "fail2ban/tests/filtertestcase.py",
+   "fail2ban/tests/fail2banclienttestcase.py",
+   "fail2ban/compat/asynchat.py",
+   "fail2ban/tests/clientreadertestcase.py"
+  ]
+ },
+ "openstack/cinder": {
+  "stratum": "P",
+  "commit": "270ba9ea896827272485526127c2cbcb3a16a3ee",
+  "candidates": 102,
+  "files": [
+   "cinder/volume/drivers/toyou/acs5000/acs5000_common.py",
+   "cinder/volume/drivers/qnap.py",
+   "cinder/volume/drivers/ibm/ibm_storage/ds8k_connection.py",
+   "cinder/volume/drivers/ibm/gpfs.py",
+   "cinder/volume/drivers/ibm/ibm_storage/ds8k_helper.py",
+   "cinder/backup/manager.py",
+   "cinder/zonemanager/drivers/brocade/brcd_fabric_opts.py",
+   "cinder/image/format_inspector.py"
+  ]
+ },
+ "mitogen-hq/mitogen": {
+  "stratum": "P",
+  "commit": "eb76a3aee54ea10ceaf6bf642ed410394b7ef119",
+  "candidates": 36,
+  "files": [
+   "mitogen/core.py",
+   "ansible_mitogen/runner.py",
+   "ansible_mitogen/target.py",
+   "tests/bench/throughput.py",
+   "examples/service/self_contained.py",
+   "tests/testlib.py",
+   "mitogen/compat/pkgutil.py",
+   "mitogen/fakessh.py"
+  ]
+ },
+ "mvanhorn/last30days-skill": {
+  "stratum": "P",
+  "commit": "13a6cc5fd1f2d8a9b8420bbba6742599b2f4a077",
+  "candidates": 31,
+  "files": [
+   "skills/last30days/scripts/lib/xurl_x.py",
+   "skills/last30days/scripts/lib/health.py",
+   "skills/last30days/scripts/last30days.py",
+   "skills/last30days/scripts/lib/http.py",
+   "tests/test_resolved_handles_wiring.py",
+   "skills/last30days/scripts/lib/providers.py",
+   "skills/last30days/scripts/lib/bluesky.py",
+   "tests/test_youtube_backstop.py"
+  ]
+ },
+ "pantsbuild/pants": {
+  "stratum": "P",
+  "commit": "984eae61fdfeb5d390c62114874b10002b62b98d",
+  "candidates": 34,
+  "files": [
+   "src/python/pants/help/help_info_extracter_test.py",
+   "src/python/pants_release/release.py",
+   "src/python/pants/backend/url_handlers/s3/register.py",
+   "src/python/pants/engine/internals/specs_rules.py",
+   "src/python/pants/ng/subsystem_test.py",
+   "src/python/pants/backend/python/goals/publish_test.py",
+   "src/python/pants/core/target_types.py",
+   "src/python/pants/engine/fs_test.py"
+  ]
+ },
+ "github/spec-kit": {
+  "stratum": "P",
+  "commit": "c6a4c18f1d01a8bec241c618eb6dfea952508744",
+  "candidates": 27,
+  "files": [
+   "src/specify_cli/_operation_version.py",
+   "src/specify_cli/integrations/bob/__init__.py",
+   "src/specify_cli/integrations/_lifecycle.py",
+   "tests/unit/test_condition_expression_block.py",
+   "tests/test_utils.py",
+   "src/specify_cli/workflows/_commands.py",
+   "src/specify_cli/command_version.py",
+   "tests/specify_cli/bundles/test_catalog_config.py"
+  ]
+ },
+ "citizenlab/test-lists": {
+  "stratum": "P",
+  "commit": "804afa8cda713cbb72ecf7a4e2c356dfdff7d475",
+  "candidates": 4,
+  "files": [
+   "scripts/legacy/lib/third_party/certifi/core.py",
+   "scripts/legacy/lib/third_party/ssl_match_hostname.py",
+   "scripts/legacy/lib/lists/https.py",
+   "scripts/legacy/lib/lists/services/tor/dir_auths.py"
+  ]
+ },
+ "open-gigaai/giga-train": {
+  "stratum": "P",
+  "commit": "ace2d52979dafe272beb5cf7ba2c09a010058b85",
+  "candidates": 2,
+  "files": [
+   "giga_train/distributed/__init__.py",
+   "giga_train/distributed/ssh.py"
+  ]
+ },
+ "walkingddd/TgtoDrive": {
+  "stratum": "P",
+  "commit": "f7589e5a2eb1521ed20e9d43306ae900e23a286c",
+  "candidates": 1,
+  "files": [
+   "v6.6.4\uff08\u6700\u65b0\u7248\u8bf7\u5728docker\u5b89\u88c5\uff09/tgto189.py"
+  ]
+ },
+ "krahabb/meross_lan": {
+  "stratum": "P",
+  "commit": "bafedb4f8563153f9e3494292073551bb28f5f9a",
+  "candidates": 10,
+  "files": [
+   "custom_components/meross_lan/merossclient/mqttclient.py",
+   "custom_components/meross_lan/helpers/__init__.py",
+   "custom_components/meross_lan/merossclient/protocol/types/__init__.py",
+   "custom_components/meross_lan/merossclient/cloudapi.py",
+   "tests/helpers.py",
+   "custom_components/meross_lan/helpers/device.py",
+   "custom_components/meross_lan/merossclient/protocol/message.py",
+   "custom_components/meross_lan/merossclient/protocol/__init__.py"
+  ]
+ },
+ "rom1504/img2dataset": {
+  "stratum": "P",
+  "commit": "95523bc7579745a1749b8132d408b9fea89a338e",
+  "candidates": 3,
+  "files": [
+   "img2dataset/downloader.py",
+   "tests/test_downloader.py",
+   "img2dataset/logger.py"
+  ]
+ },
+ "TeamHG-Memex/tensorboard_logger": {
+  "stratum": "P",
+  "commit": "203aca7a52066f84ef15046b0d0b1ea69dc59e12",
+  "candidates": 1,
+  "files": [
+   "travis_pypi_setup.py"
+  ]
+ },
+ "superhedgy/AttackSurfaceMapper": {
+  "stratum": "P",
+  "commit": "8a402edebc9d45b53916ec05454c92a15d5df0ec",
+  "candidates": 2,
+  "files": [
+   "modules/hosthunter.py",
+   "modules/screencapture.py"
+  ]
+ },
+ "yuxian158/check": {
+  "stratum": "P",
+  "commit": "723c834f121ff4eef2dec7afe521071a7efff1a9",
+  "candidates": 26,
+  "files": [
+   "dailycheckin_scripts/ck_bilibili.py",
+   "dailycheckin_scripts/ck_cloud189.py",
+   "dailycheckin_scripts/ck_v2ex.py",
+   "dailycheckin_scripts/ck_tieba.py",
+   "dailycheckin_scripts/ck_meizu.py",
+   "dailycheckin_scripts/ck_mgtv.py",
+   "dailycheckin_scripts/ck_duokan.py",
+   "dailycheckin_scripts/ck_kgqq.py"
+  ]
+ },
+ "respectlytics/respectaso": {
+  "stratum": "P",
+  "commit": "93bbe7f3591815596034737e3e3c5627b2c0e783",
+  "candidates": 19,
+  "files": [
+   "aso/tests/test_keywords_page.py",
+   "aso/tests/test_no_dashes.py",
+   "aso/tests/test_apple_ads_storage.py",
+   "aso/management/commands/apple_ads_diagnose.py",
+   "aso/tests/test_popularity_views.py",
+   "aso/tests/test_apple_ads_keys.py",
+   "aso/copy_rules.py",
+   "aso/country_picker.py"
+  ]
+ },
+ "timothy-odofin/agenthub-be": {
+  "stratum": "P",
+  "commit": "fc386c23c90aab9897e87aa531c179a7266471fc",
+  "candidates": 29,
+  "files": [
+   "backend/src/app/infrastructure/connections/database/redis_connection_manager.py",
+   "backend/tests/unit/api/test_chat_endpoints_secured.py",
+   "backend/src/app/core/security/dependencies.py",
+   "backend/tests/unit/api/test_tools_endpoint.py",
+   "backend/src/app/api/v1/tools.py",
+   "backend/src/app/schemas/conversational_auth.py",
+   "backend/tests/integration/core/config/test_settings_integration.py",
+   "backend/src/app/infrastructure/connections/database/postgres_connection_manager.py"
+  ]
+ },
+ "TgCatUB/catuserbot": {
+  "stratum": "P",
+  "commit": "2e521b3227e9075979d0112f07e876f846910d3e",
+  "candidates": 6,
+  "files": [
+   "userbot/plugins/direct_links.py",
+   "sample_config.py",
+   "userbot/helpers/google_tools.py",
+   "userbot/plugins/tools.py",
+   "userbot/helpers/google_image_download.py",
+   "userbot/helpers/memeshelper.py"
+  ]
+ },
+ "SpiderClub/weibospider": {
+  "stratum": "P",
+  "commit": "e1f289871187da9e1c9096cd61984066c73625a8",
+  "candidates": 1,
+  "files": [
+   "login/login.py"
+  ]
+ },
+ "facebook/facebook-python-business-sdk": {
+  "stratum": "P",
+  "commit": "efd8423a2e595ea8d4c04eb824ce113f2f1d68cd",
+  "candidates": 2,
+  "files": [
+   "facebook_business/adobjects/serverside/event_request_async.py",
+   "facebook_business/adobjects/customaudiencesalts.py"
+  ]
+ },
+ "kivy/python-for-android": {
+  "stratum": "P",
+  "commit": "8ef9d1dbbf769d2c14681dbc3c116c85e2e93bae",
+  "candidates": 8,
+  "files": [
+   "pythonforandroid/recipes/android/src/android/activity.py",
+   "pythonforandroid/toolchain.py",
+   "pythonforandroid/recipes/libcurl/__init__.py",
+   "tests/test_pythonpackage_basic.py",
+   "pythonforandroid/recipes/openssl/__init__.py",
+   "pythonforandroid/recipe.py",
+   "pythonforandroid/bootstraps/common/build/build.py",
+   "testapps/on_device_unit_tests/test_app/tests/test_requirements.py"
+  ]
+ },
+ "it-projects-llc/odoo-saas-tools": {
+  "stratum": "P",
+  "commit": "8e9ad4d06853b668a42a3e8177c8246fd946f0e9",
+  "candidates": 6,
+  "files": [
+   "saas.py",
+   "saas_sysadmin_mailgun/models/mailgun.py",
+   "saas_portal_signup/__manifest__.py",
+   "saas_server_backup_ftp/models/saas_server.py",
+   "saas_server_backup_ftp/models/res_config.py",
+   "saas_portal/models/saas_portal.py"
+  ]
+ }
+}

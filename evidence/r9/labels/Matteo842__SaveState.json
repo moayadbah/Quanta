@@ -1,0 +1,22 @@
+{
+ "repo": "Matteo842/SaveState",
+ "commit": "eaecd6e3ee094a0ca6c65a59194cd8d78f368635",
+ "annotator": "agent-4",
+ "files": {
+  "cloud_utils/google_drive_manager.py": [
+   {"line_start": 573, "line_end": 573, "name": "hashlib.md5", "class": "A", "kind": "hash"}
+  ],
+  "cloud_utils/ftp_config_dialog.py": [],
+  "cloud_utils/ftp_provider.py": [
+   {"line_start": 143, "line_end": 143, "name": "ssl.create_default_context", "class": "A", "kind": "tls"},
+   {"line_start": 146, "line_end": 146, "name": "ftplib.FTP_TLS", "class": "B", "kind": "tls", "note": "always-TLS class with context=context (B2g)"},
+   {"line_start": 162, "line_end": 162, "name": "self._ftp.prot_p", "class": "B", "kind": "tls", "note": "hard call: turns TLS on for the FTP_TLS data channel, read as the B2g turn-TLS-on rule (like starttls)"}
+  ],
+  "cloud_utils/webdav_config_dialog.py": [],
+  "gui_components/icon_extractor.py": [
+   {"line_start": 209, "line_end": 209, "name": "hashlib.md5", "class": "A", "kind": "hash"},
+   {"line_start": 382, "line_end": 382, "name": "hashlib.md5", "class": "A", "kind": "hash"}
+  ],
+  "cloud_utils/webdav_provider.py": []
+ }
+}

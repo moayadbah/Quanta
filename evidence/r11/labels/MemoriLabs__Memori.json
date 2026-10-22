@@ -1,0 +1,20 @@
+{
+ "repo": "MemoriLabs/Memori",
+ "commit": "574b1ea3e876f100ef82c37817d603eb7e258e59",
+ "annotator": "agent-7",
+ "files": {
+  "memori/provisioning/_utils.py": [],
+  "tests/test_network.py": [],
+  "memori/_network.py": [
+   {"line_start": 64, "line_end": 64, "name": "ssl.create_default_context", "class": "A", "kind": "tls"},
+   {"line_start": 92, "line_end": 92, "name": "aiohttp.TCPConnector", "class": "B", "kind": "tls", "note": "passes ssl=ssl_context"}
+  ],
+  "tests/provisioning/test_provisioning_models.py": [],
+  "examples/tidb/main.py": [
+   {"line_start": 27, "line_end": 34, "name": "create_engine", "class": "B", "kind": "tls", "note": "connect_args carries an ssl CA setting that turns TLS on for the driver when DATABASE_USE_TLS is set; conditional, judged as turning TLS on under B2e"}
+  ],
+  "integrations/hermes/src/memori_hermes/__init__.py": [],
+  "tests/test_typing_dx.py": [],
+  "tests/provisioning/test_tidb_zero_provider.py": []
+ }
+}

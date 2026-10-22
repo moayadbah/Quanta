@@ -1,0 +1,13 @@
+{
+ "repo": "nengo/nengo",
+ "commit": "440db6363f690ea4df52be29b2fa01a5a41399f8",
+ "annotator": "agent-6",
+ "files": {
+  "nengo/tests/test_examples.py": [],
+  "nengo/tests/test_cache.py": [],
+  "nengo/cache.py": [
+   {"line_start": 258, "line_end": 258, "name": "hashlib.sha1", "class": "A", "kind": "hash"},
+   {"line_start": 819, "line_end": 819, "name": "hashlib.sha1", "class": "A", "kind": "hash"}
+  ]
+ }
+}

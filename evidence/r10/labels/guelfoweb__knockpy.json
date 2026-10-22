@@ -1,0 +1,31 @@
+{
+ "repo": "guelfoweb/knockpy",
+ "commit": "da43fdd2399f9ca5a39229cb8ba3e51249f53e30",
+ "annotator": "agent-10",
+ "files": {
+  "knockpy/output.py": [],
+  "examples/poc.py": [],
+  "knockpy/storage_parts/html_report.py": [],
+  "tests/test_output_helpers.py": [],
+  "knockpy/engine/runtime.py": [
+   {"line_start": 1028, "line_end": 1028, "name": "ssl.create_default_context", "class": "A", "kind": "tls"},
+   {"line_start": 1031, "line_end": 1031, "name": "ctx.set_alpn_protocols", "class": "A", "kind": "tls"},
+   {"line_start": 1033, "line_end": 1033, "name": "ctx.wrap_socket", "class": "A", "kind": "tls"},
+   {"line_start": 1052, "line_end": 1052, "name": "ssl.SSLContext", "class": "A", "kind": "tls"},
+   {"line_start": 1055, "line_end": 1055, "name": "ctx.set_alpn_protocols", "class": "A", "kind": "tls"},
+   {"line_start": 1057, "line_end": 1057, "name": "ctx.wrap_socket", "class": "A", "kind": "tls"},
+   {"line_start": 1066, "line_end": 1066, "name": "OpenSSL.crypto.load_certificate", "class": "A", "kind": "public_key"},
+   {"line_start": 1088, "line_end": 1088, "name": "x509.get_pubkey", "class": "A", "kind": "key_handling"},
+   {"line_start": 1144, "line_end": 1144, "name": "hashlib.sha256", "class": "A", "kind": "hash"},
+   {"line_start": 2330, "line_end": 2330, "name": "ssl.create_default_context", "class": "A", "kind": "tls"},
+   {"line_start": 2334, "line_end": 2334, "name": "ctx.wrap_socket", "class": "A", "kind": "tls"},
+   {"line_start": 2358, "line_end": 2358, "name": "ssl.SSLContext", "class": "A", "kind": "tls"},
+   {"line_start": 2362, "line_end": 2362, "name": "ctx.wrap_socket", "class": "A", "kind": "tls"},
+   {"line_start": 2364, "line_end": 2364, "name": "OpenSSL.crypto.load_certificate", "class": "A", "kind": "public_key"},
+   {"line_start": 2415, "line_end": 2415, "name": "ssl.SSLContext", "class": "A", "kind": "tls"},
+   {"line_start": 2423, "line_end": 2423, "name": "context.set_ciphers", "class": "A", "kind": "tls"},
+   {"line_start": 2429, "line_end": 2429, "name": "context.wrap_socket", "class": "A", "kind": "tls"}
+  ],
+  "knockpy/cli_parts/report.py": []
+ }
+}

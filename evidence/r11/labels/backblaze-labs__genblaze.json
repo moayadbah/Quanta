@@ -1,0 +1,17 @@
+{
+ "repo": "backblaze-labs/genblaze",
+ "commit": "acb6e673905f7003ae89f7fcb490efca371ad927",
+ "annotator": "agent-5",
+ "files": {
+  "libs/connectors/nvidia/genblaze_nvidia/_probe.py": [],
+  "libs/core/tests/unit/test_embedder.py": [],
+  "libs/connectors/openai/genblaze_openai/dalle.py": [
+   {"line_start": 606, "line_end": 606, "name": "hashlib.sha256", "class": "A", "kind": "hash"}
+  ],
+  "examples/quickstart.py": [],
+  "libs/connectors/s3/genblaze_s3/_preflight_classify.py": [],
+  "libs/core/genblaze_core/_asset_url.py": [],
+  "libs/connectors/s3/tests/test_s3_backend.py": [],
+  "libs/connectors/s3/tests/test_presigned.py": []
+ }
+}

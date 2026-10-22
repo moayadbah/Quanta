@@ -1,0 +1,20 @@
+{
+ "repo": "realiti4/claude-swap",
+ "commit": "5a837605947d0ab87a87f471689867ff4288fa5c",
+ "annotator": "agent-6",
+ "files": {
+  "src/claude_swap/macos_keychain.py": [],
+  "tests/test_add_account_identity.py": [],
+  "src/claude_swap/cli.py": [
+   {"line_start": 933, "line_end": 933, "name": "truststore.inject_into_ssl", "class": "A", "kind": "tls", "note": "truststore is a TLS-trust library; the call configures TLS certificate verification for the ssl module"}
+  ],
+  "src/claude_swap/transfer.py": [],
+  "src/claude_swap/usage_store.py": [],
+  "src/claude_swap/appearance.py": [],
+  "src/claude_swap/credentials.py": [
+   {"line_start": 1747, "line_end": 1747, "name": "hashlib.sha256", "class": "A", "kind": "hash"},
+   {"line_start": 1751, "line_end": 1751, "name": "secrets.token_hex", "class": "A", "kind": "random"}
+  ],
+  "tests/conftest.py": []
+ }
+}

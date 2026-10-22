@@ -1,0 +1,24 @@
+{
+ "repo": "yeti-platform/yeti",
+ "commit": "da813e2110efc63db17d6774ea242bd22b7a1b2d",
+ "annotator": "agent-3",
+ "files": {
+  "core/schemas/observables/auth_secret.py": [],
+  "plugins/feeds/public/abusech_malwarebazaar.py": [],
+  "tests/apiv2/auth.py": [],
+  "core/database_arango.py": [],
+  "core/schemas/user.py": [
+   {"line_start": 34, "line_end": 34, "name": "jwt.encode", "class": "A", "kind": "token"},
+   {"line_start": 158, "line_end": 158, "name": "bcrypt.hashpw", "class": "A", "kind": "kdf"},
+   {"line_start": 158, "line_end": 158, "name": "bcrypt.gensalt", "class": "A", "kind": "kdf"},
+   {"line_start": 167, "line_end": 169, "name": "bcrypt.checkpw", "class": "A", "kind": "kdf"}
+  ],
+  "tests/schemas/observable.py": [
+   {"line_start": 639, "line_end": 639, "name": "hashlib.md5", "class": "A", "kind": "hash"},
+   {"line_start": 666, "line_end": 666, "name": "hashlib.sha1", "class": "A", "kind": "hash"},
+   {"line_start": 674, "line_end": 674, "name": "hashlib.sha256", "class": "A", "kind": "hash"}
+  ],
+  "contrib/analytics/ivre_api/ivre_api.py": [],
+  "core/web/apiv2/system.py": []
+ }
+}

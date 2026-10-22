@@ -1,0 +1,26 @@
+{
+ "repo": "flexxui/flexx",
+ "commit": "f18ec09eb35dc403881aca4a466e48e2dc4916d1",
+ "annotator": "agent-9",
+ "files": {
+  "flexx/event/_action.py": [],
+  "flexx/event/_reaction.py": [],
+  "docs/scripts/uiexample.py": [
+   {"line_start": 148, "line_end": 148, "name": "hashlib.md5", "class": "A", "kind": "hash"}
+  ],
+  "flexxamples/howtos/serve_ssl.py": [],
+  "flexx/app/tests/test_asset.py": [],
+  "flexx/app/bsdf_lite.py": [
+   {"line_start": 231, "line_end": 231, "name": "hashlib.md5", "class": "A", "kind": "hash"}
+  ],
+  "flexx/app/_session.py": [
+   {"line_start": 45, "line_end": 45, "name": "random.SystemRandom", "class": "A", "kind": "random"},
+   {"line_start": 50, "line_end": 50, "name": "hashlib.sha256", "class": "A", "kind": "hash"},
+   {"line_start": 253, "line_end": 255, "name": "decode_signed_value", "class": "B", "kind": "mac", "note": "tornado.web signed-cookie verification"},
+   {"line_start": 284, "line_end": 285, "name": "create_signed_value", "class": "B", "kind": "mac", "note": "tornado.web signed-cookie creation"}
+  ],
+  "flexx/app/_tornadoserver.py": [
+   {"line_start": 101, "line_end": 101, "name": "HTTPServer", "class": "B", "kind": "tls", "note": "kwargs carries ssl_options (certfile/keyfile) built just above when SSL is configured"}
+  ]
+ }
+}

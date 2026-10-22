@@ -1,0 +1,555 @@
+{
+ "repositories": 58,
+ "totals": {
+  "v5": {
+   "vulnerable": 99,
+   "weak": 112,
+   "review": 25,
+   "pq": 0,
+   "safe": 383
+  },
+  "v8": {
+   "vulnerable": 137,
+   "weak": 113,
+   "review": 32,
+   "pq": 0,
+   "safe": 409
+  },
+  "v9": {
+   "vulnerable": 171,
+   "weak": 116,
+   "review": 40,
+   "pq": 0,
+   "safe": 410
+  }
+ },
+ "verdict_changes": {
+  "theupdateframework__python-tuf": {
+   "v5": "ready",
+   "v8": "at_risk",
+   "v9": "at_risk"
+  }
+ },
+ "count_changes": {
+  "allen7d__mini-shop-server": {
+   "v5": {
+    "verdict": "at_risk",
+    "vulnerable": 0,
+    "weak": 3,
+    "review": 0,
+    "pq": 0,
+    "safe": 2
+   },
+   "v8": {
+    "verdict": "at_risk",
+    "vulnerable": 0,
+    "weak": 4,
+    "review": 0,
+    "pq": 0,
+    "safe": 2
+   },
+   "v9": {
+    "verdict": "at_risk",
+    "vulnerable": 0,
+    "weak": 7,
+    "review": 0,
+    "pq": 0,
+    "safe": 2
+   }
+  },
+  "bizken__phishmailer": {
+   "v5": {
+    "verdict": "at_risk",
+    "vulnerable": 2,
+    "weak": 0,
+    "review": 0,
+    "pq": 0,
+    "safe": 0
+   },
+   "v8": {
+    "verdict": "at_risk",
+    "vulnerable": 2,
+    "weak": 0,
+    "review": 0,
+    "pq": 0,
+    "safe": 0
+   },
+   "v9": {
+    "verdict": "at_risk",
+    "vulnerable": 11,
+    "weak": 0,
+    "review": 0,
+    "pq": 0,
+    "safe": 0
+   }
+  },
+  "chengyumeng__spider163": {
+   "v5": {
+    "verdict": "at_risk",
+    "vulnerable": 0,
+    "weak": 1,
+    "review": 0,
+    "pq": 0,
+    "safe": 2
+   },
+   "v8": {
+    "verdict": "at_risk",
+    "vulnerable": 0,
+    "weak": 1,
+    "review": 0,
+    "pq": 0,
+    "safe": 5
+   },
+   "v9": {
+    "verdict": "at_risk",
+    "vulnerable": 0,
+    "weak": 1,
+    "review": 0,
+    "pq": 0,
+    "safe": 5
+   }
+  },
+  "crossbario__crossbar": {
+   "v5": {
+    "verdict": "at_risk",
+    "vulnerable": 12,
+    "weak": 1,
+    "review": 3,
+    "pq": 0,
+    "safe": 10
+   },
+   "v8": {
+    "verdict": "at_risk",
+    "vulnerable": 17,
+    "weak": 1,
+    "review": 3,
+    "pq": 0,
+    "safe": 16
+   },
+   "v9": {
+    "verdict": "at_risk",
+    "vulnerable": 23,
+    "weak": 1,
+    "review": 10,
+    "pq": 0,
+    "safe": 16
+   }
+  },
+  "dograh-hq__dograh": {
+   "v5": {
+    "verdict": "at_risk",
+    "vulnerable": 4,
+    "weak": 2,
+    "review": 1,
+    "pq": 0,
+    "safe": 40
+   },
+   "v8": {
+    "verdict": "at_risk",
+    "vulnerable": 5,
+    "weak": 2,
+    "review": 1,
+    "pq": 0,
+    "safe": 40
+   },
+   "v9": {
+    "verdict": "at_risk",
+    "vulnerable": 5,
+    "weak": 2,
+    "review": 1,
+    "pq": 0,
+    "safe": 40
+   }
+  },
+  "edcd__edmarketconnector": {
+   "v5": {
+    "verdict": "ready",
+    "vulnerable": 0,
+    "weak": 0,
+    "review": 0,
+    "pq": 0,
+    "safe": 3
+   },
+   "v8": {
+    "verdict": "ready",
+    "vulnerable": 0,
+    "weak": 0,
+    "review": 0,
+    "pq": 0,
+    "safe": 5
+   },
+   "v9": {
+    "verdict": "ready",
+    "vulnerable": 0,
+    "weak": 0,
+    "review": 0,
+    "pq": 0,
+    "safe": 5
+   }
+  },
+  "fuyuxiang__echo-agent": {
+   "v5": {
+    "verdict": "at_risk",
+    "vulnerable": 2,
+    "weak": 11,
+    "review": 0,
+    "pq": 0,
+    "safe": 57
+   },
+   "v8": {
+    "verdict": "at_risk",
+    "vulnerable": 2,
+    "weak": 11,
+    "review": 1,
+    "pq": 0,
+    "safe": 58
+   },
+   "v9": {
+    "verdict": "at_risk",
+    "vulnerable": 3,
+    "weak": 11,
+    "review": 0,
+    "pq": 0,
+    "safe": 59
+   }
+  },
+  "getbindu__bindu": {
+   "v5": {
+    "verdict": "at_risk",
+    "vulnerable": 16,
+    "weak": 0,
+    "review": 8,
+    "pq": 0,
+    "safe": 10
+   },
+   "v8": {
+    "verdict": "at_risk",
+    "vulnerable": 26,
+    "weak": 0,
+    "review": 8,
+    "pq": 0,
+    "safe": 10
+   },
+   "v9": {
+    "verdict": "at_risk",
+    "vulnerable": 26,
+    "weak": 0,
+    "review": 10,
+    "pq": 0,
+    "safe": 10
+   }
+  },
+  "googleads__googleads-python-lib": {
+   "v5": {
+    "verdict": "at_risk",
+    "vulnerable": 3,
+    "weak": 0,
+    "review": 0,
+    "pq": 0,
+    "safe": 0
+   },
+   "v8": {
+    "verdict": "at_risk",
+    "vulnerable": 4,
+    "weak": 0,
+    "review": 0,
+    "pq": 0,
+    "safe": 0
+   },
+   "v9": {
+    "verdict": "at_risk",
+    "vulnerable": 5,
+    "weak": 0,
+    "review": 0,
+    "pq": 0,
+    "safe": 0
+   }
+  },
+  "graphify-labs__graphify": {
+   "v5": {
+    "verdict": "at_risk",
+    "vulnerable": 1,
+    "weak": 18,
+    "review": 0,
+    "pq": 0,
+    "safe": 16
+   },
+   "v8": {
+    "verdict": "at_risk",
+    "vulnerable": 2,
+    "weak": 18,
+    "review": 0,
+    "pq": 0,
+    "safe": 16
+   },
+   "v9": {
+    "verdict": "at_risk",
+    "vulnerable": 1,
+    "weak": 18,
+    "review": 0,
+    "pq": 0,
+    "safe": 16
+   }
+  },
+  "hacksoftware__django-styleguide-example": {
+   "v5": {
+    "verdict": "at_risk",
+    "vulnerable": 0,
+    "weak": 2,
+    "review": 3,
+    "pq": 0,
+    "safe": 0
+   },
+   "v8": {
+    "verdict": "at_risk",
+    "vulnerable": 0,
+    "weak": 2,
+    "review": 3,
+    "pq": 0,
+    "safe": 2
+   },
+   "v9": {
+    "verdict": "at_risk",
+    "vulnerable": 0,
+    "weak": 2,
+    "review": 3,
+    "pq": 0,
+    "safe": 2
+   }
+  },
+  "jack-cherish__python-spider": {
+   "v5": {
+    "verdict": "ready",
+    "vulnerable": 0,
+    "weak": 0,
+    "review": 0,
+    "pq": 0,
+    "safe": 2
+   },
+   "v8": {
+    "verdict": "ready",
+    "vulnerable": 0,
+    "weak": 0,
+    "review": 0,
+    "pq": 0,
+    "safe": 3
+   },
+   "v9": {
+    "verdict": "ready",
+    "vulnerable": 0,
+    "weak": 0,
+    "review": 0,
+    "pq": 0,
+    "safe": 3
+   }
+  },
+  "langchain-ai__open-swe": {
+   "v5": {
+    "verdict": "at_risk",
+    "vulnerable": 0,
+    "weak": 0,
+    "review": 9,
+    "pq": 0,
+    "safe": 59
+   },
+   "v8": {
+    "verdict": "at_risk",
+    "vulnerable": 0,
+    "weak": 0,
+    "review": 11,
+    "pq": 0,
+    "safe": 59
+   },
+   "v9": {
+    "verdict": "at_risk",
+    "vulnerable": 0,
+    "weak": 0,
+    "review": 11,
+    "pq": 0,
+    "safe": 59
+   }
+  },
+  "mindsdb__anton": {
+   "v5": {
+    "verdict": "at_risk",
+    "vulnerable": 4,
+    "weak": 1,
+    "review": 0,
+    "pq": 0,
+    "safe": 10
+   },
+   "v8": {
+    "verdict": "at_risk",
+    "vulnerable": 4,
+    "weak": 1,
+    "review": 0,
+    "pq": 0,
+    "safe": 10
+   },
+   "v9": {
+    "verdict": "at_risk",
+    "vulnerable": 6,
+    "weak": 1,
+    "review": 0,
+    "pq": 0,
+    "safe": 10
+   }
+  },
+  "pypa__setuptools": {
+   "v5": {
+    "verdict": "at_risk",
+    "vulnerable": 1,
+    "weak": 0,
+    "review": 0,
+    "pq": 0,
+    "safe": 0
+   },
+   "v8": {
+    "verdict": "at_risk",
+    "vulnerable": 1,
+    "weak": 0,
+    "review": 0,
+    "pq": 0,
+    "safe": 0
+   },
+   "v9": {
+    "verdict": "at_risk",
+    "vulnerable": 2,
+    "weak": 0,
+    "review": 0,
+    "pq": 0,
+    "safe": 0
+   }
+  },
+  "sabeechen__hassio-google-drive-backup": {
+   "v5": {
+    "verdict": "at_risk",
+    "vulnerable": 1,
+    "weak": 0,
+    "review": 0,
+    "pq": 0,
+    "safe": 0
+   },
+   "v8": {
+    "verdict": "at_risk",
+    "vulnerable": 2,
+    "weak": 0,
+    "review": 0,
+    "pq": 0,
+    "safe": 0
+   },
+   "v9": {
+    "verdict": "at_risk",
+    "vulnerable": 2,
+    "weak": 0,
+    "review": 0,
+    "pq": 0,
+    "safe": 0
+   }
+  },
+  "semuconsulting__pygpsclient": {
+   "v5": {
+    "verdict": "at_risk",
+    "vulnerable": 2,
+    "weak": 0,
+    "review": 0,
+    "pq": 0,
+    "safe": 0
+   },
+   "v8": {
+    "verdict": "at_risk",
+    "vulnerable": 4,
+    "weak": 0,
+    "review": 0,
+    "pq": 0,
+    "safe": 0
+   },
+   "v9": {
+    "verdict": "at_risk",
+    "vulnerable": 4,
+    "weak": 0,
+    "review": 0,
+    "pq": 0,
+    "safe": 0
+   }
+  },
+  "szczyglis-dev__py-gpt": {
+   "v5": {
+    "verdict": "at_risk",
+    "vulnerable": 14,
+    "weak": 7,
+    "review": 0,
+    "pq": 0,
+    "safe": 13
+   },
+   "v8": {
+    "verdict": "at_risk",
+    "vulnerable": 17,
+    "weak": 7,
+    "review": 0,
+    "pq": 0,
+    "safe": 15
+   },
+   "v9": {
+    "verdict": "at_risk",
+    "vulnerable": 30,
+    "weak": 7,
+    "review": 0,
+    "pq": 0,
+    "safe": 15
+   }
+  },
+  "theupdateframework__python-tuf": {
+   "v5": {
+    "verdict": "ready",
+    "vulnerable": 0,
+    "weak": 0,
+    "review": 0,
+    "pq": 0,
+    "safe": 5
+   },
+   "v8": {
+    "verdict": "at_risk",
+    "vulnerable": 0,
+    "weak": 0,
+    "review": 4,
+    "pq": 0,
+    "safe": 5
+   },
+   "v9": {
+    "verdict": "at_risk",
+    "vulnerable": 0,
+    "weak": 0,
+    "review": 4,
+    "pq": 0,
+    "safe": 5
+   }
+  },
+  "xuan32546__ios13-simulatetouch": {
+   "v5": {
+    "verdict": "at_risk",
+    "vulnerable": 25,
+    "weak": 14,
+    "review": 0,
+    "pq": 0,
+    "safe": 4
+   },
+   "v8": {
+    "verdict": "at_risk",
+    "vulnerable": 39,
+    "weak": 14,
+    "review": 0,
+    "pq": 0,
+    "safe": 13
+   },
+   "v9": {
+    "verdict": "at_risk",
+    "vulnerable": 41,
+    "weak": 14,
+    "review": 0,
+    "pq": 0,
+    "safe": 13
+   }
+  }
+ }
+}

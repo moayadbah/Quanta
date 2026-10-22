@@ -1,0 +1,16 @@
+{
+ "repo": "AgriciDaniel/codex-seo",
+ "commit": "9a644f68d39d242a7a41a0017f7286dd0512fc3b",
+ "annotator": "agent-3",
+ "files": {
+  "scripts/analyze_visual.py": [],
+  "scripts/verify_environment.py": [],
+  "scripts/google_auth.py": [
+   {"line_start": 156, "line_end": 158, "name": "service_account.Credentials.from_service_account_file", "class": "B", "kind": "key_handling", "note": "google-auth loads the service account private key into an RSA signer; counted as key loading in a non-crypto library (B). Credentials(token=...) at 267 holds a bearer token only and is not counted."}
+  ],
+  "scripts/backlinks_auth.py": [],
+  "scripts/seo_pipeline_utils.py": [],
+  "scripts/bing_webmaster.py": [],
+  "scripts/fetch_page.py": []
+ }
+}

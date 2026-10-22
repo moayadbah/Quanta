@@ -1,0 +1,33 @@
+{
+ "repo": "kivy/python-for-android",
+ "commit": "8ef9d1dbbf769d2c14681dbc3c116c85e2e93bae",
+ "annotator": "agent-6",
+ "files": {
+  "pythonforandroid/recipes/android/src/android/activity.py": [],
+  "pythonforandroid/toolchain.py": [],
+  "pythonforandroid/recipes/libcurl/__init__.py": [],
+  "tests/test_pythonpackage_basic.py": [],
+  "pythonforandroid/recipes/openssl/__init__.py": [],
+  "pythonforandroid/recipe.py": [
+   {"line_start": 1742, "line_end": 1742, "name": "getattr(hashlib, alg)", "class": "A", "kind": "hash", "note": "hashlib constructor selected by name via getattr"}
+  ],
+  "pythonforandroid/bootstraps/common/build/build.py": [
+   {"line_start": 677, "line_end": 677, "name": "hashlib.sha1", "class": "A", "kind": "hash"}
+  ],
+  "testapps/on_device_unit_tests/test_app/tests/test_requirements.py": [
+   {"line_start": 41, "line_end": 41, "name": "ssl.create_default_context", "class": "A", "kind": "tls"},
+   {"line_start": 188, "line_end": 188, "name": "Fernet.generate_key", "class": "A", "kind": "symmetric"},
+   {"line_start": 189, "line_end": 189, "name": "Fernet", "class": "A", "kind": "symmetric"},
+   {"line_start": 190, "line_end": 191, "name": "f.encrypt", "class": "A", "kind": "symmetric"},
+   {"line_start": 192, "line_end": 192, "name": "f.decrypt", "class": "A", "kind": "symmetric"},
+   {"line_start": 202, "line_end": 202, "name": "SHA256.new", "class": "A", "kind": "hash"},
+   {"line_start": 216, "line_end": 216, "name": "RSA.generate", "class": "A", "kind": "public_key"},
+   {"line_start": 217, "line_end": 218, "name": "key.export_key", "class": "A", "kind": "key_handling"},
+   {"line_start": 228, "line_end": 228, "name": "key.publickey", "class": "A", "kind": "key_handling"},
+   {"line_start": 228, "line_end": 228, "name": "key.publickey().export_key", "class": "A", "kind": "key_handling"},
+   {"line_start": 236, "line_end": 236, "name": "scrypt.hash", "class": "A", "kind": "kdf"},
+   {"line_start": 246, "line_end": 246, "name": "SSL.Context", "class": "A", "kind": "tls"},
+   {"line_start": 256, "line_end": 256, "name": "sha3.keccak_512", "class": "A", "kind": "hash"}
+  ]
+ }
+}

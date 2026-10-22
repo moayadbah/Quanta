@@ -1,0 +1,26 @@
+{
+ "repo": "fqscfqj/Y2A-Auto",
+ "commit": "d5617ac7d97278fbd63fb77dfbe877cc63353dda",
+ "annotator": "agent-10",
+ "files": {
+  "modules/youtube_handler.py": [
+   {"line_start": 200, "line_end": 200, "name": "hashlib.sha1", "class": "A", "kind": "hash"}
+  ],
+  "modules/bili_sdk/clients/CurlCFFIClient.py": [],
+  "modules/acfun_uploader.py": [
+   {"line_start": 147, "line_end": 147, "name": "sha1", "class": "A", "kind": "hash"}
+  ],
+  "modules/asr_api_client.py": [],
+  "modules/youtube_monitor.py": [],
+  "modules/bili_sdk/video_uploader.py": [],
+  "tests/test_youtube_monitor_quota_budget.py": [],
+  "modules/bili_sdk/utils/network.py": [
+   {"line_start": 1452, "line_end": 1460, "name": "RSA.importKey", "class": "A", "kind": "key_handling"},
+   {"line_start": 1462, "line_end": 1462, "name": "PKCS1_OAEP.new", "class": "A", "kind": "public_key"},
+   {"line_start": 1463, "line_end": 1463, "name": "cipher.encrypt", "class": "A", "kind": "public_key"},
+   {"line_start": 1966, "line_end": 1966, "name": "hashlib.md5", "class": "A", "kind": "hash"},
+   {"line_start": 1986, "line_end": 1988, "name": "hashlib.md5", "class": "A", "kind": "hash"},
+   {"line_start": 2001, "line_end": 2001, "name": "hmac.new", "class": "A", "kind": "mac"}
+  ]
+ }
+}

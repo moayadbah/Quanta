@@ -1,0 +1,20 @@
+{
+ "repo": "respectlytics/respectaso",
+ "commit": "93bbe7f3591815596034737e3e3c5627b2c0e783",
+ "annotator": "agent-4",
+ "files": {
+  "aso/tests/test_keywords_page.py": [],
+  "aso/tests/test_no_dashes.py": [],
+  "aso/tests/test_apple_ads_storage.py": [],
+  "aso/management/commands/apple_ads_diagnose.py": [],
+  "aso/tests/test_popularity_views.py": [],
+  "aso/tests/test_apple_ads_keys.py": [
+   {"line_start": 72, "line_end": 74, "name": "rsa.generate_private_key", "class": "A", "kind": "public_key"},
+   {"line_start": 74, "line_end": 78, "name": "private_bytes", "class": "A", "kind": "key_handling"},
+   {"line_start": 87, "line_end": 87, "name": "ec.generate_private_key", "class": "A", "kind": "public_key"},
+   {"line_start": 87, "line_end": 91, "name": "private_bytes", "class": "A", "kind": "key_handling"}
+  ],
+  "aso/copy_rules.py": [],
+  "aso/country_picker.py": []
+ }
+}

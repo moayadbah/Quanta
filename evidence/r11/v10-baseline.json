@@ -1,0 +1,542 @@
+{
+ "ruleset": "2026.11.06",
+ "src": "engines\\v10\\src",
+ "sets": {
+  "D": {
+   "precision": {
+    "found": 101,
+    "total": 114,
+    "rate": 0.886,
+    "ci": [
+     0.8146,
+     0.9321
+    ]
+   },
+   "recall_A": {
+    "found": 84,
+    "total": 84,
+    "rate": 1.0,
+    "ci": [
+     0.9563,
+     1.0
+    ]
+   },
+   "recall_AB": {
+    "found": 94,
+    "total": 94,
+    "rate": 1.0,
+    "ci": [
+     0.9607,
+     1.0
+    ]
+   },
+   "pktls_A": {
+    "found": 19,
+    "total": 19,
+    "rate": 1.0,
+    "ci": [
+     0.8318,
+     1.0
+    ]
+   },
+   "pktls_AB": {
+    "found": 19,
+    "total": 19,
+    "rate": 1.0,
+    "ci": [
+     0.8318,
+     1.0
+    ]
+   },
+   "missed": [],
+   "false_positives": [
+    "GetBindu/Bindu bindu/extensions/did/did_agent_extension.py:173",
+    "GetBindu/Bindu bindu/extensions/did/did_agent_extension.py:182",
+    "GetBindu/Bindu bindu/extensions/did/did_agent_extension.py:188",
+    "GetBindu/Bindu bindu/extensions/did/did_agent_extension.py:372",
+    "GetBindu/Bindu bindu/extensions/mtls/mtls_agent_extension.py:275",
+    "GetBindu/Bindu bindu/extensions/mtls/mtls_agent_extension.py:279",
+    "GetBindu/Bindu bindu/extensions/mtls/mtls_agent_extension.py:317",
+    "GetBindu/Bindu bindu/extensions/mtls/mtls_agent_extension.py:345",
+    "GetBindu/Bindu bindu/extensions/mtls/mtls_agent_extension.py:349",
+    "GetBindu/Bindu bindu/extensions/mtls/mtls_agent_extension.py:379",
+    "GetBindu/Bindu bindu/utils/http/client.py:88",
+    "GetBindu/Bindu bindu/utils/notifications.py:243",
+    "sabeechen/hassio-google-drive-backup hassio-google-drive-backup/backup/ui/uiserver.py:681"
+   ]
+  },
+  "H3": {
+   "precision": {
+    "found": 112,
+    "total": 138,
+    "rate": 0.8116,
+    "ci": [
+     0.7383,
+     0.8681
+    ]
+   },
+   "recall_A": {
+    "found": 102,
+    "total": 102,
+    "rate": 1.0,
+    "ci": [
+     0.9637,
+     1.0
+    ]
+   },
+   "recall_AB": {
+    "found": 107,
+    "total": 107,
+    "rate": 1.0,
+    "ci": [
+     0.9653,
+     1.0
+    ]
+   },
+   "pktls_A": {
+    "found": 16,
+    "total": 16,
+    "rate": 1.0,
+    "ci": [
+     0.8064,
+     1.0
+    ]
+   },
+   "pktls_AB": {
+    "found": 21,
+    "total": 21,
+    "rate": 1.0,
+    "ci": [
+     0.8454,
+     1.0
+    ]
+   },
+   "missed": [],
+   "false_positives": [
+    "BiZken/PhishMailer Core/Mailer/MailerMain.py:63",
+    "BiZken/PhishMailer Core/Mailer/MailerMain.py:78",
+    "BiZken/PhishMailer Core/Mailer/MailerMain.py:92",
+    "BiZken/PhishMailer Core/Mailer/MailerMain.py:93",
+    "BiZken/PhishMailer Core/Mailer/MailerMain.py:210",
+    "BiZken/PhishMailer Core/Mailer/MailerMain.py:227",
+    "BiZken/PhishMailer Core/Mailer/MailerMain.py:245",
+    "BiZken/PhishMailer Core/Mailer/MailerMain.py:265",
+    "BiZken/PhishMailer Core/Mailer/MailerMain.py:278",
+    "BiZken/PhishMailer Core/Mailer/MailerMain.py:279",
+    "BiZken/PhishMailer Core/Mailer/MailerMain.py:299",
+    "foyoux/aligo src/aligo/core/EMail.py:30",
+    "googleads/googleads-python-lib googleads/common.py:490",
+    "mindsdb/anton anton/core/backends/scratchpad_boot.py:809",
+    "mindsdb/anton anton/minds_client.py:97",
+    "semuconsulting/PyGPSClient src/pygpsclient/stream_handler.py:230",
+    "semuconsulting/PyGPSClient src/pygpsclient/stream_handler.py:234",
+    "szczyglis-dev/py-gpt src/pygpt_net/core/banners/banners.py:254",
+    "szczyglis-dev/py-gpt src/pygpt_net/core/updater/updater.py:230",
+    "szczyglis-dev/py-gpt src/pygpt_net/core/updater/updater.py:273",
+    "szczyglis-dev/py-gpt src/pygpt_net/plugin/cmd_files/worker.py:562",
+    "xuan32546/IOS13-SimulateTouch layout/usr/lib/python3.7/hmac.py:56",
+    "xuan32546/IOS13-SimulateTouch layout/usr/lib/python3.7/nntplib.py:1128",
+    "xuan32546/IOS13-SimulateTouch layout/usr/lib/python3.7/urllib/request.py:1112",
+    "xuan32546/IOS13-SimulateTouch layout/usr/lib/python3.7/urllib/request.py:1359",
+    "xuan32546/IOS13-SimulateTouch layout/usr/lib/python3.7/urllib/request.py:1959"
+   ]
+  },
+  "H4": {
+   "precision": {
+    "found": 77,
+    "total": 78,
+    "rate": 0.9872,
+    "ci": [
+     0.9309,
+     0.9977
+    ]
+   },
+   "recall_A": {
+    "found": 70,
+    "total": 70,
+    "rate": 1.0,
+    "ci": [
+     0.948,
+     1.0
+    ]
+   },
+   "recall_AB": {
+    "found": 74,
+    "total": 74,
+    "rate": 1.0,
+    "ci": [
+     0.9507,
+     1.0
+    ]
+   },
+   "pktls_A": {
+    "found": 7,
+    "total": 7,
+    "rate": 1.0,
+    "ci": [
+     0.6457,
+     1.0
+    ]
+   },
+   "pktls_AB": {
+    "found": 8,
+    "total": 8,
+    "rate": 1.0,
+    "ci": [
+     0.6756,
+     1.0
+    ]
+   },
+   "missed": [],
+   "false_positives": [
+    "pypa/setuptools setuptools/config/_validate_pyproject/formats.py:158"
+   ]
+  },
+  "H6": {
+   "precision": {
+    "found": 36,
+    "total": 36,
+    "rate": 1.0,
+    "ci": [
+     0.9036,
+     1.0
+    ]
+   },
+   "recall_A": {
+    "found": 35,
+    "total": 35,
+    "rate": 1.0,
+    "ci": [
+     0.9011,
+     1.0
+    ]
+   },
+   "recall_AB": {
+    "found": 36,
+    "total": 36,
+    "rate": 1.0,
+    "ci": [
+     0.9036,
+     1.0
+    ]
+   },
+   "pktls_A": {
+    "found": 0,
+    "total": 0,
+    "rate": null,
+    "ci": null
+   },
+   "pktls_AB": {
+    "found": 1,
+    "total": 1,
+    "rate": 1.0,
+    "ci": [
+     0.2065,
+     1.0
+    ]
+   },
+   "missed": [],
+   "false_positives": []
+  },
+  "H7": {
+   "precision": {
+    "found": 157,
+    "total": 161,
+    "rate": 0.9752,
+    "ci": [
+     0.9379,
+     0.9903
+    ]
+   },
+   "recall_A": {
+    "found": 157,
+    "total": 167,
+    "rate": 0.9401,
+    "ci": [
+     0.8933,
+     0.9672
+    ]
+   },
+   "recall_AB": {
+    "found": 160,
+    "total": 172,
+    "rate": 0.9302,
+    "ci": [
+     0.882,
+     0.9596
+    ]
+   },
+   "pktls_A": {
+    "found": 46,
+    "total": 47,
+    "rate": 0.9787,
+    "ci": [
+     0.8889,
+     0.9962
+    ]
+   },
+   "pktls_AB": {
+    "found": 49,
+    "total": 51,
+    "rate": 0.9608,
+    "ci": [
+     0.8678,
+     0.9892
+    ]
+   },
+   "missed": [
+    "mosaicml/streaming streaming/base/storage/download.py:349 [B key_handling] self._ssh_client.load_system_host_keys",
+    "mosaicml/streaming streaming/base/storage/download.py:350 [B other] self._ssh_client.connect",
+    "tylerebowers/schwabdev docs/examples/extra/capture_callback.py:43 [A other] x509.Name",
+    "tylerebowers/schwabdev docs/examples/extra/capture_callback.py:44 [A other] x509.NameAttribute",
+    "tylerebowers/schwabdev docs/examples/extra/capture_callback.py:45 [A other] x509.NameAttribute",
+    "tylerebowers/schwabdev docs/examples/extra/capture_callback.py:46 [A other] x509.NameAttribute",
+    "tylerebowers/schwabdev docs/examples/extra/capture_callback.py:48 [A other] x509.Name",
+    "tylerebowers/schwabdev docs/examples/extra/capture_callback.py:49 [A other] x509.NameAttribute",
+    "tylerebowers/schwabdev docs/examples/extra/capture_callback.py:53 [A random] x509.random_serial_number",
+    "tylerebowers/schwabdev docs/examples/extra/capture_callback.py:56 [A other] x509.SubjectAlternativeName",
+    "tylerebowers/schwabdev docs/examples/extra/capture_callback.py:56 [A other] x509.DNSName",
+    "tylerebowers/schwabdev docs/examples/extra/capture_callback.py:63 [A key_handling] serialization.NoEncryption"
+   ],
+   "false_positives": [
+    "radiac/nanodjango nanodjango/play.py:213 urllib.request.urlopen",
+    "kjtsune/embytolocalplayer utils/net_tools.py:94 urllib.request.urlopen",
+    "kjtsune/embytolocalplayer utils/net_tools.py:185 urllib.request.HTTPSHandler",
+    "tylerebowers/schwabdev docs/examples/extra/capture_callback.py:54 cryptography.hazmat.primitives.asymmetric.rsa.generate_private_key.public_key"
+   ]
+  },
+  "H8": {
+   "precision": {
+    "found": 158,
+    "total": 162,
+    "rate": 0.9753,
+    "ci": [
+     0.9382,
+     0.9904
+    ]
+   },
+   "recall_A": {
+    "found": 152,
+    "total": 179,
+    "rate": 0.8492,
+    "ci": [
+     0.7894,
+     0.8942
+    ]
+   },
+   "recall_AB": {
+    "found": 165,
+    "total": 194,
+    "rate": 0.8505,
+    "ci": [
+     0.7936,
+     0.8939
+    ]
+   },
+   "pktls_A": {
+    "found": 53,
+    "total": 67,
+    "rate": 0.791,
+    "ci": [
+     0.6793,
+     0.8712
+    ]
+   },
+   "pktls_AB": {
+    "found": 65,
+    "total": 81,
+    "rate": 0.8025,
+    "ci": [
+     0.703,
+     0.8746
+    ]
+   },
+   "missed": [
+    "SpriteLink/NIPAP nipap/nipap/kafka_producer.py:129 [B tls] KafkaProducer",
+    "whyliam/whyliam.workflows.youdao urllib3/util/ssl_.py:176 [A hash] hashfunc",
+    "WuliRuler/AutorizePro authorization/authorization.py:1378 [A tls] connection.setSSLSocketFactory",
+    "WuliRuler/AutorizePro authorization/authorization.py:1378 [A tls] SSLSocketFactory.getDefault",
+    "WuliRuler/AutorizePro authorization/authorization.py:1379 [A tls] connection.setHostnameVerifier",
+    "calibrain/shelfmark tests/e2e/platform/mocks/mock_services.py:566 [A key_handling] serialization.NoEncryption",
+    "calibrain/shelfmark tests/e2e/platform/mocks/mock_services.py:575 [B tls] app.run",
+    "robocorp/robocorp vault/src/robocorp/vault/_adapters.py:197 [A other] default_backend",
+    "robocorp/robocorp vault/src/robocorp/vault/_adapters.py:278 [A public_key] padding.OAEP",
+    "robocorp/robocorp vault/src/robocorp/vault/_adapters.py:279 [A public_key] padding.MGF1",
+    "robocorp/robocorp vault/src/robocorp/vault/_adapters.py:279 [A hash] hashes.SHA256",
+    "robocorp/robocorp vault/src/robocorp/vault/_adapters.py:280 [A hash] hashes.SHA256",
+    "robocorp/robocorp vault/src/robocorp/vault/_adapters.py:388 [A public_key] padding.OAEP",
+    "robocorp/robocorp vault/src/robocorp/vault/_adapters.py:389 [A public_key] padding.MGF1",
+    "robocorp/robocorp vault/src/robocorp/vault/_adapters.py:389 [A hash] hashes.SHA256",
+    "robocorp/robocorp vault/src/robocorp/vault/_adapters.py:390 [A hash] hashes.SHA256",
+    "robocorp/robocorp vault/tests/robocorp_vault_tests/test_vault.py:321 [A other] default_backend",
+    "robocorp/robocorp vault/tests/robocorp_vault_tests/test_vault.py:326 [A public_key] padding.OAEP",
+    "robocorp/robocorp vault/tests/robocorp_vault_tests/test_vault.py:327 [A public_key] padding.MGF1",
+    "robocorp/robocorp vault/tests/robocorp_vault_tests/test_vault.py:327 [A hash] hashes.SHA256",
+    "robocorp/robocorp vault/tests/robocorp_vault_tests/test_vault.py:328 [A hash] hashes.SHA256",
+    "robocorp/robocorp docs/3rd_party/cryptography/snippets/secure_message.py:12 [A public_key] padding.OAEP",
+    "robocorp/robocorp docs/3rd_party/cryptography/snippets/secure_message.py:13 [A public_key] padding.MGF1",
+    "robocorp/robocorp docs/3rd_party/cryptography/snippets/secure_message.py:13 [A hash] hashes.SHA256",
+    "robocorp/robocorp docs/3rd_party/cryptography/snippets/secure_message.py:14 [A hash] hashes.SHA256",
+    "robocorp/robocorp docs/3rd_party/cryptography/snippets/secure_message.py:25 [A public_key] padding.OAEP",
+    "robocorp/robocorp docs/3rd_party/cryptography/snippets/secure_message.py:26 [A public_key] padding.MGF1",
+    "robocorp/robocorp docs/3rd_party/cryptography/snippets/secure_message.py:26 [A hash] hashes.SHA256",
+    "robocorp/robocorp docs/3rd_party/cryptography/snippets/secure_message.py:27 [A hash] hashes.SHA256"
+   ],
+   "false_positives": [
+    "whyliam/whyliam.workflows.youdao urllib3/util/ssl_.py:258 ssl.SSLContext",
+    "turicas/rows rows/utils/__init__.py:556 urllib.request.urlopen",
+    "pydantic/httpx2 src/httpcore2/httpcore2/_backends/trio.py:75 trio.SSLStream.do_handshake",
+    "MayoBlueSky/My-Actions function/bika/bika.py:56 http.client.HTTPSConnection"
+   ]
+  },
+  "H9": {
+   "precision": {
+    "found": 250,
+    "total": 250,
+    "rate": 1.0,
+    "ci": [
+     0.9849,
+     1.0
+    ]
+   },
+   "recall_A": {
+    "found": 221,
+    "total": 241,
+    "rate": 0.917,
+    "ci": [
+     0.8753,
+     0.9456
+    ]
+   },
+   "recall_AB": {
+    "found": 249,
+    "total": 274,
+    "rate": 0.9088,
+    "ci": [
+     0.8688,
+     0.9374
+    ]
+   },
+   "pktls_A": {
+    "found": 112,
+    "total": 131,
+    "rate": 0.855,
+    "ci": [
+     0.7846,
+     0.9051
+    ]
+   },
+   "pktls_AB": {
+    "found": 140,
+    "total": 160,
+    "rate": 0.875,
+    "ci": [
+     0.8148,
+     0.9176
+    ]
+   },
+   "missed": [
+    "rackslab/Slurm-web dev/lib/crawler/slurmrestd.py:282 [B token] self.auth.jwt_manager.generate",
+    "rackslab/Slurm-web slurmweb/views/auth/anonymous.py:23 [B token] current_app.jwt.generate",
+    "rackslab/Slurm-web slurmweb/apps/agent.py:71 [B token] RFLTokenizedRBACWebApp.__init__",
+    "pmaupin/pdfrw tests/update_expected.py:43 [A hash] hashlib.md5",
+    "ma1co/Sony-PMCA-RE pmca/apk/__init__.py:28 [A public_key] ContentInfo.load",
+    "kr8s-org/kr8s kr8s/_api.py:133 [B tls] httpx.AsyncClient",
+    "alibaba/tidevice scripts/plistdump-tcp-proxy.py:146 [A tls] C.SSL_CTX_set_quiet_shutdown",
+    "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:381 [A tls] Security.SSLSetEnabledCiphers",
+    "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:394 [A tls] Security.SSLSetALPNProtocols",
+    "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:456 [A tls] Security.SecTrustSetAnchorCertificates",
+    "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:459 [A tls] Security.SecTrustSetAnchorCertificatesOnly",
+    "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:463 [A tls] Security.SecTrustEvaluate",
+    "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:492 [A tls] Security.SSLCreateContext",
+    "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:495 [A tls] Security.SSLSetIOFuncs",
+    "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:509 [A tls] Security.SSLSetConnection",
+    "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:517 [A tls] Security.SSLSetPeerDomainName",
+    "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:529 [A tls] Security.SSLSetProtocolVersionMin",
+    "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:532 [A tls] Security.SSLSetProtocolVersionMax",
+    "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:540 [A tls] Security.SSLSetSessionOption",
+    "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:551 [A tls] Security.SSLSetCertificate",
+    "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:556 [A tls] Security.SSLHandshake",
+    "clinton-hall/nzbToMedia libs/common/urllib3/contrib/securetransport.py:722 [A key_handling] Security.SecCertificateCopyData",
+    "clinton-hall/nzbToMedia libs/common/urllib3/contrib/pyopenssl.py:229 [A key_handling] peer_cert.to_cryptography",
+    "garrettfoster13/sccmhunter lib/scripts/sccmwtf.py:149 [A public_key] key.decrypt",
+    "garrettfoster13/sccmhunter lib/ldap.py:332 [B symmetric] cipher.encrypt"
+   ],
+   "false_positives": []
+  },
+  "H10": {
+   "precision": {
+    "found": 184,
+    "total": 192,
+    "rate": 0.9583,
+    "ci": [
+     0.9199,
+     0.9787
+    ]
+   },
+   "recall_A": {
+    "found": 174,
+    "total": 181,
+    "rate": 0.9613,
+    "ci": [
+     0.9223,
+     0.9811
+    ]
+   },
+   "recall_AB": {
+    "found": 184,
+    "total": 198,
+    "rate": 0.9293,
+    "ci": [
+     0.8848,
+     0.9574
+    ]
+   },
+   "pktls_A": {
+    "found": 61,
+    "total": 66,
+    "rate": 0.9242,
+    "ci": [
+     0.8346,
+     0.9672
+    ]
+   },
+   "pktls_AB": {
+    "found": 68,
+    "total": 77,
+    "rate": 0.8831,
+    "ci": [
+     0.7925,
+     0.9373
+    ]
+   },
+   "missed": [
+    "pennersr/django-allauth allauth/idp/oidc/internal/tokens.py:17 [A token] jwt.get_unverified_header",
+    "pennersr/django-allauth allauth/idp/oidc/internal/tokens.py:36 [A token] jwt.decode",
+    "pennersr/django-allauth allauth/idp/oidc/internal/tokens.py:38 [A key_handling] private_key.public_key",
+    "pennersr/django-allauth allauth/socialaccount/adapter.py:427 [B random] get_random_string",
+    "pickles4evaaaa/mybibliotheca app/forms.py:174 [B token] generate_csrf",
+    "pickles4evaaaa/mybibliotheca app/auth.py:105 [B token] generate_csrf",
+    "ysrc/GourdScanV2 proxy/mix_proxy.py:30 [A tls] ssl.SSLContext",
+    "ysrc/GourdScanV2 proxy/mix_proxy.py:31 [A tls] context.load_cert_chain",
+    "ysrc/GourdScanV2 proxy/mix_proxy.py:32 [A tls] context.wrap_socket",
+    "s3rgeym/hh-applicant-tool src/hh_applicant_tool/tool.py:671 [B tls] client_cls",
+    "gyoisamurai/GyoiThon util.py:285 [B tls] urllib3.PoolManager",
+    "gyoisamurai/GyoiThon util.py:291 [B tls] urllib3.PoolManager",
+    "gyoisamurai/GyoiThon modules/Gyoi_CveExplorerNVD.py:204 [B tls] urllib3.PoolManager",
+    "guelfoweb/knockpy knockpy/engine/runtime.py:1088 [A key_handling] x509.get_pubkey"
+   ],
+   "false_positives": [
+    "Lightning-AI/litData src/litdata/utilities/encryption.py:190 cryptography.hazmat.primitives.serialization.BestAvailableEncryption",
+    "s3rgeym/hh-applicant-tool src/hh_applicant_tool/tool.py:670 smtplib.SMTP_SSL",
+    "SeldomQA/seldom seldom/utils/encrypt.py:150 Crypto.Util.Padding.pad",
+    "SeldomQA/seldom seldom/utils/encrypt.py:196 Crypto.Util.Padding.unpad",
+    "SeldomQA/seldom seldom/utils/encrypt.py:238 Crypto.Util.Padding.pad",
+    "SeldomQA/seldom seldom/utils/encrypt.py:284 Crypto.Util.Padding.unpad",
+    "SeldomQA/seldom seldom/utils/encrypt.py:326 Crypto.Util.Padding.pad",
+    "SeldomQA/seldom seldom/utils/encrypt.py:372 Crypto.Util.Padding.unpad"
+   ]
+  }
+ },
+ "seconds": 669.1
+}

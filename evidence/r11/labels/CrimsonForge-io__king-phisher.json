@@ -1,0 +1,23 @@
+{
+ "repo": "CrimsonForge-io/king-phisher",
+ "commit": "94823fbb7b1b4557f78c563e217dd21c758edbce",
+ "annotator": "agent-14",
+ "files": {
+  "docs/source/conf.py": [],
+  "king_phisher/client/dialogs/ssh_host_key.py": [
+   {"line_start": 97, "line_end": 97, "name": "hashlib.new", "class": "A", "kind": "hash"},
+   {"line_start": 98, "line_end": 98, "name": "hashlib.new", "class": "A", "kind": "hash"},
+   {"line_start": 153, "line_end": 153, "name": "hashlib.new", "class": "A", "kind": "hash"},
+   {"line_start": 159, "line_end": 159, "name": "host_keys.load", "class": "B", "kind": "key_handling"},
+   {"line_start": 185, "line_end": 185, "name": "host_keys.save", "class": "B", "kind": "key_handling"}
+  ],
+  "king_phisher/ics.py": [],
+  "king_phisher/server/letsencrypt.py": [],
+  "king_phisher/server/graphql/types/ssl.py": [],
+  "king_phisher/server/server.py": [
+   {"line_start": 1025, "line_end": 1025, "name": "super(KingPhisherServer, self).add_sni_cert", "class": "B", "kind": "tls"}
+  ],
+  "tests/server/server_rpc.py": [],
+  "king_phisher/server/graphql/schema.py": []
+ }
+}

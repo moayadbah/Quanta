@@ -1,0 +1,15 @@
+{
+ "repo": "speechbrain/speechbrain",
+ "commit": "c0241278f93ef02cd5191f03caf4e5f8e1292bf6",
+ "annotator": "second-2",
+ "files": {
+  "recipes/LJSpeech/quantization/train.py": [],
+  "speechbrain/utils/checkpoints.py": [],
+  "tests/utils/recipe_tests.py": [],
+  "tests/utils/refactoring_checks.py": [],
+  "speechbrain/nnet/hypermixing.py": [],
+  "tests/utils/check_url.py": [],
+  "speechbrain/integrations/huggingface/weighted_ssl.py": [],
+  "speechbrain/processing/vocal_features.py": []
+ }
+}

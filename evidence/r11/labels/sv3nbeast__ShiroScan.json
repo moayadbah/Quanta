@@ -1,0 +1,55 @@
+{
+ "repo": "sv3nbeast/ShiroScan",
+ "commit": "5127f5b3dc06568e6a96bc2c6258965f06bc4d2d",
+ "annotator": "agent-13",
+ "files": {
+  "moule/plugins/CommonsCollections4.py": [
+   {"line_start": 28, "line_end": 28, "name": "AES.new", "class": "A", "kind": "symmetric"},
+   {"line_start": 30, "line_end": 30, "name": "encryptor.encrypt_and_digest", "class": "A", "kind": "symmetric"},
+   {"line_start": 41, "line_end": 41, "name": "AES.new", "class": "A", "kind": "symmetric"},
+   {"line_start": 42, "line_end": 42, "name": "encryptor.encrypt", "class": "A", "kind": "symmetric"}
+  ],
+  "moule/plugins/CommonsCollectionsK1.py": [
+   {"line_start": 28, "line_end": 28, "name": "AES.new", "class": "A", "kind": "symmetric"},
+   {"line_start": 30, "line_end": 30, "name": "encryptor.encrypt_and_digest", "class": "A", "kind": "symmetric"},
+   {"line_start": 41, "line_end": 41, "name": "AES.new", "class": "A", "kind": "symmetric"},
+   {"line_start": 42, "line_end": 42, "name": "encryptor.encrypt", "class": "A", "kind": "symmetric"}
+  ],
+  "moule/plugins/CommonsBeanutils1.py": [
+   {"line_start": 28, "line_end": 28, "name": "AES.new", "class": "A", "kind": "symmetric"},
+   {"line_start": 30, "line_end": 30, "name": "encryptor.encrypt_and_digest", "class": "A", "kind": "symmetric"},
+   {"line_start": 41, "line_end": 41, "name": "AES.new", "class": "A", "kind": "symmetric"},
+   {"line_start": 42, "line_end": 42, "name": "encryptor.encrypt", "class": "A", "kind": "symmetric"}
+  ],
+  "moule/plugins/Myfaces1.py": [
+   {"line_start": 28, "line_end": 28, "name": "AES.new", "class": "A", "kind": "symmetric"},
+   {"line_start": 30, "line_end": 30, "name": "encryptor.encrypt_and_digest", "class": "A", "kind": "symmetric"},
+   {"line_start": 41, "line_end": 41, "name": "AES.new", "class": "A", "kind": "symmetric"},
+   {"line_start": 42, "line_end": 42, "name": "encryptor.encrypt", "class": "A", "kind": "symmetric"}
+  ],
+  "moule/plugins/Jdk8u20.py": [
+   {"line_start": 28, "line_end": 28, "name": "AES.new", "class": "A", "kind": "symmetric"},
+   {"line_start": 30, "line_end": 30, "name": "encryptor.encrypt_and_digest", "class": "A", "kind": "symmetric"},
+   {"line_start": 41, "line_end": 41, "name": "AES.new", "class": "A", "kind": "symmetric"},
+   {"line_start": 42, "line_end": 42, "name": "encryptor.encrypt", "class": "A", "kind": "symmetric"}
+  ],
+  "moule/plugins/CommonsCollections7.py": [
+   {"line_start": 28, "line_end": 28, "name": "AES.new", "class": "A", "kind": "symmetric"},
+   {"line_start": 30, "line_end": 30, "name": "encryptor.encrypt_and_digest", "class": "A", "kind": "symmetric"},
+   {"line_start": 41, "line_end": 41, "name": "AES.new", "class": "A", "kind": "symmetric"},
+   {"line_start": 42, "line_end": 42, "name": "encryptor.encrypt", "class": "A", "kind": "symmetric"}
+  ],
+  "moule/plugins/CommonsCollections9.py": [
+   {"line_start": 28, "line_end": 28, "name": "AES.new", "class": "A", "kind": "symmetric"},
+   {"line_start": 30, "line_end": 30, "name": "encryptor.encrypt_and_digest", "class": "A", "kind": "symmetric"},
+   {"line_start": 41, "line_end": 41, "name": "AES.new", "class": "A", "kind": "symmetric"},
+   {"line_start": 42, "line_end": 42, "name": "encryptor.encrypt", "class": "A", "kind": "symmetric"}
+  ],
+  "moule/plugins/URLDNS.py": [
+   {"line_start": 58, "line_end": 58, "name": "AES.new", "class": "A", "kind": "symmetric"},
+   {"line_start": 60, "line_end": 60, "name": "encryptor.encrypt_and_digest", "class": "A", "kind": "symmetric"},
+   {"line_start": 73, "line_end": 73, "name": "AES.new", "class": "A", "kind": "symmetric"},
+   {"line_start": 75, "line_end": 75, "name": "encryptor.encrypt", "class": "A", "kind": "symmetric"}
+  ]
+ }
+}

@@ -1,0 +1,56 @@
+[
+ {
+  "repo": "flexxui/flexx",
+  "commit": "f18ec09eb35dc403881aca4a466e48e2dc4916d1",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/flexxui__flexx",
+  "files": [
+   "flexx/event/_action.py",
+   "flexx/event/_reaction.py",
+   "docs/scripts/uiexample.py",
+   "flexxamples/howtos/serve_ssl.py",
+   "flexx/app/tests/test_asset.py",
+   "flexx/app/bsdf_lite.py",
+   "flexx/app/_session.py",
+   "flexx/app/_tornadoserver.py"
+  ]
+ },
+ {
+  "repo": "openstack/cinder",
+  "commit": "270ba9ea896827272485526127c2cbcb3a16a3ee",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/openstack__cinder",
+  "files": [
+   "cinder/volume/drivers/toyou/acs5000/acs5000_common.py",
+   "cinder/volume/drivers/qnap.py",
+   "cinder/volume/drivers/ibm/ibm_storage/ds8k_connection.py",
+   "cinder/volume/drivers/ibm/gpfs.py",
+   "cinder/volume/drivers/ibm/ibm_storage/ds8k_helper.py",
+   "cinder/backup/manager.py",
+   "cinder/zonemanager/drivers/brocade/brcd_fabric_opts.py",
+   "cinder/image/format_inspector.py"
+  ]
+ },
+ {
+  "repo": "jupyterhub/the-littlest-jupyterhub",
+  "commit": "05637a2fe4bb5b1e91bcdb0efc0059ab4b30d543",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/jupyterhub__the-littlest-jupyterhub",
+  "files": [
+   "tljh/configurer.py",
+   "integration-tests/test_proxy.py",
+   "tljh/apt.py",
+   "tests/test_traefik.py",
+   "tljh/installer.py",
+   "tljh/config_schema.py",
+   "tljh/traefik.py"
+  ]
+ },
+ {
+  "repo": "rom1504/img2dataset",
+  "commit": "95523bc7579745a1749b8132d408b9fea89a338e",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/rom1504__img2dataset",
+  "files": [
+   "img2dataset/downloader.py",
+   "tests/test_downloader.py",
+   "img2dataset/logger.py"
+  ]
+ }
+]

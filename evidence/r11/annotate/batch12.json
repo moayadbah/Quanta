@@ -1,0 +1,57 @@
+[
+ {
+  "repo": "Upsonic/Upsonic",
+  "commit": "101f0313b0ddb96cd4078354879b2ff57005db29",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/Upsonic__Upsonic",
+  "files": [
+   "src/upsonic/interfaces/slack/slack.py",
+   "src/upsonic/tools/schema.py",
+   "src/upsonic/graphv2/state_graph.py",
+   "src/upsonic/_parts_manager.py",
+   "src/upsonic/interfaces/mail/mail.py",
+   "src/upsonic/simulation/result.py",
+   "src/upsonic/utils/retry.py",
+   "src/upsonic/tools/wrappers.py"
+  ]
+ },
+ {
+  "repo": "pantsbuild/pants",
+  "commit": "984eae61fdfeb5d390c62114874b10002b62b98d",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/pantsbuild__pants",
+  "files": [
+   "src/python/pants/help/help_info_extracter_test.py",
+   "src/python/pants_release/release.py",
+   "src/python/pants/backend/url_handlers/s3/register.py",
+   "src/python/pants/engine/internals/specs_rules.py",
+   "src/python/pants/ng/subsystem_test.py",
+   "src/python/pants/backend/python/goals/publish_test.py",
+   "src/python/pants/core/target_types.py",
+   "src/python/pants/engine/fs_test.py"
+  ]
+ },
+ {
+  "repo": "it-projects-llc/odoo-saas-tools",
+  "commit": "8e9ad4d06853b668a42a3e8177c8246fd946f0e9",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/it-projects-llc__odoo-saas-tools",
+  "files": [
+   "saas.py",
+   "saas_sysadmin_mailgun/models/mailgun.py",
+   "saas_portal_signup/__manifest__.py",
+   "saas_server_backup_ftp/models/saas_server.py",
+   "saas_server_backup_ftp/models/res_config.py",
+   "saas_portal/models/saas_portal.py"
+  ]
+ },
+ {
+  "repo": "ddean2009/MoneyPrinterPlus",
+  "commit": "d2c6f397731586de6cdcfed2e325fa68e74e3959",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/ddean2009__MoneyPrinterPlus",
+  "files": [
+   "services/alinls/websocket/_http.py",
+   "services/alinls/websocket/_ssl_compat.py",
+   "services/audio/flash_recognizer.py",
+   "services/alinls/websocket/_core.py",
+   "services/alinls/websocket/_app.py"
+  ]
+ }
+]

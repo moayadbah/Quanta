@@ -1,0 +1,13 @@
+{
+ "repo": "TgCatUB/catuserbot",
+ "commit": "2e521b3227e9075979d0112f07e876f846910d3e",
+ "annotator": "agent-11",
+ "files": {
+  "userbot/plugins/direct_links.py": [],
+  "sample_config.py": [],
+  "userbot/helpers/google_tools.py": [],
+  "userbot/plugins/tools.py": [],
+  "userbot/helpers/google_image_download.py": [],
+  "userbot/helpers/memeshelper.py": []
+ }
+}

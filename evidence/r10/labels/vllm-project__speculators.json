@@ -1,0 +1,19 @@
+{
+ "repo": "vllm-project/speculators",
+ "commit": "7ec7aba9450b533334e8f7992baf4e93be3c1a57",
+ "annotator": "agent-4",
+ "files": {
+  "scripts/launch_vllm.py": [
+   {"line_start": 297, "line_end": 297, "name": "hashlib.sha256", "class": "A", "kind": "hash"}
+  ],
+  "src/speculators/convert/eagle/utils.py": [],
+  "tests/unit/scripts/test_vllm_provenance.py": [],
+  "scripts/evaluate/mrcr.py": [
+   {"line_start": 160, "line_end": 160, "name": "hashlib.sha256", "class": "A", "kind": "hash"}
+  ],
+  "src/speculators/cli/regenerate_responses.py": [
+   {"line_start": 185, "line_end": 185, "name": "hashlib.sha256", "class": "A", "kind": "hash"}
+  ],
+  "src/speculators/data_generation/render_client.py": []
+ }
+}

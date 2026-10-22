@@ -1,0 +1,629 @@
+{
+ "repositories": 271,
+ "unmatched": [
+  {
+   "name": "cryptography.x509.BasicConstraints",
+   "repos": 2,
+   "calls": 2
+  },
+  {
+   "name": "cryptography.hazmat.primitives.asymmetric.ec.SECP224R1",
+   "repos": 1,
+   "calls": 5
+  },
+  {
+   "name": "cryptography.hazmat.primitives.serialization.ssh._ssh_read_next_string",
+   "repos": 1,
+   "calls": 2
+  },
+  {
+   "name": "itsdangerous.JSONWebSignatureSerializer",
+   "repos": 1,
+   "calls": 2
+  },
+  {
+   "name": "Crypto.Util.number.bytes_to_long",
+   "repos": 1,
+   "calls": 1
+  },
+  {
+   "name": "Crypto.Util.number.long_to_bytes",
+   "repos": 1,
+   "calls": 1
+  },
+  {
+   "name": "Cryptodome.Hash.MD4.new",
+   "repos": 1,
+   "calls": 1
+  },
+  {
+   "name": "cryptography.hazmat.primitives.padding.PKCS7",
+   "repos": 1,
+   "calls": 1
+  },
+  {
+   "name": "cryptography.hazmat.primitives.padding.PKCS7.unpadder",
+   "repos": 1,
+   "calls": 1
+  },
+  {
+   "name": "cryptography.x509.KeyUsage",
+   "repos": 1,
+   "calls": 1
+  },
+  {
+   "name": "jwt.algorithms.RSAAlgorithm",
+   "repos": 1,
+   "calls": 1
+  },
+  {
+   "name": "pyotp.utils.strings_equal",
+   "repos": 1,
+   "calls": 1
+  },
+  {
+   "name": "ssl.OPENSSL_VERSION.startswith",
+   "repos": 1,
+   "calls": 1
+  }
+ ],
+ "tls_keyword_calls": [
+  {
+   "name": "requests.post",
+   "repos": 6,
+   "keywords": {
+    "verify": 32
+   }
+  },
+  {
+   "name": "requests.get",
+   "repos": 5,
+   "keywords": {
+    "verify": 40
+   }
+  },
+  {
+   "name": "request",
+   "repos": 3,
+   "keywords": {
+    "verify": 4
+   }
+  },
+  {
+   "name": "send",
+   "repos": 3,
+   "keywords": {
+    "verify": 5
+   }
+  },
+  {
+   "name": "session.get",
+   "repos": 3,
+   "keywords": {
+    "verify": 8
+   }
+  },
+  {
+   "name": "__init__",
+   "repos": 2,
+   "keywords": {
+    "ssl_context": 5,
+    "verify": 1,
+    "cert_reqs": 1
+   }
+  },
+  {
+   "name": "abbreviation.",
+   "repos": 2,
+   "keywords": {
+    "cert_reqs": 2
+   }
+  },
+  {
+   "name": "create_urllib3_context",
+   "repos": 2,
+   "keywords": {
+    "cert_reqs": 3
+   }
+  },
+  {
+   "name": "httpx.AsyncClient",
+   "repos": 2,
+   "keywords": {
+    "verify": 2
+   }
+  },
+  {
+   "name": "requests.request",
+   "repos": 2,
+   "keywords": {
+    "verify": 18
+   }
+  },
+  {
+   "name": "resolve_redirects",
+   "repos": 2,
+   "keywords": {
+    "verify": 2
+   }
+  },
+  {
+   "name": "self.add_headers",
+   "repos": 2,
+   "keywords": {
+    "verify": 2
+   }
+  },
+  {
+   "name": "self.request",
+   "repos": 2,
+   "keywords": {
+    "verify": 2
+   }
+  },
+  {
+   "name": "self.send",
+   "repos": 2,
+   "keywords": {
+    "verify": 2
+   }
+  },
+  {
+   "name": "ssl_wrap_socket",
+   "repos": 2,
+   "keywords": {
+    "certfile": 3,
+    "ssl_context": 1,
+    "ca_certs": 1
+   }
+  },
+  {
+   "name": "AIOKafkaClient",
+   "repos": 1,
+   "keywords": {
+    "ssl_context": 3
+   }
+  },
+  {
+   "name": "AIOKafkaConnection",
+   "repos": 1,
+   "keywords": {
+    "ssl_context": 1
+   }
+  },
+  {
+   "name": "AIOKafkaConsumer",
+   "repos": 1,
+   "keywords": {
+    "ssl_context": 3
+   }
+  },
+  {
+   "name": "AIOKafkaProducer",
+   "repos": 1,
+   "keywords": {
+    "ssl_context": 3
+   }
+  },
+  {
+   "name": "CipherSuiteAdapter",
+   "repos": 1,
+   "keywords": {
+    "ssl_context": 1
+   }
+  },
+  {
+   "name": "Client.connect",
+   "repos": 1,
+   "keywords": {
+    "tls": 2
+   }
+  },
+  {
+   "name": "Namespace",
+   "repos": 1,
+   "keywords": {
+    "verify": 3
+   }
+  },
+  {
+   "name": "Server",
+   "repos": 1,
+   "keywords": {
+    "use_ssl": 2
+   }
+  },
+  {
+   "name": "X509Adapter",
+   "repos": 1,
+   "keywords": {
+    "ssl_context": 1
+   }
+  },
+  {
+   "name": "_generate",
+   "repos": 1,
+   "keywords": {
+    "verify": 4
+   }
+  },
+  {
+   "name": "_ssl_wrap_socket_and_match_hostname",
+   "repos": 1,
+   "keywords": {
+    "cert_reqs": 2
+   }
+  },
+  {
+   "name": "aiohttp.TCPConnector",
+   "repos": 1,
+   "keywords": {
+    "ssl": 1
+   }
+  },
+  {
+   "name": "aiohttp.client_reqrep.ConnectionKey",
+   "repos": 1,
+   "keywords": {
+    "ssl": 2
+   }
+  },
+  {
+   "name": "asyncio.open_connection",
+   "repos": 1,
+   "keywords": {
+    "ssl": 10
+   }
+  },
+  {
+   "name": "cloudscraper.CipherSuiteAdapter",
+   "repos": 1,
+   "keywords": {
+    "ssl_context": 1
+   }
+  },
+  {
+   "name": "conn.set_cert",
+   "repos": 1,
+   "keywords": {
+    "cert_reqs": 1
+   }
+  },
+  {
+   "name": "create_conn",
+   "repos": 1,
+   "keywords": {
+    "ssl_context": 3
+   }
+  },
+  {
+   "name": "create_proxy_ssl_context",
+   "repos": 1,
+   "keywords": {
+    "ca_certs": 1
+   }
+  },
+  {
+   "name": "create_ssl_context",
+   "repos": 1,
+   "keywords": {
+    "certfile": 3
+   }
+  },
+  {
+   "name": "email_service.send_mail",
+   "repos": 1,
+   "keywords": {
+    "use_ssl": 2
+   }
+  },
+  {
+   "name": "fetch_token",
+   "repos": 1,
+   "keywords": {
+    "verify": 1
+   }
+  },
+  {
+   "name": "get_connection_with_tls_context",
+   "repos": 1,
+   "keywords": {
+    "verify": 1
+   }
+  },
+  {
+   "name": "httpserver.HTTPServer",
+   "repos": 1,
+   "keywords": {
+    "ssl_options": 1
+   }
+  },
+  {
+   "name": "if",
+   "repos": 1,
+   "keywords": {
+    "cert_reqs": 1
+   }
+  },
+  {
+   "name": "imap_client.ImapEmailAccount",
+   "repos": 1,
+   "keywords": {
+    "use_ssl": 1
+   }
+  },
+  {
+   "name": "ldap3.Server",
+   "repos": 1,
+   "keywords": {
+    "use_ssl": 1
+   }
+  },
+  {
+   "name": "logger.debug",
+   "repos": 1,
+   "keywords": {
+    "ssl": 4
+   }
+  },
+  {
+   "name": "loop.create_connection",
+   "repos": 1,
+   "keywords": {
+    "ssl": 1
+   }
+  },
+  {
+   "name": "mock_connector.assert_called_once_with",
+   "repos": 1,
+   "keywords": {
+    "ssl": 1
+   }
+  },
+  {
+   "name": "model.generate_image",
+   "repos": 1,
+   "keywords": {
+    "verify": 1
+   }
+  },
+  {
+   "name": "monkey_patched_delete",
+   "repos": 1,
+   "keywords": {
+    "verify": 1
+   }
+  },
+  {
+   "name": "monkey_patched_delete_returning_payload",
+   "repos": 1,
+   "keywords": {
+    "verify": 1
+   }
+  },
+  {
+   "name": "monkey_patched_get",
+   "repos": 1,
+   "keywords": {
+    "verify": 4
+   }
+  },
+  {
+   "name": "monkey_patched_get_1",
+   "repos": 1,
+   "keywords": {
+    "verify": 2
+   }
+  },
+  {
+   "name": "monkey_patched_get_2",
+   "repos": 1,
+   "keywords": {
+    "verify": 2
+   }
+  },
+  {
+   "name": "monkey_patched_get_timeouting",
+   "repos": 1,
+   "keywords": {
+    "verify": 1
+   }
+  },
+  {
+   "name": "monkey_patched_post",
+   "repos": 1,
+   "keywords": {
+    "verify": 1
+   }
+  },
+  {
+   "name": "monkey_patched_put",
+   "repos": 1,
+   "keywords": {
+    "verify": 1
+   }
+  },
+  {
+   "name": "print",
+   "repos": 1,
+   "keywords": {
+    "verify": 2
+   }
+  },
+  {
+   "name": "pytorch2onnx",
+   "repos": 1,
+   "keywords": {
+    "verify": 2
+   }
+  },
+  {
+   "name": "r.add_argument",
+   "repos": 1,
+   "keywords": {
+    "verify": 1
+   }
+  },
+  {
+   "name": "refresh_token",
+   "repos": 1,
+   "keywords": {
+    "verify": 1
+   }
+  },
+  {
+   "name": "replicator.run",
+   "repos": 1,
+   "keywords": {
+    "use_ssl": 1
+   }
+  },
+  {
+   "name": "requests.head",
+   "repos": 1,
+   "keywords": {
+    "verify": 2
+   }
+  },
+  {
+   "name": "requests.put",
+   "repos": 1,
+   "keywords": {
+    "verify": 1
+   }
+  },
+  {
+   "name": "restore_backup_to_device",
+   "repos": 1,
+   "keywords": {
+    "verify": 1
+   }
+  },
+  {
+   "name": "restore_backup_to_path",
+   "repos": 1,
+   "keywords": {
+    "verify": 2
+   }
+  },
+  {
+   "name": "s.get",
+   "repos": 1,
+   "keywords": {
+    "verify": 7
+   }
+  },
+  {
+   "name": "s.post",
+   "repos": 1,
+   "keywords": {
+    "verify": 2
+   }
+  },
+  {
+   "name": "safe_restore_backup_file",
+   "repos": 1,
+   "keywords": {
+    "verify": 1
+   }
+  },
+  {
+   "name": "safe_restore_backup_to_path",
+   "repos": 1,
+   "keywords": {
+    "verify": 1
+   }
+  },
+  {
+   "name": "self.ConnectionCls",
+   "repos": 1,
+   "keywords": {
+    "cert_reqs": 1
+   }
+  },
+  {
+   "name": "self._backend.http_request",
+   "repos": 1,
+   "keywords": {
+    "verify": 1
+   }
+  },
+  {
+   "name": "self._client.request",
+   "repos": 1,
+   "keywords": {
+    "verify": 1
+   }
+  },
+  {
+   "name": "self.http.delete",
+   "repos": 1,
+   "keywords": {
+    "verify": 1
+   }
+  },
+  {
+   "name": "self.http.get",
+   "repos": 1,
+   "keywords": {
+    "verify": 3
+   }
+  },
+  {
+   "name": "self.http.post",
+   "repos": 1,
+   "keywords": {
+    "verify": 1
+   }
+  },
+  {
+   "name": "self.http.put",
+   "repos": 1,
+   "keywords": {
+    "verify": 1
+   }
+  },
+  {
+   "name": "self.logger.info",
+   "repos": 1,
+   "keywords": {
+    "use_ssl": 1
+   }
+  },
+  {
+   "name": "self.session.get",
+   "repos": 1,
+   "keywords": {
+    "verify": 4
+   }
+  },
+  {
+   "name": "self.session.post",
+   "repos": 1,
+   "keywords": {
+    "verify": 3
+   }
+  },
+  {
+   "name": "self.sslctx.load_cert_chain",
+   "repos": 1,
+   "keywords": {
+    "certfile": 1
+   }
+  },
+  {
+   "name": "set_cert",
+   "repos": 1,
+   "keywords": {
+    "cert_reqs": 1
+   }
+  },
+  {
+   "name": "sslcontext.load_cert_chain",
+   "repos": 1,
+   "keywords": {
+    "certfile": 1
+   }
+  }
+ ]
+}

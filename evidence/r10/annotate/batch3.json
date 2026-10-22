@@ -1,0 +1,46 @@
+[
+ {
+  "repo": "hvac/hvac",
+  "commit": "09902dea41c2c6313cd7844be4d984c1514bd822",
+  "clone": "Downloads/Quanta-R10-draft/clones-h10/hvac__hvac",
+  "files": [
+   "hvac/api/secrets_engines/identity.py",
+   "hvac/api/auth_methods/jwt.py",
+   "hvac/api/system_backend/raft.py",
+   "hvac/api/secrets_engines/ssh.py",
+   "tests/unit_tests/v1/test_gcp_methods.py",
+   "tests/integration_tests/api/auth_methods/test_cert.py",
+   "hvac/api/secrets_engines/ldap.py",
+   "tests/integration_tests/api/auth_methods/test_jwt.py"
+  ]
+ },
+ {
+  "repo": "yeti-platform/yeti",
+  "commit": "da813e2110efc63db17d6774ea242bd22b7a1b2d",
+  "clone": "Downloads/Quanta-R10-draft/clones-h10/yeti-platform__yeti",
+  "files": [
+   "core/schemas/observables/auth_secret.py",
+   "plugins/feeds/public/abusech_malwarebazaar.py",
+   "tests/apiv2/auth.py",
+   "core/database_arango.py",
+   "core/schemas/user.py",
+   "tests/schemas/observable.py",
+   "contrib/analytics/ivre_api/ivre_api.py",
+   "core/web/apiv2/system.py"
+  ]
+ },
+ {
+  "repo": "AgriciDaniel/codex-seo",
+  "commit": "9a644f68d39d242a7a41a0017f7286dd0512fc3b",
+  "clone": "Downloads/Quanta-R10-draft/clones-h10/AgriciDaniel__codex-seo",
+  "files": [
+   "scripts/analyze_visual.py",
+   "scripts/verify_environment.py",
+   "scripts/google_auth.py",
+   "scripts/backlinks_auth.py",
+   "scripts/seo_pipeline_utils.py",
+   "scripts/bing_webmaster.py",
+   "scripts/fetch_page.py"
+  ]
+ }
+]

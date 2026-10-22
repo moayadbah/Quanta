@@ -1,0 +1,15 @@
+{
+ "repo": "JaniceWuo/MovieRecommend",
+ "commit": "450d50677bec2e10fe81cb65ab5d20f23be014a2",
+ "annotator": "agent-4",
+ "files": {
+  "movierecommend/venv1/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/vcs/git.py": [],
+  "movierecommend/venv1/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/adapters.py": [],
+  "movierecommend/venv1/Lib/site-packages/django/db/models/fields/related_descriptors.py": [],
+  "movierecommend/venv1/Lib/site-packages/django/core/servers/basehttp.py": [],
+  "movierecommend/venv1/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/distlib/_backport/shutil.py": [],
+  "movierecommend/venv1/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/packages/ordered_dict.py": [],
+  "movierecommend/venv1/Lib/site-packages/django/db/backends/mysql/client.py": [],
+  "movierecommend/venv1/Lib/site-packages/pip-9.0.1-py3.6.egg/pip/cmdoptions.py": []
+ }
+}

@@ -1,0 +1,21 @@
+{
+ "repo": "Youngestdev/fastapi-mongo",
+ "commit": "7ce51e3e1e5ad4dd6fb25e375ee7241125d1925c",
+ "annotator": "agent-3",
+ "files": {
+  "routes/admin.py": [
+   {"line_start": 11, "line_end": 11, "name": "CryptContext", "class": "A", "kind": "kdf", "note": "passlib password-hashing context selecting bcrypt"},
+   {"line_start": 18, "line_end": 18, "name": "hash_helper.verify", "class": "A", "kind": "kdf"},
+   {"line_start": 35, "line_end": 35, "name": "hash_helper.encrypt", "class": "A", "kind": "kdf", "note": "passlib's (deprecated) alias for hashing a password"}
+  ],
+  "config/config.py": [],
+  "auth/jwt_handler.py": [
+   {"line_start": 19, "line_end": 19, "name": "jwt.encode", "class": "A", "kind": "token"},
+   {"line_start": 23, "line_end": 23, "name": "jwt.decode", "class": "A", "kind": "token"}
+  ],
+  "auth/admin.py": [
+   {"line_start": 8, "line_end": 8, "name": "CryptContext", "class": "A", "kind": "kdf"},
+   {"line_start": 14, "line_end": 14, "name": "hash_helper.verify", "class": "A", "kind": "kdf"}
+  ]
+ }
+}

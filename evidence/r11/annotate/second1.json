@@ -1,0 +1,31 @@
+[
+ {
+  "repo": "jertel/elastalert2",
+  "commit": "162ba49d34485d375b4860694d21361a156cea18",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/jertel__elastalert2",
+  "files": [
+   "elastalert/alerters/dingtalk.py",
+   "elastalert/create_index.py",
+   "tests/util_test.py",
+   "tests/alerters/email_test.py",
+   "tests/alerters/gelf_test.py",
+   "elastalert/alerters/gelf.py",
+   "elastalert/loaders.py",
+   "elastalert/alerters/tencentsms.py"
+  ]
+ },
+ {
+  "repo": "NoizAI/HelixWorld",
+  "commit": "fc8656ed76e25ff6c0dd44357bf3cdb006a1521d",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/NoizAI__HelixWorld",
+  "files": [
+   "code/LTX-2.3/packages/ltx-core/src/ltx_core/model/transformer/attention.py",
+   "code/LTX-2.3/packages/ltx-core/src/ltx_core/loader/registry.py",
+   "scripts/_common.py",
+   "code/LTX-2.3/projects/helixworld_runtime/scripts/context_cache.py",
+   "scripts/caption_pipeline.py",
+   "download_models.py",
+   "code/LTX-2.3/packages/ltx-core/src/ltx_core/model/model_protocol.py"
+  ]
+ }
+]

@@ -1,0 +1,918 @@
+{
+ "v5 (2026.11.01)": {
+  "time": "2026-10-20T00:36:05+00:00",
+  "pooled": {
+   "precision": {
+    "found": 159,
+    "total": 161,
+    "rate": 0.9876,
+    "ci": [
+     0.9558,
+     0.9966
+    ]
+   },
+   "recall_A": {
+    "found": 158,
+    "total": 216,
+    "rate": 0.7315,
+    "ci": [
+     0.6687,
+     0.7862
+    ]
+   },
+   "recall_AB": {
+    "found": 160,
+    "total": 269,
+    "rate": 0.5948,
+    "ci": [
+     0.5352,
+     0.6517
+    ]
+   },
+   "pktls_A": {
+    "found": 29,
+    "total": 59,
+    "rate": 0.4915,
+    "ci": [
+     0.3684,
+     0.6156
+    ]
+   },
+   "pktls_AB": {
+    "found": 31,
+    "total": 101,
+    "rate": 0.3069,
+    "ci": [
+     0.2254,
+     0.4026
+    ]
+   }
+  },
+  "stratum_G": {
+   "precision": {
+    "found": 80,
+    "total": 80,
+    "rate": 1.0,
+    "ci": [
+     0.9542,
+     1.0
+    ]
+   },
+   "recall_A": {
+    "found": 80,
+    "total": 96,
+    "rate": 0.8333,
+    "ci": [
+     0.7463,
+     0.8947
+    ]
+   },
+   "recall_AB": {
+    "found": 80,
+    "total": 103,
+    "rate": 0.7767,
+    "ci": [
+     0.6872,
+     0.8463
+    ]
+   },
+   "pktls_A": {
+    "found": 0,
+    "total": 0,
+    "rate": null,
+    "ci": null
+   },
+   "pktls_AB": {
+    "found": 0,
+    "total": 5,
+    "rate": 0.0,
+    "ci": [
+     0.0,
+     0.4345
+    ]
+   }
+  },
+  "stratum_P": {
+   "precision": {
+    "found": 79,
+    "total": 81,
+    "rate": 0.9753,
+    "ci": [
+     0.9144,
+     0.9932
+    ]
+   },
+   "recall_A": {
+    "found": 78,
+    "total": 120,
+    "rate": 0.65,
+    "ci": [
+     0.5612,
+     0.7295
+    ]
+   },
+   "recall_AB": {
+    "found": 80,
+    "total": 166,
+    "rate": 0.4819,
+    "ci": [
+     0.4072,
+     0.5575
+    ]
+   },
+   "pktls_A": {
+    "found": 29,
+    "total": 59,
+    "rate": 0.4915,
+    "ci": [
+     0.3684,
+     0.6156
+    ]
+   },
+   "pktls_AB": {
+    "found": 31,
+    "total": 96,
+    "rate": 0.3229,
+    "ci": [
+     0.2378,
+     0.4217
+    ]
+   }
+  },
+  "missed": [
+   "kunifujiwara/VoxCity src/voxcity/utils/weather/files.py:32 [A random] os.urandom",
+   "ruc-datalab/DeepAnalyze deepanalyze/ms-swift/swift/llm/infer/deploy.py:227 [B tls] uvicorn.run",
+   "ruc-datalab/DeepAnalyze example/4c_competition/file_api.py:36 [A random] os.urandom",
+   "jasontang-ai/Context-Engineering 10_guides_zero_to_hero/04_rag_recipes.py:112 [A hash] hashlib.md5",
+   "Hackxiaoya/CuteOne config.py:8 [A random] os.urandom",
+   "Grim-es/material-combiner-addon addon_updater.py:683 [B tls] urllib.request.urlopen",
+   "Grim-es/material-combiner-addon addon_updater.py:778 [B tls] urllib.request.urlopen",
+   "SillyTavern/SillyTavern-Extras server.py:1081 [B tls] webuiapi.WebUIApi",
+   "MemoriLabs/Memori memori/_network.py:92 [B tls] aiohttp.TCPConnector",
+   "MemoriLabs/Memori examples/tidb/main.py:27 [B tls] create_engine",
+   "flexxui/flexx flexx/app/_session.py:45 [A random] random.SystemRandom",
+   "flexxui/flexx flexx/app/_session.py:253 [B mac] decode_signed_value",
+   "flexxui/flexx flexx/app/_session.py:284 [B mac] create_signed_value",
+   "flexxui/flexx flexx/app/_tornadoserver.py:101 [B tls] HTTPServer",
+   "fqscfqj/Y2A-Auto modules/bili_sdk/utils/network.py:1452 [A key_handling] RSA.importKey",
+   "fqscfqj/Y2A-Auto modules/bili_sdk/utils/network.py:1462 [A public_key] PKCS1_OAEP.new",
+   "fqscfqj/Y2A-Auto modules/bili_sdk/utils/network.py:1463 [A public_key] cipher.encrypt",
+   "sv3nbeast/ShiroScan moule/plugins/CommonsCollections4.py:30 [A symmetric] encryptor.encrypt_and_digest",
+   "sv3nbeast/ShiroScan moule/plugins/CommonsCollectionsK1.py:30 [A symmetric] encryptor.encrypt_and_digest",
+   "sv3nbeast/ShiroScan moule/plugins/CommonsBeanutils1.py:30 [A symmetric] encryptor.encrypt_and_digest",
+   "sv3nbeast/ShiroScan moule/plugins/Myfaces1.py:30 [A symmetric] encryptor.encrypt_and_digest",
+   "sv3nbeast/ShiroScan moule/plugins/Jdk8u20.py:30 [A symmetric] encryptor.encrypt_and_digest",
+   "sv3nbeast/ShiroScan moule/plugins/CommonsCollections7.py:30 [A symmetric] encryptor.encrypt_and_digest",
+   "sv3nbeast/ShiroScan moule/plugins/CommonsCollections9.py:30 [A symmetric] encryptor.encrypt_and_digest",
+   "sv3nbeast/ShiroScan moule/plugins/URLDNS.py:60 [A symmetric] encryptor.encrypt_and_digest",
+   "mandarons/icloud-docker src/icloud_sign.py:113 [B public_key] client.get_assertion",
+   "mandarons/icloud-docker src/notify.py:681 [B tls] smtp.starttls",
+   "django-otp/django-otp src/django_otp/util.py:66 [A random] urandom",
+   "django-otp/django-otp src/django_otp/util.py:79 [A random] random.SystemRandom",
+   "django-otp/django-otp src/django_otp/plugins/otp_static/models.py:74 [A random] urandom",
+   "airbnb/streamalert streamalert/apps/_apps/box.py:69 [B token] JWTAuth.from_settings_dictionary",
+   "jertel/elastalert2 elastalert/create_index.py:227 [B tls] Elasticsearch",
+   "jupyterhub/the-littlest-jupyterhub integration-tests/test_proxy.py:74 [A tls] ssl.get_server_certificate",
+   "ddean2009/MoneyPrinterPlus services/alinls/websocket/_http.py:214 [A tls] ssl.SSLContext",
+   "ddean2009/MoneyPrinterPlus services/alinls/websocket/_http.py:220 [A tls] context.load_verify_locations",
+   "ddean2009/MoneyPrinterPlus services/alinls/websocket/_http.py:222 [A tls] context.load_default_certs",
+   "ddean2009/MoneyPrinterPlus services/alinls/websocket/_http.py:224 [A tls] context.load_cert_chain",
+   "ddean2009/MoneyPrinterPlus services/alinls/websocket/_http.py:235 [A tls] context.set_ciphers",
+   "ddean2009/MoneyPrinterPlus services/alinls/websocket/_http.py:238 [A tls] context.load_cert_chain",
+   "ddean2009/MoneyPrinterPlus services/alinls/websocket/_http.py:240 [A tls] context.set_ecdh_curve",
+   "ddean2009/MoneyPrinterPlus services/alinls/websocket/_http.py:242 [A tls] context.wrap_socket",
+   "ddean2009/MoneyPrinterPlus services/alinls/websocket/_http.py:270 [A tls] match_hostname",
+   "CrimsonForge-io/king-phisher king_phisher/client/dialogs/ssh_host_key.py:159 [B key_handling] host_keys.load",
+   "CrimsonForge-io/king-phisher king_phisher/client/dialogs/ssh_host_key.py:185 [B key_handling] host_keys.save",
+   "CrimsonForge-io/king-phisher king_phisher/server/server.py:1025 [B tls] super(KingPhisherServer, self).add_sni_cert",
+   "emmabostian/developer-portfolios src/check_parking_redirects.py:134 [B tls] urllib.request.urlopen",
+   "gunnery/gunnery gunnery/account/backend.py:19 [B kdf] user.check_password",
+   "gunnery/gunnery gunnery/core/models.py:139 [A symmetric] pgcrypto.EncryptedTextField",
+   "microsoft/msticpy msticpy/data/drivers/splunk_driver.py:223 [A token] jwt.get_unverified_header",
+   "lnbits/lnbits tests/unit/onchain/test_psbt.py:86 [B key_handling] wally.bip32_key_from_seed",
+   "lnbits/lnbits tests/unit/onchain/test_psbt.py:105 [B public_key] wally.psbt_sign_bip32",
+   "lnbits/lnbits tests/unit/onchain/test_psbt.py:194 [B public_key] wally.psbt_sign_bip32",
+   "lnbits/lnbits tests/unit/onchain/test_psbt.py:232 [B public_key] wally.psbt_sign_bip32",
+   "lnbits/lnbits tests/unit/onchain/test_psbt.py:271 [B public_key] wally.psbt_sign_bip32",
+   "lnbits/lnbits tests/unit/onchain/test_psbt.py:320 [B key_handling] wally.bip32_key_from_seed",
+   "lnbits/lnbits tests/unit/onchain/test_psbt.py:323 [B key_handling] wally.bip32_key_to_base58",
+   "lnbits/lnbits tests/unit/onchain/test_psbt.py:343 [B public_key] wally.psbt_sign_bip32",
+   "lnbits/lnbits tests/unit/onchain/test_psbt.py:346 [B public_key] wally.psbt_sign_bip32",
+   "lnbits/lnbits tests/unit/onchain/test_psbt.py:363 [B key_handling] wally.bip32_key_from_parent_path",
+   "lnbits/lnbits tests/unit/onchain/test_psbt.py:369 [B public_key] wally.psbt_sign_bip32",
+   "lnbits/lnbits lnbits/wallets/breez.py:151 [B kdf] mnemonic_to_seed",
+   "fail2ban/fail2ban config/action.d/smtp.py:170 [B tls] smtp.starttls",
+   "fail2ban/fail2ban fail2ban/tests/action_d/test_smtp.py:277 [A tls] ssl_context.load_cert_chain",
+   "fail2ban/fail2ban fail2ban/tests/action_d/test_smtp.py:282 [B tls] Controller",
+   "openstack/cinder cinder/volume/drivers/ibm/ibm_storage/ds8k_connection.py:62 [A key_handling] ssl.PEM_cert_to_DER_cert",
+   "openstack/cinder cinder/volume/drivers/ibm/gpfs.py:1454 [A key_handling] ssh.load_host_keys",
+   "openstack/cinder cinder/backup/manager.py:475 [B key_handling] key_manager.API",
+   "openstack/cinder cinder/backup/manager.py:845 [B key_handling] key_manager.API",
+   "openstack/cinder cinder/backup/manager.py:943 [B key_handling] key_manager.API",
+   "mitogen-hq/mitogen tests/bench/throughput.py:27 [A random] os.urandom",
+   "pantsbuild/pants src/python/pants/backend/url_handlers/s3/register.py:166 [B mac] auth.S3SigV4Auth",
+   "pantsbuild/pants src/python/pants/backend/url_handlers/s3/register.py:184 [B mac] auth.HmacV1Auth",
+   "pantsbuild/pants src/python/pants/backend/url_handlers/s3/register.py:189 [B mac] signer.add_auth",
+   "pantsbuild/pants src/python/pants/engine/fs_test.py:1178 [A tls] ssl_context.load_cert_chain",
+   "citizenlab/test-lists scripts/legacy/lib/lists/https.py:38 [B tls] urllib2.HTTPSHandler.__init__",
+   "open-gigaai/giga-train giga_train/distributed/ssh.py:16 [B other] paramiko.Transport",
+   "open-gigaai/giga-train giga_train/distributed/ssh.py:17 [B other] transport.connect",
+   "open-gigaai/giga-train giga_train/distributed/ssh.py:18 [B other] paramiko.SSHClient",
+   "walkingddd/TgtoDrive v6.6.4（最新版请在docker安装）/tgto189.py:69 [A key_handling] RSA.importKey",
+   "walkingddd/TgtoDrive v6.6.4（最新版请在docker安装）/tgto189.py:70 [A public_key] Cipher_pksc1_v1_5.new",
+   "walkingddd/TgtoDrive v6.6.4（最新版请在docker安装）/tgto189.py:71 [A public_key] cipher.encrypt",
+   "krahabb/meross_lan custom_components/meross_lan/merossclient/mqttclient.py:389 [B tls] self.tls_set_context",
+   "krahabb/meross_lan custom_components/meross_lan/merossclient/mqttclient.py:391 [B tls] self.tls_set",
+   "krahabb/meross_lan custom_components/meross_lan/merossclient/mqttclient.py:432 [B tls] self.tls_set_context",
+   "krahabb/meross_lan custom_components/meross_lan/merossclient/mqttclient.py:434 [B tls] self.tls_set",
+   "krahabb/meross_lan custom_components/meross_lan/merossclient/protocol/message.py:111 [A random] os.urandom",
+   "rom1504/img2dataset img2dataset/downloader.py:51 [B tls] urllib.request.urlopen",
+   "rom1504/img2dataset img2dataset/downloader.py:276 [A hash] getattr(hashlib, self.verify_hash_type)",
+   "rom1504/img2dataset img2dataset/downloader.py:340 [A hash] getattr(hashlib, self.compute_hash)",
+   "superhedgy/AttackSurfaceMapper modules/hosthunter.py:22 [A tls] context.load_default_certs",
+   "superhedgy/AttackSurfaceMapper modules/hosthunter.py:28 [A tls] ssl.get_server_certificate",
+   "superhedgy/AttackSurfaceMapper modules/hosthunter.py:82 [A tls] ssl.get_server_certificate",
+   "yuxian158/check dailycheckin_scripts/ck_cloud189.py:57 [A key_handling] rsa.PublicKey.load_pkcs1_openssl_pem",
+   "respectlytics/respectaso aso/tests/test_apple_ads_keys.py:74 [A key_handling] private_bytes",
+   "timothy-odofin/agenthub-be backend/src/app/infrastructure/connections/database/redis_connection_manager.py:116 [B tls] redis.ConnectionPool",
+   "SpiderClub/weibospider login/login.py:74 [A key_handling] rsa.PublicKey",
+   "facebook/facebook-python-business-sdk facebook_business/adobjects/serverside/event_request_async.py:82 [B tls] session.post",
+   "kivy/python-for-android pythonforandroid/recipe.py:1742 [A hash] getattr(hashlib, alg)",
+   "kivy/python-for-android pythonforandroid/bootstraps/common/build/build.py:677 [A hash] hashlib.sha1",
+   "kivy/python-for-android testapps/on_device_unit_tests/test_app/tests/test_requirements.py:188 [A symmetric] Fernet.generate_key",
+   "kivy/python-for-android testapps/on_device_unit_tests/test_app/tests/test_requirements.py:217 [A key_handling] key.export_key",
+   "kivy/python-for-android testapps/on_device_unit_tests/test_app/tests/test_requirements.py:228 [A key_handling] key.publickey",
+   "kivy/python-for-android testapps/on_device_unit_tests/test_app/tests/test_requirements.py:228 [A key_handling] key.publickey().export_key",
+   "kivy/python-for-android testapps/on_device_unit_tests/test_app/tests/test_requirements.py:236 [A kdf] scrypt.hash",
+   "kivy/python-for-android testapps/on_device_unit_tests/test_app/tests/test_requirements.py:246 [A tls] SSL.Context",
+   "kivy/python-for-android testapps/on_device_unit_tests/test_app/tests/test_requirements.py:256 [A hash] sha3.keccak_512",
+   "it-projects-llc/odoo-saas-tools saas_sysadmin_mailgun/models/mailgun.py:10 [A random] os.urandom",
+   "it-projects-llc/odoo-saas-tools saas_server_backup_ftp/models/saas_server.py:44 [B key_handling] cnopts.hostkeys.add",
+   "it-projects-llc/odoo-saas-tools saas_server_backup_ftp/models/res_config.py:95 [B key_handling] cnopts.hostkeys.add"
+  ],
+  "false_positives": [
+   "ddean2009/MoneyPrinterPlus services/alinls/websocket/_ssl_compat.py:27 ssl.SSLContext",
+   "openstack/cinder cinder/volume/drivers/ibm/ibm_storage/ds8k_connection.py:73 OpenSSL.crypto.load_certificate"
+  ]
+ },
+ "v9 (2026.11.05)": {
+  "time": "2026-10-20T00:36:05+00:00",
+  "pooled": {
+   "precision": {
+    "found": 206,
+    "total": 218,
+    "rate": 0.945,
+    "ci": [
+     0.9063,
+     0.9682
+    ]
+   },
+   "recall_A": {
+    "found": 196,
+    "total": 216,
+    "rate": 0.9074,
+    "ci": [
+     0.8613,
+     0.9393
+    ]
+   },
+   "recall_AB": {
+    "found": 206,
+    "total": 269,
+    "rate": 0.7658,
+    "ci": [
+     0.7117,
+     0.8124
+    ]
+   },
+   "pktls_A": {
+    "found": 55,
+    "total": 59,
+    "rate": 0.9322,
+    "ci": [
+     0.8382,
+     0.9733
+    ]
+   },
+   "pktls_AB": {
+    "found": 65,
+    "total": 101,
+    "rate": 0.6436,
+    "ci": [
+     0.5465,
+     0.7301
+    ]
+   }
+  },
+  "stratum_G": {
+   "precision": {
+    "found": 89,
+    "total": 89,
+    "rate": 1.0,
+    "ci": [
+     0.9586,
+     1.0
+    ]
+   },
+   "recall_A": {
+    "found": 87,
+    "total": 96,
+    "rate": 0.9062,
+    "ci": [
+     0.8313,
+     0.9499
+    ]
+   },
+   "recall_AB": {
+    "found": 89,
+    "total": 103,
+    "rate": 0.8641,
+    "ci": [
+     0.7847,
+     0.9173
+    ]
+   },
+   "pktls_A": {
+    "found": 0,
+    "total": 0,
+    "rate": null,
+    "ci": null
+   },
+   "pktls_AB": {
+    "found": 2,
+    "total": 5,
+    "rate": 0.4,
+    "ci": [
+     0.1176,
+     0.7693
+    ]
+   }
+  },
+  "stratum_P": {
+   "precision": {
+    "found": 117,
+    "total": 129,
+    "rate": 0.907,
+    "ci": [
+     0.8444,
+     0.946
+    ]
+   },
+   "recall_A": {
+    "found": 109,
+    "total": 120,
+    "rate": 0.9083,
+    "ci": [
+     0.8433,
+     0.948
+    ]
+   },
+   "recall_AB": {
+    "found": 117,
+    "total": 166,
+    "rate": 0.7048,
+    "ci": [
+     0.6314,
+     0.7689
+    ]
+   },
+   "pktls_A": {
+    "found": 55,
+    "total": 59,
+    "rate": 0.9322,
+    "ci": [
+     0.8382,
+     0.9733
+    ]
+   },
+   "pktls_AB": {
+    "found": 63,
+    "total": 96,
+    "rate": 0.6562,
+    "ci": [
+     0.5569,
+     0.7436
+    ]
+   }
+  },
+  "missed": [
+   "jasontang-ai/Context-Engineering 10_guides_zero_to_hero/04_rag_recipes.py:112 [A hash] hashlib.md5",
+   "SillyTavern/SillyTavern-Extras server.py:1081 [B tls] webuiapi.WebUIApi",
+   "MemoriLabs/Memori examples/tidb/main.py:27 [B tls] create_engine",
+   "flexxui/flexx flexx/app/_session.py:253 [B mac] decode_signed_value",
+   "flexxui/flexx flexx/app/_session.py:284 [B mac] create_signed_value",
+   "flexxui/flexx flexx/app/_tornadoserver.py:101 [B tls] HTTPServer",
+   "sv3nbeast/ShiroScan moule/plugins/CommonsCollections4.py:30 [A symmetric] encryptor.encrypt_and_digest",
+   "sv3nbeast/ShiroScan moule/plugins/CommonsCollectionsK1.py:30 [A symmetric] encryptor.encrypt_and_digest",
+   "sv3nbeast/ShiroScan moule/plugins/CommonsBeanutils1.py:30 [A symmetric] encryptor.encrypt_and_digest",
+   "sv3nbeast/ShiroScan moule/plugins/Myfaces1.py:30 [A symmetric] encryptor.encrypt_and_digest",
+   "sv3nbeast/ShiroScan moule/plugins/Jdk8u20.py:30 [A symmetric] encryptor.encrypt_and_digest",
+   "sv3nbeast/ShiroScan moule/plugins/CommonsCollections7.py:30 [A symmetric] encryptor.encrypt_and_digest",
+   "sv3nbeast/ShiroScan moule/plugins/CommonsCollections9.py:30 [A symmetric] encryptor.encrypt_and_digest",
+   "sv3nbeast/ShiroScan moule/plugins/URLDNS.py:60 [A symmetric] encryptor.encrypt_and_digest",
+   "mandarons/icloud-docker src/icloud_sign.py:113 [B public_key] client.get_assertion",
+   "airbnb/streamalert streamalert/apps/_apps/box.py:69 [B token] JWTAuth.from_settings_dictionary",
+   "jertel/elastalert2 elastalert/create_index.py:227 [B tls] Elasticsearch",
+   "ddean2009/MoneyPrinterPlus services/alinls/websocket/_http.py:270 [A tls] match_hostname",
+   "CrimsonForge-io/king-phisher king_phisher/client/dialogs/ssh_host_key.py:159 [B key_handling] host_keys.load",
+   "CrimsonForge-io/king-phisher king_phisher/client/dialogs/ssh_host_key.py:185 [B key_handling] host_keys.save",
+   "CrimsonForge-io/king-phisher king_phisher/server/server.py:1025 [B tls] super(KingPhisherServer, self).add_sni_cert",
+   "gunnery/gunnery gunnery/account/backend.py:19 [B kdf] user.check_password",
+   "gunnery/gunnery gunnery/core/models.py:139 [A symmetric] pgcrypto.EncryptedTextField",
+   "lnbits/lnbits tests/unit/onchain/test_psbt.py:86 [B key_handling] wally.bip32_key_from_seed",
+   "lnbits/lnbits tests/unit/onchain/test_psbt.py:105 [B public_key] wally.psbt_sign_bip32",
+   "lnbits/lnbits tests/unit/onchain/test_psbt.py:194 [B public_key] wally.psbt_sign_bip32",
+   "lnbits/lnbits tests/unit/onchain/test_psbt.py:232 [B public_key] wally.psbt_sign_bip32",
+   "lnbits/lnbits tests/unit/onchain/test_psbt.py:271 [B public_key] wally.psbt_sign_bip32",
+   "lnbits/lnbits tests/unit/onchain/test_psbt.py:320 [B key_handling] wally.bip32_key_from_seed",
+   "lnbits/lnbits tests/unit/onchain/test_psbt.py:323 [B key_handling] wally.bip32_key_to_base58",
+   "lnbits/lnbits tests/unit/onchain/test_psbt.py:343 [B public_key] wally.psbt_sign_bip32",
+   "lnbits/lnbits tests/unit/onchain/test_psbt.py:346 [B public_key] wally.psbt_sign_bip32",
+   "lnbits/lnbits tests/unit/onchain/test_psbt.py:363 [B key_handling] wally.bip32_key_from_parent_path",
+   "lnbits/lnbits tests/unit/onchain/test_psbt.py:369 [B public_key] wally.psbt_sign_bip32",
+   "lnbits/lnbits lnbits/wallets/breez.py:151 [B kdf] mnemonic_to_seed",
+   "fail2ban/fail2ban fail2ban/tests/action_d/test_smtp.py:282 [B tls] Controller",
+   "openstack/cinder cinder/volume/drivers/ibm/ibm_storage/ds8k_connection.py:62 [A key_handling] ssl.PEM_cert_to_DER_cert",
+   "openstack/cinder cinder/volume/drivers/ibm/gpfs.py:1454 [A key_handling] ssh.load_host_keys",
+   "openstack/cinder cinder/backup/manager.py:475 [B key_handling] key_manager.API",
+   "openstack/cinder cinder/backup/manager.py:845 [B key_handling] key_manager.API",
+   "openstack/cinder cinder/backup/manager.py:943 [B key_handling] key_manager.API",
+   "pantsbuild/pants src/python/pants/backend/url_handlers/s3/register.py:166 [B mac] auth.S3SigV4Auth",
+   "pantsbuild/pants src/python/pants/backend/url_handlers/s3/register.py:184 [B mac] auth.HmacV1Auth",
+   "pantsbuild/pants src/python/pants/backend/url_handlers/s3/register.py:189 [B mac] signer.add_auth",
+   "citizenlab/test-lists scripts/legacy/lib/lists/https.py:38 [B tls] urllib2.HTTPSHandler.__init__",
+   "open-gigaai/giga-train giga_train/distributed/ssh.py:16 [B other] paramiko.Transport",
+   "open-gigaai/giga-train giga_train/distributed/ssh.py:17 [B other] transport.connect",
+   "open-gigaai/giga-train giga_train/distributed/ssh.py:18 [B other] paramiko.SSHClient",
+   "krahabb/meross_lan custom_components/meross_lan/merossclient/mqttclient.py:389 [B tls] self.tls_set_context",
+   "krahabb/meross_lan custom_components/meross_lan/merossclient/mqttclient.py:391 [B tls] self.tls_set",
+   "krahabb/meross_lan custom_components/meross_lan/merossclient/mqttclient.py:432 [B tls] self.tls_set_context",
+   "krahabb/meross_lan custom_components/meross_lan/merossclient/mqttclient.py:434 [B tls] self.tls_set",
+   "rom1504/img2dataset img2dataset/downloader.py:276 [A hash] getattr(hashlib, self.verify_hash_type)",
+   "rom1504/img2dataset img2dataset/downloader.py:340 [A hash] getattr(hashlib, self.compute_hash)",
+   "timothy-odofin/agenthub-be backend/src/app/infrastructure/connections/database/redis_connection_manager.py:116 [B tls] redis.ConnectionPool",
+   "facebook/facebook-python-business-sdk facebook_business/adobjects/serverside/event_request_async.py:82 [B tls] session.post",
+   "kivy/python-for-android pythonforandroid/recipe.py:1742 [A hash] getattr(hashlib, alg)",
+   "kivy/python-for-android pythonforandroid/bootstraps/common/build/build.py:677 [A hash] hashlib.sha1",
+   "kivy/python-for-android testapps/on_device_unit_tests/test_app/tests/test_requirements.py:236 [A kdf] scrypt.hash",
+   "kivy/python-for-android testapps/on_device_unit_tests/test_app/tests/test_requirements.py:246 [A tls] SSL.Context",
+   "kivy/python-for-android testapps/on_device_unit_tests/test_app/tests/test_requirements.py:256 [A hash] sha3.keccak_512",
+   "it-projects-llc/odoo-saas-tools saas_server_backup_ftp/models/saas_server.py:44 [B key_handling] cnopts.hostkeys.add",
+   "it-projects-llc/odoo-saas-tools saas_server_backup_ftp/models/res_config.py:95 [B key_handling] cnopts.hostkeys.add"
+  ],
+  "false_positives": [
+   "jertel/elastalert2 tests/alerters/email_test.py:35 ssl.SSLContext.starttls",
+   "jertel/elastalert2 tests/alerters/email_test.py:106 ssl.SSLContext.starttls",
+   "jertel/elastalert2 tests/alerters/email_test.py:142 ssl.SSLContext.starttls",
+   "jertel/elastalert2 tests/alerters/email_test.py:182 ssl.SSLContext.starttls",
+   "jertel/elastalert2 tests/alerters/email_test.py:194 ssl.SSLContext.load_cert_chain",
+   "jertel/elastalert2 tests/alerters/email_test.py:215 ssl.SSLContext.starttls",
+   "jertel/elastalert2 tests/alerters/email_test.py:254 ssl.SSLContext.starttls",
+   "jertel/elastalert2 tests/alerters/email_test.py:294 ssl.SSLContext.starttls",
+   "jertel/elastalert2 tests/alerters/email_test.py:339 ssl.SSLContext.starttls",
+   "jertel/elastalert2 tests/alerters/email_test.py:503 ssl.SSLContext.starttls",
+   "ddean2009/MoneyPrinterPlus services/alinls/websocket/_ssl_compat.py:27 ssl.SSLContext",
+   "openstack/cinder cinder/volume/drivers/ibm/ibm_storage/ds8k_connection.py:73 OpenSSL.crypto.load_certificate"
+  ]
+ },
+ "v10 (2026.11.06)": {
+  "time": "2026-10-20T00:36:06+00:00",
+  "pooled": {
+   "precision": {
+    "found": 206,
+    "total": 218,
+    "rate": 0.945,
+    "ci": [
+     0.9063,
+     0.9682
+    ]
+   },
+   "recall_A": {
+    "found": 196,
+    "total": 216,
+    "rate": 0.9074,
+    "ci": [
+     0.8613,
+     0.9393
+    ]
+   },
+   "recall_AB": {
+    "found": 206,
+    "total": 269,
+    "rate": 0.7658,
+    "ci": [
+     0.7117,
+     0.8124
+    ]
+   },
+   "pktls_A": {
+    "found": 55,
+    "total": 59,
+    "rate": 0.9322,
+    "ci": [
+     0.8382,
+     0.9733
+    ]
+   },
+   "pktls_AB": {
+    "found": 65,
+    "total": 101,
+    "rate": 0.6436,
+    "ci": [
+     0.5465,
+     0.7301
+    ]
+   }
+  },
+  "stratum_G": {
+   "precision": {
+    "found": 89,
+    "total": 89,
+    "rate": 1.0,
+    "ci": [
+     0.9586,
+     1.0
+    ]
+   },
+   "recall_A": {
+    "found": 87,
+    "total": 96,
+    "rate": 0.9062,
+    "ci": [
+     0.8313,
+     0.9499
+    ]
+   },
+   "recall_AB": {
+    "found": 89,
+    "total": 103,
+    "rate": 0.8641,
+    "ci": [
+     0.7847,
+     0.9173
+    ]
+   },
+   "pktls_A": {
+    "found": 0,
+    "total": 0,
+    "rate": null,
+    "ci": null
+   },
+   "pktls_AB": {
+    "found": 2,
+    "total": 5,
+    "rate": 0.4,
+    "ci": [
+     0.1176,
+     0.7693
+    ]
+   }
+  },
+  "stratum_P": {
+   "precision": {
+    "found": 117,
+    "total": 129,
+    "rate": 0.907,
+    "ci": [
+     0.8444,
+     0.946
+    ]
+   },
+   "recall_A": {
+    "found": 109,
+    "total": 120,
+    "rate": 0.9083,
+    "ci": [
+     0.8433,
+     0.948
+    ]
+   },
+   "recall_AB": {
+    "found": 117,
+    "total": 166,
+    "rate": 0.7048,
+    "ci": [
+     0.6314,
+     0.7689
+    ]
+   },
+   "pktls_A": {
+    "found": 55,
+    "total": 59,
+    "rate": 0.9322,
+    "ci": [
+     0.8382,
+     0.9733
+    ]
+   },
+   "pktls_AB": {
+    "found": 63,
+    "total": 96,
+    "rate": 0.6562,
+    "ci": [
+     0.5569,
+     0.7436
+    ]
+   }
+  },
+  "missed": [
+   "jasontang-ai/Context-Engineering 10_guides_zero_to_hero/04_rag_recipes.py:112 [A hash] hashlib.md5",
+   "SillyTavern/SillyTavern-Extras server.py:1081 [B tls] webuiapi.WebUIApi",
+   "MemoriLabs/Memori examples/tidb/main.py:27 [B tls] create_engine",
+   "flexxui/flexx flexx/app/_session.py:253 [B mac] decode_signed_value",
+   "flexxui/flexx flexx/app/_session.py:284 [B mac] create_signed_value",
+   "flexxui/flexx flexx/app/_tornadoserver.py:101 [B tls] HTTPServer",
+   "sv3nbeast/ShiroScan moule/plugins/CommonsCollections4.py:30 [A symmetric] encryptor.encrypt_and_digest",
+   "sv3nbeast/ShiroScan moule/plugins/CommonsCollectionsK1.py:30 [A symmetric] encryptor.encrypt_and_digest",
+   "sv3nbeast/ShiroScan moule/plugins/CommonsBeanutils1.py:30 [A symmetric] encryptor.encrypt_and_digest",
+   "sv3nbeast/ShiroScan moule/plugins/Myfaces1.py:30 [A symmetric] encryptor.encrypt_and_digest",
+   "sv3nbeast/ShiroScan moule/plugins/Jdk8u20.py:30 [A symmetric] encryptor.encrypt_and_digest",
+   "sv3nbeast/ShiroScan moule/plugins/CommonsCollections7.py:30 [A symmetric] encryptor.encrypt_and_digest",
+   "sv3nbeast/ShiroScan moule/plugins/CommonsCollections9.py:30 [A symmetric] encryptor.encrypt_and_digest",
+   "sv3nbeast/ShiroScan moule/plugins/URLDNS.py:60 [A symmetric] encryptor.encrypt_and_digest",
+   "mandarons/icloud-docker src/icloud_sign.py:113 [B public_key] client.get_assertion",
+   "airbnb/streamalert streamalert/apps/_apps/box.py:69 [B token] JWTAuth.from_settings_dictionary",
+   "jertel/elastalert2 elastalert/create_index.py:227 [B tls] Elasticsearch",
+   "ddean2009/MoneyPrinterPlus services/alinls/websocket/_http.py:270 [A tls] match_hostname",
+   "CrimsonForge-io/king-phisher king_phisher/client/dialogs/ssh_host_key.py:159 [B key_handling] host_keys.load",
+   "CrimsonForge-io/king-phisher king_phisher/client/dialogs/ssh_host_key.py:185 [B key_handling] host_keys.save",
+   "CrimsonForge-io/king-phisher king_phisher/server/server.py:1025 [B tls] super(KingPhisherServer, self).add_sni_cert",
+   "gunnery/gunnery gunnery/account/backend.py:19 [B kdf] user.check_password",
+   "gunnery/gunnery gunnery/core/models.py:139 [A symmetric] pgcrypto.EncryptedTextField",
+   "lnbits/lnbits tests/unit/onchain/test_psbt.py:86 [B key_handling] wally.bip32_key_from_seed",
+   "lnbits/lnbits tests/unit/onchain/test_psbt.py:105 [B public_key] wally.psbt_sign_bip32",
+   "lnbits/lnbits tests/unit/onchain/test_psbt.py:194 [B public_key] wally.psbt_sign_bip32",
+   "lnbits/lnbits tests/unit/onchain/test_psbt.py:232 [B public_key] wally.psbt_sign_bip32",
+   "lnbits/lnbits tests/unit/onchain/test_psbt.py:271 [B public_key] wally.psbt_sign_bip32",
+   "lnbits/lnbits tests/unit/onchain/test_psbt.py:320 [B key_handling] wally.bip32_key_from_seed",
+   "lnbits/lnbits tests/unit/onchain/test_psbt.py:323 [B key_handling] wally.bip32_key_to_base58",
+   "lnbits/lnbits tests/unit/onchain/test_psbt.py:343 [B public_key] wally.psbt_sign_bip32",
+   "lnbits/lnbits tests/unit/onchain/test_psbt.py:346 [B public_key] wally.psbt_sign_bip32",
+   "lnbits/lnbits tests/unit/onchain/test_psbt.py:363 [B key_handling] wally.bip32_key_from_parent_path",
+   "lnbits/lnbits tests/unit/onchain/test_psbt.py:369 [B public_key] wally.psbt_sign_bip32",
+   "lnbits/lnbits lnbits/wallets/breez.py:151 [B kdf] mnemonic_to_seed",
+   "fail2ban/fail2ban fail2ban/tests/action_d/test_smtp.py:282 [B tls] Controller",
+   "openstack/cinder cinder/volume/drivers/ibm/ibm_storage/ds8k_connection.py:62 [A key_handling] ssl.PEM_cert_to_DER_cert",
+   "openstack/cinder cinder/volume/drivers/ibm/gpfs.py:1454 [A key_handling] ssh.load_host_keys",
+   "openstack/cinder cinder/backup/manager.py:475 [B key_handling] key_manager.API",
+   "openstack/cinder cinder/backup/manager.py:845 [B key_handling] key_manager.API",
+   "openstack/cinder cinder/backup/manager.py:943 [B key_handling] key_manager.API",
+   "pantsbuild/pants src/python/pants/backend/url_handlers/s3/register.py:166 [B mac] auth.S3SigV4Auth",
+   "pantsbuild/pants src/python/pants/backend/url_handlers/s3/register.py:184 [B mac] auth.HmacV1Auth",
+   "pantsbuild/pants src/python/pants/backend/url_handlers/s3/register.py:189 [B mac] signer.add_auth",
+   "citizenlab/test-lists scripts/legacy/lib/lists/https.py:38 [B tls] urllib2.HTTPSHandler.__init__",
+   "open-gigaai/giga-train giga_train/distributed/ssh.py:16 [B other] paramiko.Transport",
+   "open-gigaai/giga-train giga_train/distributed/ssh.py:17 [B other] transport.connect",
+   "open-gigaai/giga-train giga_train/distributed/ssh.py:18 [B other] paramiko.SSHClient",
+   "krahabb/meross_lan custom_components/meross_lan/merossclient/mqttclient.py:389 [B tls] self.tls_set_context",
+   "krahabb/meross_lan custom_components/meross_lan/merossclient/mqttclient.py:391 [B tls] self.tls_set",
+   "krahabb/meross_lan custom_components/meross_lan/merossclient/mqttclient.py:432 [B tls] self.tls_set_context",
+   "krahabb/meross_lan custom_components/meross_lan/merossclient/mqttclient.py:434 [B tls] self.tls_set",
+   "rom1504/img2dataset img2dataset/downloader.py:276 [A hash] getattr(hashlib, self.verify_hash_type)",
+   "rom1504/img2dataset img2dataset/downloader.py:340 [A hash] getattr(hashlib, self.compute_hash)",
+   "timothy-odofin/agenthub-be backend/src/app/infrastructure/connections/database/redis_connection_manager.py:116 [B tls] redis.ConnectionPool",
+   "facebook/facebook-python-business-sdk facebook_business/adobjects/serverside/event_request_async.py:82 [B tls] session.post",
+   "kivy/python-for-android pythonforandroid/recipe.py:1742 [A hash] getattr(hashlib, alg)",
+   "kivy/python-for-android pythonforandroid/bootstraps/common/build/build.py:677 [A hash] hashlib.sha1",
+   "kivy/python-for-android testapps/on_device_unit_tests/test_app/tests/test_requirements.py:236 [A kdf] scrypt.hash",
+   "kivy/python-for-android testapps/on_device_unit_tests/test_app/tests/test_requirements.py:246 [A tls] SSL.Context",
+   "kivy/python-for-android testapps/on_device_unit_tests/test_app/tests/test_requirements.py:256 [A hash] sha3.keccak_512",
+   "it-projects-llc/odoo-saas-tools saas_server_backup_ftp/models/saas_server.py:44 [B key_handling] cnopts.hostkeys.add",
+   "it-projects-llc/odoo-saas-tools saas_server_backup_ftp/models/res_config.py:95 [B key_handling] cnopts.hostkeys.add"
+  ],
+  "false_positives": [
+   "jertel/elastalert2 tests/alerters/email_test.py:35 ssl.SSLContext.starttls",
+   "jertel/elastalert2 tests/alerters/email_test.py:106 ssl.SSLContext.starttls",
+   "jertel/elastalert2 tests/alerters/email_test.py:142 ssl.SSLContext.starttls",
+   "jertel/elastalert2 tests/alerters/email_test.py:182 ssl.SSLContext.starttls",
+   "jertel/elastalert2 tests/alerters/email_test.py:194 ssl.SSLContext.load_cert_chain",
+   "jertel/elastalert2 tests/alerters/email_test.py:215 ssl.SSLContext.starttls",
+   "jertel/elastalert2 tests/alerters/email_test.py:254 ssl.SSLContext.starttls",
+   "jertel/elastalert2 tests/alerters/email_test.py:294 ssl.SSLContext.starttls",
+   "jertel/elastalert2 tests/alerters/email_test.py:339 ssl.SSLContext.starttls",
+   "jertel/elastalert2 tests/alerters/email_test.py:503 ssl.SSLContext.starttls",
+   "ddean2009/MoneyPrinterPlus services/alinls/websocket/_ssl_compat.py:27 ssl.SSLContext",
+   "openstack/cinder cinder/volume/drivers/ibm/ibm_storage/ds8k_connection.py:73 OpenSSL.crypto.load_certificate"
+  ]
+ },
+ "v11 (2026.11.07)": {
+  "time": "2026-10-20T00:36:06+00:00",
+  "pooled": {
+   "precision": {
+    "found": 206,
+    "total": 218,
+    "rate": 0.945,
+    "ci": [
+     0.9063,
+     0.9682
+    ]
+   },
+   "recall_A": {
+    "found": 196,
+    "total": 216,
+    "rate": 0.9074,
+    "ci": [
+     0.8613,
+     0.9393
+    ]
+   },
+   "recall_AB": {
+    "found": 206,
+    "total": 269,
+    "rate": 0.7658,
+    "ci": [
+     0.7117,
+     0.8124
+    ]
+   },
+   "pktls_A": {
+    "found": 55,
+    "total": 59,
+    "rate": 0.9322,
+    "ci": [
+     0.8382,
+     0.9733
+    ]
+   },
+   "pktls_AB": {
+    "found": 65,
+    "total": 101,
+    "rate": 0.6436,
+    "ci": [
+     0.5465,
+     0.7301
+    ]
+   }
+  },
+  "stratum_G": {
+   "precision": {
+    "found": 89,
+    "total": 89,
+    "rate": 1.0,
+    "ci": [
+     0.9586,
+     1.0
+    ]
+   },
+   "recall_A": {
+    "found": 87,
+    "total": 96,
+    "rate": 0.9062,
+    "ci": [
+     0.8313,
+     0.9499
+    ]
+   },
+   "recall_AB": {
+    "found": 89,
+    "total": 103,
+    "rate": 0.8641,
+    "ci": [
+     0.7847,
+     0.9173
+    ]
+   },
+   "pktls_A": {
+    "found": 0,
+    "total": 0,
+    "rate": null,
+    "ci": null
+   },
+   "pktls_AB": {
+    "found": 2,
+    "total": 5,
+    "rate": 0.4,
+    "ci": [
+     0.1176,
+     0.7693
+    ]
+   }
+  },
+  "stratum_P": {
+   "precision": {
+    "found": 117,
+    "total": 129,
+    "rate": 0.907,
+    "ci": [
+     0.8444,
+     0.946
+    ]
+   },
+   "recall_A": {
+    "found": 109,
+    "total": 120,
+    "rate": 0.9083,
+    "ci": [
+     0.8433,
+     0.948
+    ]
+   },
+   "recall_AB": {
+    "found": 117,
+    "total": 166,
+    "rate": 0.7048,
+    "ci": [
+     0.6314,
+     0.7689
+    ]
+   },
+   "pktls_A": {
+    "found": 55,
+    "total": 59,
+    "rate": 0.9322,
+    "ci": [
+     0.8382,
+     0.9733
+    ]
+   },
+   "pktls_AB": {
+    "found": 63,
+    "total": 96,
+    "rate": 0.6562,
+    "ci": [
+     0.5569,
+     0.7436
+    ]
+   }
+  },
+  "missed": [
+   "jasontang-ai/Context-Engineering 10_guides_zero_to_hero/04_rag_recipes.py:112 [A hash] hashlib.md5",
+   "SillyTavern/SillyTavern-Extras server.py:1081 [B tls] webuiapi.WebUIApi",
+   "MemoriLabs/Memori examples/tidb/main.py:27 [B tls] create_engine",
+   "flexxui/flexx flexx/app/_session.py:253 [B mac] decode_signed_value",
+   "flexxui/flexx flexx/app/_session.py:284 [B mac] create_signed_value",
+   "flexxui/flexx flexx/app/_tornadoserver.py:101 [B tls] HTTPServer",
+   "sv3nbeast/ShiroScan moule/plugins/CommonsCollections4.py:30 [A symmetric] encryptor.encrypt_and_digest",
+   "sv3nbeast/ShiroScan moule/plugins/CommonsCollectionsK1.py:30 [A symmetric] encryptor.encrypt_and_digest",
+   "sv3nbeast/ShiroScan moule/plugins/CommonsBeanutils1.py:30 [A symmetric] encryptor.encrypt_and_digest",
+   "sv3nbeast/ShiroScan moule/plugins/Myfaces1.py:30 [A symmetric] encryptor.encrypt_and_digest",
+   "sv3nbeast/ShiroScan moule/plugins/Jdk8u20.py:30 [A symmetric] encryptor.encrypt_and_digest",
+   "sv3nbeast/ShiroScan moule/plugins/CommonsCollections7.py:30 [A symmetric] encryptor.encrypt_and_digest",
+   "sv3nbeast/ShiroScan moule/plugins/CommonsCollections9.py:30 [A symmetric] encryptor.encrypt_and_digest",
+   "sv3nbeast/ShiroScan moule/plugins/URLDNS.py:60 [A symmetric] encryptor.encrypt_and_digest",
+   "mandarons/icloud-docker src/icloud_sign.py:113 [B public_key] client.get_assertion",
+   "airbnb/streamalert streamalert/apps/_apps/box.py:69 [B token] JWTAuth.from_settings_dictionary",
+   "jertel/elastalert2 elastalert/create_index.py:227 [B tls] Elasticsearch",
+   "ddean2009/MoneyPrinterPlus services/alinls/websocket/_http.py:270 [A tls] match_hostname",
+   "CrimsonForge-io/king-phisher king_phisher/client/dialogs/ssh_host_key.py:159 [B key_handling] host_keys.load",
+   "CrimsonForge-io/king-phisher king_phisher/client/dialogs/ssh_host_key.py:185 [B key_handling] host_keys.save",
+   "CrimsonForge-io/king-phisher king_phisher/server/server.py:1025 [B tls] super(KingPhisherServer, self).add_sni_cert",
+   "gunnery/gunnery gunnery/account/backend.py:19 [B kdf] user.check_password",
+   "gunnery/gunnery gunnery/core/models.py:139 [A symmetric] pgcrypto.EncryptedTextField",
+   "lnbits/lnbits tests/unit/onchain/test_psbt.py:86 [B key_handling] wally.bip32_key_from_seed",
+   "lnbits/lnbits tests/unit/onchain/test_psbt.py:105 [B public_key] wally.psbt_sign_bip32",
+   "lnbits/lnbits tests/unit/onchain/test_psbt.py:194 [B public_key] wally.psbt_sign_bip32",
+   "lnbits/lnbits tests/unit/onchain/test_psbt.py:232 [B public_key] wally.psbt_sign_bip32",
+   "lnbits/lnbits tests/unit/onchain/test_psbt.py:271 [B public_key] wally.psbt_sign_bip32",
+   "lnbits/lnbits tests/unit/onchain/test_psbt.py:320 [B key_handling] wally.bip32_key_from_seed",
+   "lnbits/lnbits tests/unit/onchain/test_psbt.py:323 [B key_handling] wally.bip32_key_to_base58",
+   "lnbits/lnbits tests/unit/onchain/test_psbt.py:343 [B public_key] wally.psbt_sign_bip32",
+   "lnbits/lnbits tests/unit/onchain/test_psbt.py:346 [B public_key] wally.psbt_sign_bip32",
+   "lnbits/lnbits tests/unit/onchain/test_psbt.py:363 [B key_handling] wally.bip32_key_from_parent_path",
+   "lnbits/lnbits tests/unit/onchain/test_psbt.py:369 [B public_key] wally.psbt_sign_bip32",
+   "lnbits/lnbits lnbits/wallets/breez.py:151 [B kdf] mnemonic_to_seed",
+   "fail2ban/fail2ban fail2ban/tests/action_d/test_smtp.py:282 [B tls] Controller",
+   "openstack/cinder cinder/volume/drivers/ibm/ibm_storage/ds8k_connection.py:62 [A key_handling] ssl.PEM_cert_to_DER_cert",
+   "openstack/cinder cinder/volume/drivers/ibm/gpfs.py:1454 [A key_handling] ssh.load_host_keys",
+   "openstack/cinder cinder/backup/manager.py:475 [B key_handling] key_manager.API",
+   "openstack/cinder cinder/backup/manager.py:845 [B key_handling] key_manager.API",
+   "openstack/cinder cinder/backup/manager.py:943 [B key_handling] key_manager.API",
+   "pantsbuild/pants src/python/pants/backend/url_handlers/s3/register.py:166 [B mac] auth.S3SigV4Auth",
+   "pantsbuild/pants src/python/pants/backend/url_handlers/s3/register.py:184 [B mac] auth.HmacV1Auth",
+   "pantsbuild/pants src/python/pants/backend/url_handlers/s3/register.py:189 [B mac] signer.add_auth",
+   "citizenlab/test-lists scripts/legacy/lib/lists/https.py:38 [B tls] urllib2.HTTPSHandler.__init__",
+   "open-gigaai/giga-train giga_train/distributed/ssh.py:16 [B other] paramiko.Transport",
+   "open-gigaai/giga-train giga_train/distributed/ssh.py:17 [B other] transport.connect",
+   "open-gigaai/giga-train giga_train/distributed/ssh.py:18 [B other] paramiko.SSHClient",
+   "krahabb/meross_lan custom_components/meross_lan/merossclient/mqttclient.py:389 [B tls] self.tls_set_context",
+   "krahabb/meross_lan custom_components/meross_lan/merossclient/mqttclient.py:391 [B tls] self.tls_set",
+   "krahabb/meross_lan custom_components/meross_lan/merossclient/mqttclient.py:432 [B tls] self.tls_set_context",
+   "krahabb/meross_lan custom_components/meross_lan/merossclient/mqttclient.py:434 [B tls] self.tls_set",
+   "rom1504/img2dataset img2dataset/downloader.py:276 [A hash] getattr(hashlib, self.verify_hash_type)",
+   "rom1504/img2dataset img2dataset/downloader.py:340 [A hash] getattr(hashlib, self.compute_hash)",
+   "timothy-odofin/agenthub-be backend/src/app/infrastructure/connections/database/redis_connection_manager.py:116 [B tls] redis.ConnectionPool",
+   "facebook/facebook-python-business-sdk facebook_business/adobjects/serverside/event_request_async.py:82 [B tls] session.post",
+   "kivy/python-for-android pythonforandroid/recipe.py:1742 [A hash] getattr(hashlib, alg)",
+   "kivy/python-for-android pythonforandroid/bootstraps/common/build/build.py:677 [A hash] hashlib.sha1",
+   "kivy/python-for-android testapps/on_device_unit_tests/test_app/tests/test_requirements.py:236 [A kdf] scrypt.hash",
+   "kivy/python-for-android testapps/on_device_unit_tests/test_app/tests/test_requirements.py:246 [A tls] SSL.Context",
+   "kivy/python-for-android testapps/on_device_unit_tests/test_app/tests/test_requirements.py:256 [A hash] sha3.keccak_512",
+   "it-projects-llc/odoo-saas-tools saas_server_backup_ftp/models/saas_server.py:44 [B key_handling] cnopts.hostkeys.add",
+   "it-projects-llc/odoo-saas-tools saas_server_backup_ftp/models/res_config.py:95 [B key_handling] cnopts.hostkeys.add"
+  ],
+  "false_positives": [
+   "jertel/elastalert2 tests/alerters/email_test.py:35 ssl.SSLContext.starttls",
+   "jertel/elastalert2 tests/alerters/email_test.py:106 ssl.SSLContext.starttls",
+   "jertel/elastalert2 tests/alerters/email_test.py:142 ssl.SSLContext.starttls",
+   "jertel/elastalert2 tests/alerters/email_test.py:182 ssl.SSLContext.starttls",
+   "jertel/elastalert2 tests/alerters/email_test.py:194 ssl.SSLContext.load_cert_chain",
+   "jertel/elastalert2 tests/alerters/email_test.py:215 ssl.SSLContext.starttls",
+   "jertel/elastalert2 tests/alerters/email_test.py:254 ssl.SSLContext.starttls",
+   "jertel/elastalert2 tests/alerters/email_test.py:294 ssl.SSLContext.starttls",
+   "jertel/elastalert2 tests/alerters/email_test.py:339 ssl.SSLContext.starttls",
+   "jertel/elastalert2 tests/alerters/email_test.py:503 ssl.SSLContext.starttls",
+   "ddean2009/MoneyPrinterPlus services/alinls/websocket/_ssl_compat.py:27 ssl.SSLContext",
+   "openstack/cinder cinder/volume/drivers/ibm/ibm_storage/ds8k_connection.py:73 OpenSSL.crypto.load_certificate"
+  ]
+ }
+}

@@ -1,0 +1,24 @@
+{
+ "repo": "gyoisamurai/GyoiThon",
+ "commit": "8dec26aabdbf9ee999e7cc5b5eee9222f01bae13",
+ "annotator": "agent-9",
+ "files": {
+  "modules/Gyoi_ComputerVision.py": [],
+  "modules/Gyoi_CommentChecker.py": [],
+  "util.py": [
+   {"line_start": 262, "line_end": 262, "name": "ssl.create_default_context", "class": "A", "kind": "tls"},
+   {"line_start": 263, "line_end": 263, "name": "ctx.set_ciphers", "class": "A", "kind": "tls"},
+   {"line_start": 285, "line_end": 289, "name": "urllib3.PoolManager", "class": "B", "kind": "tls"},
+   {"line_start": 291, "line_end": 294, "name": "urllib3.PoolManager", "class": "B", "kind": "tls"}
+  ],
+  "modules/Gyoi_CveExplorerNVD.py": [
+   {"line_start": 188, "line_end": 188, "name": "ssl.create_default_context", "class": "A", "kind": "tls"},
+   {"line_start": 189, "line_end": 189, "name": "ctx.set_ciphers", "class": "A", "kind": "tls"},
+   {"line_start": 204, "line_end": 207, "name": "urllib3.PoolManager", "class": "B", "kind": "tls"}
+  ],
+  "modules/Gyoi_ErrorChecker.py": [],
+  "modules/Gyoi_Censys.py": [],
+  "modules/Gyoi_Report.py": [],
+  "modules/Gyoi_ContentExplorer.py": []
+ }
+}

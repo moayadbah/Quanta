@@ -1,0 +1,20 @@
+{
+ "repo": "yuxian158/check",
+ "commit": "723c834f121ff4eef2dec7afe521071a7efff1a9",
+ "annotator": "agent-3",
+ "files": {
+  "dailycheckin_scripts/ck_bilibili.py": [],
+  "dailycheckin_scripts/ck_cloud189.py": [
+   {"line_start": 57, "line_end": 57, "name": "rsa.PublicKey.load_pkcs1_openssl_pem", "class": "A", "kind": "key_handling"},
+   {"line_start": 58, "line_end": 58, "name": "rsa.encrypt", "class": "A", "kind": "public_key"}
+  ],
+  "dailycheckin_scripts/ck_v2ex.py": [],
+  "dailycheckin_scripts/ck_tieba.py": [
+   {"line_start": 63, "line_end": 63, "name": "hashlib.md5", "class": "A", "kind": "hash"}
+  ],
+  "dailycheckin_scripts/ck_meizu.py": [],
+  "dailycheckin_scripts/ck_mgtv.py": [],
+  "dailycheckin_scripts/ck_duokan.py": [],
+  "dailycheckin_scripts/ck_kgqq.py": []
+ }
+}

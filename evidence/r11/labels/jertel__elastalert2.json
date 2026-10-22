@@ -1,0 +1,25 @@
+{
+ "repo": "jertel/elastalert2",
+ "commit": "162ba49d34485d375b4860694d21361a156cea18",
+ "annotator": "agent-2",
+ "files": {
+  "elastalert/alerters/dingtalk.py": [
+   {"line_start": 41, "line_end": 41, "name": "hmac.new", "class": "A", "kind": "mac"}
+  ],
+  "elastalert/create_index.py": [
+   {"line_start": 227, "line_end": 240, "name": "Elasticsearch", "class": "B", "kind": "tls", "note": "client created with use_ssl=use_ssl and client cert/key arguments; counted under B2e"}
+  ],
+  "tests/util_test.py": [],
+  "tests/alerters/email_test.py": [],
+  "tests/alerters/gelf_test.py": [],
+  "elastalert/alerters/gelf.py": [
+   {"line_start": 68, "line_end": 68, "name": "ssl.SSLContext", "class": "A", "kind": "tls"},
+   {"line_start": 69, "line_end": 69, "name": "ctx.wrap_socket", "class": "A", "kind": "tls"}
+  ],
+  "elastalert/loaders.py": [
+   {"line_start": 669, "line_end": 669, "name": "hashlib.sha1", "class": "A", "kind": "hash"},
+   {"line_start": 674, "line_end": 674, "name": "hashlib.sha1", "class": "A", "kind": "hash"}
+  ],
+  "elastalert/alerters/tencentsms.py": []
+ }
+}

@@ -1,0 +1,24 @@
+{
+ "repo": "ddean2009/MoneyPrinterPlus",
+ "commit": "d2c6f397731586de6cdcfed2e325fa68e74e3959",
+ "annotator": "agent-12",
+ "files": {
+  "services/alinls/websocket/_http.py": [
+   {"line_start": 214, "line_end": 214, "name": "ssl.SSLContext", "class": "A", "kind": "tls"},
+   {"line_start": 220, "line_end": 220, "name": "context.load_verify_locations", "class": "A", "kind": "tls"},
+   {"line_start": 222, "line_end": 222, "name": "context.load_default_certs", "class": "A", "kind": "tls"},
+   {"line_start": 224, "line_end": 228, "name": "context.load_cert_chain", "class": "A", "kind": "tls"},
+   {"line_start": 235, "line_end": 235, "name": "context.set_ciphers", "class": "A", "kind": "tls"},
+   {"line_start": 238, "line_end": 238, "name": "context.load_cert_chain", "class": "A", "kind": "tls"},
+   {"line_start": 240, "line_end": 240, "name": "context.set_ecdh_curve", "class": "A", "kind": "tls", "note": "configures the TLS context (B2j)"},
+   {"line_start": 242, "line_end": 247, "name": "context.wrap_socket", "class": "A", "kind": "tls"},
+   {"line_start": 270, "line_end": 270, "name": "match_hostname", "class": "A", "kind": "tls", "note": "certificate hostname verification; name comes in by star import, assumed to be ssl.match_hostname (source module not in the listed files)"}
+  ],
+  "services/alinls/websocket/_ssl_compat.py": [],
+  "services/audio/flash_recognizer.py": [
+   {"line_start": 148, "line_end": 149, "name": "hmac.new", "class": "A", "kind": "mac"}
+  ],
+  "services/alinls/websocket/_core.py": [],
+  "services/alinls/websocket/_app.py": []
+ }
+}

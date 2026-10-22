@@ -1,0 +1,10 @@
+{
+ "repo": "iszhanjiawei/indexTTS2",
+ "commit": "bae9221fd0a1bc98e8409fb97b8d6bd6a119bb64",
+ "annotator": "agent-5",
+ "files": {
+  "indextts/s2mel/modules/openvoice/se_extractor.py": [
+   {"line_start": 123, "line_end": 123, "name": "hashlib.sha256", "class": "A", "kind": "hash"}
+  ]
+ }
+}

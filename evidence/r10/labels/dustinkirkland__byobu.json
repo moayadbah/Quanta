@@ -1,0 +1,28 @@
+{
+ "repo": "dustinkirkland/byobu",
+ "commit": "41c285e7eaf36bed88204c75314fb21a444b031a",
+ "annotator": "agent-5",
+ "files": {
+  "mobile/tests/test_daemon.py": [
+   {"line_start": 1324, "line_end": 1324, "name": "x509.load_pem_x509_certificate", "class": "A", "kind": "key_handling"}
+  ],
+  "mobile/trustmux/_paths.py": [],
+  "mobile/tests/test_paths.py": [],
+  "mobile/trustmux/_pair.py": [],
+  ".maintainer/release.py": [
+   {"line_start": 1196, "line_end": 1196, "name": "hashlib.sha256", "class": "A", "kind": "hash"},
+   {"line_start": 1764, "line_end": 1764, "name": "hashlib.sha256", "class": "A", "kind": "hash"},
+   {"line_start": 1832, "line_end": 1832, "name": "hashlib.sha256", "class": "A", "kind": "hash"},
+   {"line_start": 1915, "line_end": 1915, "name": "hashlib.sha256", "class": "A", "kind": "hash"},
+   {"line_start": 2104, "line_end": 2104, "name": "hashlib.sha256", "class": "A", "kind": "hash"},
+   {"line_start": 2130, "line_end": 2130, "name": "hashlib.sha256", "class": "A", "kind": "hash"}
+  ],
+  "mobile/trustmux/_advertise.py": [],
+  "mobile/trustmux/_ctl.py": [
+   {"line_start": 62, "line_end": 62, "name": "ec.generate_private_key", "class": "A", "kind": "key_handling"}
+  ],
+  "mobile/tests/test_security_audit.py": [
+   {"line_start": 166, "line_end": 166, "name": "hashlib.sha256", "class": "A", "kind": "hash"}
+  ]
+ }
+}

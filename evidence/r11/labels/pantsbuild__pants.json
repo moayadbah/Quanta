@@ -1,0 +1,23 @@
+{
+ "repo": "pantsbuild/pants",
+ "commit": "984eae61fdfeb5d390c62114874b10002b62b98d",
+ "annotator": "agent-12",
+ "files": {
+  "src/python/pants/help/help_info_extracter_test.py": [],
+  "src/python/pants_release/release.py": [],
+  "src/python/pants/backend/url_handlers/s3/register.py": [
+   {"line_start": 166, "line_end": 166, "name": "auth.S3SigV4Auth", "class": "B", "kind": "mac", "note": "botocore request signer (SigV4, HMAC-SHA256 based); botocore is not primarily a crypto library"},
+   {"line_start": 184, "line_end": 184, "name": "auth.HmacV1Auth", "class": "B", "kind": "mac", "note": "botocore HMAC-V1 request signer"},
+   {"line_start": 189, "line_end": 189, "name": "signer.add_auth", "class": "B", "kind": "mac", "note": "signer method that performs the signing (B2b)"}
+  ],
+  "src/python/pants/engine/internals/specs_rules.py": [],
+  "src/python/pants/ng/subsystem_test.py": [],
+  "src/python/pants/backend/python/goals/publish_test.py": [],
+  "src/python/pants/core/target_types.py": [],
+  "src/python/pants/engine/fs_test.py": [
+   {"line_start": 886, "line_end": 886, "name": "hashlib.sha256", "class": "A", "kind": "hash"},
+   {"line_start": 1177, "line_end": 1177, "name": "ssl.SSLContext", "class": "A", "kind": "tls"},
+   {"line_start": 1178, "line_end": 1178, "name": "ssl_context.load_cert_chain", "class": "A", "kind": "tls"}
+  ]
+ }
+}

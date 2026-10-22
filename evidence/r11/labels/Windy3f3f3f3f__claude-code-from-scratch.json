@@ -1,0 +1,10 @@
+{
+ "repo": "Windy3f3f3f3f/claude-code-from-scratch",
+ "commit": "0b452360866433fde0dc77cd37ada9d303546592",
+ "annotator": "agent-6",
+ "files": {
+  "python/mini_claude/memory.py": [
+   {"line_start": 44, "line_end": 44, "name": "hashlib.sha256", "class": "A", "kind": "hash"}
+  ]
+ }
+}

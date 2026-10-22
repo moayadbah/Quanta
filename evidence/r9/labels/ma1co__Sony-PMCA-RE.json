@@ -1,0 +1,22 @@
+{"repo": "ma1co/Sony-PMCA-RE", "commit": "a82f5baaa8e9c3d9f28f94699e860fb2e48cc8e0", "annotator": "agent-7", "files": {
+ "pmca/usb/driver/generic/__init__.py": [],
+ "pmca/commands/usb.py": [],
+ "pmca/spk/constants.py": [],
+ "pmca/marketserver/server.py": [
+  {"line_start": 52, "line_end": 52, "name": "tlslite.X509CertChain", "class": "A", "kind": "public_key"},
+  {"line_start": 53, "line_end": 53, "name": "self.certChain.parsePemList", "class": "A", "kind": "public_key"},
+  {"line_start": 54, "line_end": 54, "name": "tlslite.parsePEMKey", "class": "A", "kind": "key_handling"},
+  {"line_start": 58, "line_end": 58, "name": "sock.handshakeServer", "class": "A", "kind": "tls"}
+ ],
+ "pmca/platform/android.py": [],
+ "pmca/usb/sony.py": [
+  {"line_start": 926, "line_end": 926, "name": "SHA256.new", "class": "A", "kind": "hash"}
+ ],
+ "pmca/apk/__init__.py": [
+  {"line_start": 28, "line_end": 28, "name": "ContentInfo.load", "class": "A", "kind": "public_key"}
+ ],
+ "pmca/util/http.py": [
+  {"line_start": 27, "line_end": 27, "name": "HTTPSHandler", "class": "B", "kind": "tls"},
+  {"line_start": 27, "line_end": 27, "name": "ssl.create_default_context", "class": "A", "kind": "tls"}
+ ]
+}}
