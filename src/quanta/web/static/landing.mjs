@@ -423,8 +423,9 @@ function setEngine(ver, animate) {
 }
 
 /* Coming next opens like the demo video at 0:20: the scene fades, a beam rises, lies flat and
-   runs out to both edges, and the horizon draws itself in hex digits outward from it. Leaving,
-   the page collapses into the horizon line. The timings are the video's, with the click at 0. */
+   runs out to both edges, and the horizon draws itself in hex digits outward from it, over
+   every card; then it opens from its middle onto coming next. Leaving, the page collapses into
+   the horizon line. The timings up to the drop are the video's, with the click at 0. */
 const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
 const lerp = (a, b, k) => a + (b - a) * k;
 const seg = (x, a, b) => clamp((x - a) / (b - a));
@@ -441,12 +442,12 @@ const hash = (i, salt = 0) => {
   return (x >>> 0) / 4294967296;
 };
 const HEX = "0123456789abcdef";
-const T = { out: 0.26, lineTurn: 0.16, drop: 0.38, lineFade: [0.46, 1.0], field: [0.38, 1.78], photoIn: [0.48, 1.98], brandIn: 0.53, end: 2.4 };
+const T = { out: 0.26, lineTurn: 0.16, drop: 0.38, lineFade: [0.46, 1.0], field: [0.38, 1.18], photoIn: [0.48, 1.3], swap: 1.0, open: [1.3, 1.9] };
 
 // The horizon photograph, turned so the limb lies nearly flat, re-drawn as hex digits (the
 // video's Horizon), sized to the stage: u turns the video's 1920-wide geometry into this width.
 class Horizon {
-  constructor(img, W, H, { limb, zoom = 1.75, theta = 0.303, cell = 12 }) {
+  constructor(img, W, H, { limb, zoom = 1.75, theta = 0.303, cell = 22 }) {
     Object.assign(this, { img, W, H, limb, zoom, theta, cell, u: Math.max(W, 900) / 1920 });
     this.cols = Math.ceil(W / cell);
     this.rows = Math.ceil(H / cell);
@@ -498,16 +499,17 @@ class Horizon {
       for (let x = 0; x < cols; x++) {
         const i = y * cols + x;
         const L = this.L[i];
-        if (L < 0.06) continue;
         const age = now - (start + spread * Math.pow(dist, 0.8) + 0.22 * hash(i, 7));
         if (age < 0) continue;
-        let ch, r = this.r[i], g = this.g[i], b = this.b[i];
+        // Where the photograph is dark, faint blue digits, so the field covers every card.
+        const dark = L < 0.06;
+        let ch, r = dark ? 34 : this.r[i], g = dark ? 78 : this.g[i], b = dark ? 140 : this.b[i];
         if (age < 0.16) {
           ch = HEX[(hash(i, frame) * 16) | 0];
           const w = 0.6 * (1 - age / 0.16);
           r = lerp(r, 255, w); g = lerp(g, 255, w); b = lerp(b, 255, w);
-        } else ch = RAMP[Math.min(RAMP.length - 1, Math.floor(L * RAMP.length))];
-        ctx.fillStyle = `rgba(${r | 0},${g | 0},${b | 0},${clamp(age / 0.1).toFixed(3)})`;
+        } else ch = dark ? HEX[(hash(i, 3) * 16) | 0] : RAMP[Math.min(RAMP.length - 1, Math.floor(L * RAMP.length))];
+        ctx.fillStyle = `rgba(${r | 0},${g | 0},${b | 0},${(clamp(age / 0.1) * (dark ? 0.55 : 1)).toFixed(3)})`;
         ctx.fillText(ch, x * c, y * c);
       }
     }
@@ -576,11 +578,32 @@ function sized(canvas, W, H) {
   return ctx;
 }
 
-// The limb sits 65% of the way down the part of the stage on screen, as it sat in the video.
+// The limb sits in the middle of the part of the stage on screen, where the horizon opens.
 function limbOnScreen(box) {
   const top = Math.max(box.top, 0);
   const bottom = Math.min(box.bottom, window.innerHeight);
-  return Math.round(top + 0.65 * Math.max(0, bottom - top) - box.top);
+  return Math.round(top + 0.5 * Math.max(0, bottom - top) - box.top);
+}
+
+/* The horizon opens from its line: a band with soft edges, cut out of the drawing and widening
+   until it clears the stage, while what is left fades. */
+function openFrom(ctx, W, H, L, k) {
+  if (k <= 0) return;
+  const soft = 90;
+  const half = k * (Math.max(L, H - L) + soft);
+  const span = 2 * (half + soft);
+  ctx.save();
+  ctx.globalCompositeOperation = "destination-out";
+  const g = ctx.createLinearGradient(0, L - half - soft, 0, L + half + soft);
+  g.addColorStop(0, "rgba(0,0,0,0)");
+  g.addColorStop(soft / span, "#000");
+  g.addColorStop(1 - soft / span, "#000");
+  g.addColorStop(1, "rgba(0,0,0,0)");
+  ctx.fillStyle = g;
+  ctx.fillRect(0, L - half - soft, W, span);
+  ctx.fillStyle = `rgba(0,0,0,${EASE.inCubic(k).toFixed(3)})`;
+  ctx.fillRect(0, 0, W, H);
+  ctx.restore();
 }
 
 function frames(paint, until) {
@@ -604,8 +627,8 @@ function settle(...nodes) {
 }
 
 /* Into coming next: the scene fades, drops and blurs; the beam rises, turns flat and runs out
-   to both edges; a blue bloom; the horizon draws outward from the line while the new scene
-   rises over it. Then the horizon fades away behind the cards and leaves the page. */
+   to both edges; a blue bloom; the horizon draws outward from the line until it covers every
+   card, the new scene rises under it, and the horizon opens from its middle and is gone. */
 async function intoNext() {
   horizonParts();
   await engines.img.decode().catch(() => {});
@@ -614,8 +637,6 @@ async function intoNext() {
   const next = $("p-next");
   const { back, front } = engines;
   settle(engine, next, back);
-  back.classList.remove("fading");
-  stage.classList.add("moving");
   const box = stage.getBoundingClientRect();
   const W = Math.round(box.width);
   const H = Math.round(box.height);
@@ -648,24 +669,18 @@ async function intoNext() {
       bctx.translate(-W / 2, -L);
       horizon.draw(bctx, s, { start: T.field[0], spread: T.field[1] - T.field[0], photo });
       bctx.restore();
+      openFrom(bctx, W, H, L, EASE.inOutCubic(seg(s, T.open[0], T.open[1])));
     }
-    if (s >= T.brandIn && !swapped) {
+    if (s >= T.swap && !swapped) {
       swapped = true;
       engine.classList.remove("on", "leaving");
       next.classList.add("on", "rising");
     }
-  }, T.end);
+  }, T.open[1]);
   if (!ok) return;
   front.remove();
-  const mine = engines.run;
-  back.classList.add("fading");
-  setTimeout(() => {
-    if (engines.run !== mine) return;
-    back.remove();
-    back.classList.remove("fading");
-    settle(next);
-    stage.classList.remove("moving");
-  }, 1250);
+  back.remove();
+  settle(next);
 }
 
 /* Out of coming next: the page collapses into the horizon line, the line flares and fades
@@ -677,7 +692,6 @@ async function outOfNext(ver) {
   const next = $("p-next");
   const { back, front } = engines;
   settle(engine, next, back);
-  stage.classList.add("moving");
   const box = stage.getBoundingClientRect();
   const W = Math.round(box.width);
   const H = Math.round(box.height);
@@ -702,8 +716,6 @@ async function outOfNext(ver) {
   front.remove();
   back.remove();
   settle(engine, back);
-  back.classList.remove("fading");
-  stage.classList.remove("moving");
 }
 
 function showEngine(id, animate) {
@@ -722,7 +734,6 @@ function showEngine(id, animate) {
   settle(engine, next);
   engines.front?.remove();
   engines.back?.remove();
-  document.querySelector(".eng-stage").classList.remove("moving");
   engine.classList.toggle("on", !toNext);
   next.classList.toggle("on", toNext);
   if (!toNext) setEngine(id, animate);
