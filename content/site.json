@@ -1143,6 +1143,22 @@
       "en": "{rate} lines an hour is the fastest pace at which code review stays effective (Kemerer and Paulk, 2009). A floor: no time is counted for cataloguing or mapping deadlines.",
       "ar": "{rate} سطر في الساعة هو أسرع معدل تبقى عنده مراجعة الشيفرة فعّالة (Kemerer وPaulk، 2009). وهو حد أدنى: لم يُحتسب أي وقت للفهرسة أو لربط المواعيد النهائية."
     },
+    "fig.other.format": {
+      "en": "{n}%",
+      "ar": "{n}٪"
+    },
+    "fig.other.label": {
+      "en": "of hashing, symmetric, MAC and other crypto calls found, in 120 repositories it had not seen",
+      "ar": "من استدعاءات التجزئة والتشفير المتماثل و MAC وغيرها وُجدت، في 120 مستودعًا لم يرها المحرك"
+    },
+    "fig.other.measured": {
+      "en": "{found} of {total} hand-labelled calls into crypto libraries, other than public key and TLS, in 120 public repositories sampled after the engine was frozen (95% interval {lo} to {hi} percent).",
+      "ar": "{found} من {total} استدعاءً موسومًا يدويًا إلى مكتبات التشفير، عدا المفاتيح العامة و TLS، في 120 مستودعًا عامًا سُحبت بعد تجميد المحرك (فترة ثقة 95% من {lo} إلى {hi} بالمئة)."
+    },
+    "fig.other.method": {
+      "en": "Three samples drawn by pre-registered sampling rules, labelled line by line by annotators who never saw the engine's output, the labels hashed before scoring, then scored once with the engine frozen.",
+      "ar": "ثلاث عينات سُحبت بقواعد معاينة مسجّلة مسبقًا، ووسمها سطرًا بسطر واسمون لم يروا مخرجات المحرك، وحُفظت بصمة الوسوم قبل القياس، ثم قيست مرة واحدة والمحرك مجمّد."
+    },
     "fig.overdue.format": {
       "en": "{n}",
       "ar": "{n}"
@@ -1159,6 +1175,26 @@
       "en": "Each call classified by its algorithm and mapped to the published milestones: in NIST SP 800-131A, MD5 is not approved and three-key Triple DES is disallowed after 2023.",
       "ar": "صُنّف كل استدعاء حسب خوارزميته ورُبط بالمعالم المنشورة: في NIST SP 800-131A لا تُعتمد MD5 ويُمنع Triple DES ثلاثي المفاتيح بعد 2023."
     },
+    "fig.pktls.format": {
+      "en": "{n}%",
+      "ar": "{n}٪"
+    },
+    "fig.pktls.label": {
+      "en": "of public key and TLS calls found, in the same repositories",
+      "ar": "من استدعاءات المفاتيح العامة و TLS وُجدت، في المستودعات نفسها"
+    },
+    "fig.pktls.limit": {
+      "en": "Cryptography inside libraries that are not crypto libraries, such as MQTT, Redis or SSH clients, is not in these figures. Counting it too, recall is {ab} percent.",
+      "ar": "التشفير داخل مكتبات غير تشفيرية، مثل MQTT و Redis وعملاء SSH، ليس ضمن هذه الأرقام. وعند احتسابه أيضًا تصبح نسبة الاسترجاع {ab} بالمئة."
+    },
+    "fig.pktls.measured": {
+      "en": "{found} of {total} hand-labelled public key and TLS calls into crypto libraries (95% interval {lo} to {hi} percent). On the latest independent sample of 60 repositories: {latest_found} of {latest_total} ({latest} percent).",
+      "ar": "{found} من {total} استدعاءً موسومًا يدويًا للمفاتيح العامة و TLS إلى مكتبات التشفير (فترة ثقة 95% من {lo} إلى {hi} بالمئة). وفي آخر عينة مستقلة من 60 مستودعًا: {latest_found} من {latest_total} ({latest} بالمئة)."
+    },
+    "fig.pktls.method": {
+      "en": "Three samples drawn by pre-registered sampling rules, labelled line by line by annotators who never saw the engine's output, the labels hashed before scoring, then scored once with the engine frozen.",
+      "ar": "ثلاث عينات سُحبت بقواعد معاينة مسجّلة مسبقًا، ووسمها سطرًا بسطر واسمون لم يروا مخرجات المحرك، وحُفظت بصمة الوسوم قبل القياس، ثم قيست مرة واحدة والمحرك مجمّد."
+    },
     "fig.precision.format": {
       "en": "{n}%",
       "ar": "{n}٪"
@@ -1168,32 +1204,12 @@
       "ar": "مما أبلغ عنه كان تشفيرًا فعلًا"
     },
     "fig.precision.measured": {
-      "en": "{found} of {total} reported calls on the same held-out set were real cryptographic calls (95% lower bound {lo} percent).",
-      "ar": "{found} من {total} استدعاءً أُبلغ عنه في المجموعة نفسها كانت استدعاءات تشفيرية حقيقية (الحد الأدنى لفترة الثقة 95% هو {lo} بالمئة)."
+      "en": "{found} of {total} reported calls in the same 120 repositories were real cryptographic calls (95% lower bound {lo} percent).",
+      "ar": "{found} من {total} استدعاءً أُبلغ عنه في المستودعات الـ120 نفسها كانت استدعاءات تشفيرية حقيقية (الحد الأدنى لفترة الثقة 95% هو {lo} بالمئة)."
     },
     "fig.precision.method": {
       "en": "Every reported call was matched against the hand labels. Anything without a label counts as a false alarm.",
       "ar": "طوبق كل استدعاء مُبلغ عنه مع الوسوم اليدوية، وكل ما لا يقابله وسم يُحسب إنذارًا كاذبًا."
-    },
-    "fig.recall.format": {
-      "en": "{n}%",
-      "ar": "{n}٪"
-    },
-    "fig.recall.label": {
-      "en": "of labelled cryptographic calls found in 20 repositories it had never seen",
-      "ar": "من الاستدعاءات التشفيرية الموسومة عُثر عليها في 20 مستودعًا لم يرها من قبل"
-    },
-    "fig.recall.limit": {
-      "en": "Public-key and TLS calls hidden behind other libraries are the hardest case: {pk_found} of {pk_total} on this set.",
-      "ar": "استدعاءات المفتاح العام وTLS المخفية خلف مكتبات أخرى هي الحالة الأصعب: {pk_found} من {pk_total} في هذه المجموعة."
-    },
-    "fig.recall.measured": {
-      "en": "{found} of {total} hand-labelled cryptographic calls in 20 public repositories sampled after the rules were frozen (95% interval {lo} to {hi} percent).",
-      "ar": "{found} من {total} استدعاءً تشفيريًا موسومًا يدويًا في 20 مستودعًا عامًا سُحبت بعد تجميد القواعد (فترة ثقة 95% من {lo} إلى {hi} بالمئة)."
-    },
-    "fig.recall.method": {
-      "en": "Repositories drawn by a pre-registered sampling rule, labelled line by line, then scored once with the rules frozen. The protocol was hashed before the labels were written.",
-      "ar": "سُحبت المستودعات بقاعدة معاينة مسجّلة مسبقًا، ووُسمت سطرًا بسطر، ثم قيست مرة واحدة والقواعد مجمّدة. وحُفظت بصمة البروتوكول قبل كتابة الوسوم."
     },
     "fig.speed.format": {
       "en": "{n}s",
@@ -2056,12 +2072,12 @@
       "ar": "خطأ مزروع اجتاز اختبارات المشروع الثمانية كلها، وكشفته مقارنة المخرجات."
     },
     "refs.check.heldout.name": {
-      "en": "Held-out set: 20 repositories never seen, scored once",
-      "ar": "مجموعة محجوبة: 20 مستودعًا لم تُرَ من قبل، قيست مرة واحدة"
+      "en": "Held-out sets: 120 repositories never seen, scored once",
+      "ar": "مجموعات محجوبة: 120 مستودعًا لم تُرَ من قبل، قيست مرة واحدة"
     },
     "refs.check.heldout.result": {
-      "en": "71 of 71 findings correct. 70 of 74 labelled calls found (94.6%).",
-      "ar": "71 من 71 نتيجة صحيحة. وُجد 70 من 74 استدعاءً موسومًا (94.6%)."
+      "en": "607 of 630 findings correct (96.3%). 566 of 638 labelled calls into crypto libraries found (88.7%).",
+      "ar": "607 من 630 نتيجة صحيحة (96.3%). وُجد 566 من 638 استدعاءً موسومًا إلى مكتبات التشفير (88.7%)."
     },
     "refs.check.layout.name": {
       "en": "Layout check: 8 widths plus landscape, English and Arabic",
@@ -2072,12 +2088,12 @@
       "ar": "172 حالة شاشة: لا تداخل ولا فيض ولا تمرير جانبي ولا هدف لمس صغير ولا ضعف في التباين."
     },
     "refs.check.pktls.name": {
-      "en": "Public key and TLS, same set",
-      "ar": "المفاتيح العامة وTLS، المجموعة نفسها"
+      "en": "Public key and TLS, same sets",
+      "ar": "المفاتيح العامة و TLS، المجموعات نفسها"
     },
     "refs.check.pktls.result": {
-      "en": "4 of 8 found. Our known weak spot.",
-      "ar": "وُجد 4 من 8. نقطة ضعفنا المعروفة."
+      "en": "203 of 256 found (79.3%), against 114 for the previous engine. Still the hardest case.",
+      "ar": "وُجد 203 من 256 (79.3%)، مقابل 114 للمحرك السابق. وما زالت الحالة الأصعب."
     },
     "refs.check.release.name": {
       "en": "Design and development sets: 40 repositories, rechecked at release",
@@ -2108,8 +2124,8 @@
       "ar": "الوقت والتكلفة: 60 مستودعًا موسومًا"
     },
     "refs.check.timecost.result": {
-      "en": "Median scan 15.3 seconds. 80 calls already past a published deadline.",
-      "ar": "وسيط زمن الفحص 15.3 ثانية. 80 استدعاءً تجاوزت موعدًا منشورًا."
+      "en": "Median scan 11.4 seconds. 80 calls already past a published deadline.",
+      "ar": "وسيط زمن الفحص 11.4 ثانية. 80 استدعاءً تجاوزت موعدًا منشورًا."
     },
     "refs.check.trace.name": {
       "en": "Trace check against the projects' own tests",
