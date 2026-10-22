@@ -14,8 +14,53 @@ async function getJson(path) {
 }
 
 /* Hero: the horizon photograph, re-drawn as a field of hex digits -------------------------
-   The photo fades in faint first; the digits resolve over it. Drawn once per size. */
+   The photo fades in faint first; the digits resolve over it. Built once per size: each row's
+   digits on one strip, and the photograph's colour per cell on a field. A second and a half
+   after they resolve, the digits start to flow along their rows, one row right and the next
+   left, slowly and without end, while every cell keeps its colour: the picture stays still. */
 const RAMP = " .:-=+*0123456789abcdef";
+const FLOW = { speed: 7, wait: 1500, ease: 3000 }; // px a second; ms before it starts; ms to full speed
+const hero = { glyphs: null, field: null, ctx: null, cols: 0, rows: 0, cell: 0, ratio: 1, pos: 0, from: 0, last: 0, raf: 0, seen: true };
+
+function paintHero() {
+  const { ctx, glyphs, field, cols, rows, cell, ratio, pos } = hero;
+  const width = cols * cell;
+  const band = cell * ratio;
+  ctx.globalCompositeOperation = "source-over";
+  ctx.imageSmoothingEnabled = true; // digits glide between pixels
+  ctx.clearRect(0, 0, width, rows * cell);
+  for (let y = 0; y < rows; y++) {
+    const shift = (((y % 2 ? -pos : pos) % width) + width) % width;
+    for (const x of [shift - width, shift]) {
+      ctx.drawImage(glyphs, 0, y * band, width * ratio, band, x, y * cell, width, cell);
+    }
+  }
+  ctx.globalCompositeOperation = "source-in";
+  ctx.imageSmoothingEnabled = false; // one flat colour per cell
+  ctx.drawImage(field, 0, 0, width, rows * cell);
+  ctx.globalCompositeOperation = "source-over";
+}
+
+function flowHero(now) {
+  hero.raf = 0;
+  if (!hero.seen || !hero.ctx) return;
+  const dt = Math.min(0.1, (now - (hero.last || now)) / 1000);
+  hero.last = now;
+  const ramp = clamp((now - hero.from) / FLOW.ease);
+  hero.pos += FLOW.speed * ramp * ramp * (3 - 2 * ramp) * dt;
+  if (ramp > 0) paintHero();
+  hero.raf = requestAnimationFrame(flowHero);
+}
+
+function startFlow() {
+  if (reduceMotion() || hero.from) return;
+  hero.from = performance.now() + FLOW.wait;
+  new IntersectionObserver(([entry]) => {
+    hero.seen = entry.isIntersecting;
+    hero.last = 0;
+    if (hero.seen && !hero.raf) hero.raf = requestAnimationFrame(flowHero);
+  }).observe($("hero-media"));
+}
 
 function drawAscii() {
   const canvas = $("hero-ascii");
@@ -40,27 +85,42 @@ function drawAscii() {
     sctx.scale(-1, 1);
   }
   sctx.drawImage(image, (cols - w) / 2, (rows - h) * 0.45, w, h);
-  const pixels = sctx.getImageData(0, 0, cols, rows).data;
+  const pixels = sctx.getImageData(0, 0, cols, rows);
+  // The field: each cell's colour, and nothing where the photograph is too dark for a digit.
+  const field = document.createElement("canvas");
+  field.width = cols;
+  field.height = rows;
+  // The strip: each row's digits in white, ready to slide; a dark cell gets a hex digit, so
+  // a row never carries a gap into the lit part.
+  const glyphs = document.createElement("canvas");
+  glyphs.width = Math.round(cols * cell * ratio);
+  glyphs.height = Math.round(rows * cell * ratio);
+  const gctx = glyphs.getContext("2d");
+  gctx.scale(ratio, ratio);
+  gctx.font = `500 ${cell + 1}px "Geist Mono", monospace`;
+  gctx.textBaseline = "top";
+  gctx.fillStyle = "#fff";
+  const d = pixels.data;
+  for (let y = 0; y < rows; y++) {
+    for (let x = 0; x < cols; x++) {
+      const i = (y * cols + x) * 4;
+      const light = (0.2126 * d[i] + 0.7152 * d[i + 1] + 0.0722 * d[i + 2]) / 255;
+      d[i + 3] = light < 0.06 ? 0 : 255;
+      const ch = light < 0.06 ? HEX[(hash(i, 5) * 16) | 0] : RAMP[Math.min(RAMP.length - 1, Math.floor(light * RAMP.length))];
+      gctx.fillText(ch, x * cell, y * cell);
+    }
+  }
+  field.getContext("2d").putImageData(pixels, 0, 0);
   canvas.width = Math.round(rect.width * ratio);
   canvas.height = Math.round(rect.height * ratio);
   const ctx = canvas.getContext("2d");
   ctx.scale(ratio, ratio);
-  ctx.clearRect(0, 0, rect.width, rect.height);
-  ctx.font = `500 ${cell + 1}px "Geist Mono", monospace`;
-  ctx.textBaseline = "top";
-  for (let y = 0; y < rows; y++) {
-    for (let x = 0; x < cols; x++) {
-      const i = (y * cols + x) * 4;
-      const r = pixels[i], g = pixels[i + 1], b = pixels[i + 2];
-      const light = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
-      if (light < 0.06) continue;
-      ctx.fillStyle = `rgb(${r},${g},${b})`;
-      ctx.fillText(RAMP[Math.min(RAMP.length - 1, Math.floor(light * RAMP.length))], x * cell, y * cell);
-    }
-  }
+  Object.assign(hero, { glyphs, field, ctx, cols, rows, cell, ratio });
+  paintHero();
   requestAnimationFrame(() => {
     canvas.classList.add("ready");
     media.classList.add("has-ascii");
+    startFlow();
   });
 }
 
