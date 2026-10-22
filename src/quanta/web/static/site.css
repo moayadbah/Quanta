@@ -279,6 +279,25 @@ button.back { border: 0; background: none; padding: 0; justify-self: start; }
 .hero-ascii { opacity: 0; transform: scale(1.015); transition: opacity 1200ms var(--ease), transform 1600ms var(--ease); }
 .hero-ascii.ready { opacity: 1; transform: none; }
 :root[dir="rtl"] .hero-media img { transform: scaleX(-1); }
+/* What is coming: a faint red light in the empty corner above the horizon, strong at the
+   corner and gone well before the digits. It arrives last, slowly, once the digits move. */
+.hero-media::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0; mix-blend-mode: screen;
+  background:
+    radial-gradient(ellipse 38% 52% at 100% 0%, rgba(255, 52, 52, 0.72) 0%, rgba(224, 28, 38, 0.34) 32%, rgba(170, 12, 22, 0.1) 66%, rgba(170, 12, 22, 0) 100%),
+    radial-gradient(ellipse 62% 78% at 100% 0%, rgba(160, 10, 20, 0.16) 0%, rgba(160, 10, 20, 0) 100%);
+  transition: opacity 4000ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+:root[dir="rtl"] .hero-media::after { transform: scaleX(-1); }
+/* A phone's hero is tall, so there the light is a round corner sized to the width, and
+   softer, leaving the buttons above it clear. */
+@media (max-width: 640px) {
+  .hero-media::after {
+    background:
+      radial-gradient(circle 78vw at 100% 0%, rgba(255, 52, 52, 0.36) 0%, rgba(224, 28, 38, 0.16) 34%, rgba(170, 12, 22, 0.05) 68%, rgba(170, 12, 22, 0) 100%);
+  }
+}
+.hero-media.threat::after { opacity: 1; }
 .hero-scrim { position: absolute; inset: 0; background: linear-gradient(to top, #000 0%, rgba(0, 0, 0, 0.72) 32%, rgba(0, 0, 0, 0) 70%), linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0) 22%); }
 .hero-copy { position: relative; z-index: 2; width: 100%; padding-bottom: 104px; display: grid; gap: 24px; justify-items: start; }
 /* The horizon crosses the whole hero, headline included: large bright type reads over it.
