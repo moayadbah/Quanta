@@ -15,11 +15,11 @@ async function getJson(path) {
 
 /* Hero: the horizon photograph, re-drawn as a field of hex digits -------------------------
    The photo fades in faint first; the digits resolve over it. Built once per size: each row's
-   digits on one strip, and the photograph's colour per cell on a field. A second and a half
+   digits on one strip, and the photograph's colour per cell on a field. Half a second
    after they resolve, the digits start to flow along their rows, one row right and the next
    left, slowly and without end, while every cell keeps its colour: the picture stays still. */
 const RAMP = " .:-=+*0123456789abcdef";
-const FLOW = { speed: 7, wait: 1500, ease: 3000 }; // px a second; ms before it starts; ms to full speed
+const FLOW = { speed: 7, wait: 500, ease: 3000 }; // px a second; ms before it starts; ms to full speed
 const hero = { glyphs: null, field: null, ctx: null, cols: 0, rows: 0, cell: 0, ratio: 1, pos: 0, from: 0, last: 0, raf: 0, seen: true };
 
 function paintHero() {
@@ -53,8 +53,11 @@ function flowHero(now) {
 }
 
 function startFlow() {
-  if (reduceMotion() || hero.from) return;
+  if (hero.from) return;
   hero.from = performance.now() + FLOW.wait;
+  // The red corner (site.css) comes in as the digits start to move.
+  setTimeout(() => $("hero-media").classList.add("threat"), reduceMotion() ? 0 : FLOW.wait);
+  if (reduceMotion()) return;
   new IntersectionObserver(([entry]) => {
     hero.seen = entry.isIntersecting;
     hero.last = 0;
