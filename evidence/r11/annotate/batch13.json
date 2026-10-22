@@ -1,0 +1,17 @@
+[
+ {
+  "repo": "sv3nbeast/ShiroScan",
+  "commit": "5127f5b3dc06568e6a96bc2c6258965f06bc4d2d",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/sv3nbeast__ShiroScan",
+  "files": [
+   "moule/plugins/CommonsCollections4.py",
+   "moule/plugins/CommonsCollectionsK1.py",
+   "moule/plugins/CommonsBeanutils1.py",
+   "moule/plugins/Myfaces1.py",
+   "moule/plugins/Jdk8u20.py",
+   "moule/plugins/CommonsCollections7.py",
+   "moule/plugins/CommonsCollections9.py",
+   "moule/plugins/URLDNS.py"
+  ]
+ }
+]

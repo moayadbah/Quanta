@@ -1,0 +1,35 @@
+{
+ "repo": "alibaba/tidevice",
+ "commit": "7bfd4d64da636500db688befbb64851078913589",
+ "annotator": "agent-5",
+ "files": {
+  "tidevice/_device.py": [],
+  "tidevice/_imagemounter.py": [],
+  "scripts/plistdump-tcp-proxy.py": [
+   {"line_start": 103, "line_end": 103, "name": "ssl.create_default_context", "class": "A", "kind": "tls"},
+   {"line_start": 108, "line_end": 109, "name": "self.sslctx.load_cert_chain", "class": "A", "kind": "tls"},
+   {"line_start": 146, "line_end": 146, "name": "C.SSL_CTX_set_quiet_shutdown", "class": "A", "kind": "tls", "note": "OpenSSL libssl function called through cffi (ffi.dlopen(None)); configures the TLS context's shutdown behaviour"},
+   {"line_start": 231, "line_end": 231, "name": "self.sslctx.wrap_socket", "class": "A", "kind": "tls"},
+   {"line_start": 383, "line_end": 383, "name": "self.sslctx.wrap_socket", "class": "A", "kind": "tls"}
+  ],
+  "tidevice/_safe_socket.py": [
+   {"line_start": 160, "line_end": 160, "name": "ssl.SSLContext", "class": "A", "kind": "tls"},
+   {"line_start": 163, "line_end": 163, "name": "context.set_ciphers", "class": "A", "kind": "tls"},
+   {"line_start": 169, "line_end": 169, "name": "context.load_cert_chain", "class": "A", "kind": "tls"},
+   {"line_start": 171, "line_end": 171, "name": "context.wrap_socket", "class": "A", "kind": "tls"}
+  ],
+  "tidevice/__main__.py": [],
+  "tidevice/_ca.py": [
+   {"line_start": 25, "line_end": 25, "name": "load_publickey", "class": "A", "kind": "key_handling", "note": "OpenSSL.crypto.load_publickey"},
+   {"line_start": 29, "line_end": 29, "name": "PKey", "class": "A", "kind": "key_handling", "note": "OpenSSL.crypto.PKey key object instantiated for the generate_key call on the next line"},
+   {"line_start": 30, "line_end": 30, "name": "root_key.generate_key", "class": "A", "kind": "key_handling", "note": "RSA 2048 key generation"},
+   {"line_start": 38, "line_end": 38, "name": "dump_certificate", "class": "A", "kind": "key_handling", "note": "certificate serialisation to PEM; first of three units on this line"},
+   {"line_start": 38, "line_end": 38, "name": "dump_privatekey", "class": "A", "kind": "key_handling", "note": "private key serialisation to PEM"},
+   {"line_start": 38, "line_end": 38, "name": "dump_certificate", "class": "A", "kind": "key_handling", "note": "certificate serialisation to PEM; third unit on this line"},
+   {"line_start": 69, "line_end": 69, "name": "X509", "class": "A", "kind": "public_key", "note": "pyOpenSSL certificate object created to be filled and signed, treated as the builder under B2d; its set_* setters are not units"},
+   {"line_start": 77, "line_end": 77, "name": "cert.sign", "class": "A", "kind": "public_key"},
+   {"line_start": 82, "line_end": 82, "name": "X509Req", "class": "A", "kind": "public_key", "note": "pyOpenSSL CSR object, treated as the CSR builder under B2d; its set_* setters are not units"},
+   {"line_start": 89, "line_end": 89, "name": "req.sign", "class": "A", "kind": "public_key"}
+  ]
+ }
+}

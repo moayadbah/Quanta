@@ -1,0 +1,100 @@
+{
+ "pooled": {
+  "n1": 58,
+  "n2": 55,
+  "matched": 55,
+  "same_kind": 55,
+  "same_class": 53,
+  "f1": 0.9735,
+  "kind_agreement": 1.0,
+  "class_agreement": 0.9636
+ },
+ "repositories": {
+  "speechbrain/speechbrain": {
+   "n1": 0,
+   "n2": 0,
+   "matched": 0,
+   "same_kind": 0,
+   "same_class": 0,
+   "f1": null
+  },
+  "mitogen-hq/mitogen": {
+   "n1": 1,
+   "n2": 1,
+   "matched": 1,
+   "same_kind": 1,
+   "same_class": 1,
+   "f1": 1.0
+  },
+  "citizenlab/test-lists": {
+   "n1": 2,
+   "n2": 1,
+   "matched": 1,
+   "same_kind": 1,
+   "same_class": 1,
+   "f1": 0.6667
+  },
+  "Grim-es/material-combiner-addon": {
+   "n1": 4,
+   "n2": 4,
+   "matched": 4,
+   "same_kind": 4,
+   "same_class": 4,
+   "f1": 1.0
+  },
+  "emmabostian/developer-portfolios": {
+   "n1": 2,
+   "n2": 2,
+   "matched": 2,
+   "same_kind": 2,
+   "same_class": 2,
+   "f1": 1.0
+  },
+  "jertel/elastalert2": {
+   "n1": 6,
+   "n2": 6,
+   "matched": 6,
+   "same_kind": 6,
+   "same_class": 6,
+   "f1": 1.0
+  },
+  "it-projects-llc/odoo-saas-tools": {
+   "n1": 5,
+   "n2": 3,
+   "matched": 3,
+   "same_kind": 3,
+   "same_class": 1,
+   "f1": 0.75
+  },
+  "jina-ai/vectordb": {
+   "n1": 1,
+   "n2": 1,
+   "matched": 1,
+   "same_kind": 1,
+   "same_class": 1,
+   "f1": 1.0
+  },
+  "sv3nbeast/ShiroScan": {
+   "n1": 32,
+   "n2": 32,
+   "matched": 32,
+   "same_kind": 32,
+   "same_class": 32,
+   "f1": 1.0
+  },
+  "NoizAI/HelixWorld": {
+   "n1": 5,
+   "n2": 5,
+   "matched": 5,
+   "same_kind": 5,
+   "same_class": 5,
+   "f1": 1.0
+  }
+ },
+ "only_first": [
+  "citizenlab/test-lists scripts/legacy/lib/lists/https.py:38 urllib2.HTTPSHandler.__init__",
+  "it-projects-llc/odoo-saas-tools saas_server_backup_ftp/models/res_config.py:95 cnopts.hostkeys.add",
+  "it-projects-llc/odoo-saas-tools saas_server_backup_ftp/models/saas_server.py:44 cnopts.hostkeys.add"
+ ],
+ "only_second": []
+}

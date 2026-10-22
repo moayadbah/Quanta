@@ -1,0 +1,21 @@
+{
+ "repo": "rackslab/Slurm-web",
+ "commit": "77b8c1dfd0ab4f36c5e9f895dacf57959bab6eb8",
+ "annotator": "agent-1",
+ "files": {
+  "slurmweb/tests/apps/test_gateway.py": [],
+  "dev/lib/devenv/constants.py": [],
+  "slurmweb/tests/views/test_agent.py": [],
+  "dev/lib/crawler/slurmrestd.py": [
+   {"line_start": 282, "line_end": 284, "name": "self.auth.jwt_manager.generate", "class": "B", "kind": "token", "note": "Generates a JWT for slurmrestd on the JWT manager held by the authentifier; the manager object is taken to be the rfl library's JWT manager (not a repository-defined function), which could not be confirmed from the listed files."}
+  ],
+  "slurmweb/views/auth/anonymous.py": [
+   {"line_start": 23, "line_end": 26, "name": "current_app.jwt.generate", "class": "B", "kind": "token", "note": "JWT generation on the app's jwt manager, which the rfl RFLTokenizedRBACWebApp mixin provides (rfl is a third-party, non-crypto library)."}
+  ],
+  "slurmweb/exec/main.py": [],
+  "slurmweb/apps/agent.py": [
+   {"line_start": 71, "line_end": 78, "name": "RFLTokenizedRBACWebApp.__init__", "class": "B", "kind": "token", "note": "Initialises the rfl token mixin with the JWT audience, algorithm and key, i.e. configures JWT decoding/verification."}
+  ],
+  "slurmweb/apps/connect.py": []
+ }
+}

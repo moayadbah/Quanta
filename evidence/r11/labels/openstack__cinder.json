@@ -1,0 +1,29 @@
+{
+ "repo": "openstack/cinder",
+ "commit": "270ba9ea896827272485526127c2cbcb3a16a3ee",
+ "annotator": "agent-9",
+ "files": {
+  "cinder/volume/drivers/toyou/acs5000/acs5000_common.py": [],
+  "cinder/volume/drivers/qnap.py": [],
+  "cinder/volume/drivers/ibm/ibm_storage/ds8k_connection.py": [
+   {"line_start": 62, "line_end": 62, "name": "ssl.PEM_cert_to_DER_cert", "class": "A", "kind": "key_handling"},
+   {"line_start": 64, "line_end": 64, "name": "hashlib.sha256", "class": "A", "kind": "hash"},
+   {"line_start": 65, "line_end": 65, "name": "hashlib.sha256", "class": "A", "kind": "hash"},
+   {"line_start": 79, "line_end": 79, "name": "load_certificate", "class": "A", "kind": "key_handling", "note": "OpenSSL.crypto certificate parsing"},
+   {"line_start": 110, "line_end": 110, "name": "ssl.SSLContext", "class": "A", "kind": "tls"},
+   {"line_start": 111, "line_end": 111, "name": "context.wrap_socket", "class": "A", "kind": "tls"}
+  ],
+  "cinder/volume/drivers/ibm/gpfs.py": [
+   {"line_start": 1454, "line_end": 1454, "name": "ssh.load_host_keys", "class": "A", "kind": "key_handling", "note": "paramiko SSH host key loading; SSH session setup calls not counted"},
+   {"line_start": 1474, "line_end": 1474, "name": "paramiko.RSAKey.from_private_key_file", "class": "A", "kind": "key_handling", "note": "paramiko private key loading"}
+  ],
+  "cinder/volume/drivers/ibm/ibm_storage/ds8k_helper.py": [],
+  "cinder/backup/manager.py": [
+   {"line_start": 475, "line_end": 475, "name": "key_manager.API", "class": "B", "kind": "key_handling", "note": "castellan key manager client"},
+   {"line_start": 845, "line_end": 845, "name": "key_manager.API", "class": "B", "kind": "key_handling", "note": "castellan key manager client"},
+   {"line_start": 943, "line_end": 943, "name": "key_manager.API", "class": "B", "kind": "key_handling", "note": "castellan key manager client"}
+  ],
+  "cinder/zonemanager/drivers/brocade/brcd_fabric_opts.py": [],
+  "cinder/image/format_inspector.py": []
+ }
+}

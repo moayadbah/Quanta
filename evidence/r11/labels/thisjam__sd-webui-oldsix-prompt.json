@@ -1,0 +1,10 @@
+{
+ "repo": "thisjam/sd-webui-oldsix-prompt",
+ "commit": "9fb665c34bf8d4d06df8952189923de925913849",
+ "annotator": "agent-6",
+ "files": {
+  "scripts/transerver/Translator.py": [
+   {"line_start": 28, "line_end": 28, "name": "hashlib.md5", "class": "A", "kind": "hash"}
+  ]
+ }
+}

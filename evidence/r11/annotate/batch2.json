@@ -1,0 +1,64 @@
+[
+ {
+  "repo": "ruc-datalab/DeepAnalyze",
+  "commit": "d4dd5cf62ec7ec2579eb85bcab4f24e4782827b9",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/ruc-datalab__DeepAnalyze",
+  "files": [
+   "deepanalyze/ms-swift/swift/llm/infer/deploy.py",
+   "deepanalyze/ms-swift/swift/llm/infer/infer_engine/vllm_engine.py",
+   "deepanalyze/ms-swift/swift/llm/infer/rollout.py",
+   "deepanalyze/ms-swift/swift/llm/infer/infer_engine/sglang_engine.py",
+   "example/4c_competition/file_api.py",
+   "deepanalyze/ms-swift/swift/llm/infer/infer_engine/lmdeploy_engine.py",
+   "deepanalyze/ms-swift/swift/trainers/mixin.py",
+   "deepanalyze/ms-swift/swift/trainers/rlhf_trainer/gkd_trainer.py"
+  ]
+ },
+ {
+  "repo": "jertel/elastalert2",
+  "commit": "162ba49d34485d375b4860694d21361a156cea18",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/jertel__elastalert2",
+  "files": [
+   "elastalert/alerters/dingtalk.py",
+   "elastalert/create_index.py",
+   "tests/util_test.py",
+   "tests/alerters/email_test.py",
+   "tests/alerters/gelf_test.py",
+   "elastalert/alerters/gelf.py",
+   "elastalert/loaders.py",
+   "elastalert/alerters/tencentsms.py"
+  ]
+ },
+ {
+  "repo": "krahabb/meross_lan",
+  "commit": "bafedb4f8563153f9e3494292073551bb28f5f9a",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/krahabb__meross_lan",
+  "files": [
+   "custom_components/meross_lan/merossclient/mqttclient.py",
+   "custom_components/meross_lan/helpers/__init__.py",
+   "custom_components/meross_lan/merossclient/protocol/types/__init__.py",
+   "custom_components/meross_lan/merossclient/cloudapi.py",
+   "tests/helpers.py",
+   "custom_components/meross_lan/helpers/device.py",
+   "custom_components/meross_lan/merossclient/protocol/message.py",
+   "custom_components/meross_lan/merossclient/protocol/__init__.py"
+  ]
+ },
+ {
+  "repo": "yandex-research/tabm",
+  "commit": "28e47ae301c92ec37787dde1ce923a0793f405b4",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/yandex-research__tabm",
+  "files": [
+   "paper/lib/util.py",
+   "paper/lib/data.py"
+  ]
+ },
+ {
+  "repo": "emmabostian/developer-portfolios",
+  "commit": "e4c19b1124348a31e55d3f6f57c760d99803834a",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/emmabostian__developer-portfolios",
+  "files": [
+   "src/check_parking_redirects.py"
+  ]
+ }
+]

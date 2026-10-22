@@ -1,0 +1,21 @@
+{
+ "repo": "it-projects-llc/odoo-saas-tools",
+ "commit": "8e9ad4d06853b668a42a3e8177c8246fd946f0e9",
+ "annotator": "agent-12",
+ "files": {
+  "saas.py": [],
+  "saas_sysadmin_mailgun/models/mailgun.py": [
+   {"line_start": 10, "line_end": 10, "name": "os.urandom", "class": "A", "kind": "random"}
+  ],
+  "saas_portal_signup/__manifest__.py": [],
+  "saas_server_backup_ftp/models/saas_server.py": [
+   {"line_start": 43, "line_end": 43, "name": "paramiko.RSAKey", "class": "B", "kind": "key_handling", "note": "loads an RSA public host key from bytes; paramiko is an SSH library"},
+   {"line_start": 44, "line_end": 44, "name": "cnopts.hostkeys.add", "class": "B", "kind": "key_handling", "note": "registers the trusted host key used for server verification"}
+  ],
+  "saas_server_backup_ftp/models/res_config.py": [
+   {"line_start": 94, "line_end": 94, "name": "paramiko.RSAKey", "class": "B", "kind": "key_handling", "note": "loads an RSA public host key from bytes; paramiko is an SSH library"},
+   {"line_start": 95, "line_end": 95, "name": "cnopts.hostkeys.add", "class": "B", "kind": "key_handling", "note": "registers the trusted host key used for server verification"}
+  ],
+  "saas_portal/models/saas_portal.py": []
+ }
+}

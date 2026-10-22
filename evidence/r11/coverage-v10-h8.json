@@ -1,0 +1,751 @@
+{
+ "repositories": 145,
+ "unmatched": [
+  {
+   "name": "ssl.OPENSSL_VERSION.startswith",
+   "repos": 1,
+   "calls": 1
+  }
+ ],
+ "tls_keyword_calls": [
+  {
+   "name": "__init__",
+   "repos": 5,
+   "keywords": {
+    "verify": 6,
+    "ssl": 7,
+    "ca_certs": 2,
+    "tls": 1,
+    "ssl_context": 4
+   }
+  },
+  {
+   "name": "requests.post",
+   "repos": 3,
+   "keywords": {
+    "verify": 19
+   }
+  },
+  {
+   "name": "aiohttp.TCPConnector",
+   "repos": 2,
+   "keywords": {
+    "ssl": 2
+   }
+  },
+  {
+   "name": "asyncio.open_connection",
+   "repos": 2,
+   "keywords": {
+    "ssl": 5
+   }
+  },
+  {
+   "name": "httpx.Client",
+   "repos": 2,
+   "keywords": {
+    "verify": 2
+   }
+  },
+  {
+   "name": "request",
+   "repos": 2,
+   "keywords": {
+    "verify": 9
+   }
+  },
+  {
+   "name": "requests.get",
+   "repos": 2,
+   "keywords": {
+    "verify": 25
+   }
+  },
+  {
+   "name": "self._session.request",
+   "repos": 2,
+   "keywords": {
+    "verify": 2
+   }
+  },
+  {
+   "name": "session.get",
+   "repos": 2,
+   "keywords": {
+    "verify": 3
+   }
+  },
+  {
+   "name": "AsyncHTTPConnection",
+   "repos": 1,
+   "keywords": {
+    "ssl_context": 3
+   }
+  },
+  {
+   "name": "AsyncHTTPTransport",
+   "repos": 1,
+   "keywords": {
+    "verify": 2
+   }
+  },
+  {
+   "name": "AsyncSocks5Connection",
+   "repos": 1,
+   "keywords": {
+    "ssl_context": 2
+   }
+  },
+  {
+   "name": "AsyncTunnelHTTPConnection",
+   "repos": 1,
+   "keywords": {
+    "ssl_context": 2
+   }
+  },
+  {
+   "name": "Client",
+   "repos": 1,
+   "keywords": {
+    "verify": 4
+   }
+  },
+  {
+   "name": "HTTPBase",
+   "repos": 1,
+   "keywords": {
+    "verify": 6
+   }
+  },
+  {
+   "name": "HTTPConnection",
+   "repos": 1,
+   "keywords": {
+    "ssl_context": 3
+   }
+  },
+  {
+   "name": "HTTPServer",
+   "repos": 1,
+   "keywords": {
+    "ssl_options": 1
+   }
+  },
+  {
+   "name": "HTTPTransport",
+   "repos": 1,
+   "keywords": {
+    "verify": 2
+   }
+  },
+  {
+   "name": "JevClient",
+   "repos": 1,
+   "keywords": {
+    "verify": 5
+   }
+  },
+  {
+   "name": "OpenTSDBClient",
+   "repos": 1,
+   "keywords": {
+    "ssl": 1
+   }
+  },
+  {
+   "name": "Session",
+   "repos": 1,
+   "keywords": {
+    "verify": 1
+   }
+  },
+  {
+   "name": "SimpleNamespace",
+   "repos": 1,
+   "keywords": {
+    "verify": 1
+   }
+  },
+  {
+   "name": "Socks5Connection",
+   "repos": 1,
+   "keywords": {
+    "ssl_context": 2
+   }
+  },
+  {
+   "name": "TLSStream.wrap",
+   "repos": 1,
+   "keywords": {
+    "ssl_context": 10
+   }
+  },
+  {
+   "name": "TunnelHTTPConnection",
+   "repos": 1,
+   "keywords": {
+    "ssl_context": 2
+   }
+  },
+  {
+   "name": "TypeError",
+   "repos": 1,
+   "keywords": {
+    "verify": 1
+   }
+  },
+  {
+   "name": "VERIFYING._replace",
+   "repos": 1,
+   "keywords": {
+    "ca_certs": 2
+   }
+  },
+  {
+   "name": "__binary_to_bytez",
+   "repos": 1,
+   "keywords": {
+    "tls": 1
+   }
+  },
+  {
+   "name": "__call__",
+   "repos": 1,
+   "keywords": {
+    "tls": 1
+   }
+  },
+  {
+   "name": "_run_test_server",
+   "repos": 1,
+   "keywords": {
+    "use_ssl": 3
+   }
+  },
+  {
+   "name": "_ssl_wrap_socket_and_match_hostname",
+   "repos": 1,
+   "keywords": {
+    "cert_reqs": 2
+   }
+  },
+  {
+   "name": "abbreviation.",
+   "repos": 1,
+   "keywords": {
+    "cert_reqs": 1
+   }
+  },
+  {
+   "name": "aiohttp.client_reqrep.ConnectionKey",
+   "repos": 1,
+   "keywords": {
+    "ssl": 2
+   }
+  },
+  {
+   "name": "anyio.streams.tls.TLSStream.wrap",
+   "repos": 1,
+   "keywords": {
+    "ssl_context": 1
+   }
+  },
+  {
+   "name": "app.run",
+   "repos": 1,
+   "keywords": {
+    "ssl_context": 1
+   }
+  },
+  {
+   "name": "asyncio.open_unix_connection",
+   "repos": 1,
+   "keywords": {
+    "ssl": 1
+   }
+  },
+  {
+   "name": "asyncio.streams.start_server",
+   "repos": 1,
+   "keywords": {
+    "ssl": 1
+   }
+  },
+  {
+   "name": "click.echo",
+   "repos": 1,
+   "keywords": {
+    "ssl": 2
+   }
+  },
+  {
+   "name": "connect_tcp",
+   "repos": 1,
+   "keywords": {
+    "ssl_context": 1
+   }
+  },
+  {
+   "name": "create_connection",
+   "repos": 1,
+   "keywords": {
+    "ssl": 5
+   }
+  },
+  {
+   "name": "create_server",
+   "repos": 1,
+   "keywords": {
+    "ssl": 2
+   }
+  },
+  {
+   "name": "create_ssl_context",
+   "repos": 1,
+   "keywords": {
+    "verify": 2
+   }
+  },
+  {
+   "name": "create_unix_connection",
+   "repos": 1,
+   "keywords": {
+    "ssl": 2
+   }
+  },
+  {
+   "name": "create_unix_server",
+   "repos": 1,
+   "keywords": {
+    "ssl": 2
+   }
+  },
+  {
+   "name": "create_urllib3_context",
+   "repos": 1,
+   "keywords": {
+    "cert_reqs": 1
+   }
+  },
+  {
+   "name": "environment.start_check",
+   "repos": 1,
+   "keywords": {
+    "verify": 1
+   }
+  },
+  {
+   "name": "export_onnx",
+   "repos": 1,
+   "keywords": {
+    "verify": 2
+   }
+  },
+  {
+   "name": "http_post",
+   "repos": 1,
+   "keywords": {
+    "verify": 2
+   }
+  },
+  {
+   "name": "httpcore2.AsyncConnectionPool",
+   "repos": 1,
+   "keywords": {
+    "ssl_context": 3
+   }
+  },
+  {
+   "name": "httpcore2.AsyncHTTPProxy",
+   "repos": 1,
+   "keywords": {
+    "ssl_context": 1
+   }
+  },
+  {
+   "name": "httpcore2.AsyncSOCKSProxy",
+   "repos": 1,
+   "keywords": {
+    "ssl_context": 1
+   }
+  },
+  {
+   "name": "httpcore2.ConnectionPool",
+   "repos": 1,
+   "keywords": {
+    "ssl_context": 3
+   }
+  },
+  {
+   "name": "httpcore2.HTTPProxy",
+   "repos": 1,
+   "keywords": {
+    "ssl_context": 1
+   }
+  },
+  {
+   "name": "httpcore2.SOCKSProxy",
+   "repos": 1,
+   "keywords": {
+    "ssl_context": 1
+   }
+  },
+  {
+   "name": "httpx.AsyncClient",
+   "repos": 1,
+   "keywords": {
+    "verify": 6
+   }
+  },
+  {
+   "name": "httpx2.Client",
+   "repos": 1,
+   "keywords": {
+    "verify": 2
+   }
+  },
+  {
+   "name": "httpx2.create_ssl_context",
+   "repos": 1,
+   "keywords": {
+    "verify": 3
+   }
+  },
+  {
+   "name": "httpx2.get",
+   "repos": 1,
+   "keywords": {
+    "verify": 1
+   }
+  },
+  {
+   "name": "loop.create_connection",
+   "repos": 1,
+   "keywords": {
+    "ssl": 1
+   }
+  },
+  {
+   "name": "loop.create_server",
+   "repos": 1,
+   "keywords": {
+    "ssl": 1
+   }
+  },
+  {
+   "name": "make_request",
+   "repos": 1,
+   "keywords": {
+    "verify": 1
+   }
+  },
+  {
+   "name": "mock_connector.assert_called_once_with",
+   "repos": 1,
+   "keywords": {
+    "ssl": 1
+   }
+  },
+  {
+   "name": "mock_request.assert_called_with",
+   "repos": 1,
+   "keywords": {
+    "verify": 2
+   }
+  },
+  {
+   "name": "model.export_onnx",
+   "repos": 1,
+   "keywords": {
+    "verify": 38
+   }
+  },
+  {
+   "name": "open_connection",
+   "repos": 1,
+   "keywords": {
+    "ssl": 4
+   }
+  },
+  {
+   "name": "pool.open_connection",
+   "repos": 1,
+   "keywords": {
+    "ssl": 1
+   }
+  },
+  {
+   "name": "provider.session.get",
+   "repos": 1,
+   "keywords": {
+    "verify": 2
+   }
+  },
+  {
+   "name": "pytest.warns",
+   "repos": 1,
+   "keywords": {
+    "verify": 1
+   }
+  },
+  {
+   "name": "request_client.get",
+   "repos": 1,
+   "keywords": {
+    "verify": 1
+   }
+  },
+  {
+   "name": "requests.delete",
+   "repos": 1,
+   "keywords": {
+    "verify": 1
+   }
+  },
+  {
+   "name": "requests.put",
+   "repos": 1,
+   "keywords": {
+    "verify": 2
+   }
+  },
+  {
+   "name": "requests.request",
+   "repos": 1,
+   "keywords": {
+    "verify": 1
+   }
+  },
+  {
+   "name": "resolve_redirects",
+   "repos": 1,
+   "keywords": {
+    "verify": 1
+   }
+  },
+  {
+   "name": "run_test_server",
+   "repos": 1,
+   "keywords": {
+    "use_ssl": 1
+   }
+  },
+  {
+   "name": "run_test_unix_server",
+   "repos": 1,
+   "keywords": {
+    "use_ssl": 1
+   }
+  },
+  {
+   "name": "self.ConnectionCls",
+   "repos": 1,
+   "keywords": {
+    "cert_reqs": 1
+   }
+  },
+  {
+   "name": "self._init_proxy_transport",
+   "repos": 1,
+   "keywords": {
+    "verify": 2
+   }
+  },
+  {
+   "name": "self._init_transport",
+   "repos": 1,
+   "keywords": {
+    "verify": 2
+   }
+  },
+  {
+   "name": "self._make_unix_server",
+   "repos": 1,
+   "keywords": {
+    "ssl": 1
+   }
+  },
+  {
+   "name": "self._req.get",
+   "repos": 1,
+   "keywords": {
+    "verify": 1
+   }
+  },
+  {
+   "name": "self._req.post",
+   "repos": 1,
+   "keywords": {
+    "verify": 2
+   }
+  },
+  {
+   "name": "self._session.get",
+   "repos": 1,
+   "keywords": {
+    "verify": 2
+   }
+  },
+  {
+   "name": "self._session.post",
+   "repos": 1,
+   "keywords": {
+    "verify": 1
+   }
+  },
+  {
+   "name": "self.add_headers",
+   "repos": 1,
+   "keywords": {
+    "verify": 1
+   }
+  },
+  {
+   "name": "self.environment.start_check",
+   "repos": 1,
+   "keywords": {
+    "verify": 1
+   }
+  },
+  {
+   "name": "self.loop.create_connection",
+   "repos": 1,
+   "keywords": {
+    "ssl": 10
+   }
+  },
+  {
+   "name": "self.loop.create_server",
+   "repos": 1,
+   "keywords": {
+    "ssl": 1
+   }
+  },
+  {
+   "name": "self.loop.create_unix_connection",
+   "repos": 1,
+   "keywords": {
+    "ssl": 4
+   }
+  },
+  {
+   "name": "self.loop.create_unix_server",
+   "repos": 1,
+   "keywords": {
+    "ssl": 1
+   }
+  },
+  {
+   "name": "self.send",
+   "repos": 1,
+   "keywords": {
+    "verify": 1
+   }
+  },
+  {
+   "name": "self.session.get",
+   "repos": 1,
+   "keywords": {
+    "verify": 7
+   }
+  },
+  {
+   "name": "self.session.post",
+   "repos": 1,
+   "keywords": {
+    "verify": 1
+   }
+  },
+  {
+   "name": "send",
+   "repos": 1,
+   "keywords": {
+    "verify": 2
+   }
+  },
+  {
+   "name": "session.post",
+   "repos": 1,
+   "keywords": {
+    "verify": 1
+   }
+  },
+  {
+   "name": "session.send",
+   "repos": 1,
+   "keywords": {
+    "verify": 4
+   }
+  },
+  {
+   "name": "ssl.wrap_socket",
+   "repos": 1,
+   "keywords": {
+    "certfile": 1
+   }
+  },
+  {
+   "name": "ssl_wrap_socket",
+   "repos": 1,
+   "keywords": {
+    "certfile": 1
+   }
+  },
+  {
+   "name": "sslctx.load_cert_chain",
+   "repos": 1,
+   "keywords": {
+    "certfile": 2
+   }
+  },
+  {
+   "name": "start_check",
+   "repos": 1,
+   "keywords": {
+    "verify": 1
+   }
+  },
+  {
+   "name": "test_utils.run_test_server",
+   "repos": 1,
+   "keywords": {
+    "use_ssl": 2
+   }
+  },
+  {
+   "name": "test_utils.run_test_unix_server",
+   "repos": 1,
+   "keywords": {
+    "use_ssl": 2
+   }
+  },
+  {
+   "name": "torch.onnx.export",
+   "repos": 1,
+   "keywords": {
+    "verify": 1
+   }
+  },
+  {
+   "name": "trio.SSLStream",
+   "repos": 1,
+   "keywords": {
+    "ssl_context": 1
+   }
+  },
+  {
+   "name": "types.SimpleNamespace",
+   "repos": 1,
+   "keywords": {
+    "verify": 2
+   }
+  },
+  {
+   "name": "vencrypt.TLSPolicy",
+   "repos": 1,
+   "keywords": {
+    "ca_certs": 1
+   }
+  }
+ ]
+}

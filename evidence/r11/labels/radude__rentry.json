@@ -1,0 +1,11 @@
+{
+ "repo": "radude/rentry",
+ "commit": "977ad2edb379434e0fa3b8d69df8ef6ac799808f",
+ "annotator": "agent-5",
+ "files": {
+  "examples/edit_change_url.py": [
+   {"line_start": 18, "line_end": 18, "name": "secrets.token_hex", "class": "A", "kind": "random"},
+   {"line_start": 19, "line_end": 19, "name": "secrets.token_hex", "class": "A", "kind": "random"}
+  ]
+ }
+}

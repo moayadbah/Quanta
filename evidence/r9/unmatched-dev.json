@@ -1,0 +1,273 @@
+[
+ {
+  "name": "ssl.SSLError",
+  "calls": 5,
+  "repos": [
+   "whyliam__whyliam.workflows.youdao"
+  ]
+ },
+ {
+  "name": "bcrypt.hashpw.decode",
+  "calls": 4,
+  "repos": [
+   "dograh-hq__dograh",
+   "insistence__ruoyi-fastapi",
+   "zane-ops__zane-ops"
+  ]
+ },
+ {
+  "name": "OpenSSL.crypto.dump_certificate",
+  "calls": 3,
+  "repos": [
+   "IdentityPython__pysaml2",
+   "whyliam__whyliam.workflows.youdao"
+  ]
+ },
+ {
+  "name": "twisted.internet.ssl.KeyPair.load",
+  "calls": 2,
+  "repos": [
+   "crossbario__crossbar"
+  ]
+ },
+ {
+  "name": "twisted.internet.ssl.AcceptableCiphers.fromOpenSSLCipherString",
+  "calls": 2,
+  "repos": [
+   "crossbario__crossbar"
+  ]
+ },
+ {
+  "name": "secrets.token_hex.upper",
+  "calls": 2,
+  "repos": [
+   "fuyuxiang__echo-agent",
+   "kaifcodec__user-scanner"
+  ]
+ },
+ {
+  "name": "ssl.OPENSSL_VERSION.startswith",
+  "calls": 2,
+  "repos": [
+   "meowcateatrat__elephant",
+   "whyliam__whyliam.workflows.youdao"
+  ]
+ },
+ {
+  "name": "OpenSSL.crypto.dump_privatekey",
+  "calls": 2,
+  "repos": [
+   "IdentityPython__pysaml2"
+  ]
+ },
+ {
+  "name": "twisted.internet.ssl.DiffieHellmanParameters.fromFile",
+  "calls": 1,
+  "repos": [
+   "crossbario__crossbar"
+  ]
+ },
+ {
+  "name": "twisted.internet.ssl.PrivateCertificate.fromCertificateAndKeyPair",
+  "calls": 1,
+  "repos": [
+   "crossbario__crossbar"
+  ]
+ },
+ {
+  "name": "twisted.internet.ssl.Port.__init__",
+  "calls": 1,
+  "repos": [
+   "crossbario__crossbar"
+  ]
+ },
+ {
+  "name": "OpenSSL.crypto.get_elliptic_curve",
+  "calls": 1,
+  "repos": [
+   "crossbario__crossbar"
+  ]
+ },
+ {
+  "name": "cryptography.x509.CertificateSigningRequestBuilder.subject_name.add_extension",
+  "calls": 1,
+  "repos": [
+   "GetBindu__Bindu"
+  ]
+ },
+ {
+  "name": "cryptography.x509.CertificateSigningRequestBuilder.subject_name",
+  "calls": 1,
+  "repos": [
+   "GetBindu__Bindu"
+  ]
+ },
+ {
+  "name": "Crypto.Hash.keccak.new.digest",
+  "calls": 1,
+  "repos": [
+   "checkthechain__checkthechain"
+  ]
+ },
+ {
+  "name": "Crypto.Hash.keccak.new",
+  "calls": 1,
+  "repos": [
+   "checkthechain__checkthechain"
+  ]
+ },
+ {
+  "name": "Crypto.__init__.<locals>.self.gen_key",
+  "calls": 1,
+  "repos": [
+   "hisatri__lrcapi"
+  ]
+ },
+ {
+  "name": "Crypto.encrypt.<locals>.self.key.encode",
+  "calls": 1,
+  "repos": [
+   "hisatri__lrcapi"
+  ]
+ },
+ {
+  "name": "Crypto.encrypt.<locals>.aes.encrypt.hex",
+  "calls": 1,
+  "repos": [
+   "hisatri__lrcapi"
+  ]
+ },
+ {
+  "name": "Crypto.encrypt.<locals>.aes.encrypt",
+  "calls": 1,
+  "repos": [
+   "hisatri__lrcapi"
+  ]
+ },
+ {
+  "name": "Crypto.decrypt.<locals>.self.key.encode",
+  "calls": 1,
+  "repos": [
+   "hisatri__lrcapi"
+  ]
+ },
+ {
+  "name": "Crypto.decrypt.<locals>.aes.decrypt.decode",
+  "calls": 1,
+  "repos": [
+   "hisatri__lrcapi"
+  ]
+ },
+ {
+  "name": "Crypto.decrypt.<locals>.aes.decrypt",
+  "calls": 1,
+  "repos": [
+   "hisatri__lrcapi"
+  ]
+ },
+ {
+  "name": "Crypto.change_key.<locals>.self.gen_key",
+  "calls": 1,
+  "repos": [
+   "hisatri__lrcapi"
+  ]
+ },
+ {
+  "name": "cryptography.fernet.Fernet.generate_key.decode",
+  "calls": 1,
+  "repos": [
+   "yoheinakajima__babyagi"
+  ]
+ },
+ {
+  "name": "ssl.get_server_certificate.encode",
+  "calls": 1,
+  "repos": [
+   "zhaoolee__ins"
+  ]
+ },
+ {
+  "name": "secrets.SystemRandom.shuffle",
+  "calls": 1,
+  "repos": [
+   "cnlimiter__codex-manager"
+  ]
+ },
+ {
+  "name": "OpenSSL.crypto.X509Req",
+  "calls": 1,
+  "repos": [
+   "IdentityPython__pysaml2"
+  ]
+ },
+ {
+  "name": "OpenSSL.crypto.dump_certificate_request",
+  "calls": 1,
+  "repos": [
+   "IdentityPython__pysaml2"
+  ]
+ },
+ {
+  "name": "OpenSSL.crypto.load_certificate_request",
+  "calls": 1,
+  "repos": [
+   "IdentityPython__pysaml2"
+  ]
+ },
+ {
+  "name": "jwt.decode.get",
+  "calls": 1,
+  "repos": [
+   "mbrg__power-pwn"
+  ]
+ },
+ {
+  "name": "truststore.inject_into_ssl",
+  "calls": 1,
+  "repos": [
+   "robocorp__robocorp"
+  ]
+ },
+ {
+  "name": "cryptography.hazmat.decrepit.ciphers.algorithms.TripleDES",
+  "calls": 1,
+  "repos": [
+   "sibson__vncdotool"
+  ]
+ },
+ {
+  "name": "twisted.internet.ssl.platformTrust",
+  "calls": 1,
+  "repos": [
+   "sibson__vncdotool"
+  ]
+ },
+ {
+  "name": "twisted.internet.ssl.trustRootFromCertificates",
+  "calls": 1,
+  "repos": [
+   "sibson__vncdotool"
+  ]
+ },
+ {
+  "name": "itsdangerous.URLSafeSerializer.dumps",
+  "calls": 1,
+  "repos": [
+   "simonw__datasette"
+  ]
+ },
+ {
+  "name": "itsdangerous.URLSafeSerializer.loads",
+  "calls": 1,
+  "repos": [
+   "simonw__datasette"
+  ]
+ },
+ {
+  "name": "OpenSSL.SSL.Connection",
+  "calls": 1,
+  "repos": [
+   "whyliam__whyliam.workflows.youdao"
+  ]
+ }
+]

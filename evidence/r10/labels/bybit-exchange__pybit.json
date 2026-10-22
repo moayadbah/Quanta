@@ -1,0 +1,28 @@
+{
+ "repo": "bybit-exchange/pybit",
+ "commit": "c3309e14e577b1d5610c1f288a413df6990a6d25",
+ "annotator": "agent-5",
+ "files": {
+  "examples/http_example_rsa_authentication.py": [],
+  "pybit/_websocket_stream.py": [],
+  "pybit/_http_manager.py": [
+   {"line_start": 49, "line_end": 53, "name": "hmac.new", "class": "A", "kind": "mac"},
+   {"line_start": 57, "line_end": 57, "name": "SHA256.new", "class": "A", "kind": "hash"},
+   {"line_start": 59, "line_end": 59, "name": "PKCS1_v1_5.new", "class": "A", "kind": "public_key"},
+   {"line_start": 59, "line_end": 59, "name": "RSA.importKey", "class": "A", "kind": "key_handling"},
+   {"line_start": 59, "line_end": 61, "name": "sign", "class": "A", "kind": "public_key", "note": "chained PKCS1_v1_5.new(...).sign(hash)"},
+   {"line_start": 73, "line_end": 77, "name": "hmac.new", "class": "A", "kind": "mac"},
+   {"line_start": 81, "line_end": 81, "name": "SHA256.new", "class": "A", "kind": "hash"},
+   {"line_start": 83, "line_end": 83, "name": "PKCS1_v1_5.new", "class": "A", "kind": "public_key"},
+   {"line_start": 83, "line_end": 83, "name": "RSA.importKey", "class": "A", "kind": "key_handling"},
+   {"line_start": 83, "line_end": 85, "name": "sign", "class": "A", "kind": "public_key", "note": "chained PKCS1_v1_5.new(...).sign(hash)"}
+  ],
+  "tests/test_pybit.py": [
+   {"line_start": 42, "line_end": 46, "name": "hmac.new", "class": "A", "kind": "mac"},
+   {"line_start": 87, "line_end": 91, "name": "hmac.new", "class": "A", "kind": "mac"},
+   {"line_start": 755, "line_end": 759, "name": "hmac.new", "class": "A", "kind": "mac"}
+  ],
+  "pybit/_v5_user.py": [],
+  "examples/websocket_example_rsa_authentication.py": []
+ }
+}

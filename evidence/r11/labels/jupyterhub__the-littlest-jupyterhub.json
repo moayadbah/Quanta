@@ -1,0 +1,22 @@
+{
+ "repo": "jupyterhub/the-littlest-jupyterhub",
+ "commit": "05637a2fe4bb5b1e91bcdb0efc0059ab4b30d543",
+ "annotator": "agent-9",
+ "files": {
+  "tljh/configurer.py": [],
+  "integration-tests/test_proxy.py": [
+   {"line_start": 74, "line_end": 74, "name": "ssl.get_server_certificate", "class": "A", "kind": "tls"}
+  ],
+  "tljh/apt.py": [],
+  "tests/test_traefik.py": [],
+  "tljh/installer.py": [
+   {"line_start": 77, "line_end": 77, "name": "secrets.token_hex", "class": "A", "kind": "random"},
+   {"line_start": 335, "line_end": 335, "name": "bcrypt.hashpw", "class": "A", "kind": "kdf"},
+   {"line_start": 335, "line_end": 335, "name": "bcrypt.gensalt", "class": "A", "kind": "kdf"}
+  ],
+  "tljh/config_schema.py": [],
+  "tljh/traefik.py": [
+   {"line_start": 46, "line_end": 46, "name": "hashlib.sha256", "class": "A", "kind": "hash"}
+  ]
+ }
+}

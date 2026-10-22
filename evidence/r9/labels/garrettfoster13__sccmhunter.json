@@ -1,0 +1,70 @@
+{
+ "repo": "garrettfoster13/sccmhunter",
+ "commit": "19f2f8a2eef93ab658fcbed3032fca0538e128a4",
+ "annotator": "agent-6",
+ "files": {
+  "lib/attacks/relay.py": [
+   {"line_start": 47, "line_end": 47, "name": "ssl.SSLContext", "class": "A", "kind": "tls"},
+   {"line_start": 48, "line_end": 48, "name": "HTTPSConnection", "class": "B", "kind": "tls"},
+   {"line_start": 50, "line_end": 50, "name": "HTTPSConnection", "class": "B", "kind": "tls"}
+  ],
+  "lib/scripts/sccmwtf.py": [
+   {"line_start": 91, "line_end": 91, "name": "x509.CertificateBuilder", "class": "A", "kind": "public_key"},
+   {"line_start": 96, "line_end": 96, "name": "key.public_key", "class": "A", "kind": "key_handling"},
+   {"line_start": 112, "line_end": 112, "name": "sign", "class": "A", "kind": "public_key"},
+   {"line_start": 118, "line_end": 118, "name": "rsa.generate_private_key", "class": "A", "kind": "public_key"},
+   {"line_start": 128, "line_end": 128, "name": "key.public_key", "class": "A", "kind": "key_handling"},
+   {"line_start": 134, "line_end": 134, "name": "key.sign", "class": "A", "kind": "public_key"},
+   {"line_start": 142, "line_end": 142, "name": "key.sign", "class": "A", "kind": "public_key"},
+   {"line_start": 149, "line_end": 149, "name": "key.decrypt", "class": "A", "kind": "public_key"},
+   {"line_start": 343, "line_end": 347, "name": "self.key.private_bytes", "class": "A", "kind": "key_handling"},
+   {"line_start": 350, "line_end": 350, "name": "self.cert.public_bytes", "class": "A", "kind": "key_handling"},
+   {"line_start": 353, "line_end": 353, "name": "self.cert.public_bytes", "class": "A", "kind": "key_handling"},
+   {"line_start": 444, "line_end": 444, "name": "self.key.decrypt", "class": "A", "kind": "public_key"},
+   {"line_start": 446, "line_end": 446, "name": "self.key.decrypt", "class": "A", "kind": "public_key"},
+   {"line_start": 454, "line_end": 454, "name": "Cipher", "class": "A", "kind": "symmetric"},
+   {"line_start": 457, "line_end": 457, "name": "Cipher", "class": "A", "kind": "symmetric"},
+   {"line_start": 462, "line_end": 462, "name": "cipher.decryptor", "class": "A", "kind": "symmetric"},
+   {"line_start": 492, "line_end": 492, "name": "hashes.Hash", "class": "A", "kind": "hash"},
+   {"line_start": 500, "line_end": 500, "name": "hashes.Hash", "class": "A", "kind": "hash"},
+   {"line_start": 504, "line_end": 504, "name": "hashes.Hash", "class": "A", "kind": "hash"},
+   {"line_start": 520, "line_end": 520, "name": "Cipher", "class": "A", "kind": "symmetric"},
+   {"line_start": 521, "line_end": 521, "name": "cipher.decryptor", "class": "A", "kind": "symmetric"},
+   {"line_start": 533, "line_end": 533, "name": "hashes.Hash", "class": "A", "kind": "hash"},
+   {"line_start": 541, "line_end": 541, "name": "hashes.Hash", "class": "A", "kind": "hash"},
+   {"line_start": 545, "line_end": 545, "name": "hashes.Hash", "class": "A", "kind": "hash"},
+   {"line_start": 563, "line_end": 563, "name": "Cipher", "class": "A", "kind": "symmetric"},
+   {"line_start": 564, "line_end": 564, "name": "cipher.decryptor", "class": "A", "kind": "symmetric"}
+  ],
+  "lib/scripts/pivot.py": [
+   {"line_start": 1151, "line_end": 1151, "name": "AES.new", "class": "A", "kind": "symmetric"},
+   {"line_start": 1152, "line_end": 1152, "name": "aes256.decrypt", "class": "A", "kind": "symmetric"},
+   {"line_start": 1157, "line_end": 1157, "name": "DES3.new", "class": "A", "kind": "symmetric"},
+   {"line_start": 1158, "line_end": 1158, "name": "_3des.decrypt", "class": "A", "kind": "symmetric"},
+   {"line_start": 1163, "line_end": 1163, "name": "sha1", "class": "A", "kind": "hash"},
+   {"line_start": 1176, "line_end": 1176, "name": "sha1", "class": "A", "kind": "hash"},
+   {"line_start": 1177, "line_end": 1177, "name": "sha1", "class": "A", "kind": "hash"},
+   {"line_start": 1248, "line_end": 1248, "name": "hashlib.md5", "class": "A", "kind": "hash"}
+  ],
+  "lib/ldap.py": [
+   {"line_start": 84, "line_end": 84, "name": "ldap3.Tls", "class": "B", "kind": "tls"},
+   {"line_start": 89, "line_end": 89, "name": "ldap3.Server", "class": "B", "kind": "tls"},
+   {"line_start": 332, "line_end": 332, "name": "cipher.encrypt", "class": "B", "kind": "symmetric"}
+  ],
+  "lib/scripts/addcomputer.py": [],
+  "lib/attacks/http.py": [
+   {"line_start": 102, "line_end": 102, "name": "serialization.load_pem_private_key", "class": "A", "kind": "key_handling"},
+   {"line_start": 137, "line_end": 137, "name": "serialization.load_pem_private_key", "class": "A", "kind": "key_handling"}
+  ],
+  "tests/test_policy_decryption.py": [
+   {"line_start": 45, "line_end": 45, "name": "Cipher", "class": "A", "kind": "symmetric"},
+   {"line_start": 47, "line_end": 47, "name": "Cipher", "class": "A", "kind": "symmetric"},
+   {"line_start": 48, "line_end": 48, "name": "cipher.encryptor", "class": "A", "kind": "symmetric"},
+   {"line_start": 51, "line_end": 51, "name": "recipient_public_key.encrypt", "class": "A", "kind": "public_key"},
+   {"line_start": 100, "line_end": 100, "name": "rsa.generate_private_key", "class": "A", "kind": "public_key"},
+   {"line_start": 111, "line_end": 111, "name": "self.key.public_key", "class": "A", "kind": "key_handling"},
+   {"line_start": 128, "line_end": 128, "name": "self.key.public_key", "class": "A", "kind": "key_handling"},
+   {"line_start": 136, "line_end": 136, "name": "self.key.public_key", "class": "A", "kind": "key_handling"}
+  ]
+ }
+}

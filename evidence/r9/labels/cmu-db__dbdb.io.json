@@ -1,0 +1,21 @@
+{
+ "repo": "cmu-db/dbdb.io",
+ "commit": "ed65e2856f1f16eef05c43a71625ec8fefa2ba94",
+ "annotator": "agent-1",
+ "files": {
+  "dbdb/core/views/api.py": [
+   {"line_start": 35, "line_end": 35, "name": "jwt.encode", "class": "A", "kind": "token"},
+   {"line_start": 47, "line_end": 51, "name": "jwt.decode", "class": "A", "kind": "token"}
+  ],
+  "dbdb/core/tests/test_views.py": [
+   {"line_start": 178, "line_end": 187, "name": "jwt.encode", "class": "A", "kind": "token"},
+   {"line_start": 1034, "line_end": 1043, "name": "jwt.encode", "class": "A", "kind": "token"},
+   {"line_start": 1160, "line_end": 1160, "name": "jwt.encode", "class": "A", "kind": "token"}
+  ],
+  "dbdb/core/views/auth.py": [
+   {"line_start": 44, "line_end": 48, "name": "jwt.decode", "class": "A", "kind": "token"},
+   {"line_start": 146, "line_end": 146, "name": "jwt.encode", "class": "A", "kind": "token"},
+   {"line_start": 202, "line_end": 202, "name": "jwt.encode", "class": "A", "kind": "token"}
+  ]
+ }
+}

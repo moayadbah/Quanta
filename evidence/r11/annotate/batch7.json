@@ -1,0 +1,57 @@
+[
+ {
+  "repo": "MemoriLabs/Memori",
+  "commit": "574b1ea3e876f100ef82c37817d603eb7e258e59",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/MemoriLabs__Memori",
+  "files": [
+   "memori/provisioning/_utils.py",
+   "tests/test_network.py",
+   "memori/_network.py",
+   "tests/provisioning/test_provisioning_models.py",
+   "examples/tidb/main.py",
+   "integrations/hermes/src/memori_hermes/__init__.py",
+   "tests/test_typing_dx.py",
+   "tests/provisioning/test_tidb_zero_provider.py"
+  ]
+ },
+ {
+  "repo": "speechbrain/speechbrain",
+  "commit": "c0241278f93ef02cd5191f03caf4e5f8e1292bf6",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/speechbrain__speechbrain",
+  "files": [
+   "recipes/LJSpeech/quantization/train.py",
+   "speechbrain/utils/checkpoints.py",
+   "tests/utils/recipe_tests.py",
+   "tests/utils/refactoring_checks.py",
+   "speechbrain/nnet/hypermixing.py",
+   "tests/utils/check_url.py",
+   "speechbrain/integrations/huggingface/weighted_ssl.py",
+   "speechbrain/processing/vocal_features.py"
+  ]
+ },
+ {
+  "repo": "SillyTavern/SillyTavern-Extras",
+  "commit": "fdc1ec04b632b1d871cc0ad3a9aa132e985fc398",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/SillyTavern__SillyTavern-Extras",
+  "files": [
+   "constants.py",
+   "talkinghead/tha3/app/postprocessor.py",
+   "modules/voice_conversion/fairseq/data/multilingual/sampled_multi_dataset.py",
+   "server.py",
+   "modules/voice_conversion/fairseq/data/plasma_utils.py",
+   "modules/voice_conversion/fairseq/file_utils.py",
+   "modules/voice_conversion/fairseq/data/multilingual/sampled_multi_epoch_dataset.py"
+  ]
+ },
+ {
+  "repo": "citizenlab/test-lists",
+  "commit": "804afa8cda713cbb72ecf7a4e2c356dfdff7d475",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/citizenlab__test-lists",
+  "files": [
+   "scripts/legacy/lib/third_party/certifi/core.py",
+   "scripts/legacy/lib/third_party/ssl_match_hostname.py",
+   "scripts/legacy/lib/lists/https.py",
+   "scripts/legacy/lib/lists/services/tor/dir_auths.py"
+  ]
+ }
+]

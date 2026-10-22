@@ -1,0 +1,21 @@
+{
+ "repo": "kunifujiwara/VoxCity",
+ "commit": "0f615c625bf6223ca96c613eb87f4c1ab5814b32",
+ "annotator": "agent-1",
+ "files": {
+  "tests/simulator_gpu/test_building_accepts_surface_override.py": [],
+  "tests/test_generator_citygml_dem_source.py": [],
+  "src/voxcity/simulator_gpu/solar/surface_override.py": [
+   {"line_start": 192, "line_end": 192, "name": "hashlib.blake2b", "class": "A", "kind": "hash"}
+  ],
+  "src/voxcity/geoprocessor/draw/_common.py": [],
+  "tests/simulator_gpu/test_mesh_surface_mapping.py": [],
+  "src/voxcity/utils/weather/files.py": [
+   {"line_start": 32, "line_end": 32, "name": "os.urandom", "class": "A", "kind": "random"}
+  ],
+  "src/voxcity/downloader/ocean.py": [
+   {"line_start": 83, "line_end": 83, "name": "hashlib.md5", "class": "A", "kind": "hash"}
+  ],
+  "tests/simulator_gpu/test_surface_override.py": []
+ }
+}

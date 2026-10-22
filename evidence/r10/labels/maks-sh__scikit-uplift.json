@@ -1,0 +1,10 @@
+{
+ "repo": "maks-sh/scikit-uplift",
+ "commit": "0038e659428f6e7a49b935b850651cd9a9db3f54",
+ "annotator": "agent-5",
+ "files": {
+  "sklift/datasets/datasets.py": [
+   {"line_start": 105, "line_end": 105, "name": "hashlib.md5", "class": "A", "kind": "hash"}
+  ]
+ }
+}

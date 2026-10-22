@@ -1,0 +1,15 @@
+{
+ "repo": "ancoleman/ai-design-components",
+ "commit": "76551b7b19ebc667764ec75da14990d0aef8b6e5",
+ "annotator": "agent-4",
+ "files": {
+  "skills/deploying-applications/scripts/generate_k8s_manifests.py": [],
+  "skills/providing-feedback/scripts/format_messages.py": [],
+  "skills/prompt-engineering/examples/langchain-examples.py": [],
+  "skills/secret-management/examples/dynamic-db-credentials/python-hvac.py": [],
+  "skills/securing-authentication/scripts/validate_oauth_config.py": [],
+  "skills/implementing-mlops/examples/mlflow_experiment_tracking.py": [],
+  "evaluation/evaluate.py": [],
+  "scripts/skill-fixes/update_docs_gerund.py": []
+ }
+}

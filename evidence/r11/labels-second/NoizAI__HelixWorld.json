@@ -1,0 +1,23 @@
+{
+ "repo": "NoizAI/HelixWorld",
+ "commit": "fc8656ed76e25ff6c0dd44357bf3cdb006a1521d",
+ "annotator": "second-1",
+ "files": {
+  "code/LTX-2.3/packages/ltx-core/src/ltx_core/model/transformer/attention.py": [],
+  "code/LTX-2.3/packages/ltx-core/src/ltx_core/loader/registry.py": [
+   {"line_start": 59, "line_end": 59, "name": "hashlib.sha256", "class": "A", "kind": "hash"}
+  ],
+  "scripts/_common.py": [
+   {"line_start": 63, "line_end": 63, "name": "hashlib.sha256", "class": "A", "kind": "hash"}
+  ],
+  "code/LTX-2.3/projects/helixworld_runtime/scripts/context_cache.py": [],
+  "scripts/caption_pipeline.py": [
+   {"line_start": 105, "line_end": 105, "name": "hashlib.sha256", "class": "A", "kind": "hash"},
+   {"line_start": 109, "line_end": 109, "name": "hashlib.sha256", "class": "A", "kind": "hash"}
+  ],
+  "download_models.py": [
+   {"line_start": 37, "line_end": 37, "name": "hashlib.sha256", "class": "A", "kind": "hash"}
+  ],
+  "code/LTX-2.3/packages/ltx-core/src/ltx_core/model/model_protocol.py": []
+ }
+}

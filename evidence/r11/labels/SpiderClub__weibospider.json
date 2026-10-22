@@ -1,0 +1,23 @@
+{
+ "repo": "SpiderClub/weibospider",
+ "commit": "e1f289871187da9e1c9096cd61984066c73625a8",
+ "annotator": "agent-8",
+ "files": {
+  "login/login.py": [
+   {
+    "line_start": 74,
+    "line_end": 74,
+    "name": "rsa.PublicKey",
+    "class": "A",
+    "kind": "key_handling"
+   },
+   {
+    "line_start": 77,
+    "line_end": 77,
+    "name": "rsa.encrypt",
+    "class": "A",
+    "kind": "public_key"
+   }
+  ]
+ }
+}

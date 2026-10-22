@@ -1,0 +1,20 @@
+{
+ "repo": "microsoft/msticpy",
+ "commit": "a2fdc56734bd58f6ebc6acb04136a321af2a5be1",
+ "annotator": "agent-3",
+ "files": {
+  "msticpy/data/drivers/splunk_driver.py": [
+   {"line_start": 223, "line_end": 223, "name": "jwt.get_unverified_header", "class": "A", "kind": "token"},
+   {"line_start": 224, "line_end": 228, "name": "jwt.decode", "class": "A", "kind": "token"}
+  ],
+  "msticpy/data/uploaders/loganalytics_uploader.py": [
+   {"line_start": 84, "line_end": 84, "name": "hmac.new", "class": "A", "kind": "mac"}
+  ],
+  "msticpy/data/core/query_source.py": [],
+  "tests/auth/test_provider_secrets.py": [],
+  "tests/context/azure/test_sentinel_analytics.py": [],
+  "msticpy/context/tiproviders/mblookup.py": [],
+  "tests/context/test_vtlookupv3.py": [],
+  "msticpy/data/drivers/resource_graph_driver.py": []
+ }
+}

@@ -1,0 +1,64 @@
+[
+ {
+  "repo": "kunifujiwara/VoxCity",
+  "commit": "0f615c625bf6223ca96c613eb87f4c1ab5814b32",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/kunifujiwara__VoxCity",
+  "files": [
+   "tests/simulator_gpu/test_building_accepts_surface_override.py",
+   "tests/test_generator_citygml_dem_source.py",
+   "src/voxcity/simulator_gpu/solar/surface_override.py",
+   "src/voxcity/geoprocessor/draw/_common.py",
+   "tests/simulator_gpu/test_mesh_surface_mapping.py",
+   "src/voxcity/utils/weather/files.py",
+   "src/voxcity/downloader/ocean.py",
+   "tests/simulator_gpu/test_surface_override.py"
+  ]
+ },
+ {
+  "repo": "airbnb/streamalert",
+  "commit": "75ba140d2e1aa6e903313d88326920adcb8bff45",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/airbnb__streamalert",
+  "files": [
+   "streamalert/alert_processor/outputs/output_base.py",
+   "streamalert/alert_processor/outputs/pagerduty.py",
+   "tests/unit/streamalert/alert_processor/outputs/test_pagerduty.py",
+   "tests/unit/streamalert/apps/test_apps/test_gsuite.py",
+   "streamalert/apps/_apps/duo.py",
+   "tests/unit/streamalert/apps/test_helpers.py",
+   "tests/unit/streamalert/apps/test_apps/test_duo.py",
+   "streamalert/apps/_apps/box.py"
+  ]
+ },
+ {
+  "repo": "github/spec-kit",
+  "commit": "c6a4c18f1d01a8bec241c618eb6dfea952508744",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/github__spec-kit",
+  "files": [
+   "src/specify_cli/_operation_version.py",
+   "src/specify_cli/integrations/bob/__init__.py",
+   "src/specify_cli/integrations/_lifecycle.py",
+   "tests/unit/test_condition_expression_block.py",
+   "tests/test_utils.py",
+   "src/specify_cli/workflows/_commands.py",
+   "src/specify_cli/command_version.py",
+   "tests/specify_cli/bundles/test_catalog_config.py"
+  ]
+ },
+ {
+  "repo": "Grim-es/material-combiner-addon",
+  "commit": "eed9ca25baffe5463bdd6104360fcd9f6e32ba15",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/Grim-es__material-combiner-addon",
+  "files": [
+   "addon_updater.py",
+   "addon_updater_ops.py"
+  ]
+ },
+ {
+  "repo": "jina-ai/vectordb",
+  "commit": "ad2b64a468c70be7970cf1606c83005a73547b2a",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/jina-ai__vectordb",
+  "files": [
+   "vectordb/utils/push_to_hubble.py"
+  ]
+ }
+]

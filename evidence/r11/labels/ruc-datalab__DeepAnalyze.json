@@ -1,0 +1,19 @@
+{
+ "repo": "ruc-datalab/DeepAnalyze",
+ "commit": "d4dd5cf62ec7ec2579eb85bcab4f24e4782827b9",
+ "annotator": "agent-2",
+ "files": {
+  "deepanalyze/ms-swift/swift/llm/infer/deploy.py": [
+   {"line_start": 227, "line_end": 234, "name": "uvicorn.run", "class": "B", "kind": "tls", "note": "third-party server call passing ssl_keyfile and ssl_certfile, which turns TLS on when set; counted under B2e"}
+  ],
+  "deepanalyze/ms-swift/swift/llm/infer/infer_engine/vllm_engine.py": [],
+  "deepanalyze/ms-swift/swift/llm/infer/rollout.py": [],
+  "deepanalyze/ms-swift/swift/llm/infer/infer_engine/sglang_engine.py": [],
+  "example/4c_competition/file_api.py": [
+   {"line_start": 36, "line_end": 36, "name": "os.urandom", "class": "A", "kind": "random"}
+  ],
+  "deepanalyze/ms-swift/swift/llm/infer/infer_engine/lmdeploy_engine.py": [],
+  "deepanalyze/ms-swift/swift/trainers/mixin.py": [],
+  "deepanalyze/ms-swift/swift/trainers/rlhf_trainer/gkd_trainer.py": []
+ }
+}

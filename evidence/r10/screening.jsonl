@@ -1,0 +1,254 @@
+{"position": 829, "repo": "zetane/viewer", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 830, "repo": "simonlin1212/a-stock-data", "commit": "29b07d2e37005b9fd568bca1262f6e572b5f9407", "decision": "skip", "reason": "4 .py files"}
+{"position": 831, "repo": "ForgeCAD/forgecad-public-kit", "commit": "7523f68ce05ec642608c7f2001c5ae7ca7b1bee0", "decision": "skip", "reason": "3 .py files"}
+{"position": 832, "repo": "endurain-project/endurain", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 833, "repo": "nengo/nengo", "commit": "440db6363f690ea4df52be29b2fa01a5a41399f8", "decision": "keep", "stratum": "G", "py_files": 191}
+{"position": 834, "repo": "vllm-project/speculators", "commit": "7ec7aba9450b533334e8f7992baf4e93be3c1a57", "decision": "keep", "stratum": "G", "py_files": 257}
+{"position": 835, "repo": "researchmm/Stark", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 836, "repo": "Fenng/Tech-Doc-Style-Chinese", "commit": "b119d01c9bb7cd132b3c62fafdff34227c4410d1", "decision": "skip", "reason": "5 .py files"}
+{"position": 837, "repo": "aws/chalice", "commit": "702dc5e198b8c84ce09b08dc8409130b57d50819", "decision": "keep", "stratum": "G", "py_files": 136}
+{"position": 838, "repo": "TimoDiehm/imc-prosperity-3", "commit": "6bbc3abfb1f81cb1c8710fdb0b291079ce943202", "decision": "skip", "reason": "1 .py files"}
+{"position": 839, "repo": "mflux-community/mflux", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 840, "repo": "gaomingqi/Track-Anything", "decision": "skip", "reason": "frame size 352429 KB"}
+{"position": 841, "repo": "xlzd/img2html", "commit": "1d085dac338bce710a0ab9ba9c6ab857ea38a990", "decision": "skip", "reason": "3 .py files"}
+{"position": 842, "repo": "alvinreal/awesome-opensource-ai", "commit": "1675f16bf287517aa9e665cd252dc3d12d7bbffc", "decision": "skip", "reason": "2 .py files"}
+{"position": 843, "repo": "minghanqin/LangSplat", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 844, "repo": "abhishekkrthakur/diffuzers", "commit": "71f710a1940c22637561809387b1c8622be1a48b", "decision": "keep", "stratum": "G", "py_files": 29}
+{"position": 845, "repo": "HKUDS/ClawWork", "decision": "skip", "reason": "frame size 512980 KB"}
+{"position": 846, "repo": "rogerzhu/MNWeeklyCategory", "commit": "b737e16f27f4ef6df22a2c8dc18aabdbcb53ef03", "decision": "skip", "reason": "5 .py files"}
+{"position": 847, "repo": "octo-models/octo", "commit": "241fb3514b7c40957a86d869fecb7c7fc353f540", "decision": "keep", "stratum": "G", "py_files": 48}
+{"position": 848, "repo": "junyanz/VON", "commit": "2bd39d0c11dd318a45ecda7b2125caa1c0dd93e8", "decision": "skip", "reason": "no import from S"}
+{"position": 849, "repo": "NVlabs/PWC-Net", "decision": "skip", "reason": "frame size 211835 KB"}
+{"position": 850, "repo": "yongzhuo/Macropodus", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 851, "repo": "JulienHeijmans/quicksnap", "commit": "78ab12813716bd900ba2044a1aafd298dafb9e5b", "decision": "skip", "reason": "9 .py files"}
+{"position": 852, "repo": "aymenfurter/microagents", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 853, "repo": "csteinmetz1/pyloudnorm", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 854, "repo": "JAMESYJL/ShapeLLM-Omni", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 855, "repo": "spark-arena/sparkrun", "commit": "d54423cef9419751ecc19db7e0e63118f1aecdc1", "decision": "keep", "stratum": "P", "py_files": 952}
+{"position": 856, "repo": "byjlw/video-analyzer", "commit": "2b095faf8a965eda5ba055ef29eb0cd71698ae6f", "decision": "skip", "reason": "no import from S"}
+{"position": 857, "repo": "mbzuai-oryx/Awesome-LLM-Post-training", "commit": "d95a308fd99b7050e48d087c6845323860e6f946", "decision": "skip", "reason": "2 .py files"}
+{"position": 858, "repo": "UX-Decoder/Segment-Everything-Everywhere-All-At-Once", "decision": "skip", "reason": "frame size 311010 KB"}
+{"position": 859, "repo": "hvac/hvac", "commit": "09902dea41c2c6313cd7844be4d984c1514bd822", "decision": "keep", "stratum": "P", "py_files": 167}
+{"position": 860, "repo": "NExT-GPT/NExT-GPT", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 861, "repo": "pennersr/django-allauth", "commit": "5ea117e72397adbd8ca6bc61c692d64ecca4d31b", "decision": "keep", "stratum": "P", "py_files": 1294}
+{"position": 862, "repo": "Tencent-Hunyuan/InstantCharacter", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 863, "repo": "run-llama/rags", "commit": "4bec27023950c078fe0d559e1720d757d0024c93", "decision": "skip", "reason": "no import from S"}
+{"position": 864, "repo": "StarTrail-org/PixelRAG", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 865, "repo": "microsoft/apm", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 866, "repo": "joelbarmettlerUZH/auto-tinder", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 867, "repo": "Cartucho/mAP", "commit": "3605865a350859e60c7b711838d09c4e0012c774", "decision": "skip", "reason": "8 .py files"}
+{"position": 868, "repo": "Rapptz/discord.py", "commit": "65232c38702be5844cf2ce865a4777eb1928b5d0", "decision": "keep", "stratum": "G", "py_files": 201}
+{"position": 869, "repo": "mbrossar/ai-imu-dr", "commit": "32967812139af82cf12654c93438bf9065b7a241", "decision": "skip", "reason": "7 .py files"}
+{"position": 870, "repo": "maks-sh/scikit-uplift", "commit": "0038e659428f6e7a49b935b850651cd9a9db3f54", "decision": "keep", "stratum": "G", "py_files": 20}
+{"position": 871, "repo": "Francis-Rings/StableAvatar", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 872, "repo": "carla-simulator/scenario_runner", "decision": "skip", "reason": "frame size 271598 KB"}
+{"position": 873, "repo": "dfaker/WebmGenerator", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 874, "repo": "dbcli/pgcli", "commit": "3c3776cf221a0877be52d6ff9d8bda29d0b146e7", "decision": "skip", "reason": "no import from S"}
+{"position": 875, "repo": "Lightning-AI/litData", "commit": "c6f075ca7448ede4c383122678ee790e359d3711", "decision": "keep", "stratum": "P", "py_files": 216}
+{"position": 876, "repo": "microsoft/JARVIS", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 877, "repo": "jianzhnie/LLamaTuner", "commit": "def8929953c616217e2f3513c44a8a1c22e58bf0", "decision": "skip", "reason": "no import from S"}
+{"position": 878, "repo": "JuanPotato/Legofy", "commit": "6913585ac793d4b896f434d7d57d169c65fa8a1a", "decision": "skip", "reason": "9 .py files"}
+{"position": 879, "repo": "pickles4evaaaa/mybibliotheca", "commit": "6db6bbe205f500327732a6af50a2ee74942465b2", "decision": "keep", "stratum": "P", "py_files": 149}
+{"position": 880, "repo": "jiayev/GPT4V-Image-Captioner", "commit": "4094b42f6db58502775d936b0af5ff08fc405c88", "decision": "skip", "reason": "no import from S"}
+{"position": 881, "repo": "amd/RyzenAI-SW", "decision": "skip", "reason": "frame size 525421 KB"}
+{"position": 882, "repo": "sameerasw/folder-icons", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 883, "repo": "Janspiry/Palette-Image-to-Image-Diffusion-Models", "commit": "136b29f58d0af6e5db9f3655d2891f5a855fcdaa", "decision": "skip", "reason": "no import from S"}
+{"position": 884, "repo": "OpenVDN/vdn-minimax-h3", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 885, "repo": "skydiscover-ai/skydiscover", "commit": "0d932b690670a7e544388ad362e9876c8bd256a0", "decision": "keep", "stratum": "G", "py_files": 333}
+{"position": 886, "repo": "nate-parrott/Flashlight", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 887, "repo": "ysrc/GourdScanV2", "commit": "79bf4cb59a5b3594b51a47a6660b79476ffbcbc4", "decision": "keep", "stratum": "P", "py_files": 19}
+{"position": 888, "repo": "declare-lab/conv-emotion", "decision": "skip", "reason": "frame size 769380 KB"}
+{"position": 889, "repo": "algorithmicsuperintelligence/optillm", "commit": "c0dc4f011ad644ce44aea884c43fbb0de6beb0e3", "decision": "keep", "stratum": "G", "py_files": 139}
+{"position": 890, "repo": "JushuangQiao/Python-Offer", "commit": "9eaf5336b062fa605ce53e1e21e32598c28ee8e9", "decision": "skip", "reason": "no import from S"}
+{"position": 891, "repo": "shibing624/parrots", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 892, "repo": "ansible/ansible-jupyter-kernel", "commit": "09efa5d4073a72d1d56cce60574c743a1feb1954", "decision": "skip", "reason": "no import from S"}
+{"position": 893, "repo": "VivekPa/IntroNeuralNetworks", "commit": "97cc863c5eb0bebd3486e24904998223d8d9b95e", "decision": "skip", "reason": "5 .py files"}
+{"position": 894, "repo": "OpenMined/PySyft", "decision": "skip", "reason": "frame size 783201 KB"}
+{"position": 895, "repo": "yann-shi/Young", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 896, "repo": "HonglinChu/SiamTrackers", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 897, "repo": "calmiLovesAI/Basic_CNNs_TensorFlow2", "commit": "f063c84451f12e904f9c91c51278be52afccb0c2", "decision": "skip", "reason": "no import from S"}
+{"position": 898, "repo": "deepseek-ai/DeepSpec", "commit": "005e03b81cec38b7da6399833d609ee89a2587f2", "decision": "keep", "stratum": "G", "py_files": 69}
+{"position": 899, "repo": "XingangPan/deep-generative-prior", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 900, "repo": "hmorimitsu/ptlflow", "commit": "f84e2b039f5373c326fe854833e1e3e2f322a8d6", "decision": "skip", "reason": "no import from S"}
+{"position": 901, "repo": "opendatalab/magic-doc", "commit": "84be3af4211276416321935b08a8a5907916bf4c", "decision": "skip", "reason": "no import from S"}
+{"position": 902, "repo": "WeianMao/triattention", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 903, "repo": "MiroMindAI/MiroThinker", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 904, "repo": "LaurenceRawlings/savify", "commit": "508fec0a8e911d1539a65ab73c6fc2713bb543a0", "decision": "skip", "reason": "no import from S"}
+{"position": 905, "repo": "worldveil/dejavu", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 906, "repo": "ahujasid/ableton-mcp", "commit": "9dddc7bd5b95412510fdeb745949e3bf23f3fd8a", "decision": "skip", "reason": "quota full (G)"}
+{"position": 907, "repo": "MAC-VO/MAC-VO", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 908, "repo": "HuberTRoy/MusicBox", "commit": "82fdf21809b7f018c616c4d1c78cfbf04cd5d9e3", "decision": "skip", "reason": "quota full (G)"}
+{"position": 909, "repo": "cuga-project/cuga-agent", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 910, "repo": "mdtraj/mdtraj", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 911, "repo": "hysts/anime-face-detector", "commit": "98a9fb480fa04bdd96acbe4d98da191a898267f3", "decision": "skip", "reason": "quota full (G)"}
+{"position": 912, "repo": "cfregly/ai-performance-engineering", "decision": "skip", "reason": "frame size 2835669 KB"}
+{"position": 913, "repo": "cuevhv/mamma", "commit": "588492f18876e2ed6888b2d26929047cb6b575e7", "decision": "skip", "reason": "no import from S"}
+{"position": 914, "repo": "qpuchen/nnUNet_att_position_correction", "commit": "42234a1b3223564993493b4db2c959ea7818dee5", "decision": "skip", "reason": "quota full (G)"}
+{"position": 915, "repo": "verialabs/ctf-agent", "commit": "3366d569557c4fda3fd153040632de65e255396d", "decision": "skip", "reason": "no import from S"}
+{"position": 916, "repo": "ermongroup/SDEdit", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 917, "repo": "GraiaProject/Ariadne", "commit": "5f96afd5a7655a3e2c44b06d54615413587180d2", "decision": "skip", "reason": "quota full (G)"}
+{"position": 918, "repo": "xdavidhu/awesome-google-vrp-writeups", "commit": "682c7b260f72df15ef7ddecb1f04498c1b5d3c5a", "decision": "skip", "reason": "4 .py files"}
+{"position": 919, "repo": "K-Dense-AI/karpathy", "commit": "f92b680a48b9bcc4303cfab49d79278f5d8b72b7", "decision": "skip", "reason": "5 .py files"}
+{"position": 920, "repo": "rowanz/neural-motifs", "commit": "d05a251b705cedaa51599bf2906cfa4653b7a761", "decision": "skip", "reason": "no import from S"}
+{"position": 921, "repo": "liaohch3/claude-tap", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 922, "repo": "adobe/antialiased-cnns", "commit": "b27a34a26f3ab039113d44d83c54d0428598ac9c", "decision": "skip", "reason": "no import from S"}
+{"position": 923, "repo": "volfpeter/fasthx", "commit": "dc934e216eaba9867333ccdd6e58a563bab43516", "decision": "skip", "reason": "no import from S"}
+{"position": 924, "repo": "Einsia/OpenChronicle", "commit": "bad3a1e86d8e85a82d76d3883a491abc06f8c6b7", "decision": "skip", "reason": "quota full (G)"}
+{"position": 925, "repo": "davidtvs/pytorch-lr-finder", "commit": "76df3050c5554d698cb618e792957873bc878b30", "decision": "skip", "reason": "no import from S"}
+{"position": 926, "repo": "markqvist/Sideband", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 927, "repo": "ChoudharyChanchal/game_control", "commit": "82445b38726b23e4ea64101b8ba7a927025397b3", "decision": "skip", "reason": "4 .py files"}
+{"position": 928, "repo": "jacobgil/pytorch-grad-cam", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 929, "repo": "francozappa/bluffs", "commit": "bfbe6f4a7a0fbe1a0be0000c230232868b0bc0c7", "decision": "skip", "reason": "no import from S"}
+{"position": 930, "repo": "samuelgursky/davinci-resolve-mcp", "commit": "cabcb950413c63b95ff590cbdfe1949024e1a34a", "decision": "skip", "reason": "quota full (G)"}
+{"position": 931, "repo": "fossasia/pslab-scripts", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 932, "repo": "knowsuchagency/pdf-to-podcast", "decision": "skip", "reason": "screened in round 7"}
+{"position": 933, "repo": "ZSim-Dev/ZSim", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 934, "repo": "Mayitzin/ahrs", "commit": "81726853363c4ed78d51c04273a2ce67a1f7aeff", "decision": "skip", "reason": "no import from S"}
+{"position": 935, "repo": "s3rgeym/hh-applicant-tool", "commit": "32fdf1a571d66b32ca575e84925ab4fa1e6f3092", "decision": "keep", "stratum": "P", "py_files": 41}
+{"position": 936, "repo": "yeti-platform/yeti", "commit": "da813e2110efc63db17d6774ea242bd22b7a1b2d", "decision": "keep", "stratum": "P", "py_files": 324}
+{"position": 937, "repo": "ancoleman/ai-design-components", "commit": "76551b7b19ebc667764ec75da14990d0aef8b6e5", "decision": "keep", "stratum": "P", "py_files": 189}
+{"position": 938, "repo": "PeterGriffinJin/Search-R1", "commit": "598e61bd1d36895726d28a8d06b3a15bed19f5d3", "decision": "skip", "reason": "quota full (G)"}
+{"position": 939, "repo": "nuyoah-ai-works/nuyoah-xiezhen-prompt", "commit": "7482a14074bcffb9fed8eb8fe2ddcdc4ac2e980b", "decision": "skip", "reason": "1 .py files"}
+{"position": 940, "repo": "character-ai/Ovi", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 941, "repo": "eli64s/readme-ai", "decision": "skip", "reason": "frame size 271675 KB"}
+{"position": 942, "repo": "akashmjn/tinydiarize", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 943, "repo": "partho-maple/coding-interview-gym", "commit": "20ae1a048eddbc9a32c819cf61258e2b57572f05", "decision": "skip", "reason": "no import from S"}
+{"position": 944, "repo": "reader-dict/monolingual", "commit": "cbb80173f6bdec0a845e009ff92221a28200454d", "decision": "skip", "reason": "quota full (G)"}
+{"position": 945, "repo": "PharMolix/OpenBioMed", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 946, "repo": "YanjieZe/3D-Diffusion-Policy", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 947, "repo": "ClownsharkBatwing/RES4LYF", "decision": "skip", "reason": "frame size 257721 KB"}
+{"position": 948, "repo": "LehengTHU/Agent4Rec", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 949, "repo": "VarunS2002/Python-NSE-Option-Chain-Analyzer", "commit": "af7b8d0027912909d6bba31837b6f17917bf57c6", "decision": "skip", "reason": "1 .py files"}
+{"position": 950, "repo": "huohuoer/wechat-cli", "commit": "a3789232d4f79bf0b30634d9dadbce71e4acd601", "decision": "skip", "reason": "quota full (G)"}
+{"position": 951, "repo": "YassKhazzan/openperplex_backend_os", "commit": "5b916472abbb4dfb8e338ff8734dce5532f852c6", "decision": "skip", "reason": "no import from S"}
+{"position": 952, "repo": "musalbas/heartbleed-masstest", "commit": "f4f8bae0d4ae38f349230194de254379940fe88c", "decision": "skip", "reason": "1 .py files"}
+{"position": 953, "repo": "alibaba/mobileperf", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 954, "repo": "dustinkirkland/byobu", "commit": "41c285e7eaf36bed88204c75314fb21a444b031a", "decision": "keep", "stratum": "P", "py_files": 21}
+{"position": 955, "repo": "LantaoYu/SeqGAN", "commit": "e2b52fb6309851b14765290e8a972ccac09f1bec", "decision": "skip", "reason": "6 .py files"}
+{"position": 956, "repo": "EtteGit/EnragedRabbitProject", "decision": "skip", "reason": "frame size 448724 KB"}
+{"position": 957, "repo": "stackimpact/stackimpact-python", "commit": "4d0a415b790c89e7bee1d70216f948b7fec11540", "decision": "skip", "reason": "quota full (G)"}
+{"position": 958, "repo": "Mai-with-u/MaiBot", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 959, "repo": "gyoisamurai/GyoiThon", "commit": "8dec26aabdbf9ee999e7cc5b5eee9222f01bae13", "decision": "keep", "stratum": "P", "py_files": 24}
+{"position": 960, "repo": "subho406/OmniNet", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 961, "repo": "AgriciDaniel/codex-seo", "commit": "9a644f68d39d242a7a41a0017f7286dd0512fc3b", "decision": "keep", "stratum": "P", "py_files": 69}
+{"position": 962, "repo": "figma/mcp-server-guide", "commit": "f2789420e7e8b4e2465dfeb1e12e1fc6a31397e5", "decision": "skip", "reason": "5 .py files"}
+{"position": 963, "repo": "fastapi/typer", "commit": "a5882dedf0bc7a46cd861fdfca020f88519e0f21", "decision": "skip", "reason": "no import from S"}
+{"position": 964, "repo": "graysoncroom/InstagramPasswordCracker", "commit": "0df411fc4361073709764534f76d34269058d693", "decision": "skip", "reason": "1 .py files"}
+{"position": 965, "repo": "RLinf/RLinf", "commit": "a78b6d7f64eb13ffa10784b2760b0b3d4b73675b", "decision": "skip", "reason": "quota full (G)"}
+{"position": 966, "repo": "ethz-vlg/mvtracker", "commit": "ceea8ad2af77ed9b44148ef8e9eeba4ea3c3f072", "decision": "skip", "reason": "no import from S"}
+{"position": 967, "repo": "xairy/lights-out", "commit": "6eafdf020ad40913c21f9154525a48f89454264d", "decision": "skip", "reason": "4 .py files"}
+{"position": 968, "repo": "judahpaul16/gpt-home", "commit": "9e00a15acbba924def267f162cb1c49749d60626", "decision": "skip", "reason": "no import from S"}
+{"position": 969, "repo": "appnexus/pyrobuf", "commit": "811a9325eed1c0070ceb424020fe81eeef317e0c", "decision": "skip", "reason": "no import from S"}
+{"position": 970, "repo": "amanvirparhar/chaplin", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 971, "repo": "bhaskatripathi/pdfGPT", "commit": "04d7a41a23b9aa8f2907992a73f3c7056bdec6fa", "decision": "skip", "reason": "2 .py files"}
+{"position": 972, "repo": "codelucas/flask_reddit", "commit": "85bc5c9868e47770a4a89dd43191736a8004816b", "decision": "skip", "reason": "no import from S"}
+{"position": 973, "repo": "aws-samples/aws2tf", "commit": "d1f7a647cfe59fd90680e6bbc4044615a4078cd1", "decision": "skip", "reason": "no import from S"}
+{"position": 974, "repo": "realiti4/claude-swap", "commit": "5a837605947d0ab87a87f471689867ff4288fa5c", "decision": "keep", "stratum": "P", "py_files": 81}
+{"position": 975, "repo": "roboflow/rf-detr", "commit": "5b22dfc0940697ce1abdfa681a5f7392b3eddbfb", "decision": "skip", "reason": "quota full (G)"}
+{"position": 976, "repo": "QVerisAI/QVerisFlow", "commit": "be8890466a325a670da56edd70ae639f44a6f943", "decision": "skip", "reason": "quota full (G)"}
+{"position": 977, "repo": "waspinator/pycococreator", "commit": "114df401e5310c602178b31a48d3bb4cef876258", "decision": "skip", "reason": "4 .py files"}
+{"position": 978, "repo": "jmcollin78/versatile_thermostat", "commit": "ddba8f315f70abf8c2b3bca0fef142d907f11c59", "decision": "skip", "reason": "no import from S"}
+{"position": 979, "repo": "midasklr/yolov5prune", "commit": "8a0eff3edd2225ef9e894c72f1a9d978de37b042", "decision": "skip", "reason": "no import from S"}
+{"position": 980, "repo": "PriorLabs/TabPFN", "decision": "skip", "reason": "frame size 287088 KB"}
+{"position": 981, "repo": "adithya-s-k/omniparse", "commit": "9d1ae83c46de777427e67b48f82eaca45ad7994a", "decision": "skip", "reason": "no import from S"}
+{"position": 982, "repo": "mne-tools/mne-python", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 983, "repo": "ethz-spylab/agentdojo", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 984, "repo": "KKKKhazix/human-writing", "commit": "4fda173f3fef7fb808f3eba991eeb2528ea4b189", "decision": "skip", "reason": "1 .py files"}
+{"position": 985, "repo": "agiliq/Django-Socialauth", "commit": "b0b1acb180dd955edcc9b9b9d086470b8c332de6", "decision": "skip", "reason": "quota full (G)"}
+{"position": 986, "repo": "awslabs/route53-dynamic-dns-with-lambda", "commit": "fc5abc44ac291c32e675f01709fc246c51e1fcfd", "decision": "skip", "reason": "8 .py files"}
+{"position": 987, "repo": "pwndbg/pwndbg", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 988, "repo": "tatuylonen/wiktextract", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 989, "repo": "SeldomQA/seldom", "commit": "f02179a1c95023ed35d56c2463349cef9f0af0e1", "decision": "keep", "stratum": "P", "py_files": 145}
+{"position": 990, "repo": "huggingface/smollm", "decision": "skip", "reason": "screened in round 7"}
+{"position": 991, "repo": "heykarimoff/solid.python", "commit": "d8a66834fc508f227617d28a9894873a488ae5e6", "decision": "skip", "reason": "5 .py files"}
+{"position": 992, "repo": "thewh1teagle/kokoro-onnx", "commit": "3596b26764286a7de9d90c363e988d50578918e5", "decision": "skip", "reason": "no import from S"}
+{"position": 993, "repo": "yusuketomoto/chainer-fast-neuralstyle", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 994, "repo": "ThinkerWen/TicketMonitoring", "commit": "4af384b7117115723220f9af3d8b2ebdada61ace", "decision": "skip", "reason": "7 .py files"}
+{"position": 995, "repo": "StamusNetworks/scirius", "commit": "3bb49d383f4801b79e6356f9de9f25806afe0311", "decision": "skip", "reason": "no import from S"}
+{"position": 996, "repo": "zhezhaoa/ngram2vec", "commit": "e57c623a5dfe5df4ea0be3f04ad52045aaa6360f", "decision": "skip", "reason": "no import from S"}
+{"position": 997, "repo": "X-Square-Robot/wall-x", "commit": "ce2a1ae31d9ee1028b97ca40e3f66034cf8c0e5f", "decision": "skip", "reason": "no import from S"}
+{"position": 998, "repo": "Epodonios/v2ray-configs", "decision": "skip", "reason": "frame size 25903752 KB"}
+{"position": 999, "repo": "waydroid/waydroid", "commit": "db7294c4c2bd43157bab94cf8a3015e22d9f1ad8", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1000, "repo": "rgeirhos/Stylized-ImageNet", "commit": "654e1324c455fbfb15ffec185a9c2543bf773b93", "decision": "skip", "reason": "no import from S"}
+{"position": 1001, "repo": "collabH/bigdata-growth", "decision": "skip", "reason": "frame size 232321 KB"}
+{"position": 1002, "repo": "agentscope-ai/Trinity-RFT", "decision": "skip", "reason": "frame size 1540565 KB"}
+{"position": 1003, "repo": "guelfoweb/knockpy", "commit": "da43fdd2399f9ca5a39229cb8ba3e51249f53e30", "decision": "keep", "stratum": "P", "py_files": 28}
+{"position": 1004, "repo": "Taxel/PlexTraktSync", "commit": "c2b6b5889314f5023a0fc0e430311166a09a748e", "decision": "skip", "reason": "no import from S"}
+{"position": 1005, "repo": "veops/cmdb", "commit": "e398702c5ca38b964846f3b7a833801dc9e5d0ae", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1006, "repo": "dpallot/simple-websocket-server", "commit": "7a9b03766d3a9b1dbbdf671a3bbc6f555806dffe", "decision": "skip", "reason": "5 .py files"}
+{"position": 1007, "repo": "anandpawara/Real_Time_Image_Animation", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 1008, "repo": "marcomusy/pianoplayer", "commit": "6fb0e2114d7b21f75c0be5208172e1243a57323e", "decision": "skip", "reason": "no import from S"}
+{"position": 1009, "repo": "bochinski/iou-tracker", "commit": "47faa0cb14171d739586c1d0dc1eeaac588891b0", "decision": "skip", "reason": "7 .py files"}
+{"position": 1010, "repo": "arpitbansal297/Cold-Diffusion-Models", "commit": "f8b1379151ff0cccba49112cf61d439bd4dd4ad9", "decision": "skip", "reason": "no import from S"}
+{"position": 1011, "repo": "google-research/circuit_training", "commit": "c417a3a13f40867b649c719c03daaf1b39a909bc", "decision": "skip", "reason": "no import from S"}
+{"position": 1012, "repo": "0k/shyaml", "commit": "4d3762f55de90708cb20e3b38fc8be042667d1fe", "decision": "skip", "reason": "2 .py files"}
+{"position": 1013, "repo": "NanoVNA-Saver/nanovna-saver", "commit": "3445a0ab86161f9c886c9d6f215eb57cab9b6f45", "decision": "skip", "reason": "no import from S"}
+{"position": 1014, "repo": "decoderesearch/SAELens", "decision": "skip", "reason": "frame size 214516 KB"}
+{"position": 1015, "repo": "SanshruthR/CCTV_YOLO", "commit": "4745dbecaec672e4bbc670b2a0fd6ce96faf0fe1", "decision": "skip", "reason": "1 .py files"}
+{"position": 1016, "repo": "metadriverse/metadrive", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 1017, "repo": "isaiahbjork/Auto-GPT-MetaTrader-Plugin", "commit": "aeecba2e13514b88b7f747d78eea133d7fe97888", "decision": "skip", "reason": "6 .py files"}
+{"position": 1018, "repo": "grigorig/stcgal", "commit": "fdf5fdd60515a260bb303dcf7b251c2b2671f91c", "decision": "skip", "reason": "no import from S"}
+{"position": 1019, "repo": "bowang-lab/U-Mamba", "commit": "28459e33ca03769800dd35e23c6e62491d1925b5", "decision": "skip", "reason": "no import from S"}
+{"position": 1020, "repo": "vysecurity/DomLink", "commit": "6537d66c42a5b7cdde06b1cb35132c213c8ff01b", "decision": "skip", "reason": "1 .py files"}
+{"position": 1021, "repo": "ironsheep/RPi-Reporter-MQTT2HA-Daemon", "commit": "259e42c1faa349ebcdcfc7106751c5326cd394f1", "decision": "skip", "reason": "2 .py files"}
+{"position": 1022, "repo": "hydropix/TranslateBooksWithLLMs", "commit": "ff1cb5144d9bc62f9f6e0de8b6e93449eaa8b55e", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1023, "repo": "cuemacro/finmarketpy", "commit": "afeaef28f5c8b78e613e649ecf18a9653dbf41fd", "decision": "skip", "reason": "no import from S"}
+{"position": 1024, "repo": "moble/quaternion", "commit": "8658799289278aa4f7e2bdcf65660790300d0234", "decision": "skip", "reason": "no import from S"}
+{"position": 1025, "repo": "joeynyc/hermes-skins", "commit": "cdedf3e374c4334764b0badcedf39f4047159d81", "decision": "skip", "reason": "2 .py files"}
+{"position": 1026, "repo": "automateyournetwork/netclaw", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 1027, "repo": "QwenLM/Qwen2.5-Math", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 1028, "repo": "need4swede/Portall", "decision": "skip", "reason": "screened in round 6"}
+{"position": 1029, "repo": "yaml/pyyaml", "commit": "f5e4504a92f169f65350a1047dccb23bc97028be", "decision": "skip", "reason": "no import from S"}
+{"position": 1030, "repo": "midoks/mdserver-web", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 1031, "repo": "neuropsychology/NeuroKit", "decision": "skip", "reason": "frame size 4677878 KB"}
+{"position": 1032, "repo": "yaojingang/yao-meta-skill", "commit": "f5d8f681372edae1915991e2de0c23dc306dd30f", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1033, "repo": "lucasrosati/claude-code-memory-setup", "commit": "62d0d0992c2aa6c553f60fc31a2b6afb24653e3c", "decision": "skip", "reason": "5 .py files"}
+{"position": 1034, "repo": "pkhungurn/talking-head-anime-demo", "commit": "bfbf7425748c4559451b95cdc39873ae609d8590", "decision": "skip", "reason": "no import from S"}
+{"position": 1035, "repo": "tiantianGPU/reg-factory", "commit": "675f30b7b1feb1336fa158b6ef1f3e16b6976eb4", "decision": "keep", "stratum": "P", "py_files": 201}
+{"position": 1036, "repo": "originalankur/maptoposter", "decision": "skip", "reason": "frame size 319952 KB"}
+{"position": 1037, "repo": "LAMDA-Tabular/TALENT", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 1038, "repo": "jupyter-vim/jupyter-vim", "commit": "91eef96d0f26ce37db241833341d08d11c8e5215", "decision": "skip", "reason": "6 .py files"}
+{"position": 1039, "repo": "QuipNetwork/hashsigs-py", "commit": "645ae0387ce5d8025ea82affd6b2c8b668a65ef4", "decision": "skip", "reason": "5 .py files"}
+{"position": 1040, "repo": "phil-bergmann/tracking_wo_bnw", "commit": "446abc7fe65e21068a97fa8234ca1176f0a34303", "decision": "skip", "reason": "no import from S"}
+{"position": 1041, "repo": "LLMBook-zh/LLMBook-zh.github.io", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 1042, "repo": "lingfengQAQ/webnovel-writer", "commit": "86e617ee7f4f04be9d3f8575f90c38f879ed80ed", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1043, "repo": "ep1cman/unifi-protect-backup", "commit": "6af04edb9621200c39a4b688ccc6c2fb4c90f1cb", "decision": "skip", "reason": "no import from S"}
+{"position": 1044, "repo": "keunwoochoi/music-auto_tagging-keras", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 1045, "repo": "beda-software/drf-writable-nested", "commit": "66a6bcdae613d294f1b59672b18ccda45cf7a96e", "decision": "skip", "reason": "no import from S"}
+{"position": 1046, "repo": "devanshbatham/FavFreak", "commit": "8acea5ef7e2dba9a92e6fcec15404022a70315e5", "decision": "skip", "reason": "1 .py files"}
+{"position": 1047, "repo": "spotify/chartify", "commit": "cb401e019fb7625a0f301e572db385c13bf61c0f", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1048, "repo": "OpenGVLab/InternVideo", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 1049, "repo": "deepzec/Bad-Pdf", "commit": "4b42f6678e0ba1ea56cb2543df9e0d1d9457c845", "decision": "skip", "reason": "1 .py files"}
+{"position": 1050, "repo": "bybit-exchange/pybit", "commit": "c3309e14e577b1d5610c1f288a413df6990a6d25", "decision": "keep", "stratum": "P", "py_files": 79}
+{"position": 1051, "repo": "SpaceZephyr/creator-buddy", "commit": "edf46c567ff54b72ee2157d06f3a02dbd67aaa9c", "decision": "keep", "stratum": "P", "py_files": 21}
+{"position": 1052, "repo": "mgonzs13/yolo_ros", "commit": "7924a8be76c81f4051370e254677516ca696a272", "decision": "skip", "reason": "5 .py files"}
+{"position": 1053, "repo": "s0md3v/Bolt", "commit": "37aa096db93e026f0524fe94c67dc1dae8985f3e", "decision": "skip", "reason": "no import from S"}
+{"position": 1054, "repo": "fivesheep/chnroutes", "commit": "e62a5b3402d8b0bb60a92c352dede01c170232dc", "decision": "skip", "reason": "5 .py files"}
+{"position": 1055, "repo": "jiny2001/dcscn-super-resolution", "decision": "skip", "reason": "frame size 397981 KB"}
+{"position": 1056, "repo": "unitreerobotics/unifolm-world-model-action", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 1057, "repo": "atlassian-api/atlassian-python-api", "decision": "skip", "reason": "clone failed: error: invalid path 'tests/responses/bitbucket/cloud/2.0/repositories/TestWorkspace1/testrepository1/permissions-config/"}
+{"position": 1058, "repo": "braintrustdata/autoevals", "commit": "16074252ff5d0a9422f1bf572768afa93c11b8f6", "decision": "skip", "reason": "no import from S"}
+{"position": 1059, "repo": "gnobitab/InstaFlow", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 1060, "repo": "zenstory-ai/video-recap-skills", "commit": "6b7a81616018d788f51badb7b05a7f9bc66199bc", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1061, "repo": "varunneal/spotify-mcp", "commit": "a854b00b5cd917cb155ee1fa68c77d9cab360998", "decision": "skip", "reason": "4 .py files"}
+{"position": 1062, "repo": "mumoshu/kube-airflow", "commit": "b1897e5fa9cda7b1c84f1f92f34bd0cc875c1cdd", "decision": "skip", "reason": "0 .py files"}
+{"position": 1063, "repo": "BruceLanLan/augur", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 1064, "repo": "s0md3v/Zen", "commit": "b9018b4b74eb0cb64d5a61ff00cdd413cf5d7733", "decision": "skip", "reason": "1 .py files"}
+{"position": 1065, "repo": "KdaiP/EchoBot", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 1066, "repo": "andialbrecht/sqlparse", "commit": "60cdc649726bf1bc4f1b336050560b336da715ec", "decision": "skip", "reason": "no import from S"}
+{"position": 1067, "repo": "joshuaboniface/rffmpeg", "commit": "f54ac843c7c8a157562e7ce37aaebbc5cb41354e", "decision": "skip", "reason": "1 .py files"}
+{"position": 1068, "repo": "john-kurkowski/tldextract", "commit": "bf7922f0e472e259ecc073e2395a41b26d34dc5d", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1069, "repo": "libtv-labs/libtv-skills", "commit": "c609246c1eca69f6bc129bcbb5d64c36734e4a4a", "decision": "skip", "reason": "6 .py files"}
+{"position": 1070, "repo": "bearpaw/pytorch-pose", "commit": "edc7aece651649927764435ce0c1f03cffa2edaf", "decision": "skip", "reason": "no import from S"}
+{"position": 1071, "repo": "gaubert/gmvault", "commit": "236fa56ddf0c299bc51b68ad467c522351b6203c", "decision": "keep", "stratum": "P", "py_files": 53}
+{"position": 1072, "repo": "geek-ai/Texygen", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 1073, "repo": "droidrun/mobilerun", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 1074, "repo": "ProHiryu/bert-chinese-ner", "commit": "96efd234c031091a85f0597b7e85a6b0c01d910a", "decision": "skip", "reason": "2 .py files"}
+{"position": 1075, "repo": "xinsir6/ControlNetPlus", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 1076, "repo": "mingyuliutw/UNIT", "decision": "skip", "reason": "frame size 207212 KB"}
+{"position": 1077, "repo": "AdamPlatin123/dsh-plugin-radar", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 1078, "repo": "splx-ai/agentic-radar", "commit": "65a7e4bd01e2034c7cb52e9620eeed287688cc53", "decision": "skip", "reason": "no import from S"}
+{"position": 1079, "repo": "crypt0b0y/BLUETOOTH-DOS-ATTACK-SCRIPT", "commit": "2a770e1b44aa81d56910974546dbac8ff1539a58", "decision": "skip", "reason": "3 .py files"}
+{"position": 1080, "repo": "Tencent-Hunyuan/HY-World-2.0", "decision": "skip", "reason": "frame size 340521 KB"}
+{"position": 1081, "repo": "shariqiqbal2810/maddpg-pytorch", "commit": "40388d7c18e4662cf23c826d97e209df9003d86c", "decision": "skip", "reason": "no import from S"}
+{"position": 1082, "repo": "dmMaze/BallonsTranslator", "commit": "fa3e1374b4ca7c040a1a04effb96c95aac2a5e5c", "decision": "keep", "stratum": "P", "py_files": 372}

@@ -1,0 +1,15 @@
+{
+ "repo": "s3rgeym/hh-applicant-tool",
+ "commit": "32fdf1a571d66b32ca575e84925ab4fa1e6f3092",
+ "annotator": "agent-7",
+ "files": {
+  "src/hh_applicant_tool/operations/authorize.py": [
+   {"line_start": 403, "line_end": 403, "name": "serialization.load_pem_public_key", "class": "A", "kind": "key_handling"},
+   {"line_start": 404, "line_end": 411, "name": "public_key.encrypt", "class": "A", "kind": "public_key"}
+  ],
+  "src/hh_applicant_tool/tool.py": [
+   {"line_start": 671, "line_end": 671, "name": "client_cls", "class": "B", "kind": "tls", "note": "client_cls is smtplib.SMTP_SSL when use_ssl is set (line 670), else smtplib.SMTP; borderline"},
+   {"line_start": 674, "line_end": 674, "name": "server.starttls", "class": "B", "kind": "tls"}
+  ]
+ }
+}

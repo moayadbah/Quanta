@@ -1,0 +1,33 @@
+{
+ "repo": "pickles4evaaaa/mybibliotheca",
+ "commit": "6db6bbe205f500327732a6af50a2ee74942465b2",
+ "annotator": "agent-7",
+ "files": {
+  "app/forms.py": [
+   {"line_start": 174, "line_end": 174, "name": "generate_csrf", "class": "B", "kind": "token", "note": "flask_wtf.csrf.generate_csrf creates a signed random CSRF token; borderline B"}
+  ],
+  "app/auth.py": [
+   {"line_start": 105, "line_end": 105, "name": "generate_csrf", "class": "B", "kind": "token", "note": "flask_wtf.csrf.generate_csrf creates a signed random CSRF token; borderline B"},
+   {"line_start": 240, "line_end": 240, "name": "generate_password_hash", "class": "B", "kind": "kdf"},
+   {"line_start": 327, "line_end": 327, "name": "generate_password_hash", "class": "B", "kind": "kdf"},
+   {"line_start": 380, "line_end": 380, "name": "generate_password_hash", "class": "B", "kind": "kdf"},
+   {"line_start": 1003, "line_end": 1003, "name": "ssl.create_default_context", "class": "A", "kind": "tls"},
+   {"line_start": 1004, "line_end": 1004, "name": "smtplib.SMTP_SSL", "class": "B", "kind": "tls"},
+   {"line_start": 1037, "line_end": 1037, "name": "ssl.create_default_context", "class": "A", "kind": "tls"},
+   {"line_start": 1038, "line_end": 1038, "name": "server.starttls", "class": "B", "kind": "tls"}
+  ],
+  "app/routes/import_format_helpers.py": [],
+  "config.py": [
+   {"line_start": 70, "line_end": 70, "name": "secrets.token_hex", "class": "A", "kind": "random"}
+  ],
+  "app/services/simple_backup_service.py": [],
+  "app/services/kuzu_series_service.py": [],
+  "app/utils/unified_metadata.py": [],
+  "app/admin.py": [
+   {"line_start": 1441, "line_end": 1441, "name": "ssl.create_default_context", "class": "A", "kind": "tls"},
+   {"line_start": 1442, "line_end": 1442, "name": "smtplib.SMTP_SSL", "class": "B", "kind": "tls"},
+   {"line_start": 1494, "line_end": 1494, "name": "ssl.create_default_context", "class": "A", "kind": "tls"},
+   {"line_start": 1495, "line_end": 1495, "name": "server.starttls", "class": "B", "kind": "tls"}
+  ]
+ }
+}

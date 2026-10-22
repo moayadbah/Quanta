@@ -1,0 +1,16 @@
+{
+ "repo": "SpaceZephyr/creator-buddy",
+ "commit": "edf46c567ff54b72ee2157d06f3a02dbd67aaa9c",
+ "annotator": "agent-6",
+ "files": {
+  "video-Skills/space-video-transcript/tests/test_platforms.py": [],
+  "gzh-Skills/gzh-explosive-content-detector/scripts/fetch_gzh_trends.py": [
+   {"line_start": 131, "line_end": 131, "name": "ssl.SSLContext", "class": "A", "kind": "tls"},
+   {"line_start": 134, "line_end": 134, "name": "context.wrap_socket", "class": "A", "kind": "tls"}
+  ],
+  "gzh-Skills/baokuan-article-analysis/scripts/daily_sector_trends.py": [
+   {"line_start": 107, "line_end": 107, "name": "ssl.SSLContext", "class": "A", "kind": "tls"},
+   {"line_start": 110, "line_end": 110, "name": "context.wrap_socket", "class": "A", "kind": "tls"}
+  ]
+ }
+}

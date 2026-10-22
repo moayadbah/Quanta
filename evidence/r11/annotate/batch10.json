@@ -1,0 +1,57 @@
+[
+ {
+  "repo": "fqscfqj/Y2A-Auto",
+  "commit": "d5617ac7d97278fbd63fb77dfbe877cc63353dda",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/fqscfqj__Y2A-Auto",
+  "files": [
+   "modules/youtube_handler.py",
+   "modules/bili_sdk/clients/CurlCFFIClient.py",
+   "modules/acfun_uploader.py",
+   "modules/asr_api_client.py",
+   "modules/youtube_monitor.py",
+   "modules/bili_sdk/video_uploader.py",
+   "tests/test_youtube_monitor_quota_budget.py",
+   "modules/bili_sdk/utils/network.py"
+  ]
+ },
+ {
+  "repo": "mitogen-hq/mitogen",
+  "commit": "eb76a3aee54ea10ceaf6bf642ed410394b7ef119",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/mitogen-hq__mitogen",
+  "files": [
+   "mitogen/core.py",
+   "ansible_mitogen/runner.py",
+   "ansible_mitogen/target.py",
+   "tests/bench/throughput.py",
+   "examples/service/self_contained.py",
+   "tests/testlib.py",
+   "mitogen/compat/pkgutil.py",
+   "mitogen/fakessh.py"
+  ]
+ },
+ {
+  "repo": "gunnery/gunnery",
+  "commit": "733a261cae6243a11883a40e18b14f57cf6e47b2",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/gunnery__gunnery",
+  "files": [
+   "gunnery/backend/securefile.py",
+   "gunnery/backend/tasks.py",
+   "gunnery/account/backend.py",
+   "gunnery/core/models.py",
+   "gunnery/account/tests/test_views.py",
+   "gunnery/backend/ssh.py"
+  ]
+ },
+ {
+  "repo": "Hackxiaoya/CuteOne",
+  "commit": "b5fba55454d600e3ddc097de42dbd1c2aa44c772",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/Hackxiaoya__CuteOne",
+  "files": [
+   "app/common.py",
+   "app/main/users/views.py",
+   "app/admin/users/views.py",
+   "config.py",
+   "app/admin/drive/views.py"
+  ]
+ }
+]

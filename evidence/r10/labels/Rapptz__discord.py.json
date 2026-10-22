@@ -1,0 +1,21 @@
+{
+ "repo": "Rapptz/discord.py",
+ "commit": "65232c38702be5844cf2ce865a4777eb1928b5d0",
+ "annotator": "agent-5",
+ "files": {
+  "discord/utils.py": [],
+  "discord/app_commands/errors.py": [],
+  "discord/ui/modal.py": [
+   {"line_start": 143, "line_end": 143, "name": "os.urandom", "class": "A", "kind": "random"}
+  ],
+  "discord/ext/commands/core.py": [],
+  "discord/abc.py": [
+   {"line_start": 1687, "line_end": 1687, "name": "secrets.randbits", "class": "A", "kind": "random"}
+  ],
+  "discord/ui/select.py": [
+   {"line_start": 251, "line_end": 251, "name": "os.urandom", "class": "A", "kind": "random"}
+  ],
+  "discord/ext/commands/parameters.py": [],
+  "discord/types/message.py": []
+ }
+}

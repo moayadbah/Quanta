@@ -1,0 +1,17 @@
+{
+ "repo": "GACWR/OpenUBA",
+ "commit": "6d7b9cf85d6bff3e16eb5230791252ff2a3bd0ec",
+ "annotator": "agent-6",
+ "files": {
+  "core/services/data_ingestion.py": [],
+  "core/model_library/ssh-login-anomaly-detector/MODEL.py": [],
+  "docker/model-runner/runner.py": [
+   {"line_start": 146, "line_end": 146, "name": "hashlib.sha256", "class": "A", "kind": "hash"}
+  ],
+  "sdk/examples/quickstart.py": [],
+  "images/diagram/generate.py": [],
+  "core/model_library/SSH Anomaly Detector E2E Test/MODEL.py": [],
+  "core/tests/e2e/test_workspace_notebooks.py": [],
+  "core/api_routers/auth.py": []
+ }
+}

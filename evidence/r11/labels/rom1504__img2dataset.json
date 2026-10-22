@@ -1,0 +1,15 @@
+{
+ "repo": "rom1504/img2dataset",
+ "commit": "95523bc7579745a1749b8132d408b9fea89a338e",
+ "annotator": "agent-9",
+ "files": {
+  "img2dataset/downloader.py": [
+   {"line_start": 47, "line_end": 47, "name": "ssl.create_default_context", "class": "A", "kind": "tls"},
+   {"line_start": 51, "line_end": 51, "name": "urllib.request.urlopen", "class": "B", "kind": "tls", "note": "passes context=ctx"},
+   {"line_start": 276, "line_end": 276, "name": "getattr(hashlib, self.verify_hash_type)", "class": "A", "kind": "hash", "note": "hashlib constructor selected dynamically"},
+   {"line_start": 340, "line_end": 340, "name": "getattr(hashlib, self.compute_hash)", "class": "A", "kind": "hash", "note": "hashlib constructor selected dynamically"}
+  ],
+  "tests/test_downloader.py": [],
+  "img2dataset/logger.py": []
+ }
+}

@@ -1,0 +1,12 @@
+{
+ "repo": "TeamHG-Memex/tensorboard_logger",
+ "commit": "203aca7a52066f84ef15046b0d0b1ea69dc59e12",
+ "annotator": "agent-6",
+ "files": {
+  "travis_pypi_setup.py": [
+   {"line_start": 37, "line_end": 37, "name": "load_pem_public_key", "class": "A", "kind": "key_handling"},
+   {"line_start": 41, "line_end": 41, "name": "load_pem_public_key", "class": "A", "kind": "key_handling"},
+   {"line_start": 51, "line_end": 51, "name": "key.encrypt", "class": "A", "kind": "public_key"}
+  ]
+ }
+}

@@ -1,0 +1,37 @@
+{
+ "repo": "lnbits/lnbits",
+ "commit": "04b37f0d761222561bc8606cfe7edc86cabcce35",
+ "annotator": "agent-6",
+ "files": {
+  "tests/unit/test_decorators.py": [
+   {"line_start": 128, "line_end": 128, "name": "jwt.decode", "class": "A", "kind": "token"}
+  ],
+  "tests/unit/onchain/test_psbt.py": [
+   {"line_start": 86, "line_end": 94, "name": "wally.bip32_key_from_seed", "class": "B", "kind": "key_handling", "note": "libwally (wallet primitives library, not primarily a cryptography library); BIP32 master key from seed"},
+   {"line_start": 105, "line_end": 105, "name": "wally.psbt_sign_bip32", "class": "B", "kind": "public_key"},
+   {"line_start": 194, "line_end": 194, "name": "wally.psbt_sign_bip32", "class": "B", "kind": "public_key"},
+   {"line_start": 232, "line_end": 232, "name": "wally.psbt_sign_bip32", "class": "B", "kind": "public_key"},
+   {"line_start": 271, "line_end": 271, "name": "wally.psbt_sign_bip32", "class": "B", "kind": "public_key"},
+   {"line_start": 320, "line_end": 322, "name": "wally.bip32_key_from_seed", "class": "B", "kind": "key_handling"},
+   {"line_start": 323, "line_end": 323, "name": "wally.bip32_key_to_base58", "class": "B", "kind": "key_handling", "note": "serialises the extended public key (B2a)"},
+   {"line_start": 343, "line_end": 343, "name": "wally.psbt_sign_bip32", "class": "B", "kind": "public_key"},
+   {"line_start": 346, "line_end": 346, "name": "wally.psbt_sign_bip32", "class": "B", "kind": "public_key"},
+   {"line_start": 363, "line_end": 365, "name": "wally.bip32_key_from_parent_path", "class": "B", "kind": "key_handling", "note": "BIP32 child key derivation"},
+   {"line_start": 369, "line_end": 369, "name": "wally.psbt_sign_bip32", "class": "B", "kind": "public_key"}
+  ],
+  "lnbits/core/migrations.py": [],
+  "tests/unit/test_helpers.py": [
+   {"line_start": 185, "line_end": 185, "name": "jwt.decode", "class": "A", "kind": "token"},
+   {"line_start": 234, "line_end": 234, "name": "hashlib.sha256", "class": "A", "kind": "hash"},
+   {"line_start": 279, "line_end": 279, "name": "hashlib.sha256", "class": "A", "kind": "hash"}
+  ],
+  "lnbits/wallets/breez.py": [
+   {"line_start": 151, "line_end": 151, "name": "mnemonic_to_seed", "class": "B", "kind": "kdf", "note": "Breez SDK BIP39 mnemonic-to-seed derivation"}
+  ],
+  "lnbits/core/views/auth_api.py": [
+   {"line_start": 224, "line_end": 224, "name": "jwt.decode", "class": "A", "kind": "token"}
+  ],
+  "tests/conftest.py": [],
+  "tests/api/test_onchain_wallet.py": []
+ }
+}

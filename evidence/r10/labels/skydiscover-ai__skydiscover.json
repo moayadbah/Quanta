@@ -1,0 +1,27 @@
+{
+ "repo": "skydiscover-ai/skydiscover",
+ "commit": "0d932b690670a7e544388ad362e9876c8bd256a0",
+ "annotator": "agent-1",
+ "files": {
+  "tests/spec/test_checkpoint.py": [],
+  "tests/spec/test_contract_replay.py": [],
+  "skydiscover/optimize/context_builder/evox/builder.py": [
+   {"line_start": 106, "line_end": 108, "name": "hashlib.sha256", "class": "A", "kind": "hash"}
+  ],
+  "tests/search/test_adaevolve_checkpoint_purity.py": [],
+  "skydiscover/optimize/search/evox/database/search_strategy_evaluator.py": [],
+  "skydiscover/synthesize/examples/llm-router/evaluator/benchmark/data/make_tenant_traces.py": [
+   {"line_start": 65, "line_end": 65, "name": "hashlib.sha256", "class": "A", "kind": "hash"},
+   {"line_start": 193, "line_end": 193, "name": "hashlib.sha256", "class": "A", "kind": "hash"},
+   {"line_start": 278, "line_end": 278, "name": "hashlib.sha256", "class": "A", "kind": "hash"},
+   {"line_start": 321, "line_end": 321, "name": "hashlib.sha256", "class": "A", "kind": "hash"}
+  ],
+  "skydiscover/optimize/extras/monitor/server.py": [
+   {"line_start": 34, "line_end": 34, "name": "hashlib.sha1", "class": "A", "kind": "hash"}
+  ],
+  "skydiscover/synthesize/examples/llm-router/evaluator/benchmark/replay_tenants.py": [
+   {"line_start": 42, "line_end": 42, "name": "hashlib.sha256", "class": "A", "kind": "hash"},
+   {"line_start": 43, "line_end": 43, "name": "hashlib.sha256", "class": "A", "kind": "hash"}
+  ]
+ }
+}

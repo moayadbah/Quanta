@@ -1,0 +1,60 @@
+[
+ {
+  "repo": "pickles4evaaaa/mybibliotheca",
+  "commit": "6db6bbe205f500327732a6af50a2ee74942465b2",
+  "clone": "Downloads/Quanta-R10-draft/clones-h10/pickles4evaaaa__mybibliotheca",
+  "files": [
+   "app/forms.py",
+   "app/auth.py",
+   "app/routes/import_format_helpers.py",
+   "config.py",
+   "app/services/simple_backup_service.py",
+   "app/services/kuzu_series_service.py",
+   "app/utils/unified_metadata.py",
+   "app/admin.py"
+  ]
+ },
+ {
+  "repo": "tiantianGPU/reg-factory",
+  "commit": "675f30b7b1feb1336fa158b6ef1f3e16b6976eb4",
+  "clone": "Downloads/Quanta-R10-draft/clones-h10/tiantianGPU__reg-factory",
+  "files": [
+   "config.py",
+   "register_grok.py",
+   "gmail_android/gmail_register_local.py",
+   "tests/test_outlook_graph_flow.py",
+   "common/traffic_saver.py",
+   "vendor/reauth_web/lib/chatgpt_client.py",
+   "vendor/gopay_engine/app/src/opai/core/gopay_signer_v2.py",
+   "xconsole_client/__init__.py"
+  ]
+ },
+ {
+  "repo": "SeldomQA/seldom",
+  "commit": "f02179a1c95023ed35d56c2463349cef9f0af0e1",
+  "clone": "Downloads/Quanta-R10-draft/clones-h10/SeldomQA__seldom",
+  "files": [
+   "tests/test_encrypt.py",
+   "seldom/utils/encrypt.py",
+   "seldom/cli.py"
+  ]
+ },
+ {
+  "repo": "abhishekkrthakur/diffuzers",
+  "commit": "71f710a1940c22637561809387b1c8622be1a48b",
+  "clone": "Downloads/Quanta-R10-draft/clones-h10/abhishekkrthakur__diffuzers",
+  "files": [
+   "diffuzers/cli/run_api.py",
+   "diffuzers/clip_interrogator.py"
+  ]
+ },
+ {
+  "repo": "s3rgeym/hh-applicant-tool",
+  "commit": "32fdf1a571d66b32ca575e84925ab4fa1e6f3092",
+  "clone": "Downloads/Quanta-R10-draft/clones-h10/s3rgeym__hh-applicant-tool",
+  "files": [
+   "src/hh_applicant_tool/operations/authorize.py",
+   "src/hh_applicant_tool/tool.py"
+  ]
+ }
+]

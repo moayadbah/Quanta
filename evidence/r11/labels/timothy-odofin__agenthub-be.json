@@ -1,0 +1,17 @@
+{
+ "repo": "timothy-odofin/agenthub-be",
+ "commit": "fc386c23c90aab9897e87aa531c179a7266471fc",
+ "annotator": "agent-5",
+ "files": {
+  "backend/src/app/infrastructure/connections/database/redis_connection_manager.py": [
+   {"line_start": 116, "line_end": 116, "name": "redis.ConnectionPool", "class": "B", "kind": "tls", "note": "TLS is turned on through the kwargs dict: pool_params['connection_class'] = SSLConnection when the ssl config is set (line 109), so the call is a client opened with TLS"}
+  ],
+  "backend/tests/unit/api/test_chat_endpoints_secured.py": [],
+  "backend/src/app/core/security/dependencies.py": [],
+  "backend/tests/unit/api/test_tools_endpoint.py": [],
+  "backend/src/app/api/v1/tools.py": [],
+  "backend/src/app/schemas/conversational_auth.py": [],
+  "backend/tests/integration/core/config/test_settings_integration.py": [],
+  "backend/src/app/infrastructure/connections/database/postgres_connection_manager.py": []
+ }
+}

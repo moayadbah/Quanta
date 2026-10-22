@@ -1,0 +1,60 @@
+[
+ {
+  "repo": "Lightning-AI/litData",
+  "commit": "c6f075ca7448ede4c383122678ee790e359d3711",
+  "clone": "Downloads/Quanta-R10-draft/clones-h10/Lightning-AI__litData",
+  "files": [
+   "src/litdata/utilities/encryption.py",
+   "tests/raw/test_fork_safety.py",
+   "tests/utilities/test_encryption.py",
+   "benchmarks/bench_raw_before_vs_after.py",
+   "scripts/bench/bench_video_audio.py",
+   "tests/processing/test_functions.py",
+   "src/litdata/streaming/dataloader.py",
+   "tests/streaming/test_async_prefetch.py"
+  ]
+ },
+ {
+  "repo": "realiti4/claude-swap",
+  "commit": "5a837605947d0ab87a87f471689867ff4288fa5c",
+  "clone": "Downloads/Quanta-R10-draft/clones-h10/realiti4__claude-swap",
+  "files": [
+   "src/claude_swap/macos_keychain.py",
+   "tests/test_add_account_identity.py",
+   "src/claude_swap/cli.py",
+   "src/claude_swap/transfer.py",
+   "src/claude_swap/usage_store.py",
+   "src/claude_swap/appearance.py",
+   "src/claude_swap/credentials.py",
+   "tests/conftest.py"
+  ]
+ },
+ {
+  "repo": "nengo/nengo",
+  "commit": "440db6363f690ea4df52be29b2fa01a5a41399f8",
+  "clone": "Downloads/Quanta-R10-draft/clones-h10/nengo__nengo",
+  "files": [
+   "nengo/tests/test_examples.py",
+   "nengo/tests/test_cache.py",
+   "nengo/cache.py"
+  ]
+ },
+ {
+  "repo": "SpaceZephyr/creator-buddy",
+  "commit": "edf46c567ff54b72ee2157d06f3a02dbd67aaa9c",
+  "clone": "Downloads/Quanta-R10-draft/clones-h10/SpaceZephyr__creator-buddy",
+  "files": [
+   "video-Skills/space-video-transcript/tests/test_platforms.py",
+   "gzh-Skills/gzh-explosive-content-detector/scripts/fetch_gzh_trends.py",
+   "gzh-Skills/baokuan-article-analysis/scripts/daily_sector_trends.py"
+  ]
+ },
+ {
+  "repo": "deepseek-ai/DeepSpec",
+  "commit": "005e03b81cec38b7da6399833d609ee89a2587f2",
+  "clone": "Downloads/Quanta-R10-draft/clones-h10/deepseek-ai__DeepSpec",
+  "files": [
+   "deepspec/data/jsonl_dataset.py"
+  ]
+ }
+]

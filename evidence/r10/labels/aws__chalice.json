@@ -1,0 +1,26 @@
+{
+ "repo": "aws/chalice",
+ "commit": "702dc5e198b8c84ce09b08dc8409130b57d50819",
+ "annotator": "agent-1",
+ "files": {
+  "tests/integration/test_package.py": [
+   {"line_start": 300, "line_end": 300, "name": "hashlib.md5", "class": "A", "kind": "hash"}
+  ],
+  "chalice/app.py": [],
+  "tests/unit/test_test.py": [
+   {"line_start": 77, "line_end": 77, "name": "os.urandom", "class": "A", "kind": "random"}
+  ],
+  "chalice/local.py": [],
+  "chalice/deploy/packager.py": [
+   {"line_start": 208, "line_end": 208, "name": "hashlib.md5", "class": "A", "kind": "hash"},
+   {"line_start": 380, "line_end": 380, "name": "hashlib.md5", "class": "A", "kind": "hash"},
+   {"line_start": 476, "line_end": 476, "name": "hashlib.md5", "class": "A", "kind": "hash"}
+  ],
+  "tests/unit/test_package.py": [],
+  "tests/functional/test_deployer.py": [
+   {"line_start": 110, "line_end": 110, "name": "hashlib.md5", "class": "A", "kind": "hash"},
+   {"line_start": 123, "line_end": 123, "name": "hashlib.md5", "class": "A", "kind": "hash"}
+  ],
+  "tests/unit/deploy/test_deployer.py": []
+ }
+}

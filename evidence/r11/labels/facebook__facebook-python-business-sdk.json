@@ -1,0 +1,12 @@
+{
+ "repo": "facebook/facebook-python-business-sdk",
+ "commit": "efd8423a2e595ea8d4c04eb824ce113f2f1d68cd",
+ "annotator": "agent-4",
+ "files": {
+  "facebook_business/adobjects/serverside/event_request_async.py": [
+   {"line_start": 80, "line_end": 80, "name": "ssl.create_default_context", "class": "A", "kind": "tls"},
+   {"line_start": 82, "line_end": 87, "name": "session.post", "class": "B", "kind": "tls", "note": "aiohttp ClientSession call passing ssl=sslcontext (B2e)"}
+  ],
+  "facebook_business/adobjects/customaudiencesalts.py": []
+ }
+}

@@ -1,0 +1,53 @@
+[
+ {
+  "repo": "Rapptz/discord.py",
+  "commit": "65232c38702be5844cf2ce865a4777eb1928b5d0",
+  "clone": "Downloads/Quanta-R10-draft/clones-h10/Rapptz__discord.py",
+  "files": [
+   "discord/utils.py",
+   "discord/app_commands/errors.py",
+   "discord/ui/modal.py",
+   "discord/ext/commands/core.py",
+   "discord/abc.py",
+   "discord/ui/select.py",
+   "discord/ext/commands/parameters.py",
+   "discord/types/message.py"
+  ]
+ },
+ {
+  "repo": "dustinkirkland/byobu",
+  "commit": "41c285e7eaf36bed88204c75314fb21a444b031a",
+  "clone": "Downloads/Quanta-R10-draft/clones-h10/dustinkirkland__byobu",
+  "files": [
+   "mobile/tests/test_daemon.py",
+   "mobile/trustmux/_paths.py",
+   "mobile/tests/test_paths.py",
+   "mobile/trustmux/_pair.py",
+   ".maintainer/release.py",
+   "mobile/trustmux/_advertise.py",
+   "mobile/trustmux/_ctl.py",
+   "mobile/tests/test_security_audit.py"
+  ]
+ },
+ {
+  "repo": "bybit-exchange/pybit",
+  "commit": "c3309e14e577b1d5610c1f288a413df6990a6d25",
+  "clone": "Downloads/Quanta-R10-draft/clones-h10/bybit-exchange__pybit",
+  "files": [
+   "examples/http_example_rsa_authentication.py",
+   "pybit/_websocket_stream.py",
+   "pybit/_http_manager.py",
+   "tests/test_pybit.py",
+   "pybit/_v5_user.py",
+   "examples/websocket_example_rsa_authentication.py"
+  ]
+ },
+ {
+  "repo": "maks-sh/scikit-uplift",
+  "commit": "0038e659428f6e7a49b935b850651cd9a9db3f54",
+  "clone": "Downloads/Quanta-R10-draft/clones-h10/maks-sh__scikit-uplift",
+  "files": [
+   "sklift/datasets/datasets.py"
+  ]
+ }
+]

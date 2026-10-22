@@ -1,0 +1,10 @@
+{
+ "repo": "jina-ai/vectordb",
+ "commit": "ad2b64a468c70be7970cf1606c83005a73547b2a",
+ "annotator": "second-2",
+ "files": {
+  "vectordb/utils/push_to_hubble.py": [
+   {"line_start": 76, "line_end": 76, "name": "secrets.token_hex", "class": "A", "kind": "random"}
+  ]
+ }
+}

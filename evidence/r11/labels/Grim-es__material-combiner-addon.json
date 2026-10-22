@@ -1,0 +1,14 @@
+{
+ "repo": "Grim-es/material-combiner-addon",
+ "commit": "eed9ca25baffe5463bdd6104360fcd9f6e32ba15",
+ "annotator": "agent-1",
+ "files": {
+  "addon_updater.py": [
+   {"line_start": 666, "line_end": 666, "name": "ssl._create_unverified_context", "class": "A", "kind": "tls"},
+   {"line_start": 683, "line_end": 683, "name": "urllib.request.urlopen", "class": "B", "kind": "tls", "note": "passes context=context (TLS context); the urlopen on line 685 passes none and is not a unit"},
+   {"line_start": 768, "line_end": 768, "name": "ssl._create_unverified_context", "class": "A", "kind": "tls"},
+   {"line_start": 778, "line_end": 778, "name": "urllib.request.urlopen", "class": "B", "kind": "tls", "note": "passes context=context (TLS context)"}
+  ],
+  "addon_updater_ops.py": []
+ }
+}

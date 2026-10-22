@@ -1,0 +1,11 @@
+{
+ "repo": "torrinworx/Blend_My_NFTs",
+ "commit": "ad9f8cd3d3e00ea79e24c19ccb2b986837af8c30",
+ "annotator": "agent-5",
+ "files": {
+  "main/exporter.py": [
+   {"line_start": 647, "line_end": 647, "name": "ssl.create_default_context", "class": "A", "kind": "tls"},
+   {"line_start": 648, "line_end": 648, "name": "smtplib.SMTP_SSL", "class": "B", "kind": "tls", "note": "B2g: always-TLS stdlib client class, also given context=context"}
+  ]
+ }
+}

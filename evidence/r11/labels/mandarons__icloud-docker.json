@@ -1,0 +1,25 @@
+{
+ "repo": "mandarons/icloud-docker",
+ "commit": "4978c2d15abc1ffc8fe1aa17b470de8ca232921d",
+ "annotator": "agent-11",
+ "files": {
+  "src/sync.py": [
+   {"line_start": 323, "line_end": 323, "name": "secrets.token_urlsafe", "class": "A", "kind": "random"}
+  ],
+  "src/sync_photos.py": [],
+  "tests/data/__init__.py": [],
+  "src/icloud_sign.py": [
+   {"line_start": 113, "line_end": 113, "name": "client.get_assertion", "class": "B", "kind": "public_key", "note": "fido2 client asks the security key to sign a WebAuthn challenge; fido2 treated as an authentication library, not primarily a cryptography library"}
+  ],
+  "tests/test_config_parser.py": [],
+  "src/web.py": [
+   {"line_start": 73, "line_end": 73, "name": "secrets.token_bytes", "class": "A", "kind": "random"},
+   {"line_start": 77, "line_end": 77, "name": "hmac.new", "class": "A", "kind": "mac"},
+   {"line_start": 181, "line_end": 181, "name": "secrets.token_urlsafe", "class": "A", "kind": "random"}
+  ],
+  "src/config_parser.py": [],
+  "src/notify.py": [
+   {"line_start": 681, "line_end": 681, "name": "smtp.starttls", "class": "B", "kind": "tls"}
+  ]
+ }
+}

@@ -1,0 +1,22 @@
+{
+ "repo": "spark-arena/sparkrun",
+ "commit": "d54423cef9419751ecc19db7e0e63118f1aecdc1",
+ "annotator": "agent-2",
+ "files": {
+  "tests/test_executor_local.py": [],
+  "src/sparkrun/api/_status.py": [],
+  "src/sparkrun/runtimes/vllm_ray.py": [],
+  "tests/test_proxy_discovery_scope.py": [],
+  "src/sparkrun/telemetry/events.py": [],
+  "src/sparkrun/orchestration/distribution.py": [
+   {"line_start": 545, "line_end": 545, "name": "hashlib.sha256", "class": "A", "kind": "hash"},
+   {"line_start": 980, "line_end": 980, "name": "hashlib.sha256", "class": "A", "kind": "hash"},
+   {"line_start": 1080, "line_end": 1080, "name": "hashlib.sha256", "class": "A", "kind": "hash"}
+  ],
+  "src/sparkrun/proxy/_systemd.py": [],
+  "tests/test_ssh_host_identity.py": [
+   {"line_start": 96, "line_end": 96, "name": "hmac.new", "class": "A", "kind": "mac"},
+   {"line_start": 151, "line_end": 151, "name": "hashlib.sha256", "class": "A", "kind": "hash"}
+  ]
+ }
+}

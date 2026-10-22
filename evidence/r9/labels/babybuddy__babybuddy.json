@@ -1,0 +1,25 @@
+{
+ "repo": "babybuddy/babybuddy",
+ "commit": "09629cf633cf3a2059a21ade4cea7ea4d846422f",
+ "annotator": "agent-5",
+ "files": {
+  "babybuddy/models.py": [],
+  "babybuddy/settings/base.py": [],
+  "babybuddy/forms.py": [],
+  "webhooks/migrations/0001_initial.py": [],
+  "webhooks/tests/tests_delivery.py": [
+   {"line_start": 103, "line_end": 105, "name": "hmac.new", "class": "A", "kind": "mac"},
+   {"line_start": 132, "line_end": 132, "name": "hmac.new", "class": "A", "kind": "mac"},
+   {"line_start": 143, "line_end": 145, "name": "hmac.new", "class": "A", "kind": "mac"}
+  ],
+  "babybuddy/settings/production.example.py": [],
+  "webhooks/models.py": [
+   {"line_start": 16, "line_end": 16, "name": "secrets.token_urlsafe", "class": "A", "kind": "random"}
+  ],
+  "webhooks/delivery.py": [
+   {"line_start": 49, "line_end": 49, "name": "hmac.new", "class": "A", "kind": "mac"},
+   {"line_start": 99, "line_end": 104, "name": "http.client.HTTPSConnection", "class": "B", "kind": "tls", "note": "B2g: always-TLS stdlib client class"},
+   {"line_start": 103, "line_end": 103, "name": "ssl.create_default_context", "class": "A", "kind": "tls"}
+  ]
+ }
+}

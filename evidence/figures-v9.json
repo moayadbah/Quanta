@@ -1,0 +1,310 @@
+{
+ "_about": "The numbers page's figures for v5 and v9, recomputed from the round results (no new measurement).",
+ "page": {
+  "card1_other_crypto": {
+   "v5": 89.5,
+   "v9": 95.0,
+   "points": 5.5
+  },
+  "card2_pktls": {
+   "v5": 44.5,
+   "v9": 79.3,
+   "points": 34.8,
+   "v9_latest_sample_H11": 93.2
+  },
+  "card3_precision": {
+   "v5": 98.5,
+   "v9": 96.3,
+   "results_v5": 472,
+   "results_v9": 630,
+   "real_v5": 465,
+   "real_v9": 607,
+   "more_real_calls": 142
+  },
+  "card4_hours": {
+   "v5": 76.59,
+   "v9": 76.59
+  },
+  "card4_scan_seconds": {
+   "v5": 10.1,
+   "v9": 11.41
+  },
+  "card5_usd": {
+   "v5": 5007.1,
+   "v9": 5007.05
+  },
+  "card6_overdue": {
+   "v5": 80,
+   "v9": 80
+  },
+  "scope_recall_AB": {
+   "v5": 63.3,
+   "v9": 82.1
+  },
+  "class_A_units": 638
+ },
+ "figures": {
+  "v5": {
+   "other_crypto_A": {
+    "found": 342,
+    "total": 382,
+    "rate": 0.8953,
+    "percent": 89.5,
+    "ci": [
+     0.8605,
+     0.9222
+    ]
+   },
+   "pktls_A": {
+    "found": 114,
+    "total": 256,
+    "rate": 0.4453,
+    "percent": 44.5,
+    "ci": [
+     0.3857,
+     0.5066
+    ]
+   },
+   "pktls_A_H11_only": {
+    "found": 29,
+    "total": 59,
+    "rate": 0.4915,
+    "percent": 49.2,
+    "ci": [
+     0.3684,
+     0.6156
+    ]
+   },
+   "precision": {
+    "found": 465,
+    "total": 472,
+    "rate": 0.9852,
+    "percent": 98.5,
+    "ci": [
+     0.9697,
+     0.9928
+    ]
+   },
+   "real_crypto_reported": 465,
+   "recall_A": {
+    "found": 456,
+    "total": 638,
+    "rate": 0.7147,
+    "percent": 71.5,
+    "ci": [
+     0.6785,
+     0.7484
+    ]
+   },
+   "recall_AB": {
+    "found": 469,
+    "total": 741,
+    "rate": 0.6329,
+    "percent": 63.3,
+    "ci": [
+     0.5976,
+     0.6669
+    ]
+   },
+   "per_set": {
+    "H9": {
+     "recall_A": [
+      156,
+      241
+     ],
+     "pktls_A": [
+      48,
+      131
+     ],
+     "recall_AB": [
+      162,
+      274
+     ],
+     "precision": [
+      161,
+      163
+     ]
+    },
+    "H10": {
+     "recall_A": [
+      142,
+      181
+     ],
+     "pktls_A": [
+      37,
+      66
+     ],
+     "recall_AB": [
+      147,
+      198
+     ],
+     "precision": [
+      145,
+      148
+     ]
+    },
+    "H11": {
+     "recall_A": [
+      158,
+      216
+     ],
+     "pktls_A": [
+      29,
+      59
+     ],
+     "recall_AB": [
+      160,
+      269
+     ],
+     "precision": [
+      159,
+      161
+     ]
+    }
+   },
+   "time_cost": {
+    "repositories": 60,
+    "ruleset": "2026.11.01",
+    "quanta_seconds_median": 10.1,
+    "saved_hours_median": 76.59,
+    "saved_usd_median": 5007.1,
+    "overdue_sites": 80
+   }
+  },
+  "v9": {
+   "other_crypto_A": {
+    "found": 363,
+    "total": 382,
+    "rate": 0.9503,
+    "percent": 95.0,
+    "ci": [
+     0.9236,
+     0.9679
+    ]
+   },
+   "pktls_A": {
+    "found": 203,
+    "total": 256,
+    "rate": 0.793,
+    "percent": 79.3,
+    "ci": [
+     0.7392,
+     0.8381
+    ]
+   },
+   "pktls_A_H11_only": {
+    "found": 55,
+    "total": 59,
+    "rate": 0.9322,
+    "percent": 93.2,
+    "ci": [
+     0.8382,
+     0.9733
+    ]
+   },
+   "precision": {
+    "found": 607,
+    "total": 630,
+    "rate": 0.9635,
+    "percent": 96.3,
+    "ci": [
+     0.9458,
+     0.9756
+    ]
+   },
+   "real_crypto_reported": 607,
+   "recall_A": {
+    "found": 566,
+    "total": 638,
+    "rate": 0.8871,
+    "percent": 88.7,
+    "ci": [
+     0.8602,
+     0.9094
+    ]
+   },
+   "recall_AB": {
+    "found": 608,
+    "total": 741,
+    "rate": 0.8205,
+    "percent": 82.1,
+    "ci": [
+     0.7913,
+     0.8465
+    ]
+   },
+   "per_set": {
+    "H9": {
+     "recall_A": [
+      196,
+      241
+     ],
+     "pktls_A": [
+      87,
+      131
+     ],
+     "recall_AB": [
+      218,
+      274
+     ],
+     "precision": [
+      217,
+      219
+     ]
+    },
+    "H10": {
+     "recall_A": [
+      174,
+      181
+     ],
+     "pktls_A": [
+      61,
+      66
+     ],
+     "recall_AB": [
+      184,
+      198
+     ],
+     "precision": [
+      184,
+      193
+     ]
+    },
+    "H11": {
+     "recall_A": [
+      196,
+      216
+     ],
+     "pktls_A": [
+      55,
+      59
+     ],
+     "recall_AB": [
+      206,
+      269
+     ],
+     "precision": [
+      206,
+      218
+     ]
+    }
+   },
+   "time_cost": {
+    "repositories": 60,
+    "ruleset": "2026.11.05",
+    "quanta_seconds_median": 11.41,
+    "saved_hours_median": 76.59,
+    "saved_usd_median": 5007.05,
+    "overdue_sites": 80
+   }
+  }
+ },
+ "inputs": {
+  "evidence/r9/accuracy-r9.json": "1bbaaa5bf7a633019e6ac7e2f7a19216275bca368ce6955a9ad67e69a074ec23",
+  "evidence/r10/accuracy-r10.json": "f8b7aa1091ba549cd25756bfaec4b943c2b6927f91b2db77e7d76c80f5a8da50",
+  "evidence/r11/accuracy-r11.json": "c91caf61272ed61b84470a6a9a104c811c296ee2126b36983e5631464072a3ac",
+  "evidence/r11/decision-r11.json": "c3596e4297edf841705155e901e81c7b7f74580b26b2f2246c0b80fe7263dc10",
+  "evidence/r9/time-cost-v5.json": "d0f8a5f64da7e9df7554aa352f763abe432f6bb064bba8312d6fbae8bfefc918",
+  "evidence/r9/time-cost-v9.json": "d28540a5e739aff1eaef809a0a70f193d8081fee9caafd49aa097aa291cc106f"
+ }
+}

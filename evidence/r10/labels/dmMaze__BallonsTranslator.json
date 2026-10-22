@@ -1,0 +1,38 @@
+{
+ "repo": "dmMaze/BallonsTranslator",
+ "commit": "fa3e1374b4ca7c040a1a04effb96c95aac2a5e5c",
+ "annotator": "agent-2",
+ "files": {
+  "ballontranslator/modules/exceptions.py": [],
+  "ballontranslator/utils/download_util.py": [
+   {"line_start": 69, "line_end": 69, "name": "hashlib.sha256", "class": "A", "kind": "hash"},
+   {"line_start": 207, "line_end": 207, "name": "ssl.create_default_context", "class": "A", "kind": "tls"},
+   {"line_start": 208, "line_end": 208, "name": "ssl_context.load_verify_locations", "class": "A", "kind": "tls"},
+   {"line_start": 209, "line_end": 209, "name": "urlopen", "class": "B", "kind": "tls", "note": "urllib.request.urlopen passed context=ssl_context (B2g)"},
+   {"line_start": 236, "line_end": 236, "name": "hashlib.sha256", "class": "A", "kind": "hash"}
+  ],
+  "ballontranslator/utils/proj_imgtrans.py": [
+   {"line_start": 270, "line_end": 270, "name": "hashlib.sha256", "class": "A", "kind": "hash"},
+   {"line_start": 424, "line_end": 424, "name": "hashlib.sha256", "class": "A", "kind": "hash"}
+  ],
+  "ballontranslator/modules/translators/trans_baidu.py": [
+   {"line_start": 20, "line_end": 20, "name": "hashlib.md5", "class": "A", "kind": "hash"}
+  ],
+  "ballontranslator/ui/mainwindow.py": [],
+  "tests/test_llm_inpaint.py": [],
+  "ballontranslator/modules/ocr/ocr_lens_proto.py": [],
+  "ballontranslator/modules/codex.py": [
+   {"line_start": 287, "line_end": 287, "name": "hashlib.sha256", "class": "A", "kind": "hash"},
+   {"line_start": 323, "line_end": 323, "name": "Fernet", "class": "A", "kind": "symmetric"},
+   {"line_start": 323, "line_end": 323, "name": "Fernet(key).decrypt", "class": "A", "kind": "symmetric"},
+   {"line_start": 400, "line_end": 400, "name": "Fernet.generate_key", "class": "A", "kind": "key_handling"},
+   {"line_start": 406, "line_end": 406, "name": "Fernet", "class": "A", "kind": "symmetric"},
+   {"line_start": 406, "line_end": 406, "name": "Fernet(key).encrypt", "class": "A", "kind": "symmetric"},
+   {"line_start": 499, "line_end": 499, "name": "secrets.token_urlsafe", "class": "A", "kind": "random", "note": "first of two calls on this line (state)"},
+   {"line_start": 499, "line_end": 499, "name": "secrets.token_urlsafe", "class": "A", "kind": "random", "note": "second of two calls on this line (verifier)"},
+   {"line_start": 500, "line_end": 500, "name": "hashlib.sha256", "class": "A", "kind": "hash"},
+   {"line_start": 764, "line_end": 764, "name": "secrets.token_hex", "class": "A", "kind": "random"},
+   {"line_start": 1014, "line_end": 1015, "name": "hashlib.sha256", "class": "A", "kind": "hash"}
+  ]
+ }
+}

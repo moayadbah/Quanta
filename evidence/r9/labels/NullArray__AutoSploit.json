@@ -1,0 +1,1 @@
+{"repo": "NullArray/AutoSploit", "commit": "9a6a5efac31b488524f9f56f4e2c08f64ec87227", "annotator": "agent-9", "files": {"lib/creation/issue_creator.py": [{"line_start": 47, "line_end": 47, "name": "hashlib.md5", "class": "A", "kind": "hash"}, {"line_start": 92, "line_end": 92, "name": "hashlib.sha1", "class": "A", "kind": "hash"}], "api_calls/zoomeye.py": []}}

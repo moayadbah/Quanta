@@ -1,0 +1,10 @@
+{
+ "repo": "TheR1D/shell_gpt",
+ "commit": "a082bd5327ce0c4ef5a0284d9060e833be9444a6",
+ "annotator": "agent-4",
+ "files": {
+  "sgpt/cache.py": [
+   {"line_start": 31, "line_end": 31, "name": "md5", "class": "A", "kind": "hash", "note": "imported as from hashlib import md5"}
+  ]
+ }
+}

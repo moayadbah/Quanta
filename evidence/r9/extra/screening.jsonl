@@ -1,0 +1,453 @@
+{"position": 376, "repo": "ib-api-reloaded/ib_async", "commit": "ab629f34c1823ea4c1542f32f07377208a86bdfd", "decision": "skip", "reason": "no import from S"}
+{"position": 377, "repo": "isnowfy/snownlp", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\isnowfy__snownlp.part' already exists and is"}
+{"position": 378, "repo": "rackslab/Slurm-web", "commit": "77b8c1dfd0ab4f36c5e9f895dacf57959bab6eb8", "decision": "keep", "stratum": "P", "py_files": 121}
+{"position": 379, "repo": "NullArray/AutoSploit", "commit": "9a6a5efac31b488524f9f56f4e2c08f64ec87227", "decision": "keep", "stratum": "G", "py_files": 25}
+{"position": 380, "repo": "ImCa0/just-laws", "commit": "00b7510be2bf5835d3336239ae399a4d24bfd7bb", "decision": "skip", "reason": "4 .py files"}
+{"position": 381, "repo": "zake7749/word2vec-tutorial", "commit": "74f79146653e609c4440e4cfad1e4c41e431f79b", "decision": "skip", "reason": "8 .py files"}
+{"position": 382, "repo": "xcmyz/FastSpeech", "commit": "1e1a61b5015c951caa551b7fab4080339d697c7c", "decision": "skip", "reason": "no import from S"}
+{"position": 383, "repo": "CSCB/vibe-mouse", "commit": "957ceed90ee1186c6113aa49b43ab37ec41043d1", "decision": "skip", "reason": "no import from S"}
+{"position": 384, "repo": "LiveCodeBench/LiveCodeBench", "commit": "28fef95ea8c9f7a547c8329f2cd3d32b92c1fa24", "decision": "skip", "reason": "no import from S"}
+{"position": 385, "repo": "alexgreensh/attention-span", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\alexgreensh__attention-span.part' already ex"}
+{"position": 386, "repo": "Youngestdev/fastapi-mongo", "commit": "7ce51e3e1e5ad4dd6fb25e375ee7241125d1925c", "decision": "keep", "stratum": "G", "py_files": 20}
+{"position": 387, "repo": "Brikwerk/nxbt", "commit": "ec4b800ad6c55de96bb6c7f9f84b5bdc59a4c975", "decision": "keep", "stratum": "P", "py_files": 26}
+{"position": 388, "repo": "goldsmith/Wikipedia", "commit": "1554943e8ab463cef5e93081def48fafbdef324e", "decision": "skip", "reason": "no import from S"}
+{"position": 389, "repo": "NanmiCoder/NewsCrawler", "commit": "25fb3b4a20186905f5ce38f7a7f854050d402253", "decision": "keep", "stratum": "G", "py_files": 121}
+{"position": 390, "repo": "python-gitlab/python-gitlab", "commit": "51eb17e6e67a25157e04b0abc649221bd8ecc7fe", "decision": "keep", "stratum": "G", "py_files": 255}
+{"position": 391, "repo": "tiangolo/pydantic-sqlalchemy", "commit": "3632b4131723a1899c507654ff56d168e82dd284", "decision": "skip", "reason": "4 .py files"}
+{"position": 392, "repo": "heleidsn/UAV_Navigation_DRL_AirSim", "decision": "skip", "reason": "frame size 204920 KB"}
+{"position": 393, "repo": "LeDat98/NexusRAG", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\LeDat98__NexusRAG.part' already exists and i"}
+{"position": 394, "repo": "Coldcard/firmware", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\Coldcard__firmware.part' already exists and "}
+{"position": 395, "repo": "luhua-rain/MRC_Competition_Dureader", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\luhua-rain__MRC_Competition_Dureader.part' a"}
+{"position": 396, "repo": "swisskyrepo/PayloadsAllTheThings", "commit": "3ac27901c711bdf3f5b65a7b1d1820a1f65bd09a", "decision": "skip", "reason": "no import from S"}
+{"position": 397, "repo": "nv-tlabs/PiD", "commit": "2c8814c2b91cc41a2be7809962c891e0d0ccff5f", "decision": "skip", "reason": "no import from S"}
+{"position": 398, "repo": "DidierStevens/DidierStevensSuite", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\DidierStevens__DidierStevensSuite.part' alre"}
+{"position": 399, "repo": "minitorch/minitorch", "commit": "7d35d597ad226e73289e6920fbc1e83ea6148c8b", "decision": "skip", "reason": "no import from S"}
+{"position": 400, "repo": "salesforce/progen", "commit": "c27a419c234a0997923761e1fe7daffcebf0eaf5", "decision": "skip", "reason": "4 .py files"}
+{"position": 401, "repo": "SeungyounShin/Llama2-Code-Interpreter", "commit": "466dc2c275f177dbf496d43111742373908a3b81", "decision": "skip", "reason": "no import from S"}
+{"position": 402, "repo": "un1cum/Beast_Bomber", "commit": "0d34ad9fb11443006fd4f11e626c088c66633a70", "decision": "skip", "reason": "8 .py files"}
+{"position": 403, "repo": "cmu-db/dbdb.io", "commit": "ed65e2856f1f16eef05c43a71625ec8fefa2ba94", "decision": "keep", "stratum": "G", "py_files": 217}
+{"position": 404, "repo": "KingOfBugbounty/KingOfBugBountyTips", "commit": "cd5a4a0c4b7240cbc62217cdee39cfb14be9b2dc", "decision": "skip", "reason": "3 .py files"}
+{"position": 405, "repo": "dagster-io/dagster", "decision": "skip", "reason": "frame size 1481882 KB"}
+{"position": 406, "repo": "pmaupin/pdfrw", "commit": "6c892160e7e976b243db0c12c3e56ed8c78afc5a", "decision": "keep", "stratum": "G", "py_files": 51}
+{"position": 407, "repo": "kstenerud/iOS-Universal-Framework", "commit": "7b88ec6b294ac83eb96251d7ea869300e7b1ff9b", "decision": "skip", "reason": "3 .py files"}
+{"position": 408, "repo": "SimmerChan/corpus", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\SimmerChan__corpus.part' already exists and "}
+{"position": 409, "repo": "circus-tent/circus", "commit": "ce7bab244cdbc736591517fbddb4f92836906129", "decision": "skip", "reason": "no import from S"}
+{"position": 410, "repo": "MD-SEC/MDPOCS", "commit": "4de61fc965525a3f6af6049ef28d0b1619a649c1", "decision": "keep", "stratum": "P", "py_files": 53}
+{"position": 411, "repo": "tslearn-team/tslearn", "commit": "ea12fbae82f7524d9862341bb5586e9cb6bd7206", "decision": "skip", "reason": "no import from S"}
+{"position": 412, "repo": "PozzettiAndrea/ComfyUI-SAM3", "decision": "skip", "reason": "frame size 539516 KB"}
+{"position": 413, "repo": "TheR1D/shell_gpt", "commit": "a082bd5327ce0c4ef5a0284d9060e833be9444a6", "decision": "keep", "stratum": "G", "py_files": 28}
+{"position": 414, "repo": "YuliaRubanova/latent_ode", "commit": "c0682d4f52b806fb88d965755892eadd9783f936", "decision": "skip", "reason": "no import from S"}
+{"position": 415, "repo": "python-discord/bot", "commit": "91f2b7b0a241a93359c332a7ff05843c2dd3d45e", "decision": "keep", "stratum": "P", "py_files": 222}
+{"position": 416, "repo": "sligter/LandPPT", "commit": "bac8497cc756d67bfda4ecd7b7219b42dc982c1c", "decision": "keep", "stratum": "G", "py_files": 501}
+{"position": 417, "repo": "MatthewKuKanich/FindMyFlipper", "commit": "ea55850aff8b5fbf56ac08d25755284bccba7f24", "decision": "skip", "reason": "8 .py files"}
+{"position": 418, "repo": "VikParuchuri/textbook_quality", "commit": "3548c557d595803c8dd24f9b7f9e19055c5bb8fb", "decision": "keep", "stratum": "G", "py_files": 61}
+{"position": 419, "repo": "NVIDIA/semantic-segmentation", "commit": "7726b144c2cc0b8e09c67eabb78f027efdf3f0fa", "decision": "skip", "reason": "no import from S"}
+{"position": 420, "repo": "samuela/git-re-basin", "commit": "ef40098257ab97243930eba737d6dcb8edd5863e", "decision": "skip", "reason": "no import from S"}
+{"position": 421, "repo": "repology/repology-updater", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\repology__repology-updater.part' already exi"}
+{"position": 422, "repo": "mrtooher/fable-mode", "commit": "13179fb2781c66faf830e23235b25bbedf826b19", "decision": "skip", "reason": "7 .py files"}
+{"position": 423, "repo": "godweiyang/NN-CUDA-Example", "commit": "1bc46151d89f5b1455f15dad44b5f5d487af639a", "decision": "skip", "reason": "5 .py files"}
+{"position": 424, "repo": "conorpp/btproxy", "commit": "cd1c90688502852b55f139cc5202b487e7068c89", "decision": "skip", "reason": "8 .py files"}
+{"position": 425, "repo": "robfiras/loco-mujoco", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\robfiras__loco-mujoco.part' already exists a"}
+{"position": 426, "repo": "thinking-machines-lab/tinker", "commit": "64eef5e00c4dc4f55ef6521e14defde58c891c52", "decision": "skip", "reason": "no import from S"}
+{"position": 427, "repo": "jsvine/pdfplumber", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\jsvine__pdfplumber.part' already exists and "}
+{"position": 428, "repo": "h2oai/wave", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\h2oai__wave.part' already exists and is not "}
+{"position": 429, "repo": "holoviz/holoviews", "commit": "e4168fd4b99446003bda9b219421b7422f8b50d0", "decision": "keep", "stratum": "G", "py_files": 370}
+{"position": 430, "repo": "SigmanticAI/apex-inference-chip", "commit": "5998060b8da273b8d10e4c9e8565217d6c346f60", "decision": "keep", "stratum": "G", "py_files": 190}
+{"position": 431, "repo": "swisskyrepo/GraphQLmap", "commit": "59305d7570c8fbbb04a324e869ec9a196c150936", "decision": "skip", "reason": "4 .py files"}
+{"position": 432, "repo": "facebookresearch/localrf", "commit": "3905e3988e6f0e977a625b8f1f3710e90442f06b", "decision": "skip", "reason": "no import from S"}
+{"position": 433, "repo": "enzet/map-machine", "commit": "eab10c1ec9bcd0a78fa6db75d02e6219fcea562c", "decision": "keep", "stratum": "G", "py_files": 78}
+{"position": 434, "repo": "mzucker/page_dewarp", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\mzucker__page_dewarp.part' already exists an"}
+{"position": 435, "repo": "vprusso/youtube_tutorials", "commit": "64f82bac6e9e66fb263bfe230737bf3564edb378", "decision": "skip", "reason": "no import from S"}
+{"position": 436, "repo": "aio-libs/aiokafka", "commit": "b4d63412ffbd76b76ac7d0450c8865ce7a225408", "decision": "keep", "stratum": "P", "py_files": 115}
+{"position": 437, "repo": "hazdzz/stgcn", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\hazdzz__stgcn.part' already exists and is no"}
+{"position": 438, "repo": "fly8888/cursor_machine_id", "commit": "ff917e2355efa2dd83662783cbf812705e0c8b10", "decision": "skip", "reason": "1 .py files"}
+{"position": 439, "repo": "MotrixLab/MotionDiffuse", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\MotrixLab__MotionDiffuse.part' already exist"}
+{"position": 440, "repo": "langchain-ai/local-deep-researcher", "commit": "96555649619b9c482442f2cba043312bd7692507", "decision": "skip", "reason": "7 .py files"}
+{"position": 441, "repo": "ma1co/Sony-PMCA-RE", "commit": "a82f5baaa8e9c3d9f28f94699e860fb2e48cc8e0", "decision": "keep", "stratum": "P", "py_files": 55}
+{"position": 442, "repo": "jnk22/kodinerds-iptv", "commit": "28f067dd9606a403cce3d8b8710f2af2dd4362ff", "decision": "skip", "reason": "2 .py files"}
+{"position": 443, "repo": "AimeeLee77/senti_analysis", "commit": "a8d22516ac483cf0c4925d8d0a406006cf01540e", "decision": "skip", "reason": "5 .py files"}
+{"position": 444, "repo": "Netflix/void-model", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\Netflix__void-model.part' already exists and"}
+{"position": 445, "repo": "renerocksai/sublime_zk", "commit": "f8336c167546bf609d0abc998fc7364795beb18e", "decision": "skip", "reason": "1 .py files"}
+{"position": 446, "repo": "VeritasYin/STGCN_IJCAI-18", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\VeritasYin__STGCN_IJCAI-18.part' already exi"}
+{"position": 447, "repo": "xiamuceer-j/MuMuAINovel", "commit": "743e5abec18beb8d73426527e6579538053bc6fd", "decision": "keep", "stratum": "P", "py_files": 187}
+{"position": 448, "repo": "sstklen/trump-code", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\sstklen__trump-code.part' already exists and"}
+{"position": 449, "repo": "zeonsunlightyu/LocomotionWithNP3O", "decision": "skip", "reason": "frame size 517121 KB"}
+{"position": 450, "repo": "punitarani/fli", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\punitarani__fli.part' already exists and is "}
+{"position": 451, "repo": "FreedomIntelligence/TextClassificationBenchmark", "commit": "c3dfd2622794e6f9d7d91e75506795ceb31f57b9", "decision": "skip", "reason": "no import from S"}
+{"position": 452, "repo": "femtotrader/pandas_talib", "commit": "49f773a0d0f25c6b47ea68ca660e62c8894f8a24", "decision": "skip", "reason": "8 .py files"}
+{"position": 453, "repo": "NVlabs/describe-anything", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\NVlabs__describe-anything.part' already exis"}
+{"position": 454, "repo": "NX211/homer-icons", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\NX211__homer-icons.part' already exists and "}
+{"position": 455, "repo": "CDFER/JLCPCB-Kicad-Library", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\CDFER__JLCPCB-Kicad-Library.part' already ex"}
+{"position": 456, "repo": "ali-vilab/Wan-Move", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\ali-vilab__Wan-Move.part' already exists and"}
+{"position": 457, "repo": "run-llama/create-llama", "commit": "97a7d9bc2560943ca6bca1ac41d2f84c1b7e6224", "decision": "skip", "reason": "no import from S"}
+{"position": 458, "repo": "stanfordnlp/dspy", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\stanfordnlp__dspy.part' already exists and i"}
+{"position": 459, "repo": "karpathy/nanochat", "commit": "92d63d4e8bb4df75c3b71618f31ddde2378b2bcd", "decision": "skip", "reason": "no import from S"}
+{"position": 460, "repo": "masterking32/MasterHttpRelayVPN", "commit": "0a019e172472a9bb1829ca32639c824e77decf8c", "decision": "keep", "stratum": "P", "py_files": 28}
+{"position": 461, "repo": "devanshbatham/ParamSpider", "commit": "c44bdaae54789b237028e309b603d1aa5ad52e5e", "decision": "skip", "reason": "4 .py files"}
+{"position": 462, "repo": "peterbe/mincss", "commit": "b964a38de27e06033a5bd3627217a7a5de8fa536", "decision": "keep", "stratum": "G", "py_files": 11}
+{"position": 463, "repo": "Pickle-Pixel/ApplyPilot", "commit": "4a8d521f67f5139811c0a910ef37410f8e6d836a", "decision": "skip", "reason": "no import from S"}
+{"position": 464, "repo": "zhoubolei/TRN-pytorch", "commit": "060509c4a25bb83d9dfa7c3444e850a49b8bed88", "decision": "skip", "reason": "no import from S"}
+{"position": 465, "repo": "lucidrains/TimeSformer-pytorch", "commit": "9a20466bf6524cbbdee256c376bba6c88e4edb68", "decision": "skip", "reason": "4 .py files"}
+{"position": 466, "repo": "gwen001/pentest-tools", "commit": "5c64556754a737d1fa8387bd67545763ffc55b37", "decision": "keep", "stratum": "G", "py_files": 13}
+{"position": 467, "repo": "apiguy/flask-classy", "commit": "8b4a9ccd09a4dce152de17729caabcfa1f666665", "decision": "skip", "reason": "no import from S"}
+{"position": 468, "repo": "robusta-dev/robusta", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\robusta-dev__robusta.part' already exists an"}
+{"position": 469, "repo": "shenweichen/DeepMatch", "commit": "fd74417629b19ba4518add93d05cafa551ac7c09", "decision": "skip", "reason": "no import from S"}
+{"position": 470, "repo": "Xewdy444/CF-Clearance-Scraper", "commit": "a2a286d97eff7228a2db848a9c9d4e0e84a9daab", "decision": "skip", "reason": "1 .py files"}
+{"position": 471, "repo": "LCAV/pyroomacoustics", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\LCAV__pyroomacoustics.part' already exists a"}
+{"position": 472, "repo": "kort0881/vpn-vless-configs-russia", "decision": "skip", "reason": "frame size 4469083 KB"}
+{"position": 473, "repo": "Tencent/tencent-ml-images", "commit": "182631879cdb3d44d594d13d3f29a98bf7acdf81", "decision": "skip", "reason": "no import from S"}
+{"position": 474, "repo": "zjx0101/ObjectClear", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\zjx0101__ObjectClear.part' already exists an"}
+{"position": 475, "repo": "patrick-kidger/lineax", "commit": "11e95fbec66fe263e4c3e705c12ccd386fec722d", "decision": "skip", "reason": "no import from S"}
+{"position": 476, "repo": "Cog-Creators/Red-DiscordBot", "commit": "111a8b885238898bd41ac2e1b93ef91b654d9cf0", "decision": "skip", "reason": "no import from S"}
+{"position": 477, "repo": "Project-N-E-K-O/N.E.K.O", "decision": "skip", "reason": "frame size 529364 KB"}
+{"position": 478, "repo": "EnableSecurity/wafw00f", "commit": "69fbe3956bba47a172cf87e40e9037535d32a130", "decision": "skip", "reason": "no import from S"}
+{"position": 479, "repo": "vladko312/SSTImap", "commit": "1c27fdb4a4cc7d55b66fc0e16937ee7de7047490", "decision": "skip", "reason": "quota full (G)"}
+{"position": 480, "repo": "qzq1111/flask-restful-example", "commit": "2793c33d018c860ca99d389d8134cde864937417", "decision": "skip", "reason": "quota full (G)"}
+{"position": 481, "repo": "ranxi2001/zero2Agent", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\ranxi2001__zero2Agent.part' already exists a"}
+{"position": 482, "repo": "dailenson/One-DM", "commit": "dde2205a70a2c70d1786503d198a795358c80ee4", "decision": "skip", "reason": "no import from S"}
+{"position": 483, "repo": "AlexanderKoch-Koch/low_cost_robot", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\AlexanderKoch-Koch__low_cost_robot.part' alr"}
+{"position": 484, "repo": "astorfi/speechpy", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\astorfi__speechpy.part' already exists and i"}
+{"position": 485, "repo": "edwko/OuteTTS", "commit": "f5eac6e70d792844c6a6959d900a47af2c061a5b", "decision": "skip", "reason": "quota full (G)"}
+{"position": 486, "repo": "cobbler/cobbler", "commit": "69cea32e0421e11533ef191fb6b54ed5b6e74e7c", "decision": "skip", "reason": "quota full (G)"}
+{"position": 487, "repo": "XYZ-AI-Lab/AxisAgentic", "commit": "0aa54b14307942edc4401831110d8e7f726ec738", "decision": "skip", "reason": "quota full (G)"}
+{"position": 488, "repo": "eonsystemspbc/fly-brain", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\eonsystemspbc__fly-brain.part' already exist"}
+{"position": 489, "repo": "eliasdorneles/upiano", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\eliasdorneles__upiano.part' already exists a"}
+{"position": 490, "repo": "babybuddy/babybuddy", "commit": "09629cf633cf3a2059a21ade4cea7ea4d846422f", "decision": "keep", "stratum": "P", "py_files": 234}
+{"position": 491, "repo": "sMythicalBird/ZenlessZoneZero-Auto", "commit": "a21f40c536172a9daad415cd55da9510bd41eaac", "decision": "skip", "reason": "quota full (G)"}
+{"position": 492, "repo": "yinhao0214/geetest_break", "commit": "ca77faec07b08b0ad86fc5f94d3a3b5de08de751", "decision": "skip", "reason": "2 .py files"}
+{"position": 493, "repo": "ai-dynamo/aiperf", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\ai-dynamo__aiperf.part' already exists and i"}
+{"position": 494, "repo": "geoopt/geoopt", "commit": "720c2425fab8a3449c80e7f4c17331bf88c04045", "decision": "skip", "reason": "no import from S"}
+{"position": 495, "repo": "zero-to-mastery/start-here-guidelines", "commit": "ea475c3ab46789ee182b74abdea568e62830552c", "decision": "skip", "reason": "2 .py files"}
+{"position": 496, "repo": "alichtman/shallow-backup", "commit": "8fc823481d58c76b804e0ccf2d55c9777b76f65d", "decision": "skip", "reason": "no import from S"}
+{"position": 497, "repo": "luanshiyinyang/FacialExpressionRecognition", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\luanshiyinyang__FacialExpressionRecognition."}
+{"position": 498, "repo": "akoumjian/datefinder", "commit": "e4777a04fce8677aa816f6fc016f2848fe8ccaf5", "decision": "skip", "reason": "no import from S"}
+{"position": 499, "repo": "ilsilfverskiold/Awesome-LLM-Resources-List", "commit": "fb9169acbfdf332fb868ae6bb23e530e31700025", "decision": "skip", "reason": "no import from S"}
+{"position": 500, "repo": "FloatingPragma/observer-patch-holography", "decision": "skip", "reason": "frame size 977556 KB"}
+{"position": 501, "repo": "HoloClean/holoclean", "commit": "d4f5929a8e4d92d4f41eb058c04c96cdcb0af767", "decision": "skip", "reason": "no import from S"}
+{"position": 502, "repo": "JiahuiYu/wdsr_ntire2018", "commit": "188102dca86757a4bd02df83f9ae4e5014cbcd8e", "decision": "skip", "reason": "2 .py files"}
+{"position": 503, "repo": "GSA/data.gov", "commit": "dbff284ab0cd6ca8f19464037cd500aacd33a8a6", "decision": "skip", "reason": "7 .py files"}
+{"position": 504, "repo": "d2l-ai/d2l-tvm", "commit": "ad823dc4d150b12e54ff0a2ca2d5c961d50b4ae1", "decision": "skip", "reason": "3 .py files"}
+{"position": 505, "repo": "Febase/FeBase", "commit": "61f2a4cae76afcf986c57ab3bc054f88825b42c3", "decision": "skip", "reason": "6 .py files"}
+{"position": 506, "repo": "coleifer/sqlite-web", "commit": "974a910019a31078df69fbe98901fe859d3089a3", "decision": "skip", "reason": "7 .py files"}
+{"position": 507, "repo": "intel/auto-round", "commit": "ec10a649b073a084af79d2c2986e92840739d0df", "decision": "keep", "stratum": "P", "py_files": 741}
+{"position": 508, "repo": "nsmfoo/antivmdetection", "commit": "8d7cf0ef8c5ebbdaec373e3e4fccf97b9cd4306c", "decision": "skip", "reason": "1 .py files"}
+{"position": 509, "repo": "econchick/interrogate", "commit": "f35a9d68f609d6ceed10f4286efc8d73b79b17cb", "decision": "skip", "reason": "no import from S"}
+{"position": 510, "repo": "eldraco/domain_analyzer", "commit": "fc67c7ecb5afaa76abfd6919f062ed1f86993e4d", "decision": "skip", "reason": "5 .py files"}
+{"position": 511, "repo": "ROCm/aiter", "decision": "skip", "reason": "frame size 293480 KB"}
+{"position": 512, "repo": "Teraskull/PyDebloatX", "commit": "76869bb4d94e1e1de4238967e7f293cd21157911", "decision": "skip", "reason": "4 .py files"}
+{"position": 513, "repo": "Pluviobyte/rnskill", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\Pluviobyte__rnskill.part' already exists and"}
+{"position": 514, "repo": "devinli123/MV-SAM3D", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\devinli123__MV-SAM3D.part' already exists an"}
+{"position": 515, "repo": "Anionex/agent-vision-toolkit", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\Anionex__agent-vision-toolkit.part' already "}
+{"position": 516, "repo": "spulec/freezegun", "commit": "92d61b3f5c31942a1039713574487bdcfcdbbfff", "decision": "skip", "reason": "no import from S"}
+{"position": 517, "repo": "csparpa/pyowm", "commit": "01efe4418edbd0a1a62f906037d10780b03712bb", "decision": "skip", "reason": "no import from S"}
+{"position": 518, "repo": "torfsen/python-systemd-tutorial", "commit": "ba291a6d8b2248d68578af2a8ef75ff93eb01c64", "decision": "skip", "reason": "1 .py files"}
+{"position": 519, "repo": "YosysHQ/apicula", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\YosysHQ__apicula.part' already exists and is"}
+{"position": 520, "repo": "p1r06u3/opencanary_web", "commit": "71156ef8d7f86e2bb380a69f584de9603bfba93a", "decision": "skip", "reason": "quota full (G)"}
+{"position": 521, "repo": "NVlabs/SegFormer", "commit": "65fa8cfa9b52b6ee7e8897a98705abf8570f9e32", "decision": "skip", "reason": "no import from S"}
+{"position": 522, "repo": "AsmSafone/RadioPlayerV3", "commit": "83a05f651fb575aeca23658a70678cccea8edcb9", "decision": "skip", "reason": "no import from S"}
+{"position": 523, "repo": "disler/claude-code-hooks-mastery", "commit": "052ad1cbd5aeb1ec4a1def22012d1293c6225625", "decision": "skip", "reason": "no import from S"}
+{"position": 524, "repo": "devstructure/blueprint", "commit": "574a9fc0dd3031c66970387f1105d8c89e61218f", "decision": "skip", "reason": "quota full (G)"}
+{"position": 525, "repo": "daniilidis-group/neural_renderer", "commit": "b2a1e6ce16a54f94f26f86fe1dc3814637e15251", "decision": "skip", "reason": "no import from S"}
+{"position": 526, "repo": "Sanster/text_renderer", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\Sanster__text_renderer.part' already exists "}
+{"position": 527, "repo": "sbrunner/deskew", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\sbrunner__deskew.part' already exists and is"}
+{"position": 528, "repo": "NVlabs/FourCastNet", "commit": "93360c1720a9f97aabf970689f21c9fad8737788", "decision": "skip", "reason": "no import from S"}
+{"position": 529, "repo": "shlokkhemani/openpoke", "commit": "5b5f635935a64ab37884c025d70abb0ed731c094", "decision": "skip", "reason": "no import from S"}
+{"position": 530, "repo": "opendilab/InterFuser", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\opendilab__InterFuser.part' already exists a"}
+{"position": 531, "repo": "realpython/flask-boilerplate", "commit": "488e33624bf0236fc16358d9e8cd66590e0e89ee", "decision": "skip", "reason": "no import from S"}
+{"position": 532, "repo": "icopy-site/awesome-cn", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\icopy-site__awesome-cn.part' already exists "}
+{"position": 533, "repo": "pokepetter/ursina", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\pokepetter__ursina.part' already exists and "}
+{"position": 534, "repo": "saulpw/visidata", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\saulpw__visidata.part' already exists and is"}
+{"position": 535, "repo": "argilla-io/distilabel", "decision": "skip", "reason": "frame size 596416 KB"}
+{"position": 536, "repo": "cgtuebingen/3D-RE-GEN", "commit": "9a6275f3af97eae484c34d0ff5d9cc8177adaa17", "decision": "skip", "reason": "no import from S"}
+{"position": 537, "repo": "Oshan96/monkey-dl", "commit": "9757f7c8d1a094da61e0c0ac38a2a29bf1c21e28", "decision": "keep", "stratum": "P", "py_files": 40}
+{"position": 538, "repo": "rusthon/Rusthon", "commit": "5b6b78111b62281cd1381e53362c5d4b520ade30", "decision": "skip", "reason": "no import from S"}
+{"position": 539, "repo": "The-Vibe-Company/quivr", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\The-Vibe-Company__quivr.part' already exists"}
+{"position": 540, "repo": "kernalix7/winpodx", "commit": "a49a1b8ff339c7b3a17d670609a4592fa0687e31", "decision": "skip", "reason": "quota full (G)"}
+{"position": 541, "repo": "AuvaLab/itext2kg", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\AuvaLab__itext2kg.part' already exists and i"}
+{"position": 542, "repo": "mateuszbuda/brain-segmentation-pytorch", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\mateuszbuda__brain-segmentation-pytorch.part"}
+{"position": 543, "repo": "ZrrSkywalker/Personalize-SAM", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\ZrrSkywalker__Personalize-SAM.part' already "}
+{"position": 544, "repo": "L1aoXingyu/pytorch-beginner", "commit": "a57dd7ea35c9965a41f4963dee62d38884f92a65", "decision": "skip", "reason": "no import from S"}
+{"position": 545, "repo": "microsoft/ProphetNet", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\microsoft__ProphetNet.part' already exists a"}
+{"position": 546, "repo": "countbot-ai/CountBot", "commit": "bf18869740e55ff698fcfe34127d04af70dca45f", "decision": "skip", "reason": "quota full (G)"}
+{"position": 547, "repo": "magenta/ddsp", "commit": "ac840e775d8da3a42ff0fe1fed5b2330383c4464", "decision": "skip", "reason": "no import from S"}
+{"position": 548, "repo": "Tasshack/dreame-vacuum", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\Tasshack__dreame-vacuum.part' already exists"}
+{"position": 549, "repo": "tategallery/collection", "decision": "skip", "reason": "frame size 221017 KB"}
+{"position": 550, "repo": "rail-berkeley/rlkit", "commit": "ac45a9db24b89d97369bef302487273bcc3e3d84", "decision": "skip", "reason": "no import from S"}
+{"position": 551, "repo": "geometric-kernels/GeometricKernels", "commit": "e2f4d0c7ff2c116ed80823bc8689d057cee9d023", "decision": "skip", "reason": "no import from S"}
+{"position": 552, "repo": "jpjacobpadilla/Stealth-Requests", "commit": "55886f4f49e9922e82d24d68472293ed449f9281", "decision": "skip", "reason": "6 .py files"}
+{"position": 553, "repo": "GVCoder09/NoDPI", "commit": "e102c331dd645b919db8666b5a3aa4b972374be5", "decision": "skip", "reason": "2 .py files"}
+{"position": 554, "repo": "NUS-HPC-AI-Lab/VideoSys", "commit": "4cce477878b0683b5c05cd001ce45ac0e2fc3034", "decision": "skip", "reason": "no import from S"}
+{"position": 555, "repo": "pbelcak/UltraFastBERT", "commit": "295c7b66f91fff294ec3916207afb55853e83cbf", "decision": "skip", "reason": "quota full (G)"}
+{"position": 556, "repo": "tenable/poc", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\tenable__poc.part' already exists and is not"}
+{"position": 557, "repo": "miso-belica/sumy", "commit": "cd5f197dd01436ef66131c5e488737f549221ddb", "decision": "skip", "reason": "no import from S"}
+{"position": 558, "repo": "williballenthin/python-evtx", "commit": "c0007441657899c39180de10a2be1a0e43dbeaf9", "decision": "skip", "reason": "no import from S"}
+{"position": 559, "repo": "mailgun/talon", "commit": "44d1fa5e5b511734f9ed2eeb727dc57218446c22", "decision": "skip", "reason": "no import from S"}
+{"position": 560, "repo": "seomoz/shovel", "commit": "7dc201a1228a6fcf5572d31ebda8a9068a3cd2dc", "decision": "skip", "reason": "no import from S"}
+{"position": 561, "repo": "collective/icalendar", "commit": "bfa0e10f27cd63d6d1ff66f1bda39526ba9e6451", "decision": "skip", "reason": "no import from S"}
+{"position": 562, "repo": "CarperAI/trlx", "commit": "3340c2f3a56d1d14fdd5f13ad575121fa26b6d92", "decision": "skip", "reason": "no import from S"}
+{"position": 563, "repo": "mikael-alafriz-deel/lucid-sonic-dreams", "commit": "b28852cfe508bae65e83ba10811de78ee8cf493d", "decision": "skip", "reason": "5 .py files"}
+{"position": 564, "repo": "lxgw/LxgwMarkerGothic", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\lxgw__LxgwMarkerGothic.part' already exists "}
+{"position": 565, "repo": "pypa/packaging.python.org", "commit": "d1ad4ad3d6d6f3a3582e4c6b8a1b6f8284f4cb3b", "decision": "skip", "reason": "4 .py files"}
+{"position": 566, "repo": "JunyuanDeng/NeRF-LOAM", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\JunyuanDeng__NeRF-LOAM.part' already exists "}
+{"position": 567, "repo": "sniklaus/pytorch-hed", "commit": "d36b4506f0c0cb5c628f43db2697d9e0421d50bd", "decision": "skip", "reason": "2 .py files"}
+{"position": 568, "repo": "google-deepmind/dm_control", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\google-deepmind__dm_control.part' already ex"}
+{"position": 569, "repo": "Jia-Ethan/codex-keysmith", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\Jia-Ethan__codex-keysmith.part' already exis"}
+{"position": 570, "repo": "keirp/automatic_prompt_engineer", "decision": "skip", "reason": "screened in round 6"}
+{"position": 571, "repo": "51bitquant/howtrader", "commit": "fcad8e2d86825506b9d33441ab78be853c2c3bdd", "decision": "keep", "stratum": "P", "py_files": 160}
+{"position": 572, "repo": "duo-labs/EFIgy", "commit": "eb10f4f42b7bb14fcbe641ee64035f42dbd83e3d", "decision": "skip", "reason": "1 .py files"}
+{"position": 573, "repo": "0x727/ShuiZe_0x727", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\0x727__ShuiZe_0x727.part' already exists and"}
+{"position": 574, "repo": "ceccopierangiolieugenio/pyTermTk", "commit": "2accde0177348bb577d61c7a5a9767d29e0f2eed", "decision": "skip", "reason": "no import from S"}
+{"position": 575, "repo": "Fafa-DL/Opencv-project", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\Fafa-DL__Opencv-project.part' already exists"}
+{"position": 576, "repo": "DaoSword/Time-Series-Forecasting-and-Deep-Learning", "commit": "92852f2fc7b275a298f28258292dcfabc2d5c90b", "decision": "skip", "reason": "2 .py files"}
+{"position": 577, "repo": "openspeech-team/openspeech", "commit": "10b25890b64b722c50aa7579c2570ad5c69b2cf2", "decision": "skip", "reason": "no import from S"}
+{"position": 578, "repo": "LeCAR-Lab/ASAP", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\LeCAR-Lab__ASAP.part' already exists and is "}
+{"position": 579, "repo": "subframe7536/maple-font", "commit": "c08fda97fef73d68c1755219852150770f6e6578", "decision": "skip", "reason": "quota full (G)"}
+{"position": 580, "repo": "lebrice/SimpleParsing", "commit": "7a706bee8b258b548cb979c7321c1ba0cf8413e6", "decision": "skip", "reason": "quota full (G)"}
+{"position": 581, "repo": "PaddlePaddle/PaddleHelix", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\PaddlePaddle__PaddleHelix.part' already exis"}
+{"position": 582, "repo": "Fafa-DL/Awesome-Backbones", "commit": "696f55ed9854f6d7cb26742b21d5761d61539071", "decision": "skip", "reason": "no import from S"}
+{"position": 583, "repo": "Farama-Foundation/Miniworld", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\Farama-Foundation__Miniworld.part' already e"}
+{"position": 584, "repo": "ideogram-oss/ideogram4", "commit": "990fe1c4e950bb9e9dc90e01c0ad98ba434f83c2", "decision": "skip", "reason": "no import from S"}
+{"position": 585, "repo": "pocketpaw/pocketpaw", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\pocketpaw__pocketpaw.part' already exists an"}
+{"position": 586, "repo": "lucidrains/ema-pytorch", "commit": "762c471c221c50b770c3ba10274e6b5b08d15a7b", "decision": "skip", "reason": "7 .py files"}
+{"position": 587, "repo": "tomwalker/django_quiz", "commit": "63e61cb57868c33c3c5bd0c0f360b12ae19d367f", "decision": "skip", "reason": "no import from S"}
+{"position": 588, "repo": "YuqingWang1029/VisTR", "commit": "445c9e4e787a1fb3c959d7e7bb6ecf809bdac155", "decision": "skip", "reason": "no import from S"}
+{"position": 589, "repo": "jmrivas86/django-json-widget", "commit": "185770e37249b2fd3f33c9bf28ae3b55dd4d9cfa", "decision": "skip", "reason": "no import from S"}
+{"position": 590, "repo": "simonw/files-to-prompt", "commit": "1b234ff6dccb2ca3e56b5c256696558fb85306dc", "decision": "skip", "reason": "4 .py files"}
+{"position": 591, "repo": "siyan-zhao/OPSD", "commit": "ae7d2519e94920c4eb6206c0c26de46d9c50abae", "decision": "skip", "reason": "6 .py files"}
+{"position": 592, "repo": "kr8s-org/kr8s", "commit": "7aa27eeeeb0e2def16db7c9cdf1f3547cc54ace5", "decision": "keep", "stratum": "P", "py_files": 59}
+{"position": 593, "repo": "octodns/octodns", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\octodns__octodns.part' already exists and is"}
+{"position": 594, "repo": "uav4geo/GeoDeep", "commit": "3d333fecede21617e48052207411565c83c53a0b", "decision": "skip", "reason": "no import from S"}
+{"position": 595, "repo": "Nixtla/mlforecast", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\Nixtla__mlforecast.part' already exists and "}
+{"position": 596, "repo": "google-deepmind/alphafold", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\google-deepmind__alphafold.part' already exi"}
+{"position": 597, "repo": "Viral-Doshi/Gesture-Controlled-Virtual-Mouse", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\Viral-Doshi__Gesture-Controlled-Virtual-Mous"}
+{"position": 598, "repo": "an0/Letterpress", "commit": "1e220ab4a99845fabe202d69eaa66901ac7cd731", "decision": "skip", "reason": "quota full (G)"}
+{"position": 599, "repo": "ShannonAI/mrc-for-flat-nested-ner", "commit": "457b0759f7fd462d0abd0a23441726352716fff9", "decision": "skip", "reason": "no import from S"}
+{"position": 600, "repo": "christophetd/censys-subdomain-finder", "commit": "7ac4b14b3354a57d15bcefd5f2171cecfbe05cd6", "decision": "skip", "reason": "2 .py files"}
+{"position": 601, "repo": "uclaml/SPIN", "commit": "a12ba808a51c23bb98c7cc892d261e9c2f71ff8e", "decision": "skip", "reason": "no import from S"}
+{"position": 602, "repo": "Lynten/stanford-corenlp", "commit": "dec81f51b72469877512c78abc45fd2581bd1237", "decision": "skip", "reason": "5 .py files"}
+{"position": 603, "repo": "zhreshold/mxnet-ssd", "commit": "821a1c5049679f798976c8bf58b460ffaa098458", "decision": "skip", "reason": "no import from S"}
+{"position": 604, "repo": "iam-veeramalla/Jenkins-Zero-To-Hero", "commit": "3028953182b674ebad836b037f3347c1003cf94b", "decision": "skip", "reason": "no import from S"}
+{"position": 605, "repo": "MycroftAI/adapt", "commit": "06b98f8d5e525601a763103ad572b8ae615655a5", "decision": "skip", "reason": "no import from S"}
+{"position": 606, "repo": "Cisco-Talos/GhIDA", "commit": "a396916ae53e46adf3dca918b810f5db046af015", "decision": "skip", "reason": "no import from S"}
+{"position": 607, "repo": "florianfesti/boxes", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\florianfesti__boxes.part' already exists and"}
+{"position": 608, "repo": "Ikalus1988/MisakaNet", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\Ikalus1988__MisakaNet.part' already exists a"}
+{"position": 609, "repo": "facebookresearch/BenchMARL", "commit": "65d649d80e0bdcbdbe2c5d6a3f02dbfed8f0bec1", "decision": "skip", "reason": "no import from S"}
+{"position": 610, "repo": "pwning/public-writeup", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\pwning__public-writeup.part' already exists "}
+{"position": 611, "repo": "tmux-python/libtmux", "commit": "e5cb17c855fb9c9427e9c51a7239d6e843f4ede0", "decision": "skip", "reason": "no import from S"}
+{"position": 612, "repo": "davila7/claude-code-templates", "decision": "skip", "reason": "frame size 246699 KB"}
+{"position": 613, "repo": "miguelvr/dropblock", "commit": "0ecbb636320222b0404071898944d0317ccfcb04", "decision": "skip", "reason": "7 .py files"}
+{"position": 614, "repo": "geopython/pygeoapi", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\geopython__pygeoapi.part' already exists and"}
+{"position": 615, "repo": "KroMiose/nonebot_plugin_naturel_gpt", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\KroMiose__nonebot_plugin_naturel_gpt.part' a"}
+{"position": 616, "repo": "MPh-py/MPh", "commit": "30e0cff361d680249bae5c29f7873a29f1639c5d", "decision": "skip", "reason": "no import from S"}
+{"position": 617, "repo": "pnnbao97/VieNeu-TTS", "commit": "bd0f88eb8de7d560753a6172ba9c868f309a101c", "decision": "skip", "reason": "quota full (G)"}
+{"position": 618, "repo": "openvpi/SOME", "commit": "e523eef70777c1370199363de03eb37d66dce76e", "decision": "skip", "reason": "no import from S"}
+{"position": 619, "repo": "microsoft/skills-for-fabric", "commit": "bc42aaf734771bf752c1d7082dd91e5a6ca72b9f", "decision": "skip", "reason": "quota full (G)"}
+{"position": 620, "repo": "Leavingseason/xDeepFM", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\Leavingseason__xDeepFM.part' already exists "}
+{"position": 621, "repo": "akanazawa/human_dynamics", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\akanazawa__human_dynamics.part' already exis"}
+{"position": 622, "repo": "DMOJ/online-judge", "commit": "6aaddea6aaeabf4927b83787714509ff9fff8897", "decision": "skip", "reason": "quota full (G)"}
+{"position": 623, "repo": "ckiplab/ckip-transformers", "commit": "0ac59256949ac3baa853dc9056c070d5e93fe878", "decision": "skip", "reason": "9 .py files"}
+{"position": 624, "repo": "kevoreilly/CAPEv2", "decision": "skip", "reason": "frame size 258468 KB"}
+{"position": 625, "repo": "cvxpy/cvxpylayers", "commit": "bd9caf9826d758722a5c42b8a51775fcbc037ffe", "decision": "skip", "reason": "no import from S"}
+{"position": 626, "repo": "wenwenyu/PICK-pytorch", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\wenwenyu__PICK-pytorch.part' already exists "}
+{"position": 627, "repo": "ArjanCodes/betterpython", "commit": "11a95a40ee341d559e8709b8b6c676eca2dd978c", "decision": "skip", "reason": "quota full (G)"}
+{"position": 628, "repo": "Emily2040/seedance-2.0", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\Emily2040__seedance-2.0.part' already exists"}
+{"position": 629, "repo": "toshas/torch-fidelity", "commit": "5e211a950a7b45206bd4976813ffd6aed6cf4ccc", "decision": "skip", "reason": "no import from S"}
+{"position": 630, "repo": "Dineshkarthik/telegram_media_downloader", "commit": "859272a8111b6a9ac3b32376d68f34f6a9775fd6", "decision": "skip", "reason": "quota full (G)"}
+{"position": 631, "repo": "SalesforceAIResearch/enterprise-deep-research", "commit": "59f8f2ad318e70b8615ddb036e3042036a924f2d", "decision": "skip", "reason": "quota full (G)"}
+{"position": 632, "repo": "googlefonts/googlesans-code", "commit": "7e94e9a6a5149a5e830977dcc2e946b74507b649", "decision": "skip", "reason": "4 .py files"}
+{"position": 633, "repo": "lmnt-com/diffwave", "commit": "0594106093b8d8c444de8bd8cd26482f653c569f", "decision": "skip", "reason": "9 .py files"}
+{"position": 634, "repo": "vchinnipilli/kubestriker", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\vchinnipilli__kubestriker.part' already exis"}
+{"position": 635, "repo": "honoki/bbrf-client", "commit": "3af38993518daca80c2f389aace9bc5240d8ae18", "decision": "skip", "reason": "7 .py files"}
+{"position": 636, "repo": "yaoyao-liu/meta-transfer-learning", "commit": "7f71fdd4b78b6c8d2e2fc1e0faa60a4aaaabae88", "decision": "skip", "reason": "no import from S"}
+{"position": 637, "repo": "yaqwsx/jlcparts", "commit": "7ef2c97e359d6d192ab2c7ae1fa3f3c3e5de2bd7", "decision": "skip", "reason": "quota full (G)"}
+{"position": 638, "repo": "AndyTheFactory/newspaper4k", "commit": "b53a81fc01ff54601faaeae68d6b4a6d2f18efcb", "decision": "skip", "reason": "quota full (G)"}
+{"position": 639, "repo": "jingyaogong/minimind-o", "commit": "f900448c608318c53314ebf8a947ab05cd8c038e", "decision": "skip", "reason": "no import from S"}
+{"position": 640, "repo": "quark0/darts", "commit": "f276dd346a09ae3160f8e3aca5c7b193fda1da37", "decision": "skip", "reason": "no import from S"}
+{"position": 641, "repo": "grantjenks/free-python-games", "commit": "cfa331f3d2d20f3fb742c9cd5504cea53504b0ef", "decision": "skip", "reason": "no import from S"}
+{"position": 642, "repo": "hanyazou/TelloPy", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\hanyazou__TelloPy.part' already exists and i"}
+{"position": 643, "repo": "schenkd/nginx-ui", "commit": "8c12f54d381aa6dee6e8bd683036beaaddc96eca", "decision": "skip", "reason": "7 .py files"}
+{"position": 644, "repo": "SAGIRI-kawaii/sagiri-bot", "decision": "skip", "reason": "frame size 229213 KB"}
+{"position": 645, "repo": "bugy/script-server", "commit": "62bd38a3942e73546ba701248253d043eb66dadd", "decision": "keep", "stratum": "P", "py_files": 177}
+{"position": 646, "repo": "fossasia/eventyay-veditor", "commit": "1d4888028cae7d8efc4c345a738f7c82d16f2ee0", "decision": "skip", "reason": "quota full (G)"}
+{"position": 647, "repo": "rafael-fuente/diffractsim", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\rafael-fuente__diffractsim.part' already exi"}
+{"position": 648, "repo": "LPengYang/MotionClone", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\LPengYang__MotionClone.part' already exists "}
+{"position": 649, "repo": "hustvl/EVF-SAM", "commit": "9935dc52571678b806830821b3ddeacb30e7af07", "decision": "skip", "reason": "no import from S"}
+{"position": 650, "repo": "wmuron/motpy", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\wmuron__motpy.part' already exists and is no"}
+{"position": 651, "repo": "Matteo842/SaveState", "commit": "eaecd6e3ee094a0ca6c65a59194cd8d78f368635", "decision": "keep", "stratum": "P", "py_files": 127}
+{"position": 652, "repo": "randy3k/Terminus", "commit": "0cccd3fe4d550e7f494b1df7192f39d4af4693d2", "decision": "skip", "reason": "no import from S"}
+{"position": 653, "repo": "msracver/Deep-Feature-Flow", "commit": "297293cbe728f817b62c82d3abfbd226300086ef", "decision": "skip", "reason": "no import from S"}
+{"position": 654, "repo": "Hipo/drf-extra-fields", "commit": "8c18a7542c8a38fe3dccd1874a74a38410aa3a7f", "decision": "skip", "reason": "no import from S"}
+{"position": 655, "repo": "baoweise-bot/aimili-vpngate", "commit": "2cd7dc58cebd1be5a99a0d2d83c701645207596f", "decision": "skip", "reason": "7 .py files"}
+{"position": 656, "repo": "p0p4k/vits2_pytorch", "commit": "1f4f3790568180f8dec4419d5cad5d0877b034bb", "decision": "skip", "reason": "no import from S"}
+{"position": 657, "repo": "camel-ai/owl", "commit": "fd06a8bf34998ad008160238b5521d97619bd4d4", "decision": "skip", "reason": "no import from S"}
+{"position": 658, "repo": "GordenSun/GordenSuperPPTSkills", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\GordenSun__GordenSuperPPTSkills.part' alread"}
+{"position": 659, "repo": "fbcotter/pytorch_wavelets", "commit": "9a0c507f04f43c5397e384bb6be8340169b2fd9a", "decision": "skip", "reason": "no import from S"}
+{"position": 660, "repo": "henryzawadzki6542/cloudflare-turnstile-bypass", "commit": "55b9de4e0b95e03e634e5bf190d93af724549709", "decision": "skip", "reason": "4 .py files"}
+{"position": 661, "repo": "TencentQQGYLab/ELLA", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\TencentQQGYLab__ELLA.part' already exists an"}
+{"position": 662, "repo": "rushter/MLAlgorithms", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\rushter__MLAlgorithms.part' already exists a"}
+{"position": 663, "repo": "PaddlePaddle/Knover", "commit": "252a29ef055d3dffe93c0d73dee17d70cf5105a8", "decision": "skip", "reason": "no import from S"}
+{"position": 664, "repo": "alibaba/tidevice", "commit": "7bfd4d64da636500db688befbb64851078913589", "decision": "keep", "stratum": "P", "py_files": 39}
+{"position": 665, "repo": "jawah/charset_normalizer", "commit": "4b335594aee803e04b62e8ffa1a5a2b7ebd4d33c", "decision": "skip", "reason": "no import from S"}
+{"position": 666, "repo": "Spijkervet/SimCLR", "commit": "2738efae85b3ca1b70b7919c5d7a7837d9d75235", "decision": "skip", "reason": "no import from S"}
+{"position": 667, "repo": "ddbourgin/numpy-ml", "commit": "b0359af5285fbf9699d64fd5ec059493228af03e", "decision": "skip", "reason": "quota full (G)"}
+{"position": 668, "repo": "kieranjwood/trading-momentum-transformer", "commit": "e0352cb0bdbf8045accb1bf1a5705ae0cb9ea624", "decision": "skip", "reason": "no import from S"}
+{"position": 669, "repo": "tensorflow/privacy", "commit": "e0c409035f0d302483b480a92ac555c5ee30c7fe", "decision": "keep", "stratum": "P", "py_files": 249}
+{"position": 670, "repo": "Florian-Barthel/splatviz", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\Florian-Barthel__splatviz.part' already exis"}
+{"position": 671, "repo": "198808xc/Pangu-Weather", "decision": "skip", "reason": "screened in round 7"}
+{"position": 672, "repo": "EleutherAI/cookbook", "commit": "827ee3b293a63f14403f1467d08c91fda213f4e6", "decision": "skip", "reason": "no import from S"}
+{"position": 673, "repo": "OpenAdaptAI/OpenAdapt", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\OpenAdaptAI__OpenAdapt.part' already exists "}
+{"position": 674, "repo": "chyroc/WechatSogou", "commit": "6a7e08caa82dd7cf47331d7c303f578a4b325360", "decision": "skip", "reason": "quota full (G)"}
+{"position": 675, "repo": "InstaPy/instapy-quickstart", "commit": "1dc71f5b3f5e0530beff59608099aae33d175492", "decision": "skip", "reason": "no import from S"}
+{"position": 676, "repo": "langchain-ai/langmem", "commit": "48e3c11f5bb527282c7d5339c6a87a0b35abccfc", "decision": "skip", "reason": "no import from S"}
+{"position": 677, "repo": "mov-cli/mov-cli", "commit": "13399f91b8b4e811afc4f739eb7f0da1cd6acb57", "decision": "skip", "reason": "no import from S"}
+{"position": 678, "repo": "Lightricks/ComfyUI-LTXVideo", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\Lightricks__ComfyUI-LTXVideo.part' already e"}
+{"position": 679, "repo": "Jeff-LiangF/streamv2v", "commit": "b35f3877e3bc21e960dfe2e4ca54eb5b15bc1650", "decision": "skip", "reason": "no import from S"}
+{"position": 680, "repo": "reinderien/mimic", "commit": "d0a604b81145ca12b043401dfca334cd7b81a726", "decision": "skip", "reason": "4 .py files"}
+{"position": 681, "repo": "torrinworx/Blend_My_NFTs", "commit": "ad9f8cd3d3e00ea79e24c19ccb2b986837af8c30", "decision": "keep", "stratum": "P", "py_files": 13}
+{"position": 682, "repo": "danielbeach/data-engineering-practice", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\danielbeach__data-engineering-practice.part'"}
+{"position": 683, "repo": "clinton-hall/nzbToMedia", "commit": "ce111f42ac4a3352835c85cf7fa61e4809400826", "decision": "keep", "stratum": "P", "py_files": 1394}
+{"position": 684, "repo": "anirudhajith/process-wallpaper", "commit": "79603e41b4122f3a6a105206b8bf767cf4c339cb", "decision": "skip", "reason": "1 .py files"}
+{"position": 685, "repo": "kelvins/awesome-mlops", "commit": "6188e005c2d970087d8ecb0a5d5bb0b01a8254ab", "decision": "skip", "reason": "1 .py files"}
+{"position": 686, "repo": "injetlee/Python", "commit": "a97ebe532bdeb2b81f64e12d940b3a5307b5a1d5", "decision": "skip", "reason": "quota full (G)"}
+{"position": 687, "repo": "AutoArk/GPA", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\AutoArk__GPA.part' already exists and is not"}
+{"position": 688, "repo": "noahgsolomon/brainrot.js", "decision": "skip", "reason": "frame size 1946792 KB"}
+{"position": 689, "repo": "rajatomar788/pywebcopy", "commit": "5b84e9569fb2ee51aa549ed3489ef886e4c45460", "decision": "skip", "reason": "quota full (G)"}
+{"position": 690, "repo": "Vegeta2020/SE-SSD", "commit": "e4d3a865f81dd72ee3a45786db9a8fae6ca01df9", "decision": "skip", "reason": "no import from S"}
+{"position": 691, "repo": "CodeGraphContext/CodeGraphContext", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\CodeGraphContext__CodeGraphContext.part' alr"}
+{"position": 692, "repo": "opendilab/DI-engine", "decision": "skip", "reason": "frame size 307096 KB"}
+{"position": 693, "repo": "garrettfoster13/sccmhunter", "commit": "19f2f8a2eef93ab658fcbed3032fca0538e128a4", "decision": "keep", "stratum": "P", "py_files": 34}
+{"position": 694, "repo": "nianticlabs/manydepth", "commit": "a36212bda725438c0b96ce0793a92f9c148914bf", "decision": "skip", "reason": "no import from S"}
+{"position": 695, "repo": "PyO3/setuptools-rust", "commit": "24240bba072a658a49a0bb5f7f6a66ffbf488960", "decision": "skip", "reason": "no import from S"}
+{"position": 696, "repo": "tox-dev/sphinx-autodoc-typehints", "commit": "24862abe02b27143451220112dffa83a24d2b14e", "decision": "skip", "reason": "quota full (G)"}
+{"position": 697, "repo": "horseee/LLM-Pruner", "commit": "128a07d977f9b205d60ab14cfbc6a78f8a8e39d2", "decision": "skip", "reason": "quota full (G)"}
+{"position": 698, "repo": "cswry/SeeSR", "decision": "skip", "reason": "clone failed: fatal: destination path 'Downloads\\Quanta-R9-draft\\clones-h9\\cswry__SeeSR.part' already exists and is not"}
+{"position": 699, "repo": "ElectricAlexis/NotaGen", "commit": "4553cd743b6b449732baf2a6cc58885fe853b11d", "decision": "skip", "reason": "no import from S"}
+{"position": 700, "repo": "EbookFoundation/free-programming-books", "commit": "f42a51cd6cddb8401b18c3d6c774bc381730fcd1", "decision": "skip", "reason": "1 .py files"}
+{"position": 701, "repo": "diego-vicente/som-tsp", "commit": "0d8f9c5285f906774d67d81f8ae9c1b4b75098ef", "decision": "skip", "reason": "5 .py files"}
+{"position": 702, "repo": "mfarragher/obsidiantools", "commit": "2ee74d35b03506546e066d2ef8a5f85e95955b62", "decision": "skip", "reason": "no import from S"}
+{"position": 703, "repo": "temporal-community/temporal-ai-agent", "commit": "215d55570b45c00199959c0ec7635e6edc5f89e5", "decision": "skip", "reason": "no import from S"}
+{"position": 704, "repo": "KittenML/KittenTTS", "commit": "e948cb2fb1633bdb428d1d0b30f03c2bddb782f3", "decision": "skip", "reason": "no import from S"}
+{"position": 705, "repo": "aasthas2022/SDE-Interview-and-Prep-Roadmap", "decision": "skip", "reason": "clone failed: error: RPC failed; curl 56 Recv failure: Connection was reset\nerror: 3943 bytes of body are still expected\nfetch-pack: u"}
+{"position": 706, "repo": "neubig/nn4nlp-code", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 707, "repo": "fieldOfView/Cura-OctoPrintPlugin", "commit": "67518c3306d40fc5c4e70ab9828d06bbbac6cbd9", "decision": "skip", "reason": "no import from S"}
+{"position": 708, "repo": "huggingface/parler-tts", "commit": "d108732cd57788ec86bc857d99a6cabd66663d68", "decision": "skip", "reason": "no import from S"}
+{"position": 709, "repo": "PhantomInsights/baby-names-analysis", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 710, "repo": "oarriaga/paz", "commit": "b5baf12ffca60969c2fcdc04a315bf381d04dca7", "decision": "skip", "reason": "no import from S"}
+{"position": 711, "repo": "shuxiachai/academic-commercialization-agent", "decision": "skip", "reason": "clone failed: error: RPC failed; curl 56 Recv failure: Connection was reset\nerror: 6494 bytes of body are still expected\nfetch-pack: u"}
+{"position": 712, "repo": "edent/SuperTinyIcons", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 713, "repo": "JimmXinu/FanFicFare", "commit": "1fd2ef9b270710e309fd99d248d7764e572ac930", "decision": "keep", "stratum": "P", "py_files": 324}
+{"position": 714, "repo": "loadchange/amemv-crawler", "commit": "3faec40ce5f5556a335df2c2563cb1c59b0f845a", "decision": "skip", "reason": "1 .py files"}
+{"position": 715, "repo": "River-Zhang/ICEdit", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 716, "repo": "xtekky/gpt4free", "decision": "skip", "reason": "frame size 238577 KB"}
+{"position": 717, "repo": "Significant-Gravitas/AutoGPT", "decision": "skip", "reason": "frame size 631025 KB"}
+{"position": 718, "repo": "williamchange/b3dsdf", "commit": "26e7851018030b9975247a7f45279e57b0819d3e", "decision": "skip", "reason": "1 .py files"}
+{"position": 719, "repo": "cosme12/SimpleCoin", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/cosme12/SimpleCoin.git/': Could not resolve host: github.com\n"}
+{"position": 720, "repo": "encode/httpx", "decision": "skip", "reason": "PROTOCOL.md A3"}
+{"position": 721, "repo": "ShiftLeftSecurity/sast-scan", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/ShiftLeftSecurity/sast-scan.git/': Could not resolve host: github.com\n"}
+{"position": 722, "repo": "dunossauro/fastapi-do-zero", "commit": "9be0d09e44b627701cfba48b7c7ef7afc3644453", "decision": "skip", "reason": "quota full (G)"}
+{"position": 723, "repo": "avian2/unidecode", "commit": "158ec2c7e7b5d4bc7894cb2a99e050cdf3229c48", "decision": "skip", "reason": "no import from S"}
+{"position": 724, "repo": "willmiao/ComfyUI-Lora-Manager", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 725, "repo": "brmson/dataset-sts", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 726, "repo": "alibaba/FederatedScope", "decision": "skip", "reason": "frame size 314617 KB"}
+{"position": 727, "repo": "MontrealCorpusTools/Montreal-Forced-Aligner", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 728, "repo": "sinwindie/OSINT", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 729, "repo": "zou-group/sleepfm-clinical", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 730, "repo": "qxresearch/qxresearch-event-1", "commit": "5132ade5efc61557fb6a4c9beedc8a13cbb5612d", "decision": "skip", "reason": "quota full (G)"}
+{"position": 731, "repo": "InstaPy/instagram-profilecrawl", "commit": "2ca9f2753a6577b88b9ae8fe8ec4c130f9def2db", "decision": "skip", "reason": "no import from S"}
+{"position": 732, "repo": "TryCatchHCF/PacketWhisper", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 733, "repo": "googleapis/google-api-python-client", "decision": "skip", "reason": "frame size 627419 KB"}
+{"position": 734, "repo": "ptigas/simple-captcha-solver", "commit": "6e5a79bb4eca77062fd4426f038eb8b0c9c3c89e", "decision": "skip", "reason": "2 .py files"}
+{"position": 735, "repo": "DormyMo/SpiderKeeper", "commit": "d6156d35a95ba8c3ac759a08367079619555b6dd", "decision": "skip", "reason": "no import from S"}
+{"position": 736, "repo": "gagayuan/runoob-PDF-", "decision": "skip", "reason": "frame size 1561309 KB"}
+{"position": 737, "repo": "juftin/camply", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 738, "repo": "eugeneyan/obsidian-copilot", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 739, "repo": "Bitwise-01/Loki", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 740, "repo": "IDEA-Research/MaskDINO", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 741, "repo": "wee-slack/wee-slack", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 742, "repo": "ZingLix/immich-geodata-cn", "decision": "skip", "reason": "clone failed: timed out after 300 s"}
+{"position": 743, "repo": "Kaliiiiiiiiii-Vinyzu/patchright-python", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/Kaliiiiiiiiii-Vinyzu/patchright-python.git/': Could not resolve host: github"}
+{"position": 744, "repo": "corca-ai/EVAL", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/corca-ai/EVAL.git/': Could not resolve host: github.com\n"}
+{"position": 745, "repo": "fossasia/veditor", "commit": "271780257863d2e9bd717b6da77250e3fb4f9727", "decision": "keep", "stratum": "P", "py_files": 110}
+{"position": 746, "repo": "datascale-ai/inksight", "decision": "skip", "reason": "clone failed: error: RPC failed; curl 56 Recv failure: Connection was reset\nerror: 12163 bytes of body are still expected\nfetch-pack: "}
+{"position": 747, "repo": "Netflix/bless", "commit": "f3714d549d79c5e0a36b7467d8b7680ce9fe2e61", "decision": "keep", "stratum": "P", "py_files": 54}
+{"position": 748, "repo": "myfanhua/turb-gpt-free-register", "commit": "95e003623bdde03218b391c91146f868788cc827", "decision": "keep", "stratum": "P", "py_files": 143}
+{"position": 749, "repo": "cq674350529/deflat", "commit": "34a43cbfc9ae5806f2cd6371e67551e51d681d3f", "decision": "skip", "reason": "8 .py files"}
+{"position": 750, "repo": "duydao/Text-Pastry", "commit": "14d0fcceca211260c0b34be7669bb5ec1d2a7ca4", "decision": "skip", "reason": "4 .py files"}
+{"position": 751, "repo": "mverschu/CVE-2025-33073", "commit": "13f6aa8199c1fb00788c1500015008b7b53c2322", "decision": "keep", "stratum": "P", "py_files": 16}
+{"position": 752, "repo": "yumingj/Text2Human", "decision": "skip", "reason": "clone failed: error: RPC failed; curl 56 Recv failure: Connection was reset\nerror: 14726 bytes of body are still expected\nfetch-pack: "}
+{"position": 753, "repo": "Staffjoy/suite", "commit": "14ed49b21cf8296d2e0696a7f50f91f8e4b65072", "decision": "skip", "reason": "quota full (G)"}
+{"position": 754, "repo": "mohamed-chs/convoviz", "commit": "6c22e7398bdceb16c34c974512fc460f7bf642c6", "decision": "skip", "reason": "quota full (G)"}
+{"position": 755, "repo": "mengke-wang/xiaohongshu-ai-workbench", "commit": "7c1705d28a95bfc7c3b60f39b14b8041345541db", "decision": "skip", "reason": "2 .py files"}
+{"position": 756, "repo": "farizrahman4u/seq2seq", "commit": "c37c67ffccc7578d03dd97100dffd99cc675c85d", "decision": "skip", "reason": "5 .py files"}
+{"position": 757, "repo": "openakita/openakita", "decision": "skip", "reason": "frame size 295511 KB"}
+{"position": 758, "repo": "dpguthrie/yahooquery", "commit": "c67551c6982301158c90d001ac3d480907fea43d", "decision": "skip", "reason": "no import from S"}
+{"position": 759, "repo": "electricitymaps/electricitymaps-contrib", "decision": "skip", "reason": "frame size 214307 KB"}
+{"position": 760, "repo": "xinntao/EDVR", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/xinntao/EDVR.git/': Could not resolve host: github.com\n"}
+{"position": 761, "repo": "mims-harvard/ToolUniverse", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/mims-harvard/ToolUniverse.git/': Could not resolve host: github.com\n"}
+{"position": 762, "repo": "dbfixtures/pytest-postgresql", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/dbfixtures/pytest-postgresql.git/': Could not resolve host: github.com\n"}
+{"position": 763, "repo": "thunlp/OpenDelta", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/thunlp/OpenDelta.git/': Could not resolve host: github.com\n"}
+{"position": 764, "repo": "K-Dense-AI/scientific-agent-skills", "decision": "skip", "reason": "frame size 258691 KB"}
+{"position": 765, "repo": "mingsky-ai/ComfyUI-MingNodes", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/mingsky-ai/ComfyUI-MingNodes.git/': Could not resolve host: github.com\n"}
+{"position": 766, "repo": "srbhr/Resume-Matcher", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/srbhr/Resume-Matcher.git/': Could not resolve host: github.com\n"}
+{"position": 767, "repo": "hustlzp/Flask-Boost", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/hustlzp/Flask-Boost.git/': Could not resolve host: github.com\n"}
+{"position": 768, "repo": "boto/botocore", "decision": "skip", "reason": "frame size 528433 KB"}
+{"position": 769, "repo": "hak5/wifipineapplepager-payloads", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/hak5/wifipineapplepager-payloads.git/': Could not resolve host: github.com\n"}
+{"position": 770, "repo": "qutebrowser/qutebrowser", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/qutebrowser/qutebrowser.git/': Could not resolve host: github.com\n"}
+{"position": 771, "repo": "24kchengYe/MemoMind", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/24kchengYe/MemoMind.git/': Could not resolve host: github.com\n"}
+{"position": 772, "repo": "ttengwang/Caption-Anything", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/ttengwang/Caption-Anything.git/': Could not resolve host: github.com\n"}
+{"position": 773, "repo": "bai-shang/crnn_ctc_ocr_tf", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/bai-shang/crnn_ctc_ocr_tf.git/': Could not resolve host: github.com\n"}
+{"position": 774, "repo": "facebook/chisel", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/facebook/chisel.git/': Could not resolve host: github.com\n"}
+{"position": 775, "repo": "smthemex/ComfyUI_EchoMimic", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/smthemex/ComfyUI_EchoMimic.git/': Could not resolve host: github.com\n"}
+{"position": 776, "repo": "thiswillbeyourgithub/wdoc", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/thiswillbeyourgithub/wdoc.git/': Could not resolve host: github.com\n"}
+{"position": 777, "repo": "bellingcat/auto-archiver", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/bellingcat/auto-archiver.git/': Could not resolve host: github.com\n"}
+{"position": 778, "repo": "neuralchen/SimSwap", "decision": "skip", "reason": "frame size 216489 KB"}
+{"position": 779, "repo": "PKU-YuanGroup/LanguageBind", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/PKU-YuanGroup/LanguageBind.git/': Could not resolve host: github.com\n"}
+{"position": 780, "repo": "VPanjeta/ModiScript", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/VPanjeta/ModiScript.git/': Could not resolve host: github.com\n"}
+{"position": 781, "repo": "amaranth-lang/amaranth", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/amaranth-lang/amaranth.git/': Could not resolve host: github.com\n"}
+{"position": 782, "repo": "WisdomShell/codeshell", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/WisdomShell/codeshell.git/': Could not resolve host: github.com\n"}
+{"position": 783, "repo": "bear/parsedatetime", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/bear/parsedatetime.git/': Could not resolve host: github.com\n"}
+{"position": 784, "repo": "owengetinfo-design/PokieTicker", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/owengetinfo-design/PokieTicker.git/': Could not resolve host: github.com\n"}
+{"position": 785, "repo": "cclauss/Ten-lines-or-less", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/cclauss/Ten-lines-or-less.git/': Could not resolve host: github.com\n"}
+{"position": 786, "repo": "lucidrains/audiolm-pytorch", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/lucidrains/audiolm-pytorch.git/': Could not resolve host: github.com\n"}
+{"position": 787, "repo": "terrifyzhao/text_matching", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/terrifyzhao/text_matching.git/': Could not resolve host: github.com\n"}
+{"position": 788, "repo": "bee-san/pyWhat", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/bee-san/pyWhat.git/': Could not resolve host: github.com\n"}
+{"position": 789, "repo": "utkusen/turkce-wordlist", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/utkusen/turkce-wordlist.git/': Could not resolve host: github.com\n"}
+{"position": 790, "repo": "uma-pi1/kge", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/uma-pi1/kge.git/': Could not resolve host: github.com\n"}
+{"position": 791, "repo": "mobolic/facebook-sdk", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/mobolic/facebook-sdk.git/': Could not resolve host: github.com\n"}
+{"position": 792, "repo": "DEEP-PolyU/LinearRAG", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/DEEP-PolyU/LinearRAG.git/': Could not resolve host: github.com\n"}
+{"position": 793, "repo": "taki0112/StarGAN-Tensorflow", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/taki0112/StarGAN-Tensorflow.git/': Could not resolve host: github.com\n"}
+{"position": 794, "repo": "hzy46/Deep-Learning-21-Examples", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/hzy46/Deep-Learning-21-Examples.git/': Could not resolve host: github.com\n"}
+{"position": 795, "repo": "ImprintLab/Medical-Graph-RAG", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/ImprintLab/Medical-Graph-RAG.git/': Could not resolve host: github.com\n"}
+{"position": 796, "repo": "opendevops-cn/opendevops", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/opendevops-cn/opendevops.git/': Could not resolve host: github.com\n"}
+{"position": 797, "repo": "yourlabs/django-autocomplete-light", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/yourlabs/django-autocomplete-light.git/': Could not resolve host: github.com"}
+{"position": 798, "repo": "hhursev/recipe-scrapers", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/hhursev/recipe-scrapers.git/': Could not resolve host: github.com\n"}
+{"position": 799, "repo": "xtekky/TikTok-ViewBot", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/xtekky/TikTok-ViewBot.git/': Could not resolve host: github.com\n"}
+{"position": 800, "repo": "ros/rosdistro", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/ros/rosdistro.git/': Could not resolve host: github.com\n"}
+{"position": 801, "repo": "DemisEom/SpecAugment", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/DemisEom/SpecAugment.git/': Could not resolve host: github.com\n"}
+{"position": 802, "repo": "selkies-project/selkies", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/selkies-project/selkies.git/': Could not resolve host: github.com\n"}
+{"position": 803, "repo": "freeipa/ansible-freeipa", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/freeipa/ansible-freeipa.git/': Could not resolve host: github.com\n"}
+{"position": 804, "repo": "GistNoesis/FourierKAN", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/GistNoesis/FourierKAN.git/': Could not resolve host: github.com\n"}
+{"position": 805, "repo": "frappe/insights", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/frappe/insights.git/': Could not resolve host: github.com\n"}
+{"position": 806, "repo": "r35tart/RW_Password", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/r35tart/RW_Password.git/': Could not resolve host: github.com\n"}
+{"position": 807, "repo": "HuKai97/YOLOv5-LPRNet-Licence-Recognition", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/HuKai97/YOLOv5-LPRNet-Licence-Recognition.git/': Could not resolve host: git"}
+{"position": 808, "repo": "satwikkansal/wtfpython", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/satwikkansal/wtfpython.git/': Could not resolve host: github.com\n"}
+{"position": 809, "repo": "CoinCheung/pytorch-loss", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/CoinCheung/pytorch-loss.git/': Could not resolve host: github.com\n"}
+{"position": 810, "repo": "idanya/algo-trader", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/idanya/algo-trader.git/': Could not resolve host: github.com\n"}
+{"position": 811, "repo": "isaac-sim/IsaacSim", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/isaac-sim/IsaacSim.git/': Could not resolve host: github.com\n"}
+{"position": 812, "repo": "open-mmlab/mmpose", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/open-mmlab/mmpose.git/': Could not resolve host: github.com\n"}
+{"position": 813, "repo": "deoplete-plugins/deoplete-jedi", "commit": "4a13930764f3fbda1c06d7312d8ce2ff595d3274", "decision": "skip", "reason": "6 .py files"}
+{"position": 814, "repo": "sideeffects/GameDevelopmentToolset", "decision": "skip", "reason": "frame size 358405 KB"}
+{"position": 815, "repo": "philferriere/dlwin", "commit": "0166e7bd8ebc5db168373bf709e2856a1f6c51b3", "decision": "skip", "reason": "6 .py files"}
+{"position": 816, "repo": "Tencent-Hunyuan/HY-Embodied", "decision": "skip", "reason": "clone failed: fatal: unable to access 'https://github.com/Tencent-Hunyuan/HY-Embodied.git/': Could not resolve host: github.com\n"}
+{"position": 817, "repo": "se55i0n/DBScanner", "commit": "e6c4a89beec65c04519040ef1f59d476b43a562f", "decision": "skip", "reason": "4 .py files"}
+{"position": 818, "repo": "yenchenlin/pix2pix-tensorflow", "commit": "ba40020706ad3a1fbefa1da7bc7a05b7b031fb9e", "decision": "skip", "reason": "4 .py files"}
+{"position": 819, "repo": "JiawangBian/SC-SfMLearner-Release", "commit": "681a0e77e2f65ccb1b24f5a9647c17b30defa122", "decision": "skip", "reason": "no import from S"}
+{"position": 820, "repo": "ondyari/FaceForensics", "commit": "b952e41cba017eb37593c39e12bd884a934791e1", "decision": "skip", "reason": "no import from S"}
+{"position": 821, "repo": "izacus/RoboGif", "commit": "f761d999f440528ee123492bc861db11651699c4", "decision": "skip", "reason": "6 .py files"}
+{"position": 822, "repo": "taki0112/Self-Attention-GAN-Tensorflow", "commit": "6c073a4c8bf9898ab3ed9b470451f5630cd05373", "decision": "skip", "reason": "5 .py files"}
+{"position": 823, "repo": "Git-on-my-level/codex-autorunner", "commit": "97709dfe287264b102be846bf587c5e093f49cc5", "decision": "skip", "reason": "quota full (G)"}
+{"position": 824, "repo": "GerevAI/gerev", "commit": "1018e122aae288ca9c77d72b0efbe9ff7a6df750", "decision": "skip", "reason": "no import from S"}
+{"position": 825, "repo": "Bert-JanP/Open-Source-Threat-Intel-Feeds", "commit": "8c493744a49ef674d2df64f33076a95658d4cf56", "decision": "skip", "reason": "3 .py files"}
+{"position": 826, "repo": "chinoogawa/fbht", "commit": "d75ae93b5e9c52a7a3ee0519142c602d2b7ca227", "decision": "skip", "reason": "8 .py files"}
+{"position": 827, "repo": "GuanYixuan/pyJianYingDraft", "commit": "1e228479dda361e312e85f6037002346cf6dca9a", "decision": "skip", "reason": "no import from S"}
+{"position": 828, "repo": "PyCQA/isort", "commit": "5a6aaf54a81e59e9b125c7a5d3a34f396fb7025b", "decision": "keep", "stratum": "P", "py_files": 106}

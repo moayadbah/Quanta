@@ -1,0 +1,19 @@
+{
+ "repo": "airbnb/streamalert",
+ "commit": "75ba140d2e1aa6e903313d88326920adcb8bff45",
+ "annotator": "agent-1",
+ "files": {
+  "streamalert/alert_processor/outputs/output_base.py": [],
+  "streamalert/alert_processor/outputs/pagerduty.py": [],
+  "tests/unit/streamalert/alert_processor/outputs/test_pagerduty.py": [],
+  "tests/unit/streamalert/apps/test_apps/test_gsuite.py": [],
+  "streamalert/apps/_apps/duo.py": [
+   {"line_start": 67, "line_end": 68, "name": "hmac.new", "class": "A", "kind": "mac"}
+  ],
+  "tests/unit/streamalert/apps/test_helpers.py": [],
+  "tests/unit/streamalert/apps/test_apps/test_duo.py": [],
+  "streamalert/apps/_apps/box.py": [
+   {"line_start": 69, "line_end": 69, "name": "JWTAuth.from_settings_dictionary", "class": "B", "kind": "token", "note": "boxsdk JWT auth object built from a keyfile holding an encrypted private key; used to sign JWT assertions"}
+  ]
+ }
+}

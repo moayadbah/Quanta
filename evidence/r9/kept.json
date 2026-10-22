@@ -1,0 +1,182 @@
+[
+ {
+  "repo": "rackslab/Slurm-web",
+  "stratum": "P",
+  "commit": "77b8c1dfd0ab4f36c5e9f895dacf57959bab6eb8",
+  "py_files": 121
+ },
+ {
+  "repo": "NullArray/AutoSploit",
+  "stratum": "G",
+  "commit": "9a6a5efac31b488524f9f56f4e2c08f64ec87227",
+  "py_files": 25
+ },
+ {
+  "repo": "Youngestdev/fastapi-mongo",
+  "stratum": "G",
+  "commit": "7ce51e3e1e5ad4dd6fb25e375ee7241125d1925c",
+  "py_files": 20
+ },
+ {
+  "repo": "Brikwerk/nxbt",
+  "stratum": "P",
+  "commit": "ec4b800ad6c55de96bb6c7f9f84b5bdc59a4c975",
+  "py_files": 26
+ },
+ {
+  "repo": "NanmiCoder/NewsCrawler",
+  "stratum": "G",
+  "commit": "25fb3b4a20186905f5ce38f7a7f854050d402253",
+  "py_files": 121
+ },
+ {
+  "repo": "python-gitlab/python-gitlab",
+  "stratum": "G",
+  "commit": "51eb17e6e67a25157e04b0abc649221bd8ecc7fe",
+  "py_files": 255
+ },
+ {
+  "repo": "cmu-db/dbdb.io",
+  "stratum": "G",
+  "commit": "ed65e2856f1f16eef05c43a71625ec8fefa2ba94",
+  "py_files": 217
+ },
+ {
+  "repo": "pmaupin/pdfrw",
+  "stratum": "G",
+  "commit": "6c892160e7e976b243db0c12c3e56ed8c78afc5a",
+  "py_files": 51
+ },
+ {
+  "repo": "MD-SEC/MDPOCS",
+  "stratum": "P",
+  "commit": "4de61fc965525a3f6af6049ef28d0b1619a649c1",
+  "py_files": 53
+ },
+ {
+  "repo": "TheR1D/shell_gpt",
+  "stratum": "G",
+  "commit": "a082bd5327ce0c4ef5a0284d9060e833be9444a6",
+  "py_files": 28
+ },
+ {
+  "repo": "python-discord/bot",
+  "stratum": "P",
+  "commit": "91f2b7b0a241a93359c332a7ff05843c2dd3d45e",
+  "py_files": 222
+ },
+ {
+  "repo": "sligter/LandPPT",
+  "stratum": "G",
+  "commit": "bac8497cc756d67bfda4ecd7b7219b42dc982c1c",
+  "py_files": 501
+ },
+ {
+  "repo": "VikParuchuri/textbook_quality",
+  "stratum": "G",
+  "commit": "3548c557d595803c8dd24f9b7f9e19055c5bb8fb",
+  "py_files": 61
+ },
+ {
+  "repo": "holoviz/holoviews",
+  "stratum": "G",
+  "commit": "e4168fd4b99446003bda9b219421b7422f8b50d0",
+  "py_files": 370
+ },
+ {
+  "repo": "aio-libs/aiokafka",
+  "stratum": "P",
+  "commit": "b4d63412ffbd76b76ac7d0450c8865ce7a225408",
+  "py_files": 115
+ },
+ {
+  "repo": "ma1co/Sony-PMCA-RE",
+  "stratum": "P",
+  "commit": "a82f5baaa8e9c3d9f28f94699e860fb2e48cc8e0",
+  "py_files": 55
+ },
+ {
+  "repo": "xiamuceer-j/MuMuAINovel",
+  "stratum": "P",
+  "commit": "743e5abec18beb8d73426527e6579538053bc6fd",
+  "py_files": 187
+ },
+ {
+  "repo": "masterking32/MasterHttpRelayVPN",
+  "stratum": "P",
+  "commit": "0a019e172472a9bb1829ca32639c824e77decf8c",
+  "py_files": 28
+ },
+ {
+  "repo": "babybuddy/babybuddy",
+  "stratum": "P",
+  "commit": "09629cf633cf3a2059a21ade4cea7ea4d846422f",
+  "py_files": 234
+ },
+ {
+  "repo": "intel/auto-round",
+  "stratum": "P",
+  "commit": "ec10a649b073a084af79d2c2986e92840739d0df",
+  "py_files": 741
+ },
+ {
+  "repo": "Oshan96/monkey-dl",
+  "stratum": "P",
+  "commit": "9757f7c8d1a094da61e0c0ac38a2a29bf1c21e28",
+  "py_files": 40
+ },
+ {
+  "repo": "51bitquant/howtrader",
+  "stratum": "P",
+  "commit": "fcad8e2d86825506b9d33441ab78be853c2c3bdd",
+  "py_files": 160
+ },
+ {
+  "repo": "kr8s-org/kr8s",
+  "stratum": "P",
+  "commit": "7aa27eeeeb0e2def16db7c9cdf1f3547cc54ace5",
+  "py_files": 59
+ },
+ {
+  "repo": "bugy/script-server",
+  "stratum": "P",
+  "commit": "62bd38a3942e73546ba701248253d043eb66dadd",
+  "py_files": 177
+ },
+ {
+  "repo": "Matteo842/SaveState",
+  "stratum": "P",
+  "commit": "eaecd6e3ee094a0ca6c65a59194cd8d78f368635",
+  "py_files": 127
+ },
+ {
+  "repo": "alibaba/tidevice",
+  "stratum": "P",
+  "commit": "7bfd4d64da636500db688befbb64851078913589",
+  "py_files": 39
+ },
+ {
+  "repo": "tensorflow/privacy",
+  "stratum": "P",
+  "commit": "e0c409035f0d302483b480a92ac555c5ee30c7fe",
+  "py_files": 249
+ },
+ {
+  "repo": "torrinworx/Blend_My_NFTs",
+  "stratum": "P",
+  "commit": "ad9f8cd3d3e00ea79e24c19ccb2b986837af8c30",
+  "py_files": 13
+ },
+ {
+  "repo": "clinton-hall/nzbToMedia",
+  "stratum": "P",
+  "commit": "ce111f42ac4a3352835c85cf7fa61e4809400826",
+  "py_files": 1394
+ },
+ {
+  "repo": "garrettfoster13/sccmhunter",
+  "stratum": "P",
+  "commit": "19f2f8a2eef93ab658fcbed3032fca0538e128a4",
+  "py_files": 34
+ }
+]

@@ -1,0 +1,399 @@
+{"position": 1083, "repo": "bdd100k/bdd100k", "commit": "9ac17c6c7c51d2fc83065fccd707cd5b1882a293", "decision": "skip", "reason": "no import from S"}
+{"position": 1084, "repo": "webosose/build-webos", "commit": "ae3601d8c003654290d33dc9bc9928bfe662e816", "decision": "skip", "reason": "1 .py files"}
+{"position": 1085, "repo": "rlworkgroup/garage", "commit": "2d594803636e341660cab0e81343abbe9a325353", "decision": "skip", "reason": "no import from S"}
+{"position": 1086, "repo": "YyzHarry/imbalanced-semi-self", "commit": "b91ad29fd8805ddf0a146f735905b0c869e68ae4", "decision": "skip", "reason": "no import from S"}
+{"position": 1087, "repo": "yiranran/APDrawingGAN", "commit": "38f4319f8e724f6bef5a32c348a8c0967baad773", "decision": "skip", "reason": "no import from S"}
+{"position": 1088, "repo": "pkuliyi2015/multidiffusion-upscaler-for-automatic1111", "commit": "22798f6822bc9c8a905b51da8954ee313b973331", "decision": "skip", "reason": "no import from S"}
+{"position": 1089, "repo": "gaganmanku96/Finding-missing-person-using-AI", "commit": "7d7e88a7d23fc46a01f9436ff26f80a37721e216", "decision": "skip", "reason": "no import from S"}
+{"position": 1090, "repo": "radude/rentry", "commit": "977ad2edb379434e0fa3b8d69df8ef6ac799808f", "decision": "keep", "stratum": "G", "py_files": 13}
+{"position": 1091, "repo": "kunifujiwara/VoxCity", "commit": "0f615c625bf6223ca96c613eb87f4c1ab5814b32", "decision": "keep", "stratum": "G", "py_files": 371}
+{"position": 1092, "repo": "2U1/Qwen-VL-Series-Finetune", "commit": "67078206604820beb20bddbe24c94a0b4a4bd6d4", "decision": "skip", "reason": "no import from S"}
+{"position": 1093, "repo": "susiai/susi_api", "commit": "67f2600214325f4fb9dcf7011e0de8135b5dec5f", "decision": "skip", "reason": "no import from S"}
+{"position": 1094, "repo": "ruc-datalab/DeepAnalyze", "commit": "d4dd5cf62ec7ec2579eb85bcab4f24e4782827b9", "decision": "keep", "stratum": "G", "py_files": 911}
+{"position": 1095, "repo": "thisjam/sd-webui-oldsix-prompt", "commit": "9fb665c34bf8d4d06df8952189923de925913849", "decision": "keep", "stratum": "G", "py_files": 10}
+{"position": 1096, "repo": "piercefreeman/mountaineer", "commit": "ded92b6944cb51c9b49b57456b0582d47b84df83", "decision": "keep", "stratum": "G", "py_files": 145}
+{"position": 1097, "repo": "psoho/fast-poster", "commit": "9f5fd7705c4b2107d4a9ff880d042c217c6ab757", "decision": "skip", "reason": "6 .py files"}
+{"position": 1098, "repo": "jasontang-ai/Context-Engineering", "commit": "6158def66a2d2174ed8356cf376e5f44e10d78ea", "decision": "keep", "stratum": "G", "py_files": 31}
+{"position": 1099, "repo": "yahoo-finance/yahoo-finance", "commit": "6924d75c1aadb2144b1cccedd0bc70c0509b9913", "decision": "skip", "reason": "4 .py files"}
+{"position": 1100, "repo": "aub-mind/arabert", "commit": "6fcebaebc97844d4b498900daa6314257f22c042", "decision": "skip", "reason": "no import from S"}
+{"position": 1101, "repo": "facebookincubator/AITemplate", "decision": "skip", "reason": "screened in round 6"}
+{"position": 1102, "repo": "iszhanjiawei/indexTTS2", "commit": "bae9221fd0a1bc98e8409fb97b8d6bd6a119bb64", "decision": "keep", "stratum": "G", "py_files": 192}
+{"position": 1103, "repo": "pushshift/api", "commit": "ded75fadbc4bf4a3ea4b5cf4518b5bd4e2d7ca1e", "decision": "skip", "reason": "7 .py files"}
+{"position": 1104, "repo": "Opentrons/opentrons", "decision": "skip", "reason": "frame size 1175613 KB"}
+{"position": 1105, "repo": "fgmacedo/python-statemachine", "commit": "ec5d8173f740b37941818df13727db9d64ef498d", "decision": "keep", "stratum": "G", "py_files": 274}
+{"position": 1106, "repo": "KimigaiiWuyi/GenshinUID", "decision": "skip", "reason": "frame size 377034 KB"}
+{"position": 1107, "repo": "EWEDLCM/FnDepot", "decision": "skip", "reason": "frame size 496256 KB"}
+{"position": 1108, "repo": "Hackxiaoya/CuteOne", "commit": "b5fba55454d600e3ddc097de42dbd1c2aa44c772", "decision": "keep", "stratum": "G", "py_files": 66}
+{"position": 1109, "repo": "Grim-es/material-combiner-addon", "commit": "eed9ca25baffe5463bdd6104360fcd9f6e32ba15", "decision": "keep", "stratum": "P", "py_files": 34}
+{"position": 1110, "repo": "GACWR/OpenUBA", "commit": "6d7b9cf85d6bff3e16eb5230791252ff2a3bd0ec", "decision": "keep", "stratum": "P", "py_files": 224}
+{"position": 1111, "repo": "SillyTavern/SillyTavern-Extras", "commit": "fdc1ec04b632b1d871cc0ad3a9aa132e985fc398", "decision": "keep", "stratum": "G", "py_files": 450}
+{"position": 1112, "repo": "jiegzhan/multi-class-text-classification-cnn-rnn", "commit": "acac55f40a718d2adaa7d46e3f4f145aaee14677", "decision": "skip", "reason": "4 .py files"}
+{"position": 1113, "repo": "LeonChaoX/qinyan-academic-skills", "commit": "df5a498a81e0f9c8f79d814446dcf9e9b8f68888", "decision": "keep", "stratum": "G", "py_files": 233}
+{"position": 1114, "repo": "open-gigaai/giga-world-1", "decision": "skip", "reason": "frame size 706872 KB"}
+{"position": 1115, "repo": "0xCGonzalo/Golden-Guide-for-Pentesting", "decision": "skip", "reason": "clone failed: error: invalid path 'Web Application/XSS Injection/Files PoC/\"><img src=x onerror=alert(document.cookie);.jpg'\nfatal: un"}
+{"position": 1116, "repo": "sdv-dev/Copulas", "commit": "83a004b63323026e47c11d683695f23c5f804412", "decision": "skip", "reason": "no import from S"}
+{"position": 1117, "repo": "MemoriLabs/Memori", "commit": "574b1ea3e876f100ef82c37817d603eb7e258e59", "decision": "keep", "stratum": "P", "py_files": 309}
+{"position": 1118, "repo": "jagannatharjun/qbt-theme", "commit": "905049e1e868c668880ad6236f620b12559c64f8", "decision": "skip", "reason": "no import from S"}
+{"position": 1119, "repo": "Meituan-Dianping/lyrebird", "commit": "91f0db7716dd66ade5b026a3545ed19ef6148cc7", "decision": "keep", "stratum": "G", "py_files": 151}
+{"position": 1120, "repo": "Sumanth077/Hands-On-AI-Engineering", "decision": "skip", "reason": "frame size 381049 KB"}
+{"position": 1121, "repo": "Windy3f3f3f3f/claude-code-from-scratch", "commit": "0b452360866433fde0dc77cd37ada9d303546592", "decision": "keep", "stratum": "G", "py_files": 31}
+{"position": 1122, "repo": "mlcommons/inference", "decision": "skip", "reason": "frame size 770157 KB"}
+{"position": 1123, "repo": "flexxui/flexx", "commit": "f18ec09eb35dc403881aca4a466e48e2dc4916d1", "decision": "keep", "stratum": "G", "py_files": 192}
+{"position": 1124, "repo": "PKU-YuanGroup/UltraShape-1.0", "commit": "5e8dcef05df101ab00ab6cd5fdd0ed0c74fbca66", "decision": "skip", "reason": "no import from S"}
+{"position": 1125, "repo": "talkingwallace/ChatGPT-Paper-Reader", "commit": "cb123e1142994220e0bd162233210b8643abea1d", "decision": "skip", "reason": "9 .py files"}
+{"position": 1126, "repo": "commaai/laika", "commit": "28bb3777b3d89fad2a9b0e97be7d05dbc4b935a1", "decision": "skip", "reason": "no import from S"}
+{"position": 1127, "repo": "jina-ai/vectordb", "commit": "ad2b64a468c70be7970cf1606c83005a73547b2a", "decision": "keep", "stratum": "G", "py_files": 33}
+{"position": 1128, "repo": "bublint/ue5-llama-lora", "commit": "4dd3dae5bfe847cc7f0d31b2c60a5648a92e9fb2", "decision": "skip", "reason": "1 .py files"}
+{"position": 1129, "repo": "cs230-stanford/cs230-code-examples", "commit": "478e747b1c8bf57c6e2ce6b7ffd8068fe0287056", "decision": "skip", "reason": "no import from S"}
+{"position": 1130, "repo": "junyanz/CatPapers", "decision": "skip", "reason": "clone failed: error: invalid path 'teasers/Zhu*2017.jpg'\nfatal: unable to checkout working tree\nwarning: Clone succeeded, but checkout"}
+{"position": 1131, "repo": "brainix/pottery", "commit": "0c3ce697857df58828c11abe56dbdf005c3953a9", "decision": "skip", "reason": "no import from S"}
+{"position": 1132, "repo": "tiangolo/dockerswarm.rocks", "commit": "c504a4b34d7babd970771255c4e1a57f710ee4dc", "decision": "skip", "reason": "2 .py files"}
+{"position": 1133, "repo": "Anil-matcha/awesome-jev-by-typesafe", "commit": "0caa1261f2de600cef05feccb277459c5963d49c", "decision": "skip", "reason": "7 .py files"}
+{"position": 1134, "repo": "cruxopen/openISP", "commit": "d4947e1aa5f4af83c3640131dbca8a675b613ec6", "decision": "skip", "reason": "no import from S"}
+{"position": 1135, "repo": "fqscfqj/Y2A-Auto", "commit": "d5617ac7d97278fbd63fb77dfbe877cc63353dda", "decision": "keep", "stratum": "P", "py_files": 140}
+{"position": 1136, "repo": "sv3nbeast/ShiroScan", "commit": "5127f5b3dc06568e6a96bc2c6258965f06bc4d2d", "decision": "keep", "stratum": "G", "py_files": 36}
+{"position": 1137, "repo": "dolevf/graphql-cop", "commit": "2b7e086efae672f28b419c7fcdfe6b48d846c9dc", "decision": "skip", "reason": "no import from S"}
+{"position": 1138, "repo": "pygments/pygments", "commit": "156d85fdd18d34427fe893527e71da91dcfb0eb5", "decision": "skip", "reason": "no import from S"}
+{"position": 1139, "repo": "T3nk0/Upload_Auto_Fuzz", "commit": "cdde0557e1af6da7dbf4a4913ae0d4ad69f873df", "decision": "skip", "reason": "1 .py files"}
+{"position": 1140, "repo": "aws/aws-graviton-getting-started", "commit": "8b322a4160b827be202beedaf35ce21b4c635603", "decision": "skip", "reason": "no import from S"}
+{"position": 1141, "repo": "lardbit/nefarious", "commit": "4ec2fd5d332a07436b48845b22907939af60cc5a", "decision": "skip", "reason": "no import from S"}
+{"position": 1142, "repo": "dedsec1121fk/DedSec", "decision": "skip", "reason": "frame size 907823 KB"}
+{"position": 1143, "repo": "guojianyang/cv-detect-robot", "commit": "187f93559632911b09f9efbef3667b348c867cc5", "decision": "skip", "reason": "no import from S"}
+{"position": 1144, "repo": "open-compass/opencompass", "decision": "skip", "reason": "screened in round 7"}
+{"position": 1145, "repo": "manparvesh/yoda", "commit": "e8fdbb20961d525e0b26e5e87dc09e55e79afadf", "decision": "skip", "reason": "no import from S"}
+{"position": 1146, "repo": "deepseek-ai/DeepSeek-OCR-2", "commit": "2f3699ebbb96fa8af32212e8c170f2cc28730fad", "decision": "skip", "reason": "no import from S"}
+{"position": 1147, "repo": "NoizAI/HelixWorld", "commit": "fc8656ed76e25ff6c0dd44357bf3cdb006a1521d", "decision": "keep", "stratum": "G", "py_files": 104}
+{"position": 1148, "repo": "mingrammer/diagrams", "commit": "8c1446fbfa4a8d88e5c7bca7101ddc5af7933379", "decision": "skip", "reason": "no import from S"}
+{"position": 1149, "repo": "ZiqiaoPeng/SyncTalk", "decision": "skip", "reason": "clone failed: error: invalid path 'data/Please place the data file.'\nfatal: unable to checkout working tree\nwarning: Clone succeeded, "}
+{"position": 1150, "repo": "JuliaPy/pyjulia", "commit": "f30de4e235ce1705b2473f12b9b3b307a8a78ab8", "decision": "skip", "reason": "no import from S"}
+{"position": 1151, "repo": "mandarons/icloud-docker", "commit": "4978c2d15abc1ffc8fe1aa17b470de8ca232921d", "decision": "keep", "stratum": "G", "py_files": 70}
+{"position": 1152, "repo": "Scarygami/location-history-json-converter", "commit": "a73ec2b96ad0ebee0ccf812c56b85f23fb8ca1bd", "decision": "skip", "reason": "1 .py files"}
+{"position": 1153, "repo": "roryclear/clearcam", "commit": "ce932a4e616216504e46d43ba7484434b68990fe", "decision": "skip", "reason": "no import from S"}
+{"position": 1154, "repo": "yandex-research/tabm", "commit": "28e47ae301c92ec37787dde1ce923a0793f405b4", "decision": "keep", "stratum": "G", "py_files": 15}
+{"position": 1155, "repo": "django-otp/django-otp", "commit": "1c77c58f6785b49da3250b01dedbbc77ed0429ae", "decision": "keep", "stratum": "G", "py_files": 71}
+{"position": 1156, "repo": "zhang17173/Event-Extraction", "decision": "skip", "reason": "frame size 207263 KB"}
+{"position": 1157, "repo": "znxlwm/pytorch-generative-model-collections", "commit": "0d183bb5ea2fbe069e1c6806c4a9a1fd8e81656f", "decision": "skip", "reason": "no import from S"}
+{"position": 1158, "repo": "ryfeus/lambda-packs", "decision": "skip", "reason": "frame size 1888357 KB"}
+{"position": 1159, "repo": "Upsonic/Upsonic", "commit": "101f0313b0ddb96cd4078354879b2ff57005db29", "decision": "keep", "stratum": "P", "py_files": 968}
+{"position": 1160, "repo": "BayramAnnakov/claude-reflect", "commit": "b6c42326903af3dd2bf3772b979730a44d8548ca", "decision": "skip", "reason": "no import from S"}
+{"position": 1161, "repo": "mnemox-ai/idea-reality-mcp", "commit": "83281b4cf7b66da8e80ad6e2527a154cefdaa480", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1162, "repo": "cleanlab/cleanlab", "commit": "750625747de1b26d8530954f51f0530bd0b51d3c", "decision": "skip", "reason": "no import from S"}
+{"position": 1163, "repo": "alexa-samples/alexa-smarthome", "commit": "a6822b047a66e91a0c6bbf8c7ded689a8034d996", "decision": "skip", "reason": "no import from S"}
+{"position": 1164, "repo": "nitely/Spirit", "commit": "72361fd3464fd14551a34dc1f3e98a2e2733346a", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1165, "repo": "joanbono/awesome-kicad", "commit": "f342332372f99b0f1e79df37e4658a676e9affd1", "decision": "skip", "reason": "1 .py files"}
+{"position": 1166, "repo": "tokland/youtube-upload", "commit": "6a30b55d0fd4976571a5b9b34c01fd41cec49c7a", "decision": "skip", "reason": "no import from S"}
+{"position": 1167, "repo": "HCIILAB/SCUT-FBP5500-Database-Release", "commit": "bff34ad298ae80e8f9a3e15bbd7290a32b620446", "decision": "skip", "reason": "4 .py files"}
+{"position": 1168, "repo": "airbnb/streamalert", "commit": "75ba140d2e1aa6e903313d88326920adcb8bff45", "decision": "keep", "stratum": "P", "py_files": 411}
+{"position": 1169, "repo": "hangone/WeBan", "commit": "a9e752bd904adebe0028279b857c931bb653e2a3", "decision": "skip", "reason": "4 .py files"}
+{"position": 1170, "repo": "ljynlp/W2NER", "commit": "a34ff841891919001080edefb50e14fa9dc15e1c", "decision": "skip", "reason": "5 .py files"}
+{"position": 1171, "repo": "cypw/DPNs", "commit": "5766ebef5ba7a1e79a1e6be71878fb016b67d4b2", "decision": "skip", "reason": "no import from S"}
+{"position": 1172, "repo": "IceClear/StableSR", "commit": "398ee9383777e255540ea027a704c8ce1f32145b", "decision": "skip", "reason": "no import from S"}
+{"position": 1173, "repo": "artetxem/vecmap", "commit": "b82246f6c249633039f67fa6156e51d852bd73a3", "decision": "skip", "reason": "7 .py files"}
+{"position": 1174, "repo": "senshinya/singbox_ruleset", "commit": "d40026dacd3d1d3186c53baf7785fdbdce4a2fed", "decision": "skip", "reason": "1 .py files"}
+{"position": 1175, "repo": "88lin/workbuddy-auto-signin", "commit": "c5fe510adeae4ee2a7a6d498620dc9868647331c", "decision": "skip", "reason": "5 .py files"}
+{"position": 1176, "repo": "Turoad/CLRNet", "commit": "7269e9d1c1c650343b6c7febb8e764be538b1aed", "decision": "skip", "reason": "no import from S"}
+{"position": 1177, "repo": "krvstek/uni-apks", "commit": "0b332e6e37ba8f388423eea8b49a3ef5f7193983", "decision": "skip", "reason": "no import from S"}
+{"position": 1178, "repo": "DavidBuchanan314/dlinject", "commit": "14d4dae71a40c4f82657d199f5566a602ca74fb9", "decision": "skip", "reason": "1 .py files"}
+{"position": 1179, "repo": "maxdorninger/MediaManager", "commit": "98f253238c780b462af42691154bf0d1f5723f92", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1180, "repo": "MMMU-Benchmark/MMMU", "commit": "268471d0d488258990025331c7528359c324aa25", "decision": "skip", "reason": "no import from S"}
+{"position": 1181, "repo": "open-gigaai/giga-world-policy", "decision": "skip", "reason": "frame size 257369 KB"}
+{"position": 1182, "repo": "maubot/maubot", "commit": "0a20df5a8aef581bbe03c3d4db5b66be375896d8", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1183, "repo": "daid/LegacyCura", "commit": "eceece558df51845988bed55a4e667638654f7c4", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1184, "repo": "kangoka/tiktodv3", "commit": "a9e289f04e475efeb1f96c242dc593669ba4d7c2", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1185, "repo": "calclavia/DeepJ", "decision": "skip", "reason": "frame size 660934 KB"}
+{"position": 1186, "repo": "phuryn/claude-usage", "commit": "3eea154474e93761f774ed38beeaf45baf838a45", "decision": "skip", "reason": "no import from S"}
+{"position": 1187, "repo": "benfred/implicit", "commit": "8a95dbe24ca675a6edd86aafb3b4cd5ae7287edf", "decision": "skip", "reason": "no import from S"}
+{"position": 1188, "repo": "jsocol/django-adminplus", "commit": "d8a0834b774ac1b33f652fc923a80beff3f681fd", "decision": "skip", "reason": "7 .py files"}
+{"position": 1189, "repo": "antgroup/echomimic_v2", "commit": "38c86809efa041884c774ee31d984a9577c0e0aa", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1190, "repo": "akanimax/pro_gan_pytorch", "decision": "skip", "reason": "frame size 204847 KB"}
+{"position": 1191, "repo": "AdityaNG/kan-gpt", "commit": "0c6e4c2582d9a0e23c612c3b695846d4caceac1c", "decision": "skip", "reason": "no import from S"}
+{"position": 1192, "repo": "ZeroQI/YouTube-Agent.bundle", "commit": "5955d4399e0243c13c842869da1f67820d33529b", "decision": "skip", "reason": "1 .py files"}
+{"position": 1193, "repo": "python-rope/rope", "commit": "22f5e50151c76f8cd9718e264eb44e692ca82cda", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1194, "repo": "jertel/elastalert2", "commit": "162ba49d34485d375b4860694d21361a156cea18", "decision": "keep", "stratum": "P", "py_files": 131}
+{"position": 1195, "repo": "egtwobits/mesh_mesh_align_plus", "commit": "69e8dee63b46e51abc086c97e38e47b96f81d678", "decision": "skip", "reason": "no import from S"}
+{"position": 1196, "repo": "jupyterhub/the-littlest-jupyterhub", "commit": "05637a2fe4bb5b1e91bcdb0efc0059ab4b30d543", "decision": "keep", "stratum": "P", "py_files": 45}
+{"position": 1197, "repo": "ManimCommunity/manim", "commit": "b31c77e181d57d66ba30baa617328afaf52eb061", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1198, "repo": "thu-ml/Motus", "commit": "88f6fe30c62af033874b0a2e48ad1cbdaf12cfdf", "decision": "skip", "reason": "no import from S"}
+{"position": 1199, "repo": "8680/GOODBYEADS", "decision": "skip", "reason": "frame size 1367929 KB"}
+{"position": 1200, "repo": "ddean2009/MoneyPrinterPlus", "commit": "d2c6f397731586de6cdcfed2e325fa68e74e3959", "decision": "keep", "stratum": "P", "py_files": 95}
+{"position": 1201, "repo": "SlapBot/stephanie-va", "commit": "7dfc065917100cf3038a563b32da176e3e813aa8", "decision": "skip", "reason": "no import from S"}
+{"position": 1202, "repo": "jazzband/django-rest-knox", "commit": "c3522713e03ff8990c16c327a125630a0c16170e", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1203, "repo": "copier-org/copier", "commit": "a00a46b27441fceec9b15bcf3b90e4a123360ce3", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1204, "repo": "CrimsonForge-io/king-phisher", "commit": "94823fbb7b1b4557f78c563e217dd21c758edbce", "decision": "keep", "stratum": "P", "py_files": 163}
+{"position": 1205, "repo": "TrueMyst/BeatPrints", "commit": "63a48b18ea871c83d74801b78a38e601b586d1e8", "decision": "skip", "reason": "no import from S"}
+{"position": 1206, "repo": "cluic/wxauto", "commit": "05e5a52379c99f401dc512acfdd811b3d701da8b", "decision": "skip", "reason": "8 .py files"}
+{"position": 1207, "repo": "mahmoodlab/CONCH", "commit": "141cc09c7d4ff33d8eda562bd75169b457f71a62", "decision": "skip", "reason": "no import from S"}
+{"position": 1208, "repo": "callmeray/PointMVSNet", "commit": "cacb2d719bac4f8ed63f9cdd9d6e91b01c991077", "decision": "skip", "reason": "no import from S"}
+{"position": 1209, "repo": "DachunKai/EvTexture", "commit": "e4cb5ff1b8aeb06c92729ebf5d7e83a3fe0c3fb4", "decision": "skip", "reason": "no import from S"}
+{"position": 1210, "repo": "zisianw/FaceBoxes.PyTorch", "commit": "22efc6a35ce21b53b66ffc8c7a01c293e503df7a", "decision": "skip", "reason": "no import from S"}
+{"position": 1211, "repo": "oracle/graalpython", "decision": "skip", "reason": "frame size 259459 KB"}
+{"position": 1212, "repo": "eakmanrq/sqlframe", "commit": "565c8e6e08a2976096f7fce6d3a7e2779281a47a", "decision": "skip", "reason": "no import from S"}
+{"position": 1213, "repo": "DataBrewery/cubes", "commit": "140133e8c2e3f2ff60631cc3ebc9966d16c1655e", "decision": "skip", "reason": "no import from S"}
+{"position": 1214, "repo": "navdeep-G/samplemod", "commit": "d469f2f5e0a472be2c7d95ff90ed46e975810dc8", "decision": "skip", "reason": "9 .py files"}
+{"position": 1215, "repo": "lezcano/geotorch", "commit": "43fc0d68c0daf58e0d974b318e291fc933353543", "decision": "skip", "reason": "no import from S"}
+{"position": 1216, "repo": "veebch/photon", "commit": "ad7c6be19f372f046f655039de3c2ca573af0720", "decision": "skip", "reason": "no import from S"}
+{"position": 1217, "repo": "florimondmanca/awesome-asgi", "commit": "fba7e7f2049fd24fa6b43371ca7869d7f87f0eb1", "decision": "skip", "reason": "1 .py files"}
+{"position": 1218, "repo": "MycroftAI/mycroft-precise", "commit": "e1a635e9675047eb86f64ca489a1b941321c489a", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1219, "repo": "wvangansbeke/Sparse-Depth-Completion", "commit": "a01ac3c664664f648023564f66edb897202afbc6", "decision": "skip", "reason": "no import from S"}
+{"position": 1220, "repo": "emmabostian/developer-portfolios", "commit": "e4c19b1124348a31e55d3f6f57c760d99803834a", "decision": "keep", "stratum": "P", "py_files": 14}
+{"position": 1221, "repo": "inworld-ai/tts", "commit": "e64d99b878c7615c13381b8b88da38911cd89898", "decision": "skip", "reason": "no import from S"}
+{"position": 1222, "repo": "gunnery/gunnery", "commit": "733a261cae6243a11883a40e18b14f57cf6e47b2", "decision": "keep", "stratum": "P", "py_files": 79}
+{"position": 1223, "repo": "grey-eye/talking-heads", "commit": "1f8edb68ffa7b7a8e5d02a19ca39bdec5fc2d30c", "decision": "skip", "reason": "9 .py files"}
+{"position": 1224, "repo": "yeephycho/tensorflow-face-detection", "commit": "1be9e93150118943036afdc3ed086563a0449888", "decision": "skip", "reason": "7 .py files"}
+{"position": 1225, "repo": "Phhofm/models", "decision": "skip", "reason": "frame size 3622022 KB"}
+{"position": 1226, "repo": "dievus/Oh365UserFinder", "commit": "0de35ae7c49b1984647834bf11cc75e29ef66ed2", "decision": "skip", "reason": "3 .py files"}
+{"position": 1227, "repo": "roshan-research/hazm", "commit": "a399c8293c5165544aaef76ead78bda9f4275888", "decision": "skip", "reason": "no import from S"}
+{"position": 1228, "repo": "spla-tam/SplaTAM", "commit": "da6bbcd24c248dc884ac7f49d62e91b841b26ccc", "decision": "skip", "reason": "no import from S"}
+{"position": 1229, "repo": "mpplab/mnssp3", "commit": "fa82abdcc8cc5486927047811286b3328237cc33", "decision": "skip", "reason": "no import from S"}
+{"position": 1230, "repo": "rasbt/watermark", "commit": "fbcdadea0a3e95eb36ef0160c74054e383232b53", "decision": "skip", "reason": "7 .py files"}
+{"position": 1231, "repo": "SkalskiP/top-cvpr-2023-papers", "commit": "64addc51edc43643b4f4ecb42d71aac45008467d", "decision": "skip", "reason": "1 .py files"}
+{"position": 1232, "repo": "jvns/teeceepee", "commit": "ef24e6a355a310b327aa3c9ef8b5dbefa9d4230d", "decision": "skip", "reason": "8 .py files"}
+{"position": 1233, "repo": "microsoft/msticpy", "commit": "a2fdc56734bd58f6ebc6acb04136a321af2a5be1", "decision": "keep", "stratum": "P", "py_files": 445}
+{"position": 1234, "repo": "spotify/luigi", "commit": "f5feb7a4655ad73ef56f0ab04d7903ab43b63e12", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1235, "repo": "lensacom/sparkit-learn", "commit": "0498502107c1f7dcf33cda0cdb6f5ba4b42524b7", "decision": "skip", "reason": "no import from S"}
+{"position": 1236, "repo": "GPflow/GPflow", "decision": "skip", "reason": "frame size 392833 KB"}
+{"position": 1237, "repo": "buckket/twtxt", "commit": "ec421d131d9aeb14e92b4c2ad19175a69639a8d1", "decision": "keep", "stratum": "P", "py_files": 18}
+{"position": 1238, "repo": "refuel-ai/autolabel", "commit": "404dcd014276b343ce6653670c0f75778e392e11", "decision": "keep", "stratum": "P", "py_files": 88}
+{"position": 1239, "repo": "Jamie-Stirling/RetNet", "commit": "a5841a3ebffd181c7ec1d964b46060519df4b6c8", "decision": "skip", "reason": "no import from S"}
+{"position": 1240, "repo": "RichardAtCT/claude-code-openai-wrapper", "commit": "a6c820d9a843f73c2e09aad3b4dead1544c25006", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1241, "repo": "piskvorky/sqlitedict", "commit": "96e81621fd6ab094efdd86e70fd57efe9d40ca12", "decision": "skip", "reason": "no import from S"}
+{"position": 1242, "repo": "0cyn/ktool", "commit": "faed829b838dc4060b7e36f90239a52cd37f2a45", "decision": "skip", "reason": "no import from S"}
+{"position": 1243, "repo": "dbt-labs/metricflow", "commit": "fe4b8c1ccb72a8ca77494b345777eff20a714119", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1244, "repo": "zedshaw/python-lust", "commit": "9e4f19f90f3757d4f1e23c9e3439aefe962f5796", "decision": "skip", "reason": "no import from S"}
+{"position": 1245, "repo": "drcoms/drcom-generic", "commit": "698b3f50321d3dbc2abffd6692da79afc44ce47f", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1246, "repo": "liqian-bio/Event-Extraction", "decision": "skip", "reason": "clone failed: error: invalid path 'models/Doc2EDAG: An End-to-End Document-level Framework for Chinese Financial Event Extraction/dee/"}
+{"position": 1247, "repo": "datitran/face2face-demo", "commit": "19d916a35d2432e745d6d47ab0dca23d5c02ea18", "decision": "skip", "reason": "4 .py files"}
+{"position": 1248, "repo": "autonomousvision/monosdf", "commit": "12513009cd20a08b35ddc2c55a7e42da2c7baf43", "decision": "skip", "reason": "no import from S"}
+{"position": 1249, "repo": "michaelalbada/BuildingApplicationsWithAIAgents", "commit": "eeb325ab6e3af8eeba2e5e0d46f0185fc5933197", "decision": "skip", "reason": "no import from S"}
+{"position": 1250, "repo": "python/pythondotorg", "commit": "94530ea36ad2ef96a9f1cad7791465461f737a78", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1251, "repo": "reiinakano/scikit-plot", "commit": "2dd3e6a76df77edcbd724c4db25575f70abb57cb", "decision": "skip", "reason": "no import from S"}
+{"position": 1252, "repo": "lwm98/health160", "decision": "skip", "reason": "clone failed: fatal: could not read Username for 'https://github.com': terminal prompts disabled\n"}
+{"position": 1253, "repo": "Fosowl/agenticSeek", "commit": "b46bcca482218643236999221720586e7f410e04", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1254, "repo": "MorvanZhou/pytorch-A3C", "commit": "5ab27abee2c3ac3ca921ac393bfcbda4e0a91745", "decision": "skip", "reason": "4 .py files"}
+{"position": 1255, "repo": "jorgebastida/awslogs", "commit": "40accf0ef66183a0fada04bf258f39828e12421b", "decision": "skip", "reason": "no import from S"}
+{"position": 1256, "repo": "AutoArk/TinyEngram", "commit": "317f23832aa8f8e382a0916ec469e81ba12b6dff", "decision": "skip", "reason": "no import from S"}
+{"position": 1257, "repo": "sktime/pytorch-forecasting", "commit": "dcfde09672e3eb860ddb294fd21c0331aabeb938", "decision": "skip", "reason": "no import from S"}
+{"position": 1258, "repo": "hexiangnan/neural_collaborative_filtering", "commit": "4aab159e81c44b062c091bdaed0ab54ac632371f", "decision": "skip", "reason": "5 .py files"}
+{"position": 1259, "repo": "vivekkalyanarangan30/llm_from_scratch", "commit": "a5ca62cac325103f05fe80f07a53ee64b4776e37", "decision": "skip", "reason": "no import from S"}
+{"position": 1260, "repo": "nautobot/nautobot", "decision": "skip", "reason": "frame size 287985 KB"}
+{"position": 1261, "repo": "mostafatouny/awesome-theoretical-computer-science", "commit": "87cb04dc28897166a48c01f05397abbac8fc5a1c", "decision": "skip", "reason": "3 .py files"}
+{"position": 1262, "repo": "he-yufeng/CoreCoder", "commit": "13b18dac85a1a695581091e98d88d1486faf7b22", "decision": "skip", "reason": "no import from S"}
+{"position": 1263, "repo": "jrmeier/fast-trade", "commit": "2480b4fec0fa38fa43d97c2e44cb9e66f4edf628", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1264, "repo": "salu133445/musegan", "commit": "3c9a0dc71ab743b58f4e0620832f21dbe023408e", "decision": "skip", "reason": "no import from S"}
+{"position": 1265, "repo": "om-ai-lab/OmDet", "commit": "956e2f36a13c32bd1e30b14a790233268c2305fb", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1266, "repo": "Erotemic/ubelt", "commit": "f770794d41fadd558fc61ee8d12963c0a238513c", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1267, "repo": "PostmonAPI/postmon", "commit": "531919653eafe2551362450430cae5a113cf12f7", "decision": "skip", "reason": "9 .py files"}
+{"position": 1268, "repo": "mlfoundations/open_flamingo", "commit": "655f693fbfa04cd6e9a987d960654624d48917cf", "decision": "skip", "reason": "no import from S"}
+{"position": 1269, "repo": "JaniceWuo/MovieRecommend", "commit": "450d50677bec2e10fe81cb65ab5d20f23be014a2", "decision": "keep", "stratum": "P", "py_files": 1159}
+{"position": 1270, "repo": "trailofbits/skills-curated", "commit": "6d05be4889017b06fb15069f371afd220daffb62", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1271, "repo": "thuml/iTransformer", "commit": "c2426e68ca13f74aaec08045c5c724d8ad328124", "decision": "skip", "reason": "no import from S"}
+{"position": 1272, "repo": "Donkie/Spoolman", "commit": "362d80e55dca382da897a0edab5dbb3ad7651a2b", "decision": "skip", "reason": "no import from S"}
+{"position": 1273, "repo": "anthonynsimon/timeflake", "commit": "ca5ac16bd30140a717e5cf84a6013621808c8b0a", "decision": "skip", "reason": "no import from S"}
+{"position": 1274, "repo": "agno-agi/agno", "decision": "skip", "reason": "frame size 326545 KB"}
+{"position": 1275, "repo": "zblurx/certsync", "commit": "7c4efc5930201cdf13c13a7cbd4846331b405cf3", "decision": "skip", "reason": "2 .py files"}
+{"position": 1276, "repo": "backblaze-labs/genblaze", "commit": "acb6e673905f7003ae89f7fcb490efca371ad927", "decision": "keep", "stratum": "P", "py_files": 439}
+{"position": 1277, "repo": "MoonshotAI/checkpoint-engine", "commit": "84631a24f36349435f29cc9b305aa068bed87978", "decision": "skip", "reason": "no import from S"}
+{"position": 1278, "repo": "imcaspar/gpt2-ml", "commit": "f6286b16cbbee6dddbe1ba557fffb47eaf998cd1", "decision": "skip", "reason": "no import from S"}
+{"position": 1279, "repo": "lnbits/lnbits", "commit": "04b37f0d761222561bc8606cfe7edc86cabcce35", "decision": "keep", "stratum": "P", "py_files": 334}
+{"position": 1280, "repo": "lovit/soynlp", "commit": "503eaee28799e9a3baf01483c6fc59e0db524fa3", "decision": "skip", "reason": "no import from S"}
+{"position": 1281, "repo": "HuKai97/yolov5-5.x-annotations", "commit": "fe915323d9ebf957d224066f688e11c1219fe089", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1282, "repo": "johannfaouzi/pyts", "commit": "264bccbd7930ca9e90a93a8c33bb0aa35f26c2e6", "decision": "skip", "reason": "no import from S"}
+{"position": 1283, "repo": "speechbrain/speechbrain", "commit": "c0241278f93ef02cd5191f03caf4e5f8e1292bf6", "decision": "keep", "stratum": "P", "py_files": 740}
+{"position": 1284, "repo": "py-gmssl/py-gmssl", "commit": "6ad876fe33ceeba68076e1591e74d610395d5de8", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1285, "repo": "Harsha200105/DesktopAssistant", "decision": "skip", "reason": "frame size 341927 KB"}
+{"position": 1286, "repo": "naftaliharris/tauthon", "decision": "skip", "reason": "frame size 299883 KB"}
+{"position": 1287, "repo": "Breakthrough/DVR-Scan", "commit": "52aa2288dd45e7d607eb7b6356b1e84e270e63e5", "decision": "skip", "reason": "no import from S"}
+{"position": 1288, "repo": "fail2ban/fail2ban", "commit": "6c88de71d201f864a2bec198217fd07ce47869b3", "decision": "keep", "stratum": "P", "py_files": 81}
+{"position": 1289, "repo": "V3nilla/IPSets-For-Bypass-in-Russia", "commit": "f7ca21a6b8b072416e90c158aee286e36a780b58", "decision": "skip", "reason": "2 .py files"}
+{"position": 1290, "repo": "beckenrode/mysql-workbench-export-laravel-5-migrations", "commit": "b18d87bb40519b59e7f7dd888d4b9a156a625123", "decision": "skip", "reason": "1 .py files"}
+{"position": 1291, "repo": "puzzledqs/BBox-Label-Tool", "commit": "80b9b8d668ba1aa4a8a593a53995094a27e17033", "decision": "skip", "reason": "1 .py files"}
+{"position": 1292, "repo": "byJoey/ech-wk", "commit": "df4f71d4fdc690b63e9e6507cd338a374147c735", "decision": "skip", "reason": "1 .py files"}
+{"position": 1293, "repo": "BasedHardware/omi", "decision": "skip", "reason": "frame size 1383357 KB"}
+{"position": 1294, "repo": "machinewrapped/llm-subtrans", "commit": "73a7f81ee122211ce8f82b0060eec37b4b104a6e", "decision": "skip", "reason": "no import from S"}
+{"position": 1295, "repo": "mindee/doctr", "commit": "11941d2bf1f77a496fda44272ef3a7ce3a8a0f45", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1296, "repo": "autonomousvision/stylegan-t", "decision": "skip", "reason": "screened in round 7"}
+{"position": 1297, "repo": "sentient-agi/ROMA", "commit": "a6e3bb4f9e0694375fa627fa4b8bf8cae50592a6", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1298, "repo": "linorobot/linorobot2", "commit": "f6b0bd0350c4a9d6b815ef4bb5c701a1e5129711", "decision": "skip", "reason": "no import from S"}
+{"position": 1299, "repo": "openstack/cinder", "commit": "270ba9ea896827272485526127c2cbcb3a16a3ee", "decision": "keep", "stratum": "P", "py_files": 1335}
+{"position": 1300, "repo": "thuml/Nonstationary_Transformers", "commit": "c4ec40675d11d50b3d9923657f408d0db6f90f56", "decision": "skip", "reason": "no import from S"}
+{"position": 1301, "repo": "DinoMan/speech-driven-animation", "commit": "d85adfeba6459edbd2c3ad12656baebc59e13c74", "decision": "skip", "reason": "8 .py files"}
+{"position": 1302, "repo": "MarekKowalski/FaceSwap", "commit": "1fdbd28c8413db42adca5b02d5bdff6d2766c7e7", "decision": "skip", "reason": "8 .py files"}
+{"position": 1303, "repo": "BitterSecurity/Decepticon", "decision": "skip", "reason": "frame size 310129 KB"}
+{"position": 1304, "repo": "ayoolaolafenwa/PixelLib", "commit": "3d2a5abb02f081eb9446bf7d1eaa4b773ff9bd1d", "decision": "skip", "reason": "no import from S"}
+{"position": 1305, "repo": "ZFTurbo/MVSEP-MDX23-music-separation-model", "commit": "765bd312ff0b4213d4ad48ab554a0fc11389633d", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1306, "repo": "HoloArchivists/twspace-dl", "commit": "a8170772147e28c48fd69297372b59694c0529a0", "decision": "skip", "reason": "7 .py files"}
+{"position": 1307, "repo": "SamR1/FitTrackee", "decision": "skip", "reason": "frame size 509011 KB"}
+{"position": 1308, "repo": "3DOM-FBK/deep-image-matching", "decision": "skip", "reason": "frame size 566871 KB"}
+{"position": 1309, "repo": "ace-step/ACE-Step", "commit": "1bee4c9f5b43e30995f8d4d33b3919197ce1bd68", "decision": "skip", "reason": "no import from S"}
+{"position": 1310, "repo": "killiansheriff/LovelyPlots", "commit": "3cfd78fb4d5a3d8c9f89feb7742f18340ffd2fb7", "decision": "skip", "reason": "5 .py files"}
+{"position": 1311, "repo": "mitogen-hq/mitogen", "commit": "eb76a3aee54ea10ceaf6bf642ed410394b7ef119", "decision": "keep", "stratum": "P", "py_files": 312}
+{"position": 1312, "repo": "zerodha/pykiteconnect", "commit": "2f67c46ead6864425744abe5ec386979ee39c69f", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1313, "repo": "no-magic-ai/no-magic", "commit": "54d5c4138041c46fd45883d2add6458f1e6a9cf9", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1314, "repo": "meltano/meltano", "commit": "b88af7359b154763ed2fe550e5ee310d1345df6c", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1315, "repo": "sdushantha/qr-filetransfer", "commit": "60c0c102ff8096144bffeb2045543ff435f00cac", "decision": "skip", "reason": "3 .py files"}
+{"position": 1316, "repo": "zygmuntz/hyperband", "commit": "a63220975182d275ba048eeda0746deb645b5fec", "decision": "skip", "reason": "no import from S"}
+{"position": 1317, "repo": "TapiocaFox/Daijishou", "decision": "skip", "reason": "frame size 7084411 KB"}
+{"position": 1318, "repo": "CaledoniaProject/awesome-opensource-security", "commit": "9624c51ae6eade44fff9d63a5b26cecca9681298", "decision": "skip", "reason": "1 .py files"}
+{"position": 1319, "repo": "aws-cloudformation/cfn-lint", "decision": "skip", "reason": "frame size 266715 KB"}
+{"position": 1320, "repo": "KoljaB/LocalAIVoiceChat", "commit": "57516f85ff091aa71b5330e6dcd824baa41dd75e", "decision": "skip", "reason": "1 .py files"}
+{"position": 1321, "repo": "jazzband/sorl-thumbnail", "commit": "838c7917ca48424257096549459a51ebc69519e3", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1322, "repo": "mvanhorn/last30days-skill", "commit": "13a6cc5fd1f2d8a9b8420bbba6742599b2f4a077", "decision": "keep", "stratum": "P", "py_files": 395}
+{"position": 1323, "repo": "jjyaoao/HelloAgents", "commit": "c597a7ca46ea9969e5b21d9e130549ab69626ff9", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1324, "repo": "eigenmiao/Rickrack", "decision": "skip", "reason": "frame size 267348 KB"}
+{"position": 1325, "repo": "HZAI-ZJNU/Mamba-YOLO", "commit": "51f7be9bd5ab907b6f7d2c91bb71ca5a4be063aa", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1326, "repo": "PrAYtele/Stable-Texturify", "commit": "072139df32ddcdc40f7396201c4dd61026f9a65e", "decision": "skip", "reason": "no import from S"}
+{"position": 1327, "repo": "chdb-io/chdb", "decision": "skip", "reason": "frame size 933712 KB"}
+{"position": 1328, "repo": "qubvel-org/segmentation_models.pytorch", "commit": "ed2268a464074c47dca193fc983e5f12442a959f", "decision": "skip", "reason": "no import from S"}
+{"position": 1329, "repo": "visual-openllm/visual-openllm", "commit": "008ef9c48f00c6d6fd0895a6e2ed2f6ef8e2a27f", "decision": "skip", "reason": "8 .py files"}
+{"position": 1330, "repo": "Anon-Planet/thgtoa", "decision": "skip", "reason": "frame size 478041 KB"}
+{"position": 1331, "repo": "argoverse/argoverse-api", "commit": "f886ac54fba9f06f8a7d109eb663c7f501b3aa8e", "decision": "skip", "reason": "no import from S"}
+{"position": 1332, "repo": "DEAP/deap", "commit": "8a96fd3a75026f7b30e835f595a5199c75634ddf", "decision": "skip", "reason": "no import from S"}
+{"position": 1333, "repo": "XiaLiPKU/EMANet", "commit": "f09ffac3a2294881b353b43300f1295065a398a8", "decision": "skip", "reason": "no import from S"}
+{"position": 1334, "repo": "kornia/kornia", "commit": "829e38a5ec8951492f74a728d4e4ae169fd267f6", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1335, "repo": "yhy0/CHYing-agent", "decision": "skip", "reason": "clone failed: error: invalid path '\u963f\u91cc\u4e91 CTF 2026 \u5931\u8d25\u590d\u76d8\uff1a\u5f53\u6211\u8bd5\u56fe\u7528\u590d\u6742\u67b6\u6784\"\u9a7e\u9a6d\"\u627f\u5f71 Agent.md'\nfatal: unable to checkout working tree\nwarning: Clone s"}
+{"position": 1336, "repo": "predict-idlab/plotly-resampler", "commit": "989043e53b905a472fc36db31d3f715c323a6585", "decision": "skip", "reason": "no import from S"}
+{"position": 1337, "repo": "sublimehq/package_control_channel", "commit": "26728c15e981c45e37dcc93e4f35b113d4a10582", "decision": "skip", "reason": "7 .py files"}
+{"position": 1338, "repo": "pantsbuild/pants", "commit": "984eae61fdfeb5d390c62114874b10002b62b98d", "decision": "keep", "stratum": "P", "py_files": 1870}
+{"position": 1339, "repo": "misterch0c/malSploitBase", "commit": "8045dcd610ce21e28af26234787629fd5cd536de", "decision": "skip", "reason": "2 .py files"}
+{"position": 1340, "repo": "huxiaoman7/leetcodebook", "commit": "9b7b9162b6efd6475457dd84ed33dc26243af387", "decision": "skip", "reason": "no import from S"}
+{"position": 1341, "repo": "XifengGuo/DEC-keras", "commit": "2438070110b17b4fb9bc408c11d776fc1bd1bd56", "decision": "skip", "reason": "4 .py files"}
+{"position": 1342, "repo": "facebookresearch/brain2qwerty", "commit": "5f9889621d0df391c5aab37c996683d308e6e926", "decision": "skip", "reason": "no import from S"}
+{"position": 1343, "repo": "github/spec-kit", "commit": "c6a4c18f1d01a8bec241c618eb6dfea952508744", "decision": "keep", "stratum": "P", "py_files": 648}
+{"position": 1344, "repo": "FoundationVision/Groma", "commit": "d3a95b6c2657dcb5c05f326da8895f521cf60009", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1345, "repo": "litestar-org/advanced-alchemy", "commit": "e051a5de1a008b70f2d67b416e236a8c59e69433", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1346, "repo": "zju3dv/neuralbody", "commit": "0bb1ed3986b842046bb971fd572583d07a73ad3b", "decision": "skip", "reason": "no import from S"}
+{"position": 1347, "repo": "fyu/lsun", "commit": "6617c24e6ed855e1b88dc9ae72801f43e944e66c", "decision": "skip", "reason": "2 .py files"}
+{"position": 1348, "repo": "IatomicreactorI/FOVEA", "commit": "6c59178f4b3d8f41f98cf6be2e7625705dfd86dc", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1349, "repo": "citizenlab/test-lists", "commit": "804afa8cda713cbb72ecf7a4e2c356dfdff7d475", "decision": "keep", "stratum": "P", "py_files": 24}
+{"position": 1350, "repo": "TUMFTM/global_racetrajectory_optimization", "commit": "a9995e2f5407f22eb7fb9dceac2b71a35276bb41", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1351, "repo": "Fannovel16/ComfyUI-Frame-Interpolation", "commit": "26545cc2dd95bc3d27f056016300673bdeee78f5", "decision": "skip", "reason": "no import from S"}
+{"position": 1352, "repo": "unrealcv/unrealcv", "commit": "67d466a246c7bacffab5392312b0746191fa5c10", "decision": "skip", "reason": "no import from S"}
+{"position": 1353, "repo": "un1t/django-cleanup", "commit": "380b4bb4c7d277fc125ffa7edce2d3911483912e", "decision": "skip", "reason": "no import from S"}
+{"position": 1354, "repo": "bold-lab-ai/JaxMARL", "commit": "976aeb152cb184a5095021968bba94da96eb6394", "decision": "skip", "reason": "no import from S"}
+{"position": 1355, "repo": "TheKingOfDuck/easyXssPayload", "commit": "a4fbfbd0bc8eb46fd52134380ac80ba3e945bbd1", "decision": "skip", "reason": "1 .py files"}
+{"position": 1356, "repo": "open-gigaai/giga-train", "commit": "ace2d52979dafe272beb5cf7ba2c09a010058b85", "decision": "keep", "stratum": "P", "py_files": 43}
+{"position": 1357, "repo": "RhinoSecurityLabs/ccat", "commit": "06ffb3f4681069255a392d48b33c7ec26346c753", "decision": "skip", "reason": "no import from S"}
+{"position": 1358, "repo": "sentient-agi/OpenDeepSearch", "commit": "ec7aa06dc5ead71821a3d92ea56e54a8a9d16ece", "decision": "skip", "reason": "no import from S"}
+{"position": 1359, "repo": "python-streamz/streamz", "commit": "5267116f49fc2257e39b44abd8d1e5c5460715f8", "decision": "skip", "reason": "no import from S"}
+{"position": 1360, "repo": "ChenLiu-1996/figures4papers", "commit": "16c00e69bf7427a30df9646e220df4072cca3600", "decision": "skip", "reason": "no import from S"}
+{"position": 1361, "repo": "txie-93/cgcnn", "commit": "f42ab233c4ee0c416879d6bc2d22a264418413ad", "decision": "skip", "reason": "5 .py files"}
+{"position": 1362, "repo": "reorx/httpstat", "commit": "b37cd4655c0b0595dbf5be4466abd1dcbc202b84", "decision": "skip", "reason": "2 .py files"}
+{"position": 1363, "repo": "AberHu/Knowledge-Distillation-Zoo", "commit": "65470c846c1300d555815da26999cbe2b51fc815", "decision": "skip", "reason": "no import from S"}
+{"position": 1364, "repo": "next-1688/1688-source-suppliers", "commit": "a1d39f3e66d4cb166712b0494bc9f60663c943c9", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1365, "repo": "mouna99/dien", "decision": "skip", "reason": "frame size 462288 KB"}
+{"position": 1366, "repo": "UMass-Embodied-AGI/3D-LLM", "commit": "40002901129b73e79a41ba755c2a045121e19711", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1367, "repo": "klen/muffin", "commit": "d318e131b4607c21e52be97e92f0f72b903b3f47", "decision": "skip", "reason": "no import from S"}
+{"position": 1368, "repo": "NVIDIA/warp", "commit": "06424f7d14bb6c15ccb93048fbe9d176a6973904", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1369, "repo": "ECNU-ICALK/AutoSkill", "decision": "skip", "reason": "frame size 287488 KB"}
+{"position": 1370, "repo": "sphinx-doc/sphinx-autobuild", "commit": "c9b7cb990e9bec1c433f737329b92655adc39a9d", "decision": "skip", "reason": "no import from S"}
+{"position": 1371, "repo": "walkingddd/TgtoDrive", "commit": "f7589e5a2eb1521ed20e9d43306ae900e23a286c", "decision": "keep", "stratum": "P", "py_files": 14}
+{"position": 1372, "repo": "fcakyon/claude-codex-settings", "commit": "216ec221fb9899dfaa5371413583b9e08ca89085", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1373, "repo": "nv-legate/cupynumeric", "commit": "4e0e53ef3aaffabd9b36be4c7992dc8ac7ef0eb3", "decision": "skip", "reason": "no import from S"}
+{"position": 1374, "repo": "dabeaz-course/practical-python", "commit": "93dca856b41c61a0a0f85ae334116e4c125629ea", "decision": "skip", "reason": "no import from S"}
+{"position": 1375, "repo": "krahabb/meross_lan", "commit": "bafedb4f8563153f9e3494292073551bb28f5f9a", "decision": "keep", "stratum": "P", "py_files": 95}
+{"position": 1376, "repo": "Intuition-Lab/personal-model", "commit": "b7a28ffadaed3d83d9522efc8c171d6d642fd91b", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1377, "repo": "mac4n6/APOLLO", "commit": "bd725461fbd22c8ceadd04f0c4ded49b66147439", "decision": "skip", "reason": "1 .py files"}
+{"position": 1378, "repo": "divamgupta/stable-diffusion-tensorflow", "commit": "6db7e56b7f423405b4668c601409e17f0f978e55", "decision": "skip", "reason": "no import from S"}
+{"position": 1379, "repo": "AdnanHodzic/auto-cpufreq", "commit": "aa2c5ad2d1798da1c65f81cb0eb95ea933a074c6", "decision": "skip", "reason": "no import from S"}
+{"position": 1380, "repo": "ShuaixinHuang/image-multiple-angles-3d-camera", "commit": "ddb7284d1012e4d4198fa0e1f2b6793c3e4a7b22", "decision": "skip", "reason": "4 .py files"}
+{"position": 1381, "repo": "rom1504/img2dataset", "commit": "95523bc7579745a1749b8132d408b9fea89a338e", "decision": "keep", "stratum": "P", "py_files": 23}
+{"position": 1382, "repo": "Enemyx-net/VibeVoice-ComfyUI", "commit": "b0a8efc23c9d902d7ebd8fe3f79515a23d343bc2", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1383, "repo": "jhj0517/AdvancedLivePortrait-WebUI", "commit": "fa01ab2f74abd47f2816ead46f993d4e53370889", "decision": "skip", "reason": "no import from S"}
+{"position": 1384, "repo": "modal-labs/quillman", "commit": "7ed27b446538cac92776cd86d5cb8b8ce19ad245", "decision": "skip", "reason": "5 .py files"}
+{"position": 1385, "repo": "online-judge-tools/oj", "commit": "d90b0a2bd87ae72cf89951b80c8fa4bd834afd0a", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1386, "repo": "SensAI-PT/RAGMeUp", "commit": "1838ccf4bbd1ecc0c1b8da088ec4fa13933b8114", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1387, "repo": "PKU-Alignment/safety-gymnasium", "decision": "skip", "reason": "frame size 514040 KB"}
+{"position": 1388, "repo": "DjangoCRM/django-crm", "commit": "e182a346f7daac284d4439d4fd4455aabc9d7152", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1389, "repo": "UMass-Embodied-AGI/3D-VLA", "commit": "517680c352cb996630ae8099815441e79126bb9c", "decision": "skip", "reason": "no import from S"}
+{"position": 1390, "repo": "zhangyinghahaha/data_analysis", "commit": "b4a1ef214f4b944a7e86fb0173dc36f8c92d91a1", "decision": "skip", "reason": "no import from S"}
+{"position": 1391, "repo": "fritzsedlazeck/Sniffles", "commit": "d5b374da03126fbdda70c183c453714c94e9bea2", "decision": "skip", "reason": "no import from S"}
+{"position": 1392, "repo": "charlesq34/pointnet", "commit": "2618f72bc1a0fd21b074096e748016960d44ef55", "decision": "skip", "reason": "no import from S"}
+{"position": 1393, "repo": "PaddlePaddle/models", "decision": "skip", "reason": "frame size 471601 KB"}
+{"position": 1394, "repo": "dvmazur/mixtral-offloading", "commit": "ce545188b804238f0b23a59fc45e6a8f8b390c40", "decision": "skip", "reason": "7 .py files"}
+{"position": 1395, "repo": "TeamHG-Memex/tensorboard_logger", "commit": "203aca7a52066f84ef15046b0d0b1ea69dc59e12", "decision": "keep", "stratum": "P", "py_files": 10}
+{"position": 1396, "repo": "jishnu-kv/WinUI-3-Apps-List", "commit": "37ee3ea3cce0f3d5ce307ca0e33943979ed9eb1e", "decision": "skip", "reason": "1 .py files"}
+{"position": 1397, "repo": "princeton-vl/CornerNet-Lite", "commit": "6a54505d830a9d6afe26e99f0864b5d06d0bbbaf", "decision": "skip", "reason": "no import from S"}
+{"position": 1398, "repo": "varietywalls/variety", "commit": "8446011c5e6cc8ab4abaf69ce50e2218a3c19cbc", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1399, "repo": "SeemSeam/claude_codex_bridge", "commit": "277a8d3a6fdc61bfadc965b48bf70fb561e277e4", "decision": "skip", "reason": "2496 .py files"}
+{"position": 1400, "repo": "Quotation/LongestCocoa", "commit": "97cba7dc2da0d3a9a7776a4ff8c10c72e3b4a6c3", "decision": "skip", "reason": "1 .py files"}
+{"position": 1401, "repo": "hynek/argon2-cffi", "commit": "ff02917de777743d815a0410d816739ccd36396a", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1402, "repo": "superhedgy/AttackSurfaceMapper", "commit": "8a402edebc9d45b53916ec05454c92a15d5df0ec", "decision": "keep", "stratum": "P", "py_files": 14}
+{"position": 1403, "repo": "newren/git-filter-repo", "commit": "d7b75aca907380f608892cc289e616f195427b99", "decision": "skip", "reason": "no import from S"}
+{"position": 1404, "repo": "severity1/claude-code-prompt-improver", "commit": "50aae187bb4f08b852f318234b654df3332726a4", "decision": "skip", "reason": "9 .py files"}
+{"position": 1405, "repo": "idreesshaikh/Autonomous-Driving-in-Carla-using-Deep-Reinforcement-Learning", "decision": "skip", "reason": "frame size 809746 KB"}
+{"position": 1406, "repo": "yeximm/Access_wechat_article", "commit": "412b4a6d2f5005f01f70b20ad1c8530849eaafd3", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1407, "repo": "logicguy1/Discord-Nitro-Generator-and-Checker", "commit": "e2464589be660fb8dc7ac2c503718de98c0b051f", "decision": "skip", "reason": "1 .py files"}
+{"position": 1408, "repo": "MarkBaggett/srum-dump", "commit": "e29b9aa30856fae7fca3977afc5304fe9023434b", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1409, "repo": "mit-han-lab/mcunet", "commit": "9c164f8483003a5c6445871d94d30720aecc5918", "decision": "skip", "reason": "no import from S"}
+{"position": 1410, "repo": "gdraheim/docker-systemctl-replacement", "commit": "15a2509551306789afbba32a47360365355a9bc4", "decision": "skip", "reason": "no import from S"}
+{"position": 1411, "repo": "mindverse/Second-Me", "decision": "skip", "reason": "frame size 355668 KB"}
+{"position": 1412, "repo": "JudyYe/zero-shot-gcn", "commit": "0902b15350116cb1292c8e9ec47a0b1db6277f5c", "decision": "skip", "reason": "no import from S"}
+{"position": 1413, "repo": "je-suis-tm/web-scraping", "commit": "5fce1dcdad51a1475864c5ae8134fb675a139205", "decision": "skip", "reason": "no import from S"}
+{"position": 1414, "repo": "leveldown-security/SVD-Loader-Ghidra", "commit": "4b21fa54a1f516e25e959939f6e1251263c74725", "decision": "skip", "reason": "4 .py files"}
+{"position": 1415, "repo": "mathics/Mathics", "commit": "318e06dea8f1c70758a50cb2f95c9900150e3a68", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1416, "repo": "Mebus/cupp", "commit": "b77f1ae66c10ab2d0fa09c67017949fb5ba187aa", "decision": "skip", "reason": "2 .py files"}
+{"position": 1417, "repo": "Tongjilibo/build_MiniLLM_from_scratch", "commit": "1c559f6d84e557fafbad8bb5d8a44ed341889c71", "decision": "skip", "reason": "no import from S"}
+{"position": 1418, "repo": "codingmoh/open-codex", "commit": "87aaaed1cea96cb1cc2be6b44d91858122d982a9", "decision": "skip", "reason": "8 .py files"}
+{"position": 1419, "repo": "chompie1337/SMBGhost_RCE_PoC", "commit": "f55e6abd47cb3a4f771c965053a5a92133a18781", "decision": "skip", "reason": "3 .py files"}
+{"position": 1420, "repo": "GAIR-NLP/DeepResearcher", "commit": "82c6dc2d7508e1c271aa0b4344832bcaf5bf6cde", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1421, "repo": "bhrigu123/classifier", "commit": "09e958baeedeb6eed0fb1e048ed820888c5dbb84", "decision": "skip", "reason": "5 .py files"}
+{"position": 1422, "repo": "agermanidis/pigeon", "commit": "fa5760b2e24b5ec3f268da59ed7ffddf76318d58", "decision": "skip", "reason": "4 .py files"}
+{"position": 1423, "repo": "IIIS-Li-Group/OpenFE", "commit": "3e3bdf9f5b972e214e018c22f6f9f456a47b416e", "decision": "skip", "reason": "no import from S"}
+{"position": 1424, "repo": "BytedTsinghua-SIA/DAPO", "commit": "33fe3176f0bb212588e84fc8ccf50dd554975144", "decision": "skip", "reason": "3 .py files"}
+{"position": 1425, "repo": "umbertogriffo/Predictive-Maintenance-using-LSTM", "commit": "18de0efbec638e217763c7e7e66be5b55cce0435", "decision": "skip", "reason": "4 .py files"}
+{"position": 1426, "repo": "hanlulong/econ-writing-skill", "commit": "f2bf7a22c5e3b37921a5e6c73bd1fb380a5e00e8", "decision": "skip", "reason": "1 .py files"}
+{"position": 1427, "repo": "manjurulhoque/django-job-portal", "commit": "f6e5efb33e9aac7334a364ee46d6e2ad1321db30", "decision": "skip", "reason": "no import from S"}
+{"position": 1428, "repo": "nipunsadvilkar/pySBD", "commit": "5905f13be4fc95f407b98392e0ec303617a33d86", "decision": "skip", "reason": "no import from S"}
+{"position": 1429, "repo": "aristoteleo/dynamo-release", "commit": "08904e17b3103d4dcb44a4b57af78e3c65d56504", "decision": "skip", "reason": "no import from S"}
+{"position": 1430, "repo": "yuxian158/check", "commit": "723c834f121ff4eef2dec7afe521071a7efff1a9", "decision": "keep", "stratum": "P", "py_files": 29}
+{"position": 1431, "repo": "snwfdhmp/awesome-gpt-prompt-engineering", "commit": "73fd85158fc7bd5cfe4697cedb6014c73d8ba1cf", "decision": "skip", "reason": "1 .py files"}
+{"position": 1432, "repo": "respectlytics/respectaso", "commit": "93bbe7f3591815596034737e3e3c5627b2c0e783", "decision": "keep", "stratum": "P", "py_files": 215}
+{"position": 1433, "repo": "rootphantomer/Blasting_dictionary", "commit": "1f51b549d63d37d4636ae424ca682dba385798b6", "decision": "skip", "reason": "2 .py files"}
+{"position": 1434, "repo": "NVIDIA/cudnn-frontend", "decision": "skip", "reason": "frame size 214942 KB"}
+{"position": 1435, "repo": "timothy-odofin/agenthub-be", "commit": "fc386c23c90aab9897e87aa531c179a7266471fc", "decision": "keep", "stratum": "P", "py_files": 311}
+{"position": 1436, "repo": "dchrastil/ScrapedIn", "commit": "1825b93b09df643fee38f1ba56cbc08411a53559", "decision": "skip", "reason": "2 .py files"}
+{"position": 1437, "repo": "TgCatUB/catuserbot", "commit": "2e521b3227e9075979d0112f07e876f846910d3e", "decision": "keep", "stratum": "P", "py_files": 222}
+{"position": 1438, "repo": "jpwhite3/northwind-SQLite3", "commit": "4f56e7f5906dfd23b25244c5bfe8fb5da6402efd", "decision": "skip", "reason": "1 .py files"}
+{"position": 1439, "repo": "AvenCores/goida-vpn-configs", "decision": "skip", "reason": "frame size 9888813 KB"}
+{"position": 1440, "repo": "inAudible-NG/audible-activator", "commit": "79e2cea3ca8db0afa7a911e9ed8d1684ea83939e", "decision": "skip", "reason": "4 .py files"}
+{"position": 1441, "repo": "agenmod/immortal-skill", "commit": "cdab91b37982d0d3ca78eb2da6727a8f75d8bca8", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1442, "repo": "ParisNeo/lollms-webui", "decision": "skip", "reason": "frame size 415159 KB"}
+{"position": 1443, "repo": "AAAAAAAJ/slides", "commit": "e9d5f3f3290af9e50ca3aa18eed176b9a6c02978", "decision": "skip", "reason": "1 .py files"}
+{"position": 1444, "repo": "pygfx/wgpu-py", "commit": "91d49ffdce645f15f8f2eb88294b9020181cb802", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1445, "repo": "sichkar-valentyn/Reinforcement_Learning_in_Python", "commit": "1b48f194993e546efb19b62dd40ee77bfc70df26", "decision": "skip", "reason": "no import from S"}
+{"position": 1446, "repo": "nvbn/django-bower", "commit": "bbb9deb60ab33209d138260ceb4fc7f5003ca7a0", "decision": "skip", "reason": "no import from S"}
+{"position": 1447, "repo": "timmeinhardt/trackformer", "commit": "e468bf156b029869f6de1be358bc11cd1f517f3c", "decision": "skip", "reason": "no import from S"}
+{"position": 1448, "repo": "facebookresearch/lingua", "decision": "skip", "reason": "screened in round 7"}
+{"position": 1449, "repo": "psf/cachecontrol", "commit": "2627d9b267c2032dad2db1f639f3c59329008f1d", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1450, "repo": "SpiderClub/weibospider", "commit": "e1f289871187da9e1c9096cd61984066c73625a8", "decision": "keep", "stratum": "P", "py_files": 85}
+{"position": 1451, "repo": "PaddlePaddle/X2Paddle", "commit": "f951c0dcfdaa60e3a3e6dd3dddc09f4b201f3128", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1452, "repo": "Mirascope/mirascope", "commit": "c81940e7f8ae4c3f3f2f3e85c9bb43bc72c76ea9", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1453, "repo": "probcomp/bayeslite", "commit": "211e5eb3821a464a2fffeb9d35e3097e1b7a99ba", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1454, "repo": "facebook/facebook-python-business-sdk", "commit": "efd8423a2e595ea8d4c04eb824ce113f2f1d68cd", "decision": "keep", "stratum": "P", "py_files": 1357}
+{"position": 1455, "repo": "mit-han-lab/distrifuser", "commit": "8aebdd6d0db87884ba03dc596c98d28f3f38a1a3", "decision": "skip", "reason": "no import from S"}
+{"position": 1456, "repo": "BAAI-DCAI/Bunny", "commit": "08273acbd83b6836c03dce25cc134eb6b9cedba5", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1457, "repo": "jekil/awesome-hacking", "commit": "a5717dfd69ca246e832cda898a3400be2a27d713", "decision": "skip", "reason": "1 .py files"}
+{"position": 1458, "repo": "redai-studio/Relax", "commit": "903fa2f205d1d5b47ec0b38f5a48138d45ce7f5c", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1459, "repo": "rspivak/lsbaws", "commit": "ca0c07b441339dbc89f40895f14a346494241e56", "decision": "skip", "reason": "no import from S"}
+{"position": 1460, "repo": "dbader/schedule", "commit": "82a43db1b938d8fdf60103bd41f329e06c8d3651", "decision": "skip", "reason": "4 .py files"}
+{"position": 1461, "repo": "mdn/django-locallibrary-tutorial", "commit": "342d4e9a590caa50bb0749b48cee80b5a3146439", "decision": "skip", "reason": "no import from S"}
+{"position": 1462, "repo": "amosjyng/langchain-visualizer", "commit": "e51a63e5842a02548927532e1926c2b409ba43d1", "decision": "skip", "reason": "no import from S"}
+{"position": 1463, "repo": "Jingyi-Wu-Richael/rachel-digital-human-production", "commit": "a20258b8eb38eb370cf3402fb4414754b4c44c2a", "decision": "skip", "reason": "2 .py files"}
+{"position": 1464, "repo": "vislearn/FrEIA", "commit": "421249652c478b3f240f124f69eb5777b6a76bf2", "decision": "skip", "reason": "no import from S"}
+{"position": 1465, "repo": "RefactoringGuru/design-patterns-python", "commit": "6d32ad90879c2377f94a980e6b49a9dec5e6d048", "decision": "skip", "reason": "no import from S"}
+{"position": 1466, "repo": "mynameisfiber/high_performance_python", "commit": "615341ff066772dc45125fce1866349d555524fe", "decision": "skip", "reason": "no import from S"}
+{"position": 1467, "repo": "nok/sklearn-porter", "commit": "c768365a0a44c811abd23cc2dd39a39616d5611b", "decision": "skip", "reason": "no import from S"}
+{"position": 1468, "repo": "danilop/yas3fs", "commit": "c331a9e2d6905c58191c59bbe9ced609176b081f", "decision": "skip", "reason": "7 .py files"}
+{"position": 1469, "repo": "codejunkie99/agentic-stack", "commit": "11a75e16b6cb08a436b3124474273fdb9f08b4de", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1470, "repo": "Celthi/effective-debugging-zh", "commit": "2a74658f7cd9580776cbb60fb464ff01947625c9", "decision": "skip", "reason": "1 .py files"}
+{"position": 1471, "repo": "Jack-Cherish/Deep-Learning", "commit": "5fd254b61ad45367fbae28c49976e82b14ff7110", "decision": "skip", "reason": "no import from S"}
+{"position": 1472, "repo": "thampiman/reverse-geocoder", "commit": "a81b4095bf2cb7ef84d2187fcbc8945d5d8922d0", "decision": "skip", "reason": "4 .py files"}
+{"position": 1473, "repo": "radames/Real-Time-Latent-Consistency-Model", "decision": "skip", "reason": "screened in round 7"}
+{"position": 1474, "repo": "kivy/python-for-android", "commit": "8ef9d1dbbf769d2c14681dbc3c116c85e2e93bae", "decision": "keep", "stratum": "P", "py_files": 295}
+{"position": 1475, "repo": "felipessalvatore/self_driving_pi_car", "commit": "7dbb67b837b58ddc492ac5ea0822d69dfe6e2d34", "decision": "skip", "reason": "no import from S"}
+{"position": 1476, "repo": "fkxxyz/rime-cloverpinyin", "commit": "efdfb69688e832d875aad13679fa34ab235cbf54", "decision": "skip", "reason": "2 .py files"}
+{"position": 1477, "repo": "bin123apple/AutoCoder", "commit": "a51540e7d27a9d600a783a824de2a9017f599099", "decision": "skip", "reason": "no import from S"}
+{"position": 1478, "repo": "WASasquatch/was-node-suite-comfyui", "commit": "a6d108b64500f18ff328836031ac638cbf229f1c", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1479, "repo": "josonle/Coding-Now", "commit": "32b963ff23af1e957099d03cb9f935a32cbc9373", "decision": "skip", "reason": "1 .py files"}
+{"position": 1480, "repo": "zai-org/ImageReward", "commit": "78f8051059b34fef8e0032ccb40561c23a2ddbbb", "decision": "skip", "reason": "quota full (G)"}
+{"position": 1481, "repo": "it-projects-llc/odoo-saas-tools", "commit": "8e9ad4d06853b668a42a3e8177c8246fd946f0e9", "decision": "keep", "stratum": "P", "py_files": 181}

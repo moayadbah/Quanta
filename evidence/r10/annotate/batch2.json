@@ -1,0 +1,47 @@
+[
+ {
+  "repo": "spark-arena/sparkrun",
+  "commit": "d54423cef9419751ecc19db7e0e63118f1aecdc1",
+  "clone": "Downloads/Quanta-R10-draft/clones-h10/spark-arena__sparkrun",
+  "files": [
+   "tests/test_executor_local.py",
+   "src/sparkrun/api/_status.py",
+   "src/sparkrun/runtimes/vllm_ray.py",
+   "tests/test_proxy_discovery_scope.py",
+   "src/sparkrun/telemetry/events.py",
+   "src/sparkrun/orchestration/distribution.py",
+   "src/sparkrun/proxy/_systemd.py",
+   "tests/test_ssh_host_identity.py"
+  ]
+ },
+ {
+  "repo": "algorithmicsuperintelligence/optillm",
+  "commit": "c0dc4f011ad644ce44aea884c43fbb0de6beb0e3",
+  "clone": "Downloads/Quanta-R10-draft/clones-h10/algorithmicsuperintelligence__optillm",
+  "files": [
+   "optillm/plugins/proxy/approach_handler.py",
+   "optillm/plugins/readurls_plugin.py",
+   "tests/test_ssl_config.py",
+   "optillm/plugins/deep_research_plugin.py",
+   "tests/test_approaches.py",
+   "scripts/train_optillm_classifier.py",
+   "optillm/mars/prompts.py",
+   "optillm/mars/aggregator.py"
+  ]
+ },
+ {
+  "repo": "dmMaze/BallonsTranslator",
+  "commit": "fa3e1374b4ca7c040a1a04effb96c95aac2a5e5c",
+  "clone": "Downloads/Quanta-R10-draft/clones-h10/dmMaze__BallonsTranslator",
+  "files": [
+   "ballontranslator/modules/exceptions.py",
+   "ballontranslator/utils/download_util.py",
+   "ballontranslator/utils/proj_imgtrans.py",
+   "ballontranslator/modules/translators/trans_baidu.py",
+   "ballontranslator/ui/mainwindow.py",
+   "tests/test_llm_inpaint.py",
+   "ballontranslator/modules/ocr/ocr_lens_proto.py",
+   "ballontranslator/modules/codex.py"
+  ]
+ }
+]

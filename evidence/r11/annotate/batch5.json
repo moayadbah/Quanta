@@ -1,0 +1,71 @@
+[
+ {
+  "repo": "fgmacedo/python-statemachine",
+  "commit": "ec5d8173f740b37941818df13727db9d64ef498d",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/fgmacedo__python-statemachine",
+  "files": [
+   "tests/uml/pssm/convert.py",
+   "statemachine/io/scxml/reader.py",
+   "statemachine/invoke.py",
+   "tests/test_signature.py",
+   "statemachine/statemachine.py",
+   "statemachine/dispatcher.py",
+   "statemachine/contrib/diagram/sphinx_ext.py",
+   "statemachine/signature.py"
+  ]
+ },
+ {
+  "repo": "backblaze-labs/genblaze",
+  "commit": "acb6e673905f7003ae89f7fcb490efca371ad927",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/backblaze-labs__genblaze",
+  "files": [
+   "libs/connectors/nvidia/genblaze_nvidia/_probe.py",
+   "libs/core/tests/unit/test_embedder.py",
+   "libs/connectors/openai/genblaze_openai/dalle.py",
+   "examples/quickstart.py",
+   "libs/connectors/s3/genblaze_s3/_preflight_classify.py",
+   "libs/core/genblaze_core/_asset_url.py",
+   "libs/connectors/s3/tests/test_s3_backend.py",
+   "libs/connectors/s3/tests/test_presigned.py"
+  ]
+ },
+ {
+  "repo": "timothy-odofin/agenthub-be",
+  "commit": "fc386c23c90aab9897e87aa531c179a7266471fc",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/timothy-odofin__agenthub-be",
+  "files": [
+   "backend/src/app/infrastructure/connections/database/redis_connection_manager.py",
+   "backend/tests/unit/api/test_chat_endpoints_secured.py",
+   "backend/src/app/core/security/dependencies.py",
+   "backend/tests/unit/api/test_tools_endpoint.py",
+   "backend/src/app/api/v1/tools.py",
+   "backend/src/app/schemas/conversational_auth.py",
+   "backend/tests/integration/core/config/test_settings_integration.py",
+   "backend/src/app/infrastructure/connections/database/postgres_connection_manager.py"
+  ]
+ },
+ {
+  "repo": "radude/rentry",
+  "commit": "977ad2edb379434e0fa3b8d69df8ef6ac799808f",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/radude__rentry",
+  "files": [
+   "examples/edit_change_url.py"
+  ]
+ },
+ {
+  "repo": "iszhanjiawei/indexTTS2",
+  "commit": "bae9221fd0a1bc98e8409fb97b8d6bd6a119bb64",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/iszhanjiawei__indexTTS2",
+  "files": [
+   "indextts/s2mel/modules/openvoice/se_extractor.py"
+  ]
+ },
+ {
+  "repo": "walkingddd/TgtoDrive",
+  "commit": "f7589e5a2eb1521ed20e9d43306ae900e23a286c",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/walkingddd__TgtoDrive",
+  "files": [
+   "v6.6.4\uff08\u6700\u65b0\u7248\u8bf7\u5728docker\u5b89\u88c5\uff09/tgto189.py"
+  ]
+ }
+]

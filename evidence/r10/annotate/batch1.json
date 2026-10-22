@@ -1,0 +1,47 @@
+[
+ {
+  "repo": "aws/chalice",
+  "commit": "702dc5e198b8c84ce09b08dc8409130b57d50819",
+  "clone": "Downloads/Quanta-R10-draft/clones-h10/aws__chalice",
+  "files": [
+   "tests/integration/test_package.py",
+   "chalice/app.py",
+   "tests/unit/test_test.py",
+   "chalice/local.py",
+   "chalice/deploy/packager.py",
+   "tests/unit/test_package.py",
+   "tests/functional/test_deployer.py",
+   "tests/unit/deploy/test_deployer.py"
+  ]
+ },
+ {
+  "repo": "skydiscover-ai/skydiscover",
+  "commit": "0d932b690670a7e544388ad362e9876c8bd256a0",
+  "clone": "Downloads/Quanta-R10-draft/clones-h10/skydiscover-ai__skydiscover",
+  "files": [
+   "tests/spec/test_checkpoint.py",
+   "tests/spec/test_contract_replay.py",
+   "skydiscover/optimize/context_builder/evox/builder.py",
+   "tests/search/test_adaevolve_checkpoint_purity.py",
+   "skydiscover/optimize/search/evox/database/search_strategy_evaluator.py",
+   "skydiscover/synthesize/examples/llm-router/evaluator/benchmark/data/make_tenant_traces.py",
+   "skydiscover/optimize/extras/monitor/server.py",
+   "skydiscover/synthesize/examples/llm-router/evaluator/benchmark/replay_tenants.py"
+  ]
+ },
+ {
+  "repo": "gaubert/gmvault",
+  "commit": "236fa56ddf0c299bc51b68ad467c522351b6203c",
+  "clone": "Downloads/Quanta-R10-draft/clones-h10/gaubert__gmvault",
+  "files": [
+   "src/gmv_cmd_tests.py",
+   "src/gmv/imap_utils.py",
+   "src/gmvault_essential_tests.py",
+   "src/sandbox/common_gmvault.py",
+   "src/sandbox/gmvault_multiprocess.py",
+   "src/gmv/validation_tests.py",
+   "src/gmv/gmvault.py",
+   "src/sandbox_tests.py"
+  ]
+ }
+]

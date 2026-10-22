@@ -1,0 +1,52 @@
+{
+ "repo": "clinton-hall/nzbToMedia",
+ "commit": "ce111f42ac4a3352835c85cf7fa61e4809400826",
+ "annotator": "agent-2",
+ "files": {
+  "libs/common/unidecode/x000.py": [],
+  "core/auto_process/managers/sickbeard.py": [],
+  "libs/common/urllib3/contrib/securetransport.py": [
+   {"line_start": 381, "line_end": 383, "name": "Security.SSLSetEnabledCiphers", "class": "A", "kind": "tls", "note": "ctypes call into Apple Security framework (SecureTransport) in bundled urllib3 (B2h); selects cipher suites on the TLS context"},
+   {"line_start": 394, "line_end": 394, "name": "Security.SSLSetALPNProtocols", "class": "A", "kind": "tls", "note": "configures an existing TLS context (B2c read literally); ALPN itself is not cryptographic, borderline"},
+   {"line_start": 456, "line_end": 456, "name": "Security.SecTrustSetAnchorCertificates", "class": "A", "kind": "tls", "note": "certificate-verification setting (trust anchors)"},
+   {"line_start": 459, "line_end": 459, "name": "Security.SecTrustSetAnchorCertificatesOnly", "class": "A", "kind": "tls", "note": "certificate-verification setting"},
+   {"line_start": 463, "line_end": 463, "name": "Security.SecTrustEvaluate", "class": "A", "kind": "tls", "note": "performs certificate chain verification"},
+   {"line_start": 492, "line_end": 494, "name": "Security.SSLCreateContext", "class": "A", "kind": "tls", "note": "TLS context creation"},
+   {"line_start": 495, "line_end": 497, "name": "Security.SSLSetIOFuncs", "class": "A", "kind": "tls", "note": "configures the TLS context's I/O (wrapping step); borderline"},
+   {"line_start": 509, "line_end": 509, "name": "Security.SSLSetConnection", "class": "A", "kind": "tls", "note": "binds the TLS context to the connection (wrapping step); borderline"},
+   {"line_start": 517, "line_end": 519, "name": "Security.SSLSetPeerDomainName", "class": "A", "kind": "tls", "note": "SNI / hostname-verification setting"},
+   {"line_start": 529, "line_end": 529, "name": "Security.SSLSetProtocolVersionMin", "class": "A", "kind": "tls"},
+   {"line_start": 532, "line_end": 532, "name": "Security.SSLSetProtocolVersionMax", "class": "A", "kind": "tls"},
+   {"line_start": 540, "line_end": 542, "name": "Security.SSLSetSessionOption", "class": "A", "kind": "tls", "note": "break-on-server-auth option, a verification setting"},
+   {"line_start": 551, "line_end": 551, "name": "Security.SSLSetCertificate", "class": "A", "kind": "tls", "note": "loads the client certificate chain into the context, like load_cert_chain"},
+   {"line_start": 556, "line_end": 556, "name": "Security.SSLHandshake", "class": "A", "kind": "tls", "note": "performs the TLS handshake"},
+   {"line_start": 722, "line_end": 722, "name": "Security.SecCertificateCopyData", "class": "A", "kind": "key_handling", "note": "serialises the peer certificate to DER; same role as OpenSSL.crypto.dump_certificate in pyopenssl.py"}
+  ],
+  "libs/common/urllib3/contrib/pyopenssl.py": [
+   {"line_start": 172, "line_end": 172, "name": "X509", "class": "A", "kind": "public_key", "note": "OpenSSL.crypto.X509() instantiation (certificate object creation); used only as a feature check"},
+   {"line_start": 229, "line_end": 229, "name": "peer_cert.to_cryptography", "class": "A", "kind": "key_handling", "note": "exports a pyOpenSSL certificate to a cryptography certificate object (B2a by analogy)"},
+   {"line_start": 231, "line_end": 231, "name": "OpenSSL.crypto.dump_certificate", "class": "A", "kind": "key_handling", "note": "certificate serialisation to DER"},
+   {"line_start": 232, "line_end": 232, "name": "x509.load_der_x509_certificate", "class": "A", "kind": "key_handling", "note": "certificate parsing/loading"},
+   {"line_start": 391, "line_end": 391, "name": "OpenSSL.crypto.dump_certificate", "class": "A", "kind": "key_handling", "note": "certificate serialisation to DER"},
+   {"line_start": 432, "line_end": 432, "name": "OpenSSL.SSL.Context", "class": "A", "kind": "tls"},
+   {"line_start": 443, "line_end": 443, "name": "self._ctx.set_options", "class": "A", "kind": "tls"},
+   {"line_start": 451, "line_end": 451, "name": "self._ctx.set_verify", "class": "A", "kind": "tls"},
+   {"line_start": 454, "line_end": 454, "name": "self._ctx.set_default_verify_paths", "class": "A", "kind": "tls"},
+   {"line_start": 459, "line_end": 459, "name": "self._ctx.set_cipher_list", "class": "A", "kind": "tls"},
+   {"line_start": 467, "line_end": 467, "name": "self._ctx.load_verify_locations", "class": "A", "kind": "tls"},
+   {"line_start": 469, "line_end": 469, "name": "self._ctx.load_verify_locations", "class": "A", "kind": "tls"},
+   {"line_start": 474, "line_end": 474, "name": "self._ctx.use_certificate_chain_file", "class": "A", "kind": "tls"},
+   {"line_start": 478, "line_end": 478, "name": "self._ctx.set_passwd_cb", "class": "A", "kind": "tls", "note": "private-key passphrase callback on the TLS context"},
+   {"line_start": 479, "line_end": 479, "name": "self._ctx.use_privatekey_file", "class": "A", "kind": "tls"},
+   {"line_start": 483, "line_end": 483, "name": "self._ctx.set_alpn_protos", "class": "A", "kind": "tls", "note": "configures an existing TLS context (B2c read literally); ALPN itself is not cryptographic, borderline"},
+   {"line_start": 493, "line_end": 493, "name": "OpenSSL.SSL.Connection", "class": "A", "kind": "tls", "note": "wraps the socket with the TLS context"},
+   {"line_start": 499, "line_end": 499, "name": "cnx.set_tlsext_host_name", "class": "A", "kind": "tls", "note": "SNI setting"},
+   {"line_start": 501, "line_end": 501, "name": "cnx.set_connect_state", "class": "A", "kind": "tls", "note": "configures the TLS connection as client side; borderline"},
+   {"line_start": 505, "line_end": 505, "name": "cnx.do_handshake", "class": "A", "kind": "tls", "note": "performs the TLS handshake"}
+  ],
+  "libs/win/pydantic/typing.py": [],
+  "libs/win/pydantic/utils.py": [],
+  "libs/win/pydantic/schema.py": [],
+  "libs/win/autocommand/autoparse.py": []
+ }
+}

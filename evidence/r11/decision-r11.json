@@ -1,0 +1,176 @@
+{
+ "decision": {
+  "recall_AB_not_below_v10": true,
+  "recall_AB_not_below_v9": true,
+  "pktls_AB_not_below_v10": true,
+  "pktls_AB_not_below_v9": true,
+  "better_than_v10": false,
+  "mcnemar_v11_vs_v10": {
+   "v11_only": 0,
+   "v10_only": 0,
+   "p_two_sided": 1.0
+  },
+  "no_false_positive_v10_lacks": true,
+  "new_false_positives": [],
+  "precision_wilson_lower_ge_0_95": false,
+  "precision_wilson_lower": 0.9063,
+  "speed_within_5pct_of_v10": true,
+  "speed_change_pct": -0.2
+ },
+ "non_pktls_recall_H11": {
+  "v5": {
+   "found": 129,
+   "total": 168,
+   "rate": 0.7679,
+   "ci": [
+    0.6985,
+    0.8253
+   ]
+  },
+  "v9": {
+   "found": 141,
+   "total": 168,
+   "rate": 0.8393,
+   "ci": [
+    0.7763,
+    0.8871
+   ]
+  },
+  "v10": {
+   "found": 141,
+   "total": 168,
+   "rate": 0.8393,
+   "ci": [
+    0.7763,
+    0.8871
+   ]
+  },
+  "v11": {
+   "found": 141,
+   "total": 168,
+   "rate": 0.8393,
+   "ci": [
+    0.7763,
+    0.8871
+   ]
+  }
+ },
+ "independent_pooled": {
+  "v5 on H9+H10+H11": {
+   "recall_AB": {
+    "found": 469,
+    "total": 741,
+    "rate": 0.6329,
+    "ci": [
+     0.5976,
+     0.6669
+    ]
+   },
+   "pktls_AB": {
+    "found": 124,
+    "total": 338,
+    "rate": 0.3669,
+    "ci": [
+     0.3172,
+     0.4195
+    ]
+   },
+   "precision": {
+    "found": 465,
+    "total": 472,
+    "rate": 0.9852,
+    "ci": [
+     0.9697,
+     0.9928
+    ]
+   }
+  },
+  "v9 on H9+H10+H11": {
+   "recall_AB": {
+    "found": 608,
+    "total": 741,
+    "rate": 0.8205,
+    "ci": [
+     0.7913,
+     0.8465
+    ]
+   },
+   "pktls_AB": {
+    "found": 242,
+    "total": 338,
+    "rate": 0.716,
+    "ci": [
+     0.6657,
+     0.7614
+    ]
+   },
+   "precision": {
+    "found": 607,
+    "total": 630,
+    "rate": 0.9635,
+    "ci": [
+     0.9458,
+     0.9756
+    ]
+   }
+  },
+  "v10 on H10+H11": {
+   "recall_AB": {
+    "found": 390,
+    "total": 467,
+    "rate": 0.8351,
+    "ci": [
+     0.7988,
+     0.866
+    ]
+   },
+   "pktls_AB": {
+    "found": 133,
+    "total": 178,
+    "rate": 0.7472,
+    "ci": [
+     0.6786,
+     0.8054
+    ]
+   },
+   "precision": {
+    "found": 390,
+    "total": 410,
+    "rate": 0.9512,
+    "ci": [
+     0.9259,
+     0.9682
+    ]
+   }
+  },
+  "v11 on H11": {
+   "recall_AB": {
+    "found": 206,
+    "total": 269,
+    "rate": 0.7658,
+    "ci": [
+     0.7117,
+     0.8124
+    ]
+   },
+   "pktls_AB": {
+    "found": 65,
+    "total": 101,
+    "rate": 0.6436,
+    "ci": [
+     0.5465,
+     0.7301
+    ]
+   },
+   "precision": {
+    "found": 206,
+    "total": 218,
+    "rate": 0.945,
+    "ci": [
+     0.9063,
+     0.9682
+    ]
+   }
+  }
+ }
+}

@@ -1,0 +1,64 @@
+[
+ {
+  "repo": "Meituan-Dianping/lyrebird",
+  "commit": "91f0db7716dd66ade5b026a3545ed19ef6148cc7",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/Meituan-Dianping__lyrebird",
+  "files": [
+   "lyrebird/examples/settings/proxy_white_list.py",
+   "lyrebird/compatibility.py",
+   "e2e_tests/test_flow_editor.py",
+   "lyrebird/event.py",
+   "lyrebird/mitm/proxy_server.py",
+   "lyrebird/base_server.py",
+   "e2e_tests/assets/serve.py",
+   "lyrebird/mock/dm/label.py"
+  ]
+ },
+ {
+  "repo": "fail2ban/fail2ban",
+  "commit": "6c88de71d201f864a2bec198217fd07ce47869b3",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/fail2ban__fail2ban",
+  "files": [
+   "config/action.d/smtp.py",
+   "fail2ban/tests/fail2banregextestcase.py",
+   "fail2ban/tests/action_d/test_smtp.py",
+   "fail2ban/tests/actiontestcase.py",
+   "fail2ban/tests/filtertestcase.py",
+   "fail2ban/tests/fail2banclienttestcase.py",
+   "fail2ban/compat/asynchat.py",
+   "fail2ban/tests/clientreadertestcase.py"
+  ]
+ },
+ {
+  "repo": "NoizAI/HelixWorld",
+  "commit": "fc8656ed76e25ff6c0dd44357bf3cdb006a1521d",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/NoizAI__HelixWorld",
+  "files": [
+   "code/LTX-2.3/packages/ltx-core/src/ltx_core/model/transformer/attention.py",
+   "code/LTX-2.3/packages/ltx-core/src/ltx_core/loader/registry.py",
+   "scripts/_common.py",
+   "code/LTX-2.3/projects/helixworld_runtime/scripts/context_cache.py",
+   "scripts/caption_pipeline.py",
+   "download_models.py",
+   "code/LTX-2.3/packages/ltx-core/src/ltx_core/model/model_protocol.py"
+  ]
+ },
+ {
+  "repo": "LeonChaoX/qinyan-academic-skills",
+  "commit": "df5a498a81e0f9c8f79d814446dcf9e9b8f68888",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/LeonChaoX__qinyan-academic-skills",
+  "files": [
+   "skills/07-\u4e34\u5e8a\u533b\u5b66\u4e0e\u7cbe\u51c6\u533b\u7597/clinical-reports/scripts/check_deidentification.py",
+   "skills/07-\u4e34\u5e8a\u533b\u5b66\u4e0e\u7cbe\u51c6\u533b\u7597/treatment-plans/scripts/check_completeness.py",
+   "skills/07-\u4e34\u5e8a\u533b\u5b66\u4e0e\u7cbe\u51c6\u533b\u7597/fda-database/scripts/fda_query.py"
+  ]
+ },
+ {
+  "repo": "SpiderClub/weibospider",
+  "commit": "e1f289871187da9e1c9096cd61984066c73625a8",
+  "clone": "Downloads/Quanta-R11-draft/clones-h11/SpiderClub__weibospider",
+  "files": [
+   "login/login.py"
+  ]
+ }
+]

@@ -1,0 +1,447 @@
+{
+ "summary": {
+  "repositories": 58,
+  "not_compared": [],
+  "sites_v5": 969,
+  "sites_v6": 1027,
+  "removed": 1,
+  "added": 59,
+  "added_by_last_name": {
+   "starttls": 14,
+   "urlopen": 14,
+   "public_bytes": 6,
+   "sign": 5,
+   "loadPEM": 4,
+   "CertificateOptions": 4,
+   "loads": 2,
+   "load": 2,
+   "fromOpenSSLCipherString": 2,
+   "optionsForClientTLS": 2,
+   "dumps": 1,
+   "fromFile": 1,
+   "fromCertificateAndKeyPair": 1,
+   "HTTPSHandler": 1
+  }
+ },
+ "repositories": {
+  "alicevision__meshroom": {
+   "v5": 2,
+   "v6": 2,
+   "removed": [],
+   "added": []
+  },
+  "allen7d__mini-shop-server": {
+   "v5": 6,
+   "v6": 9,
+   "removed": [],
+   "added": [
+    "app/core/token_auth.py:135 itsdangerous.URLSafeTimedSerializer.loads",
+    "app/core/token_auth.py:149 itsdangerous.URLSafeTimedSerializer.dumps",
+    "app/service/login_verify.py:55 itsdangerous.TimedJSONWebSignatureSerializer.loads"
+   ]
+  },
+  "allenai__vla-evaluation-harness": {
+   "v5": 3,
+   "v6": 3,
+   "removed": [],
+   "added": []
+  },
+  "anime-dl__anime-downloader": {
+   "v5": 4,
+   "v6": 4,
+   "removed": [],
+   "added": []
+  },
+  "aws-ia__taskcat": {
+   "v5": 14,
+   "v6": 14,
+   "removed": [],
+   "added": []
+  },
+  "beancount__beancount": {
+   "v5": 6,
+   "v6": 6,
+   "removed": [],
+   "added": []
+  },
+  "bentoml__bentoml": {
+   "v5": 19,
+   "v6": 19,
+   "removed": [],
+   "added": []
+  },
+  "bespokelabsai__nimble": {
+   "v5": 81,
+   "v6": 81,
+   "removed": [],
+   "added": []
+  },
+  "bizken__phishmailer": {
+   "v5": 2,
+   "v6": 11,
+   "removed": [],
+   "added": [
+    "Core/Mailer/MailerMain.py:63 smtplib.SMTP_SSL.starttls",
+    "Core/Mailer/MailerMain.py:78 smtplib.SMTP_SSL.starttls",
+    "Core/Mailer/MailerMain.py:93 smtplib.SMTP_SSL.starttls",
+    "Core/Mailer/MailerMain.py:210 smtplib.SMTP_SSL.starttls",
+    "Core/Mailer/MailerMain.py:227 smtplib.SMTP_SSL.starttls",
+    "Core/Mailer/MailerMain.py:245 smtplib.SMTP_SSL.starttls",
+    "Core/Mailer/MailerMain.py:265 smtplib.SMTP_SSL.starttls",
+    "Core/Mailer/MailerMain.py:279 smtplib.SMTP_SSL.starttls",
+    "Core/Mailer/MailerMain.py:299 smtplib.SMTP_SSL.starttls"
+   ]
+  },
+  "bmuller__kademlia": {
+   "v5": 7,
+   "v6": 7,
+   "removed": [],
+   "added": []
+  },
+  "chengyumeng__spider163": {
+   "v5": 6,
+   "v6": 6,
+   "removed": [],
+   "added": []
+  },
+  "chenxin-dlut__transt": {
+   "v5": 1,
+   "v6": 1,
+   "removed": [],
+   "added": []
+  },
+  "crossbario__crossbar": {
+   "v5": 65,
+   "v6": 81,
+   "removed": [],
+   "added": [
+    "src/crossbar/common/twisted/endpoint.py:76 twisted.internet.ssl.KeyPair.load",
+    "src/crossbar/common/twisted/endpoint.py:77 twisted.internet.ssl.Certificate.loadPEM",
+    "src/crossbar/common/twisted/endpoint.py:86 twisted.internet.ssl.Certificate.loadPEM",
+    "src/crossbar/common/twisted/endpoint.py:99 twisted.internet.ssl.Certificate.loadPEM",
+    "src/crossbar/common/twisted/endpoint.py:125 twisted.internet.ssl.AcceptableCiphers.fromOpenSSLCipherString",
+    "src/crossbar/common/twisted/endpoint.py:128 twisted.internet.ssl.AcceptableCiphers.fromOpenSSLCipherString",
+    "src/crossbar/common/twisted/endpoint.py:146 twisted.internet.ssl.DiffieHellmanParameters.fromFile",
+    "src/crossbar/common/twisted/endpoint.py:151 twisted.internet.ssl.CertificateOptions",
+    "src/crossbar/common/twisted/endpoint.py:240 twisted.internet.ssl.KeyPair.load",
+    "src/crossbar/common/twisted/endpoint.py:245 twisted.internet.ssl.Certificate.loadPEM",
+    "src/crossbar/common/twisted/endpoint.py:255 twisted.internet.ssl.PrivateCertificate.fromCertificateAndKeyPair",
+    "src/crossbar/common/twisted/endpoint.py:261 twisted.internet.ssl.optionsForClientTLS",
+    "src/crossbar/edge/node/node.py:726 twisted.internet.ssl.optionsForClientTLS",
+    "test/functests/cbtests/test_cb_ssl.py:43 twisted.internet.ssl.CertificateOptions",
+    "test/functests/cbtests/test_cb_ssl.py:88 twisted.internet.ssl.CertificateOptions",
+    "test/functests/cbtests/test_cb_ssl.py:130 twisted.internet.ssl.CertificateOptions"
+   ]
+  },
+  "djaodjin__djaodjin-saas": {
+   "v5": 4,
+   "v6": 4,
+   "removed": [],
+   "added": []
+  },
+  "dograh-hq__dograh": {
+   "v5": 59,
+   "v6": 59,
+   "removed": [],
+   "added": []
+  },
+  "dsoprea__gdrivefs": {
+   "v5": 0,
+   "v6": 0,
+   "removed": [],
+   "added": []
+  },
+  "edcd__edmarketconnector": {
+   "v5": 9,
+   "v6": 9,
+   "removed": [],
+   "added": []
+  },
+  "elyra-ai__elyra": {
+   "v5": 6,
+   "v6": 6,
+   "removed": [],
+   "added": []
+  },
+  "foyoux__aligo": {
+   "v5": 8,
+   "v6": 8,
+   "removed": [],
+   "added": []
+  },
+  "fuyuxiang__echo-agent": {
+   "v5": 129,
+   "v6": 130,
+   "removed": [],
+   "added": [
+    "echo_agent/channels/email.py:135 ssl.SSLContext.starttls"
+   ]
+  },
+  "gdsfactory__gdsfactory": {
+   "v5": 7,
+   "v6": 7,
+   "removed": [],
+   "added": []
+  },
+  "getbindu__bindu": {
+   "v5": 71,
+   "v6": 82,
+   "removed": [],
+   "added": [
+    "bindu/extensions/mtls/cert_store.py:188 cryptography.x509.CertificateSigningRequestBuilder.sign",
+    "bindu/extensions/mtls/cert_store.py:189 cryptography.x509.CertificateSigningRequest.public_bytes",
+    "tests/unit/extensions/mtls/test_cert_store.py:189 cryptography.x509.CertificateBuilder.sign",
+    "tests/unit/extensions/mtls/test_cert_store.py:191 cryptography.x509.Certificate.public_bytes",
+    "tests/unit/extensions/mtls/test_mtls_agent_extension.py:40 cryptography.x509.CertificateBuilder.sign",
+    "tests/unit/extensions/mtls/test_mtls_agent_extension.py:42 cryptography.x509.Certificate.public_bytes",
+    "tests/unit/extensions/mtls/test_mtls_agent_extension.py:303 cryptography.x509.CertificateBuilder.sign",
+    "tests/unit/extensions/mtls/test_mtls_agent_extension.py:305 cryptography.x509.Certificate.public_bytes",
+    "tests/unit/extensions/mtls/test_mtls_agent_extension.py:307 cryptography.x509.Certificate.public_bytes",
+    "tests/unit/server/middleware/test_mtls_middleware.py:55 cryptography.x509.CertificateBuilder.sign",
+    "tests/unit/server/middleware/test_mtls_middleware.py:56 cryptography.x509.Certificate.public_bytes"
+   ]
+  },
+  "googleads__googleads-python-lib": {
+   "v5": 8,
+   "v6": 9,
+   "removed": [],
+   "added": [
+    "googleads/common.py:490 urllib.request.HTTPSHandler"
+   ]
+  },
+  "graphify-labs__graphify": {
+   "v5": 45,
+   "v6": 44,
+   "removed": [
+    "graphify/security.py:195 http.client.HTTPSConnection"
+   ],
+   "added": []
+  },
+  "hacksoftware__django-styleguide-example": {
+   "v5": 7,
+   "v6": 7,
+   "removed": [],
+   "added": []
+  },
+  "huqi2018__bisheserver": {
+   "v5": 1,
+   "v6": 1,
+   "removed": [],
+   "added": []
+  },
+  "jack-cherish__python-spider": {
+   "v5": 3,
+   "v6": 3,
+   "removed": [],
+   "added": []
+  },
+  "jixiaozhong__sonic": {
+   "v5": 1,
+   "v6": 1,
+   "removed": [],
+   "added": []
+  },
+  "joshavant__clawbox": {
+   "v5": 3,
+   "v6": 3,
+   "removed": [],
+   "added": []
+  },
+  "langchain-ai__open-swe": {
+   "v5": 114,
+   "v6": 114,
+   "removed": [],
+   "added": []
+  },
+  "lijiaxin0111__open-d4rt": {
+   "v5": 4,
+   "v6": 4,
+   "removed": [],
+   "added": []
+  },
+  "markqvist__rnode_firmware": {
+   "v5": 11,
+   "v6": 11,
+   "removed": [],
+   "added": []
+  },
+  "microsoft__causica": {
+   "v5": 1,
+   "v6": 1,
+   "removed": [],
+   "added": []
+  },
+  "mindsdb__anton": {
+   "v5": 16,
+   "v6": 18,
+   "removed": [],
+   "added": [
+    "anton/core/backends/scratchpad_boot.py:858 urllib.request.urlopen",
+    "anton/minds_client.py:97 urllib.request.urlopen"
+   ]
+  },
+  "nvlabs__imaginaire": {
+   "v5": 2,
+   "v6": 2,
+   "removed": [],
+   "added": []
+  },
+  "openags__paper-search-mcp": {
+   "v5": 7,
+   "v6": 7,
+   "removed": [],
+   "added": []
+  },
+  "piccolomo__plotext": {
+   "v5": 2,
+   "v6": 2,
+   "removed": [],
+   "added": []
+  },
+  "plaid__plaid-python": {
+   "v5": 1,
+   "v6": 1,
+   "removed": [],
+   "added": []
+  },
+  "pypa__setuptools": {
+   "v5": 5,
+   "v6": 6,
+   "removed": [],
+   "added": [
+    "setuptools/config/_validate_pyproject/formats.py:158 urllib.request.urlopen"
+   ]
+  },
+  "qin2dim__v2rss": {
+   "v5": 1,
+   "v6": 1,
+   "removed": [],
+   "added": []
+  },
+  "reajason__xhs": {
+   "v5": 2,
+   "v6": 2,
+   "removed": [],
+   "added": []
+  },
+  "rivenmedia__riven": {
+   "v5": 4,
+   "v6": 4,
+   "removed": [],
+   "added": []
+  },
+  "rmountjoy92__dashmachine": {
+   "v5": 3,
+   "v6": 3,
+   "removed": [],
+   "added": []
+  },
+  "sabeechen__hassio-google-drive-backup": {
+   "v5": 2,
+   "v6": 2,
+   "removed": [],
+   "added": []
+  },
+  "semuconsulting__pygpsclient": {
+   "v5": 4,
+   "v6": 4,
+   "removed": [],
+   "added": []
+  },
+  "shi-labs__versatile-diffusion": {
+   "v5": 2,
+   "v6": 2,
+   "removed": [],
+   "added": []
+  },
+  "stepfun-ai__steptronoss": {
+   "v5": 3,
+   "v6": 3,
+   "removed": [],
+   "added": []
+  },
+  "szczyglis-dev__py-gpt": {
+   "v5": 45,
+   "v6": 58,
+   "removed": [],
+   "added": [
+    "src/pygpt_net/core/auto_updater/downloader.py:87 urllib.request.urlopen",
+    "src/pygpt_net/core/auto_updater/downloader.py:114 urllib.request.urlopen",
+    "src/pygpt_net/core/auto_updater/downloader.py:129 urllib.request.urlopen",
+    "src/pygpt_net/core/banners/banners.py:254 urllib.request.urlopen",
+    "src/pygpt_net/core/updater/updater.py:364 urllib.request.urlopen",
+    "src/pygpt_net/core/updater/updater.py:407 urllib.request.urlopen",
+    "src/pygpt_net/plugin/cmd_api/plugin.py:195 urllib.request.urlopen",
+    "src/pygpt_net/plugin/cmd_api/plugin.py:245 urllib.request.urlopen",
+    "src/pygpt_net/plugin/cmd_api/plugin.py:295 urllib.request.urlopen",
+    "src/pygpt_net/plugin/cmd_web/plugin.py:443 urllib.request.urlopen",
+    "src/pygpt_net/plugin/filesystem/filesystem/worker.py:606 urllib.request.urlopen",
+    "src/pygpt_net/plugin/mailer/runner.py:237 smtplib.SMTP_SSL.starttls",
+    "src/pygpt_net/plugin/server/worker.py:792 smtplib.SMTP_SSL.starttls"
+   ]
+  },
+  "theupdateframework__python-tuf": {
+   "v5": 47,
+   "v6": 47,
+   "removed": [],
+   "added": []
+  },
+  "tiiuae__falcon-perception": {
+   "v5": 2,
+   "v6": 2,
+   "removed": [],
+   "added": []
+  },
+  "ufy2024__auc": {
+   "v5": 5,
+   "v6": 5,
+   "removed": [],
+   "added": []
+  },
+  "vision-x-nyu__thinking-in-space": {
+   "v5": 4,
+   "v6": 4,
+   "removed": [],
+   "added": []
+  },
+  "weifeng2333__phistory": {
+   "v5": 19,
+   "v6": 19,
+   "removed": [],
+   "added": []
+  },
+  "xiaomi-research__dggt": {
+   "v5": 3,
+   "v6": 3,
+   "removed": [],
+   "added": []
+  },
+  "xiaoyouchr__ghost-downloader-3": {
+   "v5": 12,
+   "v6": 12,
+   "removed": [],
+   "added": []
+  },
+  "xonsh__xonsh": {
+   "v5": 1,
+   "v6": 1,
+   "removed": [],
+   "added": []
+  },
+  "xuan32546__ios13-simulatetouch": {
+   "v5": 66,
+   "v6": 68,
+   "removed": [],
+   "added": [
+    "layout/usr/lib/python3.7/logging/handlers.py:1017 ssl.SSLContext.starttls",
+    "layout/usr/lib/python3.7/nntplib.py:1128 ssl.SSLContext.starttls"
+   ]
+  },
+  "zjunlp__deepke": {
+   "v5": 4,
+   "v6": 4,
+   "removed": [],
+   "added": []
+  }
+ }
+}

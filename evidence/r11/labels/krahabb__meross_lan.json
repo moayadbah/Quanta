@@ -1,0 +1,33 @@
+{
+ "repo": "krahabb/meross_lan",
+ "commit": "bafedb4f8563153f9e3494292073551bb28f5f9a",
+ "annotator": "agent-2",
+ "files": {
+  "custom_components/meross_lan/merossclient/mqttclient.py": [
+   {"line_start": 80, "line_end": 80, "name": "md5", "class": "A", "kind": "hash"},
+   {"line_start": 387, "line_end": 387, "name": "md5", "class": "A", "kind": "hash"},
+   {"line_start": 389, "line_end": 389, "name": "self.tls_set_context", "class": "B", "kind": "tls", "note": "paho-mqtt client method that turns TLS on with a context"},
+   {"line_start": 391, "line_end": 393, "name": "self.tls_set", "class": "B", "kind": "tls", "note": "paho-mqtt client method that turns TLS on"},
+   {"line_start": 429, "line_end": 429, "name": "md5", "class": "A", "kind": "hash"},
+   {"line_start": 432, "line_end": 432, "name": "self.tls_set_context", "class": "B", "kind": "tls", "note": "paho-mqtt client method that turns TLS on with a context"},
+   {"line_start": 434, "line_end": 434, "name": "self.tls_set", "class": "B", "kind": "tls", "note": "paho-mqtt client method that turns TLS on"}
+  ],
+  "custom_components/meross_lan/helpers/__init__.py": [],
+  "custom_components/meross_lan/merossclient/protocol/types/__init__.py": [],
+  "custom_components/meross_lan/merossclient/cloudapi.py": [
+   {"line_start": 246, "line_end": 248, "name": "md5", "class": "A", "kind": "hash"},
+   {"line_start": 362, "line_end": 362, "name": "md5", "class": "A", "kind": "hash"}
+  ],
+  "tests/helpers.py": [
+   {"line_start": 955, "line_end": 957, "name": "hashlib.md5", "class": "A", "kind": "hash"},
+   {"line_start": 1005, "line_end": 1005, "name": "hashlib.md5", "class": "A", "kind": "hash"}
+  ],
+  "custom_components/meross_lan/helpers/device.py": [],
+  "custom_components/meross_lan/merossclient/protocol/message.py": [
+   {"line_start": 17, "line_end": 19, "name": "md5", "class": "A", "kind": "hash"},
+   {"line_start": 111, "line_end": 111, "name": "os.urandom", "class": "A", "kind": "random"},
+   {"line_start": 131, "line_end": 134, "name": "md5", "class": "A", "kind": "hash"}
+  ],
+  "custom_components/meross_lan/merossclient/protocol/__init__.py": []
+ }
+}

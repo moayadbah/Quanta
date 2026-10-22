@@ -1,0 +1,24 @@
+{
+ "repo": "51bitquant/howtrader",
+ "commit": "fcad8e2d86825506b9d33441ab78be853c2c3bdd",
+ "annotator": "agent-1",
+ "files": {
+  "howtrader/gateway/binance/binance_inverse_gateway.py": [
+   {"line_start": 318, "line_end": 318, "name": "hmac.new", "class": "A", "kind": "mac"}
+  ],
+  "howtrader/gateway/binance/binance_spot_gateway.py": [
+   {"line_start": 152, "line_end": 156, "name": "serialization.load_pem_private_key", "class": "A", "kind": "key_handling"},
+   {"line_start": 171, "line_end": 171, "name": "Ed25519PrivateKey.from_private_bytes", "class": "A", "kind": "key_handling"},
+   {"line_start": 179, "line_end": 179, "name": "Ed25519PrivateKey.from_private_bytes", "class": "A", "kind": "key_handling"},
+   {"line_start": 380, "line_end": 380, "name": "self.private_key.sign", "class": "A", "kind": "public_key"},
+   {"line_start": 976, "line_end": 976, "name": "self.private_key.sign", "class": "A", "kind": "public_key"}
+  ],
+  "howtrader/api/rest/rest_client.py": [],
+  "howtrader/gateway/okx/okx_gateway.py": [
+   {"line_start": 975, "line_end": 975, "name": "hmac.new", "class": "A", "kind": "mac"}
+  ],
+  "howtrader/gateway/binance/binance_usdt_gateway.py": [
+   {"line_start": 337, "line_end": 337, "name": "hmac.new", "class": "A", "kind": "mac"}
+  ]
+ }
+}

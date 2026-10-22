@@ -1,0 +1,38 @@
+{
+ "repo": "sligter/LandPPT",
+ "commit": "bac8497cc756d67bfda4ecd7b7219b42dc982c1c",
+ "annotator": "agent-4",
+ "files": {
+  "src/landppt/services/slide/package_generation/workflow.py": [],
+  "src/landppt/services/editor_document_service.py": [
+   {"line_start": 20, "line_end": 20, "name": "hashlib.sha256", "class": "A", "kind": "hash"}
+  ],
+  "src/summeryanyfile/core/mineru_api_client.py": [
+   {"line_start": 608, "line_end": 608, "name": "hashlib.sha256", "class": "A", "kind": "hash"}
+  ],
+  "src/landppt/auth/github_oauth_service.py": [
+   {"line_start": 106, "line_end": 106, "name": "secrets.token_urlsafe", "class": "A", "kind": "random"},
+   {"line_start": 109, "line_end": 109, "name": "hashlib.sha256", "class": "A", "kind": "hash"},
+   {"line_start": 117, "line_end": 117, "name": "secrets.token_urlsafe", "class": "A", "kind": "random"},
+   {"line_start": 464, "line_end": 464, "name": "secrets.token_hex", "class": "A", "kind": "random"},
+   {"line_start": 486, "line_end": 486, "name": "hashlib.sha256", "class": "A", "kind": "hash"},
+   {"line_start": 486, "line_end": 486, "name": "secrets.token_bytes", "class": "A", "kind": "random", "note": "nested inside the hashlib.sha256 call on the same line"}
+  ],
+  "src/landppt/services/prompt_asset_service.py": [
+   {"line_start": 195, "line_end": 195, "name": "hashlib.sha256", "class": "A", "kind": "hash"}
+  ],
+  "src/landppt/services/managed_provider_service.py": [
+   {"line_start": 107, "line_end": 109, "name": "hashlib.sha256", "class": "A", "kind": "hash", "note": "plain SHA-256 used to derive the Fernet key; labelled by the called function (hash), not by its role"},
+   {"line_start": 110, "line_end": 110, "name": "Fernet", "class": "A", "kind": "symmetric"},
+   {"line_start": 115, "line_end": 115, "name": "_cipher().decrypt", "class": "A", "kind": "symmetric", "note": "_cipher() is a repository function (not a unit); .decrypt is Fernet.decrypt on the cipher object it returns (B2b, B2h)"},
+   {"line_start": 248, "line_end": 248, "name": "_cipher().encrypt", "class": "A", "kind": "symmetric", "note": "Fernet.encrypt on the object returned by the repository function _cipher() (B2b, B2h)"}
+  ],
+  "scripts/svg_experiment/check_edit_export.py": [
+   {"line_start": 53, "line_end": 53, "name": "hashlib.sha256", "class": "A", "kind": "hash"}
+  ],
+  "src/landppt/database/models.py": [
+   {"line_start": 65, "line_end": 65, "name": "hashlib.sha256", "class": "A", "kind": "hash"},
+   {"line_start": 69, "line_end": 69, "name": "hashlib.sha256", "class": "A", "kind": "hash"}
+  ]
+ }
+}

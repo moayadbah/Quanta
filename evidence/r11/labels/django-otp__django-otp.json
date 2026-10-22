@@ -1,0 +1,19 @@
+{
+ "repo": "django-otp/django-otp",
+ "commit": "1c77c58f6785b49da3250b01dedbbc77ed0429ae",
+ "annotator": "agent-11",
+ "files": {
+  "src/django_otp/util.py": [
+   {"line_start": 66, "line_end": 66, "name": "urandom", "class": "A", "kind": "random"},
+   {"line_start": 79, "line_end": 79, "name": "random.SystemRandom", "class": "A", "kind": "random"}
+  ],
+  "src/django_otp/oath.py": [
+   {"line_start": 34, "line_end": 34, "name": "hmac.new", "class": "A", "kind": "mac"}
+  ],
+  "src/django_otp/plugins/otp_hotp/models.py": [],
+  "src/django_otp/plugins/otp_totp/models.py": [],
+  "src/django_otp/plugins/otp_static/models.py": [
+   {"line_start": 74, "line_end": 74, "name": "urandom", "class": "A", "kind": "random"}
+  ]
+ }
+}

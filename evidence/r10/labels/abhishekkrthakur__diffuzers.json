@@ -1,0 +1,11 @@
+{
+ "repo": "abhishekkrthakur/diffuzers",
+ "commit": "71f710a1940c22637561809387b1c8622be1a48b",
+ "annotator": "agent-7",
+ "files": {
+  "diffuzers/cli/run_api.py": [],
+  "diffuzers/clip_interrogator.py": [
+   {"line_start": 283, "line_end": 283, "name": "hashlib.sha256", "class": "A", "kind": "hash"}
+  ]
+ }
+}
