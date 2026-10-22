@@ -56,16 +56,21 @@ protocols, hardware and third-party services are outside what a source scan can 
 
 | Figure | Value | How it was measured | Evidence |
 |---|---|---|---|
-| Recall on a held-out set | 94.6% (70 of 74 labelled calls; 95% CI 86.9 to 97.9) | 20 repositories drawn by a pre-registered rule, labelled line by line before the rules were frozen, scored once | [`evidence/PROTOCOL-R4.md`](evidence/PROTOCOL-R4.md), [`evidence/r4/accuracy-release-r5.json`](evidence/r4/accuracy-release-r5.json) |
-| Precision on the same set | 100% (71 of 71; lower bound 94.9) | Every reported call matched against the labels | same |
-| Known weak spot | 4 of 8 public-key and TLS calls hidden behind other libraries | Same set | same |
-| Reading avoided | 77 hours in the median repository | Lines of shipped code at 200 lines an hour, the fastest pace at which review stays effective ([Kemerer and Paulk, 2009](https://sites.pitt.edu/~ckemerer/PSP_Data.pdf)) | [`evidence/r4/TIME-COST-METHOD.md`](evidence/r4/TIME-COST-METHOD.md), [`evidence/r4/time-cost.json`](evidence/r4/time-cost.json) |
+| Recall: hashing, symmetric, MAC and other crypto | 95.0% (363 of 382 labelled calls; 95% CI 92.4 to 96.8) | 120 public repositories in three samples drawn by pre-registered rules after the engine was frozen, labelled line by line, scored once | [`evidence/PROTOCOL-R11.md`](evidence/PROTOCOL-R11.md), [`evidence/figures-v9.json`](evidence/figures-v9.json) |
+| Recall: public key and TLS | 79.3% (203 of 256; 95% CI 73.9 to 83.8); 93.2% (55 of 59) on the latest sample of 60 | Same sets | same |
+| Precision on the same sets | 96.3% (607 of 630; lower bound 94.6) | Every reported call matched against the labels | same |
+| Not in the figures above | Cryptography inside non-crypto libraries (MQTT, Redis, SSH clients): counting it, recall is 82.1% (608 of 741) | Same sets | [`evidence/r11/decision-r11.json`](evidence/r11/decision-r11.json) |
+| Reading avoided | 77 hours in the median repository | Lines of shipped code at 200 lines an hour, the fastest pace at which review stays effective ([Kemerer and Paulk, 2009](https://sites.pitt.edu/~ckemerer/PSP_Data.pdf)) | [`evidence/r4/TIME-COST-METHOD.md`](evidence/r4/TIME-COST-METHOD.md), [`evidence/r9/time-cost-v9.json`](evidence/r9/time-cost-v9.json) |
 | Engineering time saved | $5,007 per median repository | Those hours at the US software developer wage ([BLS, May 2025](https://www.bls.gov/ooh/computer-and-information-technology/software-developers.htm)), no overhead | same |
-| Already past a deadline | 80 calls across 60 public repositories | Each call mapped to the milestones above | [`evidence/r4/time-cost.json`](evidence/r4/time-cost.json) |
-| Scan time | 15.3 s for the median repository | Wall clock, one laptop, repository already on disk | same |
+| Already past a deadline | 80 calls across 60 public repositories | Each call mapped to the milestones above | [`evidence/r9/time-cost-v9.json`](evidence/r9/time-cost-v9.json) |
+| Scan time | 11.4 s for the median repository | Wall clock, one laptop, repository already on disk | same |
 
-The single annotator was the model that built the tool and was not blind to its design; the
-protocol states this as a limit.
+The labels were written by model annotators that saw only the codebook and the sampled files,
+never the engine's output, and were hashed before scoring. Ten repositories were labelled twice
+by independent annotators, who agreed at F1 0.97
+([`evidence/r11/agreement-r11.json`](evidence/r11/agreement-r11.json)). They are still models,
+not people, and that is a limit of these figures. `evidence/figures_v9.py` recomputes every
+figure above from the results files.
 
 ## Proven on Python, built for more languages
 

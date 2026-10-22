@@ -1,46 +1,68 @@
 {
   "_about": "Figures shown on the home page. Numbers only: every word around them lives in content/site.json under fig.*. Each figure names the evidence file it comes from. Change a number only when the evidence changes.",
-  "measured_on": "2026-09-24",
+  "measured_on": "2026-10-20",
   "figures": [
     {
-      "id": "recall",
-      "value": "94.6",
+      "id": "other",
+      "value": "95.0",
       "values": {
-        "found": 70,
-        "total": 74,
-        "lo": "86.9",
-        "hi": "97.9",
-        "pk_found": 4,
-        "pk_total": 8,
+        "found": 363,
+        "total": 382,
+        "lo": "92.4",
+        "hi": "96.8"
+      },
+      "sources": [
+        {
+          "id": "protocol",
+          "path": "evidence/PROTOCOL-R11.md"
+        },
+        {
+          "id": "accuracy",
+          "path": "evidence/figures-v9.json"
+        }
+      ]
+    },
+    {
+      "id": "pktls",
+      "value": "79.3",
+      "values": {
+        "found": 203,
+        "total": 256,
+        "lo": "73.9",
+        "hi": "83.8",
+        "latest_found": 55,
+        "latest_total": 59,
+        "latest": "93.2",
+        "ab": "82.1",
         "limit": true
       },
       "sources": [
         {
           "id": "protocol",
-          "path": "evidence/PROTOCOL-R4.md"
+          "path": "evidence/PROTOCOL-R11.md"
         },
         {
           "id": "accuracy",
-          "path": "evidence/r4/accuracy-final-v3.json"
+          "path": "evidence/figures-v9.json"
         }
       ]
     },
     {
       "id": "precision",
-      "value": "100",
+      "value": "96.3",
       "values": {
-        "found": 71,
-        "total": 71,
-        "lo": "94.9"
+        "found": 607,
+        "total": 630,
+        "lo": "94.6"
       },
       "sources": [
         {
           "id": "protocol",
-          "path": "evidence/PROTOCOL-R4.md"
+          "path": "evidence/PROTOCOL-R11.md"
         },
         {
           "id": "accuracy",
-          "path": "evidence/r4/accuracy-final-v3.json"
+          "path": "evidence/figures-v9.json"
         }
       ]
     },
@@ -67,7 +89,7 @@
         },
         {
           "id": "timecost",
-          "path": "evidence/r4/time-cost.json"
+          "path": "evidence/r9/time-cost-v9.json"
         }
       ]
     },
@@ -92,7 +114,7 @@
         },
         {
           "id": "timecost",
-          "path": "evidence/r4/time-cost.json"
+          "path": "evidence/r9/time-cost-v9.json"
         }
       ]
     },
@@ -101,10 +123,10 @@
       "value": "80",
       "values": {
         "repos": 60,
-        "vulnerable": 96,
-        "weak": 118,
-        "proposed": 108,
-        "with": 32
+        "vulnerable": 164,
+        "weak": 122,
+        "proposed": 84,
+        "with": 29
       },
       "sources": [
         {
@@ -113,23 +135,27 @@
         },
         {
           "id": "timecost",
-          "path": "evidence/r4/time-cost.json"
+          "path": "evidence/r9/time-cost-v9.json"
         }
       ]
     },
     {
       "id": "speed",
-      "value": "15.3",
+      "value": "11.4",
       "values": {
         "lines": "15,343",
-        "max": "269",
+        "max": "94",
         "biggest": "575,615",
         "repos": 60
       },
       "sources": [
         {
+          "id": "method",
+          "path": "evidence/r4/TIME-COST-METHOD.md"
+        },
+        {
           "id": "timecost",
-          "path": "evidence/r4/time-cost.json"
+          "path": "evidence/r9/time-cost-v9.json"
         }
       ]
     }
