@@ -109,6 +109,30 @@
       "weak": false
     },
     {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "randomness",
+      "file": "src/requests/auth.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-9d4c2a3c6099cc0b",
+      "kind": "crypto_call",
+      "line": 235,
+      "name": "os.urandom",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
+      "snippet": "s += os.urandom(8)",
+      "weak": false
+    },
+    {
       "algorithm": "SHA1",
       "algorithms": [
         "SHA1"
@@ -169,7 +193,7 @@
       "file": "tests/conftest.py",
       "form": "operation",
       "free": false,
-      "id": "crypto_call-dcf899e59b8532ab",
+      "id": "crypto_call-18047574feaac88c",
       "kind": "crypto_call",
       "line": 60,
       "name": "ssl.create_default_context.wrap_socket",
@@ -221,7 +245,59 @@
       "file": "tests/testserver/server.py",
       "form": "operation",
       "free": false,
-      "id": "crypto_call-fc9e172dfeef6cae",
+      "id": "crypto_call-ec1cfbe4f3b5acad",
+      "kind": "crypto_call",
+      "line": 162,
+      "name": "ssl.SSLContext.load_cert_chain",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "tls"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "test",
+      "scored": false,
+      "selection": "unspecified",
+      "snippet": "self.ssl_context.load_cert_chain(self.cert_chain, keyfile=self.keyfile)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "tls",
+      "file": "tests/testserver/server.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-35521afccfabe4e5",
+      "kind": "crypto_call",
+      "line": 169,
+      "name": "ssl.SSLContext.load_verify_locations",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "tls"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "test",
+      "scored": false,
+      "selection": "unspecified",
+      "snippet": "self.ssl_context.load_verify_locations(self.cacert)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "tls",
+      "file": "tests/testserver/server.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-0686e6b80c569790",
       "kind": "crypto_call",
       "line": 173,
       "name": "ssl.SSLContext.wrap_socket",

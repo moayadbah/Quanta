@@ -1,26 +1,26 @@
 {
   "cbom_sha256": null,
   "cbom_unlocated": 0,
-  "duration_ms": 25910,
+  "duration_ms": 8632,
   "files_scanned": 91,
-  "finished_at": "2026-09-24T22:26:53.106825+00:00",
+  "finished_at": "2026-10-22T00:23:34.878124+00:00",
   "phase_durations_ms": {
-    "graph": 32,
-    "parsing": 25812,
+    "graph": 16,
+    "parsing": 8562,
     "scoring": 0,
     "walking": 62
   },
   "provenance": {
-    "analyzer_version": "0.5.0+rules.2026.11.01",
+    "analyzer_version": "0.5.0+rules.2026.11.05",
     "cbom_sha256": null,
-    "commit_sha": "06b2a678741131fd577ce170e23e5ca0aeba0309",
-    "crypto_ruleset_version": "2026.11.01",
+    "commit_sha": "2247b35ea1c47c727d7a06e51fa280e12a863ff6",
+    "crypto_ruleset_version": "2026.11.05",
     "metric_version": "metric-v2",
     "repo": "pallets/click",
     "weights_version": "weights-v1"
   },
-  "sites_detected": 0,
-  "started_at": "2026-09-24T22:26:27.196813+00:00",
+  "sites_detected": 2,
+  "started_at": "2026-10-22T00:23:26.245506+00:00",
   "steps": [
     {
       "duration_ms": 0,
@@ -67,7 +67,7 @@
       "title": "Validate the URL"
     },
     {
-      "duration_ms": 1922,
+      "duration_ms": 1031,
       "evidence": [
         {
           "label": "Visibility",
@@ -81,27 +81,27 @@
         },
         {
           "label": "Size",
-          "ok": null,
-          "value": "not reported; resolved over git, bounded by the clone budgets"
+          "ok": true,
+          "value": "5,091 KB of 5,000,000 KB limit"
         },
         {
           "label": "Head commit",
           "ok": null,
-          "value": "06b2a678741131fd577ce170e23e5ca0aeba0309"
+          "value": "2247b35ea1c47c727d7a06e51fa280e12a863ff6"
         },
         {
           "label": "Analysis pinned to",
           "ok": true,
-          "value": "06b2a6787411"
+          "value": "2247b35ea1c4"
         }
       ],
       "id": "resolve",
       "status": "done",
-      "summary": "public, 0 KB, pinned to 06b2a6787411",
+      "summary": "public, 5,091 KB, pinned to 2247b35ea1c4",
       "title": "Resolve repository metadata"
     },
     {
-      "duration_ms": 3250,
+      "duration_ms": 2483,
       "evidence": [
         {
           "label": "Depth",
@@ -131,12 +131,12 @@
         {
           "label": "Checked-out HEAD",
           "ok": true,
-          "value": "06b2a6787411 matches resolved SHA"
+          "value": "2247b35ea1c4 matches resolved SHA"
         }
       ],
       "id": "clone",
       "status": "done",
-      "summary": "shallow clone at 06b2a6787411 in 3250 ms",
+      "summary": "shallow clone at 2247b35ea1c4 in 2483 ms",
       "title": "Clone at a pinned commit"
     },
     {
@@ -165,7 +165,7 @@
         {
           "label": "Total bytes",
           "ok": null,
-          "value": "995,632 of 500,000,000"
+          "value": "1,003,633 of 500,000,000"
         },
         {
           "label": "Containment",
@@ -184,7 +184,7 @@
       "title": "Walk the source tree"
     },
     {
-      "duration_ms": 25812,
+      "duration_ms": 8562,
       "evidence": [
         {
           "label": "Execution",
@@ -197,14 +197,19 @@
           "value": "91 (17 shipped)"
         },
         {
+          "label": "Read, not parsed",
+          "ok": null,
+          "value": "57 test or docs files that name no crypto library"
+        },
+        {
           "label": "Crypto sites",
           "ok": null,
-          "value": "0"
+          "value": "2"
         },
         {
           "label": "Sites by file role",
           "ok": null,
-          "value": "none"
+          "value": "test 2"
         },
         {
           "label": "Algorithm literals",
@@ -224,51 +229,51 @@
         {
           "label": "Ruleset version",
           "ok": null,
-          "value": "2026.11.01"
+          "value": "2026.11.05"
         }
       ],
       "id": "parse",
       "status": "done",
-      "summary": "0 cryptographic sites detected",
+      "summary": "2 cryptographic sites detected",
       "title": "Parse and detect crypto"
     },
     {
-      "duration_ms": 32,
+      "duration_ms": 16,
       "evidence": [
         {
           "label": "Nodes",
           "ok": null,
-          "value": "1,926 — function 1835, module 91"
+          "value": "1,302 — crypto_call 2, function 1209, module 91"
         },
         {
           "label": "Edges",
           "ok": null,
-          "value": "2,226 — binding 1835, call 314, import 77"
+          "value": "1,468 — binding 1211, call 234, import 23"
         },
         {
           "label": "Low-confidence edges",
           "ok": true,
-          "value": "314 (every 'call' edge, by rule)"
+          "value": "234 (every 'call' edge, by rule)"
         },
         {
           "label": "Callees resolved",
           "ok": null,
-          "value": "427 of 7,049"
+          "value": "291 of 4,697"
         },
         {
           "label": "Callees dropped, not guessed",
           "ok": true,
-          "value": "10 ambiguous, 6,612 unresolvable"
+          "value": "10 ambiguous, 4,396 unresolvable"
         },
         {
           "label": "Imports",
           "ok": null,
-          "value": "77 internal, 631 external"
+          "value": "23 internal, 505 external"
         }
       ],
       "id": "graph",
       "status": "done",
-      "summary": "1,926 nodes, 2,226 edges",
+      "summary": "1,302 nodes, 1,468 edges",
       "title": "Build the dependency graph"
     },
     {
@@ -291,12 +296,12 @@
       "title": "Compute the Agility Score"
     },
     {
-      "duration_ms": 77,
+      "duration_ms": 186,
       "evidence": [
         {
           "label": "Report size",
           "ok": null,
-          "value": "38,199 bytes"
+          "value": "12,412 bytes"
         },
         {
           "label": "External requests",

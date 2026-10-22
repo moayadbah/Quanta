@@ -56,15 +56,15 @@ from libcst.metadata import (
 
 from quanta.config import Settings, get_settings
 from quanta.core.models import CryptoSite, Selection, UnparseableFile
-from quanta.core.operations import find_operations, operation_category, quantum_flags
+from quanta.core.operations import TLS_ONLY, find_operations, operation_category, quantum_flags
 from quanta.core.roles import Role, classify_role
 from quanta.core.ruleset_v2 import (
     ALGORITHMS,
     CRYPTO_MODULE_PREFIXES,
-    RESULT_METHODS,
     RULES,
     SELECTOR_RULES,
     SITE_RULES,
+    TLS_OPTION_SITES,
     Rule,
     canonical,
 )
@@ -233,6 +233,35 @@ def _parse_timeout(seconds: int) -> Iterator[None]:
         signal.signal(signal.SIGALRM, previous)
 
 
+#: Standard-library crypto modules whose unbound use is taken at its word (round nine).
+_STDLIB_CRYPTO_MODULES = frozenset({"hashlib", "hmac", "ssl", "secrets"})
+
+#: Every qualified name a reference can match (round eight: a quick test before the rest).
+_RULE_NAMES = frozenset(SITE_RULES) | frozenset(SELECTOR_RULES)
+
+
+def _rule_in(names: set[str], table: dict[str, Rule]) -> Rule | None:
+    """The rule of the first (sorted) name in ``table``, as ``_rule_for`` always chose."""
+    matches = sorted(names & table.keys())
+    return table[matches[0]] if matches else None
+
+
+_TLS_OPTION_RULES = {name: Rule(name, "site", "tls", scored=False) for name in TLS_OPTION_SITES}
+
+
+def _tls_option_rule(call: cst.Call, resolved: set[str]) -> Rule | None:
+    """Round eight (PROTOCOL-R8 B2e): a client call that passes a TLS context or turns TLS on."""
+    for name in sorted(resolved & _TLS_OPTION_RULES.keys()):
+        options = TLS_OPTION_SITES[name]
+        for arg in call.args:
+            if arg.keyword is None or arg.keyword.value not in options:
+                continue
+            if isinstance(arg.value, cst.Name) and arg.value.value in {"None", "False"}:
+                continue
+            return _TLS_OPTION_RULES[name]
+    return None
+
+
 def _expr_name(node: cst.CSTNode) -> str:
     """Render a dotted expression back to source text, best effort."""
     if isinstance(node, cst.Name):
@@ -308,6 +337,11 @@ class _CryptoVisitor(cst.CSTVisitor):
         self._selector_roots: set[int] = set()
         #: id of each call node that produced a crypto site, for the operations pass.
         self.producers: dict[int, CryptoSite] = {}
+        #: id of each node reported as a reference site -> its index in ``sites``.
+        self._references: dict[int, int] = {}
+        #: Calls through a local name (round seven): the call site and the binding values
+        #: that become its selectors once the whole module has been visited.
+        self._alias_calls: list[tuple[CryptoSite, list[tuple[cst.CSTNode, Rule]]]] = []
 
     # -- imports -------------------------------------------------------------------
 
@@ -379,8 +413,7 @@ class _CryptoVisitor(cst.CSTVisitor):
             return set()
 
     def _rule_for(self, node: cst.CSTNode, table: dict[str, Rule]) -> Rule | None:
-        matches = sorted(self._qualified_names(node) & table.keys())
-        return table[matches[0]] if matches else None
+        return _rule_in(self._qualified_names(node), table)
 
     def _parent(self, node: cst.CSTNode) -> cst.CSTNode | None:
         try:
@@ -407,6 +440,42 @@ class _CryptoVisitor(cst.CSTVisitor):
                 continue
             return False
         return False
+
+    def _unbound_stdlib_name(self, func: cst.BaseExpression) -> set[str]:
+        """Round nine: ``hashlib.md5(...)`` in a file that never imports hashlib (it arrives
+        through ``from helpers import *``) resolves to nothing. For the standard library's
+        crypto modules only, and only when the file binds the name nowhere, the dotted name is
+        taken as written (two H8 misses)."""
+        if not isinstance(func, cst.Attribute):
+            return set()
+        root: cst.BaseExpression = func
+        while isinstance(root, cst.Attribute):
+            root = root.value
+        if not isinstance(root, cst.Name) or root.value not in _STDLIB_CRYPTO_MODULES:
+            return set()
+        try:
+            scope = self.get_metadata(ScopeProvider, root)
+        except KeyError:
+            return set()
+        if scope is None or scope[root.value]:
+            return set()
+        return {_expr_name(func)}
+
+    def _inside_mock_call(self, node: cst.CSTNode) -> bool:
+        """Round eight: a crypto name handed to a mocking helper (``patch(..., wraps=jwt.decode)``)
+        is a test's stand-in, not a use of the algorithm."""
+        parent = self._parent(node)
+        if not isinstance(parent, cst.Arg):
+            return False
+        call = self._parent(parent)
+        if isinstance(call, cst.ClassDef):
+            # Round nine: a base class names a type, like an annotation (DEVIATIONS.md 17):
+            # ``class Factory(DefaultOpenSSLContextFactory):`` is not a call.
+            return True
+        if not isinstance(call, cst.Call):
+            return False
+        names = self._qualified_names(call.func)
+        return any(n.startswith(("unittest.mock.", "mock.")) for n in names)
 
     # -- selector analysis (7.6) -------------------------------------------------------
 
@@ -447,7 +516,10 @@ class _CryptoVisitor(cst.CSTVisitor):
         ]
         if len(assignments) != 1:
             return None
-        target = assignments[0].node
+        return self._assigned_value(assignments[0].node)
+
+    def _assigned_value(self, target: cst.CSTNode) -> cst.BaseExpression | None:
+        """The value of ``target = value`` (or ``target: T = value``), if it is that form."""
         parent = self._parent(target)
         if isinstance(parent, cst.AssignTarget):
             assign = self._parent(parent)
@@ -456,6 +528,34 @@ class _CryptoVisitor(cst.CSTVisitor):
         if isinstance(parent, cst.AnnAssign) and parent.value is not None:
             return parent.value
         return None
+
+    def _alias_bindings(self, name: cst.Name) -> list[tuple[cst.CSTNode, Rule]]:
+        """Round seven: the rules a called local name is bound to, if every binding is one.
+
+        ``h = hashlib.sha256`` (or ``h = hashlib.md5`` on another branch), then ``h(data)``:
+        the call is the unit (R6-B1), and each binding is where its algorithm is chosen.
+        Any other binding of the name (a parameter, a loop, a call result) means no alias.
+        """
+        try:
+            scope = self.get_metadata(ScopeProvider, name)
+        except KeyError:
+            return []
+        if scope is None:
+            return []
+        found: list[tuple[cst.CSTNode, Rule]] = []
+        for assignment in scope[name.value]:
+            if not (isinstance(assignment, Assignment) and isinstance(assignment.node, cst.Name)):
+                return []
+            value = self._assigned_value(assignment.node)
+            if not isinstance(value, (cst.Name, cst.Attribute)):
+                return []
+            rule = self._rule_for(value, SITE_RULES)
+            if rule is None:
+                return []
+            found.append((value, rule))
+        if len({rule.category for _, rule in found}) != 1:
+            return []
+        return sorted(found, key=lambda pair: self._position(pair[0]))
 
     def _algorithm_literal(
         self, expr: cst.CSTNode, rule: Rule, hops: int = 0
@@ -558,7 +658,7 @@ class _CryptoVisitor(cst.CSTVisitor):
     # -- detection -----------------------------------------------------------------
 
     def visit_Call(self, node: cst.Call) -> bool:
-        resolved = self._qualified_names(node.func)
+        resolved = self._qualified_names(node.func) or self._unbound_stdlib_name(node.func)
         line, col = self._position(node)
 
         for callee in sorted(resolved):
@@ -569,12 +669,23 @@ class _CryptoVisitor(cst.CSTVisitor):
         self._count_coverage(resolved)
         self._consumed.add(id(node.func))
 
-        rule = self._rule_for(node.func, SITE_RULES)
+        rule = _rule_in(resolved, SITE_RULES)
         if rule is not None:
             self._emit_site(node, rule, "call")
             return True
 
-        selector = self._rule_for(node.func, SELECTOR_RULES)
+        if isinstance(node.func, cst.Name):
+            bindings = self._alias_bindings(node.func)
+            if bindings:
+                self._emit_alias_call(node, bindings)
+                return True
+
+        tls_rule = _tls_option_rule(node, resolved)
+        if tls_rule is not None:
+            self._emit_site(node, tls_rule, "call")
+            return True
+
+        selector = _rule_in(resolved, SELECTOR_RULES)
         if selector is not None and not self._inside_selector_position(node):
             self._emit_free_selector(node, selector)
             return False  # nested selectors are part of this literal (7.6)
@@ -590,14 +701,22 @@ class _CryptoVisitor(cst.CSTVisitor):
         if name in RULES:
             self.matched += 1
             return
-        head, _, last = name.rpartition(".")
-        if last in RESULT_METHODS and head in RULES:
-            return  # hmac.new(...).digest(): no algorithm choice (7.5 correction)
+        if "<locals>" in name:
+            return  # a function the repository defines in a module named like a library
+        # hmac.new(...).digest(): no algorithm choice (7.5 correction). Round nine: any method
+        # on the result of a matched call (bcrypt.hashpw(...).decode()) is not a library call
+        # of its own; the matched call was counted where it is.
+        parts = name.split(".")
+        for cut in range(len(parts) - 1, 0, -1):
+            if ".".join(parts[:cut]) in RULES:
+                return
         self.unmatched[name] += 1
 
     def _reference_candidate(self, node: cst.Name | cst.Attribute) -> None:
         if id(node) in self._consumed:
             return
+        # The context test comes first: the qualified names of an assignment target cost a
+        # walk over every assignment of that name (quadratic on generated code).
         try:
             context = self.get_metadata(ExpressionContextProvider, node)
         except KeyError:
@@ -609,13 +728,22 @@ class _CryptoVisitor(cst.CSTVisitor):
             return
         if isinstance(parent, cst.Attribute) and parent.value is node:
             return  # part of a longer dotted name; the outer node decides
-        rule = self._rule_for(node, SITE_RULES)
+        # Round eight (speed): the names are resolved once, for both tables.
+        names = self._qualified_names(node)
+        if names.isdisjoint(_RULE_NAMES):
+            return
+        rule = _rule_in(names, SITE_RULES)
         if rule is not None:
-            if self._inside_selector_position(node) or self._inside_type_check(node):
+            if (
+                self._inside_selector_position(node)
+                or self._inside_type_check(node)
+                or self._inside_mock_call(node)
+            ):
                 return
+            self._references[id(node)] = len(self.sites)
             self._emit_site(node, rule, "reference")
             return
-        selector = self._rule_for(node, SELECTOR_RULES)
+        selector = _rule_in(names, SELECTOR_RULES)
         if (
             selector is not None
             and not self._inside_selector_position(node)
@@ -700,6 +828,66 @@ class _CryptoVisitor(cst.CSTVisitor):
         for config_name, config_node in configs:
             self._emit_selector_node("config_read", config_name, config_node, site_id, None)
 
+    def _emit_alias_call(self, node: cst.Call, bindings: list[tuple[cst.CSTNode, Rule]]) -> None:
+        """One site at the call, carrying the algorithm of every binding (round seven)."""
+        line, col = self._position(node)
+        first = bindings[0][1]
+        algorithms = tuple(dict.fromkeys(r.algorithm for _, r in bindings if r.algorithm))
+        infos = [ALGORITHMS[a] for a in algorithms if a in ALGORITHMS]
+        site = CryptoSite(
+            site_id=node_id("crypto_call", self.file, line, col, first.qualified_name),
+            file=self.file,
+            line=line,
+            col=col,
+            qualified_name=first.qualified_name,
+            kind="crypto_call",
+            algorithm=algorithms[0] if algorithms else None,
+            algorithms=algorithms,
+            module=self.module,
+            weak=any(i.weak for i in infos),
+            quantum_vulnerable=any(i.quantum_vulnerable for i in infos),
+            enclosing_function=self._enclosing,
+            role=self.role,
+            form="call",
+            category=first.category,
+            selection="literal" if algorithms else "unspecified",
+            scored=any(r.scored for _, r in bindings),
+        )
+        self.sites.append(site)
+        self.producers[id(node)] = site
+        self._alias_calls.append((site, bindings))
+
+    def link_alias_bindings(self) -> None:
+        """Turn the bindings of called aliases from reference sites into their selectors.
+
+        Runs after the whole module is visited: a module-level binding can follow the
+        function that calls it.
+        """
+        for call_site, bindings in self._alias_calls:
+            for value, _ in bindings:
+                index = self._references.pop(id(value), None)
+                if index is None:
+                    continue
+                ref = self.sites[index]
+                self.sites[index] = CryptoSite(
+                    site_id=node_id(
+                        "algo_literal", ref.file, ref.line, ref.col, ref.qualified_name
+                    ),
+                    file=ref.file,
+                    line=ref.line,
+                    col=ref.col,
+                    qualified_name=ref.qualified_name,
+                    kind="algo_literal",
+                    algorithm=ref.algorithm,
+                    algorithms=ref.algorithms,
+                    module=ref.module,
+                    weak=ref.weak,
+                    quantum_vulnerable=ref.quantum_vulnerable,
+                    enclosing_function=ref.enclosing_function,
+                    parent_site_id=call_site.site_id,
+                    role=ref.role,
+                )
+
     def _emit_selector_node(
         self,
         kind: str,
@@ -756,17 +944,32 @@ def _parse_and_visit(source: str, visitor: _CryptoVisitor) -> None:
     module = cst.parse_module(source)
     wrapper = MetadataWrapper(module, unsafe_skip_copy=True)
     wrapper.visit(visitor)
-    _add_operations(wrapper, visitor)
+    visitor.link_alias_bindings()
+    if _may_hold_operations(source, visitor):
+        _add_operations(wrapper, visitor)
+
+
+def _may_hold_operations(source: str, visitor: _CryptoVisitor) -> bool:
+    """Round eight (speed): an operation needs a crypto object, and a file has one only if it
+    holds a detected call, imports a crypto module (an annotated parameter) or names a
+    TLS-only method. Most files do none of these, so the second pass is skipped for them."""
+    if visitor.producers:
+        return True
+    if any(i.target.startswith(CRYPTO_MODULE_PREFIXES) for i in visitor.imports):
+        return True
+    return any(word in source for word in TLS_ONLY)
 
 
 def _add_operations(wrapper: MetadataWrapper, visitor: _CryptoVisitor) -> None:
     """Round four: operations on crypto objects (``key.sign``, ``ctx.wrap_socket``)."""
-    seen = {(s.line, s.col) for s in visitor.sites if s.kind == "crypto_call"}
+    # Keyed by name as well as position: in a chain such as ``PKCS1_v1_5.new(k).sign(h)`` the
+    # operation starts where its producer starts (round eight).
+    seen = {(s.line, s.col, s.qualified_name) for s in visitor.sites if s.kind == "crypto_call"}
     for op in find_operations(wrapper, visitor.producers):
-        if (op.line, op.col) in seen:
-            continue
-        seen.add((op.line, op.col))
         name = f"{op.taint.qualified_name}.{op.operation}"
+        if (op.line, op.col, name) in seen:
+            continue
+        seen.add((op.line, op.col, name))
         weak, quantum = quantum_flags(op.taint.algorithms)
         visitor.sites.append(
             CryptoSite(

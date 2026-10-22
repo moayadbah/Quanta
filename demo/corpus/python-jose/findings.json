@@ -83,6 +83,32 @@
       "algorithms": [],
       "category": "key_loading",
       "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-868d11b1b5c7fd98",
+      "kind": "crypto_call",
+      "line": 57,
+      "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.to_pem",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": true,
+        "exposure": [
+          "signature"
+        ],
+        "status": "review"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
+      "snippet": "key = key.to_pem().decode(\"utf-8\")",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "key_loading",
+      "file": "jose/backends/cryptography_backend.py",
       "form": "call",
       "free": false,
       "id": "crypto_call-8685488bfaa11b08",
@@ -279,7 +305,7 @@
       "file": "jose/backends/cryptography_backend.py",
       "form": "operation",
       "free": false,
-      "id": "crypto_call-d22c64dcb04d550c",
+      "id": "crypto_call-773f968626e9fd45",
       "kind": "crypto_call",
       "line": 104,
       "name": "cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePrivateNumbers.private_key",
@@ -307,7 +333,7 @@
       "file": "jose/backends/cryptography_backend.py",
       "form": "operation",
       "free": false,
-      "id": "crypto_call-44c2d0ce316e994b",
+      "id": "crypto_call-ace7c1170e453998",
       "kind": "crypto_call",
       "line": 106,
       "name": "cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePublicNumbers.public_key",
@@ -361,7 +387,7 @@
       "file": "jose/backends/cryptography_backend.py",
       "form": "operation",
       "free": false,
-      "id": "crypto_call-9316d611f6a31641",
+      "id": "crypto_call-c22b06243657a728",
       "kind": "crypto_call",
       "line": 139,
       "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.sign",
@@ -415,7 +441,7 @@
       "file": "jose/backends/cryptography_backend.py",
       "form": "operation",
       "free": false,
-      "id": "crypto_call-cf2f253c96d8a4b4",
+      "id": "crypto_call-934d1f06811cb03f",
       "kind": "crypto_call",
       "line": 145,
       "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.verify",
@@ -432,6 +458,188 @@
       "scored": false,
       "selection": "unspecified",
       "snippet": "self.prepared_key.verify(signature, msg, ec.ECDSA(self.hash_alg()))",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "key_loading",
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-0dfc1c01a9b5ccf8",
+      "kind": "crypto_call",
+      "line": 156,
+      "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.public_key",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": true,
+        "exposure": [
+          "signature"
+        ],
+        "status": "review"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
+      "snippet": "return self.__class__(self.prepared_key.public_key(), self._algorithm)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "key_loading",
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-6723c0b6450fdf72",
+      "kind": "crypto_call",
+      "line": 160,
+      "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.public_bytes",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": true,
+        "exposure": [
+          "signature"
+        ],
+        "status": "review"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
+      "snippet": "pem = self.prepared_key.public_bytes(",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "key_loading",
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-a353b89fd787c525",
+      "kind": "crypto_call",
+      "line": 164,
+      "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.private_bytes",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": true,
+        "exposure": [
+          "signature"
+        ],
+        "status": "review"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
+      "snippet": "pem = self.prepared_key.private_bytes(",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "key_loading",
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-bc07af2f313ad497",
+      "kind": "crypto_call",
+      "line": 173,
+      "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.public_key",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": true,
+        "exposure": [
+          "signature"
+        ],
+        "status": "review"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
+      "snippet": "public_key = self.prepared_key.public_key()",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "key_loading",
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-a25926da1c9faad4",
+      "kind": "crypto_call",
+      "line": 192,
+      "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.public_key.public_numbers",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": true,
+        "exposure": [
+          "signature"
+        ],
+        "status": "review"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
+      "snippet": "\"x\": long_to_base64(public_key.public_numbers().x, size=key_size).decode(\"ASCII\"),",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "key_loading",
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-c131c9cd2c2e0c9b",
+      "kind": "crypto_call",
+      "line": 193,
+      "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.public_key.public_numbers",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": true,
+        "exposure": [
+          "signature"
+        ],
+        "status": "review"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
+      "snippet": "\"y\": long_to_base64(public_key.public_numbers().y, size=key_size).decode(\"ASCII\"),",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "key_loading",
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-12e94b6106287667",
+      "kind": "crypto_call",
+      "line": 197,
+      "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.private_numbers",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": true,
+        "exposure": [
+          "signature"
+        ],
+        "status": "review"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
+      "snippet": "private_value = self.prepared_key.private_numbers().private_value",
       "weak": false
     },
     {
@@ -685,7 +893,7 @@
       "file": "jose/backends/cryptography_backend.py",
       "form": "operation",
       "free": false,
-      "id": "crypto_call-9e1afe81ecc5a7d0",
+      "id": "crypto_call-cd3903be517ff0b7",
       "kind": "crypto_call",
       "line": 268,
       "name": "cryptography.hazmat.primitives.asymmetric.rsa.RSAPublicNumbers.public_key",
@@ -853,7 +1061,7 @@
       "file": "jose/backends/cryptography_backend.py",
       "form": "operation",
       "free": false,
-      "id": "crypto_call-286d5929859b1035",
+      "id": "crypto_call-c9b4aa70c0220fbc",
       "kind": "crypto_call",
       "line": 298,
       "name": "cryptography.hazmat.primitives.asymmetric.rsa.RSAPrivateNumbers.private_key",
@@ -899,6 +1107,32 @@
       "weak": false
     },
     {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "key_loading",
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-0303a5eed63be526",
+      "kind": "crypto_call",
+      "line": 302,
+      "name": "cryptography.x509.load_pem_x509_certificate.public_key",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": true,
+        "exposure": [
+          "signature"
+        ],
+        "status": "review"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
+      "snippet": "self.prepared_key = key.public_key()",
+      "weak": false
+    },
+    {
       "algorithm": "RSA",
       "algorithms": [
         "RSA"
@@ -933,7 +1167,7 @@
       "file": "jose/backends/cryptography_backend.py",
       "form": "operation",
       "free": false,
-      "id": "crypto_call-9eba9f4169b92550",
+      "id": "crypto_call-51d64ef71313de0b",
       "kind": "crypto_call",
       "line": 306,
       "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.sign",
@@ -987,7 +1221,319 @@
       "file": "jose/backends/cryptography_backend.py",
       "form": "operation",
       "free": false,
-      "id": "crypto_call-4043a1549a16ffb4",
+      "id": "crypto_call-27123ba11a910fd3",
+      "kind": "crypto_call",
+      "line": 327,
+      "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.public_key",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": true,
+        "exposure": [
+          "signature"
+        ],
+        "status": "review"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
+      "snippet": "return self.__class__(self.prepared_key.public_key(), self._algorithm)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "key_loading",
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-11a8e0428716ce8b",
+      "kind": "crypto_call",
+      "line": 337,
+      "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.public_bytes",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": true,
+        "exposure": [
+          "signature"
+        ],
+        "status": "review"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
+      "snippet": "pem = self.prepared_key.public_bytes(encoding=serialization.Encoding.PEM, format=fmt)",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "key_loading",
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-4e727ac76ed0f3aa",
+      "kind": "crypto_call",
+      "line": 347,
+      "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.private_bytes",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": true,
+        "exposure": [
+          "signature"
+        ],
+        "status": "review"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
+      "snippet": "return self.prepared_key.private_bytes(",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "key_loading",
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-b794bca7632c8f94",
+      "kind": "crypto_call",
+      "line": 353,
+      "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.public_key",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": true,
+        "exposure": [
+          "signature"
+        ],
+        "status": "review"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
+      "snippet": "public_key = self.prepared_key.public_key()",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "key_loading",
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-0423d77dbc7480db",
+      "kind": "crypto_call",
+      "line": 360,
+      "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.public_key.public_numbers",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": true,
+        "exposure": [
+          "signature"
+        ],
+        "status": "review"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
+      "snippet": "\"n\": long_to_base64(public_key.public_numbers().n).decode(\"ASCII\"),",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "key_loading",
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-efa69baf2be88ede",
+      "kind": "crypto_call",
+      "line": 361,
+      "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.public_key.public_numbers",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": true,
+        "exposure": [
+          "signature"
+        ],
+        "status": "review"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
+      "snippet": "\"e\": long_to_base64(public_key.public_numbers().e).decode(\"ASCII\"),",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "key_loading",
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-cf69123e28d5da63",
+      "kind": "crypto_call",
+      "line": 367,
+      "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.private_numbers",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": true,
+        "exposure": [
+          "signature"
+        ],
+        "status": "review"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
+      "snippet": "\"d\": long_to_base64(self.prepared_key.private_numbers().d).decode(\"ASCII\"),",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "key_loading",
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-1b1f717ca86def4e",
+      "kind": "crypto_call",
+      "line": 368,
+      "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.private_numbers",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": true,
+        "exposure": [
+          "signature"
+        ],
+        "status": "review"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
+      "snippet": "\"p\": long_to_base64(self.prepared_key.private_numbers().p).decode(\"ASCII\"),",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "key_loading",
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-39c90979ac61bda4",
+      "kind": "crypto_call",
+      "line": 369,
+      "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.private_numbers",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": true,
+        "exposure": [
+          "signature"
+        ],
+        "status": "review"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
+      "snippet": "\"q\": long_to_base64(self.prepared_key.private_numbers().q).decode(\"ASCII\"),",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "key_loading",
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-397ac20dbf457e79",
+      "kind": "crypto_call",
+      "line": 370,
+      "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.private_numbers",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": true,
+        "exposure": [
+          "signature"
+        ],
+        "status": "review"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
+      "snippet": "\"dp\": long_to_base64(self.prepared_key.private_numbers().dmp1).decode(\"ASCII\"),",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "key_loading",
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-d53fb18b215a4f49",
+      "kind": "crypto_call",
+      "line": 371,
+      "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.private_numbers",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": true,
+        "exposure": [
+          "signature"
+        ],
+        "status": "review"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
+      "snippet": "\"dq\": long_to_base64(self.prepared_key.private_numbers().dmq1).decode(\"ASCII\"),",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "key_loading",
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-ce514ea01487f34a",
+      "kind": "crypto_call",
+      "line": 372,
+      "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.private_numbers",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": true,
+        "exposure": [
+          "signature"
+        ],
+        "status": "review"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
+      "snippet": "\"qi\": long_to_base64(self.prepared_key.private_numbers().iqmp).decode(\"ASCII\"),",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "key_loading",
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-5a8e41ba54df1a47",
       "kind": "crypto_call",
       "line": 380,
       "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.encrypt",
@@ -1013,7 +1559,7 @@
       "file": "jose/backends/cryptography_backend.py",
       "form": "operation",
       "free": false,
-      "id": "crypto_call-1ae11a31942b0664",
+      "id": "crypto_call-3160a17791dce3e4",
       "kind": "crypto_call",
       "line": 388,
       "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.decrypt",
@@ -1379,7 +1925,7 @@
       "file": "jose/backends/cryptography_backend.py",
       "form": "operation",
       "free": false,
-      "id": "crypto_call-83ada9cf01553253",
+      "id": "crypto_call-2779327478b0ca32",
       "kind": "crypto_call",
       "line": 463,
       "name": "cryptography.hazmat.primitives.ciphers.aead.AESGCM.encrypt",
@@ -1431,7 +1977,7 @@
       "file": "jose/backends/cryptography_backend.py",
       "form": "operation",
       "free": false,
-      "id": "crypto_call-fb99c2c0d3744703",
+      "id": "crypto_call-cad1705547909390",
       "kind": "crypto_call",
       "line": 468,
       "name": "cryptography.hazmat.primitives.ciphers.aead.AESGCM.encryptor",
@@ -1483,7 +2029,7 @@
       "file": "jose/backends/cryptography_backend.py",
       "form": "operation",
       "free": false,
-      "id": "crypto_call-c8704602d989c58b",
+      "id": "crypto_call-81b841b29b5f3d2d",
       "kind": "crypto_call",
       "line": 489,
       "name": "cryptography.hazmat.primitives.ciphers.aead.AESGCM.decrypt",
@@ -1535,7 +2081,7 @@
       "file": "jose/backends/cryptography_backend.py",
       "form": "operation",
       "free": false,
-      "id": "crypto_call-05e963c4f6841870",
+      "id": "crypto_call-972d2d8fcd61aa95",
       "kind": "crypto_call",
       "line": 494,
       "name": "cryptography.hazmat.primitives.ciphers.aead.AESGCM.decryptor",
@@ -1691,7 +2237,7 @@
       "file": "jose/backends/cryptography_backend.py",
       "form": "operation",
       "free": false,
-      "id": "crypto_call-bfd28e433fa8e754",
+      "id": "crypto_call-8c6a60c7055c4f07",
       "kind": "crypto_call",
       "line": 582,
       "name": "cryptography.hazmat.primitives.hmac.HMAC.verify",
@@ -1853,7 +2399,7 @@
       "file": "jose/backends/ecdsa_backend.py",
       "form": "operation",
       "free": false,
-      "id": "crypto_call-d96126f857927518",
+      "id": "crypto_call-f3c3cfb16f595d51",
       "kind": "crypto_call",
       "line": 99,
       "name": "ecdsa.VerifyingKey.from_pem.sign",
@@ -1881,7 +2427,7 @@
       "file": "jose/backends/ecdsa_backend.py",
       "form": "operation",
       "free": false,
-      "id": "crypto_call-e1eac1e88a479f10",
+      "id": "crypto_call-4c96372302f0d46d",
       "kind": "crypto_call",
       "line": 105,
       "name": "ecdsa.VerifyingKey.from_pem.verify",
@@ -1898,6 +2444,114 @@
       "scored": false,
       "selection": "literal",
       "snippet": "return self.prepared_key.verify(",
+      "weak": false
+    },
+    {
+      "algorithm": "ECDSA",
+      "algorithms": [
+        "ECDSA"
+      ],
+      "category": "key_loading",
+      "file": "jose/backends/ecdsa_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-3a4169379429000f",
+      "kind": "crypto_call",
+      "line": 117,
+      "name": "ecdsa.VerifyingKey.from_pem.get_verifying_key",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "literal",
+      "snippet": "return self.__class__(self.prepared_key.get_verifying_key(), self._algorithm)",
+      "weak": false
+    },
+    {
+      "algorithm": "ECDSA",
+      "algorithms": [
+        "ECDSA"
+      ],
+      "category": "key_loading",
+      "file": "jose/backends/ecdsa_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-fc7c6cb49be033af",
+      "kind": "crypto_call",
+      "line": 120,
+      "name": "ecdsa.VerifyingKey.from_pem.to_pem",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "literal",
+      "snippet": "return self.prepared_key.to_pem()",
+      "weak": false
+    },
+    {
+      "algorithm": "ECDSA",
+      "algorithms": [
+        "ECDSA"
+      ],
+      "category": "key_loading",
+      "file": "jose/backends/ecdsa_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-58ed2d0f1de51235",
+      "kind": "crypto_call",
+      "line": 124,
+      "name": "ecdsa.VerifyingKey.from_pem.get_verifying_key",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "literal",
+      "snippet": "public_key = self.prepared_key.get_verifying_key()",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "randomness",
+      "file": "jose/backends/native.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-6133f8aa2904a22f",
+      "kind": "crypto_call",
+      "line": 12,
+      "name": "os.urandom",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
+      "snippet": "return bytes(os.urandom(num_bytes))",
       "weak": false
     },
     {
@@ -2041,6 +2695,34 @@
       "file": "jose/backends/rsa_backend.py",
       "form": "call",
       "free": false,
+      "id": "crypto_call-68b48020ed51f4ba",
+      "kind": "crypto_call",
+      "line": 155,
+      "name": "rsa.PublicKey.load_pkcs1_openssl_pem",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "self._prepared_key = pyrsa.PublicKey.load_pkcs1_openssl_pem(key)",
+      "weak": false
+    },
+    {
+      "algorithm": "RSA",
+      "algorithms": [
+        "RSA"
+      ],
+      "category": "key_loading",
+      "file": "jose/backends/rsa_backend.py",
+      "form": "call",
+      "free": false,
       "id": "crypto_call-7c32f4f466290bae",
       "kind": "crypto_call",
       "line": 158,
@@ -2086,6 +2768,90 @@
       "scored": true,
       "selection": "literal",
       "snippet": "self._prepared_key = pyrsa.PrivateKey.load_pkcs1(pkcs1_key, format=\"DER\")",
+      "weak": false
+    },
+    {
+      "algorithm": "RSA",
+      "algorithms": [
+        "RSA"
+      ],
+      "category": "key_loading",
+      "file": "jose/backends/rsa_backend.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-d8d494caee827db0",
+      "kind": "crypto_call",
+      "line": 183,
+      "name": "rsa.PublicKey",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "return pyrsa.PublicKey(e=e, n=n)",
+      "weak": false
+    },
+    {
+      "algorithm": "RSA",
+      "algorithms": [
+        "RSA"
+      ],
+      "category": "key_loading",
+      "file": "jose/backends/rsa_backend.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-0e4d9922f5f21d7b",
+      "kind": "crypto_call",
+      "line": 198,
+      "name": "rsa.PrivateKey",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "return pyrsa.PrivateKey(e=e, n=n, d=d, p=p, q=q)",
+      "weak": false
+    },
+    {
+      "algorithm": "RSA",
+      "algorithms": [
+        "RSA"
+      ],
+      "category": "key_loading",
+      "file": "jose/backends/rsa_backend.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-917ac02ab6900387",
+      "kind": "crypto_call",
+      "line": 201,
+      "name": "rsa.PrivateKey",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "return pyrsa.PrivateKey(n=n, e=e, d=d, p=p, q=q)",
       "weak": false
     },
     {
@@ -2142,6 +2908,118 @@
       "scored": true,
       "selection": "literal",
       "snippet": "pyrsa.verify(msg, sig, self._prepared_key)",
+      "weak": false
+    },
+    {
+      "algorithm": "RSA",
+      "algorithms": [
+        "RSA"
+      ],
+      "category": "key_loading",
+      "file": "jose/backends/rsa_backend.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-2420856b38cf41d2",
+      "kind": "crypto_call",
+      "line": 221,
+      "name": "rsa.PublicKey",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "snippet": "return self.__class__(pyrsa.PublicKey(n=self._prepared_key.n, e=self._prepared_key.e), self._algorithm)",
+      "weak": false
+    },
+    {
+      "algorithm": "RSA",
+      "algorithms": [
+        "RSA"
+      ],
+      "category": "key_loading",
+      "file": "jose/backends/rsa_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-1912d052bb9ab543",
+      "kind": "crypto_call",
+      "line": 225,
+      "name": "rsa.PublicKey.load_pkcs1.save_pkcs1",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "literal",
+      "snippet": "der = self._prepared_key.save_pkcs1(format=\"DER\")",
+      "weak": false
+    },
+    {
+      "algorithm": "RSA",
+      "algorithms": [
+        "RSA"
+      ],
+      "category": "key_loading",
+      "file": "jose/backends/rsa_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-afe68a77e6dddb43",
+      "kind": "crypto_call",
+      "line": 235,
+      "name": "rsa.PublicKey.load_pkcs1.save_pkcs1",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "literal",
+      "snippet": "pkcs1_der = self._prepared_key.save_pkcs1(format=\"DER\")",
+      "weak": false
+    },
+    {
+      "algorithm": "RSA",
+      "algorithms": [
+        "RSA"
+      ],
+      "category": "key_loading",
+      "file": "jose/backends/rsa_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-1fdb163f37a55384",
+      "kind": "crypto_call",
+      "line": 239,
+      "name": "rsa.PublicKey.load_pkcs1.save_pkcs1",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "literal",
+      "snippet": "der = self._prepared_key.save_pkcs1(format=\"DER\")",
       "weak": false
     },
     {
@@ -2654,6 +3532,64 @@
       "weak": false
     },
     {
+      "algorithm": "ECC",
+      "algorithms": [
+        "ECC",
+        "ECC-P256"
+      ],
+      "category": "key_loading",
+      "file": "tests/algorithms/test_EC.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-2a8f9f770ec4ede7",
+      "kind": "crypto_call",
+      "line": 239,
+      "name": "cryptography.hazmat.primitives.asymmetric.ec.generate_private_key.public_key.public_bytes",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "test",
+      "scored": false,
+      "selection": "literal",
+      "snippet": "PUBKEY = KEY.public_key().public_bytes(",
+      "weak": false
+    },
+    {
+      "algorithm": "ECC",
+      "algorithms": [
+        "ECC",
+        "ECC-P256"
+      ],
+      "category": "key_loading",
+      "file": "tests/algorithms/test_EC.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-9413248b4e1822b6",
+      "kind": "crypto_call",
+      "line": 239,
+      "name": "cryptography.hazmat.primitives.asymmetric.ec.generate_private_key.public_key",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "test",
+      "scored": false,
+      "selection": "literal",
+      "snippet": "PUBKEY = KEY.public_key().public_bytes(",
+      "weak": false
+    },
+    {
       "algorithm": "HMAC",
       "algorithms": [
         "HMAC",
@@ -2730,6 +3666,34 @@
       "scored": true,
       "selection": "literal",
       "snippet": "key = pyca_rsa.RSAPublicNumbers(",
+      "weak": false
+    },
+    {
+      "algorithm": "RSA",
+      "algorithms": [
+        "RSA"
+      ],
+      "category": "key_loading",
+      "file": "tests/algorithms/test_RSA.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-07a19eb85116a6db",
+      "kind": "crypto_call",
+      "line": 231,
+      "name": "cryptography.hazmat.primitives.asymmetric.rsa.RSAPublicNumbers.public_key",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "test",
+      "scored": false,
+      "selection": "literal",
+      "snippet": ").public_key(default_backend())",
       "weak": false
     },
     {

@@ -1,11 +1,11 @@
 {
   "agility_score": 56.681325,
-  "commit_sha": "1d41a6478e1562e68ff667fcd703356acf085f68",
-  "findings": 147,
+  "commit_sha": "16231abfd1d8eab4953e8779b3017b859c88565e",
+  "findings": 187,
   "proposals": 0,
   "refusals": 0,
   "repo": "jpadilla/pyjwt",
-  "sites": 110,
+  "sites": 150,
   "status": "scored",
   "steps": 9
 }

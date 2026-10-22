@@ -1,4 +1,53 @@
 {
-  "findings": [],
+  "findings": [
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "randomness",
+      "file": "tests/test_utils/test_open_file.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-69d841afc699dfe8",
+      "kind": "crypto_call",
+      "line": 55,
+      "name": "os.urandom",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": false,
+      "selection": "unspecified",
+      "snippet": "result = runner.invoke(cli, [\"-\"], input=os.urandom(16))",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "randomness",
+      "file": "tests/test_utils/test_open_file.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-47b1932dd0a07dc6",
+      "kind": "crypto_call",
+      "line": 77,
+      "name": "os.urandom",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": false,
+      "selection": "unspecified",
+      "snippet": "path.write_bytes(os.urandom(16))",
+      "weak": false
+    }
+  ],
   "version": 1
 }

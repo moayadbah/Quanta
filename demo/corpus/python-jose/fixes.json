@@ -6,11 +6,14 @@
           "after": "SHA256",
           "before": "SHA1",
           "end": 7578,
+          "extra": [],
           "id": "3bb69238173e42ad062fc822",
           "import_alias": "",
           "import_module": "",
           "import_name": "",
           "line": 209,
+          "line_after": "    RSA_OAEP = padding.OAEP(padding.MGF1(hashes.SHA256()), hashes.SHA1(), None)",
+          "line_before": "    RSA_OAEP = padding.OAEP(padding.MGF1(hashes.SHA1()), hashes.SHA1(), None)",
           "note": "SHA-256 changes digest values and length. Check stored hashes, signatures, protocols, fixtures and consumers before merging. It is not a password hashing scheme.",
           "rule": "weak-hash-to-sha256",
           "start": 7574
@@ -19,11 +22,14 @@
           "after": "SHA256",
           "before": "SHA1",
           "end": 7594,
+          "extra": [],
           "id": "f85fb9fdc4d1751ed94e5770",
           "import_alias": "",
           "import_module": "",
           "import_name": "",
           "line": 209,
+          "line_after": "    RSA_OAEP = padding.OAEP(padding.MGF1(hashes.SHA1()), hashes.SHA256(), None)",
+          "line_before": "    RSA_OAEP = padding.OAEP(padding.MGF1(hashes.SHA1()), hashes.SHA1(), None)",
           "note": "SHA-256 changes digest values and length. Check stored hashes, signatures, protocols, fixtures and consumers before merging. It is not a password hashing scheme.",
           "rule": "weak-hash-to-sha256",
           "start": 7590
@@ -32,6 +38,1415 @@
       "path": "jose/backends/cryptography_backend.py",
       "sha256": "bf55ea3ba3c8529630c8002c3286f5143f43e2aeab3f07d7ec2195f8ac459405",
       "source": "import math\nimport warnings\n\nfrom cryptography.exceptions import InvalidSignature, InvalidTag\nfrom cryptography.hazmat.backends import default_backend\nfrom cryptography.hazmat.primitives import hashes, hmac, serialization\nfrom cryptography.hazmat.primitives.asymmetric import ec, padding, rsa\nfrom cryptography.hazmat.primitives.asymmetric.utils import decode_dss_signature, encode_dss_signature\nfrom cryptography.hazmat.primitives.ciphers import Cipher, aead, algorithms, modes\nfrom cryptography.hazmat.primitives.keywrap import InvalidUnwrap, aes_key_unwrap, aes_key_wrap\nfrom cryptography.hazmat.primitives.padding import PKCS7\nfrom cryptography.hazmat.primitives.serialization import load_pem_private_key, load_pem_public_key\nfrom cryptography.utils import int_to_bytes\nfrom cryptography.x509 import load_pem_x509_certificate\n\nfrom ..constants import ALGORITHMS\nfrom ..exceptions import JWEError, JWKError\nfrom ..utils import (\n    base64_to_long,\n    base64url_decode,\n    base64url_encode,\n    ensure_binary,\n    is_pem_format,\n    is_ssh_key,\n    long_to_base64,\n)\nfrom . import get_random_bytes\nfrom .base import Key\n\n_binding = None\n\n\nclass CryptographyECKey(Key):\n    SHA256 = hashes.SHA256\n    SHA384 = hashes.SHA384\n    SHA512 = hashes.SHA512\n\n    def __init__(self, key, algorithm, cryptography_backend=default_backend):\n        if algorithm not in ALGORITHMS.EC:\n            raise JWKError(\"hash_alg: %s is not a valid hash algorithm\" % algorithm)\n\n        self.hash_alg = {\n            ALGORITHMS.ES256: self.SHA256,\n            ALGORITHMS.ES384: self.SHA384,\n            ALGORITHMS.ES512: self.SHA512,\n        }.get(algorithm)\n        self._algorithm = algorithm\n\n        self.cryptography_backend = cryptography_backend\n\n        if hasattr(key, \"public_bytes\") or hasattr(key, \"private_bytes\"):\n            self.prepared_key = key\n            return\n\n        if hasattr(key, \"to_pem\"):\n            # convert to PEM and let cryptography below load it as PEM\n            key = key.to_pem().decode(\"utf-8\")\n\n        if isinstance(key, dict):\n            self.prepared_key = self._process_jwk(key)\n            return\n\n        if isinstance(key, str):\n            key = key.encode(\"utf-8\")\n\n        if isinstance(key, bytes):\n            # Attempt to load key. We don't know if it's\n            # a Public Key or a Private Key, so we try\n            # the Public Key first.\n            try:\n                try:\n                    key = load_pem_public_key(key, self.cryptography_backend())\n                except ValueError:\n                    key = load_pem_private_key(key, password=None, backend=self.cryptography_backend())\n            except Exception as e:\n                raise JWKError(e)\n\n            self.prepared_key = key\n            return\n\n        raise JWKError(\"Unable to parse an ECKey from key: %s\" % key)\n\n    def _process_jwk(self, jwk_dict):\n        if not jwk_dict.get(\"kty\") == \"EC\":\n            raise JWKError(\"Incorrect key type. Expected: 'EC', Received: %s\" % jwk_dict.get(\"kty\"))\n\n        if not all(k in jwk_dict for k in [\"x\", \"y\", \"crv\"]):\n            raise JWKError(\"Mandatory parameters are missing\")\n\n        x = base64_to_long(jwk_dict.get(\"x\"))\n        y = base64_to_long(jwk_dict.get(\"y\"))\n        curve = {\n            \"P-256\": ec.SECP256R1,\n            \"P-384\": ec.SECP384R1,\n            \"P-521\": ec.SECP521R1,\n        }[jwk_dict[\"crv\"]]\n\n        public = ec.EllipticCurvePublicNumbers(x, y, curve())\n\n        if \"d\" in jwk_dict:\n            d = base64_to_long(jwk_dict.get(\"d\"))\n            private = ec.EllipticCurvePrivateNumbers(d, public)\n\n            return private.private_key(self.cryptography_backend())\n        else:\n            return public.public_key(self.cryptography_backend())\n\n    def _sig_component_length(self):\n        \"\"\"Determine the correct serialization length for an encoded signature component.\n\n        This is the number of bytes required to encode the maximum key value.\n        \"\"\"\n        return int(math.ceil(self.prepared_key.key_size / 8.0))\n\n    def _der_to_raw(self, der_signature):\n        \"\"\"Convert signature from DER encoding to RAW encoding.\"\"\"\n        r, s = decode_dss_signature(der_signature)\n        component_length = self._sig_component_length()\n        return int_to_bytes(r, component_length) + int_to_bytes(s, component_length)\n\n    def _raw_to_der(self, raw_signature):\n        \"\"\"Convert signature from RAW encoding to DER encoding.\"\"\"\n        component_length = self._sig_component_length()\n        if len(raw_signature) != int(2 * component_length):\n            raise ValueError(\"Invalid signature\")\n\n        r_bytes = raw_signature[:component_length]\n        s_bytes = raw_signature[component_length:]\n        r = int.from_bytes(r_bytes, \"big\")\n        s = int.from_bytes(s_bytes, \"big\")\n        return encode_dss_signature(r, s)\n\n    def sign(self, msg):\n        if self.hash_alg.digest_size * 8 > self.prepared_key.curve.key_size:\n            raise TypeError(\n                \"this curve (%s) is too short \"\n                \"for your digest (%d)\" % (self.prepared_key.curve.name, 8 * self.hash_alg.digest_size)\n            )\n        signature = self.prepared_key.sign(msg, ec.ECDSA(self.hash_alg()))\n        return self._der_to_raw(signature)\n\n    def verify(self, msg, sig):\n        try:\n            signature = self._raw_to_der(sig)\n            self.prepared_key.verify(signature, msg, ec.ECDSA(self.hash_alg()))\n            return True\n        except Exception:\n            return False\n\n    def is_public(self):\n        return hasattr(self.prepared_key, \"public_bytes\")\n\n    def public_key(self):\n        if self.is_public():\n            return self\n        return self.__class__(self.prepared_key.public_key(), self._algorithm)\n\n    def to_pem(self):\n        if self.is_public():\n            pem = self.prepared_key.public_bytes(\n                encoding=serialization.Encoding.PEM, format=serialization.PublicFormat.SubjectPublicKeyInfo\n            )\n            return pem\n        pem = self.prepared_key.private_bytes(\n            encoding=serialization.Encoding.PEM,\n            format=serialization.PrivateFormat.TraditionalOpenSSL,\n            encryption_algorithm=serialization.NoEncryption(),\n        )\n        return pem\n\n    def to_dict(self):\n        if not self.is_public():\n            public_key = self.prepared_key.public_key()\n        else:\n            public_key = self.prepared_key\n\n        crv = {\n            \"secp256r1\": \"P-256\",\n            \"secp384r1\": \"P-384\",\n            \"secp521r1\": \"P-521\",\n        }[self.prepared_key.curve.name]\n\n        # Calculate the key size in bytes. Section 6.2.1.2 and 6.2.1.3 of\n        # RFC7518 prescribes that the 'x', 'y' and 'd' parameters of the curve\n        # points must be encoded as octed-strings of this length.\n        key_size = (self.prepared_key.curve.key_size + 7) // 8\n\n        data = {\n            \"alg\": self._algorithm,\n            \"kty\": \"EC\",\n            \"crv\": crv,\n            \"x\": long_to_base64(public_key.public_numbers().x, size=key_size).decode(\"ASCII\"),\n            \"y\": long_to_base64(public_key.public_numbers().y, size=key_size).decode(\"ASCII\"),\n        }\n\n        if not self.is_public():\n            private_value = self.prepared_key.private_numbers().private_value\n            data[\"d\"] = long_to_base64(private_value, size=key_size).decode(\"ASCII\")\n\n        return data\n\n\nclass CryptographyRSAKey(Key):\n    SHA256 = hashes.SHA256\n    SHA384 = hashes.SHA384\n    SHA512 = hashes.SHA512\n\n    RSA1_5 = padding.PKCS1v15()\n    RSA_OAEP = padding.OAEP(padding.MGF1(hashes.SHA1()), hashes.SHA1(), None)\n    RSA_OAEP_256 = padding.OAEP(padding.MGF1(hashes.SHA256()), hashes.SHA256(), None)\n\n    def __init__(self, key, algorithm, cryptography_backend=default_backend):\n        if algorithm not in ALGORITHMS.RSA:\n            raise JWKError(\"hash_alg: %s is not a valid hash algorithm\" % algorithm)\n\n        self.hash_alg = {\n            ALGORITHMS.RS256: self.SHA256,\n            ALGORITHMS.RS384: self.SHA384,\n            ALGORITHMS.RS512: self.SHA512,\n        }.get(algorithm)\n        self._algorithm = algorithm\n\n        self.padding = {\n            ALGORITHMS.RSA1_5: self.RSA1_5,\n            ALGORITHMS.RSA_OAEP: self.RSA_OAEP,\n            ALGORITHMS.RSA_OAEP_256: self.RSA_OAEP_256,\n        }.get(algorithm)\n\n        self.cryptography_backend = cryptography_backend\n\n        # if it conforms to RSAPublicKey or RSAPrivateKey interface\n        if (hasattr(key, \"public_bytes\") and hasattr(key, \"public_numbers\")) or hasattr(key, \"private_bytes\"):\n            self.prepared_key = key\n            return\n\n        if isinstance(key, dict):\n            self.prepared_key = self._process_jwk(key)\n            return\n\n        if isinstance(key, str):\n            key = key.encode(\"utf-8\")\n\n        if isinstance(key, bytes):\n            try:\n                if key.startswith(b\"-----BEGIN CERTIFICATE-----\"):\n                    self._process_cert(key)\n                    return\n\n                try:\n                    self.prepared_key = load_pem_public_key(key, self.cryptography_backend())\n                except ValueError:\n                    self.prepared_key = load_pem_private_key(key, password=None, backend=self.cryptography_backend())\n            except Exception as e:\n                raise JWKError(e)\n            return\n\n        raise JWKError(\"Unable to parse an RSA_JWK from key: %s\" % key)\n\n    def _process_jwk(self, jwk_dict):\n        if not jwk_dict.get(\"kty\") == \"RSA\":\n            raise JWKError(\"Incorrect key type. Expected: 'RSA', Received: %s\" % jwk_dict.get(\"kty\"))\n\n        e = base64_to_long(jwk_dict.get(\"e\", 256))\n        n = base64_to_long(jwk_dict.get(\"n\"))\n        public = rsa.RSAPublicNumbers(e, n)\n\n        if \"d\" not in jwk_dict:\n            return public.public_key(self.cryptography_backend())\n        else:\n            # This is a private key.\n            d = base64_to_long(jwk_dict.get(\"d\"))\n\n            extra_params = [\"p\", \"q\", \"dp\", \"dq\", \"qi\"]\n\n            if any(k in jwk_dict for k in extra_params):\n                # Precomputed private key parameters are available.\n                if not all(k in jwk_dict for k in extra_params):\n                    # These values must be present when 'p' is according to\n                    # Section 6.3.2 of RFC7518, so if they are not we raise\n                    # an error.\n                    raise JWKError(\"Precomputed private key parameters are incomplete.\")\n\n                p = base64_to_long(jwk_dict[\"p\"])\n                q = base64_to_long(jwk_dict[\"q\"])\n                dp = base64_to_long(jwk_dict[\"dp\"])\n                dq = base64_to_long(jwk_dict[\"dq\"])\n                qi = base64_to_long(jwk_dict[\"qi\"])\n            else:\n                # The precomputed private key parameters are not available,\n                # so we use cryptography's API to fill them in.\n                p, q = rsa.rsa_recover_prime_factors(n, e, d)\n                dp = rsa.rsa_crt_dmp1(d, p)\n                dq = rsa.rsa_crt_dmq1(d, q)\n                qi = rsa.rsa_crt_iqmp(p, q)\n\n            private = rsa.RSAPrivateNumbers(p, q, d, dp, dq, qi, public)\n\n            return private.private_key(self.cryptography_backend())\n\n    def _process_cert(self, key):\n        key = load_pem_x509_certificate(key, self.cryptography_backend())\n        self.prepared_key = key.public_key()\n\n    def sign(self, msg):\n        try:\n            signature = self.prepared_key.sign(msg, padding.PKCS1v15(), self.hash_alg())\n        except Exception as e:\n            raise JWKError(e)\n        return signature\n\n    def verify(self, msg, sig):\n        if not self.is_public():\n            warnings.warn(\"Attempting to verify a message with a private key. \" \"This is not recommended.\")\n\n        try:\n            self.public_key().prepared_key.verify(sig, msg, padding.PKCS1v15(), self.hash_alg())\n            return True\n        except InvalidSignature:\n            return False\n\n    def is_public(self):\n        return hasattr(self.prepared_key, \"public_bytes\")\n\n    def public_key(self):\n        if self.is_public():\n            return self\n        return self.__class__(self.prepared_key.public_key(), self._algorithm)\n\n    def to_pem(self, pem_format=\"PKCS8\"):\n        if self.is_public():\n            if pem_format == \"PKCS8\":\n                fmt = serialization.PublicFormat.SubjectPublicKeyInfo\n            elif pem_format == \"PKCS1\":\n                fmt = serialization.PublicFormat.PKCS1\n            else:\n                raise ValueError(\"Invalid format specified: %r\" % pem_format)\n            pem = self.prepared_key.public_bytes(encoding=serialization.Encoding.PEM, format=fmt)\n            return pem\n\n        if pem_format == \"PKCS8\":\n            fmt = serialization.PrivateFormat.PKCS8\n        elif pem_format == \"PKCS1\":\n            fmt = serialization.PrivateFormat.TraditionalOpenSSL\n        else:\n            raise ValueError(\"Invalid format specified: %r\" % pem_format)\n\n        return self.prepared_key.private_bytes(\n            encoding=serialization.Encoding.PEM, format=fmt, encryption_algorithm=serialization.NoEncryption()\n        )\n\n    def to_dict(self):\n        if not self.is_public():\n            public_key = self.prepared_key.public_key()\n        else:\n            public_key = self.prepared_key\n\n        data = {\n            \"alg\": self._algorithm,\n            \"kty\": \"RSA\",\n            \"n\": long_to_base64(public_key.public_numbers().n).decode(\"ASCII\"),\n            \"e\": long_to_base64(public_key.public_numbers().e).decode(\"ASCII\"),\n        }\n\n        if not self.is_public():\n            data.update(\n                {\n                    \"d\": long_to_base64(self.prepared_key.private_numbers().d).decode(\"ASCII\"),\n                    \"p\": long_to_base64(self.prepared_key.private_numbers().p).decode(\"ASCII\"),\n                    \"q\": long_to_base64(self.prepared_key.private_numbers().q).decode(\"ASCII\"),\n                    \"dp\": long_to_base64(self.prepared_key.private_numbers().dmp1).decode(\"ASCII\"),\n                    \"dq\": long_to_base64(self.prepared_key.private_numbers().dmq1).decode(\"ASCII\"),\n                    \"qi\": long_to_base64(self.prepared_key.private_numbers().iqmp).decode(\"ASCII\"),\n                }\n            )\n\n        return data\n\n    def wrap_key(self, key_data):\n        try:\n            wrapped_key = self.prepared_key.encrypt(key_data, self.padding)\n        except Exception as e:\n            raise JWEError(e)\n\n        return wrapped_key\n\n    def unwrap_key(self, wrapped_key):\n        try:\n            unwrapped_key = self.prepared_key.decrypt(wrapped_key, self.padding)\n            return unwrapped_key\n        except Exception as e:\n            raise JWEError(e)\n\n\nclass CryptographyAESKey(Key):\n    KEY_128 = (ALGORITHMS.A128GCM, ALGORITHMS.A128GCMKW, ALGORITHMS.A128KW, ALGORITHMS.A128CBC)\n    KEY_192 = (ALGORITHMS.A192GCM, ALGORITHMS.A192GCMKW, ALGORITHMS.A192KW, ALGORITHMS.A192CBC)\n    KEY_256 = (\n        ALGORITHMS.A256GCM,\n        ALGORITHMS.A256GCMKW,\n        ALGORITHMS.A256KW,\n        ALGORITHMS.A128CBC_HS256,\n        ALGORITHMS.A256CBC,\n    )\n    KEY_384 = (ALGORITHMS.A192CBC_HS384,)\n    KEY_512 = (ALGORITHMS.A256CBC_HS512,)\n\n    AES_KW_ALGS = (ALGORITHMS.A128KW, ALGORITHMS.A192KW, ALGORITHMS.A256KW)\n\n    MODES = {\n        ALGORITHMS.A128GCM: modes.GCM,\n        ALGORITHMS.A192GCM: modes.GCM,\n        ALGORITHMS.A256GCM: modes.GCM,\n        ALGORITHMS.A128CBC_HS256: modes.CBC,\n        ALGORITHMS.A192CBC_HS384: modes.CBC,\n        ALGORITHMS.A256CBC_HS512: modes.CBC,\n        ALGORITHMS.A128CBC: modes.CBC,\n        ALGORITHMS.A192CBC: modes.CBC,\n        ALGORITHMS.A256CBC: modes.CBC,\n        ALGORITHMS.A128GCMKW: modes.GCM,\n        ALGORITHMS.A192GCMKW: modes.GCM,\n        ALGORITHMS.A256GCMKW: modes.GCM,\n        ALGORITHMS.A128KW: None,\n        ALGORITHMS.A192KW: None,\n        ALGORITHMS.A256KW: None,\n    }\n\n    IV_BYTE_LENGTH_MODE_MAP = {\"CBC\": algorithms.AES.block_size // 8, \"GCM\": 96 // 8}\n\n    def __init__(self, key, algorithm):\n        if algorithm not in ALGORITHMS.AES:\n            raise JWKError(\"%s is not a valid AES algorithm\" % algorithm)\n        if algorithm not in ALGORITHMS.SUPPORTED.union(ALGORITHMS.AES_PSEUDO):\n            raise JWKError(\"%s is not a supported algorithm\" % algorithm)\n\n        self._algorithm = algorithm\n        self._mode = self.MODES.get(self._algorithm)\n\n        if algorithm in self.KEY_128 and len(key) != 16:\n            raise JWKError(f\"Key must be 128 bit for alg {algorithm}\")\n        elif algorithm in self.KEY_192 and len(key) != 24:\n            raise JWKError(f\"Key must be 192 bit for alg {algorithm}\")\n        elif algorithm in self.KEY_256 and len(key) != 32:\n            raise JWKError(f\"Key must be 256 bit for alg {algorithm}\")\n        elif algorithm in self.KEY_384 and len(key) != 48:\n            raise JWKError(f\"Key must be 384 bit for alg {algorithm}\")\n        elif algorithm in self.KEY_512 and len(key) != 64:\n            raise JWKError(f\"Key must be 512 bit for alg {algorithm}\")\n\n        self._key = key\n\n    def to_dict(self):\n        data = {\"alg\": self._algorithm, \"kty\": \"oct\", \"k\": base64url_encode(self._key)}\n        return data\n\n    def encrypt(self, plain_text, aad=None):\n        plain_text = ensure_binary(plain_text)\n        try:\n            iv_byte_length = self.IV_BYTE_LENGTH_MODE_MAP.get(self._mode.name, algorithms.AES.block_size)\n            iv = get_random_bytes(iv_byte_length)\n            mode = self._mode(iv)\n            if mode.name == \"GCM\":\n                cipher = aead.AESGCM(self._key)\n                cipher_text_and_tag = cipher.encrypt(iv, plain_text, aad)\n                cipher_text = cipher_text_and_tag[: len(cipher_text_and_tag) - 16]\n                auth_tag = cipher_text_and_tag[-16:]\n            else:\n                cipher = Cipher(algorithms.AES(self._key), mode, backend=default_backend())\n                encryptor = cipher.encryptor()\n                padder = PKCS7(algorithms.AES.block_size).padder()\n                padded_data = padder.update(plain_text)\n                padded_data += padder.finalize()\n                cipher_text = encryptor.update(padded_data) + encryptor.finalize()\n                auth_tag = None\n            return iv, cipher_text, auth_tag\n        except Exception as e:\n            raise JWEError(e)\n\n    def decrypt(self, cipher_text, iv=None, aad=None, tag=None):\n        cipher_text = ensure_binary(cipher_text)\n        try:\n            iv = ensure_binary(iv)\n            mode = self._mode(iv)\n            if mode.name == \"GCM\":\n                if tag is None:\n                    raise ValueError(\"tag cannot be None\")\n                cipher = aead.AESGCM(self._key)\n                cipher_text_and_tag = cipher_text + tag\n                try:\n                    plain_text = cipher.decrypt(iv, cipher_text_and_tag, aad)\n                except InvalidTag:\n                    raise JWEError(\"Invalid JWE Auth Tag\")\n            else:\n                cipher = Cipher(algorithms.AES(self._key), mode, backend=default_backend())\n                decryptor = cipher.decryptor()\n                padded_plain_text = decryptor.update(cipher_text)\n                padded_plain_text += decryptor.finalize()\n                unpadder = PKCS7(algorithms.AES.block_size).unpadder()\n                plain_text = unpadder.update(padded_plain_text)\n                plain_text += unpadder.finalize()\n\n            return plain_text\n        except Exception as e:\n            raise JWEError(e)\n\n    def wrap_key(self, key_data):\n        key_data = ensure_binary(key_data)\n        cipher_text = aes_key_wrap(self._key, key_data, default_backend())\n        return cipher_text  # IV, cipher text, auth tag\n\n    def unwrap_key(self, wrapped_key):\n        wrapped_key = ensure_binary(wrapped_key)\n        try:\n            plain_text = aes_key_unwrap(self._key, wrapped_key, default_backend())\n        except InvalidUnwrap as cause:\n            raise JWEError(cause)\n        return plain_text\n\n\nclass CryptographyHMACKey(Key):\n    \"\"\"\n    Performs signing and verification operations using HMAC\n    and the specified hash function.\n    \"\"\"\n\n    ALG_MAP = {ALGORITHMS.HS256: hashes.SHA256(), ALGORITHMS.HS384: hashes.SHA384(), ALGORITHMS.HS512: hashes.SHA512()}\n\n    def __init__(self, key, algorithm):\n        if algorithm not in ALGORITHMS.HMAC:\n            raise JWKError(\"hash_alg: %s is not a valid hash algorithm\" % algorithm)\n        self._algorithm = algorithm\n        self._hash_alg = self.ALG_MAP.get(algorithm)\n\n        if isinstance(key, dict):\n            self.prepared_key = self._process_jwk(key)\n            return\n\n        if not isinstance(key, str) and not isinstance(key, bytes):\n            raise JWKError(\"Expecting a string- or bytes-formatted key.\")\n\n        if isinstance(key, str):\n            key = key.encode(\"utf-8\")\n\n        if is_pem_format(key) or is_ssh_key(key):\n            raise JWKError(\n                \"The specified key is an asymmetric key or x509 certificate and\"\n                \" should not be used as an HMAC secret.\"\n            )\n\n        self.prepared_key = key\n\n    def _process_jwk(self, jwk_dict):\n        if not jwk_dict.get(\"kty\") == \"oct\":\n            raise JWKError(\"Incorrect key type. Expected: 'oct', Received: %s\" % jwk_dict.get(\"kty\"))\n\n        k = jwk_dict.get(\"k\")\n        k = k.encode(\"utf-8\")\n        k = bytes(k)\n        k = base64url_decode(k)\n\n        return k\n\n    def to_dict(self):\n        return {\n            \"alg\": self._algorithm,\n            \"kty\": \"oct\",\n            \"k\": base64url_encode(self.prepared_key).decode(\"ASCII\"),\n        }\n\n    def sign(self, msg):\n        msg = ensure_binary(msg)\n        h = hmac.HMAC(self.prepared_key, self._hash_alg, backend=default_backend())\n        h.update(msg)\n        signature = h.finalize()\n        return signature\n\n    def verify(self, msg, sig):\n        msg = ensure_binary(msg)\n        sig = ensure_binary(sig)\n        h = hmac.HMAC(self.prepared_key, self._hash_alg, backend=default_backend())\n        h.update(msg)\n        try:\n            h.verify(sig)\n            verified = True\n        except InvalidSignature:\n            verified = False\n        return verified\n"
+    }
+  ],
+  "guides": [
+    {
+      "id": "signature-hybrid-ml-dsa",
+      "sites": [
+        {
+          "algorithm": "ECC-P256",
+          "finding_id": "algo_literal-1577b08f8907955d",
+          "line": 93,
+          "name": "cryptography.hazmat.primitives.asymmetric.ec.SECP256R1",
+          "path": "jose/backends/cryptography_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "ECC-P384",
+          "finding_id": "algo_literal-40b3e903bbac414a",
+          "line": 94,
+          "name": "cryptography.hazmat.primitives.asymmetric.ec.SECP384R1",
+          "path": "jose/backends/cryptography_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "ECC-P521",
+          "finding_id": "algo_literal-a5f6e695fdfbe9f5",
+          "line": 95,
+          "name": "cryptography.hazmat.primitives.asymmetric.ec.SECP521R1",
+          "path": "jose/backends/cryptography_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "ECC",
+          "finding_id": "crypto_call-9e7eef7ae8fa7bd7",
+          "line": 98,
+          "name": "cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePublicNumbers",
+          "path": "jose/backends/cryptography_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "ECC",
+          "finding_id": "crypto_call-65311d86e027b984",
+          "line": 102,
+          "name": "cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePrivateNumbers",
+          "path": "jose/backends/cryptography_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "ECC",
+          "finding_id": "crypto_call-773f968626e9fd45",
+          "line": 104,
+          "name": "cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePrivateNumbers.private_key",
+          "path": "jose/backends/cryptography_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "ECC",
+          "finding_id": "crypto_call-ace7c1170e453998",
+          "line": 106,
+          "name": "cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePublicNumbers.public_key",
+          "path": "jose/backends/cryptography_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "ECDSA",
+          "finding_id": "algo_literal-a753d75178a58626",
+          "line": 139,
+          "name": "cryptography.hazmat.primitives.asymmetric.ec.ECDSA",
+          "path": "jose/backends/cryptography_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "ECDSA",
+          "finding_id": "algo_literal-8073962a5ee53897",
+          "line": 145,
+          "name": "cryptography.hazmat.primitives.asymmetric.ec.ECDSA",
+          "path": "jose/backends/cryptography_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "algo_literal-16ce4c4c82008478",
+          "line": 208,
+          "name": "cryptography.hazmat.primitives.asymmetric.padding.PKCS1v15",
+          "path": "jose/backends/cryptography_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "algo_literal-4f52bad3a027a453",
+          "line": 210,
+          "name": "cryptography.hazmat.primitives.asymmetric.padding.OAEP",
+          "path": "jose/backends/cryptography_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "crypto_call-77f90f85e6513f96",
+          "line": 265,
+          "name": "cryptography.hazmat.primitives.asymmetric.rsa.RSAPublicNumbers",
+          "path": "jose/backends/cryptography_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "crypto_call-cd3903be517ff0b7",
+          "line": 268,
+          "name": "cryptography.hazmat.primitives.asymmetric.rsa.RSAPublicNumbers.public_key",
+          "path": "jose/backends/cryptography_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "crypto_call-7f4beb150a9612ec",
+          "line": 291,
+          "name": "cryptography.hazmat.primitives.asymmetric.rsa.rsa_recover_prime_factors",
+          "path": "jose/backends/cryptography_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "crypto_call-93e283217f17e2e2",
+          "line": 292,
+          "name": "cryptography.hazmat.primitives.asymmetric.rsa.rsa_crt_dmp1",
+          "path": "jose/backends/cryptography_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "crypto_call-5977b6804652334b",
+          "line": 293,
+          "name": "cryptography.hazmat.primitives.asymmetric.rsa.rsa_crt_dmq1",
+          "path": "jose/backends/cryptography_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "crypto_call-3362245bb54edb20",
+          "line": 294,
+          "name": "cryptography.hazmat.primitives.asymmetric.rsa.rsa_crt_iqmp",
+          "path": "jose/backends/cryptography_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "crypto_call-b15b8d38f8660bc4",
+          "line": 296,
+          "name": "cryptography.hazmat.primitives.asymmetric.rsa.RSAPrivateNumbers",
+          "path": "jose/backends/cryptography_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "crypto_call-c9b4aa70c0220fbc",
+          "line": 298,
+          "name": "cryptography.hazmat.primitives.asymmetric.rsa.RSAPrivateNumbers.private_key",
+          "path": "jose/backends/cryptography_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "algo_literal-9e13607b6461bd7b",
+          "line": 306,
+          "name": "cryptography.hazmat.primitives.asymmetric.padding.PKCS1v15",
+          "path": "jose/backends/cryptography_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "algo_literal-aebe8dd0e44535ea",
+          "line": 316,
+          "name": "cryptography.hazmat.primitives.asymmetric.padding.PKCS1v15",
+          "path": "jose/backends/cryptography_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "ECDSA",
+          "finding_id": "crypto_call-209b5f5639acd471",
+          "line": 65,
+          "name": "ecdsa.VerifyingKey.from_pem",
+          "path": "jose/backends/ecdsa_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "ECDSA",
+          "finding_id": "crypto_call-abb5c92cca909d02",
+          "line": 67,
+          "name": "ecdsa.SigningKey.from_pem",
+          "path": "jose/backends/ecdsa_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "ECDSA",
+          "finding_id": "crypto_call-f3c3cfb16f595d51",
+          "line": 99,
+          "name": "ecdsa.VerifyingKey.from_pem.sign",
+          "path": "jose/backends/ecdsa_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "ECDSA",
+          "finding_id": "crypto_call-4c96372302f0d46d",
+          "line": 105,
+          "name": "ecdsa.VerifyingKey.from_pem.verify",
+          "path": "jose/backends/ecdsa_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "ECDSA",
+          "finding_id": "crypto_call-3a4169379429000f",
+          "line": 117,
+          "name": "ecdsa.VerifyingKey.from_pem.get_verifying_key",
+          "path": "jose/backends/ecdsa_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "ECDSA",
+          "finding_id": "crypto_call-fc7c6cb49be033af",
+          "line": 120,
+          "name": "ecdsa.VerifyingKey.from_pem.to_pem",
+          "path": "jose/backends/ecdsa_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "ECDSA",
+          "finding_id": "crypto_call-58ed2d0f1de51235",
+          "line": 124,
+          "name": "ecdsa.VerifyingKey.from_pem.get_verifying_key",
+          "path": "jose/backends/ecdsa_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "crypto_call-2ffa2740d7a96697",
+          "line": 152,
+          "name": "rsa.PublicKey.load_pkcs1",
+          "path": "jose/backends/rsa_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "crypto_call-68b48020ed51f4ba",
+          "line": 155,
+          "name": "rsa.PublicKey.load_pkcs1_openssl_pem",
+          "path": "jose/backends/rsa_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "crypto_call-7c32f4f466290bae",
+          "line": 158,
+          "name": "rsa.PrivateKey.load_pkcs1",
+          "path": "jose/backends/rsa_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "crypto_call-3ea1011db3e3520e",
+          "line": 169,
+          "name": "rsa.PrivateKey.load_pkcs1",
+          "path": "jose/backends/rsa_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "crypto_call-d8d494caee827db0",
+          "line": 183,
+          "name": "rsa.PublicKey",
+          "path": "jose/backends/rsa_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "crypto_call-0e4d9922f5f21d7b",
+          "line": 198,
+          "name": "rsa.PrivateKey",
+          "path": "jose/backends/rsa_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "crypto_call-917ac02ab6900387",
+          "line": 201,
+          "name": "rsa.PrivateKey",
+          "path": "jose/backends/rsa_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "crypto_call-bf3be195ce0044cd",
+          "line": 204,
+          "name": "rsa.sign",
+          "path": "jose/backends/rsa_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "crypto_call-e65416069e9aa13c",
+          "line": 210,
+          "name": "rsa.verify",
+          "path": "jose/backends/rsa_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "crypto_call-2420856b38cf41d2",
+          "line": 221,
+          "name": "rsa.PublicKey",
+          "path": "jose/backends/rsa_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "crypto_call-1912d052bb9ab543",
+          "line": 225,
+          "name": "rsa.PublicKey.load_pkcs1.save_pkcs1",
+          "path": "jose/backends/rsa_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "crypto_call-afe68a77e6dddb43",
+          "line": 235,
+          "name": "rsa.PublicKey.load_pkcs1.save_pkcs1",
+          "path": "jose/backends/rsa_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "crypto_call-1fdb163f37a55384",
+          "line": 239,
+          "name": "rsa.PublicKey.load_pkcs1.save_pkcs1",
+          "path": "jose/backends/rsa_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "ECDSA",
+          "finding_id": "crypto_call-ea1b57118d626ad3",
+          "line": 94,
+          "name": "ecdsa.SigningKey.from_pem",
+          "path": "tests/algorithms/test_EC.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "ECC-P256",
+          "finding_id": "algo_literal-2337801e4ba660b6",
+          "line": 106,
+          "name": "cryptography.hazmat.primitives.asymmetric.ec.SECP256R1",
+          "path": "tests/algorithms/test_EC.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "ECC-P384",
+          "finding_id": "algo_literal-cacc54e36c865302",
+          "line": 107,
+          "name": "cryptography.hazmat.primitives.asymmetric.ec.SECP384R1",
+          "path": "tests/algorithms/test_EC.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "ECC-P521",
+          "finding_id": "algo_literal-06d6a7562ddf84f0",
+          "line": 108,
+          "name": "cryptography.hazmat.primitives.asymmetric.ec.SECP521R1",
+          "path": "tests/algorithms/test_EC.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "ECC",
+          "finding_id": "crypto_call-a7829ccb04f96ea1",
+          "line": 111,
+          "name": "cryptography.hazmat.primitives.asymmetric.ec.generate_private_key",
+          "path": "tests/algorithms/test_EC.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "ECC",
+          "finding_id": "crypto_call-f8dadfaa5367e32e",
+          "line": 238,
+          "name": "cryptography.hazmat.primitives.asymmetric.ec.generate_private_key",
+          "path": "tests/algorithms/test_EC.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "ECC",
+          "finding_id": "crypto_call-9413248b4e1822b6",
+          "line": 239,
+          "name": "cryptography.hazmat.primitives.asymmetric.ec.generate_private_key.public_key",
+          "path": "tests/algorithms/test_EC.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "ECC",
+          "finding_id": "crypto_call-2a8f9f770ec4ede7",
+          "line": 239,
+          "name": "cryptography.hazmat.primitives.asymmetric.ec.generate_private_key.public_key.public_bytes",
+          "path": "tests/algorithms/test_EC.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "crypto_call-fb36de593c921eb9",
+          "line": 226,
+          "name": "cryptography.hazmat.primitives.asymmetric.rsa.RSAPublicNumbers",
+          "path": "tests/algorithms/test_RSA.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "crypto_call-07a19eb85116a6db",
+          "line": 231,
+          "name": "cryptography.hazmat.primitives.asymmetric.rsa.RSAPublicNumbers.public_key",
+          "path": "tests/algorithms/test_RSA.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "crypto_call-4fdc16bbff3ff499",
+          "line": 27,
+          "name": "jose.jwt.decode",
+          "path": "tests/test_firebase.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "crypto_call-cf072ddc33bfcd1f",
+          "line": 35,
+          "name": "jose.jwt.decode",
+          "path": "tests/test_firebase.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "crypto_call-21ef3cc4f61d872f",
+          "line": 41,
+          "name": "jose.jwt.decode",
+          "path": "tests/test_firebase.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "crypto_call-c22e36d6b8fded30",
+          "line": 76,
+          "name": "jose.jws.sign",
+          "path": "tests/test_jws.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "crypto_call-8907463a71e7c2d3",
+          "line": 332,
+          "name": "jose.jws.sign",
+          "path": "tests/test_jws.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "crypto_call-ce9ff98f934c18b6",
+          "line": 335,
+          "name": "jose.jws.verify",
+          "path": "tests/test_jws.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "crypto_call-bfe149ac3db0609f",
+          "line": 339,
+          "name": "jose.jws.verify",
+          "path": "tests/test_jws.py",
+          "role": "test"
+        }
+      ]
+    },
+    {
+      "id": "rsa-encryption-ml-kem",
+      "sites": [
+        {
+          "algorithm": "RSA",
+          "finding_id": "crypto_call-504946114e06deb6",
+          "line": 275,
+          "name": "rsa.encrypt",
+          "path": "jose/backends/rsa_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "crypto_call-505cd699767c02cd",
+          "line": 280,
+          "name": "rsa.decrypt",
+          "path": "jose/backends/rsa_backend.py",
+          "role": "source"
+        }
+      ]
+    },
+    {
+      "id": "confirm-algorithm",
+      "sites": [
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-868d11b1b5c7fd98",
+          "line": 57,
+          "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.to_pem",
+          "path": "jose/backends/cryptography_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-8685488bfaa11b08",
+          "line": 72,
+          "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key",
+          "path": "jose/backends/cryptography_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-26761db2c4923eeb",
+          "line": 74,
+          "name": "cryptography.hazmat.primitives.serialization.load_pem_private_key",
+          "path": "jose/backends/cryptography_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-c22b06243657a728",
+          "line": 139,
+          "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.sign",
+          "path": "jose/backends/cryptography_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-934d1f06811cb03f",
+          "line": 145,
+          "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.verify",
+          "path": "jose/backends/cryptography_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-0dfc1c01a9b5ccf8",
+          "line": 156,
+          "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.public_key",
+          "path": "jose/backends/cryptography_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-6723c0b6450fdf72",
+          "line": 160,
+          "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.public_bytes",
+          "path": "jose/backends/cryptography_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-a353b89fd787c525",
+          "line": 164,
+          "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.private_bytes",
+          "path": "jose/backends/cryptography_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-bc07af2f313ad497",
+          "line": 173,
+          "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.public_key",
+          "path": "jose/backends/cryptography_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-a25926da1c9faad4",
+          "line": 192,
+          "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.public_key.public_numbers",
+          "path": "jose/backends/cryptography_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-c131c9cd2c2e0c9b",
+          "line": 193,
+          "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.public_key.public_numbers",
+          "path": "jose/backends/cryptography_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-12e94b6106287667",
+          "line": 197,
+          "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.private_numbers",
+          "path": "jose/backends/cryptography_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-3abcec123b4d6a79",
+          "line": 250,
+          "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key",
+          "path": "jose/backends/cryptography_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-e82f44ac293c5f79",
+          "line": 252,
+          "name": "cryptography.hazmat.primitives.serialization.load_pem_private_key",
+          "path": "jose/backends/cryptography_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-53a8ff4e0b4eaaaf",
+          "line": 301,
+          "name": "cryptography.x509.load_pem_x509_certificate",
+          "path": "jose/backends/cryptography_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-0303a5eed63be526",
+          "line": 302,
+          "name": "cryptography.x509.load_pem_x509_certificate.public_key",
+          "path": "jose/backends/cryptography_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-51d64ef71313de0b",
+          "line": 306,
+          "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.sign",
+          "path": "jose/backends/cryptography_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-27123ba11a910fd3",
+          "line": 327,
+          "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.public_key",
+          "path": "jose/backends/cryptography_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-11a8e0428716ce8b",
+          "line": 337,
+          "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.public_bytes",
+          "path": "jose/backends/cryptography_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-4e727ac76ed0f3aa",
+          "line": 347,
+          "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.private_bytes",
+          "path": "jose/backends/cryptography_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-b794bca7632c8f94",
+          "line": 353,
+          "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.public_key",
+          "path": "jose/backends/cryptography_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-0423d77dbc7480db",
+          "line": 360,
+          "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.public_key.public_numbers",
+          "path": "jose/backends/cryptography_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-efa69baf2be88ede",
+          "line": 361,
+          "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.public_key.public_numbers",
+          "path": "jose/backends/cryptography_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-cf69123e28d5da63",
+          "line": 367,
+          "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.private_numbers",
+          "path": "jose/backends/cryptography_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-1b1f717ca86def4e",
+          "line": 368,
+          "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.private_numbers",
+          "path": "jose/backends/cryptography_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-39c90979ac61bda4",
+          "line": 369,
+          "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.private_numbers",
+          "path": "jose/backends/cryptography_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-397ac20dbf457e79",
+          "line": 370,
+          "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.private_numbers",
+          "path": "jose/backends/cryptography_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-d53fb18b215a4f49",
+          "line": 371,
+          "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.private_numbers",
+          "path": "jose/backends/cryptography_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-ce514ea01487f34a",
+          "line": 372,
+          "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.private_numbers",
+          "path": "jose/backends/cryptography_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-5a8e41ba54df1a47",
+          "line": 380,
+          "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.encrypt",
+          "path": "jose/backends/cryptography_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-3160a17791dce3e4",
+          "line": 388,
+          "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.decrypt",
+          "path": "jose/backends/cryptography_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "HMAC",
+          "finding_id": "crypto_call-8c6a60c7055c4f07",
+          "line": 582,
+          "name": "cryptography.hazmat.primitives.hmac.HMAC.verify",
+          "path": "jose/backends/cryptography_backend.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-0fd6108e245692f5",
+          "line": 159,
+          "name": "jose.jws.verify",
+          "path": "jose/jwt.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-26aa4ffe961b3260",
+          "line": 255,
+          "name": "jose.jwt.decode",
+          "path": "tests/algorithms/test_EC.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-517ee820c0f7b72a",
+          "line": 45,
+          "name": "jose.jws.verify",
+          "path": "tests/rfc/test_rfc7520.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-2149797f0f45c839",
+          "line": 53,
+          "name": "jose.jws.verify",
+          "path": "tests/rfc/test_rfc7520.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-3ca5177983240769",
+          "line": 61,
+          "name": "jose.jws.verify",
+          "path": "tests/rfc/test_rfc7520.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-3c5aa8ad59369aa3",
+          "line": 26,
+          "name": "jose.jws.verify",
+          "path": "tests/test_jws.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-cab19f6f7262ddad",
+          "line": 40,
+          "name": "jose.jws.verify",
+          "path": "tests/test_jws.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-e19008dc693661e1",
+          "line": 47,
+          "name": "jose.jws.verify",
+          "path": "tests/test_jws.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-bb79cb15925b8c16",
+          "line": 52,
+          "name": "jose.jws.verify",
+          "path": "tests/test_jws.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-4c18b5c53546f990",
+          "line": 57,
+          "name": "jose.jws.verify",
+          "path": "tests/test_jws.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-581530e780c01c37",
+          "line": 62,
+          "name": "jose.jws.verify",
+          "path": "tests/test_jws.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-86cd2fe76b8e85f6",
+          "line": 67,
+          "name": "jose.jws.verify",
+          "path": "tests/test_jws.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-f2a1423ec27e0196",
+          "line": 72,
+          "name": "jose.jws.verify",
+          "path": "tests/test_jws.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-f220cbfffaf69a0e",
+          "line": 87,
+          "name": "jose.jws.verify",
+          "path": "tests/test_jws.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-81ab875f2257b38b",
+          "line": 98,
+          "name": "jose.jws.verify",
+          "path": "tests/test_jws.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-b0030e3df252a2bf",
+          "line": 104,
+          "name": "jose.jws.verify",
+          "path": "tests/test_jws.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-e6dab84f75002fb5",
+          "line": 108,
+          "name": "jose.jws.verify",
+          "path": "tests/test_jws.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-ec31d50c22ccaa8e",
+          "line": 112,
+          "name": "jose.jws.verify",
+          "path": "tests/test_jws.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-a55981ab92bfd888",
+          "line": 117,
+          "name": "jose.jws.verify",
+          "path": "tests/test_jws.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-a05fafb182402f27",
+          "line": 122,
+          "name": "jose.jws.verify",
+          "path": "tests/test_jws.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-d8907451f1793057",
+          "line": 299,
+          "name": "jose.jws.verify",
+          "path": "tests/test_jws.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-e47e1b3e52e7ec83",
+          "line": 307,
+          "name": "jose.jws.verify",
+          "path": "tests/test_jws.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-16c39a96d7395f9e",
+          "line": 311,
+          "name": "jose.jws.verify",
+          "path": "tests/test_jws.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-376f173b0a7d5e34",
+          "line": 315,
+          "name": "jose.jws.verify",
+          "path": "tests/test_jws.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-8fc066d060a47679",
+          "line": 319,
+          "name": "jose.jws.verify",
+          "path": "tests/test_jws.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-f760fc425c454c53",
+          "line": 324,
+          "name": "jose.jws.verify",
+          "path": "tests/test_jws.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-6f10dfaabbef9b8a",
+          "line": 329,
+          "name": "jose.jws.verify",
+          "path": "tests/test_jws.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-9caf333d1ca78414",
+          "line": 365,
+          "name": "jose.jws.verify",
+          "path": "tests/test_jws.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-84b87dec940910bc",
+          "line": 369,
+          "name": "jose.jws.verify",
+          "path": "tests/test_jws.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-898c6ed816fc2b0f",
+          "line": 373,
+          "name": "jose.jws.verify",
+          "path": "tests/test_jws.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-699f201dd0966c66",
+          "line": 378,
+          "name": "jose.jws.verify",
+          "path": "tests/test_jws.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-e152e5ea802ff615",
+          "line": 385,
+          "name": "jose.jws.verify",
+          "path": "tests/test_jws.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-26096b6ddc19cfec",
+          "line": 390,
+          "name": "jose.jws.verify",
+          "path": "tests/test_jws.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-36a0c35104518258",
+          "line": 395,
+          "name": "jose.jws.verify",
+          "path": "tests/test_jws.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-cf905ed1cf3973f4",
+          "line": 50,
+          "name": "jose.jwt.decode",
+          "path": "tests/test_jwt.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-43e026aaa60f0fb3",
+          "line": 66,
+          "name": "jose.jwt.decode",
+          "path": "tests/test_jwt.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-068758ac85b65675",
+          "line": 70,
+          "name": "jose.jws.verify",
+          "path": "tests/test_jwt.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-54972f4cf1c586a3",
+          "line": 80,
+          "name": "jose.jwt.decode",
+          "path": "tests/test_jwt.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-98466ba91078a78b",
+          "line": 85,
+          "name": "jose.jws.verify",
+          "path": "tests/test_jwt.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-d0116a0a565ecd5e",
+          "line": 95,
+          "name": "jose.jwt.decode",
+          "path": "tests/test_jwt.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-71917442b720a6ee",
+          "line": 106,
+          "name": "jose.jwt.decode",
+          "path": "tests/test_jwt.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-6afc8a548aa0e07a",
+          "line": 118,
+          "name": "jose.jwt.decode",
+          "path": "tests/test_jwt.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-30be1dc6988ba256",
+          "line": 169,
+          "name": "jose.jwt.decode",
+          "path": "tests/test_jwt.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-e9fe39c422c7c693",
+          "line": 200,
+          "name": "jose.jwt.decode",
+          "path": "tests/test_jwt.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-fb721ba20e6e1b53",
+          "line": 208,
+          "name": "jose.jwt.decode",
+          "path": "tests/test_jwt.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-aa5aa334cd01e016",
+          "line": 216,
+          "name": "jose.jwt.decode",
+          "path": "tests/test_jwt.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-e677ebed3a566e70",
+          "line": 224,
+          "name": "jose.jwt.decode",
+          "path": "tests/test_jwt.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-c206ba80a276662c",
+          "line": 236,
+          "name": "jose.jwt.decode",
+          "path": "tests/test_jwt.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-721b55528752c8dd",
+          "line": 246,
+          "name": "jose.jwt.decode",
+          "path": "tests/test_jwt.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-3bf4a6c3c1430f9c",
+          "line": 256,
+          "name": "jose.jwt.decode",
+          "path": "tests/test_jwt.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-40f2a6464d1c1315",
+          "line": 260,
+          "name": "jose.jwt.decode",
+          "path": "tests/test_jwt.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-ad58e7383553dd09",
+          "line": 268,
+          "name": "jose.jwt.decode",
+          "path": "tests/test_jwt.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-ce11e02f64f0e919",
+          "line": 276,
+          "name": "jose.jwt.decode",
+          "path": "tests/test_jwt.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-d8dbecc18f1c9b43",
+          "line": 288,
+          "name": "jose.jwt.decode",
+          "path": "tests/test_jwt.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-0c2dc2bf6288b2c6",
+          "line": 298,
+          "name": "jose.jwt.decode",
+          "path": "tests/test_jwt.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-9520f6d4eac2e92c",
+          "line": 308,
+          "name": "jose.jwt.decode",
+          "path": "tests/test_jwt.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-0767f448c71fa36a",
+          "line": 312,
+          "name": "jose.jwt.decode",
+          "path": "tests/test_jwt.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-79d017cd2983bf77",
+          "line": 320,
+          "name": "jose.jwt.decode",
+          "path": "tests/test_jwt.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-4035c3c2c9a362b0",
+          "line": 328,
+          "name": "jose.jwt.decode",
+          "path": "tests/test_jwt.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-ae59fd00511c9ea7",
+          "line": 336,
+          "name": "jose.jwt.decode",
+          "path": "tests/test_jwt.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-06d61669f826988d",
+          "line": 345,
+          "name": "jose.jwt.decode",
+          "path": "tests/test_jwt.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-f63f27fed0be1e44",
+          "line": 354,
+          "name": "jose.jwt.decode",
+          "path": "tests/test_jwt.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-78a49d1f2aa9f574",
+          "line": 360,
+          "name": "jose.jwt.decode",
+          "path": "tests/test_jwt.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-2bd88c70dd4062ac",
+          "line": 369,
+          "name": "jose.jwt.decode",
+          "path": "tests/test_jwt.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-2fb2ab20c7769fae",
+          "line": 378,
+          "name": "jose.jwt.decode",
+          "path": "tests/test_jwt.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-9285a50e2b01860d",
+          "line": 386,
+          "name": "jose.jwt.decode",
+          "path": "tests/test_jwt.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-6d8d2a2d6d47df9c",
+          "line": 394,
+          "name": "jose.jwt.decode",
+          "path": "tests/test_jwt.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-0a4a537c0acbe9b0",
+          "line": 402,
+          "name": "jose.jwt.decode",
+          "path": "tests/test_jwt.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-25fea2f1a8831408",
+          "line": 411,
+          "name": "jose.jwt.decode",
+          "path": "tests/test_jwt.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-7ac9524ab46a34a2",
+          "line": 419,
+          "name": "jose.jwt.decode",
+          "path": "tests/test_jwt.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-4833284eafa21ecb",
+          "line": 428,
+          "name": "jose.jwt.decode",
+          "path": "tests/test_jwt.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-775a91ca3844ad1d",
+          "line": 436,
+          "name": "jose.jwt.decode",
+          "path": "tests/test_jwt.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-c807e21ff1b67f27",
+          "line": 445,
+          "name": "jose.jwt.decode",
+          "path": "tests/test_jwt.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-9d7ac1dfcb3c3bd1",
+          "line": 453,
+          "name": "jose.jwt.decode",
+          "path": "tests/test_jwt.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-448ed727adf74923",
+          "line": 462,
+          "name": "jose.jwt.decode",
+          "path": "tests/test_jwt.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-bf989f6e02727b1c",
+          "line": 467,
+          "name": "jose.jwt.decode",
+          "path": "tests/test_jwt.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-0e4ba3d6e90080fa",
+          "line": 473,
+          "name": "jose.jwt.decode",
+          "path": "tests/test_jwt.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-ff459a605ce3f99c",
+          "line": 478,
+          "name": "jose.jwt.decode",
+          "path": "tests/test_jwt.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-206b92c697ce1b80",
+          "line": 482,
+          "name": "jose.jwt.decode",
+          "path": "tests/test_jwt.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-6fddea323ad016fa",
+          "line": 488,
+          "name": "jose.jwt.decode",
+          "path": "tests/test_jwt.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-6ab5ef7c21ed3b68",
+          "line": 528,
+          "name": "jose.jwt.decode",
+          "path": "tests/test_jwt.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-e8f784cea9538628",
+          "line": 533,
+          "name": "jose.jwt.decode",
+          "path": "tests/test_jwt.py",
+          "role": "test"
+        }
+      ]
     }
   ],
   "limited": false,

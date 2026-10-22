@@ -124,9 +124,9 @@
    "event": "step"
   },
   {
-   "at_ms": 1202,
+   "at_ms": 1375,
    "data": {
-    "duration_ms": 1202,
+    "duration_ms": 1375,
     "evidence": [
      {
       "label": "Visibility",
@@ -162,7 +162,7 @@
    "event": "step"
   },
   {
-   "at_ms": 1202,
+   "at_ms": 1375,
    "data": {
     "duration_ms": 0,
     "evidence": [],
@@ -174,9 +174,9 @@
    "event": "step"
   },
   {
-   "at_ms": 4545,
+   "at_ms": 4733,
    "data": {
-    "duration_ms": 3342,
+    "duration_ms": 3358,
     "evidence": [
      {
       "label": "Depth",
@@ -211,13 +211,13 @@
     ],
     "id": "clone",
     "status": "done",
-    "summary": "shallow clone at bff40c6cf234 in 3342 ms",
+    "summary": "shallow clone at bff40c6cf234 in 3358 ms",
     "title": "Clone at a pinned commit"
    },
    "event": "step"
   },
   {
-   "at_ms": 4545,
+   "at_ms": 4733,
    "data": {
     "duration_ms": 0,
     "evidence": [],
@@ -229,9 +229,9 @@
    "event": "step"
   },
   {
-   "at_ms": 4545,
+   "at_ms": 4765,
    "data": {
-    "duration_ms": 0,
+    "duration_ms": 31,
     "evidence": [
      {
       "label": "Python files considered",
@@ -277,7 +277,7 @@
    "event": "step"
   },
   {
-   "at_ms": 4545,
+   "at_ms": 4765,
    "data": {
     "duration_ms": 0,
     "evidence": [],
@@ -289,7 +289,7 @@
    "event": "step"
   },
   {
-   "at_ms": 4609,
+   "at_ms": 4968,
    "data": {
     "done": 1,
     "total": 34
@@ -297,7 +297,7 @@
    "event": "parse_progress"
   },
   {
-   "at_ms": 4717,
+   "at_ms": 5218,
    "data": {
     "file": "speed.py",
     "items": [
@@ -329,13 +329,50 @@
       "selection": "literal",
       "snippet": "sig = ecdsa.SigningKey.generate(c).sign(b\"msg\")",
       "weak": false
+     },
+     {
+      "algorithm": "ECDSA",
+      "algorithms": [
+       "ECDSA",
+       "ECC-P256"
+      ],
+      "category": "signature",
+      "file": "speed.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-90164c73e1c88166",
+      "kind": "crypto_call",
+      "line": 63,
+      "name": "ecdsa.SigningKey.generate.sign",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+       "assumed": false,
+       "exposure": [
+        "signature"
+       ],
+       "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "literal",
+      "snippet": "sig = ecdsa.SigningKey.generate(c).sign(b\"msg\")",
+      "weak": false
      }
     ]
    },
    "event": "findings"
   },
   {
-   "at_ms": 4967,
+   "at_ms": 5468,
+   "data": {
+    "done": 5,
+    "total": 34
+   },
+   "event": "parse_progress"
+  },
+  {
+   "at_ms": 5750,
    "data": {
     "file": "src/ecdsa/_sha3.py",
     "items": [
@@ -396,7 +433,7 @@
    "event": "findings"
   },
   {
-   "at_ms": 5390,
+   "at_ms": 6327,
    "data": {
     "done": 7,
     "total": 34
@@ -404,7 +441,7 @@
    "event": "parse_progress"
   },
   {
-   "at_ms": 5984,
+   "at_ms": 7030,
    "data": {
     "done": 9,
     "total": 34
@@ -412,7 +449,7 @@
    "event": "parse_progress"
   },
   {
-   "at_ms": 6545,
+   "at_ms": 7733,
    "data": {
     "file": "src/ecdsa/ecdsa.py",
     "items": [
@@ -449,7 +486,7 @@
    "event": "findings"
   },
   {
-   "at_ms": 6545,
+   "at_ms": 7733,
    "data": {
     "done": 11,
     "total": 34
@@ -457,7 +494,7 @@
    "event": "parse_progress"
   },
   {
-   "at_ms": 6717,
+   "at_ms": 8015,
    "data": {
     "file": "src/ecdsa/eddsa.py",
     "items": [
@@ -492,7 +529,7 @@
    "event": "findings"
   },
   {
-   "at_ms": 7780,
+   "at_ms": 9265,
    "data": {
     "done": 13,
     "total": 34
@@ -500,7 +537,7 @@
    "event": "parse_progress"
   },
   {
-   "at_ms": 8295,
+   "at_ms": 9983,
    "data": {
     "file": "src/ecdsa/keys.py",
     "items": [
@@ -673,6 +710,30 @@
       "weak": true
      },
      {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "randomness",
+      "file": "src/ecdsa/keys.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-de365890cc6b6c15",
+      "kind": "crypto_call",
+      "line": 786,
+      "name": "os.urandom",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
+      "snippet": "entropy = os.urandom",
+      "weak": false
+     },
+     {
       "algorithm": "SHA1",
       "algorithms": [
        "SHA1"
@@ -817,7 +878,7 @@
    "event": "findings"
   },
   {
-   "at_ms": 8295,
+   "at_ms": 9983,
    "data": {
     "done": 15,
     "total": 34
@@ -825,7 +886,15 @@
    "event": "parse_progress"
   },
   {
-   "at_ms": 8780,
+   "at_ms": 10500,
+   "data": {
+    "done": 16,
+    "total": 34
+   },
+   "event": "parse_progress"
+  },
+  {
+   "at_ms": 10593,
    "data": {
     "file": "src/ecdsa/rfc6979.py",
     "items": [
@@ -1016,18 +1085,34 @@
    "event": "findings"
   },
   {
-   "at_ms": 8842,
-   "data": {
-    "done": 18,
-    "total": 34
-   },
-   "event": "parse_progress"
-  },
-  {
-   "at_ms": 9062,
+   "at_ms": 10937,
    "data": {
     "file": "src/ecdsa/util.py",
     "items": [
+     {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "randomness",
+      "file": "src/ecdsa/util.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-7787bf554fd20aed",
+      "kind": "crypto_call",
+      "line": 91,
+      "name": "os.urandom",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
+      "snippet": "entropy = os.urandom",
+      "weak": false
+     },
      {
       "algorithm": "SHA2-256",
       "algorithms": [
@@ -1111,7 +1196,7 @@
    "event": "findings"
   },
   {
-   "at_ms": 9875,
+   "at_ms": 11905,
    "data": {
     "done": 20,
     "total": 34
@@ -1119,7 +1204,15 @@
    "event": "parse_progress"
   },
   {
-   "at_ms": 10687,
+   "at_ms": 12577,
+   "data": {
+    "done": 25,
+    "total": 34
+   },
+   "event": "parse_progress"
+  },
+  {
+   "at_ms": 13155,
    "data": {
     "done": 26,
     "total": 34
@@ -1127,7 +1220,7 @@
    "event": "parse_progress"
   },
   {
-   "at_ms": 11437,
+   "at_ms": 13937,
    "data": {
     "file": "src/ecdsa/test_eddsa.py",
     "items": [
@@ -1162,7 +1255,7 @@
    "event": "findings"
   },
   {
-   "at_ms": 11437,
+   "at_ms": 13937,
    "data": {
     "done": 27,
     "total": 34
@@ -1170,7 +1263,7 @@
    "event": "parse_progress"
   },
   {
-   "at_ms": 12670,
+   "at_ms": 15327,
    "data": {
     "done": 29,
     "total": 34
@@ -1178,7 +1271,7 @@
    "event": "parse_progress"
   },
   {
-   "at_ms": 13592,
+   "at_ms": 16233,
    "data": {
     "file": "src/ecdsa/test_keys.py",
     "items": [
@@ -1287,6 +1380,30 @@
       "weak": false
      },
      {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "randomness",
+      "file": "src/ecdsa/test_keys.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-7cb936a1c43321d7",
+      "kind": "crypto_call",
+      "line": 808,
+      "name": "os.urandom",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": false,
+      "selection": "unspecified",
+      "snippet": "sk = SigningKey.generate(Ed25519, entropy=os.urandom)",
+      "weak": false
+     },
+     {
       "algorithm": "SHA1",
       "algorithms": [
        "SHA1"
@@ -1313,6 +1430,30 @@
       "selection": "literal",
       "snippet": "hashfunc=hashlib.sha1,",
       "weak": true
+     },
+     {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "randomness",
+      "file": "src/ecdsa/test_keys.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-6bc89beb597d670b",
+      "kind": "crypto_call",
+      "line": 897,
+      "name": "os.urandom",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+       "assumed": false,
+       "exposure": [],
+       "status": "safe"
+      },
+      "role": "test",
+      "scored": false,
+      "selection": "unspecified",
+      "snippet": "msg = os.urandom(32)",
+      "weak": false
      },
      {
       "algorithm": "SHA1",
@@ -1347,7 +1488,7 @@
    "event": "findings"
   },
   {
-   "at_ms": 13592,
+   "at_ms": 16233,
    "data": {
     "done": 30,
     "total": 34
@@ -1355,7 +1496,7 @@
    "event": "parse_progress"
   },
   {
-   "at_ms": 13859,
+   "at_ms": 16593,
    "data": {
     "file": "src/ecdsa/test_malformed_sigs.py",
     "items": [
@@ -1412,7 +1553,15 @@
    "event": "findings"
   },
   {
-   "at_ms": 16000,
+   "at_ms": 16983,
+   "data": {
+    "done": 32,
+    "total": 34
+   },
+   "event": "parse_progress"
+  },
+  {
+   "at_ms": 19375,
    "data": {
     "file": "src/ecdsa/test_pyecdsa.py",
     "items": [
@@ -2797,7 +2946,7 @@
    "event": "findings"
   },
   {
-   "at_ms": 16000,
+   "at_ms": 19375,
    "data": {
     "done": 33,
     "total": 34
@@ -2805,7 +2954,7 @@
    "event": "parse_progress"
   },
   {
-   "at_ms": 16000,
+   "at_ms": 19405,
    "data": {
     "done": 34,
     "total": 34
@@ -2813,7 +2962,7 @@
    "event": "parse_progress"
   },
   {
-   "at_ms": 16015,
+   "at_ms": 19405,
    "data": {
     "file": "src/ecdsa/keys.py",
     "items": [
@@ -3214,9 +3363,9 @@
    "event": "findings"
   },
   {
-   "at_ms": 16015,
+   "at_ms": 19405,
    "data": {
-    "duration_ms": 11469,
+    "duration_ms": 14639,
     "evidence": [
      {
       "label": "Execution",
@@ -3231,17 +3380,17 @@
      {
       "label": "Read, not parsed",
       "ok": null,
-      "value": "5 test or docs files that name no crypto library"
+      "value": "3 test or docs files that name no crypto library"
      },
      {
       "label": "Crypto sites",
       "ok": null,
-      "value": "102"
+      "value": "107"
      },
      {
       "label": "Sites by file role",
       "ok": null,
-      "value": "source 40, test 62"
+      "value": "source 43, test 64"
      },
      {
       "label": "Algorithm literals",
@@ -3261,7 +3410,7 @@
      {
       "label": "Ruleset version",
       "ok": null,
-      "value": "2026.11.01"
+      "value": "2026.11.05"
      },
      {
       "label": "Weak primitives",
@@ -3271,18 +3420,18 @@
      {
       "label": "Quantum-vulnerable",
       "ok": false,
-      "value": "15 sites"
+      "value": "16 sites"
      }
     ],
     "id": "parse",
     "status": "done",
-    "summary": "102 cryptographic sites detected",
+    "summary": "107 cryptographic sites detected",
     "title": "Parse and detect crypto"
    },
    "event": "step"
   },
   {
-   "at_ms": 16015,
+   "at_ms": 19405,
    "data": {
     "duration_ms": 0,
     "evidence": [],
@@ -3294,50 +3443,50 @@
    "event": "step"
   },
   {
-   "at_ms": 16062,
+   "at_ms": 19421,
    "data": {
-    "duration_ms": 47,
+    "duration_ms": 16,
     "evidence": [
      {
       "label": "Nodes",
       "ok": null,
-      "value": "1,039 \u2014 algo_literal 4, crypto_call 102, function 899, module 34"
+      "value": "1,101 \u2014 algo_literal 4, crypto_call 107, function 956, module 34"
      },
      {
       "label": "Edges",
       "ok": null,
-      "value": "1,681 \u2014 binding 1005, call 651, import 21, value_flow 4"
+      "value": "1,792 \u2014 binding 1067, call 700, import 21, value_flow 4"
      },
      {
       "label": "Low-confidence edges",
       "ok": true,
-      "value": "651 (every 'call' edge, by rule)"
+      "value": "700 (every 'call' edge, by rule)"
      },
      {
       "label": "Callees resolved",
       "ok": null,
-      "value": "953 of 4,911"
+      "value": "995 of 5,240"
      },
      {
       "label": "Callees dropped, not guessed",
       "ok": true,
-      "value": "48 ambiguous, 3,910 unresolvable"
+      "value": "79 ambiguous, 4,166 unresolvable"
      },
      {
       "label": "Imports",
       "ok": null,
-      "value": "21 internal, 417 external"
+      "value": "21 internal, 466 external"
      }
     ],
     "id": "graph",
     "status": "done",
-    "summary": "1,039 nodes, 1,681 edges",
+    "summary": "1,101 nodes, 1,792 edges",
     "title": "Build the dependency graph"
    },
    "event": "step"
   },
   {
-   "at_ms": 16062,
+   "at_ms": 19421,
    "data": {
     "duration_ms": 0,
     "evidence": [],
@@ -3349,9 +3498,9 @@
    "event": "step"
   },
   {
-   "at_ms": 16077,
+   "at_ms": 19421,
    "data": {
-    "duration_ms": 15,
+    "duration_ms": 0,
     "evidence": [
      {
       "label": "Metric",
@@ -3412,7 +3561,7 @@
    "event": "step"
   },
   {
-   "at_ms": 16077,
+   "at_ms": 19421,
    "data": {
     "duration_ms": 0,
     "evidence": [],
@@ -3424,7 +3573,7 @@
    "event": "step"
   },
   {
-   "at_ms": 17170,
+   "at_ms": 20577,
    "data": {
     "changes": [
      {
@@ -3451,14 +3600,14 @@
    "event": "proposals"
   },
   {
-   "at_ms": 23000,
+   "at_ms": 27140,
    "data": {
-    "duration_ms": 6922,
+    "duration_ms": 7718,
     "evidence": [
      {
       "label": "Report size",
       "ok": null,
-      "value": "26,063 bytes"
+      "value": "33,924 bytes"
      },
      {
       "label": "External requests",
@@ -3484,7 +3633,7 @@
    "event": "step"
   },
   {
-   "at_ms": 23015,
+   "at_ms": 27171,
    "data": {
     "duration_ms": 0,
     "evidence": [],
@@ -3496,7 +3645,7 @@
    "event": "step"
   },
   {
-   "at_ms": 23015,
+   "at_ms": 27171,
    "data": {
     "duration_ms": 0,
     "evidence": [
@@ -3524,7 +3673,7 @@
    "event": "step"
   },
   {
-   "at_ms": 23015,
+   "at_ms": 27171,
    "data": {
     "agility_score": 29.593192,
     "status": "succeeded"

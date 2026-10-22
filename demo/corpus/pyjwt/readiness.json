@@ -3,10 +3,27 @@
     {
       "by": 2030,
       "citations": [
+        "jwt/jwks_client.py:165"
+      ],
+      "id": "hybrid_key_exchange",
+      "in_force": false,
+      "priority": 2,
+      "sites": 1,
+      "sources": [
+        "nist-ir-8547",
+        "eu-pqc-roadmap",
+        "nca-ncs-2-2025",
+        "openssl-3-5"
+      ]
+    },
+    {
+      "by": 2030,
+      "citations": [
         "jwt/algorithms.py:1104",
         "jwt/algorithms.py:1105",
         "jwt/algorithms.py:1109",
         "jwt/algorithms.py:1111",
+        "jwt/algorithms.py:1113",
         "jwt/algorithms.py:333",
         "jwt/algorithms.py:340",
         "jwt/algorithms.py:544",
@@ -21,6 +38,7 @@
         "jwt/algorithms.py:668",
         "jwt/algorithms.py:672",
         "jwt/algorithms.py:675",
+        "jwt/algorithms.py:678",
         "jwt/algorithms.py:683",
         "jwt/algorithms.py:688",
         "jwt/algorithms.py:744",
@@ -30,6 +48,7 @@
         "jwt/algorithms.py:889",
         "jwt/algorithms.py:896",
         "jwt/algorithms.py:904",
+        "jwt/algorithms.py:906",
         "jwt/algorithms.py:914",
         "jwt/algorithms.py:926",
         "jwt/algorithms.py:971",
@@ -38,8 +57,9 @@
         "jwt/algorithms.py:994"
       ],
       "id": "pq_signatures",
+      "in_force": false,
       "priority": 3,
-      "sites": 33,
+      "sites": 37,
       "sources": [
         "nist-ir-8547",
         "nsa-cnsa-2",
@@ -67,6 +87,7 @@
         "jwt/algorithms.py:975"
       ],
       "id": "confirm_algorithms",
+      "in_force": false,
       "priority": 6,
       "sites": 16,
       "sources": [
@@ -74,16 +95,17 @@
       ]
     }
   ],
-  "checked": "2026-09-24",
+  "checked": "2026-09-25",
+  "complete": true,
   "counts": {
     "key_exchange": 0,
     "pq": 0,
     "review": 16,
     "safe": 5,
-    "signature": 33,
-    "sites": 38,
-    "tls": 0,
-    "vulnerable": 17,
+    "signature": 37,
+    "sites": 43,
+    "tls": 1,
+    "vulnerable": 22,
     "weak": 0
   },
   "earliest_milestone": "eu-high-risk",
@@ -100,26 +122,29 @@
     {
       "framework": "nist",
       "id": "nist-kex-deprecated",
+      "in_force": false,
       "rule": "deprecated",
-      "sites": 0,
+      "sites": 1,
       "source": "nist-ir-8547",
-      "state": "clear",
+      "state": "due",
       "year": 2030
     },
     {
       "framework": "nist",
       "id": "nist-kex-disallowed",
+      "in_force": false,
       "rule": "disallowed",
-      "sites": 0,
+      "sites": 1,
       "source": "nist-ir-8547",
-      "state": "clear",
+      "state": "due",
       "year": 2035
     },
     {
       "framework": "nist",
       "id": "nist-sig-deprecated",
+      "in_force": false,
       "rule": "deprecated",
-      "sites": 33,
+      "sites": 26,
       "source": "nist-ir-8547",
       "state": "due",
       "year": 2030
@@ -127,8 +152,9 @@
     {
       "framework": "nist",
       "id": "nist-sig-disallowed",
+      "in_force": false,
       "rule": "disallowed",
-      "sites": 33,
+      "sites": 37,
       "source": "nist-ir-8547",
       "state": "due",
       "year": 2035
@@ -136,6 +162,7 @@
     {
       "framework": "nist",
       "id": "nist-sha1",
+      "in_force": false,
       "rule": "retired",
       "sites": 0,
       "source": "nist-sha1-retirement",
@@ -145,15 +172,17 @@
     {
       "framework": "nist",
       "id": "nist-md5",
+      "in_force": true,
       "rule": "not_approved",
       "sites": 0,
       "source": "nist-sp-800-131a-r2",
       "state": "clear",
-      "year": 2019
+      "year": null
     },
     {
       "framework": "nist",
       "id": "nist-tdea",
+      "in_force": true,
       "rule": "disallowed",
       "sites": 0,
       "source": "nist-sp-800-131a-r2",
@@ -163,8 +192,9 @@
     {
       "framework": "nsa",
       "id": "nsa-signing",
+      "in_force": false,
       "rule": "exclusive",
-      "sites": 33,
+      "sites": 37,
       "source": "nsa-cnsa-2",
       "state": "due",
       "year": 2030
@@ -172,17 +202,19 @@
     {
       "framework": "nsa",
       "id": "nsa-web",
+      "in_force": false,
       "rule": "exclusive",
-      "sites": 0,
+      "sites": 1,
       "source": "nsa-cnsa-2",
-      "state": "clear",
+      "state": "due",
       "year": 2033
     },
     {
       "framework": "nsa",
       "id": "nsa-custom",
+      "in_force": false,
       "rule": "replace",
-      "sites": 33,
+      "sites": 38,
       "source": "nsa-cnsa-2",
       "state": "due",
       "year": 2033
@@ -190,6 +222,7 @@
     {
       "framework": "eu",
       "id": "eu-first-steps",
+      "in_force": false,
       "rule": "first_steps",
       "sites": 0,
       "source": "eu-pqc-roadmap",
@@ -199,8 +232,9 @@
     {
       "framework": "eu",
       "id": "eu-high-risk",
+      "in_force": false,
       "rule": "high_risk",
-      "sites": 33,
+      "sites": 38,
       "source": "eu-pqc-roadmap",
       "state": "due",
       "year": 2030
@@ -208,8 +242,9 @@
     {
       "framework": "eu",
       "id": "eu-full",
+      "in_force": false,
       "rule": "full",
-      "sites": 33,
+      "sites": 38,
       "source": "eu-pqc-roadmap",
       "state": "due",
       "year": 2035
@@ -217,6 +252,7 @@
     {
       "framework": "uk",
       "id": "uk-discovery",
+      "in_force": false,
       "rule": "discovery",
       "sites": 0,
       "source": "uk-ncsc-pqc",
@@ -226,8 +262,9 @@
     {
       "framework": "uk",
       "id": "uk-priority",
+      "in_force": false,
       "rule": "priority",
-      "sites": 33,
+      "sites": 38,
       "source": "uk-ncsc-pqc",
       "state": "due",
       "year": 2031
@@ -235,8 +272,9 @@
     {
       "framework": "uk",
       "id": "uk-complete",
+      "in_force": false,
       "rule": "complete",
-      "sites": 33,
+      "sites": 38,
       "source": "uk-ncsc-pqc",
       "state": "due",
       "year": 2035
@@ -244,17 +282,19 @@
     {
       "framework": "us",
       "id": "us-kex",
+      "in_force": false,
       "rule": "federal",
-      "sites": 0,
+      "sites": 1,
       "source": "us-eo-14412",
-      "state": "clear",
+      "state": "due",
       "year": 2030
     },
     {
       "framework": "us",
       "id": "us-sig",
+      "in_force": false,
       "rule": "federal",
-      "sites": 33,
+      "sites": 37,
       "source": "us-eo-14412",
       "state": "due",
       "year": 2031
@@ -262,6 +302,7 @@
     {
       "framework": "nca",
       "id": "nca-hybrid",
+      "in_force": false,
       "rule": "hybrid_required",
       "sites": 0,
       "source": "nca-ncs-2-2025",
@@ -271,6 +312,7 @@
   ],
   "overdue": [],
   "reference_year": 2026,
+  "source_unread": 0,
   "verdict": "at_risk",
   "version": 1
 }

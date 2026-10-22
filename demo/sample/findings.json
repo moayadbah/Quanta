@@ -30,6 +30,35 @@
       "weak": false
     },
     {
+      "algorithm": "ECDSA",
+      "algorithms": [
+        "ECDSA",
+        "ECC-P256"
+      ],
+      "category": "signature",
+      "file": "speed.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-90164c73e1c88166",
+      "kind": "crypto_call",
+      "line": 63,
+      "name": "ecdsa.SigningKey.generate.sign",
+      "parent": null,
+      "quantum_vulnerable": true,
+      "readiness": {
+        "assumed": false,
+        "exposure": [
+          "signature"
+        ],
+        "status": "vulnerable"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "literal",
+      "snippet": "sig = ecdsa.SigningKey.generate(c).sign(b\"msg\")",
+      "weak": false
+    },
+    {
       "algorithm": "SHAKE256",
       "algorithms": [
         "SHAKE256"
@@ -441,6 +470,30 @@
       "scored": false,
       "selection": "literal",
       "snippet": "def verify_digest(",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "randomness",
+      "file": "src/ecdsa/keys.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-de365890cc6b6c15",
+      "kind": "crypto_call",
+      "line": 786,
+      "name": "os.urandom",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
+      "snippet": "entropy = os.urandom",
       "weak": false
     },
     {
@@ -1148,6 +1201,30 @@
       "weak": false
     },
     {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "randomness",
+      "file": "src/ecdsa/test_keys.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-7cb936a1c43321d7",
+      "kind": "crypto_call",
+      "line": 808,
+      "name": "os.urandom",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": false,
+      "selection": "unspecified",
+      "snippet": "sk = SigningKey.generate(Ed25519, entropy=os.urandom)",
+      "weak": false
+    },
+    {
       "algorithm": "SHA1",
       "algorithms": [
         "SHA1"
@@ -1174,6 +1251,30 @@
       "selection": "literal",
       "snippet": "hashfunc=hashlib.sha1,",
       "weak": true
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "randomness",
+      "file": "src/ecdsa/test_keys.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-6bc89beb597d670b",
+      "kind": "crypto_call",
+      "line": 897,
+      "name": "os.urandom",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "test",
+      "scored": false,
+      "selection": "unspecified",
+      "snippet": "msg = os.urandom(32)",
+      "weak": false
     },
     {
       "algorithm": "SHA1",
@@ -2625,6 +2726,30 @@
       "scored": true,
       "selection": "literal",
       "snippet": "hashlib.sha512,",
+      "weak": false
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "randomness",
+      "file": "src/ecdsa/util.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-7787bf554fd20aed",
+      "kind": "crypto_call",
+      "line": 91,
+      "name": "os.urandom",
+      "parent": null,
+      "quantum_vulnerable": false,
+      "readiness": {
+        "assumed": false,
+        "exposure": [],
+        "status": "safe"
+      },
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
+      "snippet": "entropy = os.urandom",
       "weak": false
     },
     {

@@ -57,13 +57,18 @@ def test_crypto_call_counts_match_ground_truth(repo: str, expected_calls: int) -
 
 
 def test_operations_on_crypto_objects_are_reported_once_and_not_scored() -> None:
-    """Round four: ``kdf.derive`` and ``private.exchange`` in the hardcoded fixture."""
+    """Round four: ``kdf.derive`` and ``private.exchange`` in the hardcoded fixture. Round
+    eight adds ``priv.public_key()`` (deriving the public key is a unit, PROTOCOL-R8 B2a)."""
     ops = {
         (s.line, s.qualified_name.rsplit(".", 1)[-1], s.category)
         for s in analyse("hardcoded_crypto").crypto_calls
         if s.form == "operation"
     }
-    assert ops == {(30, "derive", "kdf"), (36, "exchange", "key_agreement")}
+    assert ops == {
+        (30, "derive", "kdf"),
+        (35, "public_key", "key_loading"),
+        (36, "exchange", "key_agreement"),
+    }
     assert all(
         not s.scored for s in analyse("hardcoded_crypto").crypto_calls if s.form == "operation"
     )

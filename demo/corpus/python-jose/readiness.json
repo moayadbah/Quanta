@@ -7,6 +7,7 @@
         "jose/backends/rsa_backend.py:280"
       ],
       "id": "hybrid_key_exchange",
+      "in_force": false,
       "priority": 2,
       "sites": 2,
       "sources": [
@@ -23,6 +24,13 @@
         "jose/backends/cryptography_backend.py:106",
         "jose/backends/cryptography_backend.py:139",
         "jose/backends/cryptography_backend.py:145",
+        "jose/backends/cryptography_backend.py:156",
+        "jose/backends/cryptography_backend.py:160",
+        "jose/backends/cryptography_backend.py:164",
+        "jose/backends/cryptography_backend.py:173",
+        "jose/backends/cryptography_backend.py:192",
+        "jose/backends/cryptography_backend.py:193",
+        "jose/backends/cryptography_backend.py:197",
         "jose/backends/cryptography_backend.py:250",
         "jose/backends/cryptography_backend.py:252",
         "jose/backends/cryptography_backend.py:265",
@@ -34,26 +42,52 @@
         "jose/backends/cryptography_backend.py:296",
         "jose/backends/cryptography_backend.py:298",
         "jose/backends/cryptography_backend.py:301",
+        "jose/backends/cryptography_backend.py:302",
         "jose/backends/cryptography_backend.py:306",
+        "jose/backends/cryptography_backend.py:327",
+        "jose/backends/cryptography_backend.py:337",
+        "jose/backends/cryptography_backend.py:347",
+        "jose/backends/cryptography_backend.py:353",
+        "jose/backends/cryptography_backend.py:360",
+        "jose/backends/cryptography_backend.py:361",
+        "jose/backends/cryptography_backend.py:367",
+        "jose/backends/cryptography_backend.py:368",
+        "jose/backends/cryptography_backend.py:369",
+        "jose/backends/cryptography_backend.py:370",
+        "jose/backends/cryptography_backend.py:371",
+        "jose/backends/cryptography_backend.py:372",
         "jose/backends/cryptography_backend.py:380",
         "jose/backends/cryptography_backend.py:388",
+        "jose/backends/cryptography_backend.py:57",
         "jose/backends/cryptography_backend.py:582",
         "jose/backends/cryptography_backend.py:72",
         "jose/backends/cryptography_backend.py:74",
         "jose/backends/cryptography_backend.py:98",
         "jose/backends/ecdsa_backend.py:105",
+        "jose/backends/ecdsa_backend.py:117",
+        "jose/backends/ecdsa_backend.py:120",
+        "jose/backends/ecdsa_backend.py:124",
         "jose/backends/ecdsa_backend.py:65",
         "jose/backends/ecdsa_backend.py:67",
         "jose/backends/ecdsa_backend.py:99",
         "jose/backends/rsa_backend.py:152",
+        "jose/backends/rsa_backend.py:155",
         "jose/backends/rsa_backend.py:158",
         "jose/backends/rsa_backend.py:169",
+        "jose/backends/rsa_backend.py:183",
+        "jose/backends/rsa_backend.py:198",
+        "jose/backends/rsa_backend.py:201",
         "jose/backends/rsa_backend.py:204",
-        "jose/backends/rsa_backend.py:210"
+        "jose/backends/rsa_backend.py:210",
+        "jose/backends/rsa_backend.py:221",
+        "jose/backends/rsa_backend.py:225",
+        "jose/backends/rsa_backend.py:235",
+        "jose/backends/rsa_backend.py:239"
       ],
       "id": "pq_signatures",
+      "in_force": false,
       "priority": 3,
-      "sites": 32,
+      "sites": 64,
       "sources": [
         "nist-ir-8547",
         "nsa-cnsa-2",
@@ -65,34 +99,57 @@
       "citations": [
         "jose/backends/cryptography_backend.py:139",
         "jose/backends/cryptography_backend.py:145",
+        "jose/backends/cryptography_backend.py:156",
+        "jose/backends/cryptography_backend.py:160",
+        "jose/backends/cryptography_backend.py:164",
+        "jose/backends/cryptography_backend.py:173",
+        "jose/backends/cryptography_backend.py:192",
+        "jose/backends/cryptography_backend.py:193",
+        "jose/backends/cryptography_backend.py:197",
         "jose/backends/cryptography_backend.py:250",
         "jose/backends/cryptography_backend.py:252",
         "jose/backends/cryptography_backend.py:301",
+        "jose/backends/cryptography_backend.py:302",
         "jose/backends/cryptography_backend.py:306",
+        "jose/backends/cryptography_backend.py:327",
+        "jose/backends/cryptography_backend.py:337",
+        "jose/backends/cryptography_backend.py:347",
+        "jose/backends/cryptography_backend.py:353",
+        "jose/backends/cryptography_backend.py:360",
+        "jose/backends/cryptography_backend.py:361",
+        "jose/backends/cryptography_backend.py:367",
+        "jose/backends/cryptography_backend.py:368",
+        "jose/backends/cryptography_backend.py:369",
+        "jose/backends/cryptography_backend.py:370",
+        "jose/backends/cryptography_backend.py:371",
+        "jose/backends/cryptography_backend.py:372",
         "jose/backends/cryptography_backend.py:380",
         "jose/backends/cryptography_backend.py:388",
+        "jose/backends/cryptography_backend.py:57",
         "jose/backends/cryptography_backend.py:582",
         "jose/backends/cryptography_backend.py:72",
         "jose/backends/cryptography_backend.py:74"
       ],
       "id": "confirm_algorithms",
+      "in_force": false,
       "priority": 6,
-      "sites": 11,
+      "sites": 32,
       "sources": [
         "nist-ir-8547"
       ]
     }
   ],
-  "checked": "2026-09-24",
+  "checked": "2026-09-25",
+  "complete": true,
   "counts": {
     "key_exchange": 2,
     "pq": 0,
-    "review": 12,
-    "safe": 27,
-    "signature": 32,
-    "sites": 62,
+    "review": 33,
+    "safe": 28,
+    "signature": 64,
+    "sites": 95,
     "tls": 0,
-    "vulnerable": 23,
+    "vulnerable": 34,
     "weak": 0
   },
   "earliest_milestone": "eu-high-risk",
@@ -109,6 +166,7 @@
     {
       "framework": "nist",
       "id": "nist-kex-deprecated",
+      "in_force": false,
       "rule": "deprecated",
       "sites": 2,
       "source": "nist-ir-8547",
@@ -118,6 +176,7 @@
     {
       "framework": "nist",
       "id": "nist-kex-disallowed",
+      "in_force": false,
       "rule": "disallowed",
       "sites": 2,
       "source": "nist-ir-8547",
@@ -127,8 +186,9 @@
     {
       "framework": "nist",
       "id": "nist-sig-deprecated",
+      "in_force": false,
       "rule": "deprecated",
-      "sites": 32,
+      "sites": 52,
       "source": "nist-ir-8547",
       "state": "due",
       "year": 2030
@@ -136,8 +196,9 @@
     {
       "framework": "nist",
       "id": "nist-sig-disallowed",
+      "in_force": false,
       "rule": "disallowed",
-      "sites": 32,
+      "sites": 64,
       "source": "nist-ir-8547",
       "state": "due",
       "year": 2035
@@ -145,6 +206,7 @@
     {
       "framework": "nist",
       "id": "nist-sha1",
+      "in_force": false,
       "rule": "retired",
       "sites": 0,
       "source": "nist-sha1-retirement",
@@ -154,15 +216,17 @@
     {
       "framework": "nist",
       "id": "nist-md5",
+      "in_force": true,
       "rule": "not_approved",
       "sites": 0,
       "source": "nist-sp-800-131a-r2",
       "state": "clear",
-      "year": 2019
+      "year": null
     },
     {
       "framework": "nist",
       "id": "nist-tdea",
+      "in_force": true,
       "rule": "disallowed",
       "sites": 0,
       "source": "nist-sp-800-131a-r2",
@@ -172,8 +236,9 @@
     {
       "framework": "nsa",
       "id": "nsa-signing",
+      "in_force": false,
       "rule": "exclusive",
-      "sites": 32,
+      "sites": 64,
       "source": "nsa-cnsa-2",
       "state": "due",
       "year": 2030
@@ -181,6 +246,7 @@
     {
       "framework": "nsa",
       "id": "nsa-web",
+      "in_force": false,
       "rule": "exclusive",
       "sites": 2,
       "source": "nsa-cnsa-2",
@@ -190,8 +256,9 @@
     {
       "framework": "nsa",
       "id": "nsa-custom",
+      "in_force": false,
       "rule": "replace",
-      "sites": 34,
+      "sites": 66,
       "source": "nsa-cnsa-2",
       "state": "due",
       "year": 2033
@@ -199,6 +266,7 @@
     {
       "framework": "eu",
       "id": "eu-first-steps",
+      "in_force": false,
       "rule": "first_steps",
       "sites": 0,
       "source": "eu-pqc-roadmap",
@@ -208,8 +276,9 @@
     {
       "framework": "eu",
       "id": "eu-high-risk",
+      "in_force": false,
       "rule": "high_risk",
-      "sites": 34,
+      "sites": 66,
       "source": "eu-pqc-roadmap",
       "state": "due",
       "year": 2030
@@ -217,8 +286,9 @@
     {
       "framework": "eu",
       "id": "eu-full",
+      "in_force": false,
       "rule": "full",
-      "sites": 34,
+      "sites": 66,
       "source": "eu-pqc-roadmap",
       "state": "due",
       "year": 2035
@@ -226,6 +296,7 @@
     {
       "framework": "uk",
       "id": "uk-discovery",
+      "in_force": false,
       "rule": "discovery",
       "sites": 0,
       "source": "uk-ncsc-pqc",
@@ -235,8 +306,9 @@
     {
       "framework": "uk",
       "id": "uk-priority",
+      "in_force": false,
       "rule": "priority",
-      "sites": 34,
+      "sites": 66,
       "source": "uk-ncsc-pqc",
       "state": "due",
       "year": 2031
@@ -244,8 +316,9 @@
     {
       "framework": "uk",
       "id": "uk-complete",
+      "in_force": false,
       "rule": "complete",
-      "sites": 34,
+      "sites": 66,
       "source": "uk-ncsc-pqc",
       "state": "due",
       "year": 2035
@@ -253,6 +326,7 @@
     {
       "framework": "us",
       "id": "us-kex",
+      "in_force": false,
       "rule": "federal",
       "sites": 2,
       "source": "us-eo-14412",
@@ -262,8 +336,9 @@
     {
       "framework": "us",
       "id": "us-sig",
+      "in_force": false,
       "rule": "federal",
-      "sites": 32,
+      "sites": 64,
       "source": "us-eo-14412",
       "state": "due",
       "year": 2031
@@ -271,6 +346,7 @@
     {
       "framework": "nca",
       "id": "nca-hybrid",
+      "in_force": false,
       "rule": "hybrid_required",
       "sites": 0,
       "source": "nca-ncs-2-2025",
@@ -280,6 +356,7 @@
   ],
   "overdue": [],
   "reference_year": 2026,
+  "source_unread": 0,
   "verdict": "at_risk",
   "version": 1
 }

@@ -225,6 +225,24 @@
       "target": "function-eb98e913a645e449"
     },
     {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "function-050f26907271e90a",
+      "target": "crypto_call-0e4d9922f5f21d7b"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "function-050f26907271e90a",
+      "target": "crypto_call-917ac02ab6900387"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "function-050f26907271e90a",
+      "target": "crypto_call-d8d494caee827db0"
+    },
+    {
       "confidence": "low",
       "file": "jose/backends/rsa_backend.py",
       "kind": "call",
@@ -382,12 +400,6 @@
       "confidence": "high",
       "kind": "binding",
       "source": "function-14421df0f7812736",
-      "target": "crypto_call-286d5929859b1035"
-    },
-    {
-      "confidence": "high",
-      "kind": "binding",
-      "source": "function-14421df0f7812736",
       "target": "crypto_call-3362245bb54edb20"
     },
     {
@@ -418,13 +430,19 @@
       "confidence": "high",
       "kind": "binding",
       "source": "function-14421df0f7812736",
-      "target": "crypto_call-9e1afe81ecc5a7d0"
+      "target": "crypto_call-b15b8d38f8660bc4"
     },
     {
       "confidence": "high",
       "kind": "binding",
       "source": "function-14421df0f7812736",
-      "target": "crypto_call-b15b8d38f8660bc4"
+      "target": "crypto_call-c9b4aa70c0220fbc"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "function-14421df0f7812736",
+      "target": "crypto_call-cd3903be517ff0b7"
     },
     {
       "confidence": "low",
@@ -465,6 +483,30 @@
       "line": 200,
       "source": "function-1611edbb1f163cfc",
       "target": "function-7ceb222bc60cb515"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "function-1644bb09a617efdc",
+      "target": "crypto_call-12e94b6106287667"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "function-1644bb09a617efdc",
+      "target": "crypto_call-a25926da1c9faad4"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "function-1644bb09a617efdc",
+      "target": "crypto_call-bc07af2f313ad497"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "function-1644bb09a617efdc",
+      "target": "crypto_call-c131c9cd2c2e0c9b"
     },
     {
       "confidence": "low",
@@ -702,7 +744,7 @@
       "confidence": "high",
       "kind": "binding",
       "source": "function-1fb6978f08552399",
-      "target": "crypto_call-1ae11a31942b0664"
+      "target": "crypto_call-3160a17791dce3e4"
     },
     {
       "confidence": "low",
@@ -923,6 +965,12 @@
       "line": 107,
       "source": "function-26a5d3eff28f0e77",
       "target": "function-bb1dfd168cefa17d"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "function-27a419f1d1058c3f",
+      "target": "crypto_call-58ed2d0f1de51235"
     },
     {
       "confidence": "low",
@@ -1158,7 +1206,7 @@
       "confidence": "high",
       "kind": "binding",
       "source": "function-358f548d0b19b4f9",
-      "target": "crypto_call-bfd28e433fa8e754"
+      "target": "crypto_call-8c6a60c7055c4f07"
     },
     {
       "confidence": "high",
@@ -1387,6 +1435,12 @@
     {
       "confidence": "high",
       "kind": "binding",
+      "source": "function-408607e0dad7131b",
+      "target": "crypto_call-3a4169379429000f"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
       "source": "function-426a3f534a66fdfb",
       "target": "crypto_call-549696b2c36fab51"
     },
@@ -1431,8 +1485,20 @@
     {
       "confidence": "high",
       "kind": "binding",
+      "source": "function-43e6f6b227832909",
+      "target": "crypto_call-2420856b38cf41d2"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
       "source": "function-454ed39039d02e4a",
       "target": "algo_literal-f644a5d370b714ff"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "function-454ed39039d02e4a",
+      "target": "crypto_call-2779327478b0ca32"
     },
     {
       "confidence": "high",
@@ -1444,19 +1510,13 @@
       "confidence": "high",
       "kind": "binding",
       "source": "function-454ed39039d02e4a",
-      "target": "crypto_call-83ada9cf01553253"
+      "target": "crypto_call-cad1705547909390"
     },
     {
       "confidence": "high",
       "kind": "binding",
       "source": "function-454ed39039d02e4a",
       "target": "crypto_call-d5972655713cd22b"
-    },
-    {
-      "confidence": "high",
-      "kind": "binding",
-      "source": "function-454ed39039d02e4a",
-      "target": "crypto_call-fb99c2c0d3744703"
     },
     {
       "confidence": "low",
@@ -1623,8 +1683,20 @@
     {
       "confidence": "high",
       "kind": "binding",
+      "source": "function-498b8022a360aa63",
+      "target": "crypto_call-6723c0b6450fdf72"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "function-498b8022a360aa63",
+      "target": "crypto_call-a353b89fd787c525"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
       "source": "function-4a30d5f75c20f8fc",
-      "target": "crypto_call-4043a1549a16ffb4"
+      "target": "crypto_call-5a8e41ba54df1a47"
     },
     {
       "confidence": "high",
@@ -1776,7 +1848,7 @@
       "confidence": "high",
       "kind": "binding",
       "source": "function-51c0f8aaa037dfda",
-      "target": "crypto_call-9eba9f4169b92550"
+      "target": "crypto_call-51d64ef71313de0b"
     },
     {
       "confidence": "low",
@@ -1965,6 +2037,12 @@
     {
       "confidence": "high",
       "kind": "binding",
+      "source": "function-601edae2b0c414d5",
+      "target": "crypto_call-27123ba11a910fd3"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
       "source": "function-62cc72b95debdadb",
       "target": "crypto_call-c9d929df5f5f7bd6"
     },
@@ -2053,6 +2131,12 @@
     {
       "confidence": "high",
       "kind": "binding",
+      "source": "function-66fb5effe64151a6",
+      "target": "crypto_call-0dfc1c01a9b5ccf8"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
       "source": "function-68ac4e70b37edb39",
       "target": "crypto_call-2bd88c70dd4062ac"
     },
@@ -2132,7 +2216,7 @@
       "confidence": "high",
       "kind": "binding",
       "source": "function-69149d19bbdf5ebb",
-      "target": "crypto_call-cf2f253c96d8a4b4"
+      "target": "crypto_call-934d1f06811cb03f"
     },
     {
       "confidence": "low",
@@ -2540,6 +2624,18 @@
       "confidence": "high",
       "kind": "binding",
       "source": "function-88d9ed5cf63e9af2",
+      "target": "crypto_call-2a8f9f770ec4ede7"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "function-88d9ed5cf63e9af2",
+      "target": "crypto_call-9413248b4e1822b6"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "function-88d9ed5cf63e9af2",
       "target": "crypto_call-ac97b242cfc359ca"
     },
     {
@@ -2694,25 +2790,25 @@
       "confidence": "high",
       "kind": "binding",
       "source": "function-93d07deea12aa852",
-      "target": "crypto_call-05e963c4f6841870"
-    },
-    {
-      "confidence": "high",
-      "kind": "binding",
-      "source": "function-93d07deea12aa852",
       "target": "crypto_call-38b66fdc3dd9234f"
     },
     {
       "confidence": "high",
       "kind": "binding",
       "source": "function-93d07deea12aa852",
-      "target": "crypto_call-b45168cb273642ad"
+      "target": "crypto_call-81b841b29b5f3d2d"
     },
     {
       "confidence": "high",
       "kind": "binding",
       "source": "function-93d07deea12aa852",
-      "target": "crypto_call-c8704602d989c58b"
+      "target": "crypto_call-972d2d8fcd61aa95"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "function-93d07deea12aa852",
+      "target": "crypto_call-b45168cb273642ad"
     },
     {
       "confidence": "low",
@@ -2804,7 +2900,7 @@
       "confidence": "high",
       "kind": "binding",
       "source": "function-9b8628b1f509ccf1",
-      "target": "crypto_call-9316d611f6a31641"
+      "target": "crypto_call-c22b06243657a728"
     },
     {
       "confidence": "high",
@@ -2949,6 +3045,12 @@
       "target": "crypto_call-8685488bfaa11b08"
     },
     {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "function-a1aade3dee8cb442",
+      "target": "crypto_call-868d11b1b5c7fd98"
+    },
+    {
       "confidence": "low",
       "file": "jose/jws.py",
       "kind": "call",
@@ -3063,6 +3165,12 @@
       "kind": "binding",
       "source": "function-a8ca4ed06dea59a3",
       "target": "crypto_call-3ea1011db3e3520e"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "function-a8ca4ed06dea59a3",
+      "target": "crypto_call-68b48020ed51f4ba"
     },
     {
       "confidence": "high",
@@ -3251,6 +3359,18 @@
     {
       "confidence": "high",
       "kind": "binding",
+      "source": "function-b875e903c1586024",
+      "target": "crypto_call-6133f8aa2904a22f"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "function-b98f0772912aefa7",
+      "target": "crypto_call-0303a5eed63be526"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
       "source": "function-b98f0772912aefa7",
       "target": "crypto_call-53a8ff4e0b4eaaaf"
     },
@@ -3316,7 +3436,7 @@
       "confidence": "high",
       "kind": "binding",
       "source": "function-bb1edc6d1e6d7d34",
-      "target": "crypto_call-e1eac1e88a479f10"
+      "target": "crypto_call-4c96372302f0d46d"
     },
     {
       "confidence": "low",
@@ -3579,6 +3699,12 @@
       "target": "function-c482ac4c4ae34406"
     },
     {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "function-c77a515bd92ac989",
+      "target": "crypto_call-fc7c6cb49be033af"
+    },
+    {
       "confidence": "low",
       "file": "tests/test_jwe.py",
       "kind": "call",
@@ -3776,6 +3902,12 @@
       "confidence": "high",
       "kind": "binding",
       "source": "function-db3873fe8dd492ef",
+      "target": "crypto_call-07a19eb85116a6db"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "function-db3873fe8dd492ef",
       "target": "crypto_call-fb36de593c921eb9"
     },
     {
@@ -3888,7 +4020,25 @@
       "confidence": "high",
       "kind": "binding",
       "source": "function-e4cf03d97e2bd4f6",
-      "target": "crypto_call-d96126f857927518"
+      "target": "crypto_call-f3c3cfb16f595d51"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "function-e674d9d9666595c1",
+      "target": "crypto_call-1912d052bb9ab543"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "function-e674d9d9666595c1",
+      "target": "crypto_call-1fdb163f37a55384"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "function-e674d9d9666595c1",
+      "target": "crypto_call-afe68a77e6dddb43"
     },
     {
       "confidence": "low",
@@ -3928,13 +4078,13 @@
       "confidence": "high",
       "kind": "binding",
       "source": "function-e8c114ff49cdfaa1",
-      "target": "crypto_call-44c2d0ce316e994b"
+      "target": "crypto_call-65311d86e027b984"
     },
     {
       "confidence": "high",
       "kind": "binding",
       "source": "function-e8c114ff49cdfaa1",
-      "target": "crypto_call-65311d86e027b984"
+      "target": "crypto_call-773f968626e9fd45"
     },
     {
       "confidence": "high",
@@ -3946,7 +4096,7 @@
       "confidence": "high",
       "kind": "binding",
       "source": "function-e8c114ff49cdfaa1",
-      "target": "crypto_call-d22c64dcb04d550c"
+      "target": "crypto_call-ace7c1170e453998"
     },
     {
       "confidence": "low",
@@ -4001,6 +4151,60 @@
       "line": 398,
       "source": "function-ec256df66734b550",
       "target": "function-af75b3c682a831e5"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "function-ed1b81843669178a",
+      "target": "crypto_call-0423d77dbc7480db"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "function-ed1b81843669178a",
+      "target": "crypto_call-1b1f717ca86def4e"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "function-ed1b81843669178a",
+      "target": "crypto_call-397ac20dbf457e79"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "function-ed1b81843669178a",
+      "target": "crypto_call-39c90979ac61bda4"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "function-ed1b81843669178a",
+      "target": "crypto_call-b794bca7632c8f94"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "function-ed1b81843669178a",
+      "target": "crypto_call-ce514ea01487f34a"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "function-ed1b81843669178a",
+      "target": "crypto_call-cf69123e28d5da63"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "function-ed1b81843669178a",
+      "target": "crypto_call-d53fb18b215a4f49"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "function-ed1b81843669178a",
+      "target": "crypto_call-efa69baf2be88ede"
     },
     {
       "confidence": "low",
@@ -4239,6 +4443,18 @@
       "line": 169,
       "source": "function-fc3eb76d6c7a1548",
       "target": "function-f3bb8865e71d72cf"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "function-fe1a6053710503a4",
+      "target": "crypto_call-11a8e0428716ce8b"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "function-fe1a6053710503a4",
+      "target": "crypto_call-4e727ac76ed0f3aa"
     },
     {
       "confidence": "low",
@@ -7846,6 +8062,42 @@
       "source": "static"
     },
     {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "key_loading",
+      "col": 32,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-0303a5eed63be526",
+      "kind": "crypto_call",
+      "line": 302,
+      "module": "jose.backends.cryptography_backend",
+      "qualified_name": "cryptography.x509.load_pem_x509_certificate.public_key",
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "key_loading",
+      "col": 43,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-0423d77dbc7480db",
+      "kind": "crypto_call",
+      "line": 360,
+      "module": "jose.backends.cryptography_backend",
+      "qualified_name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.public_key.public_numbers",
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
+      "source": "static"
+    },
+    {
       "algorithm": "SHA2-512",
       "algorithms": [
         "SHA2-512"
@@ -7862,26 +8114,6 @@
       "qualified_name": "hashlib.sha512",
       "role": "source",
       "scored": true,
-      "selection": "literal",
-      "source": "static"
-    },
-    {
-      "algorithm": "AES",
-      "algorithms": [
-        "AES"
-      ],
-      "category": "cipher",
-      "col": 28,
-      "file": "jose/backends/cryptography_backend.py",
-      "form": "operation",
-      "free": false,
-      "id": "crypto_call-05e963c4f6841870",
-      "kind": "crypto_call",
-      "line": 494,
-      "module": "jose.backends.cryptography_backend",
-      "qualified_name": "cryptography.hazmat.primitives.ciphers.aead.AESGCM.decryptor",
-      "role": "source",
-      "scored": false,
       "selection": "literal",
       "source": "static"
     },
@@ -7937,6 +8169,26 @@
       "role": "test",
       "scored": true,
       "selection": "unspecified",
+      "source": "static"
+    },
+    {
+      "algorithm": "RSA",
+      "algorithms": [
+        "RSA"
+      ],
+      "category": "key_loading",
+      "col": 6,
+      "file": "tests/algorithms/test_RSA.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-07a19eb85116a6db",
+      "kind": "crypto_call",
+      "line": 231,
+      "module": "tests.algorithms.test_RSA",
+      "qualified_name": "cryptography.hazmat.primitives.asymmetric.rsa.RSAPublicNumbers.public_key",
+      "role": "test",
+      "scored": false,
+      "selection": "literal",
       "source": "static"
     },
     {
@@ -8078,6 +8330,24 @@
     {
       "algorithm": null,
       "algorithms": [],
+      "category": "key_loading",
+      "col": 48,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-0dfc1c01a9b5ccf8",
+      "kind": "crypto_call",
+      "line": 156,
+      "module": "jose.backends.cryptography_backend",
+      "qualified_name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.public_key",
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
       "category": "token",
       "col": 12,
       "file": "tests/test_jwt.py",
@@ -8091,6 +8361,26 @@
       "role": "test",
       "scored": true,
       "selection": "unspecified",
+      "source": "static"
+    },
+    {
+      "algorithm": "RSA",
+      "algorithms": [
+        "RSA"
+      ],
+      "category": "key_loading",
+      "col": 23,
+      "file": "jose/backends/rsa_backend.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-0e4d9922f5f21d7b",
+      "kind": "crypto_call",
+      "line": 198,
+      "module": "jose.backends.rsa_backend",
+      "qualified_name": "rsa.PrivateKey",
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
       "source": "static"
     },
     {
@@ -8108,6 +8398,42 @@
       "qualified_name": "jose.jws.verify",
       "role": "source",
       "scored": true,
+      "selection": "unspecified",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "key_loading",
+      "col": 36,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-11a8e0428716ce8b",
+      "kind": "crypto_call",
+      "line": 337,
+      "module": "jose.backends.cryptography_backend",
+      "qualified_name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.public_bytes",
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "key_loading",
+      "col": 46,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-12e94b6106287667",
+      "kind": "crypto_call",
+      "line": 197,
+      "module": "jose.backends.cryptography_backend",
+      "qualified_name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.private_numbers",
+      "role": "source",
+      "scored": false,
       "selection": "unspecified",
       "source": "static"
     },
@@ -8150,18 +8476,38 @@
       "source": "static"
     },
     {
+      "algorithm": "RSA",
+      "algorithms": [
+        "RSA"
+      ],
+      "category": "key_loading",
+      "col": 37,
+      "file": "jose/backends/rsa_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-1912d052bb9ab543",
+      "kind": "crypto_call",
+      "line": 225,
+      "module": "jose.backends.rsa_backend",
+      "qualified_name": "rsa.PublicKey.load_pkcs1.save_pkcs1",
+      "role": "source",
+      "scored": false,
+      "selection": "literal",
+      "source": "static"
+    },
+    {
       "algorithm": null,
       "algorithms": [],
       "category": "key_loading",
-      "col": 28,
+      "col": 58,
       "file": "jose/backends/cryptography_backend.py",
       "form": "operation",
       "free": false,
-      "id": "crypto_call-1ae11a31942b0664",
+      "id": "crypto_call-1b1f717ca86def4e",
       "kind": "crypto_call",
-      "line": 388,
+      "line": 368,
       "module": "jose.backends.cryptography_backend",
-      "qualified_name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.decrypt",
+      "qualified_name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.private_numbers",
       "role": "source",
       "scored": false,
       "selection": "unspecified",
@@ -8205,6 +8551,26 @@
       "role": "test",
       "scored": true,
       "selection": "forwarded",
+      "source": "static"
+    },
+    {
+      "algorithm": "RSA",
+      "algorithms": [
+        "RSA"
+      ],
+      "category": "key_loading",
+      "col": 41,
+      "file": "jose/backends/rsa_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-1fdb163f37a55384",
+      "kind": "crypto_call",
+      "line": 239,
+      "module": "jose.backends.rsa_backend",
+      "qualified_name": "rsa.PublicKey.load_pkcs1.save_pkcs1",
+      "role": "source",
+      "scored": false,
+      "selection": "literal",
       "source": "static"
     },
     {
@@ -8324,6 +8690,26 @@
       "source": "static"
     },
     {
+      "algorithm": "RSA",
+      "algorithms": [
+        "RSA"
+      ],
+      "category": "key_loading",
+      "col": 30,
+      "file": "jose/backends/rsa_backend.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-2420856b38cf41d2",
+      "kind": "crypto_call",
+      "line": 221,
+      "module": "jose.backends.rsa_backend",
+      "qualified_name": "rsa.PublicKey",
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "source": "static"
+    },
+    {
       "algorithm": null,
       "algorithms": [],
       "category": "token",
@@ -8416,20 +8802,38 @@
       "source": "static"
     },
     {
-      "algorithm": "RSA",
-      "algorithms": [
-        "RSA"
-      ],
+      "algorithm": null,
+      "algorithms": [],
       "category": "key_loading",
-      "col": 19,
+      "col": 48,
       "file": "jose/backends/cryptography_backend.py",
       "form": "operation",
       "free": false,
-      "id": "crypto_call-286d5929859b1035",
+      "id": "crypto_call-27123ba11a910fd3",
       "kind": "crypto_call",
-      "line": 298,
+      "line": 327,
       "module": "jose.backends.cryptography_backend",
-      "qualified_name": "cryptography.hazmat.primitives.asymmetric.rsa.RSAPrivateNumbers.private_key",
+      "qualified_name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.public_key",
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
+      "source": "static"
+    },
+    {
+      "algorithm": "AES",
+      "algorithms": [
+        "AES"
+      ],
+      "category": "aead",
+      "col": 45,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-2779327478b0ca32",
+      "kind": "crypto_call",
+      "line": 463,
+      "module": "jose.backends.cryptography_backend",
+      "qualified_name": "cryptography.hazmat.primitives.ciphers.aead.AESGCM.encrypt",
       "role": "source",
       "scored": false,
       "selection": "literal",
@@ -8472,6 +8876,27 @@
       "qualified_name": "jose.jwt.encode",
       "role": "test",
       "scored": true,
+      "selection": "literal",
+      "source": "static"
+    },
+    {
+      "algorithm": "ECC",
+      "algorithms": [
+        "ECC",
+        "ECC-P256"
+      ],
+      "category": "key_loading",
+      "col": 30,
+      "file": "tests/algorithms/test_EC.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-2a8f9f770ec4ede7",
+      "kind": "crypto_call",
+      "line": 239,
+      "module": "tests.algorithms.test_EC",
+      "qualified_name": "cryptography.hazmat.primitives.asymmetric.ec.generate_private_key.public_key.public_bytes",
+      "role": "test",
+      "scored": false,
       "selection": "literal",
       "source": "static"
     },
@@ -8586,6 +9011,24 @@
       "qualified_name": "jose.jwt.decode",
       "role": "test",
       "scored": true,
+      "selection": "unspecified",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "key_loading",
+      "col": 46,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-3160a17791dce3e4",
+      "kind": "crypto_call",
+      "line": 388,
+      "module": "jose.backends.cryptography_backend",
+      "qualified_name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.decrypt",
+      "role": "source",
+      "scored": false,
       "selection": "unspecified",
       "source": "static"
     },
@@ -8726,6 +9169,24 @@
       "source": "static"
     },
     {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "key_loading",
+      "col": 59,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-397ac20dbf457e79",
+      "kind": "crypto_call",
+      "line": 370,
+      "module": "jose.backends.cryptography_backend",
+      "qualified_name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.private_numbers",
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
+      "source": "static"
+    },
+    {
       "algorithm": "HMAC-SHA2-256",
       "algorithms": [
         "HMAC-SHA2-256"
@@ -8746,6 +9207,24 @@
       "source": "static"
     },
     {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "key_loading",
+      "col": 58,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-39c90979ac61bda4",
+      "kind": "crypto_call",
+      "line": 369,
+      "module": "jose.backends.cryptography_backend",
+      "qualified_name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.private_numbers",
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
+      "source": "static"
+    },
+    {
       "algorithm": "HMAC-SHA2-256",
       "algorithms": [
         "HMAC-SHA2-256"
@@ -8762,6 +9241,26 @@
       "qualified_name": "jose.jwt.encode",
       "role": "test",
       "scored": true,
+      "selection": "literal",
+      "source": "static"
+    },
+    {
+      "algorithm": "ECDSA",
+      "algorithms": [
+        "ECDSA"
+      ],
+      "category": "key_loading",
+      "col": 48,
+      "file": "jose/backends/ecdsa_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-3a4169379429000f",
+      "kind": "crypto_call",
+      "line": 117,
+      "module": "jose.backends.ecdsa_backend",
+      "qualified_name": "ecdsa.VerifyingKey.from_pem.get_verifying_key",
+      "role": "source",
+      "scored": false,
       "selection": "literal",
       "source": "static"
     },
@@ -8898,24 +9397,6 @@
     {
       "algorithm": null,
       "algorithms": [],
-      "category": "key_loading",
-      "col": 26,
-      "file": "jose/backends/cryptography_backend.py",
-      "form": "operation",
-      "free": false,
-      "id": "crypto_call-4043a1549a16ffb4",
-      "kind": "crypto_call",
-      "line": 380,
-      "module": "jose.backends.cryptography_backend",
-      "qualified_name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.encrypt",
-      "role": "source",
-      "scored": false,
-      "selection": "unspecified",
-      "source": "static"
-    },
-    {
-      "algorithm": null,
-      "algorithms": [],
       "category": "token",
       "col": 8,
       "file": "tests/test_jwt.py",
@@ -8965,26 +9446,6 @@
       "role": "test",
       "scored": true,
       "selection": "unspecified",
-      "source": "static"
-    },
-    {
-      "algorithm": "ECC",
-      "algorithms": [
-        "ECC"
-      ],
-      "category": "key_loading",
-      "col": 19,
-      "file": "jose/backends/cryptography_backend.py",
-      "form": "operation",
-      "free": false,
-      "id": "crypto_call-44c2d0ce316e994b",
-      "kind": "crypto_call",
-      "line": 106,
-      "module": "jose.backends.cryptography_backend",
-      "qualified_name": "cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePublicNumbers.public_key",
-      "role": "source",
-      "scored": false,
-      "selection": "literal",
       "source": "static"
     },
     {
@@ -9040,6 +9501,44 @@
       "qualified_name": "jose.jws.verify",
       "role": "test",
       "scored": true,
+      "selection": "unspecified",
+      "source": "static"
+    },
+    {
+      "algorithm": "ECDSA",
+      "algorithms": [
+        "ECDSA"
+      ],
+      "category": "signature",
+      "col": 37,
+      "file": "jose/backends/ecdsa_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-4c96372302f0d46d",
+      "kind": "crypto_call",
+      "line": 105,
+      "module": "jose.backends.ecdsa_backend",
+      "qualified_name": "ecdsa.VerifyingKey.from_pem.verify",
+      "role": "source",
+      "scored": false,
+      "selection": "literal",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "key_loading",
+      "col": 33,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-4e727ac76ed0f3aa",
+      "kind": "crypto_call",
+      "line": 347,
+      "module": "jose.backends.cryptography_backend",
+      "qualified_name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.private_bytes",
+      "role": "source",
+      "scored": false,
       "selection": "unspecified",
       "source": "static"
     },
@@ -9164,6 +9663,24 @@
     {
       "algorithm": null,
       "algorithms": [],
+      "category": "signature",
+      "col": 42,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-51d64ef71313de0b",
+      "kind": "crypto_call",
+      "line": 306,
+      "module": "jose.backends.cryptography_backend",
+      "qualified_name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.sign",
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
       "category": "certificate",
       "col": 14,
       "file": "jose/backends/cryptography_backend.py",
@@ -9276,6 +9793,26 @@
       "source": "static"
     },
     {
+      "algorithm": "ECDSA",
+      "algorithms": [
+        "ECDSA"
+      ],
+      "category": "key_loading",
+      "col": 43,
+      "file": "jose/backends/ecdsa_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-58ed2d0f1de51235",
+      "kind": "crypto_call",
+      "line": 124,
+      "module": "jose.backends.ecdsa_backend",
+      "qualified_name": "ecdsa.VerifyingKey.from_pem.get_verifying_key",
+      "role": "source",
+      "scored": false,
+      "selection": "literal",
+      "source": "static"
+    },
+    {
       "algorithm": "RSA",
       "algorithms": [
         "RSA"
@@ -9293,6 +9830,24 @@
       "role": "source",
       "scored": false,
       "selection": "literal",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "key_loading",
+      "col": 44,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-5a8e41ba54df1a47",
+      "kind": "crypto_call",
+      "line": 380,
+      "module": "jose.backends.cryptography_backend",
+      "qualified_name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.encrypt",
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
       "source": "static"
     },
     {
@@ -9356,6 +9911,24 @@
       "source": "static"
     },
     {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "randomness",
+      "col": 17,
+      "file": "jose/backends/native.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-6133f8aa2904a22f",
+      "kind": "crypto_call",
+      "line": 12,
+      "module": "jose.backends.native",
+      "qualified_name": "os.urandom",
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
+      "source": "static"
+    },
+    {
       "algorithm": "HMAC-SHA2-256",
       "algorithms": [
         "HMAC-SHA2-256"
@@ -9390,6 +9963,44 @@
       "line": 102,
       "module": "jose.backends.cryptography_backend",
       "qualified_name": "cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePrivateNumbers",
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "key_loading",
+      "col": 36,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-6723c0b6450fdf72",
+      "kind": "crypto_call",
+      "line": 160,
+      "module": "jose.backends.cryptography_backend",
+      "qualified_name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.public_bytes",
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
+      "source": "static"
+    },
+    {
+      "algorithm": "RSA",
+      "algorithms": [
+        "RSA"
+      ],
+      "category": "key_loading",
+      "col": 41,
+      "file": "jose/backends/rsa_backend.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-68b48020ed51f4ba",
+      "kind": "crypto_call",
+      "line": 155,
+      "module": "jose.backends.rsa_backend",
+      "qualified_name": "rsa.PublicKey.load_pkcs1_openssl_pem",
       "role": "source",
       "scored": true,
       "selection": "literal",
@@ -9700,6 +10311,26 @@
       "source": "static"
     },
     {
+      "algorithm": "ECC",
+      "algorithms": [
+        "ECC"
+      ],
+      "category": "key_loading",
+      "col": 27,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-773f968626e9fd45",
+      "kind": "crypto_call",
+      "line": 104,
+      "module": "jose.backends.cryptography_backend",
+      "qualified_name": "cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePrivateNumbers.private_key",
+      "role": "source",
+      "scored": false,
+      "selection": "literal",
+      "source": "static"
+    },
+    {
       "algorithm": null,
       "algorithms": [],
       "category": "token",
@@ -9875,15 +10506,15 @@
         "AES"
       ],
       "category": "aead",
-      "col": 38,
+      "col": 40,
       "file": "jose/backends/cryptography_backend.py",
       "form": "operation",
       "free": false,
-      "id": "crypto_call-83ada9cf01553253",
+      "id": "crypto_call-81b841b29b5f3d2d",
       "kind": "crypto_call",
-      "line": 463,
+      "line": 489,
       "module": "jose.backends.cryptography_backend",
-      "qualified_name": "cryptography.hazmat.primitives.ciphers.aead.AESGCM.encrypt",
+      "qualified_name": "cryptography.hazmat.primitives.ciphers.aead.AESGCM.decrypt",
       "role": "source",
       "scored": false,
       "selection": "literal",
@@ -9920,6 +10551,24 @@
       "line": 72,
       "module": "jose.backends.cryptography_backend",
       "qualified_name": "cryptography.hazmat.primitives.serialization.load_pem_public_key",
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "key_loading",
+      "col": 22,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-868d11b1b5c7fd98",
+      "kind": "crypto_call",
+      "line": 57,
+      "module": "jose.backends.cryptography_backend",
+      "qualified_name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.to_pem",
       "role": "source",
       "scored": false,
       "selection": "unspecified",
@@ -10042,6 +10691,26 @@
       "source": "static"
     },
     {
+      "algorithm": "HMAC",
+      "algorithms": [
+        "HMAC"
+      ],
+      "category": "signature",
+      "col": 14,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-8c6a60c7055c4f07",
+      "kind": "crypto_call",
+      "line": 582,
+      "module": "jose.backends.cryptography_backend",
+      "qualified_name": "cryptography.hazmat.primitives.hmac.HMAC.verify",
+      "role": "source",
+      "scored": false,
+      "selection": "literal",
+      "source": "static"
+    },
+    {
       "algorithm": null,
       "algorithms": [],
       "category": "token",
@@ -10060,6 +10729,26 @@
       "source": "static"
     },
     {
+      "algorithm": "RSA",
+      "algorithms": [
+        "RSA"
+      ],
+      "category": "key_loading",
+      "col": 23,
+      "file": "jose/backends/rsa_backend.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-917ac02ab6900387",
+      "kind": "crypto_call",
+      "line": 201,
+      "module": "jose.backends.rsa_backend",
+      "qualified_name": "rsa.PrivateKey",
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "source": "static"
+    },
+    {
       "algorithm": null,
       "algorithms": [],
       "category": "token",
@@ -10074,24 +10763,6 @@
       "qualified_name": "jose.jwt.decode",
       "role": "test",
       "scored": true,
-      "selection": "unspecified",
-      "source": "static"
-    },
-    {
-      "algorithm": null,
-      "algorithms": [],
-      "category": "signature",
-      "col": 20,
-      "file": "jose/backends/cryptography_backend.py",
-      "form": "operation",
-      "free": false,
-      "id": "crypto_call-9316d611f6a31641",
-      "kind": "crypto_call",
-      "line": 139,
-      "module": "jose.backends.cryptography_backend",
-      "qualified_name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.sign",
-      "role": "source",
-      "scored": false,
       "selection": "unspecified",
       "source": "static"
     },
@@ -10116,6 +10787,24 @@
       "source": "static"
     },
     {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "signature",
+      "col": 30,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-934d1f06811cb03f",
+      "kind": "crypto_call",
+      "line": 145,
+      "module": "jose.backends.cryptography_backend",
+      "qualified_name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.verify",
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
+      "source": "static"
+    },
+    {
       "algorithm": "RSA",
       "algorithms": [
         "RSA"
@@ -10136,6 +10825,27 @@
       "source": "static"
     },
     {
+      "algorithm": "ECC",
+      "algorithms": [
+        "ECC",
+        "ECC-P256"
+      ],
+      "category": "key_loading",
+      "col": 17,
+      "file": "tests/algorithms/test_EC.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-9413248b4e1822b6",
+      "kind": "crypto_call",
+      "line": 239,
+      "module": "tests.algorithms.test_EC",
+      "qualified_name": "cryptography.hazmat.primitives.asymmetric.ec.generate_private_key.public_key",
+      "role": "test",
+      "scored": false,
+      "selection": "literal",
+      "source": "static"
+    },
+    {
       "algorithm": null,
       "algorithms": [],
       "category": "token",
@@ -10151,6 +10861,26 @@
       "role": "test",
       "scored": true,
       "selection": "unspecified",
+      "source": "static"
+    },
+    {
+      "algorithm": "AES",
+      "algorithms": [
+        "AES"
+      ],
+      "category": "cipher",
+      "col": 35,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-972d2d8fcd61aa95",
+      "kind": "crypto_call",
+      "line": 494,
+      "module": "jose.backends.cryptography_backend",
+      "qualified_name": "cryptography.hazmat.primitives.ciphers.aead.AESGCM.decryptor",
+      "role": "source",
+      "scored": false,
+      "selection": "literal",
       "source": "static"
     },
     {
@@ -10248,26 +10978,6 @@
       "source": "static"
     },
     {
-      "algorithm": "RSA",
-      "algorithms": [
-        "RSA"
-      ],
-      "category": "key_loading",
-      "col": 19,
-      "file": "jose/backends/cryptography_backend.py",
-      "form": "operation",
-      "free": false,
-      "id": "crypto_call-9e1afe81ecc5a7d0",
-      "kind": "crypto_call",
-      "line": 268,
-      "module": "jose.backends.cryptography_backend",
-      "qualified_name": "cryptography.hazmat.primitives.asymmetric.rsa.RSAPublicNumbers.public_key",
-      "role": "source",
-      "scored": false,
-      "selection": "literal",
-      "source": "static"
-    },
-    {
       "algorithm": "ECC",
       "algorithms": [
         "ECC"
@@ -10290,24 +11000,6 @@
     {
       "algorithm": null,
       "algorithms": [],
-      "category": "signature",
-      "col": 24,
-      "file": "jose/backends/cryptography_backend.py",
-      "form": "operation",
-      "free": false,
-      "id": "crypto_call-9eba9f4169b92550",
-      "kind": "crypto_call",
-      "line": 306,
-      "module": "jose.backends.cryptography_backend",
-      "qualified_name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.sign",
-      "role": "source",
-      "scored": false,
-      "selection": "unspecified",
-      "source": "static"
-    },
-    {
-      "algorithm": null,
-      "algorithms": [],
       "category": "token",
       "col": 12,
       "file": "tests/test_jws.py",
@@ -10320,6 +11012,24 @@
       "qualified_name": "jose.jws.verify",
       "role": "test",
       "scored": true,
+      "selection": "unspecified",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "key_loading",
+      "col": 43,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-a25926da1c9faad4",
+      "kind": "crypto_call",
+      "line": 192,
+      "module": "jose.backends.cryptography_backend",
+      "qualified_name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.public_key.public_numbers",
+      "role": "source",
+      "scored": false,
       "selection": "unspecified",
       "source": "static"
     },
@@ -10341,6 +11051,24 @@
       "role": "test",
       "scored": true,
       "selection": "literal",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "key_loading",
+      "col": 32,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-a353b89fd787c525",
+      "kind": "crypto_call",
+      "line": 164,
+      "module": "jose.backends.cryptography_backend",
+      "qualified_name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.private_bytes",
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
       "source": "static"
     },
     {
@@ -10581,6 +11309,26 @@
       "source": "static"
     },
     {
+      "algorithm": "ECC",
+      "algorithms": [
+        "ECC"
+      ],
+      "category": "key_loading",
+      "col": 26,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-ace7c1170e453998",
+      "kind": "crypto_call",
+      "line": 106,
+      "module": "jose.backends.cryptography_backend",
+      "qualified_name": "cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePublicNumbers.public_key",
+      "role": "source",
+      "scored": false,
+      "selection": "literal",
+      "source": "static"
+    },
+    {
       "algorithm": null,
       "algorithms": [],
       "category": "token",
@@ -10633,6 +11381,26 @@
       "qualified_name": "jose.jwt.encode",
       "role": "test",
       "scored": true,
+      "selection": "literal",
+      "source": "static"
+    },
+    {
+      "algorithm": "RSA",
+      "algorithms": [
+        "RSA"
+      ],
+      "category": "key_loading",
+      "col": 47,
+      "file": "jose/backends/rsa_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-afe68a77e6dddb43",
+      "kind": "crypto_call",
+      "line": 235,
+      "module": "jose.backends.rsa_backend",
+      "qualified_name": "rsa.PublicKey.load_pkcs1.save_pkcs1",
+      "role": "source",
+      "scored": false,
       "selection": "literal",
       "source": "static"
     },
@@ -10737,6 +11505,24 @@
     {
       "algorithm": null,
       "algorithms": [],
+      "category": "key_loading",
+      "col": 43,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-b794bca7632c8f94",
+      "kind": "crypto_call",
+      "line": 353,
+      "module": "jose.backends.cryptography_backend",
+      "qualified_name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.public_key",
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
       "category": "token",
       "col": 12,
       "file": "tests/test_jws.py",
@@ -10749,6 +11535,24 @@
       "qualified_name": "jose.jws.verify",
       "role": "test",
       "scored": true,
+      "selection": "unspecified",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "key_loading",
+      "col": 43,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-bc07af2f313ad497",
+      "kind": "crypto_call",
+      "line": 173,
+      "module": "jose.backends.cryptography_backend",
+      "qualified_name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.public_key",
+      "role": "source",
+      "scored": false,
       "selection": "unspecified",
       "source": "static"
     },
@@ -10831,26 +11635,6 @@
       "source": "static"
     },
     {
-      "algorithm": "HMAC",
-      "algorithms": [
-        "HMAC"
-      ],
-      "category": "signature",
-      "col": 12,
-      "file": "jose/backends/cryptography_backend.py",
-      "form": "operation",
-      "free": false,
-      "id": "crypto_call-bfd28e433fa8e754",
-      "kind": "crypto_call",
-      "line": 582,
-      "module": "jose.backends.cryptography_backend",
-      "qualified_name": "cryptography.hazmat.primitives.hmac.HMAC.verify",
-      "role": "source",
-      "scored": false,
-      "selection": "literal",
-      "source": "static"
-    },
-    {
       "algorithm": "RSA",
       "algorithms": [
         "RSA"
@@ -10873,6 +11657,24 @@
     {
       "algorithm": null,
       "algorithms": [],
+      "category": "key_loading",
+      "col": 43,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-c131c9cd2c2e0c9b",
+      "kind": "crypto_call",
+      "line": 193,
+      "module": "jose.backends.cryptography_backend",
+      "qualified_name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.public_key.public_numbers",
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
       "category": "token",
       "col": 8,
       "file": "tests/test_jwt.py",
@@ -10885,6 +11687,24 @@
       "qualified_name": "jose.jwt.decode",
       "role": "test",
       "scored": true,
+      "selection": "unspecified",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "signature",
+      "col": 38,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-c22b06243657a728",
+      "kind": "crypto_call",
+      "line": 139,
+      "module": "jose.backends.cryptography_backend",
+      "qualified_name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.sign",
+      "role": "source",
+      "scored": false,
       "selection": "unspecified",
       "source": "static"
     },
@@ -11007,20 +11827,20 @@
       "source": "static"
     },
     {
-      "algorithm": "AES",
+      "algorithm": "RSA",
       "algorithms": [
-        "AES"
+        "RSA"
       ],
-      "category": "aead",
-      "col": 33,
+      "category": "key_loading",
+      "col": 27,
       "file": "jose/backends/cryptography_backend.py",
       "form": "operation",
       "free": false,
-      "id": "crypto_call-c8704602d989c58b",
+      "id": "crypto_call-c9b4aa70c0220fbc",
       "kind": "crypto_call",
-      "line": 489,
+      "line": 298,
       "module": "jose.backends.cryptography_backend",
-      "qualified_name": "cryptography.hazmat.primitives.ciphers.aead.AESGCM.decrypt",
+      "qualified_name": "cryptography.hazmat.primitives.asymmetric.rsa.RSAPrivateNumbers.private_key",
       "role": "source",
       "scored": false,
       "selection": "literal",
@@ -11085,6 +11905,46 @@
       "source": "static"
     },
     {
+      "algorithm": "AES",
+      "algorithms": [
+        "AES"
+      ],
+      "category": "cipher",
+      "col": 35,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-cad1705547909390",
+      "kind": "crypto_call",
+      "line": 468,
+      "module": "jose.backends.cryptography_backend",
+      "qualified_name": "cryptography.hazmat.primitives.ciphers.aead.AESGCM.encryptor",
+      "role": "source",
+      "scored": false,
+      "selection": "literal",
+      "source": "static"
+    },
+    {
+      "algorithm": "RSA",
+      "algorithms": [
+        "RSA"
+      ],
+      "category": "key_loading",
+      "col": 26,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-cd3903be517ff0b7",
+      "kind": "crypto_call",
+      "line": 268,
+      "module": "jose.backends.cryptography_backend",
+      "qualified_name": "cryptography.hazmat.primitives.asymmetric.rsa.RSAPublicNumbers.public_key",
+      "role": "source",
+      "scored": false,
+      "selection": "literal",
+      "source": "static"
+    },
+    {
       "algorithm": "HMAC-SHA2-256",
       "algorithms": [
         "HMAC-SHA2-256"
@@ -11119,6 +11979,24 @@
       "qualified_name": "jose.jwt.decode",
       "role": "test",
       "scored": true,
+      "selection": "unspecified",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "key_loading",
+      "col": 59,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-ce514ea01487f34a",
+      "kind": "crypto_call",
+      "line": 372,
+      "module": "jose.backends.cryptography_backend",
+      "qualified_name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.private_numbers",
+      "role": "source",
+      "scored": false,
       "selection": "unspecified",
       "source": "static"
     },
@@ -11165,16 +12043,16 @@
     {
       "algorithm": null,
       "algorithms": [],
-      "category": "signature",
-      "col": 12,
+      "category": "key_loading",
+      "col": 58,
       "file": "jose/backends/cryptography_backend.py",
       "form": "operation",
       "free": false,
-      "id": "crypto_call-cf2f253c96d8a4b4",
+      "id": "crypto_call-cf69123e28d5da63",
       "kind": "crypto_call",
-      "line": 145,
+      "line": 367,
       "module": "jose.backends.cryptography_backend",
-      "qualified_name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.verify",
+      "qualified_name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.private_numbers",
       "role": "source",
       "scored": false,
       "selection": "unspecified",
@@ -11257,26 +12135,6 @@
       "source": "static"
     },
     {
-      "algorithm": "ECC",
-      "algorithms": [
-        "ECC"
-      ],
-      "category": "key_loading",
-      "col": 19,
-      "file": "jose/backends/cryptography_backend.py",
-      "form": "operation",
-      "free": false,
-      "id": "crypto_call-d22c64dcb04d550c",
-      "kind": "crypto_call",
-      "line": 104,
-      "module": "jose.backends.cryptography_backend",
-      "qualified_name": "cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePrivateNumbers.private_key",
-      "role": "source",
-      "scored": false,
-      "selection": "literal",
-      "source": "static"
-    },
-    {
       "algorithm": "HMAC-SHA2-256",
       "algorithms": [
         "HMAC-SHA2-256"
@@ -11294,6 +12152,24 @@
       "role": "source",
       "scored": true,
       "selection": "forwarded",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "key_loading",
+      "col": 59,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-d53fb18b215a4f49",
+      "kind": "crypto_call",
+      "line": 371,
+      "module": "jose.backends.cryptography_backend",
+      "qualified_name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.private_numbers",
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
       "source": "static"
     },
     {
@@ -11395,6 +12271,26 @@
       "source": "static"
     },
     {
+      "algorithm": "RSA",
+      "algorithms": [
+        "RSA"
+      ],
+      "category": "key_loading",
+      "col": 19,
+      "file": "jose/backends/rsa_backend.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-d8d494caee827db0",
+      "kind": "crypto_call",
+      "line": 183,
+      "module": "jose.backends.rsa_backend",
+      "qualified_name": "rsa.PublicKey",
+      "role": "source",
+      "scored": true,
+      "selection": "literal",
+      "source": "static"
+    },
+    {
       "algorithm": null,
       "algorithms": [],
       "category": "token",
@@ -11410,26 +12306,6 @@
       "role": "test",
       "scored": true,
       "selection": "unspecified",
-      "source": "static"
-    },
-    {
-      "algorithm": "ECDSA",
-      "algorithms": [
-        "ECDSA"
-      ],
-      "category": "signature",
-      "col": 15,
-      "file": "jose/backends/ecdsa_backend.py",
-      "form": "operation",
-      "free": false,
-      "id": "crypto_call-d96126f857927518",
-      "kind": "crypto_call",
-      "line": 99,
-      "module": "jose.backends.ecdsa_backend",
-      "qualified_name": "ecdsa.VerifyingKey.from_pem.sign",
-      "role": "source",
-      "scored": false,
-      "selection": "literal",
       "source": "static"
     },
     {
@@ -11486,26 +12362,6 @@
       "role": "test",
       "scored": true,
       "selection": "unspecified",
-      "source": "static"
-    },
-    {
-      "algorithm": "ECDSA",
-      "algorithms": [
-        "ECDSA"
-      ],
-      "category": "signature",
-      "col": 19,
-      "file": "jose/backends/ecdsa_backend.py",
-      "form": "operation",
-      "free": false,
-      "id": "crypto_call-e1eac1e88a479f10",
-      "kind": "crypto_call",
-      "line": 105,
-      "module": "jose.backends.ecdsa_backend",
-      "qualified_name": "ecdsa.VerifyingKey.from_pem.verify",
-      "role": "source",
-      "scored": false,
-      "selection": "literal",
       "source": "static"
     },
     {
@@ -11775,6 +12631,24 @@
       "source": "static"
     },
     {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "key_loading",
+      "col": 43,
+      "file": "jose/backends/cryptography_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-efa69baf2be88ede",
+      "kind": "crypto_call",
+      "line": 361,
+      "module": "jose.backends.cryptography_backend",
+      "qualified_name": "cryptography.hazmat.primitives.serialization.load_pem_public_key.public_key.public_numbers",
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
+      "source": "static"
+    },
+    {
       "algorithm": "HMAC-SHA2-256",
       "algorithms": [
         "HMAC-SHA2-256"
@@ -11848,6 +12722,26 @@
       "role": "test",
       "scored": true,
       "selection": "unspecified",
+      "source": "static"
+    },
+    {
+      "algorithm": "ECDSA",
+      "algorithms": [
+        "ECDSA"
+      ],
+      "category": "signature",
+      "col": 33,
+      "file": "jose/backends/ecdsa_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-f3c3cfb16f595d51",
+      "kind": "crypto_call",
+      "line": 99,
+      "module": "jose.backends.ecdsa_backend",
+      "qualified_name": "ecdsa.VerifyingKey.from_pem.sign",
+      "role": "source",
+      "scored": false,
+      "selection": "literal",
       "source": "static"
     },
     {
@@ -12006,26 +12900,6 @@
       "source": "static"
     },
     {
-      "algorithm": "AES",
-      "algorithms": [
-        "AES"
-      ],
-      "category": "cipher",
-      "col": 28,
-      "file": "jose/backends/cryptography_backend.py",
-      "form": "operation",
-      "free": false,
-      "id": "crypto_call-fb99c2c0d3744703",
-      "kind": "crypto_call",
-      "line": 468,
-      "module": "jose.backends.cryptography_backend",
-      "qualified_name": "cryptography.hazmat.primitives.ciphers.aead.AESGCM.encryptor",
-      "role": "source",
-      "scored": false,
-      "selection": "literal",
-      "source": "static"
-    },
-    {
       "algorithm": "HMAC-SHA2-256",
       "algorithms": [
         "HMAC-SHA2-256"
@@ -12042,6 +12916,26 @@
       "qualified_name": "jose.jwt.encode",
       "role": "test",
       "scored": true,
+      "selection": "literal",
+      "source": "static"
+    },
+    {
+      "algorithm": "ECDSA",
+      "algorithms": [
+        "ECDSA"
+      ],
+      "category": "key_loading",
+      "col": 33,
+      "file": "jose/backends/ecdsa_backend.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-fc7c6cb49be033af",
+      "kind": "crypto_call",
+      "line": 120,
+      "module": "jose.backends.ecdsa_backend",
+      "qualified_name": "ecdsa.VerifyingKey.from_pem.to_pem",
+      "role": "source",
+      "scored": false,
       "selection": "literal",
       "source": "static"
     },

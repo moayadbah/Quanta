@@ -110,14 +110,6 @@
     },
     {
       "confidence": "low",
-      "file": "tests/test_help.py",
-      "kind": "call",
-      "line": 8,
-      "source": "function-19281643b305a19d",
-      "target": "function-c97a84c1b6372454"
-    },
-    {
-      "confidence": "low",
       "file": "tests/test_utils.py",
       "kind": "call",
       "line": 792,
@@ -241,6 +233,12 @@
       "kind": "binding",
       "source": "function-2a8fec765957d762",
       "target": "crypto_call-0701b488abe5edf8"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "function-2a8fec765957d762",
+      "target": "crypto_call-9d4c2a3c6099cc0b"
     },
     {
       "confidence": "low",
@@ -534,14 +532,6 @@
     },
     {
       "confidence": "low",
-      "file": "tests/test_help.py",
-      "kind": "call",
-      "line": 27,
-      "source": "function-52a969345bab839e",
-      "target": "function-c97a84c1b6372454"
-    },
-    {
-      "confidence": "low",
       "file": "tests/test_utils.py",
       "kind": "call",
       "line": 968,
@@ -552,7 +542,7 @@
       "confidence": "high",
       "kind": "binding",
       "source": "function-552d86182f05c263",
-      "target": "crypto_call-fc9e172dfeef6cae"
+      "target": "crypto_call-0686e6b80c569790"
     },
     {
       "confidence": "low",
@@ -902,7 +892,19 @@
       "confidence": "high",
       "kind": "binding",
       "source": "function-794887364894d6d8",
+      "target": "crypto_call-35521afccfabe4e5"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "function-794887364894d6d8",
       "target": "crypto_call-cacfac5b9f318560"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "function-794887364894d6d8",
+      "target": "crypto_call-ec1cfbe4f3b5acad"
     },
     {
       "confidence": "low",
@@ -1042,14 +1044,6 @@
     },
     {
       "confidence": "low",
-      "file": "tests/test_hooks.py",
-      "kind": "call",
-      "line": 22,
-      "source": "function-8942d550d7a0617f",
-      "target": "function-ad325b13e2d597c3"
-    },
-    {
-      "confidence": "low",
       "file": "tests/test_requests.py",
       "kind": "call",
       "line": 2055,
@@ -1181,14 +1175,6 @@
       "line": 633,
       "source": "function-9fb62bc990609279",
       "target": "function-a19732a25e0dcd5f"
-    },
-    {
-      "confidence": "low",
-      "file": "tests/test_hooks.py",
-      "kind": "call",
-      "line": 18,
-      "source": "function-a149a7b98b6f95d7",
-      "target": "function-8df8a307dd8bba9a"
     },
     {
       "confidence": "low",
@@ -1357,14 +1343,6 @@
       "line": 473,
       "source": "function-c4c93f74a2ea120c",
       "target": "function-60161132f7b439f9"
-    },
-    {
-      "confidence": "low",
-      "file": "tests/test_help.py",
-      "kind": "call",
-      "line": 21,
-      "source": "function-c580e5fd69f7d1a9",
-      "target": "function-c97a84c1b6372454"
     },
     {
       "confidence": "low",
@@ -1624,7 +1602,7 @@
       "confidence": "high",
       "kind": "binding",
       "source": "function-e58958c560135258",
-      "target": "crypto_call-dcf899e59b8532ab"
+      "target": "crypto_call-18047574feaac88c"
     },
     {
       "confidence": "low",
@@ -2331,12 +2309,6 @@
     {
       "confidence": "high",
       "kind": "binding",
-      "source": "module-39085500e6f80804",
-      "target": "function-51e14e47eae6ba64"
-    },
-    {
-      "confidence": "high",
-      "kind": "binding",
       "source": "module-391d8b77463d01e7",
       "target": "function-14c04b370a27b8ef"
     },
@@ -2797,120 +2769,6 @@
       "kind": "binding",
       "source": "module-61843e6cb7b8e637",
       "target": "function-b75b135e0938bd10"
-    },
-    {
-      "confidence": "high",
-      "kind": "binding",
-      "source": "module-63dfcde6c52198ee",
-      "target": "function-145f1d84fdc2abba"
-    },
-    {
-      "confidence": "high",
-      "kind": "binding",
-      "source": "module-63dfcde6c52198ee",
-      "target": "function-175aba0d8c82079f"
-    },
-    {
-      "confidence": "high",
-      "kind": "binding",
-      "source": "module-63dfcde6c52198ee",
-      "target": "function-17f0dc421e7f6221"
-    },
-    {
-      "confidence": "high",
-      "kind": "binding",
-      "source": "module-63dfcde6c52198ee",
-      "target": "function-1d6064af79dcf76e"
-    },
-    {
-      "confidence": "high",
-      "kind": "binding",
-      "source": "module-63dfcde6c52198ee",
-      "target": "function-3295d8429c43665b"
-    },
-    {
-      "confidence": "high",
-      "kind": "binding",
-      "source": "module-63dfcde6c52198ee",
-      "target": "function-368595a9897617ab"
-    },
-    {
-      "confidence": "high",
-      "kind": "binding",
-      "source": "module-63dfcde6c52198ee",
-      "target": "function-5491b787fede95a4"
-    },
-    {
-      "confidence": "high",
-      "kind": "binding",
-      "source": "module-63dfcde6c52198ee",
-      "target": "function-5504ae34394935c9"
-    },
-    {
-      "confidence": "high",
-      "kind": "binding",
-      "source": "module-63dfcde6c52198ee",
-      "target": "function-6e854899734ffde0"
-    },
-    {
-      "confidence": "high",
-      "kind": "binding",
-      "source": "module-63dfcde6c52198ee",
-      "target": "function-764925b2848c7775"
-    },
-    {
-      "confidence": "high",
-      "kind": "binding",
-      "source": "module-63dfcde6c52198ee",
-      "target": "function-82d0412d9f9e9c29"
-    },
-    {
-      "confidence": "high",
-      "kind": "binding",
-      "source": "module-63dfcde6c52198ee",
-      "target": "function-9ae70bc64eab7803"
-    },
-    {
-      "confidence": "high",
-      "kind": "binding",
-      "source": "module-63dfcde6c52198ee",
-      "target": "function-c1340c7276417613"
-    },
-    {
-      "confidence": "high",
-      "kind": "binding",
-      "source": "module-63dfcde6c52198ee",
-      "target": "function-c47d96e24298b786"
-    },
-    {
-      "confidence": "high",
-      "kind": "binding",
-      "source": "module-63dfcde6c52198ee",
-      "target": "function-ef1bf1c17aa3625e"
-    },
-    {
-      "confidence": "high",
-      "kind": "binding",
-      "source": "module-7bf9263d1d57515e",
-      "target": "function-19281643b305a19d"
-    },
-    {
-      "confidence": "high",
-      "kind": "binding",
-      "source": "module-7bf9263d1d57515e",
-      "target": "function-52a969345bab839e"
-    },
-    {
-      "confidence": "high",
-      "kind": "binding",
-      "source": "module-7bf9263d1d57515e",
-      "target": "function-aabe8c636a616268"
-    },
-    {
-      "confidence": "high",
-      "kind": "binding",
-      "source": "module-7bf9263d1d57515e",
-      "target": "function-c580e5fd69f7d1a9"
     },
     {
       "confidence": "high",
@@ -5679,32 +5537,6 @@
     {
       "confidence": "high",
       "kind": "binding",
-      "source": "module-c12890a16bc05318",
-      "target": "function-8942d550d7a0617f"
-    },
-    {
-      "confidence": "high",
-      "kind": "binding",
-      "source": "module-c12890a16bc05318",
-      "target": "function-990169a64753f441"
-    },
-    {
-      "confidence": "high",
-      "kind": "binding",
-      "source": "module-c12890a16bc05318",
-      "target": "function-a149a7b98b6f95d7"
-    },
-    {
-      "confidence": "high",
-      "file": "tests/test_hooks.py",
-      "kind": "import",
-      "line": 3,
-      "source": "module-c12890a16bc05318",
-      "target": "module-9fd9505dd91a45b1"
-    },
-    {
-      "confidence": "high",
-      "kind": "binding",
       "source": "module-c2e8fde19b35adc5",
       "target": "function-5e5b2a832ff9e411"
     },
@@ -6152,6 +5984,24 @@
   "multigraph": false,
   "nodes": [
     {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "tls",
+      "col": 32,
+      "file": "tests/testserver/server.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-0686e6b80c569790",
+      "kind": "crypto_call",
+      "line": 173,
+      "module": "tests.testserver.server",
+      "qualified_name": "ssl.SSLContext.wrap_socket",
+      "role": "test",
+      "scored": false,
+      "selection": "unspecified",
+      "source": "static"
+    },
+    {
       "algorithm": "SHA1",
       "algorithms": [
         "SHA1"
@@ -6210,6 +6060,42 @@
       "source": "static"
     },
     {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "tls",
+      "col": 28,
+      "file": "tests/conftest.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-18047574feaac88c",
+      "kind": "crypto_call",
+      "line": 60,
+      "module": "tests.conftest",
+      "qualified_name": "ssl.create_default_context.wrap_socket",
+      "role": "test",
+      "scored": false,
+      "selection": "unspecified",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "tls",
+      "col": 29,
+      "file": "tests/testserver/server.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-35521afccfabe4e5",
+      "kind": "crypto_call",
+      "line": 169,
+      "module": "tests.testserver.server",
+      "qualified_name": "ssl.SSLContext.load_verify_locations",
+      "role": "test",
+      "scored": false,
+      "selection": "unspecified",
+      "source": "static"
+    },
+    {
       "algorithm": "SHA1",
       "algorithms": [
         "SHA1"
@@ -6227,6 +6113,24 @@
       "role": "source",
       "scored": true,
       "selection": "literal",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "randomness",
+      "col": 13,
+      "file": "src/requests/auth.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-9d4c2a3c6099cc0b",
+      "kind": "crypto_call",
+      "line": 235,
+      "module": "src.requests.auth",
+      "qualified_name": "os.urandom",
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
       "source": "static"
     },
     {
@@ -6268,24 +6172,6 @@
       "source": "static"
     },
     {
-      "algorithm": null,
-      "algorithms": [],
-      "category": "tls",
-      "col": 20,
-      "file": "tests/conftest.py",
-      "form": "operation",
-      "free": false,
-      "id": "crypto_call-dcf899e59b8532ab",
-      "kind": "crypto_call",
-      "line": 60,
-      "module": "tests.conftest",
-      "qualified_name": "ssl.create_default_context.wrap_socket",
-      "role": "test",
-      "scored": false,
-      "selection": "unspecified",
-      "source": "static"
-    },
-    {
       "algorithm": "SHA2-512",
       "algorithms": [
         "SHA2-512"
@@ -6309,15 +6195,15 @@
       "algorithm": null,
       "algorithms": [],
       "category": "tls",
-      "col": 15,
+      "col": 25,
       "file": "tests/testserver/server.py",
       "form": "operation",
       "free": false,
-      "id": "crypto_call-fc9e172dfeef6cae",
+      "id": "crypto_call-ec1cfbe4f3b5acad",
       "kind": "crypto_call",
-      "line": 173,
+      "line": 162,
       "module": "tests.testserver.server",
-      "qualified_name": "ssl.SSLContext.wrap_socket",
+      "qualified_name": "ssl.SSLContext.load_cert_chain",
       "role": "test",
       "scored": false,
       "selection": "unspecified",
@@ -6889,18 +6775,6 @@
     },
     {
       "algorithm": null,
-      "col": 4,
-      "file": "tests/test_structures.py",
-      "id": "function-145f1d84fdc2abba",
-      "kind": "function",
-      "line": 25,
-      "module": "tests.test_structures",
-      "qualified_name": "tests.test_structures.TestCaseInsensitiveDict.test_delitem",
-      "role": "test",
-      "source": "static"
-    },
-    {
-      "algorithm": null,
       "col": 0,
       "file": "tests/conftest.py",
       "id": "function-14a4950d42ac10df",
@@ -7034,30 +6908,6 @@
     {
       "algorithm": null,
       "col": 4,
-      "file": "tests/test_structures.py",
-      "id": "function-175aba0d8c82079f",
-      "kind": "function",
-      "line": 34,
-      "module": "tests.test_structures",
-      "qualified_name": "tests.test_structures.TestCaseInsensitiveDict.test_repr",
-      "role": "test",
-      "source": "static"
-    },
-    {
-      "algorithm": null,
-      "col": 4,
-      "file": "tests/test_structures.py",
-      "id": "function-17f0dc421e7f6221",
-      "kind": "function",
-      "line": 80,
-      "module": "tests.test_structures",
-      "qualified_name": "tests.test_structures.TestLookupDict.test_hasattr",
-      "role": "test",
-      "source": "static"
-    },
-    {
-      "algorithm": null,
-      "col": 4,
       "file": "src/requests/cookies.py",
       "id": "function-181c6afb6adee339",
       "kind": "function",
@@ -7100,18 +6950,6 @@
       "line": 535,
       "module": "tests.test_requests",
       "qualified_name": "tests.test_requests.TestRequests.test_HTTP_200_OK_PUT",
-      "role": "test",
-      "source": "static"
-    },
-    {
-      "algorithm": null,
-      "col": 0,
-      "file": "tests/test_help.py",
-      "id": "function-19281643b305a19d",
-      "kind": "function",
-      "line": 6,
-      "module": "tests.test_help",
-      "qualified_name": "tests.test_help.test_system_ssl",
       "role": "test",
       "source": "static"
     },
@@ -7269,18 +7107,6 @@
       "module": "src.requests.adapters",
       "qualified_name": "src.requests.adapters.HTTPAdapter.cert_verify",
       "role": "source",
-      "source": "static"
-    },
-    {
-      "algorithm": null,
-      "col": 4,
-      "file": "tests/test_structures.py",
-      "id": "function-1d6064af79dcf76e",
-      "kind": "function",
-      "line": 8,
-      "module": "tests.test_structures",
-      "qualified_name": "tests.test_structures.TestCaseInsensitiveDict.setup",
-      "role": "test",
       "source": "static"
     },
     {
@@ -7970,18 +7796,6 @@
     {
       "algorithm": null,
       "col": 4,
-      "file": "tests/test_structures.py",
-      "id": "function-3295d8429c43665b",
-      "kind": "function",
-      "line": 77,
-      "module": "tests.test_structures",
-      "qualified_name": "tests.test_structures.TestLookupDict.test_get",
-      "role": "test",
-      "source": "static"
-    },
-    {
-      "algorithm": null,
-      "col": 4,
       "file": "src/requests/auth.py",
       "id": "function-32e916fd1742db1d",
       "kind": "function",
@@ -8120,18 +7934,6 @@
       "line": 904,
       "module": "tests.test_requests",
       "qualified_name": "tests.test_requests.TestRequests.test_post_with_custom_mapping.CustomMapping.__delitem__",
-      "role": "test",
-      "source": "static"
-    },
-    {
-      "algorithm": null,
-      "col": 4,
-      "file": "tests/test_structures.py",
-      "id": "function-368595a9897617ab",
-      "kind": "function",
-      "line": 29,
-      "module": "tests.test_structures",
-      "qualified_name": "tests.test_structures.TestCaseInsensitiveDict.test_lower_items",
       "role": "test",
       "source": "static"
     },
@@ -9037,18 +8839,6 @@
     },
     {
       "algorithm": null,
-      "col": 0,
-      "file": "tests/compat.py",
-      "id": "function-51e14e47eae6ba64",
-      "kind": "function",
-      "line": 14,
-      "module": "tests.compat",
-      "qualified_name": "tests.compat.u",
-      "role": "test",
-      "source": "static"
-    },
-    {
-      "algorithm": null,
       "col": 4,
       "file": "src/requests/models.py",
       "id": "function-5262b77a85da8a56",
@@ -9061,18 +8851,6 @@
     },
     {
       "algorithm": null,
-      "col": 0,
-      "file": "tests/test_help.py",
-      "id": "function-52a969345bab839e",
-      "kind": "function",
-      "line": 24,
-      "module": "tests.test_help",
-      "qualified_name": "tests.test_help.test_idna_with_version_attribute",
-      "role": "test",
-      "source": "static"
-    },
-    {
-      "algorithm": null,
       "col": 4,
       "file": "tests/test_requests.py",
       "id": "function-546466c522486672",
@@ -9080,18 +8858,6 @@
       "line": 1435,
       "module": "tests.test_requests",
       "qualified_name": "tests.test_requests.TestRequests.test_cookie_policy_copy",
-      "role": "test",
-      "source": "static"
-    },
-    {
-      "algorithm": null,
-      "col": 4,
-      "file": "tests/test_structures.py",
-      "id": "function-5491b787fede95a4",
-      "kind": "function",
-      "line": 21,
-      "module": "tests.test_structures",
-      "qualified_name": "tests.test_structures.TestCaseInsensitiveDict.test_getitem",
       "role": "test",
       "source": "static"
     },
@@ -9128,18 +8894,6 @@
       "line": 1940,
       "module": "tests.test_requests",
       "qualified_name": "tests.test_requests.TestRequests.test_should_strip_auth_host_change",
-      "role": "test",
-      "source": "static"
-    },
-    {
-      "algorithm": null,
-      "col": 4,
-      "file": "tests/test_structures.py",
-      "id": "function-5504ae34394935c9",
-      "kind": "function",
-      "line": 61,
-      "module": "tests.test_structures",
-      "qualified_name": "tests.test_structures.TestLookupDict.test_repr",
       "role": "test",
       "source": "static"
     },
@@ -10094,18 +9848,6 @@
     {
       "algorithm": null,
       "col": 4,
-      "file": "tests/test_structures.py",
-      "id": "function-6e854899734ffde0",
-      "kind": "function",
-      "line": 84,
-      "module": "tests.test_structures",
-      "qualified_name": "tests.test_structures.TestLookupDict.test_getattr",
-      "role": "test",
-      "source": "static"
-    },
-    {
-      "algorithm": null,
-      "col": 4,
       "file": "src/requests/exceptions.py",
       "id": "function-6eb35c09ddfe53ef",
       "kind": "function",
@@ -10317,18 +10059,6 @@
       "module": "src.requests.utils",
       "qualified_name": "src.requests.utils.resolve_proxies",
       "role": "source",
-      "source": "static"
-    },
-    {
-      "algorithm": null,
-      "col": 4,
-      "file": "tests/test_structures.py",
-      "id": "function-764925b2848c7775",
-      "kind": "function",
-      "line": 37,
-      "module": "tests.test_structures",
-      "qualified_name": "tests.test_structures.TestCaseInsensitiveDict.test_copy",
-      "role": "test",
       "source": "static"
     },
     {
@@ -10730,18 +10460,6 @@
     {
       "algorithm": null,
       "col": 4,
-      "file": "tests/test_structures.py",
-      "id": "function-82d0412d9f9e9c29",
-      "kind": "function",
-      "line": 73,
-      "module": "tests.test_structures",
-      "qualified_name": "tests.test_structures.TestLookupDict.test_getitem",
-      "role": "test",
-      "source": "static"
-    },
-    {
-      "algorithm": null,
-      "col": 4,
       "file": "src/requests/cookies.py",
       "id": "function-82ee75d620aaff63",
       "kind": "function",
@@ -11036,18 +10754,6 @@
       "line": 55,
       "module": "tests.test_testserver",
       "qualified_name": "tests.test_testserver.TestTestServer.test_basic_response",
-      "role": "test",
-      "source": "static"
-    },
-    {
-      "algorithm": null,
-      "col": 0,
-      "file": "tests/test_hooks.py",
-      "id": "function-8942d550d7a0617f",
-      "kind": "function",
-      "line": 21,
-      "module": "tests.test_hooks",
-      "qualified_name": "tests.test_hooks.test_default_hooks",
       "role": "test",
       "source": "static"
     },
@@ -11497,18 +11203,6 @@
     },
     {
       "algorithm": null,
-      "col": 0,
-      "file": "tests/test_hooks.py",
-      "id": "function-990169a64753f441",
-      "kind": "function",
-      "line": 6,
-      "module": "tests.test_hooks",
-      "qualified_name": "tests.test_hooks.hook",
-      "role": "test",
-      "source": "static"
-    },
-    {
-      "algorithm": null,
       "col": 4,
       "file": "src/requests/sessions.py",
       "id": "function-992e2cfb49b12557",
@@ -11565,18 +11259,6 @@
       "module": "src.requests.cookies",
       "qualified_name": "src.requests.cookies.MockResponse.__init__",
       "role": "source",
-      "source": "static"
-    },
-    {
-      "algorithm": null,
-      "col": 4,
-      "file": "tests/test_structures.py",
-      "id": "function-9ae70bc64eab7803",
-      "kind": "function",
-      "line": 13,
-      "module": "tests.test_structures",
-      "qualified_name": "tests.test_structures.TestCaseInsensitiveDict.test_list",
-      "role": "test",
       "source": "static"
     },
     {
@@ -11817,18 +11499,6 @@
       "module": "src.requests.cookies",
       "qualified_name": "src.requests.cookies.RequestsCookieJar.get_policy",
       "role": "source",
-      "source": "static"
-    },
-    {
-      "algorithm": null,
-      "col": 0,
-      "file": "tests/test_hooks.py",
-      "id": "function-a149a7b98b6f95d7",
-      "kind": "function",
-      "line": 17,
-      "module": "tests.test_hooks",
-      "qualified_name": "tests.test_hooks.test_hooks",
-      "role": "test",
       "source": "static"
     },
     {
@@ -12153,18 +11823,6 @@
       "module": "src.requests.models",
       "qualified_name": "src.requests.models.PreparedRequest.prepare_cookies",
       "role": "source",
-      "source": "static"
-    },
-    {
-      "algorithm": null,
-      "col": 4,
-      "file": "tests/test_help.py",
-      "id": "function-aabe8c636a616268",
-      "kind": "function",
-      "line": 12,
-      "module": "tests.test_help",
-      "qualified_name": "tests.test_help.VersionedPackage.__init__",
-      "role": "test",
       "source": "static"
     },
     {
@@ -12782,18 +12440,6 @@
     {
       "algorithm": null,
       "col": 4,
-      "file": "tests/test_structures.py",
-      "id": "function-c1340c7276417613",
-      "kind": "function",
-      "line": 50,
-      "module": "tests.test_structures",
-      "qualified_name": "tests.test_structures.TestCaseInsensitiveDict.test_instance_equality",
-      "role": "test",
-      "source": "static"
-    },
-    {
-      "algorithm": null,
-      "col": 4,
       "file": "tests/test_requests.py",
       "id": "function-c18751e79cf2b575",
       "kind": "function",
@@ -12938,18 +12584,6 @@
     {
       "algorithm": null,
       "col": 4,
-      "file": "tests/test_structures.py",
-      "id": "function-c47d96e24298b786",
-      "kind": "function",
-      "line": 90,
-      "module": "tests.test_structures",
-      "qualified_name": "tests.test_structures.TestLookupDict.test_getattr_default",
-      "role": "test",
-      "source": "static"
-    },
-    {
-      "algorithm": null,
-      "col": 4,
       "file": "src/requests/models.py",
       "id": "function-c4a8a12a55132f52",
       "kind": "function",
@@ -12992,18 +12626,6 @@
       "line": 597,
       "module": "tests.test_requests",
       "qualified_name": "tests.test_requests.TestRequests.test_proxy_error",
-      "role": "test",
-      "source": "static"
-    },
-    {
-      "algorithm": null,
-      "col": 0,
-      "file": "tests/test_help.py",
-      "id": "function-c580e5fd69f7d1a9",
-      "kind": "function",
-      "line": 16,
-      "module": "tests.test_help",
-      "qualified_name": "tests.test_help.test_idna_without_version_attribute",
       "role": "test",
       "source": "static"
     },
@@ -14096,18 +13718,6 @@
       "line": 1558,
       "module": "tests.test_requests",
       "qualified_name": "tests.test_requests.TestRequests.test_prepared_request_is_pickleable",
-      "role": "test",
-      "source": "static"
-    },
-    {
-      "algorithm": null,
-      "col": 4,
-      "file": "tests/test_structures.py",
-      "id": "function-ef1bf1c17aa3625e",
-      "kind": "function",
-      "line": 56,
-      "module": "tests.test_structures",
-      "qualified_name": "tests.test_structures.TestLookupDict.setup",
       "role": "test",
       "source": "static"
     },

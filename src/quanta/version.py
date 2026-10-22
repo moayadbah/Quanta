@@ -11,7 +11,7 @@ __version__ = "0.5.0"
 
 #: Crypto ruleset version (§9.5). Bump whenever ``core.rules`` changes in a way that
 #: could alter detection output — it invalidates the analysis cache by design.
-CRYPTO_RULESET_VERSION = "2026.11.01"
+CRYPTO_RULESET_VERSION = "2026.11.05"
 
 
 #: Agility Score definition (Master Plan section 8). Part of the cache key and provenance.

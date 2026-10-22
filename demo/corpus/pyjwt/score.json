@@ -1,9 +1,9 @@
 {
   "agility_score": 56.681325,
   "coverage": {
-    "coverage_ratio": 0.930233,
+    "coverage_ratio": 0.952381,
     "crypto_api_calls_matched": 40,
-    "crypto_api_calls_unmatched": 3,
+    "crypto_api_calls_unmatched": 2,
     "files_scanned": 26,
     "files_unparseable": 0,
     "files_unparseable_source": 0,
@@ -11,8 +11,8 @@
     "sites_by_role": {
       "docs": 0,
       "example": 0,
-      "source": 38,
-      "test": 72,
+      "source": 43,
+      "test": 107,
       "tooling": 0,
       "vendored": 0
     },
@@ -20,10 +20,6 @@
     "touchpoints": 36,
     "truncated": false,
     "unmatched_top": [
-      {
-        "count": 1,
-        "name": "cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePrivateNumbers.private_key"
-      },
       {
         "count": 1,
         "name": "cryptography.hazmat.primitives.asymmetric.utils.decode_dss_signature"
@@ -127,13 +123,13 @@
   },
   "inventory_summary": {
     "by_algorithm": {
-      "ECC": 4,
+      "ECC": 16,
       "ECDSA": 4,
-      "EDDSA-ED25519": 3,
+      "EDDSA-ED25519": 5,
       "EDDSA-ED448": 2,
       "HMAC": 3,
       "HMAC-SHA2-256": 9,
-      "RSA": 14,
+      "RSA": 18,
       "SHA2-256": 3,
       "SHA2-384": 1,
       "SHA2-512": 1
@@ -142,21 +138,21 @@
       "certificate": 2,
       "hash": 4,
       "key_generation": 4,
-      "key_loading": 66,
+      "key_loading": 105,
       "mac": 3,
       "signature": 10,
-      "tls": 2,
+      "tls": 3,
       "token": 19
     },
     "pq": 0,
-    "quantum_vulnerable": 27,
+    "quantum_vulnerable": 45,
     "weak": 0
   },
   "provenance": {
-    "analyzer_version": "0.5.0+rules.2026.11.01",
+    "analyzer_version": "0.5.0+rules.2026.11.05",
     "cbom_sha256": null,
-    "commit_sha": "1d41a6478e1562e68ff667fcd703356acf085f68",
-    "crypto_ruleset_version": "2026.11.01",
+    "commit_sha": "16231abfd1d8eab4953e8779b3017b859c88565e",
+    "crypto_ruleset_version": "2026.11.05",
     "metric_version": "metric-v2",
     "repo": "jpadilla/pyjwt",
     "weights_version": "weights-v1"
@@ -171,7 +167,7 @@
     },
     {
       "action": "Plan migration of quantum-vulnerable key establishment and signatures (ML-KEM, ML-DSA, ideally hybrid).",
-      "affected_sites": 17,
+      "affected_sites": 21,
       "bound": "not scored; needs both ends of a protocol",
       "estimated_score_gain": 0.0,
       "pattern": "P3"
