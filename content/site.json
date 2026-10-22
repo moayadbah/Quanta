@@ -1687,9 +1687,21 @@
       "en": "Workspace",
       "ar": "مساحة العمل"
     },
+    "numbers.arrow": {
+      "en": "→",
+      "ar": "←"
+    },
+    "numbers.calls": {
+      "en": "+{n} calls",
+      "ar": "+{n} استدعاءً"
+    },
     "numbers.how": {
       "en": "Source and method",
       "ar": "المصدر والطريقة"
+    },
+    "numbers.latest": {
+      "en": "On the latest independent sample (60 repositories): {n}",
+      "ar": "وفي آخر عينة مستقلة (60 مستودعًا): {n}"
     },
     "numbers.lede": {
       "en": "Open any figure to see what was measured, how, and where it comes from.",
@@ -1707,13 +1719,105 @@
       "en": "Method",
       "ar": "الطريقة"
     },
+    "numbers.next.1.body": {
+      "en": "TLS connections, SSH keys and signatures inside network, database and messaging libraries, such as redis, MQTT and paramiko. The engine follows a TLS context wherever it is passed, and reads the project's dependencies.",
+      "ar": "اتصالات TLS ومفاتيح SSH وتوقيعات داخل مكتبات الشبكات وقواعد البيانات والرسائل، مثل redis و MQTT و paramiko. المحرك يتتبع سياق TLS أينما مُرِّر، ويقرأ اعتماديات المشروع."
+    },
+    "numbers.next.1.title": {
+      "en": "Cryptography inside non-crypto libraries",
+      "ar": "التشفير داخل المكتبات غير التشفيرية"
+    },
+    "numbers.next.2.body": {
+      "en": "The part exposed to quantum computing. Objects followed across files, AES-GCM operations, and TLS settings kept inside classes.",
+      "ar": "الجزء المعرّض للحوسبة الكمية. تتبع الكائنات عبر الملفات، وعمليات AES-GCM، وإعدادات TLS المحفوظة داخل الكلاسات."
+    },
+    "numbers.next.2.title": {
+      "en": "Sharper public key and TLS detection",
+      "ar": "كشف أدق للمفاتيح العامة و TLS"
+    },
+    "numbers.next.3.body": {
+      "en": "A small model that runs locally, trained on 1,143 hand-labelled calls, reviews the cases the engine is unsure of before they reach you. Your code never leaves your machine.",
+      "ar": "نموذج صغير يعمل محليًا، مدرّب على 1,143 استدعاءً موسومًا يدويًا، يراجع الحالات التي يشك فيها المحرك قبل أن تصل إليك. لا يغادر الكود جهازك."
+    },
+    "numbers.next.3.title": {
+      "en": "An AI verification layer",
+      "ar": "طبقة تحقق بالذكاء الاصطناعي"
+    },
+    "numbers.next.4.body": {
+      "en": "What the engine cannot confirm is shown apart from the confirmed findings, so no likely site is missed and guesses never mix with the figures.",
+      "ar": "ما لا يستطيع المحرك تأكيده يُعرض منفصلًا عن النتائج المؤكدة، فلا يفوتك موضع محتمل ولا تختلط التخمينات بالأرقام."
+    },
+    "numbers.next.4.title": {
+      "en": "A \"needs review\" list",
+      "ar": "قائمة «تحتاج مراجعة»"
+    },
+    "numbers.next.note": {
+      "en": "Every new version is measured the same way: a sample of repositories the engine has not seen, hand labels frozen before the run, and one measurement. No figure is published before that.",
+      "ar": "كل نسخة جديدة تُقاس بالطريقة نفسها: عينة مستودعات لم يرها المحرك، ووسم يدوي مجمّد قبل التشغيل، وقياس واحد. لا يُنشر رقم قبل ذلك."
+    },
+    "numbers.points": {
+      "en": "+{n} points",
+      "ar": "+{n} نقطة"
+    },
+    "numbers.results": {
+      "en": "({n} results)",
+      "ar": "({n} نتيجة)"
+    },
+    "numbers.scan": {
+      "en": "The median repository is scanned in {n} seconds",
+      "ar": "ويُفحص المستودع الوسيط في {n} ثانية"
+    },
+    "numbers.scan_title": {
+      "en": "Scan time",
+      "ar": "زمن الفحص"
+    },
+    "numbers.scan_was": {
+      "en": "Previous engine on the same machine: {n} seconds",
+      "ar": "المحرك السابق على نفس الجهاز: {n} ثانية"
+    },
+    "numbers.scope": {
+      "en": "Scope: recall on calls into crypto libraries, in 120 public repositories the engine had not seen before the measurement (638 hand-labelled units, three independent samples). Counting cryptography inside non-crypto libraries too: {n}%.",
+      "ar": "النطاق: نسب الاسترجاع على الاستدعاءات داخل مكتبات التشفير، في 120 مستودعًا عامًا لم يرها المحرك قبل القياس (638 وحدة موسومة يدويًا، ثلاث عينات مستقلة). عند احتساب التشفير داخل المكتبات غير التشفيرية أيضًا: {n}٪."
+    },
     "numbers.source": {
       "en": "Source",
       "ar": "المصدر"
     },
+    "numbers.tab.new": {
+      "en": "New engine",
+      "ar": "المحرك الجديد"
+    },
+    "numbers.tab.next": {
+      "en": "Coming next",
+      "ar": "التطويرات القادمة"
+    },
+    "numbers.tab.previous": {
+      "en": "Previous engine",
+      "ar": "المحرك السابق"
+    },
+    "numbers.tablist": {
+      "en": "Engine version",
+      "ar": "نسخة المحرك"
+    },
     "numbers.title": {
       "en": "Measured, not claimed.",
       "ar": "قياس، لا ادعاء."
+    },
+    "numbers.ver.new": {
+      "en": "v9",
+      "ar": "v9"
+    },
+    "numbers.ver.next": {
+      "en": "next",
+      "ar": "next"
+    },
+    "numbers.ver.previous": {
+      "en": "v5",
+      "ar": "v5"
+    },
+    "numbers.was": {
+      "en": "Previous engine on the same repositories: {was}",
+      "ar": "المحرك السابق على نفس المستودعات: {was}"
     },
     "privacy.analytics_body": {
       "en": "Quanta adds no advertising, analytics trackers or marketing cookies. Hosting providers may keep operational request logs under their own policies.",
