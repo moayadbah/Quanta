@@ -8,6 +8,7 @@ Libraries that are not installed are skipped, not passed.
 from __future__ import annotations
 
 import importlib
+import sys
 
 import pytest
 
@@ -28,6 +29,12 @@ UNRESOLVABLE_HERE = {
         f"paramiko.DSSKey{suffix}": "DSA keys were removed in paramiko 4.0; old code uses them"
         for suffix in ("", ".generate", ".from_private_key", ".from_private_key_file")
     },
+    # Still checked on Windows, the only platform where Python ships it.
+    **(
+        {}
+        if sys.platform == "win32"
+        else {"ssl.enum_certificates": "Windows only in the standard library; Windows code uses it"}
+    ),
 }
 
 
