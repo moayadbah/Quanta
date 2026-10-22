@@ -1,26 +1,26 @@
 {
   "cbom_sha256": null,
   "cbom_unlocated": 0,
-  "duration_ms": 15288,
+  "duration_ms": 10238,
   "files_scanned": 37,
-  "finished_at": "2026-09-24T22:26:09.073889+00:00",
+  "finished_at": "2026-10-22T00:23:12.411406+00:00",
   "phase_durations_ms": {
-    "graph": 15,
-    "parsing": 15234,
+    "graph": 16,
+    "parsing": 10187,
     "scoring": 0,
-    "walking": 30
+    "walking": 31
   },
   "provenance": {
-    "analyzer_version": "0.5.0+rules.2026.11.01",
+    "analyzer_version": "0.5.0+rules.2026.11.05",
     "cbom_sha256": null,
     "commit_sha": "611c6162cbc4ac2020a2f91c7cfa4f3abf9bbb60",
-    "crypto_ruleset_version": "2026.11.01",
+    "crypto_ruleset_version": "2026.11.05",
     "metric_version": "metric-v2",
     "repo": "psf/requests",
     "weights_version": "weights-v1"
   },
-  "sites_detected": 9,
-  "started_at": "2026-09-24T22:25:53.785745+00:00",
+  "sites_detected": 12,
+  "started_at": "2026-10-22T00:23:02.173329+00:00",
   "steps": [
     {
       "duration_ms": 0,
@@ -67,7 +67,7 @@
       "title": "Validate the URL"
     },
     {
-      "duration_ms": 4577,
+      "duration_ms": 1094,
       "evidence": [
         {
           "label": "Visibility",
@@ -81,8 +81,8 @@
         },
         {
           "label": "Size",
-          "ok": null,
-          "value": "not reported; resolved over git, bounded by the clone budgets"
+          "ok": true,
+          "value": "13,631 KB of 5,000,000 KB limit"
         },
         {
           "label": "Head commit",
@@ -97,11 +97,11 @@
       ],
       "id": "resolve",
       "status": "done",
-      "summary": "public, 0 KB, pinned to 611c6162cbc4",
+      "summary": "public, 13,631 KB, pinned to 611c6162cbc4",
       "title": "Resolve repository metadata"
     },
     {
-      "duration_ms": 2516,
+      "duration_ms": 2515,
       "evidence": [
         {
           "label": "Depth",
@@ -136,11 +136,11 @@
       ],
       "id": "clone",
       "status": "done",
-      "summary": "shallow clone at 611c6162cbc4 in 2516 ms",
+      "summary": "shallow clone at 611c6162cbc4 in 2515 ms",
       "title": "Clone at a pinned commit"
     },
     {
-      "duration_ms": 30,
+      "duration_ms": 31,
       "evidence": [
         {
           "label": "Python files considered",
@@ -184,7 +184,7 @@
       "title": "Walk the source tree"
     },
     {
-      "duration_ms": 15234,
+      "duration_ms": 10187,
       "evidence": [
         {
           "label": "Execution",
@@ -197,14 +197,19 @@
           "value": "37 (20 shipped)"
         },
         {
+          "label": "Read, not parsed",
+          "ok": null,
+          "value": "6 test or docs files that name no crypto library"
+        },
+        {
           "label": "Crypto sites",
           "ok": null,
-          "value": "9"
+          "value": "12"
         },
         {
           "label": "Sites by file role",
           "ok": null,
-          "value": "source 5, test 4"
+          "value": "source 6, test 6"
         },
         {
           "label": "Algorithm literals",
@@ -224,7 +229,7 @@
         {
           "label": "Ruleset version",
           "ok": null,
-          "value": "2026.11.01"
+          "value": "2026.11.05"
         },
         {
           "label": "Weak primitives",
@@ -234,46 +239,46 @@
       ],
       "id": "parse",
       "status": "done",
-      "summary": "9 cryptographic sites detected",
+      "summary": "12 cryptographic sites detected",
       "title": "Parse and detect crypto"
     },
     {
-      "duration_ms": 15,
+      "duration_ms": 16,
       "evidence": [
         {
           "label": "Nodes",
           "ok": null,
-          "value": "737 — crypto_call 9, function 691, module 37"
+          "value": "717 — crypto_call 12, function 668, module 37"
         },
         {
           "label": "Edges",
           "ok": null,
-          "value": "943 — binding 700, call 224, import 19"
+          "value": "917 — binding 680, call 219, import 18"
         },
         {
           "label": "Low-confidence edges",
           "ok": true,
-          "value": "224 (every 'call' edge, by rule)"
+          "value": "219 (every 'call' edge, by rule)"
         },
         {
           "label": "Callees resolved",
           "ok": null,
-          "value": "257 of 2,690"
+          "value": "252 of 2,660"
         },
         {
           "label": "Callees dropped, not guessed",
           "ok": true,
-          "value": "8 ambiguous, 2,425 unresolvable"
+          "value": "8 ambiguous, 2,400 unresolvable"
         },
         {
           "label": "Imports",
           "ok": null,
-          "value": "19 internal, 572 external"
+          "value": "18 internal, 549 external"
         }
       ],
       "id": "graph",
       "status": "done",
-      "summary": "737 nodes, 943 edges",
+      "summary": "717 nodes, 917 edges",
       "title": "Build the dependency graph"
     },
     {
@@ -331,12 +336,12 @@
       "title": "Compute the Agility Score"
     },
     {
-      "duration_ms": 47,
+      "duration_ms": 483,
       "evidence": [
         {
           "label": "Report size",
           "ok": null,
-          "value": "43,476 bytes"
+          "value": "20,183 bytes"
         },
         {
           "label": "External requests",

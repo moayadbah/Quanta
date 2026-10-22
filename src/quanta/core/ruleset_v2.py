@@ -255,10 +255,19 @@ _site(
     "randomness",
     scored=False,
 )
+# Round seven: the operating system's CSPRNG and the class built on it (R6-B2 counts both;
+# os.urandom was three of the eight round-six errors). Not coverage prefixes: most calls
+# into os and random are not cryptography.
+_site(["os.urandom", "random.SystemRandom"], "randomness", scored=False)
 _benign("secrets.compare_digest", "mac")
 _site("ssl.SSLContext", "tls", None, (0, "protocol"))
 _site("ssl.create_default_context", "tls")
 _site("ssl.wrap_socket", "tls")
+# Round eight: fetching a peer's or the system store's certificates.
+_site(["ssl.get_server_certificate", "ssl.enum_certificates"], "tls", scored=False)
+_benign(["ssl.MemoryBIO", "ssl.SSLError"], "tls")
+# Round nine: hostname verification (removed in Python 3.12, still in older code).
+_site("ssl.match_hostname", "tls", scored=False)
 
 # -- pyca/cryptography ----------------------------------------------------------------------
 
@@ -295,6 +304,12 @@ _site(C + "kdf.x963kdf.X963KDF", "kdf", "X963KDF", (0, "algorithm"))
 _site(C + "ciphers.Cipher", "cipher", None, (0, "algorithm", 1, "mode"))
 for _a in ["AES", "AES128", "AES256", "Camellia", "ChaCha20", "SM4", "TripleDES"]:
     _selector(C + "ciphers.algorithms." + _a, "cipher", _alias_or_raise(_a))
+# Round nine: cryptography 43 moved the old ciphers to ``hazmat.decrepit`` (coverage gap).
+for _a in ["TripleDES", "Blowfish", "Camellia"]:
+    _selector(
+        "cryptography.hazmat.decrepit.ciphers.algorithms." + _a, "cipher", _alias_or_raise(_a)
+    )
+_selector("cryptography.hazmat.decrepit.ciphers.algorithms.ARC4", "cipher", "RC4")
 for _m in ["CBC", "CTR", "GCM", "ECB", "CFB", "OFB", "XTS"]:
     _selector(C + "ciphers.modes." + _m, "cipher", f"MODE-{_m}")
 _site(
@@ -304,6 +319,19 @@ _site(
 )
 _site(C + "ciphers.aead.ChaCha20Poly1305", "aead", "CHACHA20")
 _site(["cryptography.fernet.Fernet", "cryptography.fernet.MultiFernet"], "aead", "FERNET")
+# Round nine: a symmetric key is not asymmetric key generation (v8 used key_generation, which
+# readiness reads as an unknown public-key algorithm).
+_site("cryptography.fernet.Fernet.generate_key", "aead", "FERNET", scored=False)
+_site(
+    [
+        C + "ciphers.aead." + a + ".generate_key"
+        for a in ["AESGCM", "AESCCM", "AESOCB3", "AESSIV", "AESGCMSIV"]
+    ],
+    "aead",
+    "AES",
+    scored=False,
+)
+_site(C + "ciphers.aead.ChaCha20Poly1305.generate_key", "aead", "CHACHA20", scored=False)
 _site(CA + "rsa.generate_private_key", "key_generation", "RSA")
 _site([CA + "rsa.RSAPublicNumbers", CA + "rsa.RSAPrivateNumbers"], "key_loading", "RSA")
 for _p in ("PKCS1v15", "PSS", "OAEP"):
@@ -367,6 +395,8 @@ _site(
 )
 _site([CA + "dsa.generate_private_key", CA + "dsa.generate_parameters"], "key_generation", "DSA")
 _site([CA + "dh.generate_parameters", CA + "dh.DHParameterNumbers"], "key_agreement", "DH")
+# Round nine: DH keys rebuilt from their numbers (H8 miss, vncdotool ARD authentication).
+_site([CA + "dh.DHPublicNumbers", CA + "dh.DHPrivateNumbers"], "key_agreement", "DH")
 for _size in ("768", "1024"):
     _site(
         [
@@ -419,6 +449,29 @@ _benign(
     "key_loading",
 )
 _benign("cryptography.hazmat.backends.default_backend", "cipher")
+# Round eight (PROTOCOL-R8 B2d): the parts of a certificate or a name are not units, and they
+# are no longer counted as coverage gaps either.
+_benign(
+    [
+        "cryptography.x509." + n
+        for n in (
+            "Name",
+            "NameAttribute",
+            "RelativeDistinguishedName",
+            "SubjectAlternativeName",
+            "DNSName",
+            "RFC822Name",
+            "UniformResourceIdentifier",
+            "IPAddress",
+            "random_serial_number",
+        )
+    ],
+    "certificate",
+)
+# Round eight: helpers in crypto libraries that choose and perform no cryptography.
+_benign(["passlib.utils.saslprep", "django.contrib.auth.hashers.is_password_usable"], "kdf")
+_benign("securesystemslib.signer.Signature.from_dict", "signature")
+_benign("joserfc.jwt.JWTClaimsRegistry", "token")
 _benign(C + "constant_time.bytes_eq", "mac")
 
 # -- third-party libraries -------------------------------------------------------------------
@@ -446,15 +499,51 @@ def _pycryptodome(prefix: str) -> None:
         ("curve",),
     )
     _site(prefix + "PublicKey.DSA.generate", "key_generation", "DSA")
+    # Round eight: the legacy spellings and the PKCS#1 v1.5, OAEP and PSS modules (H7 misses).
+    _site(prefix + "PublicKey.RSA.importKey", "key_generation", "RSA")
+    _site(
+        [prefix + "PublicKey.DSA." + f for f in ("import_key", "importKey", "construct")],
+        "key_generation",
+        "DSA",
+    )
     _site([prefix + "Signature.pkcs1_15.new", prefix + "Signature.pss.new"], "signature", "RSA")
+    _site(
+        [prefix + "Signature.PKCS1_v1_5.new", prefix + "Signature.PKCS1_PSS.new"],
+        "signature",
+        "RSA",
+    )
+    _site(prefix + "Signature.eddsa.new", "signature", "EDDSA-ED25519")
+    _site(
+        [prefix + "Cipher.PKCS1_OAEP.new", prefix + "Cipher.PKCS1_v1_5.new"],
+        "key_agreement",
+        "RSA",
+    )
     _site(prefix + "Signature.DSS.new", "signature", "ECDSA")
-    for mod in ("MD5", "SHA1", "SHA224", "SHA256", "SHA384", "SHA512", "SHA3_256", "BLAKE2b"):
+    for mod in (
+        "MD5",
+        "SHA",
+        "SHA1",
+        "SHA224",
+        "SHA256",
+        "SHA384",
+        "SHA512",
+        "SHA3_224",
+        "SHA3_256",
+        "SHA3_384",
+        "SHA3_512",
+        "BLAKE2b",
+        "BLAKE2s",
+    ):
         _site(f"{prefix}Hash.{mod}.new", "hash", _alias_or_raise(mod))
     _site(prefix + "Hash.HMAC.new", "mac", "HMAC", (2, "digestmod"))
+    # Round nine: Keccak (Ethereum's hash; not FIPS SHA-3, so no algorithm is claimed).
+    _site(prefix + "Hash.keccak.new", "hash")
     _site(prefix + "Protocol.KDF.PBKDF2", "kdf", "PBKDF2", ("hmac_hash_module",))
     _site(prefix + "Protocol.KDF.scrypt", "kdf", "SCRYPT")
     _site(prefix + "Protocol.KDF.HKDF", "kdf", "HKDF", (3, "hashmod"))
     _site(prefix + "Random.get_random_bytes", "randomness", scored=False)
+    # Round eight: block padding for a cipher (the H7 annotators counted it).
+    _site([prefix + "Util.Padding.pad", prefix + "Util.Padding.unpad"], "cipher", scored=False)
 
 
 _pycryptodome("Crypto.")
@@ -481,6 +570,11 @@ _site("nacl.hash.sha512", "hash", "SHA2-512")
 _site("nacl.hash.blake2b", "hash", "BLAKE2B")
 _site("jwt.encode", "token", None, ("algorithm",), default="HMAC-SHA2-256")
 _site("jwt.decode", "token", None, ("algorithms",))
+# Round eight: coverage gaps over the 108 development clones (evidence/r8/unmatched-dev.json).
+_site("jwt.get_unverified_header", "token", scored=False)
+_site("jwt.algorithms.RSAAlgorithm.from_jwk", "key_loading", "RSA")
+_site("jwt.algorithms.ECAlgorithm.from_jwk", "key_loading", "ECC")
+_site("jwt.algorithms.OKPAlgorithm.from_jwk", "key_loading")
 _site(["jose.jwt.encode", "jose.jws.sign"], "token", None, ("algorithm",), default="HMAC-SHA2-256")
 _site(["jose.jwt.decode", "jose.jws.verify"], "token", None, ("algorithms",))
 _site("oqs.KeyEncapsulation", "pq_kem", None, (0,))
@@ -506,6 +600,7 @@ for _fn, _alg in [("md5", "MD5"), ("sha1", "SHA1"), ("sha256", "SHA2-256"), ("sh
     _site(f"_hashlib.openssl_{_fn}", "hash", _alg)
 _site("hmac.HMAC", "mac", "HMAC", (2, "digestmod"))
 _site("truststore.SSLContext", "tls", None, (0, "protocol"))
+_site("truststore.inject_into_ssl", "tls", scored=False)
 
 # pyca: key serialisation choices.
 _site(C + "serialization.BestAvailableEncryption", "key_loading", scored=False)
@@ -566,6 +661,8 @@ _site(
         "itsdangerous.URLSafeSerializer",
         "itsdangerous.URLSafeTimedSerializer",
         "itsdangerous.TimedSerializer",
+        # round eight: removed in itsdangerous 2.1, still in older code
+        "itsdangerous.TimedJSONWebSignatureSerializer",
     ],
     "mac",
     "HMAC",
@@ -610,6 +707,19 @@ _site(
     scored=False,
 )
 _site(["OpenSSL.crypto.load_certificate", "OpenSSL.crypto.X509"], "certificate", scored=False)
+# Round nine: the rest of pyOpenSSL's documented key and certificate API (coverage gaps).
+_site(
+    [
+        "OpenSSL.crypto.X509Req",
+        "OpenSSL.crypto.load_certificate_request",
+        "OpenSSL.crypto.dump_certificate",
+        "OpenSSL.crypto.dump_certificate_request",
+    ],
+    "certificate",
+    scored=False,
+)
+_site(["OpenSSL.crypto.dump_privatekey", "OpenSSL.crypto.dump_publickey"], "key_loading")
+_site("OpenSSL.SSL.Connection", "tls", scored=False)
 
 # SSH keys (paramiko).
 for _cls, _alg in [
@@ -654,15 +764,25 @@ for _curve, _alg in [
     _selector(f"ecdsa.{_curve}", "key_generation", _alg)
 _site(["coincurve.PrivateKey", "coincurve.PublicKey"], "key_loading", "ECC-SECP256K1")
 _site(
-    ["eth_keys.keys.PrivateKey", "eth_keys.keys.PublicKey", "eth_keys.KeyAPI"],
+    [
+        "eth_keys.keys.PrivateKey",
+        "eth_keys.keys.PublicKey",
+        "eth_keys.KeyAPI",
+        # round eight: the archive's evidence/r4/unmatched-v3.json
+        "eth_keys.KeyAPI.PrivateKey",
+        "eth_keys.KeyAPI.PublicKey",
+    ],
     "key_loading",
     "ECC-SECP256K1",
 )
 # One-time passwords (HMAC-based, RFC 4226 and 6238) and Ethereum accounts (secp256k1).
 _site(["pyotp.TOTP", "pyotp.HOTP"], "mac", "HMAC", ("digest",), default="SHA1")
+_site("pyotp.random_base32", "randomness", scored=False)
 _site(
     [
         "eth_account.Account.from_key",
+        # round eight: the camel-case spelling removed in eth-account 0.6, still in older code
+        "eth_account.Account.privateKeyToAccount",
         "eth_account.Account.create",
         "eth_account.Account.sign_message",
         "eth_account.Account.sign_transaction",
@@ -685,14 +805,207 @@ _site(
         "grpc.ssl_server_credentials",
         "grpc.aio.secure_channel",
         "grpc.secure_channel",
+        # Round seven: third-party clients whose class is TLS-only by documentation
+        # (imaplib2.IMAP4_SSL was the round-six miss).
+        "imaplib2.IMAP4_SSL",
+        "aioimaplib.IMAP4_SSL",
+        "urllib3.HTTPSConnectionPool",
+        "urllib3.connectionpool.HTTPSConnectionPool",
+        "urllib3.connection.HTTPSConnection",
     ],
     "tls",
     scored=False,
 )
+# Round six: public keys reached through libraries that are not cryptography libraries.
+# Names are from each library's documented API (evidence/PROTOCOL-R6.md C1); the round-four
+# misses on python-tuf and open-swe were calls into the first two.
+# securesystemslib (TUF, in-toto): the key types the signer API returns.
+_site(
+    [
+        "securesystemslib.signer.Key.from_dict",
+        "securesystemslib.signer.SSlibKey",
+        "securesystemslib.signer.SSlibKey.from_dict",
+        "securesystemslib.signer.SSlibKey.from_crypto",
+        "securesystemslib.signer.Signer.from_priv_key_uri",
+        "securesystemslib.signer.CryptoSigner",
+        "securesystemslib.signer.CryptoSigner.from_priv_key_uri",
+    ],
+    "key_loading",
+)
+_site("securesystemslib.signer.CryptoSigner.generate_rsa", "key_generation", "RSA")
+_site("securesystemslib.signer.CryptoSigner.generate_ecdsa", "key_generation", "ECDSA")
+_site("securesystemslib.signer.CryptoSigner.generate_ed25519", "key_generation", "EDDSA-ED25519")
+# PyJWT key objects; PyJWKClient's methods are operations (core.operations).
+_site(
+    [
+        "jwt.PyJWK",
+        "jwt.PyJWK.from_dict",
+        "jwt.PyJWK.from_json",
+        "jwt.PyJWKSet.from_dict",
+        "jwt.PyJWKSet.from_json",
+    ],
+    "key_loading",
+    scored=False,
+)
+# asyncssh: SSH keys and certificates.
+_site("asyncssh.generate_private_key", "key_generation", None, (0, "alg_name"))
+_site(
+    [
+        "asyncssh.read_private_key",
+        "asyncssh.import_private_key",
+        "asyncssh.read_public_key",
+        "asyncssh.import_public_key",
+        "asyncssh.read_certificate",
+    ],
+    "key_loading",
+)
+# google-auth: service-account credentials carry an RSA private key that signs JWTs.
+_site(
+    [
+        "google.oauth2.service_account.Credentials.from_service_account_file",
+        "google.oauth2.service_account.Credentials.from_service_account_info",
+        "google.auth.crypt.RSASigner.from_service_account_file",
+        "google.auth.crypt.RSASigner.from_service_account_info",
+        "google.auth.crypt.RSASigner.from_string",
+        "google.auth.crypt.RSAVerifier.from_string",
+    ],
+    "key_loading",
+    "RSA",
+)
+# OpenPGP: python-gnupg drives a GnuPG keyring; PGPy holds keys itself.
+_site("gnupg.GPG", "key_loading")
+_site("pgpy.PGPKey.new", "key_generation", None, (0, "key_algorithm"))
+_site(["pgpy.PGPKey.from_file", "pgpy.PGPKey.from_blob"], "key_loading")
+
 _site("rsa.newkeys", "key_generation", "RSA")
 _site(["rsa.sign", "rsa.verify"], "signature", "RSA")
 _site(["rsa.encrypt", "rsa.decrypt"], "key_agreement", "RSA")
 _site(["rsa.PrivateKey.load_pkcs1", "rsa.PublicKey.load_pkcs1"], "key_loading", "RSA")
+# Round eight (evidence/PROTOCOL-R8.md A1): names behind the H7 misses, from each library's API.
+_site(
+    [
+        "rsa.PublicKey",
+        "rsa.PrivateKey",
+        "rsa.PublicKey.load_pkcs1_openssl_pem",
+        "rsa.PublicKey.load_pkcs1_openssl_der",
+    ],
+    "key_loading",
+    "RSA",
+)
+# joserfc (Authlib's successor): JWT, JWS, JWE and JWK.
+_site(["joserfc.jwt.encode", "joserfc.jwt.decode"], "token")
+_site(
+    [
+        "joserfc.jws.serialize_compact",
+        "joserfc.jws.deserialize_compact",
+        "joserfc.jws.serialize_json",
+        "joserfc.jws.deserialize_json",
+    ],
+    "signature",
+)
+_site(
+    [
+        "joserfc.jwe.encrypt_compact",
+        "joserfc.jwe.decrypt_compact",
+        "joserfc.jwe.encrypt_json",
+        "joserfc.jwe.decrypt_json",
+    ],
+    "token",
+)
+_site("joserfc.jwk.generate_key", "key_generation", None, (0, "key_type"))
+_site(
+    ["joserfc.jwk.import_key", "joserfc.jwk.KeySet", "joserfc.jwk.KeySet.import_key_set"],
+    "key_loading",
+)
+_site("joserfc.jwk.KeySet.generate_key_set", "key_generation", None, (0, "key_type"))
+_site("joserfc.jwk.RSAKey.generate_key", "key_generation", "RSA")
+_site("joserfc.jwk.RSAKey.import_key", "key_loading", "RSA")
+_site("joserfc.jwk.ECKey.generate_key", "key_generation", "ECC", (0, "crv"))
+_site("joserfc.jwk.ECKey.import_key", "key_loading", "ECC")
+_site(["joserfc.jwk.OKPKey.generate_key", "joserfc.jwk.OKPKey.import_key"], "key_loading")
+# A symmetric JWK (oct) chooses no public-key algorithm.
+_site(
+    ["joserfc.jwk.OctKey.generate_key", "joserfc.jwk.OctKey.import_key"],
+    "mac",
+    scored=False,
+)
+# pyaes: pure-Python AES; the mode is in the class name.
+for _mode in ("CTR", "CBC", "CFB", "OFB"):
+    _site(f"pyaes.AESModeOfOperation{_mode}", "cipher", "AES", default=f"MODE-{_mode}")
+_site("pyaes.AESModeOfOperationECB", "cipher", "AES", default="MODE-ECB")
+_site(["pyaes.AES", "pyaes.Encrypter", "pyaes.Decrypter"], "cipher", "AES")
+
+# Round nine: TLS-only classes and functions of third-party networking libraries (H8 misses).
+_site(
+    [
+        "trio.SSLStream",
+        "trio.SSLListener",
+        "trio.open_ssl_over_tcp_stream",
+        "trio.open_ssl_over_tcp_listeners",
+        "trio.serve_ssl_over_tcp",
+        "twisted.internet.ssl.optionsForClientTLS",
+        "twisted.internet.ssl.CertificateOptions",
+        "twisted.internet.ssl.DefaultOpenSSLContextFactory",
+        "twisted.internet.ssl.ClientContextFactory",
+        "twisted.internet.endpoints.wrapClientTLS",
+        "tornado.netutil.ssl_wrap_socket",
+        "ldap3.Tls",
+    ],
+    "tls",
+    scored=False,
+)
+_site(
+    [
+        "twisted.internet.ssl.PrivateCertificate.loadPEM",
+        "twisted.internet.ssl.Certificate.loadPEM",
+    ],
+    "certificate",
+    scored=False,
+)
+_site("twisted.internet.ssl.KeyPair.generate", "key_generation", "RSA")
+_site("twisted.internet.ssl.KeyPair.load", "key_loading")
+_site(
+    "twisted.internet.ssl.PrivateCertificate.fromCertificateAndKeyPair", "certificate", scored=False
+)
+_site(
+    [
+        "twisted.internet.ssl.DiffieHellmanParameters.fromFile",
+        "twisted.internet.ssl.AcceptableCiphers.fromOpenSSLCipherString",
+        "twisted.internet.ssl.platformTrust",
+        "twisted.internet.ssl.trustRootFromCertificates",
+    ],
+    "tls",
+    scored=False,
+)
+
+#: Round eight (PROTOCOL-R8 B2e): third-party clients that are TLS sites only when the call
+#: passes a TLS context or turns TLS on. Keyword -> the call is a site unless the value is the
+#: literal ``None`` or ``False``. Inventory only, like the protocol clients above.
+TLS_OPTION_SITES: Final[dict[str, tuple[str, ...]]] = {
+    "aiohttp.TCPConnector": ("ssl", "ssl_context"),
+    "aiomqtt.Client": ("tls_context", "tls_params"),
+    "aiosmtplib.SMTP": ("use_tls", "start_tls", "tls_context"),
+    "aiosmtplib.send": ("use_tls", "start_tls", "tls_context"),
+    "websockets.connect": ("ssl",),
+    "websockets.serve": ("ssl",),
+    "asyncio.open_connection": ("ssl",),
+    "asyncio.start_server": ("ssl",),
+    "uvicorn.run": ("ssl_certfile", "ssl_keyfile"),
+    "redis.Redis": ("ssl",),
+    "redis.StrictRedis": ("ssl",),
+    "redis.asyncio.Redis": ("ssl",),
+    "pymongo.MongoClient": ("tls", "ssl"),
+    # round nine (H8 misses; PROTOCOL-R9 B2g for the standard library)
+    "tornado.httpserver.HTTPServer": ("ssl_options",),
+    "tornado.tcpserver.TCPServer": ("ssl_options",),
+    "urllib.request.urlopen": ("context", "cafile", "capath"),
+    "urllib.request.HTTPSHandler": ("context",),
+    "kafka.KafkaProducer": ("ssl_context", "ssl_cafile", "ssl_certfile"),
+    "kafka.KafkaConsumer": ("ssl_context", "ssl_cafile", "ssl_certfile"),
+    "aiokafka.AIOKafkaProducer": ("ssl_context",),
+    "aiokafka.AIOKafkaConsumer": ("ssl_context",),
+    "ldap3.Server": ("use_ssl", "tls"),
+}
 
 
 def _index(rules: list[Rule]) -> dict[str, Rule]:
@@ -747,6 +1060,25 @@ CRYPTO_MODULE_PREFIXES: Final[tuple[str, ...]] = (
     "eth_account.Account",
     "pyotp.",
     "rsa.",
+    # ruleset v6 (round six)
+    "securesystemslib.signer.",
+    "asyncssh.generate_private_key",
+    "asyncssh.read_private_key",
+    "asyncssh.import_private_key",
+    "asyncssh.read_public_key",
+    "asyncssh.import_public_key",
+    "asyncssh.read_certificate",
+    "google.oauth2.service_account.Credentials.from_service_account",
+    "google.auth.crypt.",
+    "gnupg.GPG",
+    "pgpy.",
+    # ruleset v8 (round eight)
+    "joserfc.",
+    "pyaes.",
+    # ruleset v9 (round nine)
+    "twisted.internet.ssl.",
+    "trio.SSLStream",
+    "trio.open_ssl_over_tcp",
 )
 
 #: A method called on the result of a matched call chooses no algorithm (7.5 correction).
@@ -757,6 +1089,10 @@ RESULT_METHODS: Final[frozenset[str]] = frozenset(
     {"digest", "hexdigest", "update", "finalize", "copy"}
     | {"sign", "verify", "encrypt", "decrypt", "exchange", "derive", "encryptor", "decryptor"}
     | {"public_key", "private_bytes", "public_bytes"}
+    # round eight: key export and TLS context settings (PROTOCOL-R8 B2a, B2c)
+    | {"export_key", "exportKey", "publickey", "to_pem", "to_der", "to_string"}
+    | {"get_verifying_key", "as_dict", "as_pem", "as_der", "as_bytes", "save_pkcs1"}
+    | {"load_cert_chain", "load_verify_locations", "load_default_certs", "set_ciphers"}
 )
 
 

@@ -42,6 +42,14 @@
           "name": "ecdsa.SigningKey.generate",
           "path": "speed.py",
           "role": "source"
+        },
+        {
+          "algorithm": "ECDSA",
+          "finding_id": "crypto_call-90164c73e1c88166",
+          "line": 63,
+          "name": "ecdsa.SigningKey.generate.sign",
+          "path": "speed.py",
+          "role": "source"
         }
       ]
     },

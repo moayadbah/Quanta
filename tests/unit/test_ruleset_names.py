@@ -19,6 +19,11 @@ UNRESOLVABLE_HERE = {
     "ssl.wrap_socket": "removed in Python 3.12; still present in older code Quanta analyses",
     "oqs.KeyEncapsulation": "liboqs-python needs the native liboqs library",
     "oqs.Signature": "liboqs-python needs the native liboqs library",
+    "itsdangerous.TimedJSONWebSignatureSerializer": (
+        "removed in itsdangerous 2.1; older code uses it"
+    ),
+    "eth_account.Account.privateKeyToAccount": "removed in eth-account 0.6; older code uses it",
+    "ssl.match_hostname": "removed in Python 3.12; older code uses it",
     **{
         f"paramiko.DSSKey{suffix}": "DSA keys were removed in paramiko 4.0; old code uses them"
         for suffix in ("", ".generate", ".from_private_key", ".from_private_key_file")

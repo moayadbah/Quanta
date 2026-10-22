@@ -1,5 +1,1342 @@
 {
   "files": [],
+  "guides": [
+    {
+      "id": "signature-hybrid-ml-dsa",
+      "sites": [
+        {
+          "algorithm": "ECC-P256",
+          "finding_id": "algo_literal-fe24dc3c3c418520",
+          "line": 159,
+          "name": "cryptography.hazmat.primitives.asymmetric.ec.SECP256R1",
+          "path": "jwt/algorithms.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "ECC-SECP256K1",
+          "finding_id": "algo_literal-c96dd8c6c0fed39e",
+          "line": 160,
+          "name": "cryptography.hazmat.primitives.asymmetric.ec.SECP256K1",
+          "path": "jwt/algorithms.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "ECC-P384",
+          "finding_id": "algo_literal-38c8bd711f749498",
+          "line": 161,
+          "name": "cryptography.hazmat.primitives.asymmetric.ec.SECP384R1",
+          "path": "jwt/algorithms.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "ECC-P521",
+          "finding_id": "algo_literal-fe32f1ea265efa62",
+          "line": 162,
+          "name": "cryptography.hazmat.primitives.asymmetric.ec.SECP521R1",
+          "path": "jwt/algorithms.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "ECC-P521",
+          "finding_id": "algo_literal-0356c31d34b048b8",
+          "line": 164,
+          "name": "cryptography.hazmat.primitives.asymmetric.ec.SECP521R1",
+          "path": "jwt/algorithms.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "crypto_call-ee4bc21d57c93169",
+          "line": 641,
+          "name": "cryptography.hazmat.primitives.asymmetric.rsa.RSAPublicNumbers",
+          "path": "jwt/algorithms.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "crypto_call-67013d71154ecefe",
+          "line": 647,
+          "name": "cryptography.hazmat.primitives.asymmetric.rsa.RSAPrivateNumbers",
+          "path": "jwt/algorithms.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "crypto_call-8525b8f15e765fb9",
+          "line": 658,
+          "name": "cryptography.hazmat.primitives.asymmetric.rsa.rsa_recover_prime_factors",
+          "path": "jwt/algorithms.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "crypto_call-651d7f03d236ac17",
+          "line": 662,
+          "name": "cryptography.hazmat.primitives.asymmetric.rsa.RSAPrivateNumbers",
+          "path": "jwt/algorithms.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "crypto_call-45c8e792f87fce1d",
+          "line": 666,
+          "name": "cryptography.hazmat.primitives.asymmetric.rsa.rsa_crt_dmp1",
+          "path": "jwt/algorithms.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "crypto_call-3b9615b800f9aaeb",
+          "line": 667,
+          "name": "cryptography.hazmat.primitives.asymmetric.rsa.rsa_crt_dmq1",
+          "path": "jwt/algorithms.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "crypto_call-4de3a15ee9a30e83",
+          "line": 668,
+          "name": "cryptography.hazmat.primitives.asymmetric.rsa.rsa_crt_iqmp",
+          "path": "jwt/algorithms.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "crypto_call-afc8e7ae3e21fcf3",
+          "line": 672,
+          "name": "cryptography.hazmat.primitives.asymmetric.rsa.RSAPrivateNumbers.private_key",
+          "path": "jwt/algorithms.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "crypto_call-b3bf4d630e178e6b",
+          "line": 675,
+          "name": "cryptography.hazmat.primitives.asymmetric.rsa.RSAPublicNumbers",
+          "path": "jwt/algorithms.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "crypto_call-5459bc0935b6cacc",
+          "line": 678,
+          "name": "cryptography.hazmat.primitives.asymmetric.rsa.RSAPublicNumbers.public_key",
+          "path": "jwt/algorithms.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "algo_literal-56e1afbc331ebf67",
+          "line": 683,
+          "name": "cryptography.hazmat.primitives.asymmetric.padding.PKCS1v15",
+          "path": "jwt/algorithms.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "algo_literal-e82dac9b1a36fb22",
+          "line": 688,
+          "name": "cryptography.hazmat.primitives.asymmetric.padding.PKCS1v15",
+          "path": "jwt/algorithms.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "ECDSA",
+          "finding_id": "algo_literal-0c8c3f5926f9652f",
+          "line": 761,
+          "name": "cryptography.hazmat.primitives.asymmetric.ec.ECDSA",
+          "path": "jwt/algorithms.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "ECDSA",
+          "finding_id": "algo_literal-96b7931f8b84ec8b",
+          "line": 777,
+          "name": "cryptography.hazmat.primitives.asymmetric.ec.ECDSA",
+          "path": "jwt/algorithms.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "ECC-P256",
+          "finding_id": "algo_literal-12a4ad03fa0ca613",
+          "line": 860,
+          "name": "cryptography.hazmat.primitives.asymmetric.ec.SECP256R1",
+          "path": "jwt/algorithms.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "ECC-P384",
+          "finding_id": "algo_literal-93f2d72ddecea1f9",
+          "line": 867,
+          "name": "cryptography.hazmat.primitives.asymmetric.ec.SECP384R1",
+          "path": "jwt/algorithms.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "ECC-P521",
+          "finding_id": "algo_literal-2df7f6db2825b5b3",
+          "line": 874,
+          "name": "cryptography.hazmat.primitives.asymmetric.ec.SECP521R1",
+          "path": "jwt/algorithms.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "ECC-SECP256K1",
+          "finding_id": "algo_literal-092f68f692990879",
+          "line": 881,
+          "name": "cryptography.hazmat.primitives.asymmetric.ec.SECP256K1",
+          "path": "jwt/algorithms.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "ECC",
+          "finding_id": "crypto_call-e5df84d8a3c629cd",
+          "line": 889,
+          "name": "cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePublicNumbers",
+          "path": "jwt/algorithms.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "ECC",
+          "finding_id": "crypto_call-2619cadab3e85d5b",
+          "line": 896,
+          "name": "cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePublicNumbers.public_key",
+          "path": "jwt/algorithms.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "ECC",
+          "finding_id": "crypto_call-b9cee3142b931e2b",
+          "line": 904,
+          "name": "cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePrivateNumbers",
+          "path": "jwt/algorithms.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "ECC",
+          "finding_id": "crypto_call-f51c9e586c4d9c54",
+          "line": 906,
+          "name": "cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePrivateNumbers.private_key",
+          "path": "jwt/algorithms.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "algo_literal-a75e558592f78ab6",
+          "line": 916,
+          "name": "cryptography.hazmat.primitives.asymmetric.padding.PSS",
+          "path": "jwt/algorithms.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "algo_literal-97eba73a5250b3df",
+          "line": 929,
+          "name": "cryptography.hazmat.primitives.asymmetric.padding.PSS",
+          "path": "jwt/algorithms.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "EDDSA-ED25519",
+          "finding_id": "crypto_call-483c0d87da946194",
+          "line": 994,
+          "name": "cryptography.hazmat.primitives.asymmetric.ed25519.Ed25519PrivateKey.sign",
+          "path": "jwt/algorithms.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "EDDSA-ED25519",
+          "finding_id": "crypto_call-ce7dcc3690b02283",
+          "line": 1104,
+          "name": "cryptography.hazmat.primitives.asymmetric.ed25519.Ed25519PublicKey.from_public_bytes",
+          "path": "jwt/algorithms.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "EDDSA-ED448",
+          "finding_id": "crypto_call-e2e14953e8886230",
+          "line": 1105,
+          "name": "cryptography.hazmat.primitives.asymmetric.ed448.Ed448PublicKey.from_public_bytes",
+          "path": "jwt/algorithms.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "EDDSA-ED25519",
+          "finding_id": "crypto_call-a05971bdeea18dff",
+          "line": 1109,
+          "name": "cryptography.hazmat.primitives.asymmetric.ed25519.Ed25519PrivateKey.from_private_bytes",
+          "path": "jwt/algorithms.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "EDDSA-ED448",
+          "finding_id": "crypto_call-46e7426859c19e91",
+          "line": 1111,
+          "name": "cryptography.hazmat.primitives.asymmetric.ed448.Ed448PrivateKey.from_private_bytes",
+          "path": "jwt/algorithms.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "EDDSA-ED25519",
+          "finding_id": "crypto_call-2989b4d24c0493f8",
+          "line": 1113,
+          "name": "cryptography.hazmat.primitives.asymmetric.ed25519.Ed25519PrivateKey.public_key",
+          "path": "jwt/algorithms.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "EDDSA-ED25519",
+          "finding_id": "crypto_call-ccea17a47f23a0e9",
+          "line": 1113,
+          "name": "cryptography.hazmat.primitives.asymmetric.ed25519.Ed25519PrivateKey.public_key.public_bytes",
+          "path": "jwt/algorithms.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "crypto_call-8b04cae9fc77e324",
+          "line": 29,
+          "name": "jwt.algorithms.RSAAlgorithm.from_jwk",
+          "path": "tests/keys/__init__.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "ECC",
+          "finding_id": "crypto_call-a1ac07d658a30416",
+          "line": 35,
+          "name": "cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePublicNumbers",
+          "path": "tests/keys/__init__.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "ECC-P521",
+          "finding_id": "algo_literal-9f403dbbc585230f",
+          "line": 38,
+          "name": "cryptography.hazmat.primitives.asymmetric.ec.SECP521R1",
+          "path": "tests/keys/__init__.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "ECC",
+          "finding_id": "crypto_call-5ae115c2b2510f4f",
+          "line": 39,
+          "name": "cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePublicNumbers.public_key",
+          "path": "tests/keys/__init__.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "ECC-P256",
+          "finding_id": "algo_literal-74adf70b42d71c9e",
+          "line": 1472,
+          "name": "cryptography.hazmat.primitives.asymmetric.ec.SECP256R1",
+          "path": "tests/test_algorithms.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "ECC",
+          "finding_id": "crypto_call-21cca460a699ef30",
+          "line": 1476,
+          "name": "jwt.algorithms.ECAlgorithm.from_jwk",
+          "path": "tests/test_algorithms.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "ECC-P384",
+          "finding_id": "algo_literal-11df2cdea4f8bad9",
+          "line": 1487,
+          "name": "cryptography.hazmat.primitives.asymmetric.ec.SECP384R1",
+          "path": "tests/test_algorithms.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "ECC",
+          "finding_id": "crypto_call-9a5634ecd1ed28af",
+          "line": 1491,
+          "name": "jwt.algorithms.ECAlgorithm.from_jwk",
+          "path": "tests/test_algorithms.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "ECC-P521",
+          "finding_id": "algo_literal-0c7c2212924657ae",
+          "line": 1502,
+          "name": "cryptography.hazmat.primitives.asymmetric.ec.SECP521R1",
+          "path": "tests/test_algorithms.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "ECC",
+          "finding_id": "crypto_call-2cdcfa4ce2909d69",
+          "line": 1506,
+          "name": "jwt.algorithms.ECAlgorithm.from_jwk",
+          "path": "tests/test_algorithms.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "ECC-SECP256K1",
+          "finding_id": "algo_literal-3448fe08b390c20c",
+          "line": 1517,
+          "name": "cryptography.hazmat.primitives.asymmetric.ec.SECP256K1",
+          "path": "tests/test_algorithms.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "ECC",
+          "finding_id": "crypto_call-f8c646cf20ff202f",
+          "line": 1521,
+          "name": "jwt.algorithms.ECAlgorithm.from_jwk",
+          "path": "tests/test_algorithms.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "ECC-P256",
+          "finding_id": "algo_literal-2433a59c9b8bfa34",
+          "line": 1532,
+          "name": "cryptography.hazmat.primitives.asymmetric.ec.SECP256R1",
+          "path": "tests/test_algorithms.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "ECC-P384",
+          "finding_id": "algo_literal-36725b1b7816d66b",
+          "line": 1543,
+          "name": "cryptography.hazmat.primitives.asymmetric.ec.SECP384R1",
+          "path": "tests/test_algorithms.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "ECC-P521",
+          "finding_id": "algo_literal-c5217f16e9c6264d",
+          "line": 1554,
+          "name": "cryptography.hazmat.primitives.asymmetric.ec.SECP521R1",
+          "path": "tests/test_algorithms.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "ECC-SECP256K1",
+          "finding_id": "algo_literal-358ee63f3f5a7ecf",
+          "line": 1565,
+          "name": "cryptography.hazmat.primitives.asymmetric.ec.SECP256K1",
+          "path": "tests/test_algorithms.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "ECC-P256",
+          "finding_id": "algo_literal-19683586cf7abbfd",
+          "line": 1576,
+          "name": "cryptography.hazmat.primitives.asymmetric.ec.SECP256R1",
+          "path": "tests/test_algorithms.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "ECC-P256",
+          "finding_id": "algo_literal-e46808fe42871f14",
+          "line": 1623,
+          "name": "cryptography.hazmat.primitives.asymmetric.ec.SECP256R1",
+          "path": "tests/test_algorithms.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "ECC-SECP256K1",
+          "finding_id": "algo_literal-4840132d9b27ec37",
+          "line": 1627,
+          "name": "cryptography.hazmat.primitives.asymmetric.ec.SECP256K1",
+          "path": "tests/test_algorithms.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "ECC-P384",
+          "finding_id": "algo_literal-0aeb966bf9963ba7",
+          "line": 1631,
+          "name": "cryptography.hazmat.primitives.asymmetric.ec.SECP384R1",
+          "path": "tests/test_algorithms.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "ECC-P521",
+          "finding_id": "algo_literal-752a838924dbbca3",
+          "line": 1635,
+          "name": "cryptography.hazmat.primitives.asymmetric.ec.SECP521R1",
+          "path": "tests/test_algorithms.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "ECC-P521",
+          "finding_id": "algo_literal-2283d3e7d40bde04",
+          "line": 1639,
+          "name": "cryptography.hazmat.primitives.asymmetric.ec.SECP521R1",
+          "path": "tests/test_algorithms.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "ECC-P256",
+          "finding_id": "algo_literal-0cf61d7e1970a01e",
+          "line": 1645,
+          "name": "cryptography.hazmat.primitives.asymmetric.ec.SECP256R1",
+          "path": "tests/test_algorithms.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "ECC",
+          "finding_id": "crypto_call-a49249b5b2040164",
+          "line": 1662,
+          "name": "jwt.algorithms.ECAlgorithm.from_jwk",
+          "path": "tests/test_algorithms.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "ECDSA",
+          "finding_id": "crypto_call-ecd4a288ad89317d",
+          "line": 1668,
+          "name": "jwt.encode",
+          "path": "tests/test_algorithms.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "ECC",
+          "finding_id": "crypto_call-a61d9c4772d5b81c",
+          "line": 1672,
+          "name": "jwt.algorithms.ECAlgorithm.from_jwk",
+          "path": "tests/test_algorithms.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "ECDSA",
+          "finding_id": "crypto_call-8a3fcdb527023d04",
+          "line": 1676,
+          "name": "jwt.encode",
+          "path": "tests/test_algorithms.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "ECC",
+          "finding_id": "crypto_call-f47fe06562661e50",
+          "line": 1680,
+          "name": "jwt.algorithms.ECAlgorithm.from_jwk",
+          "path": "tests/test_algorithms.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "ECDSA",
+          "finding_id": "crypto_call-3c5495ad201b7226",
+          "line": 1685,
+          "name": "jwt.decode",
+          "path": "tests/test_algorithms.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "ECC",
+          "finding_id": "crypto_call-5c25e13dda7d8358",
+          "line": 1689,
+          "name": "jwt.algorithms.ECAlgorithm.from_jwk",
+          "path": "tests/test_algorithms.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "ECDSA",
+          "finding_id": "crypto_call-c9efbca4190835fa",
+          "line": 1693,
+          "name": "jwt.decode",
+          "path": "tests/test_algorithms.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "crypto_call-c2cb0e9064fd4c3f",
+          "line": 1755,
+          "name": "cryptography.hazmat.primitives.asymmetric.rsa.generate_private_key",
+          "path": "tests/test_algorithms.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "crypto_call-9de0bf1b8faba0e1",
+          "line": 1769,
+          "name": "cryptography.hazmat.primitives.asymmetric.rsa.generate_private_key",
+          "path": "tests/test_algorithms.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "crypto_call-2f3b75f790c1adf6",
+          "line": 1774,
+          "name": "cryptography.hazmat.primitives.asymmetric.rsa.generate_private_key.public_key",
+          "path": "tests/test_algorithms.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "crypto_call-f2dbbbbd82e1d767",
+          "line": 1788,
+          "name": "cryptography.hazmat.primitives.asymmetric.rsa.generate_private_key",
+          "path": "tests/test_algorithms.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "crypto_call-638ad34f601ca1ad",
+          "line": 1805,
+          "name": "cryptography.hazmat.primitives.asymmetric.rsa.generate_private_key",
+          "path": "tests/test_algorithms.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "crypto_call-9249a51da620d733",
+          "line": 1809,
+          "name": "cryptography.hazmat.primitives.asymmetric.rsa.generate_private_key.private_bytes",
+          "path": "tests/test_algorithms.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "ECC",
+          "finding_id": "crypto_call-51e0569de5701a03",
+          "line": 862,
+          "name": "jwt.algorithms.ECAlgorithm.from_jwk",
+          "path": "tests/test_api_jws.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "ECC",
+          "finding_id": "crypto_call-7a307b0a773c01bb",
+          "line": 869,
+          "name": "jwt.algorithms.ECAlgorithm.from_jwk",
+          "path": "tests/test_api_jws.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "RSA",
+          "finding_id": "crypto_call-83aa24209331ce78",
+          "line": 311,
+          "name": "jwt.decode",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        }
+      ]
+    },
+    {
+      "id": "tls-hybrid",
+      "sites": [
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-9a0525d158fb56ae",
+          "line": 165,
+          "name": "urllib.request.HTTPSHandler",
+          "path": "jwt/jwks_client.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-91f0cd4cb8ebb2ad",
+          "line": 771,
+          "name": "ssl.create_default_context",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-5d7652a753aec8f9",
+          "line": 793,
+          "name": "ssl.SSLContext",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        }
+      ]
+    },
+    {
+      "id": "confirm-algorithm",
+      "sites": [
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-662118605dd9a190",
+          "line": 333,
+          "name": "cryptography.hazmat.primitives.serialization.load_der_public_key",
+          "path": "jwt/algorithms.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-02c3c896610ce7b3",
+          "line": 340,
+          "name": "cryptography.x509.load_der_x509_certificate",
+          "path": "jwt/algorithms.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-d030036d23cc34ac",
+          "line": 544,
+          "name": "cryptography.hazmat.primitives.serialization.load_ssh_public_key",
+          "path": "jwt/algorithms.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-2704ca91b85c6b3a",
+          "line": 548,
+          "name": "cryptography.hazmat.primitives.serialization.load_pem_private_key",
+          "path": "jwt/algorithms.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-a472ae00622d1f31",
+          "line": 555,
+          "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key",
+          "path": "jwt/algorithms.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-156e4a601c936cdf",
+          "line": 683,
+          "name": "cryptography.hazmat.primitives.asymmetric.rsa.RSAPrivateKey.sign",
+          "path": "jwt/algorithms.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-b3483571171c069b",
+          "line": 688,
+          "name": "cryptography.hazmat.primitives.asymmetric.rsa.RSAPublicKey.verify",
+          "path": "jwt/algorithms.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-b5e93cc5afac0228",
+          "line": 744,
+          "name": "cryptography.hazmat.primitives.serialization.load_ssh_public_key",
+          "path": "jwt/algorithms.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-b4f0d4ffcb0305bd",
+          "line": 746,
+          "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key",
+          "path": "jwt/algorithms.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-f8f6d98e49960d5d",
+          "line": 754,
+          "name": "cryptography.hazmat.primitives.serialization.load_pem_private_key",
+          "path": "jwt/algorithms.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-77d0230280ed236e",
+          "line": 761,
+          "name": "cryptography.hazmat.primitives.asymmetric.ec.EllipticCurvePrivateKey.sign",
+          "path": "jwt/algorithms.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-1d570d463333cf00",
+          "line": 914,
+          "name": "cryptography.hazmat.primitives.asymmetric.rsa.RSAPrivateKey.sign",
+          "path": "jwt/algorithms.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-5668cf60b381dd10",
+          "line": 926,
+          "name": "cryptography.hazmat.primitives.asymmetric.rsa.RSAPublicKey.verify",
+          "path": "jwt/algorithms.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-5f6d095a2e09af15",
+          "line": 971,
+          "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key",
+          "path": "jwt/algorithms.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-49d0ff1a3ecc50f5",
+          "line": 973,
+          "name": "cryptography.hazmat.primitives.serialization.load_pem_private_key",
+          "path": "jwt/algorithms.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-1452ad80b385c61d",
+          "line": 975,
+          "name": "cryptography.hazmat.primitives.serialization.load_ssh_public_key",
+          "path": "jwt/algorithms.py",
+          "role": "source"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-d21c2d2f1cb6a60a",
+          "line": 57,
+          "name": "jwt.decode",
+          "path": "tests/test_advisory.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-675aef384857159c",
+          "line": 64,
+          "name": "jwt.decode",
+          "path": "tests/test_advisory.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-64ab4ac61cfada14",
+          "line": 108,
+          "name": "jwt.decode",
+          "path": "tests/test_advisory.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-c322da7da213f36b",
+          "line": 115,
+          "name": "jwt.decode",
+          "path": "tests/test_advisory.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-572fc5a02c7aabc9",
+          "line": 352,
+          "name": "cryptography.x509.load_pem_x509_certificate",
+          "path": "tests/test_algorithms.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-1c6c6d885c803cb5",
+          "line": 353,
+          "name": "cryptography.x509.load_pem_x509_certificate.public_bytes",
+          "path": "tests/test_algorithms.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-05297149a599574b",
+          "line": 1086,
+          "name": "jwt.algorithms.OKPAlgorithm.from_jwk",
+          "path": "tests/test_algorithms.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-2c4fbab6fc18df43",
+          "line": 1099,
+          "name": "jwt.algorithms.OKPAlgorithm.from_jwk",
+          "path": "tests/test_algorithms.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-89a05f810b7e1f64",
+          "line": 221,
+          "name": "cryptography.hazmat.primitives.serialization.load_pem_private_key",
+          "path": "tests/test_api_jws.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-4ee34a3cc2a0f14f",
+          "line": 223,
+          "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key",
+          "path": "tests/test_api_jws.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-beac5fe3d97e4744",
+          "line": 236,
+          "name": "cryptography.hazmat.primitives.serialization.load_pem_private_key",
+          "path": "tests/test_api_jws.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-372a7dfb34db1e93",
+          "line": 238,
+          "name": "cryptography.hazmat.primitives.serialization.load_pem_public_key",
+          "path": "tests/test_api_jws.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-74d2b92ade8ff18e",
+          "line": 798,
+          "name": "cryptography.hazmat.primitives.serialization.load_pem_private_key",
+          "path": "tests/test_api_jws.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-57a7bf40a8e74d4e",
+          "line": 805,
+          "name": "cryptography.hazmat.primitives.serialization.load_ssh_public_key",
+          "path": "tests/test_api_jws.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-28a3fa7d4af34f60",
+          "line": 1316,
+          "name": "jwt.PyJWK.from_dict",
+          "path": "tests/test_api_jws.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-26d929c00c76e785",
+          "line": 193,
+          "name": "jwt.decode",
+          "path": "tests/test_api_jwt.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-31dcf1adb632c0a4",
+          "line": 177,
+          "name": "jwt.PyJWKClient",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-da6c22adeaadb7e9",
+          "line": 203,
+          "name": "jwt.PyJWKClient",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-dec04bcc389d414a",
+          "line": 215,
+          "name": "jwt.PyJWKClient",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-bfbe541c5ad0efd1",
+          "line": 224,
+          "name": "jwt.PyJWKClient",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-4a51f652ed168001",
+          "line": 225,
+          "name": "jwt.PyJWKClient.get_signing_keys",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-d79b28ad90b46618",
+          "line": 238,
+          "name": "jwt.PyJWKClient",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-0350007c2dd46517",
+          "line": 239,
+          "name": "jwt.PyJWKClient.get_signing_keys",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-2cac74e3f3e79d39",
+          "line": 251,
+          "name": "jwt.PyJWKClient",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-7410945295941b97",
+          "line": 254,
+          "name": "jwt.PyJWKClient.get_signing_keys",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-4ef228c2a9d5307c",
+          "line": 263,
+          "name": "jwt.PyJWKClient",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-df8c1db244b44df8",
+          "line": 264,
+          "name": "jwt.PyJWKClient.get_signing_key",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-73d0f649637dddb3",
+          "line": 275,
+          "name": "jwt.PyJWKClient",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-911fd28278258e0e",
+          "line": 278,
+          "name": "jwt.PyJWKClient.get_signing_key",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-495f3d110bd82178",
+          "line": 283,
+          "name": "jwt.PyJWKClient.get_signing_key",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-54de58002f72b07e",
+          "line": 291,
+          "name": "jwt.PyJWKClient",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-96a5d32d0c828bbc",
+          "line": 294,
+          "name": "jwt.PyJWKClient.get_signing_key",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-70f79dee463b7aba",
+          "line": 299,
+          "name": "jwt.PyJWKClient.get_signing_key",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-a7ff89410f8f5494",
+          "line": 308,
+          "name": "jwt.PyJWKClient",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-29288a563a52fa50",
+          "line": 309,
+          "name": "jwt.PyJWKClient.get_signing_key_from_jwt",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-9553e0de442dcfd4",
+          "line": 333,
+          "name": "jwt.PyJWKClient",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-76a8d17ab49b176d",
+          "line": 342,
+          "name": "jwt.PyJWKClient.get_signing_key_from_jwt",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-aaf3052f51aa2c1d",
+          "line": 350,
+          "name": "jwt.PyJWKClient",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-f2b3de116b5b994d",
+          "line": 368,
+          "name": "jwt.PyJWKClient",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-725ab62ea0f936cb",
+          "line": 387,
+          "name": "jwt.PyJWKClient",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-a446fbb07bc2164b",
+          "line": 405,
+          "name": "jwt.PyJWKClient",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-8ab9f4f6c01c272e",
+          "line": 415,
+          "name": "jwt.PyJWKClient",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-53fd9a09b8e38212",
+          "line": 473,
+          "name": "jwt.PyJWKClient",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-1b3d74ee14e5216f",
+          "line": 481,
+          "name": "jwt.PyJWKClient",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-df16777dc6a73bcd",
+          "line": 497,
+          "name": "jwt.PyJWKClient",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-b7ef68891cdb7ae6",
+          "line": 521,
+          "name": "jwt.PyJWKClient",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-72233824ce92b888",
+          "line": 543,
+          "name": "jwt.PyJWKClient",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-a2396fe0dc8fce63",
+          "line": 546,
+          "name": "jwt.PyJWKClient.get_signing_key_from_jwt",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-39d01d6ced4f5830",
+          "line": 551,
+          "name": "jwt.PyJWKClient",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-0f8f49bd9a4d5527",
+          "line": 558,
+          "name": "jwt.PyJWKClient",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-3364d9d90ee58baf",
+          "line": 567,
+          "name": "jwt.PyJWKClient.get_signing_key",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-d56f2eb165aa94ca",
+          "line": 573,
+          "name": "jwt.PyJWKClient",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-cbf15eb85b11aa7d",
+          "line": 581,
+          "name": "jwt.PyJWKClient.get_signing_key",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-b9454f64b40c9a72",
+          "line": 586,
+          "name": "jwt.PyJWKClient",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-0112f8943abee1b8",
+          "line": 599,
+          "name": "jwt.PyJWKClient.get_signing_key",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-e853a39f62089b36",
+          "line": 606,
+          "name": "jwt.PyJWKClient",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-152789d9d725ce7f",
+          "line": 622,
+          "name": "jwt.PyJWKClient.get_signing_key",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-65c41bdc47ab7580",
+          "line": 625,
+          "name": "jwt.PyJWKClient.get_signing_key",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-2b47d9917a8c4787",
+          "line": 632,
+          "name": "jwt.PyJWKClient",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-bab995238e03ce48",
+          "line": 661,
+          "name": "jwt.PyJWKClient.get_signing_key",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-a0f9b03735913d98",
+          "line": 689,
+          "name": "jwt.PyJWKClient",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-75360da08b7d3a82",
+          "line": 707,
+          "name": "jwt.PyJWKClient.get_signing_key",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-9a1b178543d42137",
+          "line": 720,
+          "name": "jwt.PyJWKClient",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-d6139cf79a4bf714",
+          "line": 726,
+          "name": "jwt.PyJWKClient",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-86f72dac8b8e3fcf",
+          "line": 745,
+          "name": "jwt.PyJWKClient",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-b74076fd38d294c2",
+          "line": 757,
+          "name": "jwt.PyJWKClient",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-0b482b75a4f8eb1c",
+          "line": 761,
+          "name": "jwt.PyJWKClient",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-e00d6548654e230e",
+          "line": 772,
+          "name": "jwt.PyJWKClient",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-5155f52c20cce218",
+          "line": 792,
+          "name": "jwt.PyJWKClient",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-3faf212fe7ad7795",
+          "line": 805,
+          "name": "jwt.PyJWKClient",
+          "path": "tests/test_jwks_client.py",
+          "role": "test"
+        }
+      ]
+    }
+  ],
   "limited": false,
   "skipped": [],
   "version": 1

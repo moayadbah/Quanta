@@ -30,6 +30,14 @@
     },
     {
       "confidence": "low",
+      "file": "src/ecdsa/test_numbertheory.py",
+      "kind": "call",
+      "line": 104,
+      "source": "function-0057befae571cdbf",
+      "target": "function-0390b51b29dc154f"
+    },
+    {
+      "confidence": "low",
       "file": "src/ecdsa/eddsa.py",
       "kind": "call",
       "line": 101,
@@ -166,6 +174,14 @@
     },
     {
       "confidence": "low",
+      "file": "src/ecdsa/test_numbertheory.py",
+      "kind": "call",
+      "line": 186,
+      "source": "function-078f5a26eca63c33",
+      "target": "function-354e81ed356fe766"
+    },
+    {
+      "confidence": "low",
       "file": "src/ecdsa/ellipticcurve.py",
       "kind": "call",
       "line": 1399,
@@ -282,6 +298,14 @@
     },
     {
       "confidence": "low",
+      "file": "src/ecdsa/test_numbertheory.py",
+      "kind": "call",
+      "line": 483,
+      "source": "function-0bed45a244bbf312",
+      "target": "function-18e32799f1fb40e0"
+    },
+    {
+      "confidence": "low",
       "file": "src/ecdsa/ellipticcurve.py",
       "kind": "call",
       "line": 261,
@@ -319,6 +343,22 @@
       "line": 116,
       "source": "function-0dba5a9d571defc9",
       "target": "function-1a6a0e59eb2b8c26"
+    },
+    {
+      "confidence": "low",
+      "file": "src/ecdsa/test_ecdh.py",
+      "kind": "call",
+      "line": 89,
+      "source": "function-0e015b5bfb33a480",
+      "target": "function-e8f64c0a03825704"
+    },
+    {
+      "confidence": "low",
+      "file": "src/ecdsa/test_numbertheory.py",
+      "kind": "call",
+      "line": 279,
+      "source": "function-0e174ca03391f0c3",
+      "target": "function-cdf7d2ed7a9874b5"
     },
     {
       "confidence": "high",
@@ -650,6 +690,14 @@
     },
     {
       "confidence": "low",
+      "file": "src/ecdsa/test_numbertheory.py",
+      "kind": "call",
+      "line": 131,
+      "source": "function-186562a2a77f3319",
+      "target": "function-0390b51b29dc154f"
+    },
+    {
+      "confidence": "low",
       "file": "src/ecdsa/test_ecdsa.py",
       "kind": "call",
       "line": 171,
@@ -769,6 +817,14 @@
       "line": 226,
       "source": "function-1a8db2a3227877b2",
       "target": "function-15d71cff39607a77"
+    },
+    {
+      "confidence": "low",
+      "file": "src/ecdsa/test_numbertheory.py",
+      "kind": "call",
+      "line": 174,
+      "source": "function-1b6aac8708cfc31f",
+      "target": "function-354e81ed356fe766"
     },
     {
       "confidence": "low",
@@ -908,6 +964,14 @@
     },
     {
       "confidence": "low",
+      "file": "src/ecdsa/test_numbertheory.py",
+      "kind": "call",
+      "line": 296,
+      "source": "function-276bbb23b4685fff",
+      "target": "function-cdf7d2ed7a9874b5"
+    },
+    {
+      "confidence": "low",
       "file": "src/ecdsa/_compat.py",
       "kind": "call",
       "line": 61,
@@ -1009,14 +1073,6 @@
       "target": "function-b76b131628eaeae0"
     },
     {
-      "confidence": "low",
-      "file": "src/ecdsa/test_pyecdsa.py",
-      "kind": "call",
-      "line": 1070,
-      "source": "function-2a3536b502692ea0",
-      "target": "function-026474d4fc680ccd"
-    },
-    {
       "confidence": "high",
       "kind": "binding",
       "source": "function-2b171622d92ef89c",
@@ -1112,6 +1168,22 @@
     },
     {
       "confidence": "low",
+      "file": "src/ecdsa/test_numbertheory.py",
+      "kind": "call",
+      "line": 477,
+      "source": "function-2b5ea8c5c05b9e98",
+      "target": "function-18e32799f1fb40e0"
+    },
+    {
+      "confidence": "low",
+      "file": "src/ecdsa/test_numbertheory.py",
+      "kind": "call",
+      "line": 473,
+      "source": "function-2b5ea8c5c05b9e98",
+      "target": "function-c5c686375a0d4039"
+    },
+    {
+      "confidence": "low",
       "file": "versioneer.py",
       "kind": "call",
       "line": 1967,
@@ -1133,6 +1205,20 @@
       "line": 1966,
       "source": "function-2bb87b179851a76a",
       "target": "function-cf3c7f6283b19aea"
+    },
+    {
+      "confidence": "low",
+      "file": "src/ecdsa/test_numbertheory.py",
+      "kind": "call",
+      "line": 112,
+      "source": "function-2c28686330cf5b4e",
+      "target": "function-0390b51b29dc154f"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "function-2c48f8e3dd44f6e7",
+      "target": "crypto_call-7787bf554fd20aed"
     },
     {
       "confidence": "low",
@@ -1255,6 +1341,22 @@
       "target": "function-0f6686e9eba1b535"
     },
     {
+      "confidence": "low",
+      "file": "src/ecdsa/test_numbertheory.py",
+      "kind": "call",
+      "line": 361,
+      "source": "function-351575d224463f80",
+      "target": "function-93298b08dc5f1996"
+    },
+    {
+      "confidence": "low",
+      "file": "src/ecdsa/test_numbertheory.py",
+      "kind": "call",
+      "line": 363,
+      "source": "function-351575d224463f80",
+      "target": "function-a14d5d5d0c524d9f"
+    },
+    {
       "confidence": "high",
       "kind": "binding",
       "source": "function-35c8c3e15a8e6be5",
@@ -1334,6 +1436,14 @@
     },
     {
       "confidence": "low",
+      "file": "src/ecdsa/test_numbertheory.py",
+      "kind": "call",
+      "line": 394,
+      "source": "function-394098b2048dd3e1",
+      "target": "function-136e9c8bd0dac7b9"
+    },
+    {
+      "confidence": "low",
       "file": "src/ecdsa/test_jacobi.py",
       "kind": "call",
       "line": 617,
@@ -1387,6 +1497,12 @@
       "line": 597,
       "source": "function-39fe56ab7e3e63cd",
       "target": "function-98b66bec3d5342cf"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "function-3a500bdeabdbf1d0",
+      "target": "crypto_call-de365890cc6b6c15"
     },
     {
       "confidence": "low",
@@ -1478,6 +1594,14 @@
     },
     {
       "confidence": "low",
+      "file": "src/ecdsa/test_numbertheory.py",
+      "kind": "call",
+      "line": 127,
+      "source": "function-3e7e5a853472f3c3",
+      "target": "function-0390b51b29dc154f"
+    },
+    {
+      "confidence": "low",
       "file": "src/ecdsa/test_pyecdsa.py",
       "kind": "call",
       "line": 860,
@@ -1550,14 +1674,6 @@
       "confidence": "low",
       "file": "src/ecdsa/test_pyecdsa.py",
       "kind": "call",
-      "line": 1308,
-      "source": "function-41a5011f054a8a3f",
-      "target": "function-026474d4fc680ccd"
-    },
-    {
-      "confidence": "low",
-      "file": "src/ecdsa/test_pyecdsa.py",
-      "kind": "call",
       "line": 1322,
       "source": "function-41a5011f054a8a3f",
       "target": "function-15d71cff39607a77"
@@ -1625,6 +1741,14 @@
       "line": 297,
       "source": "function-4209a7b27de5249e",
       "target": "function-e9506b36d07c1933"
+    },
+    {
+      "confidence": "low",
+      "file": "src/ecdsa/test_numbertheory.py",
+      "kind": "call",
+      "line": 309,
+      "source": "function-42e2ee94a901503b",
+      "target": "function-cdf7d2ed7a9874b5"
     },
     {
       "confidence": "low",
@@ -1731,6 +1855,22 @@
       "line": 330,
       "source": "function-46787a147c7cf17d",
       "target": "function-db6b9d50fc5ccc4d"
+    },
+    {
+      "confidence": "low",
+      "file": "src/ecdsa/test_numbertheory.py",
+      "kind": "call",
+      "line": 409,
+      "source": "function-46db43cb1181db82",
+      "target": "function-0390b51b29dc154f"
+    },
+    {
+      "confidence": "low",
+      "file": "src/ecdsa/test_numbertheory.py",
+      "kind": "call",
+      "line": 405,
+      "source": "function-46db43cb1181db82",
+      "target": "function-1b6aac8708cfc31f"
     },
     {
       "confidence": "low",
@@ -1892,6 +2032,14 @@
     },
     {
       "confidence": "low",
+      "file": "src/ecdsa/test_numbertheory.py",
+      "kind": "call",
+      "line": 99,
+      "source": "function-4a16d5a669fff25e",
+      "target": "function-0390b51b29dc154f"
+    },
+    {
+      "confidence": "low",
       "file": "src/ecdsa/eddsa.py",
       "kind": "call",
       "line": 212,
@@ -1956,6 +2104,14 @@
     },
     {
       "confidence": "low",
+      "file": "src/ecdsa/test_numbertheory.py",
+      "kind": "call",
+      "line": 448,
+      "source": "function-4cae455da7cf6135",
+      "target": "function-b6da4fe21794f800"
+    },
+    {
+      "confidence": "low",
       "file": "src/ecdsa/_version.py",
       "kind": "call",
       "line": 651,
@@ -1969,6 +2125,14 @@
       "line": 656,
       "source": "function-4cd307566d8fd4b8",
       "target": "function-88f0ad96ccd3d600"
+    },
+    {
+      "confidence": "low",
+      "file": "src/ecdsa/test_numbertheory.py",
+      "kind": "call",
+      "line": 292,
+      "source": "function-502f07676e73d988",
+      "target": "function-cdf7d2ed7a9874b5"
     },
     {
       "confidence": "low",
@@ -2185,6 +2349,14 @@
       "line": 635,
       "source": "function-5b2754a1e49938f1",
       "target": "function-7ff18654efe1fdb3"
+    },
+    {
+      "confidence": "low",
+      "file": "src/ecdsa/test_numbertheory.py",
+      "kind": "call",
+      "line": 445,
+      "source": "function-5b703a1327adb131",
+      "target": "function-b6da4fe21794f800"
     },
     {
       "confidence": "low",
@@ -2484,6 +2656,14 @@
     },
     {
       "confidence": "low",
+      "file": "src/ecdsa/test_numbertheory.py",
+      "kind": "call",
+      "line": 324,
+      "source": "function-690c979342ebb82c",
+      "target": "function-cdf7d2ed7a9874b5"
+    },
+    {
+      "confidence": "low",
       "file": "src/ecdsa/util.py",
       "kind": "call",
       "line": 347,
@@ -2505,6 +2685,14 @@
       "line": 329,
       "source": "function-6bc65e71a4b55931",
       "target": "function-90840a6391a2b3f4"
+    },
+    {
+      "confidence": "low",
+      "file": "src/ecdsa/test_numbertheory.py",
+      "kind": "call",
+      "line": 381,
+      "source": "function-6bdaeb2cdcf36ad7",
+      "target": "function-136e9c8bd0dac7b9"
     },
     {
       "confidence": "low",
@@ -2585,6 +2773,12 @@
       "line": 406,
       "source": "function-70742f0d04f9b249",
       "target": "function-56bc2c03109ad056"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "function-70a244a6b2d6eb96",
+      "target": "crypto_call-7cb936a1c43321d7"
     },
     {
       "confidence": "low",
@@ -2696,11 +2890,43 @@
     },
     {
       "confidence": "low",
+      "file": "src/ecdsa/test_numbertheory.py",
+      "kind": "call",
+      "line": 334,
+      "source": "function-7ae73e51ba4b6818",
+      "target": "function-a14d5d5d0c524d9f"
+    },
+    {
+      "confidence": "low",
+      "file": "src/ecdsa/test_numbertheory.py",
+      "kind": "call",
+      "line": 120,
+      "source": "function-7b624ed13d2599c2",
+      "target": "function-0390b51b29dc154f"
+    },
+    {
+      "confidence": "low",
+      "file": "src/ecdsa/test_ecdh.py",
+      "kind": "call",
+      "line": 115,
+      "source": "function-7de5ae783286fe4c",
+      "target": "function-e8f64c0a03825704"
+    },
+    {
+      "confidence": "low",
       "file": "src/ecdsa/keys.py",
       "kind": "call",
       "line": 573,
       "source": "function-7de5f8feb00ddccb",
       "target": "function-d4fde659414aae10"
+    },
+    {
+      "confidence": "low",
+      "file": "src/ecdsa/test_numbertheory.py",
+      "kind": "call",
+      "line": 302,
+      "source": "function-7e34fbf234815c21",
+      "target": "function-cdf7d2ed7a9874b5"
     },
     {
       "confidence": "low",
@@ -2717,6 +2943,14 @@
       "line": 68,
       "source": "function-7f264fc4e04855a7",
       "target": "function-f5958c7433e17cf6"
+    },
+    {
+      "confidence": "low",
+      "file": "src/ecdsa/test_numbertheory.py",
+      "kind": "call",
+      "line": 428,
+      "source": "function-7f536da96ee9ec66",
+      "target": "function-b76b131628eaeae0"
     },
     {
       "confidence": "low",
@@ -2768,6 +3002,14 @@
     },
     {
       "confidence": "low",
+      "file": "src/ecdsa/test_numbertheory.py",
+      "kind": "call",
+      "line": 72,
+      "source": "function-80ce944fb5a1ad40",
+      "target": "function-4540120e56e66af1"
+    },
+    {
+      "confidence": "low",
       "file": "src/ecdsa/keys.py",
       "kind": "call",
       "line": 1170,
@@ -2789,6 +3031,14 @@
       "line": 124,
       "source": "function-820ae4787d048272",
       "target": "function-6f7db607b328db16"
+    },
+    {
+      "confidence": "low",
+      "file": "src/ecdsa/test_numbertheory.py",
+      "kind": "call",
+      "line": 418,
+      "source": "function-82110107b446f0c6",
+      "target": "function-b76b131628eaeae0"
     },
     {
       "confidence": "low",
@@ -2832,6 +3082,22 @@
     },
     {
       "confidence": "low",
+      "file": "src/ecdsa/test_numbertheory.py",
+      "kind": "call",
+      "line": 306,
+      "source": "function-855711adc6e29bee",
+      "target": "function-473a65b26f465a9e"
+    },
+    {
+      "confidence": "low",
+      "file": "src/ecdsa/test_numbertheory.py",
+      "kind": "call",
+      "line": 306,
+      "source": "function-855711adc6e29bee",
+      "target": "function-cdf7d2ed7a9874b5"
+    },
+    {
+      "confidence": "low",
       "file": "src/ecdsa/rfc6979.py",
       "kind": "call",
       "line": 39,
@@ -2869,6 +3135,14 @@
       "line": 138,
       "source": "function-86cc67525601cac1",
       "target": "function-f5958c7433e17cf6"
+    },
+    {
+      "confidence": "low",
+      "file": "src/ecdsa/test_numbertheory.py",
+      "kind": "call",
+      "line": 438,
+      "source": "function-86d3b4dd72f11743",
+      "target": "function-b76b131628eaeae0"
     },
     {
       "confidence": "low",
@@ -3178,6 +3452,14 @@
     },
     {
       "confidence": "low",
+      "file": "src/ecdsa/test_numbertheory.py",
+      "kind": "call",
+      "line": 282,
+      "source": "function-92875d515bfc7303",
+      "target": "function-cdf7d2ed7a9874b5"
+    },
+    {
+      "confidence": "low",
       "file": "src/ecdsa/test_curves.py",
       "kind": "call",
       "line": 59,
@@ -3215,6 +3497,14 @@
       "line": 422,
       "source": "function-92fda3d1ee4f84e9",
       "target": "function-c426e3d0a42a344a"
+    },
+    {
+      "confidence": "low",
+      "file": "src/ecdsa/test_numbertheory.py",
+      "kind": "call",
+      "line": 217,
+      "source": "function-93298b08dc5f1996",
+      "target": "function-354e81ed356fe766"
     },
     {
       "confidence": "low",
@@ -3363,6 +3653,22 @@
       "line": 181,
       "source": "function-99318d1f52b16cf1",
       "target": "function-16b2b268b8fe5bc8"
+    },
+    {
+      "confidence": "low",
+      "file": "src/ecdsa/test_numbertheory.py",
+      "kind": "call",
+      "line": 346,
+      "source": "function-996a0aed7750386f",
+      "target": "function-078f5a26eca63c33"
+    },
+    {
+      "confidence": "low",
+      "file": "src/ecdsa/test_numbertheory.py",
+      "kind": "call",
+      "line": 348,
+      "source": "function-996a0aed7750386f",
+      "target": "function-a14d5d5d0c524d9f"
     },
     {
       "confidence": "low",
@@ -3720,14 +4026,6 @@
       "confidence": "low",
       "file": "src/ecdsa/test_pyecdsa.py",
       "kind": "call",
-      "line": 1687,
-      "source": "function-a036ec75e826eafe",
-      "target": "function-026474d4fc680ccd"
-    },
-    {
-      "confidence": "low",
-      "file": "src/ecdsa/test_pyecdsa.py",
-      "kind": "call",
       "line": 1668,
       "source": "function-a036ec75e826eafe",
       "target": "function-e8f64c0a03825704"
@@ -3780,6 +4078,14 @@
     },
     {
       "confidence": "low",
+      "file": "src/ecdsa/test_numbertheory.py",
+      "kind": "call",
+      "line": 143,
+      "source": "function-a5ec4f4ddd6131a2",
+      "target": "function-0390b51b29dc154f"
+    },
+    {
+      "confidence": "low",
       "file": "src/ecdsa/util.py",
       "kind": "call",
       "line": 222,
@@ -3805,6 +4111,14 @@
       "kind": "binding",
       "source": "function-a9ed95509b8a930c",
       "target": "crypto_call-72e4d155c170c5f5"
+    },
+    {
+      "confidence": "low",
+      "file": "src/ecdsa/test_ecdh.py",
+      "kind": "call",
+      "line": 149,
+      "source": "function-aa7497dd3b7742cf",
+      "target": "function-e8f64c0a03825704"
     },
     {
       "confidence": "low",
@@ -3879,6 +4193,38 @@
       "target": "function-1a004c86ca378637"
     },
     {
+      "confidence": "low",
+      "file": "src/ecdsa/test_numbertheory.py",
+      "kind": "call",
+      "line": 453,
+      "source": "function-acae914205c330aa",
+      "target": "function-473a65b26f465a9e"
+    },
+    {
+      "confidence": "low",
+      "file": "src/ecdsa/test_numbertheory.py",
+      "kind": "call",
+      "line": 458,
+      "source": "function-acae914205c330aa",
+      "target": "function-b6da4fe21794f800"
+    },
+    {
+      "confidence": "low",
+      "file": "src/ecdsa/test_numbertheory.py",
+      "kind": "call",
+      "line": 465,
+      "source": "function-acae914205c330aa",
+      "target": "function-b76b131628eaeae0"
+    },
+    {
+      "confidence": "low",
+      "file": "src/ecdsa/test_numbertheory.py",
+      "kind": "call",
+      "line": 454,
+      "source": "function-acae914205c330aa",
+      "target": "function-cdf7d2ed7a9874b5"
+    },
+    {
       "confidence": "high",
       "kind": "binding",
       "source": "function-ad69845a78567ff3",
@@ -3911,14 +4257,6 @@
       "kind": "binding",
       "source": "function-aeeff6e9da75ad77",
       "target": "crypto_call-0711b6e73b4b84ce"
-    },
-    {
-      "confidence": "low",
-      "file": "src/ecdsa/test_pyecdsa.py",
-      "kind": "call",
-      "line": 1602,
-      "source": "function-aeeff6e9da75ad77",
-      "target": "function-026474d4fc680ccd"
     },
     {
       "confidence": "low",
@@ -4160,14 +4498,6 @@
       "confidence": "low",
       "file": "src/ecdsa/test_pyecdsa.py",
       "kind": "call",
-      "line": 1725,
-      "source": "function-ba1c4f407a71bf51",
-      "target": "function-026474d4fc680ccd"
-    },
-    {
-      "confidence": "low",
-      "file": "src/ecdsa/test_pyecdsa.py",
-      "kind": "call",
       "line": 1744,
       "source": "function-ba1c4f407a71bf51",
       "target": "function-15d71cff39607a77"
@@ -4404,6 +4734,14 @@
     },
     {
       "confidence": "low",
+      "file": "src/ecdsa/test_numbertheory.py",
+      "kind": "call",
+      "line": 375,
+      "source": "function-c1f072d33599bd5a",
+      "target": "function-a14d5d5d0c524d9f"
+    },
+    {
+      "confidence": "low",
       "file": "src/ecdsa/test_keys.py",
       "kind": "call",
       "line": 825,
@@ -4563,6 +4901,14 @@
       "line": 310,
       "source": "function-c583b76dcb7b9afa",
       "target": "function-56bc2c03109ad056"
+    },
+    {
+      "confidence": "low",
+      "file": "src/ecdsa/test_numbertheory.py",
+      "kind": "call",
+      "line": 155,
+      "source": "function-c5c686375a0d4039",
+      "target": "function-a14d5d5d0c524d9f"
     },
     {
       "confidence": "low",
@@ -4814,6 +5160,14 @@
     },
     {
       "confidence": "low",
+      "file": "src/ecdsa/test_numbertheory.py",
+      "kind": "call",
+      "line": 87,
+      "source": "function-ce857c50c4215272",
+      "target": "function-0390b51b29dc154f"
+    },
+    {
+      "confidence": "low",
       "file": "src/ecdsa/test_curves.py",
       "kind": "call",
       "line": 157,
@@ -4835,6 +5189,14 @@
       "line": 480,
       "source": "function-ceb400bb625a1c13",
       "target": "function-90fba9f6784f48b4"
+    },
+    {
+      "confidence": "low",
+      "file": "src/ecdsa/test_numbertheory.py",
+      "kind": "call",
+      "line": 299,
+      "source": "function-cf0a959578a516c6",
+      "target": "function-cdf7d2ed7a9874b5"
     },
     {
       "confidence": "low",
@@ -4886,11 +5248,27 @@
     },
     {
       "confidence": "low",
+      "file": "src/ecdsa/test_numbertheory.py",
+      "kind": "call",
+      "line": 77,
+      "source": "function-d636ed5edc251b3f",
+      "target": "function-4540120e56e66af1"
+    },
+    {
+      "confidence": "low",
       "file": "src/ecdsa/ellipticcurve.py",
       "kind": "call",
       "line": 438,
       "source": "function-d6b5fb6d24ce9033",
       "target": "function-090b149a2189d56c"
+    },
+    {
+      "confidence": "low",
+      "file": "src/ecdsa/test_numbertheory.py",
+      "kind": "call",
+      "line": 285,
+      "source": "function-d6ca199bfdb608e5",
+      "target": "function-cdf7d2ed7a9874b5"
     },
     {
       "confidence": "low",
@@ -4931,6 +5309,30 @@
       "line": 576,
       "source": "function-d824b777ab16a42d",
       "target": "function-7ff18654efe1fdb3"
+    },
+    {
+      "confidence": "low",
+      "file": "src/ecdsa/test_numbertheory.py",
+      "kind": "call",
+      "line": 288,
+      "source": "function-d8a4694ed2ab18d4",
+      "target": "function-cdf7d2ed7a9874b5"
+    },
+    {
+      "confidence": "low",
+      "file": "src/ecdsa/test_ecdh.py",
+      "kind": "call",
+      "line": 420,
+      "source": "function-d95dfad361841ed2",
+      "target": "function-15d71cff39607a77"
+    },
+    {
+      "confidence": "low",
+      "file": "src/ecdsa/test_ecdh.py",
+      "kind": "call",
+      "line": 60,
+      "source": "function-da2d56c7e6cddf97",
+      "target": "function-e8f64c0a03825704"
     },
     {
       "confidence": "low",
@@ -5069,6 +5471,12 @@
       "target": "function-e8f64c0a03825704"
     },
     {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "function-e12fc53f7f8bae25",
+      "target": "crypto_call-6bc89beb597d670b"
+    },
+    {
       "confidence": "low",
       "file": "src/ecdsa/test_pyecdsa.py",
       "kind": "call",
@@ -5099,6 +5507,14 @@
       "line": 29,
       "source": "function-e18108f24d8c2e02",
       "target": "function-2d68f35bfb7832bb"
+    },
+    {
+      "confidence": "low",
+      "file": "src/ecdsa/test_numbertheory.py",
+      "kind": "call",
+      "line": 137,
+      "source": "function-e2245f8ed3845d39",
+      "target": "function-0390b51b29dc154f"
     },
     {
       "confidence": "low",
@@ -6793,6 +7209,12 @@
       "kind": "binding",
       "source": "module-411244795c88cde9",
       "target": "crypto_call-1f7ab0a82c240f43"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-411244795c88cde9",
+      "target": "crypto_call-90164c73e1c88166"
     },
     {
       "confidence": "high",
@@ -8521,6 +8943,90 @@
     {
       "confidence": "high",
       "kind": "binding",
+      "source": "module-c4f82d21ad611a47",
+      "target": "function-0981b7c265b56702"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-c4f82d21ad611a47",
+      "target": "function-0e015b5bfb33a480"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-c4f82d21ad611a47",
+      "target": "function-6142eee2bd5ed90f"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-c4f82d21ad611a47",
+      "target": "function-7de5ae783286fe4c"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-c4f82d21ad611a47",
+      "target": "function-966285a0d05e183e"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-c4f82d21ad611a47",
+      "target": "function-aa7497dd3b7742cf"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-c4f82d21ad611a47",
+      "target": "function-c014feafdd188327"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-c4f82d21ad611a47",
+      "target": "function-cd9314a162f2073c"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-c4f82d21ad611a47",
+      "target": "function-d4809af9e6331d3f"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-c4f82d21ad611a47",
+      "target": "function-d95dfad361841ed2"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-c4f82d21ad611a47",
+      "target": "function-da2d56c7e6cddf97"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-c4f82d21ad611a47",
+      "target": "function-de4bb7bee5c9576e"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-c4f82d21ad611a47",
+      "target": "function-df74ec63c6b58cb9"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-c4f82d21ad611a47",
+      "target": "function-f83aa544486ba01c"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
       "source": "module-cd658e21cd45d629",
       "target": "function-1501ff0e70e5ee84"
     },
@@ -8885,6 +9391,264 @@
       "kind": "binding",
       "source": "module-da2c64836694566d",
       "target": "function-ff118e5a2c9ff51a"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-de1711f94fc4a7a9",
+      "target": "function-0057befae571cdbf"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-de1711f94fc4a7a9",
+      "target": "function-078f5a26eca63c33"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-de1711f94fc4a7a9",
+      "target": "function-0bed45a244bbf312"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-de1711f94fc4a7a9",
+      "target": "function-0e174ca03391f0c3"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-de1711f94fc4a7a9",
+      "target": "function-186562a2a77f3319"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-de1711f94fc4a7a9",
+      "target": "function-1b6aac8708cfc31f"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-de1711f94fc4a7a9",
+      "target": "function-276bbb23b4685fff"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-de1711f94fc4a7a9",
+      "target": "function-2b5ea8c5c05b9e98"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-de1711f94fc4a7a9",
+      "target": "function-2c28686330cf5b4e"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-de1711f94fc4a7a9",
+      "target": "function-351575d224463f80"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-de1711f94fc4a7a9",
+      "target": "function-354e81ed356fe766"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-de1711f94fc4a7a9",
+      "target": "function-394098b2048dd3e1"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-de1711f94fc4a7a9",
+      "target": "function-3e7e5a853472f3c3"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-de1711f94fc4a7a9",
+      "target": "function-42e2ee94a901503b"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-de1711f94fc4a7a9",
+      "target": "function-46db43cb1181db82"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-de1711f94fc4a7a9",
+      "target": "function-473a65b26f465a9e"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-de1711f94fc4a7a9",
+      "target": "function-4a16d5a669fff25e"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-de1711f94fc4a7a9",
+      "target": "function-4cae455da7cf6135"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-de1711f94fc4a7a9",
+      "target": "function-502f07676e73d988"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-de1711f94fc4a7a9",
+      "target": "function-5b703a1327adb131"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-de1711f94fc4a7a9",
+      "target": "function-690c979342ebb82c"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-de1711f94fc4a7a9",
+      "target": "function-6bdaeb2cdcf36ad7"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-de1711f94fc4a7a9",
+      "target": "function-7ae73e51ba4b6818"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-de1711f94fc4a7a9",
+      "target": "function-7b624ed13d2599c2"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-de1711f94fc4a7a9",
+      "target": "function-7e34fbf234815c21"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-de1711f94fc4a7a9",
+      "target": "function-7f536da96ee9ec66"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-de1711f94fc4a7a9",
+      "target": "function-80ce944fb5a1ad40"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-de1711f94fc4a7a9",
+      "target": "function-82110107b446f0c6"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-de1711f94fc4a7a9",
+      "target": "function-855711adc6e29bee"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-de1711f94fc4a7a9",
+      "target": "function-86d3b4dd72f11743"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-de1711f94fc4a7a9",
+      "target": "function-92875d515bfc7303"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-de1711f94fc4a7a9",
+      "target": "function-93298b08dc5f1996"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-de1711f94fc4a7a9",
+      "target": "function-996a0aed7750386f"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-de1711f94fc4a7a9",
+      "target": "function-a5ec4f4ddd6131a2"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-de1711f94fc4a7a9",
+      "target": "function-acae914205c330aa"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-de1711f94fc4a7a9",
+      "target": "function-c1f072d33599bd5a"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-de1711f94fc4a7a9",
+      "target": "function-c5c686375a0d4039"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-de1711f94fc4a7a9",
+      "target": "function-ce857c50c4215272"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-de1711f94fc4a7a9",
+      "target": "function-cf0a959578a516c6"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-de1711f94fc4a7a9",
+      "target": "function-d636ed5edc251b3f"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-de1711f94fc4a7a9",
+      "target": "function-d6ca199bfdb608e5"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-de1711f94fc4a7a9",
+      "target": "function-d8a4694ed2ab18d4"
+    },
+    {
+      "confidence": "high",
+      "kind": "binding",
+      "source": "module-de1711f94fc4a7a9",
+      "target": "function-e2245f8ed3845d39"
     },
     {
       "confidence": "high",
@@ -12465,6 +13229,24 @@
       "source": "static"
     },
     {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "randomness",
+      "col": 14,
+      "file": "src/ecdsa/test_keys.py",
+      "form": "call",
+      "free": false,
+      "id": "crypto_call-6bc89beb597d670b",
+      "kind": "crypto_call",
+      "line": 897,
+      "module": "src.ecdsa.test_keys",
+      "qualified_name": "os.urandom",
+      "role": "test",
+      "scored": false,
+      "selection": "unspecified",
+      "source": "static"
+    },
+    {
       "algorithm": "ECDSA",
       "algorithms": [
         "ECDSA"
@@ -12562,6 +13344,42 @@
       "role": "test",
       "scored": true,
       "selection": "literal",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "randomness",
+      "col": 18,
+      "file": "src/ecdsa/util.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-7787bf554fd20aed",
+      "kind": "crypto_call",
+      "line": 91,
+      "module": "src.ecdsa.util",
+      "qualified_name": "os.urandom",
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "randomness",
+      "col": 50,
+      "file": "src/ecdsa/test_keys.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-7cb936a1c43321d7",
+      "kind": "crypto_call",
+      "line": 808,
+      "module": "src.ecdsa.test_keys",
+      "qualified_name": "os.urandom",
+      "role": "test",
+      "scored": false,
+      "selection": "unspecified",
       "source": "static"
     },
     {
@@ -12740,6 +13558,27 @@
       "role": "test",
       "scored": true,
       "selection": "unspecified",
+      "source": "static"
+    },
+    {
+      "algorithm": "ECDSA",
+      "algorithms": [
+        "ECDSA",
+        "ECC-P256"
+      ],
+      "category": "signature",
+      "col": 39,
+      "file": "speed.py",
+      "form": "operation",
+      "free": false,
+      "id": "crypto_call-90164c73e1c88166",
+      "kind": "crypto_call",
+      "line": 63,
+      "module": "speed",
+      "qualified_name": "ecdsa.SigningKey.generate.sign",
+      "role": "source",
+      "scored": false,
+      "selection": "literal",
       "source": "static"
     },
     {
@@ -13281,6 +14120,24 @@
       "source": "static"
     },
     {
+      "algorithm": null,
+      "algorithms": [],
+      "category": "randomness",
+      "col": 22,
+      "file": "src/ecdsa/keys.py",
+      "form": "reference",
+      "free": false,
+      "id": "crypto_call-de365890cc6b6c15",
+      "kind": "crypto_call",
+      "line": 786,
+      "module": "src.ecdsa.keys",
+      "qualified_name": "os.urandom",
+      "role": "source",
+      "scored": false,
+      "selection": "unspecified",
+      "source": "static"
+    },
+    {
       "algorithm": "SHA1",
       "algorithms": [
         "SHA1"
@@ -13549,6 +14406,18 @@
       "line": 698,
       "module": "src.ecdsa.test_jacobi",
       "qualified_name": "src.ecdsa.test_jacobi.TestJacobi.test_add_with_point_at_infinity",
+      "role": "test",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 0,
+      "file": "src/ecdsa/test_numbertheory.py",
+      "id": "function-0057befae571cdbf",
+      "kind": "function",
+      "line": 103,
+      "module": "src.ecdsa.test_numbertheory",
+      "qualified_name": "src.ecdsa.test_numbertheory.test_square_root_mod_prime_for_small_prime",
       "role": "test",
       "source": "static"
     },
@@ -13831,6 +14700,18 @@
     {
       "algorithm": null,
       "col": 0,
+      "file": "src/ecdsa/test_numbertheory.py",
+      "id": "function-078f5a26eca63c33",
+      "kind": "function",
+      "line": 181,
+      "module": "src.ecdsa.test_numbertheory",
+      "qualified_name": "src.ecdsa.test_numbertheory.st_comp_with_com_fac",
+      "role": "test",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 0,
       "file": "src/ecdsa/_version.py",
       "id": "function-07cf0ecb686f0c22",
       "kind": "function",
@@ -13921,6 +14802,18 @@
       "line": 1757,
       "module": "src.ecdsa.test_pyecdsa",
       "qualified_name": "src.ecdsa.test_pyecdsa.OpenSSL.test_from_openssl_ed25519",
+      "role": "test",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 0,
+      "file": "src/ecdsa/test_ecdh.py",
+      "id": "function-0981b7c265b56702",
+      "kind": "function",
+      "line": 72,
+      "module": "src.ecdsa.test_ecdh",
+      "qualified_name": "src.ecdsa.test_ecdh.test_ecdh_no_public_key",
       "role": "test",
       "source": "static"
     },
@@ -14023,6 +14916,18 @@
     {
       "algorithm": null,
       "col": 4,
+      "file": "src/ecdsa/test_numbertheory.py",
+      "id": "function-0bed45a244bbf312",
+      "kind": "function",
+      "line": 482,
+      "module": "src.ecdsa.test_numbertheory",
+      "qualified_name": "src.ecdsa.test_numbertheory.TestNumbertheory.test_inverse_mod_with_zero",
+      "role": "test",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
       "file": "src/ecdsa/test_ecdsa.py",
       "id": "function-0c169860a9cf1fe9",
       "kind": "function",
@@ -14101,6 +15006,30 @@
       "line": 115,
       "module": "src.ecdsa.test_keys",
       "qualified_name": "src.ecdsa.test_keys.TestVerifyingKeyFromString.test_bytearray_uncompressed",
+      "role": "test",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/ecdsa/test_ecdh.py",
+      "id": "function-0e015b5bfb33a480",
+      "kind": "function",
+      "line": 85,
+      "module": "src.ecdsa.test_ecdh",
+      "qualified_name": "src.ecdsa.test_ecdh.TestECDH.test_load_key_from_wrong_curve",
+      "role": "test",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/ecdsa/test_numbertheory.py",
+      "id": "function-0e174ca03391f0c3",
+      "kind": "function",
+      "line": 278,
+      "module": "src.ecdsa.test_numbertheory",
+      "qualified_name": "src.ecdsa.test_numbertheory.TestIsPrime.test_very_small_prime",
       "role": "test",
       "source": "static"
     },
@@ -14539,6 +15468,18 @@
     {
       "algorithm": null,
       "col": 4,
+      "file": "src/ecdsa/test_numbertheory.py",
+      "id": "function-186562a2a77f3319",
+      "kind": "function",
+      "line": 129,
+      "module": "src.ecdsa.test_numbertheory",
+      "qualified_name": "src.ecdsa.test_numbertheory.TestSquareRootModPrime.test_no_square",
+      "role": "test",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
       "file": "src/ecdsa/test_ecdsa.py",
       "id": "function-186e5c8eaf4c5c23",
       "kind": "function",
@@ -14762,6 +15703,18 @@
       "module": "src.ecdsa.ellipticcurve",
       "qualified_name": "src.ecdsa.ellipticcurve.Point.__str__",
       "role": "source",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 0,
+      "file": "src/ecdsa/test_numbertheory.py",
+      "id": "function-1b6aac8708cfc31f",
+      "kind": "function",
+      "line": 173,
+      "module": "src.ecdsa.test_numbertheory",
+      "qualified_name": "src.ecdsa.test_numbertheory.st_num_square_prime",
+      "role": "test",
       "source": "static"
     },
     {
@@ -15259,6 +16212,18 @@
     {
       "algorithm": null,
       "col": 4,
+      "file": "src/ecdsa/test_numbertheory.py",
+      "id": "function-276bbb23b4685fff",
+      "kind": "function",
+      "line": 294,
+      "module": "src.ecdsa.test_numbertheory",
+      "qualified_name": "src.ecdsa.test_numbertheory.TestIsPrime.test_medium_prime_2",
+      "role": "test",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
       "file": "src/ecdsa/test_eddsa.py",
       "id": "function-2782c9f36ce8d4bc",
       "kind": "function",
@@ -15487,6 +16452,18 @@
     {
       "algorithm": null,
       "col": 4,
+      "file": "src/ecdsa/test_numbertheory.py",
+      "id": "function-2b5ea8c5c05b9e98",
+      "kind": "function",
+      "line": 474,
+      "module": "src.ecdsa.test_numbertheory",
+      "qualified_name": "src.ecdsa.test_numbertheory.TestNumbertheory.test_inverse_mod",
+      "role": "test",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
       "file": "src/ecdsa/test_ecdsa.py",
       "id": "function-2b9205d370b5084d",
       "kind": "function",
@@ -15506,6 +16483,18 @@
       "module": "versioneer",
       "qualified_name": "versioneer.get_cmdclass.cmd_py2exe.run",
       "role": "source",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 0,
+      "file": "src/ecdsa/test_numbertheory.py",
+      "id": "function-2c28686330cf5b4e",
+      "kind": "function",
+      "line": 108,
+      "module": "src.ecdsa.test_numbertheory",
+      "qualified_name": "src.ecdsa.test_numbertheory.test_square_root_mod_prime_for_p_congruent_5",
+      "role": "test",
       "source": "static"
     },
     {
@@ -15859,6 +16848,30 @@
     {
       "algorithm": null,
       "col": 4,
+      "file": "src/ecdsa/test_numbertheory.py",
+      "id": "function-351575d224463f80",
+      "kind": "function",
+      "line": 362,
+      "module": "src.ecdsa.test_numbertheory",
+      "qualified_name": "src.ecdsa.test_numbertheory.TestNumbertheory.test_gcd_with_uncom_factor",
+      "role": "test",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 0,
+      "file": "src/ecdsa/test_numbertheory.py",
+      "id": "function-354e81ed356fe766",
+      "kind": "function",
+      "line": 162,
+      "module": "src.ecdsa.test_numbertheory",
+      "qualified_name": "src.ecdsa.test_numbertheory.st_primes",
+      "role": "test",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
       "file": "src/ecdsa/test_pyecdsa.py",
       "id": "function-3561f4e44f536fd6",
       "kind": "function",
@@ -15985,6 +16998,18 @@
       "line": 158,
       "module": "src.ecdsa.test_eddsa",
       "qualified_name": "src.ecdsa.test_eddsa.test_ed25519_eq_x_different_y",
+      "role": "test",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/ecdsa/test_numbertheory.py",
+      "id": "function-394098b2048dd3e1",
+      "kind": "function",
+      "line": 393,
+      "module": "src.ecdsa.test_numbertheory",
+      "qualified_name": "src.ecdsa.test_numbertheory.TestNumbertheory.test_lcm_with_random_numbers",
       "role": "test",
       "source": "static"
     },
@@ -16178,6 +17203,18 @@
       "module": "src.ecdsa.ellipticcurve",
       "qualified_name": "src.ecdsa.ellipticcurve.AbstractPoint._naf",
       "role": "source",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/ecdsa/test_numbertheory.py",
+      "id": "function-3e7e5a853472f3c3",
+      "kind": "function",
+      "line": 125,
+      "module": "src.ecdsa.test_numbertheory",
+      "qualified_name": "src.ecdsa.test_numbertheory.TestSquareRootModPrime.test_power_of_2_p",
+      "role": "test",
       "source": "static"
     },
     {
@@ -16399,6 +17436,18 @@
     {
       "algorithm": null,
       "col": 4,
+      "file": "src/ecdsa/test_numbertheory.py",
+      "id": "function-42e2ee94a901503b",
+      "kind": "function",
+      "line": 308,
+      "module": "src.ecdsa.test_numbertheory",
+      "qualified_name": "src.ecdsa.test_numbertheory.TestIsPrime.test_pseudoprime_base_19",
+      "role": "test",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
       "file": "src/ecdsa/test_curves.py",
       "id": "function-430d57cb8f1c1078",
       "kind": "function",
@@ -16602,6 +17651,18 @@
     },
     {
       "algorithm": null,
+      "col": 4,
+      "file": "src/ecdsa/test_numbertheory.py",
+      "id": "function-46db43cb1181db82",
+      "kind": "function",
+      "line": 406,
+      "module": "src.ecdsa.test_numbertheory",
+      "qualified_name": "src.ecdsa.test_numbertheory.TestNumbertheory.test_square_root_mod_prime",
+      "role": "test",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
       "col": 0,
       "file": "src/ecdsa/test_eddsa.py",
       "id": "function-472b8b23d9f56902",
@@ -16609,6 +17670,18 @@
       "line": 36,
       "module": "src.ecdsa.test_eddsa",
       "qualified_name": "src.ecdsa.test_eddsa.test_ed25519_and_ed448_compare",
+      "role": "test",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 8,
+      "file": "src/ecdsa/test_numbertheory.py",
+      "id": "function-473a65b26f465a9e",
+      "kind": "function",
+      "line": 40,
+      "module": "src.ecdsa.test_numbertheory",
+      "qualified_name": "src.ecdsa.test_numbertheory.mpz",
       "role": "test",
       "source": "static"
     },
@@ -16794,6 +17867,18 @@
     },
     {
       "algorithm": null,
+      "col": 0,
+      "file": "src/ecdsa/test_numbertheory.py",
+      "id": "function-4a16d5a669fff25e",
+      "kind": "function",
+      "line": 98,
+      "module": "src.ecdsa.test_numbertheory",
+      "qualified_name": "src.ecdsa.test_numbertheory.test_square_root_mod_prime_for_2",
+      "role": "test",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
       "col": 4,
       "file": "src/ecdsa/ellipticcurve.py",
       "id": "function-4a1e10cbdf4ec4fc",
@@ -16902,6 +17987,18 @@
     },
     {
       "algorithm": null,
+      "col": 4,
+      "file": "src/ecdsa/test_numbertheory.py",
+      "id": "function-4cae455da7cf6135",
+      "kind": "function",
+      "line": 447,
+      "module": "src.ecdsa.test_numbertheory",
+      "qualified_name": "src.ecdsa.test_numbertheory.TestNumbertheory.test_jacobi_with_one",
+      "role": "test",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
       "col": 0,
       "file": "src/ecdsa/_version.py",
       "id": "function-4cd307566d8fd4b8",
@@ -16981,6 +18078,18 @@
       "line": 404,
       "module": "src.ecdsa.test_eddsa",
       "qualified_name": "src.ecdsa.test_eddsa.test_ed448_add_as_double",
+      "role": "test",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/ecdsa/test_numbertheory.py",
+      "id": "function-502f07676e73d988",
+      "kind": "function",
+      "line": 290,
+      "module": "src.ecdsa.test_numbertheory",
+      "qualified_name": "src.ecdsa.test_numbertheory.TestIsPrime.test_medium_prime_1",
       "role": "test",
       "source": "static"
     },
@@ -17454,6 +18563,18 @@
     },
     {
       "algorithm": null,
+      "col": 4,
+      "file": "src/ecdsa/test_numbertheory.py",
+      "id": "function-5b703a1327adb131",
+      "kind": "function",
+      "line": 444,
+      "module": "src.ecdsa.test_numbertheory",
+      "qualified_name": "src.ecdsa.test_numbertheory.TestNumbertheory.test_jacobi_with_zero",
+      "role": "test",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
       "col": 0,
       "file": "src/ecdsa/curves.py",
       "id": "function-5b826e3f6934b0d6",
@@ -17714,6 +18835,18 @@
       "module": "src.ecdsa.eddsa",
       "qualified_name": "src.ecdsa.eddsa._shake256",
       "role": "source",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 0,
+      "file": "src/ecdsa/test_ecdh.py",
+      "id": "function-6142eee2bd5ed90f",
+      "kind": "function",
+      "line": 339,
+      "module": "src.ecdsa.test_ecdh",
+      "qualified_name": "src.ecdsa.test_ecdh.test_ecdh_der",
+      "role": "test",
       "source": "static"
     },
     {
@@ -18018,6 +19151,18 @@
     },
     {
       "algorithm": null,
+      "col": 4,
+      "file": "src/ecdsa/test_numbertheory.py",
+      "id": "function-690c979342ebb82c",
+      "kind": "function",
+      "line": 311,
+      "module": "src.ecdsa.test_numbertheory",
+      "qualified_name": "src.ecdsa.test_numbertheory.TestIsPrime.test_pseudoprime_base_300",
+      "role": "test",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
       "col": 0,
       "file": "src/ecdsa/util.py",
       "id": "function-6ac4398e21b0d1ef",
@@ -18073,6 +19218,18 @@
       "line": 327,
       "module": "src.ecdsa.test_keys",
       "qualified_name": "src.ecdsa.test_keys.TestVerifyingKeyFromDer.test_edwards_from_public_key_recovery",
+      "role": "test",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/ecdsa/test_numbertheory.py",
+      "id": "function-6bdaeb2cdcf36ad7",
+      "kind": "function",
+      "line": 380,
+      "module": "src.ecdsa.test_numbertheory",
+      "qualified_name": "src.ecdsa.test_numbertheory.TestNumbertheory.test_lcm",
       "role": "test",
       "source": "static"
     },
@@ -18679,6 +19836,18 @@
     {
       "algorithm": null,
       "col": 4,
+      "file": "src/ecdsa/test_numbertheory.py",
+      "id": "function-7ae73e51ba4b6818",
+      "kind": "function",
+      "line": 333,
+      "module": "src.ecdsa.test_numbertheory",
+      "qualified_name": "src.ecdsa.test_numbertheory.TestNumbertheory.test_gcd",
+      "role": "test",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
       "file": "src/ecdsa/ellipticcurve.py",
       "id": "function-7b540926c1582c12",
       "kind": "function",
@@ -18686,6 +19855,18 @@
       "module": "src.ecdsa.ellipticcurve",
       "qualified_name": "src.ecdsa.ellipticcurve.PointJacobi.__init__",
       "role": "source",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 0,
+      "file": "src/ecdsa/test_numbertheory.py",
+      "id": "function-7b624ed13d2599c2",
+      "kind": "function",
+      "line": 116,
+      "module": "src.ecdsa.test_numbertheory",
+      "qualified_name": "src.ecdsa.test_numbertheory.test_square_root_mod_prime_for_p_congruent_5_large_d",
+      "role": "test",
       "source": "static"
     },
     {
@@ -18775,6 +19956,18 @@
     {
       "algorithm": null,
       "col": 4,
+      "file": "src/ecdsa/test_ecdh.py",
+      "id": "function-7de5ae783286fe4c",
+      "kind": "function",
+      "line": 112,
+      "module": "src.ecdsa.test_ecdh",
+      "qualified_name": "src.ecdsa.test_ecdh.TestECDH.test_set_curve_from_received_public_key",
+      "role": "test",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
       "file": "src/ecdsa/keys.py",
       "id": "function-7de5f8feb00ddccb",
       "kind": "function",
@@ -18782,6 +19975,18 @@
       "module": "src.ecdsa.keys",
       "qualified_name": "src.ecdsa.keys.VerifyingKey.to_pem",
       "role": "source",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/ecdsa/test_numbertheory.py",
+      "id": "function-7e34fbf234815c21",
+      "kind": "function",
+      "line": 301,
+      "module": "src.ecdsa.test_numbertheory",
+      "qualified_name": "src.ecdsa.test_numbertheory.TestIsPrime.test_medium_non_trivial_composite",
+      "role": "test",
       "source": "static"
     },
     {
@@ -18805,6 +20010,18 @@
       "line": 67,
       "module": "src.ecdsa.test_jacobi",
       "qualified_name": "src.ecdsa.test_jacobi.TestJacobi.test_equality_with_non_point",
+      "role": "test",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/ecdsa/test_numbertheory.py",
+      "id": "function-7f536da96ee9ec66",
+      "kind": "function",
+      "line": 424,
+      "module": "src.ecdsa.test_numbertheory",
+      "qualified_name": "src.ecdsa.test_numbertheory.TestNumbertheory.test_factorisation_smallprimes",
       "role": "test",
       "source": "static"
     },
@@ -18894,6 +20111,18 @@
     },
     {
       "algorithm": null,
+      "col": 0,
+      "file": "src/ecdsa/test_numbertheory.py",
+      "id": "function-80ce944fb5a1ad40",
+      "kind": "function",
+      "line": 71,
+      "module": "src.ecdsa.test_numbertheory",
+      "qualified_name": "src.ecdsa.test_numbertheory.test_next_prime",
+      "role": "test",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
       "col": 4,
       "file": "src/ecdsa/keys.py",
       "id": "function-814122f0c1e6beea",
@@ -18938,6 +20167,18 @@
       "module": "src.ecdsa.numbertheory",
       "qualified_name": "src.ecdsa.numbertheory.polynomial_multiply_mod",
       "role": "source",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/ecdsa/test_numbertheory.py",
+      "id": "function-82110107b446f0c6",
+      "kind": "function",
+      "line": 417,
+      "module": "src.ecdsa.test_numbertheory",
+      "qualified_name": "src.ecdsa.test_numbertheory.TestNumbertheory.test_factorization",
+      "role": "test",
       "source": "static"
     },
     {
@@ -19075,6 +20316,18 @@
     {
       "algorithm": null,
       "col": 4,
+      "file": "src/ecdsa/test_numbertheory.py",
+      "id": "function-855711adc6e29bee",
+      "kind": "function",
+      "line": 304,
+      "module": "src.ecdsa.test_numbertheory",
+      "qualified_name": "src.ecdsa.test_numbertheory.TestIsPrime.test_large_prime",
+      "role": "test",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
       "file": "src/ecdsa/test_jacobi.py",
       "id": "function-859ebf5050278894",
       "kind": "function",
@@ -19141,6 +20394,18 @@
       "line": 137,
       "module": "src.ecdsa.test_jacobi",
       "qualified_name": "src.ecdsa.test_jacobi.TestJacobi.test_radd_with_affine_point",
+      "role": "test",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/ecdsa/test_numbertheory.py",
+      "id": "function-86d3b4dd72f11743",
+      "kind": "function",
+      "line": 434,
+      "module": "src.ecdsa.test_numbertheory",
+      "qualified_name": "src.ecdsa.test_numbertheory.TestNumbertheory.test_factorisation_not_smallprimes",
       "role": "test",
       "source": "static"
     },
@@ -19759,6 +21024,18 @@
     {
       "algorithm": null,
       "col": 4,
+      "file": "src/ecdsa/test_numbertheory.py",
+      "id": "function-92875d515bfc7303",
+      "kind": "function",
+      "line": 281,
+      "module": "src.ecdsa.test_numbertheory",
+      "qualified_name": "src.ecdsa.test_numbertheory.TestIsPrime.test_very_small_composite",
+      "role": "test",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
       "file": "src/ecdsa/test_curves.py",
       "id": "function-928e3702265f9eb9",
       "kind": "function",
@@ -19789,6 +21066,18 @@
       "line": 418,
       "module": "src.ecdsa.test_pyecdsa",
       "qualified_name": "src.ecdsa.test_pyecdsa.ECDSA.test_vk_from_der_with_raw_encoding",
+      "role": "test",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 0,
+      "file": "src/ecdsa/test_numbertheory.py",
+      "id": "function-93298b08dc5f1996",
+      "kind": "function",
+      "line": 211,
+      "module": "src.ecdsa.test_numbertheory",
+      "qualified_name": "src.ecdsa.test_numbertheory.st_comp_no_com_fac",
       "role": "test",
       "source": "static"
     },
@@ -19998,6 +21287,18 @@
     },
     {
       "algorithm": null,
+      "col": 0,
+      "file": "src/ecdsa/test_ecdh.py",
+      "id": "function-966285a0d05e183e",
+      "kind": "function",
+      "line": 294,
+      "module": "src.ecdsa.test_ecdh",
+      "qualified_name": "src.ecdsa.test_ecdh.test_ecdh_NIST",
+      "role": "test",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
       "col": 4,
       "file": "src/ecdsa/test_pyecdsa.py",
       "id": "function-96c6bc0f9352ecea",
@@ -20114,6 +21415,18 @@
       "module": "src.ecdsa._sha3",
       "qualified_name": "src.ecdsa._sha3.shake_256",
       "role": "source",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/ecdsa/test_numbertheory.py",
+      "id": "function-996a0aed7750386f",
+      "kind": "function",
+      "line": 347,
+      "module": "src.ecdsa.test_numbertheory",
+      "qualified_name": "src.ecdsa.test_numbertheory.TestNumbertheory.test_gcd_with_com_factor",
+      "role": "test",
       "source": "static"
     },
     {
@@ -20659,6 +21972,18 @@
     {
       "algorithm": null,
       "col": 4,
+      "file": "src/ecdsa/test_numbertheory.py",
+      "id": "function-a5ec4f4ddd6131a2",
+      "kind": "function",
+      "line": 141,
+      "module": "src.ecdsa.test_numbertheory",
+      "qualified_name": "src.ecdsa.test_numbertheory.TestSquareRootModPrime.test_non_prime_with_negative",
+      "role": "test",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
       "file": "src/ecdsa/test_pyecdsa.py",
       "id": "function-a6f7a34d1a3a3aa0",
       "kind": "function",
@@ -20790,6 +22115,18 @@
     },
     {
       "algorithm": null,
+      "col": 0,
+      "file": "src/ecdsa/test_ecdh.py",
+      "id": "function-aa7497dd3b7742cf",
+      "kind": "function",
+      "line": 144,
+      "module": "src.ecdsa.test_ecdh",
+      "qualified_name": "src.ecdsa.test_ecdh.test_ecdh_invalid_shared_secret_curve",
+      "role": "test",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
       "col": 4,
       "file": "src/ecdsa/test_pyecdsa.py",
       "id": "function-aac6ad1d040b1a83",
@@ -20870,6 +22207,18 @@
       "module": "src.ecdsa._compat",
       "qualified_name": "src.ecdsa._compat.bit_length",
       "role": "source",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/ecdsa/test_numbertheory.py",
+      "id": "function-acae914205c330aa",
+      "kind": "function",
+      "line": 452,
+      "module": "src.ecdsa.test_numbertheory",
+      "qualified_name": "src.ecdsa.test_numbertheory.TestNumbertheory.test_jacobi",
+      "role": "test",
       "source": "static"
     },
     {
@@ -21738,6 +23087,18 @@
     },
     {
       "algorithm": null,
+      "col": 0,
+      "file": "src/ecdsa/test_ecdh.py",
+      "id": "function-c014feafdd188327",
+      "kind": "function",
+      "line": 329,
+      "module": "src.ecdsa.test_ecdh",
+      "qualified_name": "src.ecdsa.test_ecdh.test_ecdh_pem",
+      "role": "test",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
       "col": 4,
       "file": "src/ecdsa/ellipticcurve.py",
       "id": "function-c01cdf5e1d16cc65",
@@ -21889,6 +23250,18 @@
       "line": 110,
       "module": "src.ecdsa.test_eddsa",
       "qualified_name": "src.ecdsa.test_eddsa.test_ed25519_double_badly_encoded_infinity",
+      "role": "test",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/ecdsa/test_numbertheory.py",
+      "id": "function-c1f072d33599bd5a",
+      "kind": "function",
+      "line": 374,
+      "module": "src.ecdsa.test_numbertheory",
+      "qualified_name": "src.ecdsa.test_numbertheory.TestNumbertheory.test_gcd_with_random_numbers",
       "role": "test",
       "source": "static"
     },
@@ -22069,6 +23442,18 @@
       "line": 277,
       "module": "src.ecdsa.test_keys",
       "qualified_name": "src.ecdsa.test_keys.TestVerifyingKeyFromDer.test_inequality_on_wrong_types",
+      "role": "test",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 0,
+      "file": "src/ecdsa/test_numbertheory.py",
+      "id": "function-c5c686375a0d4039",
+      "kind": "function",
+      "line": 149,
+      "module": "src.ecdsa.test_numbertheory",
+      "qualified_name": "src.ecdsa.test_numbertheory.st_two_nums_rel_prime",
       "role": "test",
       "source": "static"
     },
@@ -22411,6 +23796,18 @@
     {
       "algorithm": null,
       "col": 4,
+      "file": "src/ecdsa/test_ecdh.py",
+      "id": "function-cd9314a162f2073c",
+      "kind": "function",
+      "line": 96,
+      "module": "src.ecdsa.test_ecdh",
+      "qualified_name": "src.ecdsa.test_ecdh.TestECDH.test_generate_without_curve",
+      "role": "test",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
       "file": "src/ecdsa/ecdh.py",
       "id": "function-cda3a8e3f9d9f9ac",
       "kind": "function",
@@ -22494,6 +23891,18 @@
     },
     {
       "algorithm": null,
+      "col": 0,
+      "file": "src/ecdsa/test_numbertheory.py",
+      "id": "function-ce857c50c4215272",
+      "kind": "function",
+      "line": 82,
+      "module": "src.ecdsa.test_numbertheory",
+      "qualified_name": "src.ecdsa.test_numbertheory.test_square_root_mod_prime_for_small_primes",
+      "role": "test",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
       "col": 4,
       "file": "src/ecdsa/test_curves.py",
       "id": "function-ce97a0b69e497620",
@@ -22550,6 +23959,18 @@
       "module": "versioneer",
       "qualified_name": "versioneer.get_cmdclass.cmd_version.initialize_options",
       "role": "source",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/ecdsa/test_numbertheory.py",
+      "id": "function-cf0a959578a516c6",
+      "kind": "function",
+      "line": 298,
+      "module": "src.ecdsa.test_numbertheory",
+      "qualified_name": "src.ecdsa.test_numbertheory.TestIsPrime.test_medium_trivial_composite",
+      "role": "test",
       "source": "static"
     },
     {
@@ -22686,6 +24107,18 @@
     },
     {
       "algorithm": null,
+      "col": 0,
+      "file": "src/ecdsa/test_ecdh.py",
+      "id": "function-d4809af9e6331d3f",
+      "kind": "function",
+      "line": 122,
+      "module": "src.ecdsa.test_ecdh",
+      "qualified_name": "src.ecdsa.test_ecdh.test_ecdh_wrong_public_key_curve",
+      "role": "test",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
       "col": 4,
       "file": "src/ecdsa/ellipticcurve.py",
       "id": "function-d4ac2f876e42fce4",
@@ -22746,6 +24179,18 @@
     },
     {
       "algorithm": null,
+      "col": 0,
+      "file": "src/ecdsa/test_numbertheory.py",
+      "id": "function-d636ed5edc251b3f",
+      "kind": "function",
+      "line": 76,
+      "module": "src.ecdsa.test_numbertheory",
+      "qualified_name": "src.ecdsa.test_numbertheory.test_next_prime_with_nums_less_2",
+      "role": "test",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
       "col": 4,
       "file": "src/ecdsa/ellipticcurve.py",
       "id": "function-d6b5fb6d24ce9033",
@@ -22754,6 +24199,18 @@
       "module": "src.ecdsa.ellipticcurve",
       "qualified_name": "src.ecdsa.ellipticcurve.AbstractPoint._compressed_encode",
       "role": "source",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/ecdsa/test_numbertheory.py",
+      "id": "function-d6ca199bfdb608e5",
+      "kind": "function",
+      "line": 284,
+      "module": "src.ecdsa.test_numbertheory",
+      "qualified_name": "src.ecdsa.test_numbertheory.TestIsPrime.test_small_prime",
+      "role": "test",
       "source": "static"
     },
     {
@@ -22842,6 +24299,18 @@
     },
     {
       "algorithm": null,
+      "col": 4,
+      "file": "src/ecdsa/test_numbertheory.py",
+      "id": "function-d8a4694ed2ab18d4",
+      "kind": "function",
+      "line": 287,
+      "module": "src.ecdsa.test_numbertheory",
+      "qualified_name": "src.ecdsa.test_numbertheory.TestIsPrime.test_special_composite",
+      "role": "test",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
       "col": 0,
       "file": "src/ecdsa/rfc6979.py",
       "id": "function-d945187e075cc17d",
@@ -22850,6 +24319,18 @@
       "module": "src.ecdsa.rfc6979",
       "qualified_name": "src.ecdsa.rfc6979.bits2int",
       "role": "source",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 0,
+      "file": "src/ecdsa/test_ecdh.py",
+      "id": "function-d95dfad361841ed2",
+      "kind": "function",
+      "line": 382,
+      "module": "src.ecdsa.test_ecdh",
+      "qualified_name": "src.ecdsa.test_ecdh.test_ecdh_with_openssl",
+      "role": "test",
       "source": "static"
     },
     {
@@ -22873,6 +24354,18 @@
       "line": 842,
       "module": "src.ecdsa.test_jacobi",
       "qualified_name": "src.ecdsa.test_jacobi.TestJacobi.test_multithreading_with_interrupts.interrupter",
+      "role": "test",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 0,
+      "file": "src/ecdsa/test_ecdh.py",
+      "id": "function-da2d56c7e6cddf97",
+      "kind": "function",
+      "line": 59,
+      "module": "src.ecdsa.test_ecdh",
+      "qualified_name": "src.ecdsa.test_ecdh.test_ecdh_both_keys_present",
       "role": "test",
       "source": "static"
     },
@@ -23107,6 +24600,30 @@
     {
       "algorithm": null,
       "col": 4,
+      "file": "src/ecdsa/test_ecdh.py",
+      "id": "function-de4bb7bee5c9576e",
+      "kind": "function",
+      "line": 104,
+      "module": "src.ecdsa.test_ecdh",
+      "qualified_name": "src.ecdsa.test_ecdh.TestECDH.test_load_bytes_without_curve_set",
+      "role": "test",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 0,
+      "file": "src/ecdsa/test_ecdh.py",
+      "id": "function-df74ec63c6b58cb9",
+      "kind": "function",
+      "line": 44,
+      "module": "src.ecdsa.test_ecdh",
+      "qualified_name": "src.ecdsa.test_ecdh.test_ecdh_each",
+      "role": "test",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
       "file": "src/ecdsa/test_ellipticcurve.py",
       "id": "function-df8e78832a20b46f",
       "kind": "function",
@@ -23185,6 +24702,18 @@
       "line": 27,
       "module": "src.ecdsa.test_eddsa",
       "qualified_name": "src.ecdsa.test_eddsa.TestA2B_Hex.test_invalid_input",
+      "role": "test",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 4,
+      "file": "src/ecdsa/test_numbertheory.py",
+      "id": "function-e2245f8ed3845d39",
+      "kind": "function",
+      "line": 135,
+      "module": "src.ecdsa.test_numbertheory",
+      "qualified_name": "src.ecdsa.test_numbertheory.TestSquareRootModPrime.test_non_prime",
       "role": "test",
       "source": "static"
     },
@@ -23954,6 +25483,18 @@
       "module": "src.ecdsa.ellipticcurve",
       "qualified_name": "src.ecdsa.ellipticcurve.PointJacobi._add_with_z2_1",
       "role": "source",
+      "source": "static"
+    },
+    {
+      "algorithm": null,
+      "col": 0,
+      "file": "src/ecdsa/test_ecdh.py",
+      "id": "function-f83aa544486ba01c",
+      "kind": "function",
+      "line": 354,
+      "module": "src.ecdsa.test_ecdh",
+      "qualified_name": "src.ecdsa.test_ecdh.run_openssl",
+      "role": "test",
       "source": "static"
     },
     {

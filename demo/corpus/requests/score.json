@@ -11,8 +11,8 @@
     "sites_by_role": {
       "docs": 0,
       "example": 0,
-      "source": 5,
-      "test": 4,
+      "source": 6,
+      "test": 6,
       "tooling": 0,
       "vendored": 0
     },
@@ -111,17 +111,18 @@
     },
     "by_category": {
       "hash": 5,
-      "tls": 4
+      "randomness": 1,
+      "tls": 6
     },
     "pq": 0,
     "quantum_vulnerable": 0,
     "weak": 3
   },
   "provenance": {
-    "analyzer_version": "0.5.0+rules.2026.11.01",
+    "analyzer_version": "0.5.0+rules.2026.11.05",
     "cbom_sha256": null,
     "commit_sha": "611c6162cbc4ac2020a2f91c7cfa4f3abf9bbb60",
-    "crypto_ruleset_version": "2026.11.01",
+    "crypto_ruleset_version": "2026.11.05",
     "metric_version": "metric-v2",
     "repo": "psf/requests",
     "weights_version": "weights-v1"

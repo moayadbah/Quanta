@@ -1,6 +1,7 @@
 {
   "actions": [],
-  "checked": "2026-09-24",
+  "checked": "2026-09-25",
+  "complete": true,
   "counts": {
     "key_exchange": 0,
     "pq": 0,
@@ -26,6 +27,7 @@
     {
       "framework": "nist",
       "id": "nist-kex-deprecated",
+      "in_force": false,
       "rule": "deprecated",
       "sites": 0,
       "source": "nist-ir-8547",
@@ -35,6 +37,7 @@
     {
       "framework": "nist",
       "id": "nist-kex-disallowed",
+      "in_force": false,
       "rule": "disallowed",
       "sites": 0,
       "source": "nist-ir-8547",
@@ -44,6 +47,7 @@
     {
       "framework": "nist",
       "id": "nist-sig-deprecated",
+      "in_force": false,
       "rule": "deprecated",
       "sites": 0,
       "source": "nist-ir-8547",
@@ -53,6 +57,7 @@
     {
       "framework": "nist",
       "id": "nist-sig-disallowed",
+      "in_force": false,
       "rule": "disallowed",
       "sites": 0,
       "source": "nist-ir-8547",
@@ -62,6 +67,7 @@
     {
       "framework": "nist",
       "id": "nist-sha1",
+      "in_force": false,
       "rule": "retired",
       "sites": 0,
       "source": "nist-sha1-retirement",
@@ -71,15 +77,17 @@
     {
       "framework": "nist",
       "id": "nist-md5",
+      "in_force": true,
       "rule": "not_approved",
       "sites": 0,
       "source": "nist-sp-800-131a-r2",
       "state": "clear",
-      "year": 2019
+      "year": null
     },
     {
       "framework": "nist",
       "id": "nist-tdea",
+      "in_force": true,
       "rule": "disallowed",
       "sites": 0,
       "source": "nist-sp-800-131a-r2",
@@ -89,6 +97,7 @@
     {
       "framework": "nsa",
       "id": "nsa-signing",
+      "in_force": false,
       "rule": "exclusive",
       "sites": 0,
       "source": "nsa-cnsa-2",
@@ -98,6 +107,7 @@
     {
       "framework": "nsa",
       "id": "nsa-web",
+      "in_force": false,
       "rule": "exclusive",
       "sites": 0,
       "source": "nsa-cnsa-2",
@@ -107,6 +117,7 @@
     {
       "framework": "nsa",
       "id": "nsa-custom",
+      "in_force": false,
       "rule": "replace",
       "sites": 0,
       "source": "nsa-cnsa-2",
@@ -116,6 +127,7 @@
     {
       "framework": "eu",
       "id": "eu-first-steps",
+      "in_force": false,
       "rule": "first_steps",
       "sites": 0,
       "source": "eu-pqc-roadmap",
@@ -125,6 +137,7 @@
     {
       "framework": "eu",
       "id": "eu-high-risk",
+      "in_force": false,
       "rule": "high_risk",
       "sites": 0,
       "source": "eu-pqc-roadmap",
@@ -134,6 +147,7 @@
     {
       "framework": "eu",
       "id": "eu-full",
+      "in_force": false,
       "rule": "full",
       "sites": 0,
       "source": "eu-pqc-roadmap",
@@ -143,6 +157,7 @@
     {
       "framework": "uk",
       "id": "uk-discovery",
+      "in_force": false,
       "rule": "discovery",
       "sites": 0,
       "source": "uk-ncsc-pqc",
@@ -152,6 +167,7 @@
     {
       "framework": "uk",
       "id": "uk-priority",
+      "in_force": false,
       "rule": "priority",
       "sites": 0,
       "source": "uk-ncsc-pqc",
@@ -161,6 +177,7 @@
     {
       "framework": "uk",
       "id": "uk-complete",
+      "in_force": false,
       "rule": "complete",
       "sites": 0,
       "source": "uk-ncsc-pqc",
@@ -170,6 +187,7 @@
     {
       "framework": "us",
       "id": "us-kex",
+      "in_force": false,
       "rule": "federal",
       "sites": 0,
       "source": "us-eo-14412",
@@ -179,6 +197,7 @@
     {
       "framework": "us",
       "id": "us-sig",
+      "in_force": false,
       "rule": "federal",
       "sites": 0,
       "source": "us-eo-14412",
@@ -188,6 +207,7 @@
     {
       "framework": "nca",
       "id": "nca-hybrid",
+      "in_force": false,
       "rule": "hybrid_required",
       "sites": 0,
       "source": "nca-ncs-2-2025",
@@ -197,6 +217,7 @@
   ],
   "overdue": [],
   "reference_year": 2026,
+  "source_unread": 0,
   "verdict": "no_crypto",
   "version": 1
 }

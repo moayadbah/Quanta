@@ -1,5 +1,60 @@
 {
   "files": [],
+  "guides": [
+    {
+      "id": "tls-hybrid",
+      "sites": [
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-08b0accae0314d3e",
+          "line": 57,
+          "name": "ssl.create_default_context",
+          "path": "tests/conftest.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-18047574feaac88c",
+          "line": 60,
+          "name": "ssl.create_default_context.wrap_socket",
+          "path": "tests/conftest.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-cacfac5b9f318560",
+          "line": 161,
+          "name": "ssl.SSLContext",
+          "path": "tests/testserver/server.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-ec1cfbe4f3b5acad",
+          "line": 162,
+          "name": "ssl.SSLContext.load_cert_chain",
+          "path": "tests/testserver/server.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-35521afccfabe4e5",
+          "line": 169,
+          "name": "ssl.SSLContext.load_verify_locations",
+          "path": "tests/testserver/server.py",
+          "role": "test"
+        },
+        {
+          "algorithm": "",
+          "finding_id": "crypto_call-0686e6b80c569790",
+          "line": 173,
+          "name": "ssl.SSLContext.wrap_socket",
+          "path": "tests/testserver/server.py",
+          "role": "test"
+        }
+      ]
+    }
+  ],
   "limited": true,
   "skipped": [
     {

@@ -22,7 +22,7 @@
       "id": "pq_signatures",
       "in_force": false,
       "priority": 3,
-      "sites": 15,
+      "sites": 16,
       "sources": [
         "nist-ir-8547",
         "nsa-cnsa-2",
@@ -61,11 +61,11 @@
     "key_exchange": 0,
     "pq": 0,
     "review": 0,
-    "safe": 13,
-    "signature": 15,
-    "sites": 40,
+    "safe": 15,
+    "signature": 16,
+    "sites": 43,
     "tls": 0,
-    "vulnerable": 15,
+    "vulnerable": 16,
     "weak": 12
   },
   "earliest_milestone": "eu-high-risk",
@@ -114,7 +114,7 @@
       "id": "nist-sig-disallowed",
       "in_force": false,
       "rule": "disallowed",
-      "sites": 15,
+      "sites": 16,
       "source": "nist-ir-8547",
       "state": "due",
       "year": 2035
@@ -154,7 +154,7 @@
       "id": "nsa-signing",
       "in_force": false,
       "rule": "exclusive",
-      "sites": 15,
+      "sites": 16,
       "source": "nsa-cnsa-2",
       "state": "due",
       "year": 2030
@@ -174,7 +174,7 @@
       "id": "nsa-custom",
       "in_force": false,
       "rule": "replace",
-      "sites": 15,
+      "sites": 16,
       "source": "nsa-cnsa-2",
       "state": "due",
       "year": 2033
@@ -194,7 +194,7 @@
       "id": "eu-high-risk",
       "in_force": false,
       "rule": "high_risk",
-      "sites": 15,
+      "sites": 16,
       "source": "eu-pqc-roadmap",
       "state": "due",
       "year": 2030
@@ -204,7 +204,7 @@
       "id": "eu-full",
       "in_force": false,
       "rule": "full",
-      "sites": 15,
+      "sites": 16,
       "source": "eu-pqc-roadmap",
       "state": "due",
       "year": 2035
@@ -224,7 +224,7 @@
       "id": "uk-priority",
       "in_force": false,
       "rule": "priority",
-      "sites": 15,
+      "sites": 16,
       "source": "uk-ncsc-pqc",
       "state": "due",
       "year": 2031
@@ -234,7 +234,7 @@
       "id": "uk-complete",
       "in_force": false,
       "rule": "complete",
-      "sites": 15,
+      "sites": 16,
       "source": "uk-ncsc-pqc",
       "state": "due",
       "year": 2035
@@ -254,7 +254,7 @@
       "id": "us-sig",
       "in_force": false,
       "rule": "federal",
-      "sites": 15,
+      "sites": 16,
       "source": "us-eo-14412",
       "state": "due",
       "year": 2031

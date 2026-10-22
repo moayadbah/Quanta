@@ -49,11 +49,118 @@ OPERATIONS: dict[str, str | None] = {
     "wrap_socket": "tls",
     "wrap_bio": "tls",
     "fingerprint": "hash",
+    # Round six: PyJWT's JWKS client fetches the key that verifies a token.
+    "get_signing_key_from_jwt": "key_loading",
+    "get_signing_key": "key_loading",
+    "get_signing_keys": "key_loading",
+    # Round six: python-gnupg's keyring operations.
+    "gen_key": "key_generation",
+    "import_keys": "key_loading",
+    "sign_file": "signature",
+    "verify_file": "signature",
+    "verify_data": "signature",
+    "encrypt_file": None,
+    "decrypt_file": None,
+    # Round eight (PROTOCOL-R8 B2c): settings on a TLS context.
+    "load_cert_chain": "tls",
+    "load_verify_locations": "tls",
+    "load_default_certs": "tls",
+    "set_ciphers": "tls",
+    # Round eight (PROTOCOL-R8 B2a): exporting a key or deriving its public key. Reported only
+    # on objects followed from a crypto call, so the generic names are safe.
+    **dict.fromkeys(
+        (
+            "private_bytes",
+            "public_bytes",
+            "private_bytes_raw",
+            "public_bytes_raw",
+            "export_key",
+            "exportKey",
+            "publickey",
+            "to_pem",
+            "to_der",
+            "to_string",
+            "get_verifying_key",
+            "as_dict",
+            "as_pem",
+            "as_der",
+            "as_bytes",
+            "save_pkcs1",
+            # round nine: asyncssh key objects, and the numbers behind a key (H8 misses)
+            "export_private_key",
+            "export_public_key",
+            "write_private_key",
+            "write_public_key",
+            "public_numbers",
+            "private_numbers",
+            "parameters",
+        ),
+        "key_loading",
+    ),
+    # Round nine: more TLS context settings, a DH parameter object's key generation, and
+    # passlib's CryptContext (H8 misses).
+    "set_alpn_protocols": "tls",
+    "set_ecdh_curve": "tls",
+    "load_dh_params": "tls",
+    "generate_private_key": "key_generation",
+    "hash": None,
+    "verify_and_update": None,
+    # itsdangerous serializers sign on dumps and verify on loads (coverage gap)
+    "dumps": None,
+    "loads": None,
+    # Round nine (PROTOCOL-R9 B2g): upgrading a protocol client's connection to TLS.
+    "starttls": "tls",
+    "start_tls": "tls",
+    "start_tls_s": "tls",
+    "startTLS": "tls",
+    "stls": "tls",
 }
 
-#: Methods that are operations only on some objects: materialising a key from raw
-#: numbers (``RSAPrivateNumbers(...).private_key()``) instantiates a key, but deriving a
-#: public key from a key object (``priv.public_key()``) does not choose anything new.
+#: Operations named only by the TLS API, reported even when the object cannot be followed
+#: (round six: ``sslcontext.wrap_bio(...)`` on a parameter was the round-three miss).
+TLS_ONLY = {
+    "wrap_socket",
+    "wrap_bio",
+    "load_cert_chain",
+    "load_verify_locations",
+    "load_default_certs",
+    "set_ciphers",
+    # round nine
+    "set_alpn_protocols",
+    "set_ecdh_curve",
+    "load_dh_params",
+    "starttls",
+    "start_tls_s",
+    "startTLS",
+    "stls",
+}
+# ``start_tls`` is left to followed objects: async networking code often defines its own
+# stream class with that method (a dev-set false positive in httpx2).
+
+#: Round nine: builder steps that return the same builder, and what ``sign`` returns, so a
+#: certificate built in one chained expression is followed to the certificate.
+BUILDER_STEPS = {
+    "subject_name",
+    "issuer_name",
+    "public_key",
+    "serial_number",
+    "not_valid_before",
+    "not_valid_after",
+    "add_extension",
+    "add_attribute",
+    "last_update",
+    "next_update",
+    "add_revoked_certificate",
+}
+BUILT = (
+    ("CertificateSigningRequestBuilder", "cryptography.x509.CertificateSigningRequest"),
+    ("CertificateRevocationListBuilder", "cryptography.x509.CertificateRevocationList"),
+    ("CertificateBuilder", "cryptography.x509.Certificate"),
+)
+
+#: Methods that turn one key object into another: materialising a key from raw numbers
+#: (``RSAPrivateNumbers(...).private_key()``) or, since round eight (PROTOCOL-R8 B2a),
+#: deriving a public key from a key object (``priv.public_key()``). Both are reported.
 MATERIALISE = {"private_key", "public_key"}
 
 #: Methods and attributes that return another crypto object from one.
@@ -65,6 +172,13 @@ DERIVING = {
     "decryptor",
     "signer",
     "verifier",
+    # round eight: PyCryptodome and python-ecdsa spell the public half differently
+    "publickey",
+    "get_verifying_key",
+    "verifying_key",
+    # round nine: DH parameter numbers -> parameters -> private key
+    "parameters",
+    "generate_private_key",
 }
 
 #: Producer categories whose objects carry operations. Hash objects are left out: their
@@ -182,8 +296,10 @@ class _Scopes(cst.CSTVisitor):
         if (
             isinstance(target, cst.Attribute)
             and isinstance(target.value, cst.Name)
-            and target.value.value == "self"
+            and target.value.value in {"self", "cls", self._class()}
         ):
+            # Round nine: ``JwtAuth._jwks_client = PyJWKClient(...)`` inside JwtAuth, read
+            # later as ``self._jwks_client`` (an H8 miss), binds the same class attribute.
             return f"self:{target.attr.value}"
         return None
 
@@ -223,7 +339,9 @@ class _Scopes(cst.CSTVisitor):
             func.attr.value in OPERATIONS or func.attr.value in MATERIALISE
         ):
             try:
-                pos = self.get_metadata(PositionProvider, node).start
+                # Round nine: the operation is reported where its name is written, so the
+                # ``.sign(...)`` that ends a chain over several lines gets its own line.
+                pos = self.get_metadata(PositionProvider, func.attr).start
                 line, col = pos.line, pos.column
             except KeyError:
                 line, col = 0, 0
@@ -293,6 +411,15 @@ class _Taints:
             func = expr.func
             if isinstance(func, cst.Attribute):
                 base = self.taint(scope, func.value)
+                if base and "Builder" in base.qualified_name:
+                    if func.attr.value in BUILDER_STEPS:
+                        return base
+                    if func.attr.value == "sign":
+                        built = next(
+                            (name for builder, name in BUILT if builder in base.qualified_name),
+                            "cryptography.x509.SignedObject",
+                        )
+                        return Taint(built, "certificate", base.algorithms)
                 if base and func.attr.value in DERIVING:
                     return Taint(
                         f"{base.qualified_name}.{func.attr.value}", base.category, base.algorithms
@@ -363,9 +490,11 @@ def find_operations(
         if (
             taint is not None
             and func.attr.value in MATERIALISE
-            and not taint.qualified_name.endswith("Numbers")
+            and "Builder" in taint.qualified_name
         ):
-            continue
+            continue  # CertificateBuilder.public_key(...) sets a field (PROTOCOL-R8 B2d)
+        if taint is None and func.attr.value in TLS_ONLY:
+            taint = Taint("ssl.SSLContext", "tls", ())
         if taint is not None:
             found.append(
                 Operation(None if scope == "<module>" else scope, line, col, func.attr.value, taint)
