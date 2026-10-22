@@ -1,6 +1,10 @@
 {
-  "_about": "Figures shown on the home page. Numbers only: every word around them lives in content/site.json under fig.*. Each figure names the evidence file it comes from. Change a number only when the evidence changes.",
+  "_about": "Figures shown on the home page. Numbers only: every word around them lives in content/site.json under fig.*. Each figure names the evidence file it comes from. Change a number only when the evidence changes. \"previous\" holds the previous engine's figure on the same repositories (evidence/figures-v9.json, evidence/r9/time-cost-v5.json); \"inside\" puts a figure in another card's line instead of a card of its own.",
   "measured_on": "2026-10-20",
+  "scope": {
+    "value": "82.1",
+    "previous": "63.3"
+  },
   "figures": [
     {
       "id": "other",
@@ -10,6 +14,15 @@
         "total": 382,
         "lo": "92.4",
         "hi": "96.8"
+      },
+      "previous": {
+        "value": "89.5",
+        "values": {
+          "found": 342,
+          "total": 382,
+          "lo": "86.1",
+          "hi": "92.2"
+        }
       },
       "sources": [
         {
@@ -36,6 +49,20 @@
         "ab": "82.1",
         "limit": true
       },
+      "previous": {
+        "value": "44.5",
+        "values": {
+          "found": 114,
+          "total": 256,
+          "lo": "38.6",
+          "hi": "50.7",
+          "latest_found": 29,
+          "latest_total": 59,
+          "latest": "49.2",
+          "ab": "63.3",
+          "limit": true
+        }
+      },
       "sources": [
         {
           "id": "protocol",
@@ -54,6 +81,14 @@
         "found": 607,
         "total": 630,
         "lo": "94.6"
+      },
+      "previous": {
+        "value": "98.5",
+        "values": {
+          "found": 465,
+          "total": 472,
+          "lo": "97.0"
+        }
       },
       "sources": [
         {
@@ -77,6 +112,32 @@
         "manual": "76.7",
         "saved": "76.6",
         "limit": true
+      },
+      "previous": {
+        "value": "77",
+        "values": {
+          "lines": "15,343",
+          "rate": 200,
+          "repos": 60,
+          "review": "3",
+          "manual": "76.7",
+          "saved": "76.6",
+          "limit": true
+        },
+        "sources": [
+          {
+            "id": "kemerer",
+            "url": "https://sites.pitt.edu/~ckemerer/PSP_Data.pdf"
+          },
+          {
+            "id": "method",
+            "path": "evidence/r4/TIME-COST-METHOD.md"
+          },
+          {
+            "id": "timecost",
+            "path": "evidence/r9/time-cost-v5.json"
+          }
+        ]
       },
       "sources": [
         {
@@ -103,6 +164,30 @@
         "repos": 60,
         "limit": true
       },
+      "previous": {
+        "value": "5,007",
+        "values": {
+          "wage": "135,980",
+          "hourly": "65.38",
+          "hours": "76.6",
+          "repos": 60,
+          "limit": true
+        },
+        "sources": [
+          {
+            "id": "bls",
+            "url": "https://www.bls.gov/ooh/computer-and-information-technology/software-developers.htm"
+          },
+          {
+            "id": "kemerer",
+            "url": "https://sites.pitt.edu/~ckemerer/PSP_Data.pdf"
+          },
+          {
+            "id": "timecost",
+            "path": "evidence/r9/time-cost-v5.json"
+          }
+        ]
+      },
       "sources": [
         {
           "id": "bls",
@@ -128,6 +213,26 @@
         "proposed": 84,
         "with": 29
       },
+      "previous": {
+        "value": "80",
+        "values": {
+          "repos": 60,
+          "vulnerable": 96,
+          "weak": 118,
+          "proposed": 84,
+          "with": 29
+        },
+        "sources": [
+          {
+            "id": "standards",
+            "path": "config/standards.json"
+          },
+          {
+            "id": "timecost",
+            "path": "evidence/r9/time-cost-v5.json"
+          }
+        ]
+      },
       "sources": [
         {
           "id": "standards",
@@ -141,12 +246,32 @@
     },
     {
       "id": "speed",
+      "inside": "hours",
       "value": "11.4",
       "values": {
         "lines": "15,343",
         "max": "94",
         "biggest": "575,615",
         "repos": 60
+      },
+      "previous": {
+        "value": "10.1",
+        "values": {
+          "lines": "15,343",
+          "max": "103",
+          "biggest": "575,615",
+          "repos": 60
+        },
+        "sources": [
+          {
+            "id": "method",
+            "path": "evidence/r4/TIME-COST-METHOD.md"
+          },
+          {
+            "id": "timecost",
+            "path": "evidence/r9/time-cost-v5.json"
+          }
+        ]
       },
       "sources": [
         {

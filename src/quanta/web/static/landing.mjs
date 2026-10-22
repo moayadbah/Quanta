@@ -2,7 +2,7 @@ import { apply, loadContent, onLanguage, t } from "./i18n.mjs";
 import { badge, el, fill, icon, mountChrome, observeReveals, tag } from "./chrome.mjs";
 
 const $ = (id) => document.getElementById(id);
-const data = { sample: null, standards: null, evidence: null, mark: null, figure: null };
+const data = { sample: null, standards: null, evidence: null, mark: null, figure: null, engine: "v9" };
 const FIRST_YEAR = 2026;
 const LAST_YEAR = 2035;
 const FRAMEWORK_ORDER = ["nist", "nsa", "nca", "eu", "uk", "us"];
@@ -245,8 +245,35 @@ function renderSource() {
   );
 }
 
+/* Numbers: the previous engine and v9 on the same repositories, one panel -------------------
+   Both tabs show the same six cards. Choosing v9 moves the top three numbers from the
+   previous engine's value to v9's and lights them; the bottom three, which did not change,
+   step back under a light shade. Each number names both of its values (data-v5, data-v9),
+   so the move and the language switch never disagree. */
+const reduceMotion = () => window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+const NUM_MS = 1800;
+const calm = (k) => (1 - Math.cos(Math.PI * k)) / 2;
+
+function side(figure) {
+  return data.engine === "v9" || !figure.previous
+    ? { value: figure.value, values: figure.values, sources: figure.sources }
+    : { value: figure.previous.value, values: figure.previous.values, sources: figure.previous.sources || figure.sources };
+}
+
+/* A number that knows both engines' values. Its decimals and thousands commas come from
+   how the evidence writes it ("95.0", "5,007"). */
+function both(v5, v9) {
+  return el("span", { class: "eng-num", "data-v5": String(v5), "data-v9": String(v9), text: String(data.engine === "v9" ? v9 : v5) });
+}
+
+/* Text with one number in it: the "{n}" of a string becomes a number that knows both values. */
+function withNumber(key, v5, v9, values = {}) {
+  const [before, after = ""] = t(key, values).split("{n}");
+  return [before, both(v5, v9), after];
+}
+
 /* The figure as it is written in the reader's language (fig.<id>.format, "{n}" is the
-   number): "$5,007", "77h" and "94.6%" in English; in Arabic the number stays left to
+   number): "$5,007", "77h" and "95.0%" in English; in Arabic the number stays left to
    right and a unit word follows it ("77 ساعة", "5,007 دولار"), while a glued sign such as
    "٪" stays attached to the digits. */
 function figureValue(figure) {
@@ -254,54 +281,458 @@ function figureValue(figure) {
   const word = after.startsWith(" ") ? after.trim() : "";
   const glued = word ? "" : after;
   return el("span", { class: "value" },
-    el("span", { class: "n" }, before, figure.value, glued ? el("span", { class: "unit", text: glued }) : null),
+    el("span", { class: "n" }, before, both(figure.previous?.value ?? figure.value, figure.value), glued ? el("span", { class: "unit", text: glued }) : null),
     word ? el("span", { class: "unit word", text: word }) : null,
   );
 }
 
-/* Numbers: each figure opens its source and method -------------------------------------------- */
+const asFigure = (figure, value) => t(`fig.${figure.id}.format`).replace("{n}", value);
+const plain = (value) => Number(String(value).replace(/,/g, ""));
+const points = (a, b) => (plain(a) - plain(b)).toFixed(1);
+
+/* What only v9 adds under a card: the previous engine's figure and the gain. */
+function comparison(figure, inside) {
+  const was = (text, gain) => el("div", { class: "eng-was" }, text, gain ? [" ", t("numbers.arrow"), " ", el("em", { text: gain })] : null);
+  const lines = [];
+  const prev = figure.previous;
+  if (figure.id === "other" || figure.id === "pktls") {
+    lines.push(was(t("numbers.was", { was: asFigure(figure, prev.value) }), t("numbers.points", { n: points(figure.value, prev.value) })));
+  }
+  if (figure.id === "pktls") {
+    const [before, after = ""] = t("numbers.latest").split("{n}");
+    lines.push(el("div", { class: "eng-extra" }, before, el("b", { text: asFigure(figure, figure.values.latest) }), after));
+  }
+  if (figure.id === "precision") {
+    lines.push(was(t("numbers.was", { was: prev.values.found }), t("numbers.calls", { n: figure.values.found - prev.values.found })));
+  }
+  if (inside) lines.push(was(t("numbers.scan_was", { n: inside.previous.value })));
+  return lines.length ? el("div", { class: "eng-v9only" }, el("div", {}, ...lines)) : null;
+}
+
 function renderFigures() {
   const evidence = data.evidence;
   if (!evidence) return;
+  const inside = Object.fromEntries(evidence.figures.filter((f) => f.inside).map((f) => [f.inside, f]));
   fill($("figures"),
-    ...evidence.figures.map((figure) =>
-      el("button", {
+    ...evidence.figures.filter((f) => !f.inside).map((figure) => {
+      const changed = figure.previous && figure.previous.value !== figure.value;
+      const sub = inside[figure.id];
+      return el("button", {
         type: "button",
-        class: "figure reveal in",
+        class: `figure reveal in ${changed ? "up" : "same"}`,
         "aria-expanded": String(data.figure === figure.id),
         "aria-controls": "figure-detail",
+        "data-figure": figure.id,
         onclick: () => {
           data.figure = data.figure === figure.id ? null : figure.id;
-          renderFigures();
+          $("figures").querySelectorAll(".figure").forEach((b) => b.setAttribute("aria-expanded", String(b.dataset.figure === data.figure)));
+          renderDetail();
         },
       },
         figureValue(figure),
-        el("span", { class: "label", text: t(`fig.${figure.id}.label`, figure.values) }),
+        el("span", { class: "label" },
+          t(`fig.${figure.id}.label`, side(figure).values),
+          figure.id === "precision" ? [" ", ...withNumber("numbers.results", figure.previous.values.total, figure.values.total)] : null,
+        ),
+        sub ? el("span", { class: "eng-sub" }, ...withNumber("numbers.scan", sub.previous.value, sub.value)) : null,
+        comparison(figure, sub),
         el("span", { class: "how" }, t("numbers.how"), icon("chevron", "chev")),
-      ),
+      );
+    }),
+  );
+  fill($("numbers-scope"), ...withNumber("numbers.scope", evidence.scope.previous, evidence.scope.value));
+  renderDetail();
+}
+
+function sourceList(sources) {
+  return el("dd", {},
+    ...sources.map((s) =>
+      s.url
+        ? el("div", {}, el("a", { class: "link", href: s.url, target: "_blank", rel: "noopener noreferrer", text: t(`fig.src.${s.id}`) }))
+        : el("div", {}, el("span", { text: t(`fig.src.${s.id}`) }), " ", el("code", { class: "small ltr", text: s.path })),
     ),
   );
+}
+
+/* A figure opens its source and method, for the engine the panel shows. */
+function renderDetail() {
+  const evidence = data.evidence;
   const detail = $("figure-detail");
-  const figure = evidence.figures.find((f) => f.id === data.figure);
+  const figure = evidence?.figures.find((f) => f.id === data.figure);
   detail.hidden = !figure;
   if (!figure) return;
+  const { values, sources } = side(figure);
+  const inside = evidence.figures.find((f) => f.inside === figure.id);
+  const scan = inside ? side(inside) : null;
   fill(detail,
-    el("p", { class: "h4", text: t(`fig.${figure.id}.label`, figure.values) }),
+    el("p", { class: "h4", text: t(`fig.${figure.id}.label`, values) }),
     el("dl", {},
-      el("dt", { text: t("numbers.measured") }), el("dd", { text: t(`fig.${figure.id}.measured`, figure.values) }),
-      el("dt", { text: t("numbers.method") }), el("dd", { text: t(`fig.${figure.id}.method`, figure.values) }),
-      el("dt", { text: t("numbers.source") }),
-      el("dd", {},
-        ...figure.sources.map((s) =>
-          s.url
-            ? el("div", {}, el("a", { class: "link", href: s.url, target: "_blank", rel: "noopener noreferrer", text: t(`fig.src.${s.id}`) }))
-            : el("div", {}, el("span", { text: t(`fig.src.${s.id}`) }), " ", el("code", { class: "small ltr", text: s.path })),
-        ),
-      ),
-      figure.values.limit ? el("dt", { text: t("numbers.limit") }) : null,
-      figure.values.limit ? el("dd", { text: t(`fig.${figure.id}.limit`, figure.values) }) : null,
+      el("dt", { text: t("numbers.measured") }), el("dd", { text: t(`fig.${figure.id}.measured`, values) }),
+      el("dt", { text: t("numbers.method") }), el("dd", { text: t(`fig.${figure.id}.method`, values) }),
+      el("dt", { text: t("numbers.source") }), sourceList(sources),
+      values.limit ? el("dt", { text: t("numbers.limit") }) : null,
+      values.limit ? el("dd", { text: t(`fig.${figure.id}.limit`, values) }) : null,
+      scan ? el("dt", { text: t("numbers.scan_title") }) : null,
+      scan ? el("dd", { text: `${t(`fig.${inside.id}.measured`, scan.values)} ${t(`fig.${inside.id}.method`, scan.values)}` }) : null,
     ),
   );
+}
+
+function moveNumbers(ver, animate) {
+  $("p-engine").querySelectorAll(".eng-num").forEach((node) => {
+    const target = node.dataset[ver];
+    const digits = (target.split(".")[1] || "").length;
+    const commas = target.includes(",");
+    const to = plain(target);
+    const from = plain(node.textContent);
+    const write = (v) => {
+      node.textContent = commas ? Math.round(v).toLocaleString("en-US") : v.toFixed(digits);
+    };
+    cancelAnimationFrame(node.raf);
+    if (!animate || reduceMotion() || from === to) {
+      node.textContent = target;
+      return;
+    }
+    const t0 = performance.now();
+    const step = (now) => {
+      const k = Math.min(1, (now - t0) / NUM_MS);
+      if (k < 1) {
+        write(from + (to - from) * calm(k));
+        node.raf = requestAnimationFrame(step);
+      } else node.textContent = target;
+    };
+    node.raf = requestAnimationFrame(step);
+  });
+}
+
+function setEngine(ver, animate) {
+  data.engine = ver;
+  const panel = $("p-engine");
+  panel.classList.toggle("is-v9", ver === "v9");
+  panel.classList.toggle("is-v5", ver === "v5");
+  panel.setAttribute("aria-labelledby", `t-${ver}`);
+  moveNumbers(ver, animate);
+  renderDetail();
+  if (animate && ver === "v9" && !reduceMotion()) {
+    setTimeout(() => panel.querySelectorAll(".figure.up .value").forEach((v) => {
+      v.classList.remove("pop");
+      void v.offsetWidth;
+      v.classList.add("pop");
+    }), NUM_MS - 300);
+  }
+}
+
+/* Coming next opens like the demo video at 0:20: the scene fades, a beam rises, lies flat and
+   runs out to both edges, and the horizon draws itself in hex digits outward from it. Leaving,
+   the page collapses into the horizon line. The timings are the video's, with the click at 0. */
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const lerp = (a, b, k) => a + (b - a) * k;
+const seg = (x, a, b) => clamp((x - a) / (b - a));
+const EASE = {
+  outCubic: (x) => 1 - Math.pow(1 - x, 3),
+  inCubic: (x) => x * x * x,
+  inOutCubic: (x) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2),
+  outExpo: (x) => (x >= 1 ? 1 : 1 - Math.pow(2, -10 * x)),
+  inExpo: (x) => (x <= 0 ? 0 : Math.pow(2, 10 * x - 10)),
+};
+const hash = (i, salt = 0) => {
+  let x = Math.imul(i ^ 0x9e3779b9, 0x85ebca6b) ^ Math.imul(salt + 0x632be5ab, 0xc2b2ae35);
+  x ^= x >>> 16; x = Math.imul(x, 0x7feb352d); x ^= x >>> 15; x = Math.imul(x, 0x846ca68b); x ^= x >>> 16;
+  return (x >>> 0) / 4294967296;
+};
+const HEX = "0123456789abcdef";
+const T = { out: 0.26, lineTurn: 0.16, drop: 0.38, lineFade: [0.46, 1.0], field: [0.38, 1.78], photoIn: [0.48, 1.98], brandIn: 0.53, end: 2.4 };
+
+// The horizon photograph, turned so the limb lies nearly flat, re-drawn as hex digits (the
+// video's Horizon), sized to the stage: u turns the video's 1920-wide geometry into this width.
+class Horizon {
+  constructor(img, W, H, { limb, zoom = 1.75, theta = 0.303, cell = 12 }) {
+    Object.assign(this, { img, W, H, limb, zoom, theta, cell, u: Math.max(W, 900) / 1920 });
+    this.cols = Math.ceil(W / cell);
+    this.rows = Math.ceil(H / cell);
+    const c = document.createElement("canvas");
+    c.width = this.cols;
+    c.height = this.rows;
+    const x = c.getContext("2d", { willReadFrequently: true });
+    x.fillStyle = "#000";
+    x.fillRect(0, 0, this.cols, this.rows);
+    x.imageSmoothingEnabled = true;
+    x.imageSmoothingQuality = "high";
+    this.place(x, this.cols / W);
+    x.drawImage(img, 0, 0);
+    const d = x.getImageData(0, 0, this.cols, this.rows).data;
+    const n = this.cols * this.rows;
+    this.r = new Float32Array(n); this.g = new Float32Array(n); this.b = new Float32Array(n); this.L = new Float32Array(n);
+    for (let i = 0; i < n; i++) {
+      this.r[i] = d[4 * i]; this.g[i] = d[4 * i + 1]; this.b[i] = d[4 * i + 2];
+      this.L[i] = (0.2126 * this.r[i] + 0.7152 * this.g[i] + 0.0722 * this.b[i]) / 255;
+    }
+  }
+
+  place(ctx, k) {
+    ctx.setTransform(k, 0, 0, k, 0, 0);
+    ctx.translate(this.W / 2, this.limb);
+    ctx.rotate(-this.theta);
+    ctx.scale(this.zoom * this.u, this.zoom * this.u);
+    ctx.translate(-960, -628); // a point on the limb in the photograph
+  }
+
+  draw(ctx, now, { start, spread, photo }) {
+    const { cell: c, cols, rows } = this;
+    ctx.fillStyle = "#000";
+    ctx.fillRect(0, 0, this.W, this.H);
+    if (photo > 0) {
+      ctx.save();
+      ctx.globalAlpha = photo;
+      const base = ctx.getTransform();
+      this.place(ctx, 1);
+      ctx.setTransform(base.multiply(ctx.getTransform()));
+      ctx.drawImage(this.img, 0, 0);
+      ctx.restore();
+    }
+    ctx.font = `500 ${c + 1}px "Geist Mono", monospace`;
+    ctx.textBaseline = "top";
+    const frame = Math.round(now * 30);
+    for (let y = 0; y < rows; y++) {
+      const dist = Math.abs(y * c + c / 2 - this.limb) / (640 * this.u);
+      for (let x = 0; x < cols; x++) {
+        const i = y * cols + x;
+        const L = this.L[i];
+        if (L < 0.06) continue;
+        const age = now - (start + spread * Math.pow(dist, 0.8) + 0.22 * hash(i, 7));
+        if (age < 0) continue;
+        let ch, r = this.r[i], g = this.g[i], b = this.b[i];
+        if (age < 0.16) {
+          ch = HEX[(hash(i, frame) * 16) | 0];
+          const w = 0.6 * (1 - age / 0.16);
+          r = lerp(r, 255, w); g = lerp(g, 255, w); b = lerp(b, 255, w);
+        } else ch = RAMP[Math.min(RAMP.length - 1, Math.floor(L * RAMP.length))];
+        ctx.fillStyle = `rgba(${r | 0},${g | 0},${b | 0},${clamp(age / 0.1).toFixed(3)})`;
+        ctx.fillText(ch, x * c, y * c);
+      }
+    }
+  }
+}
+
+/* The video's beam: a 2 px line, white at its middle and blue towards its ends, with a near
+   and a far glow; thick widens it on the drop. Drawn, not styled, so the page's style policy
+   cannot drop it. */
+function drawLine(ctx, cx, cy, len, turn, thick, alpha) {
+  if (alpha <= 0 || len <= 0) return;
+  ctx.save();
+  ctx.globalAlpha = alpha;
+  ctx.translate(cx, cy);
+  ctx.rotate((turn * Math.PI) / 2);
+  const g = ctx.createLinearGradient(0, -len / 2, 0, len / 2);
+  g.addColorStop(0, "rgba(191,224,255,0)");
+  g.addColorStop(0.12, "#bfe0ff");
+  g.addColorStop(0.5, "#ffffff");
+  g.addColorStop(0.88, "#bfe0ff");
+  g.addColorStop(1, "rgba(191,224,255,0)");
+  ctx.fillStyle = g;
+  const w = 2 * thick;
+  for (const [blur, color] of [[80, "rgba(82,168,255,0.3)"], [20, "rgba(82,168,255,0.6)"], [0, "transparent"]]) {
+    ctx.shadowBlur = blur;
+    ctx.shadowColor = color;
+    ctx.fillRect(-w / 2, -len / 2, w, len);
+  }
+  ctx.restore();
+}
+
+/* The blue bloom on the drop: an ellipse of light centred on the limb. */
+function drawBloom(ctx, cx, cy, rx, ry, alpha) {
+  if (alpha <= 0) return;
+  ctx.save();
+  ctx.globalAlpha = alpha;
+  ctx.translate(cx, cy);
+  ctx.scale(1, ry / rx);
+  const g = ctx.createRadialGradient(0, 0, 0, 0, 0, rx);
+  g.addColorStop(0, "rgba(170,215,255,0.55)");
+  g.addColorStop(0.45, "rgba(82,168,255,0.12)");
+  g.addColorStop(0.72, "rgba(0,0,0,0)");
+  ctx.fillStyle = g;
+  ctx.fillRect(-rx, -rx, 2 * rx, 2 * rx);
+  ctx.restore();
+}
+
+const engines = { current: null, run: 0, horizon: null, img: null, back: null, front: null };
+
+function horizonParts() {
+  if (engines.back) return;
+  engines.img = new Image();
+  engines.img.src = new URL("./brand/horizon-hero.webp", import.meta.url).href;
+  engines.back = el("canvas", { class: "eng-hz", "aria-hidden": "true" });
+  engines.front = el("canvas", { class: "eng-light", "aria-hidden": "true" });
+}
+
+/* A canvas drawn at the screen's density; the page's CSS gives it the stage's width, and its
+   height follows from its proportions. */
+function sized(canvas, W, H) {
+  const dpr = Math.min(2, window.devicePixelRatio || 1);
+  canvas.width = Math.round(W * dpr);
+  canvas.height = Math.round(H * dpr);
+  const ctx = canvas.getContext("2d");
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  return ctx;
+}
+
+// The limb sits 65% of the way down the part of the stage on screen, as it sat in the video.
+function limbOnScreen(box) {
+  const top = Math.max(box.top, 0);
+  const bottom = Math.min(box.bottom, window.innerHeight);
+  return Math.round(top + 0.65 * Math.max(0, bottom - top) - box.top);
+}
+
+function frames(paint, until) {
+  const id = ++engines.run;
+  const t0 = performance.now();
+  return new Promise((done) => {
+    const tick = (now) => {
+      if (id !== engines.run) return done(false);
+      const s = (now - t0) / 1000;
+      paint(Math.min(s, until));
+      if (s < until) requestAnimationFrame(tick);
+      else done(true);
+    };
+    requestAnimationFrame(tick);
+  });
+}
+
+const PLAYING = ["leaving", "rising", "collapsing"];
+function settle(...nodes) {
+  for (const node of nodes) node.classList.remove(...PLAYING);
+}
+
+/* Into coming next: the scene fades, drops and blurs; the beam rises, turns flat and runs out
+   to both edges; a blue bloom; the horizon draws outward from the line while the new scene
+   rises over it. Then the horizon fades away behind the cards and leaves the page. */
+async function intoNext() {
+  horizonParts();
+  await engines.img.decode().catch(() => {});
+  const stage = document.querySelector(".eng-stage");
+  const engine = $("p-engine");
+  const next = $("p-next");
+  const { back, front } = engines;
+  settle(engine, next, back);
+  back.classList.remove("fading");
+  stage.classList.add("moving");
+  const box = stage.getBoundingClientRect();
+  const W = Math.round(box.width);
+  const H = Math.round(box.height);
+  const horizon = new Horizon(engines.img, W, H, { limb: limbOnScreen(box) });
+  engines.horizon = horizon;
+  const bctx = sized(back, W, H);
+  const fctx = sized(front, W, H);
+  const { limb: L, u } = horizon;
+  stage.prepend(back);
+  stage.append(front);
+  engine.classList.add("leaving");
+  let swapped = false;
+  const ok = await frames((s) => {
+    fctx.clearRect(0, 0, W, H);
+    if (s < T.lineFade[1] + 0.05) {
+      const g = EASE.outCubic(seg(s, 0, T.lineTurn));
+      const turn = EASE.inOutCubic(seg(s, T.lineTurn, T.drop - 0.02));
+      const len = lerp(lerp(0, 320 * u * 1.6, g), W * 1.36, EASE.inExpo(seg(s, T.lineTurn + 0.04, T.drop)));
+      const fade = 1 - EASE.inOutCubic(seg(s, T.lineFade[0], T.lineFade[1]));
+      drawLine(fctx, W / 2, L, len, turn, 1 + 1.4 * clamp(1 - Math.abs(s - T.drop) / 0.14), fade);
+    }
+    const bloom = clamp(1 - Math.abs(s - T.drop) / 0.1) * (s < T.drop ? 0.6 : 1) * clamp(1 - (s - T.drop) / 0.34);
+    drawBloom(fctx, W / 2, L, 1400 * u, 260 * u * 1.6, bloom);
+    if (s >= T.drop - 0.02) {
+      const photo = 0.42 * EASE.outCubic(seg(s, T.photoIn[0], T.photoIn[1]));
+      const push = 1 + 0.035 * seg(s, T.drop, T.drop + 5);
+      bctx.save();
+      bctx.translate(W / 2, L);
+      bctx.scale(push, push);
+      bctx.translate(-W / 2, -L);
+      horizon.draw(bctx, s, { start: T.field[0], spread: T.field[1] - T.field[0], photo });
+      bctx.restore();
+    }
+    if (s >= T.brandIn && !swapped) {
+      swapped = true;
+      engine.classList.remove("on", "leaving");
+      next.classList.add("on", "rising");
+    }
+  }, T.end);
+  if (!ok) return;
+  front.remove();
+  const mine = engines.run;
+  back.classList.add("fading");
+  setTimeout(() => {
+    if (engines.run !== mine) return;
+    back.remove();
+    back.classList.remove("fading");
+    settle(next);
+    stage.classList.remove("moving");
+  }, 1250);
+}
+
+/* Out of coming next: the page collapses into the horizon line, the line flares and fades
+   (the video's T7), and the numbers rise in its place. */
+async function outOfNext(ver) {
+  horizonParts();
+  const stage = document.querySelector(".eng-stage");
+  const engine = $("p-engine");
+  const next = $("p-next");
+  const { back, front } = engines;
+  settle(engine, next, back);
+  stage.classList.add("moving");
+  const box = stage.getBoundingClientRect();
+  const W = Math.round(box.width);
+  const H = Math.round(box.height);
+  const L = engines.horizon ? Math.min(engines.horizon.limb, H) : limbOnScreen(box);
+  const fctx = sized(front, W, H);
+  stage.append(front);
+  next.classList.add("collapsing");
+  if (back.isConnected) back.classList.add("collapsing");
+  let swapped = false;
+  const ok = await frames((s) => {
+    fctx.clearRect(0, 0, W, H);
+    const flare = Math.min(EASE.outCubic(seg(s, 0.1, 0.3)) * 1.2, 1) * (1 - EASE.inOutCubic(seg(s, 0.4, 0.9)));
+    drawLine(fctx, W / 2, L, W * 1.36, 1, 1 + 1.2 * clamp(1 - Math.abs(s - 0.3) / 0.16), flare);
+    if (s >= 0.32 && !swapped) {
+      swapped = true;
+      next.classList.remove("on", "collapsing");
+      engine.classList.add("on", "rising");
+      setEngine(ver, false);
+    }
+  }, 0.95);
+  if (!ok) return;
+  front.remove();
+  back.remove();
+  settle(engine, back);
+  back.classList.remove("fading");
+  stage.classList.remove("moving");
+}
+
+function showEngine(id, animate) {
+  document.querySelectorAll(".eng-tab").forEach((tab) => tab.setAttribute("aria-selected", String(tab.dataset.tab === id)));
+  const toNext = id === "next";
+  const wasNext = engines.current === "next";
+  engines.current = id;
+  if (animate && !reduceMotion() && toNext !== wasNext) {
+    if (toNext) intoNext();
+    else outOfNext(id);
+    return;
+  }
+  engines.run++;
+  const engine = $("p-engine");
+  const next = $("p-next");
+  settle(engine, next);
+  engines.front?.remove();
+  engines.back?.remove();
+  document.querySelector(".eng-stage").classList.remove("moving");
+  engine.classList.toggle("on", !toNext);
+  next.classList.toggle("on", toNext);
+  if (!toNext) setEngine(id, animate);
+}
+
+function mountEngines() {
+  document.querySelectorAll(".eng-tab").forEach((tab) => tab.addEventListener("click", () => {
+    if (tab.dataset.tab !== engines.current) showEngine(tab.dataset.tab, true);
+  }));
+  showEngine("v9", false);
 }
 
 function renderAll() {
@@ -332,6 +763,7 @@ async function main() {
   if (evidence.status === "fulfilled") data.evidence = evidence.value;
   data.mark = "nist|2030";
   renderAll();
+  mountEngines();
   observeReveals();
 }
 
