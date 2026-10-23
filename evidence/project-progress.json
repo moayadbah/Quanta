@@ -1,0 +1,56 @@
+{
+  "_about": "Source inventory counts, not a claim about detection accuracy or speed.",
+  "baseline_commit": "a0cdc2f95a4ba6093b7bd8aa8ae5366d536cc3c9",
+  "baseline_source": "src/quanta/core/rules.py",
+  "baseline_source_sha256": "003450029be31269249e9811ea5b483725f2290411d05650d2d3bfb46bd4fd46",
+  "baseline_named_calls": [
+    "Crypto.Cipher.AES.new",
+    "Crypto.PublicKey.RSA.generate",
+    "cryptography.hazmat.primitives.asymmetric.dh.generate_parameters",
+    "cryptography.hazmat.primitives.asymmetric.ec.generate_private_key",
+    "cryptography.hazmat.primitives.asymmetric.ed25519.Ed25519PrivateKey.generate",
+    "cryptography.hazmat.primitives.asymmetric.rsa.generate_private_key",
+    "cryptography.hazmat.primitives.asymmetric.x25519.X25519PrivateKey.generate",
+    "cryptography.hazmat.primitives.ciphers.Cipher",
+    "cryptography.hazmat.primitives.ciphers.aead.AESGCM",
+    "cryptography.hazmat.primitives.ciphers.aead.ChaCha20Poly1305",
+    "cryptography.hazmat.primitives.hashes.Hash",
+    "cryptography.hazmat.primitives.hmac.HMAC",
+    "cryptography.hazmat.primitives.kdf.hkdf.HKDF",
+    "cryptography.hazmat.primitives.kdf.pbkdf2.PBKDF2HMAC",
+    "hashlib.md5",
+    "hashlib.pbkdf2_hmac",
+    "hashlib.sha1",
+    "hashlib.sha256",
+    "hmac.new",
+    "jwt.decode",
+    "jwt.encode",
+    "nacl.public.PrivateKey",
+    "nacl.secret.SecretBox",
+    "oqs.KeyEncapsulation",
+    "oqs.Signature",
+    "secrets.token_bytes",
+    "ssl.SSLContext",
+    "ssl.wrap_socket"
+  ],
+  "baseline_guides_note": "The first milestone has no migration guide catalog or proposals.",
+  "baseline": {
+    "rules": 28,
+    "namespaces": 9,
+    "guides": 0
+  },
+  "current": {
+    "rules": 457,
+    "namespaces": 51,
+    "guides": 8
+  },
+  "current_sources": [
+    "src/quanta/core/ruleset_v2.py",
+    "config/migrations.json"
+  ],
+  "current_source_sha256": {
+    "src/quanta/core/ruleset_v2.py": "8003196be82d15a20818fe5864781bae135a6d1489b046d095c7eade6ee10076",
+    "config/migrations.json": "7966fa3988b8679164a02d4b99ce01b2730e3cf43aaa8528c6e9973782a8979a"
+  },
+  "accuracy_note": "No equivalent held-out accuracy result is published for the original milestone. The current figures remain sourced from evidence/figures-v9.json. The earlier engine in that file is not the original project baseline."
+}

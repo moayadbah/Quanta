@@ -284,5 +284,35 @@
         }
       ]
     }
-  ]
+  ],
+  "progress": {
+    "baseline": {
+      "rules": 28,
+      "namespaces": 9,
+      "guides": 0
+    },
+    "current": {
+      "rules": 457,
+      "namespaces": 51,
+      "guides": 8
+    },
+    "sources": [
+      {
+        "id": "first",
+        "url": "https://github.com/moayadbah/Quanta/blob/a0cdc2f95a4ba6093b7bd8aa8ae5366d536cc3c9/src/quanta/core/rules.py"
+      },
+      {
+        "id": "rules",
+        "url": "https://github.com/moayadbah/Quanta/blob/main/src/quanta/core/ruleset_v2.py"
+      },
+      {
+        "id": "guides",
+        "url": "https://github.com/moayadbah/Quanta/blob/main/config/migrations.json"
+      },
+      {
+        "id": "counts",
+        "url": "https://github.com/moayadbah/Quanta/blob/main/evidence/project-progress.json"
+      }
+    ]
+  }
 }
