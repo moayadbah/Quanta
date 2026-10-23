@@ -1148,8 +1148,8 @@
       "ar": "{n}٪"
     },
     "fig.other.label": {
-      "en": "of hashing, symmetric, MAC and other crypto calls found, in 120 repositories it had not seen",
-      "ar": "من استدعاءات التجزئة والتشفير المتماثل و MAC وغيرها وُجدت، في 120 مستودعًا لم يرها المحرك"
+      "en": "of hashing, symmetric, MAC and other crypto calls found across 120 independently sampled repositories",
+      "ar": "من استدعاءات التجزئة والتشفير المتماثل و MAC وغيرها وُجدت، في 120 مستودعًا سُحبت بعينات مستقلة"
     },
     "fig.other.measured": {
       "en": "{found} of {total} hand-labelled calls into crypto libraries, other than public key and TLS, in 120 public repositories sampled after the engine was frozen (95% interval {lo} to {hi} percent).",
@@ -1687,25 +1687,13 @@
       "en": "Workspace",
       "ar": "مساحة العمل"
     },
-    "numbers.arrow": {
-      "en": "→",
-      "ar": "←"
-    },
-    "numbers.calls": {
-      "en": "+{n} calls",
-      "ar": "+{n} استدعاءً"
-    },
     "numbers.how": {
       "en": "Source and method",
       "ar": "المصدر والطريقة"
     },
-    "numbers.latest": {
-      "en": "On the latest independent sample (60 repositories): {n}",
-      "ar": "وفي آخر عينة مستقلة (60 مستودعًا): {n}"
-    },
     "numbers.lede": {
-      "en": "Open any figure to see what was measured, how, and where it comes from.",
-      "ar": "افتح أي رقم لترى ما قيس، وكيف، ومن أين جاء."
+      "en": "How Quanta grew: the numbers, the techniques, and what changed.",
+      "ar": "كيف تطوّر كوانتا: الأرقام، والتقنيات، وما تغيّر."
     },
     "numbers.limit": {
       "en": "Limit",
@@ -1719,105 +1707,17 @@
       "en": "Method",
       "ar": "الطريقة"
     },
-    "numbers.next.1.body": {
-      "en": "TLS connections, SSH keys and signatures inside network, database and messaging libraries, such as redis, MQTT and paramiko. The engine follows a TLS context wherever it is passed, and reads the project's dependencies.",
-      "ar": "اتصالات TLS ومفاتيح SSH وتوقيعات داخل مكتبات الشبكات وقواعد البيانات والرسائل، مثل redis و MQTT و paramiko. المحرك يتتبع سياق TLS أينما مُرِّر، ويقرأ اعتماديات المشروع."
-    },
-    "numbers.next.1.title": {
-      "en": "Cryptography inside non-crypto libraries",
-      "ar": "التشفير داخل المكتبات غير التشفيرية"
-    },
-    "numbers.next.2.body": {
-      "en": "The part exposed to quantum computing. Objects followed across files, AES-GCM operations, and TLS settings kept inside classes.",
-      "ar": "الجزء المعرّض للحوسبة الكمية. تتبع الكائنات عبر الملفات، وعمليات AES-GCM، وإعدادات TLS المحفوظة داخل الكلاسات."
-    },
-    "numbers.next.2.title": {
-      "en": "Sharper public key and TLS detection",
-      "ar": "كشف أدق للمفاتيح العامة و TLS"
-    },
-    "numbers.next.3.body": {
-      "en": "A small model that runs locally, trained on 1,143 hand-labelled calls, reviews the cases the engine is unsure of before they reach you. Your code never leaves your machine.",
-      "ar": "نموذج صغير يعمل محليًا، مدرّب على 1,143 استدعاءً موسومًا يدويًا، يراجع الحالات التي يشك فيها المحرك قبل أن تصل إليك. لا يغادر الكود جهازك."
-    },
-    "numbers.next.3.title": {
-      "en": "An AI verification layer",
-      "ar": "طبقة تحقق بالذكاء الاصطناعي"
-    },
-    "numbers.next.4.body": {
-      "en": "What the engine cannot confirm is shown apart from the confirmed findings, so no likely site is missed and guesses never mix with the figures.",
-      "ar": "ما لا يستطيع المحرك تأكيده يُعرض منفصلًا عن النتائج المؤكدة، فلا يفوتك موضع محتمل ولا تختلط التخمينات بالأرقام."
-    },
-    "numbers.next.4.title": {
-      "en": "A \"needs review\" list",
-      "ar": "قائمة «تحتاج مراجعة»"
-    },
-    "numbers.next.note": {
-      "en": "Every new version is measured the same way: a sample of repositories the engine has not seen, hand labels frozen before the run, and one measurement. No figure is published before that.",
-      "ar": "كل نسخة جديدة تُقاس بالطريقة نفسها: عينة مستودعات لم يرها المحرك، ووسم يدوي مجمّد قبل التشغيل، وقياس واحد. لا يُنشر رقم قبل ذلك."
-    },
-    "numbers.points": {
-      "en": "+{n} points",
-      "ar": "+{n} نقطة"
-    },
-    "numbers.results": {
-      "en": "({n} results)",
-      "ar": "({n} نتيجة)"
-    },
-    "numbers.scan": {
-      "en": "The median repository is scanned in {n} seconds",
-      "ar": "ويُفحص المستودع الوسيط في {n} ثانية"
-    },
-    "numbers.scan_title": {
-      "en": "Scan time",
-      "ar": "زمن الفحص"
-    },
-    "numbers.scan_was": {
-      "en": "Previous engine on the same machine: {n} seconds",
-      "ar": "المحرك السابق على نفس الجهاز: {n} ثانية"
-    },
     "numbers.scope": {
-      "en": "Scope: recall on calls into crypto libraries, in 120 public repositories the engine had not seen before the measurement (638 hand-labelled units, three independent samples). Counting cryptography inside non-crypto libraries too: {n}%.",
-      "ar": "النطاق: نسب الاسترجاع على الاستدعاءات داخل مكتبات التشفير، في 120 مستودعًا عامًا لم يرها المحرك قبل القياس (638 وحدة موسومة يدويًا، ثلاث عينات مستقلة). عند احتساب التشفير داخل المكتبات غير التشفيرية أيضًا: {n}٪."
+      "en": "Measured across 120 public repositories in three independent samples, with 638 labelled calls into crypto libraries. Including cryptography inside other libraries, recall is {n}%. Labels were produced by model annotators; see the source and method for limits.",
+      "ar": "قيس الأداء على 120 مستودعًا عامًا في ثلاث عينات مستقلة، تضم 638 استدعاءً موسومًا إلى مكتبات التشفير. ومع احتساب التشفير داخل المكتبات الأخرى، تبلغ نسبة الاسترجاع {n}٪. أعدّت الوسوم نماذج آلية؛ راجع المصدر والطريقة للاطلاع على الحدود."
     },
     "numbers.source": {
       "en": "Source",
       "ar": "المصدر"
     },
-    "numbers.tab.new": {
-      "en": "Current engine",
-      "ar": "المحرك الحالي"
-    },
-    "numbers.tab.next": {
-      "en": "Coming next",
-      "ar": "التطويرات القادمة"
-    },
-    "numbers.tab.previous": {
-      "en": "Previous engine",
-      "ar": "المحرك السابق"
-    },
-    "numbers.tablist": {
-      "en": "Engine version",
-      "ar": "نسخة المحرك"
-    },
     "numbers.title": {
-      "en": "Measured, not claimed.",
-      "ar": "قياس، لا ادعاء."
-    },
-    "numbers.ver.new": {
-      "en": "v9",
-      "ar": "v9"
-    },
-    "numbers.ver.next": {
-      "en": "next",
-      "ar": "next"
-    },
-    "numbers.ver.previous": {
-      "en": "v5",
-      "ar": "v5"
-    },
-    "numbers.was": {
-      "en": "Previous engine on the same repositories: {was}",
-      "ar": "المحرك السابق على نفس المستودعات: {was}"
+      "en": "From our first steps to today.",
+      "ar": "من البداية إلى اليوم."
     },
     "privacy.analytics_body": {
       "en": "Quanta adds no advertising, analytics trackers or marketing cookies. Hosting providers may keep operational request logs under their own policies.",
@@ -3546,6 +3446,118 @@
     "ws.welcome": {
       "en": "Welcome, {name}",
       "ar": "مرحبًا، {name}"
+    },
+    "numbers.baseline.eyebrow": {
+      "en": "When we started",
+      "ar": "عندما بدأنا"
+    },
+    "numbers.baseline.title": {
+      "en": "Find the known uses.",
+      "ar": "تحديد الاستخدامات المعروفة."
+    },
+    "numbers.baseline.body": {
+      "en": "A focused first implementation: recognise a short list of cryptographic calls and map their dependencies.",
+      "ar": "بداية محددة النطاق: التعرّف على قائمة قصيرة من الاستدعاءات التشفيرية ورسم اعتمادياتها."
+    },
+    "numbers.current.eyebrow": {
+      "en": "Quanta today",
+      "ar": "كوانتا اليوم"
+    },
+    "numbers.current.title": {
+      "en": "Find more. Explain the next step.",
+      "ar": "كشف أوسع، وخطوة تالية أوضح."
+    },
+    "numbers.current.body": {
+      "en": "Broader detection, clearer risk assessment, and practical changes developers can review.",
+      "ar": "كشف أوسع، وتقييم أوضح للمخاطر، وتغييرات عملية يستطيع المطوّر مراجعتها."
+    },
+    "numbers.metric.rules": {
+      "en": "Named call patterns covered",
+      "ar": "أنماط استدعاء معروفة يغطيها الكشف"
+    },
+    "numbers.metric.namespaces": {
+      "en": "Library and module groups",
+      "ar": "مجموعات المكتبات والوحدات"
+    },
+    "numbers.metric.guides": {
+      "en": "Guided migration recipes",
+      "ar": "أدلة ترحيل عملية"
+    },
+    "numbers.techniques": {
+      "en": "Techniques we use",
+      "ar": "التقنيات والأساليب المستخدمة"
+    },
+    "numbers.baseline.tech.1": {
+      "en": "Syntax-tree parsing and exact matching of known call names.",
+      "ar": "تحليل شجرة الشيفرة ومطابقة أسماء الاستدعاءات المعروفة بدقة."
+    },
+    "numbers.baseline.tech.2": {
+      "en": "Algorithm names read from nearby strings and constants.",
+      "ar": "قراءة أسماء الخوارزميات من النصوص والثوابت القريبة."
+    },
+    "numbers.baseline.tech.3": {
+      "en": "Local checks for configuration reads.",
+      "ar": "فحص محلي لقراءة الإعدادات."
+    },
+    "numbers.baseline.tech.4": {
+      "en": "Dependency graphs and a weighted agility score.",
+      "ar": "رسوم اعتماديات ودرجة موزونة لمرونة تغيير التشفير."
+    },
+    "numbers.current.tech.1": {
+      "en": "Wider API rules for keys, signatures, certificates and TLS.",
+      "ar": "قواعد أوسع للمفاتيح والتواقيع والشهادات و TLS."
+    },
+    "numbers.current.tech.2": {
+      "en": "Tracks cryptographic objects and aliases through local assignments.",
+      "ar": "تتبّع الكائنات التشفيرية والأسماء البديلة عبر الإسنادات المحلية."
+    },
+    "numbers.current.tech.3": {
+      "en": "Reads algorithm arguments, defaults and alternate names.",
+      "ar": "قراءة معاملات الخوارزميات وقيمها الافتراضية وأسمائها البديلة."
+    },
+    "numbers.current.tech.4": {
+      "en": "Separates shipped code from tests and examples.",
+      "ar": "فصل الشيفرة المنشورة عن الاختبارات والأمثلة."
+    },
+    "numbers.current.tech.5": {
+      "en": "Links findings to published standards and transition milestones.",
+      "ar": "ربط النتائج بالمعايير المنشورة ومراحل الانتقال."
+    },
+    "numbers.current.tech.6": {
+      "en": "Offers supported patches, migration guides and clear reasons when a change needs manual work.",
+      "ar": "تقديم تعديلات مدعومة وأدلة ترحيل، وتوضيح أسباب الحاجة إلى العمل اليدوي."
+    },
+    "numbers.progress.how": {
+      "en": "How we counted the changes",
+      "ar": "كيف أحصينا التغييرات"
+    },
+    "numbers.progress.method": {
+      "en": "These counts compare the original working implementation with today's code. Patterns are named API entries, groups are distinct library/module names, and recipes are reusable migration guides. They describe scope, not detection accuracy. The first implementation had no migration guide catalog.",
+      "ar": "تقارن هذه الأعداد أول تطبيق عامل بالشيفرة الحالية. الأنماط هي أسماء محددة في واجهات البرمجة، والمجموعات أسماء مكتبات أو وحدات مميزة، والأدلة إرشادات ترحيل قابلة لإعادة الاستخدام. تصف الأعداد نطاق العمل لا دقة الكشف. لم يكن في التطبيق الأول فهرس لأدلة الترحيل."
+    },
+    "numbers.progress.source.first": {
+      "en": "Original implementation",
+      "ar": "التطبيق الأول"
+    },
+    "numbers.progress.source.rules": {
+      "en": "Current detection rules",
+      "ar": "قواعد الكشف الحالية"
+    },
+    "numbers.progress.source.guides": {
+      "en": "Current migration guide catalog",
+      "ar": "فهرس أدلة الترحيل الحالي"
+    },
+    "numbers.progress.source.counts": {
+      "en": "Recorded counts and source references",
+      "ar": "الأعداد المسجلة ومراجع مصادرها"
+    },
+    "numbers.current.measured": {
+      "en": "Latest measured results",
+      "ar": "أحدث النتائج المقاسة"
+    },
+    "numbers.current.note": {
+      "en": "The original implementation was tested on sample fixtures, without an equivalent real-world accuracy benchmark. The results below measure Quanta today; they are not a before-and-after accuracy comparison.",
+      "ar": "اختُبر التطبيق الأول على أمثلة مُعدّة للاختبار، دون قياس مماثل لدقة الكشف في مشاريع حقيقية. الأرقام أدناه تقيس كوانتا اليوم، وليست مقارنة دقة بين البداية والحاضر."
     }
   }
 }
