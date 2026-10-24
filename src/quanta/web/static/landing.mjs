@@ -329,6 +329,7 @@ function renderProgress() {
         el("div", { class: "progress-metric" },
           el("dt", { text: t(`numbers.metric.${id}`) }),
           el("dd", { class: "ltr", text: String(value) }),
+          stage === "current" ? el("dd", { class: "progress-gain", text: t("numbers.progress.gain", { n: value - progress.baseline[id] }) }) : null,
         ),
       ),
     );
@@ -339,6 +340,64 @@ function renderProgress() {
       text: t(`numbers.progress.source.${source.id}`),
     })),
   ));
+}
+
+/* Archived measurements describe a later measured release, not the original
+   implementation. Keep their full comparison available with that distinction. */
+function renderMeasurementHistory() {
+  const evidence = data.evidence;
+  const figures = Object.fromEntries(evidence.figures.map((figure) => [figure.id, figure]));
+  const number = (value) => Number(String(value).replace(/,/g, ""));
+  const signed = (value) => `${value > 0 ? "+" : ""}${value}`;
+  const rows = [];
+  const add = (id, before, now, kind = "count", beforeNote = "", nowNote = "") => {
+    const delta = number(now) - number(before);
+    const change = delta === 0 ? t("numbers.history.same") : kind === "rate"
+      ? t("numbers.history.points", { n: signed(Number(delta.toFixed(1))) })
+      : kind === "speed" ? t("fig.speed.format", { n: signed(Number(delta.toFixed(1))) })
+        : signed(Number(delta.toFixed(1)));
+    const format = (value) => kind === "rate" ? t("fig.other.format", { n: value })
+      : ["hours", "cost", "speed"].includes(kind) ? t(`fig.${kind}.format`, { n: value }) : String(value);
+    const cell = (heading, value, note = "") => el("td", { "data-label": t(`numbers.history.${heading}`) },
+      el("bdi", { dir: "ltr", text: value }),
+      note ? el("span", { class: "history-detail", text: note }) : null,
+    );
+    rows.push(el("tr", { "data-measurement": id },
+      el("th", { scope: "row", text: t(`numbers.history.metric.${id}`) }),
+      cell("earlier", format(before), beforeNote), cell("today", format(now), nowNote), cell("change", change),
+    ));
+  };
+  for (const id of ["other", "pktls", "precision"]) {
+    const figure = figures[id];
+    const note = (values) => `${t(id === "precision" ? "numbers.confirmed" : "numbers.found", values)}. ${t(values.hi ? "numbers.history.interval" : "numbers.history.lower", values)}`;
+    add(id, figure.previous.value, figure.value, "rate", note(figure.previous.values), note(figure.values));
+  }
+  const keys = figures.pktls;
+  add("latest", keys.previous.values.latest, keys.values.latest, "rate",
+    t("numbers.found", { found: keys.previous.values.latest_found, total: keys.previous.values.latest_total }),
+    t("numbers.found", { found: keys.values.latest_found, total: keys.values.latest_total }));
+  add("scope", evidence.scope.previous, evidence.scope.value, "rate");
+  const precision = figures.precision;
+  add("confirmed", precision.previous.values.found, precision.values.found);
+  add("reported", precision.previous.values.total, precision.values.total);
+  add("false_alarms", precision.previous.values.total - precision.previous.values.found, precision.values.total - precision.values.found);
+  for (const id of ["hours", "cost", "overdue", "speed"]) {
+    const figure = figures[id];
+    add(id, figure.previous.value, figure.value, id === "overdue" ? "count" : id);
+  }
+  add("largest", figures.speed.previous.values.max, figures.speed.values.max, "speed");
+  for (const id of ["vulnerable", "weak", "proposed", "with"]) {
+    add(id, figures.overdue.previous.values[id], figures.overdue.values[id]);
+  }
+  fill($("measurement-history"), ...rows);
+  const sources = [
+    { key: "results", path: figures.precision.sources.find((source) => source.id === "accuracy").path },
+    { key: "earlier_time", path: figures.speed.previous.sources.find((source) => source.id === "timecost").path },
+    { key: "current_time", path: figures.speed.sources.find((source) => source.id === "timecost").path },
+  ];
+  fill($("measurement-history-sources"), ...sources.map((source) => el("li", {},
+    el("a", { class: "link", href: REPOSITORY + source.path, target: "_blank", rel: "noopener noreferrer", text: t(`numbers.history.source.${source.key}`) }),
+  )));
 }
 
 function figureValue(figure) {
@@ -355,6 +414,7 @@ function renderFigures() {
   const evidence = data.evidence;
   if (!evidence) return;
   renderProgress();
+  renderMeasurementHistory();
   // Every published figure stays visible. Entries marked "inside" are shown with
   // their parent card rather than being silently lost from a hand-picked subset.
   fill($("figures"), ...evidence.figures.filter((figure) => !figure.inside).map((figure) => {
@@ -379,6 +439,10 @@ function renderFigures() {
         ? el("span", { class: "figure-context", text: t(id === "precision" ? "numbers.confirmed" : "numbers.found", values) }) : null,
       values.latest !== undefined
         ? el("span", { class: "figure-context", text: t("numbers.latest_sample", values) }) : null,
+      id === "precision" ? el("span", { class: "figure-context", text: t("numbers.confirmed_gain", { n: values.found - figure.previous.values.found }) }) : null,
+      id === "precision" ? el("span", { class: "figure-context", text: t("numbers.false_alarms", { n: values.total - values.found, total: values.total }) }) : null,
+      id === "overdue" ? el("span", { class: "figure-context", text: t("numbers.risk_breakdown", values) }) : null,
+      id === "overdue" ? el("span", { class: "figure-context", text: t("numbers.replacement_breakdown", values) }) : null,
       ...related.map((item) => el("span", { class: "figure-context" },
         el("bdi", { dir: "ltr", text: t(`fig.${item.id}.format`, { n: item.value }) }),
         " ", t(`fig.${item.id}.label`, item.values),

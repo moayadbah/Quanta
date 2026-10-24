@@ -126,12 +126,13 @@
             <h3 id="progress-baseline-title" data-t="numbers.baseline.title"></h3>
             <p class="progress-intro" data-t="numbers.baseline.body"></p>
             <dl class="progress-metrics" id="progress-baseline-metrics"></dl>
-            <h4 data-t="numbers.techniques"></h4>
+            <h4 data-t="numbers.baseline.techniques"></h4>
             <ul class="progress-techniques">
               <li data-t="numbers.baseline.tech.1"></li>
               <li data-t="numbers.baseline.tech.2"></li>
               <li data-t="numbers.baseline.tech.3"></li>
               <li data-t="numbers.baseline.tech.4"></li>
+              <li data-t="numbers.baseline.tech.5"></li>
             </ul>
           </article>
           <article class="progress-card progress-current reveal" aria-labelledby="progress-current-title">
@@ -147,6 +148,7 @@
               <li data-t="numbers.current.tech.4"></li>
               <li data-t="numbers.current.tech.5"></li>
               <li data-t="numbers.current.tech.6"></li>
+              <li data-t="numbers.current.tech.7"></li>
             </ul>
           </article>
         </div>
@@ -161,6 +163,22 @@
           <div class="figures reveal-group" id="figures"></div>
           <div class="figure-detail surface" id="figure-detail" hidden></div>
           <p class="progress-scope" id="numbers-scope"></p>
+          <details class="progress-source measurement-history">
+            <summary data-t="numbers.history.title"></summary>
+            <p data-t="numbers.history.note"></p>
+            <table class="history-table">
+              <caption class="sr-only" data-t="numbers.history.caption"></caption>
+              <thead><tr>
+                <th scope="col" data-t="numbers.history.metric"></th>
+                <th scope="col" data-t="numbers.history.earlier"></th>
+                <th scope="col" data-t="numbers.history.today"></th>
+                <th scope="col" data-t="numbers.history.change"></th>
+              </tr></thead>
+              <tbody id="measurement-history"></tbody>
+            </table>
+            <p data-t="numbers.history.tradeoff"></p>
+            <ul id="measurement-history-sources"></ul>
+          </details>
         </div>
       </div>
     </section>

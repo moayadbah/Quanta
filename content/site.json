@@ -3556,8 +3556,8 @@
       "ar": "أحدث النتائج المقاسة"
     },
     "numbers.current.note": {
-      "en": "The original implementation was tested on sample fixtures, without an equivalent real-world accuracy benchmark. The results below measure Quanta today; they are not a before-and-after accuracy comparison.",
-      "ar": "اختُبر التطبيق الأول على أمثلة مُعدّة للاختبار، دون قياس مماثل لدقة الكشف في مشاريع حقيقية. الأرقام أدناه تقيس Quanta اليوم، وليست مقارنة دقة بين البداية والحاضر."
+      "en": "Our first implementation was tested on sample fixtures, without an equivalent real-world accuracy benchmark. These cards show current measurements; the full measurement history below records later measured releases.",
+      "ar": "اختُبر التطبيق الأول على أمثلة مُعدّة للاختبار، دون قياس مماثل لدقة الكشف في مشاريع حقيقية. تعرض هذه البطاقات القياسات الحالية؛ ويسرد سجل القياسات الكامل أدناه إصدارات مقاسة جاءت لاحقًا."
     },
     "numbers.estimate": {
       "en": "Modelled estimate",
@@ -3574,6 +3574,166 @@
     "numbers.latest_sample": {
       "en": "Latest sample (60 repositories): {latest_found} of {latest_total} found ({latest}%).",
       "ar": "آخر عينة (60 مستودعًا): وُجد {latest_found} من {latest_total} ({latest}٪)."
+    },
+    "numbers.progress.gain": {
+      "en": "{n} added since we started",
+      "ar": "أُضيف {n} منذ البداية"
+    },
+    "numbers.baseline.tech.5": {
+      "en": "Command-line scans with offline HTML reports.",
+      "ar": "فحص من سطر الأوامر وتقارير HTML تُفتح دون اتصال."
+    },
+    "numbers.current.tech.7": {
+      "en": "A browser workspace, PDF reports and reviewed draft pull requests.",
+      "ar": "مساحة عمل في المتصفح وتقارير PDF ومسودات طلبات دمج بعد مراجعة التغييرات."
+    },
+    "numbers.confirmed_gain": {
+      "en": "{n} more confirmed calls than the earlier measured release.",
+      "ar": "استدعاءات مؤكدة أكثر بـ{n} من الإصدار المقاس سابقًا."
+    },
+    "numbers.false_alarms": {
+      "en": "{n} false alarms out of {total} reported calls.",
+      "ar": "{n} إنذارًا خاطئًا من أصل {total} استدعاءً مُبلغًا عنه."
+    },
+    "numbers.risk_breakdown": {
+      "en": "The same scans found {vulnerable} quantum-vulnerable and {weak} weak calls.",
+      "ar": "وجدت الفحوص نفسها {vulnerable} استدعاءً معرّضًا للخطر الكمي و{weak} استدعاءً ضعيفًا."
+    },
+    "numbers.replacement_breakdown": {
+      "en": "{proposed} replacement proposals across {with} repositories.",
+      "ar": "{proposed} مقترح استبدال موزّعًا على {with} مستودعًا."
+    },
+    "numbers.history.title": {
+      "en": "Full measurement history",
+      "ar": "سجل القياسات الكامل"
+    },
+    "numbers.history.note": {
+      "en": "These archived results compare an earlier measured release with today on the same samples. That release came after our first implementation, so its scores are not v1 scores. The first-implementation comparison is above.",
+      "ar": "تقارن هذه النتائج المحفوظة إصدارًا مقاسًا سابقًا بالحاضر على العينات نفسها. جاء ذلك الإصدار بعد التطبيق الأول، لذا لا تمثل درجاته درجات النسخة الأولى. مقارنة البداية بالحاضر موجودة أعلاه."
+    },
+    "numbers.history.caption": {
+      "en": "Earlier and current measurements, with every change shown",
+      "ar": "القياسات السابقة والحالية، مع إظهار كل تغيير"
+    },
+    "numbers.history.metric": {
+      "en": "Measurement",
+      "ar": "القياس"
+    },
+    "numbers.history.earlier": {
+      "en": "Earlier result",
+      "ar": "النتيجة السابقة"
+    },
+    "numbers.history.today": {
+      "en": "Today",
+      "ar": "اليوم"
+    },
+    "numbers.history.change": {
+      "en": "Change",
+      "ar": "التغيّر"
+    },
+    "numbers.history.same": {
+      "en": "Unchanged",
+      "ar": "دون تغيير"
+    },
+    "numbers.history.points": {
+      "en": "{n} percentage points",
+      "ar": "{n} نقطة مئوية"
+    },
+    "numbers.history.interval": {
+      "en": "95% interval: {lo} to {hi}%.",
+      "ar": "فاصل ثقة 95٪: من {lo} إلى {hi}٪."
+    },
+    "numbers.history.lower": {
+      "en": "95% lower bound: {lo}%.",
+      "ar": "الحد الأدنى للثقة 95٪: {lo}٪."
+    },
+    "numbers.history.tradeoff": {
+      "en": "Read detection, precision and runtime together: broader coverage also produced more false alarms and a slightly longer median scan. Time and cost savings are modelled estimates; scan times were measured on one laptop with the repositories already on disk.",
+      "ar": "اقرأ الكشف والدقة والوقت معًا: رافق توسيع التغطية مزيد من الإنذارات الخاطئة وزيادة طفيفة في وسيط زمن الفحص. توفير الوقت والتكلفة تقديرات محسوبة؛ قيس زمن الفحص على حاسوب محمول واحد والمستودعات موجودة مسبقًا على القرص."
+    },
+    "numbers.history.source.results": {
+      "en": "Scored benchmark results",
+      "ar": "نتائج القياس المسجّلة"
+    },
+    "numbers.history.source.earlier_time": {
+      "en": "Earlier timing and cost measurements",
+      "ar": "قياسات الوقت والتكلفة السابقة"
+    },
+    "numbers.history.source.current_time": {
+      "en": "Current timing and cost measurements",
+      "ar": "قياسات الوقت والتكلفة الحالية"
+    },
+    "numbers.history.metric.other": {
+      "en": "Hashing, symmetric, MAC and other crypto detection",
+      "ar": "كشف التجزئة والتشفير المتماثل وMAC وغيرها"
+    },
+    "numbers.history.metric.pktls": {
+      "en": "Public key and TLS detection",
+      "ar": "كشف المفاتيح العامة وTLS"
+    },
+    "numbers.history.metric.precision": {
+      "en": "Precision of reported calls",
+      "ar": "دقة الاستدعاءات المُبلغ عنها"
+    },
+    "numbers.history.metric.latest": {
+      "en": "Public key and TLS detection, latest 60-repository sample",
+      "ar": "كشف المفاتيح العامة وTLS في آخر عينة من 60 مستودعًا"
+    },
+    "numbers.history.metric.scope": {
+      "en": "Detection including crypto inside other libraries",
+      "ar": "الكشف مع احتساب التشفير داخل المكتبات الأخرى"
+    },
+    "numbers.history.metric.confirmed": {
+      "en": "Confirmed cryptographic calls",
+      "ar": "الاستدعاءات التشفيرية المؤكدة"
+    },
+    "numbers.history.metric.reported": {
+      "en": "Total reported calls",
+      "ar": "إجمالي الاستدعاءات المُبلغ عنها"
+    },
+    "numbers.history.metric.false_alarms": {
+      "en": "False alarms",
+      "ar": "الإنذارات الخاطئة"
+    },
+    "numbers.history.metric.hours": {
+      "en": "Reading avoided, modelled median",
+      "ar": "القراءة المُوفّرة، وسيط تقديري"
+    },
+    "numbers.history.metric.cost": {
+      "en": "Value of time saved, modelled median",
+      "ar": "قيمة الوقت المُوفّر، وسيط تقديري"
+    },
+    "numbers.history.metric.overdue": {
+      "en": "Calls past a published deadline, 60 repositories",
+      "ar": "استدعاءات تجاوزت موعدًا منشورًا في 60 مستودعًا"
+    },
+    "numbers.history.metric.speed": {
+      "en": "Median scan time",
+      "ar": "وسيط زمن الفحص"
+    },
+    "numbers.history.metric.largest": {
+      "en": "Scan time for the largest repository",
+      "ar": "زمن فحص أكبر مستودع"
+    },
+    "numbers.history.metric.vulnerable": {
+      "en": "Quantum-vulnerable calls, 60 repositories",
+      "ar": "استدعاءات معرّضة للخطر الكمي في 60 مستودعًا"
+    },
+    "numbers.history.metric.weak": {
+      "en": "Weak calls, 60 repositories",
+      "ar": "استدعاءات ضعيفة في 60 مستودعًا"
+    },
+    "numbers.history.metric.proposed": {
+      "en": "Replacement proposals, 60 repositories",
+      "ar": "مقترحات الاستبدال في 60 مستودعًا"
+    },
+    "numbers.history.metric.with": {
+      "en": "Repositories receiving replacement proposals",
+      "ar": "مستودعات لها مقترحات استبدال"
+    },
+    "numbers.baseline.techniques": {
+      "en": "Techniques we used",
+      "ar": "التقنيات والأساليب التي استخدمناها"
     }
   }
 }
