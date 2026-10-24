@@ -120,65 +120,26 @@
           <h2 class="h2" id="numbers-title" data-t="numbers.title"></h2>
           <p class="lede" data-t="numbers.lede"></p>
         </div>
-        <div class="progress-grid">
-          <article class="progress-card progress-baseline reveal" aria-labelledby="progress-baseline-title">
-            <p class="progress-eyebrow" data-t="numbers.baseline.eyebrow"></p>
-            <h3 id="progress-baseline-title" data-t="numbers.baseline.title"></h3>
-            <p class="progress-intro" data-t="numbers.baseline.body"></p>
-            <dl class="progress-metrics" id="progress-baseline-metrics"></dl>
-            <h4 data-t="numbers.baseline.techniques"></h4>
-            <ul class="progress-techniques">
-              <li data-t="numbers.baseline.tech.1"></li>
-              <li data-t="numbers.baseline.tech.2"></li>
-              <li data-t="numbers.baseline.tech.3"></li>
-              <li data-t="numbers.baseline.tech.4"></li>
-              <li data-t="numbers.baseline.tech.5"></li>
-            </ul>
-          </article>
-          <article class="progress-card progress-current reveal" aria-labelledby="progress-current-title">
-            <p class="progress-eyebrow" data-t="numbers.current.eyebrow"></p>
-            <h3 id="progress-current-title" data-t="numbers.current.title"></h3>
-            <p class="progress-intro" data-t="numbers.current.body"></p>
-            <dl class="progress-metrics" id="progress-current-metrics"></dl>
-            <h4 data-t="numbers.techniques"></h4>
-            <ul class="progress-techniques">
-              <li data-t="numbers.current.tech.1"></li>
-              <li data-t="numbers.current.tech.2"></li>
-              <li data-t="numbers.current.tech.3"></li>
-              <li data-t="numbers.current.tech.4"></li>
-              <li data-t="numbers.current.tech.5"></li>
-              <li data-t="numbers.current.tech.6"></li>
-              <li data-t="numbers.current.tech.7"></li>
-            </ul>
-          </article>
+        <div class="eng-tabs reveal" role="tablist" data-t-attr="aria-label=numbers.tablist">
+          <button class="eng-tab eng-old" role="tab" id="t-v5" aria-controls="p-engine" aria-selected="false" data-tab="v5"><span data-t="numbers.tab.previous"></span> <span class="eng-ver" data-t="numbers.ver.previous"></span></button>
+          <button class="eng-tab eng-soft" role="tab" id="t-v9" aria-controls="p-engine" aria-selected="true" data-tab="v9"><span class="eng-fx" aria-hidden="true"></span><span data-t="numbers.tab.new"></span> <span class="eng-ver" data-t="numbers.ver.new"></span></button>
+          <button class="eng-tab eng-strong" role="tab" id="t-next" aria-controls="p-next" aria-selected="false" data-tab="next"><span class="eng-fx" aria-hidden="true"></span><span data-t="numbers.tab.next"></span> <span class="eng-ver" data-t="numbers.ver.next"></span></button>
         </div>
-        <details class="progress-source">
-          <summary data-t="numbers.progress.how"></summary>
-          <p data-t="numbers.progress.method"></p>
-          <ul id="progress-sources"></ul>
-        </details>
-        <div class="progress-measurements" aria-labelledby="progress-measured-title">
-          <h3 class="h3" id="progress-measured-title" data-t="numbers.current.measured"></h3>
-          <p class="progress-measured-note" data-t="numbers.current.note"></p>
-          <div class="figures reveal-group" id="figures"></div>
-          <div class="figure-detail surface" id="figure-detail" hidden></div>
-          <p class="progress-scope" id="numbers-scope"></p>
-          <details class="progress-source measurement-history">
-            <summary data-t="numbers.history.title"></summary>
-            <p data-t="numbers.history.note"></p>
-            <table class="history-table">
-              <caption class="sr-only" data-t="numbers.history.caption"></caption>
-              <thead><tr>
-                <th scope="col" data-t="numbers.history.metric"></th>
-                <th scope="col" data-t="numbers.history.earlier"></th>
-                <th scope="col" data-t="numbers.history.today"></th>
-                <th scope="col" data-t="numbers.history.change"></th>
-              </tr></thead>
-              <tbody id="measurement-history"></tbody>
-            </table>
-            <p data-t="numbers.history.tradeoff"></p>
-            <ul id="measurement-history-sources"></ul>
-          </details>
+        <div class="eng-stage">
+          <div class="eng-panel on is-v9" id="p-engine" role="tabpanel" aria-labelledby="t-v9">
+            <div class="figures reveal-group" id="figures"><div class="figure sk-figure"><span class="value"><span class="sk sk-num"></span></span><span class="sk sk-line mid"></span><span class="sk sk-line short"></span></div><div class="figure sk-figure"><span class="value"><span class="sk sk-num"></span></span><span class="sk sk-line mid"></span><span class="sk sk-line short"></span></div><div class="figure sk-figure"><span class="value"><span class="sk sk-num"></span></span><span class="sk sk-line mid"></span><span class="sk sk-line short"></span></div><div class="figure sk-figure"><span class="value"><span class="sk sk-num"></span></span><span class="sk sk-line mid"></span><span class="sk sk-line short"></span></div><div class="figure sk-figure"><span class="value"><span class="sk sk-num"></span></span><span class="sk sk-line mid"></span><span class="sk sk-line short"></span></div><div class="figure sk-figure"><span class="value"><span class="sk sk-num"></span></span><span class="sk sk-line mid"></span><span class="sk sk-line short"></span></div></div>
+            <div class="figure-detail surface" id="figure-detail" hidden></div>
+            <p class="eng-scope" id="numbers-scope"></p>
+          </div>
+          <div class="eng-panel" id="p-next" role="tabpanel" aria-labelledby="t-next">
+            <div class="eng-road">
+              <div class="eng-step focus"><span class="eng-k">01</span><h3 class="eng-h" data-t="numbers.next.1.title"></h3><p data-t="numbers.next.1.body"></p></div>
+              <div class="eng-step focus"><span class="eng-k">02</span><h3 class="eng-h" data-t="numbers.next.2.title"></h3><p data-t="numbers.next.2.body"></p></div>
+              <div class="eng-step"><span class="eng-k">03</span><h3 class="eng-h" data-t="numbers.next.3.title"></h3><p data-t="numbers.next.3.body"></p></div>
+              <div class="eng-step"><span class="eng-k">04</span><h3 class="eng-h" data-t="numbers.next.4.title"></h3><p data-t="numbers.next.4.body"></p></div>
+            </div>
+            <p class="eng-note" data-t="numbers.next.note"></p>
+          </div>
         </div>
       </div>
     </section>

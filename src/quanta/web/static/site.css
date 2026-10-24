@@ -376,8 +376,6 @@ button.back { border: 0; background: none; padding: 0; justify-self: start; }
 :root[lang="ar"] .figure .value .unit { font-size: 0.34em; letter-spacing: 0; font-weight: 400; }
 .figure.sk-figure { pointer-events: none; }
 .figure .label { color: var(--muted); font-size: 15px; line-height: 1.5; }
-.figure .figure-context { color: var(--fg); font-size: 13px; line-height: 1.7; }
-.figure .figure-estimate { color: var(--muted); font-size: 12px; line-height: 1.6; }
 .figure .how { display: inline-flex; align-items: center; gap: 6px; color: var(--fg); font-size: 13px; opacity: 0.7; transition: opacity var(--fast) var(--ease); }
 @media (hover: hover) { .figure:hover .how, .figure[aria-expanded="true"] .how { opacity: 1; } }
 .figure .how .chev { width: 12px; height: 12px; transition: transform var(--fast) var(--ease); }
@@ -399,58 +397,143 @@ button.back { border: 0; background: none; padding: 0; justify-self: start; }
   .figure-detail dd { margin-bottom: 10px; }
 }
 
-/* Project progress: two permanent sides, with techniques alongside their numbers. */
-.progress-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
-.progress-card { padding: 32px; border: 1px solid var(--line); border-radius: 16px; background: var(--bg-2); }
-.progress-current { border-color: rgba(82, 168, 255, 0.38); background: linear-gradient(145deg, rgba(82, 168, 255, 0.07), transparent 55%), var(--bg-2); }
-.progress-eyebrow { margin: 0 0 14px; font: 500 12px/1.5 var(--font-body); text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
-.progress-current .progress-eyebrow { color: var(--blue); }
-.progress-card h3 { margin: 0 0 14px; font: 500 clamp(24px, 2.7vw, 34px)/1.25 var(--font-display); color: var(--fg-strong); letter-spacing: -0.025em; }
-.progress-intro { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.75; min-height: 5.25em; }
-.progress-metrics { margin: 26px 0 30px; }
-.progress-metric { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 6px 20px; padding: 15px 0; border-bottom: 1px solid var(--line); }
-.progress-metric:first-child { border-top: 1px solid var(--line); }
-.progress-metric dt { color: var(--muted); font-size: 14px; line-height: 1.5; }
-.progress-metric dd { flex: none; margin: 0; font: 500 30px/1 var(--font-display); font-variant-numeric: tabular-nums; color: var(--fg-strong); }
-.progress-current .progress-metric dd { color: var(--blue); }
-.progress-card h4 { margin: 0 0 16px; color: var(--fg-strong); font-size: 15px; font-weight: 500; }
-.progress-techniques { display: grid; gap: 13px; margin: 0; padding-inline-start: 20px; color: var(--muted); font-size: 14px; line-height: 1.7; }
-.progress-techniques li { padding-inline-start: 4px; }
-.progress-techniques li::marker { color: var(--subtle); }
-.progress-current .progress-techniques li::marker { color: var(--blue); }
-.progress-source { margin: 24px 0 0; color: var(--muted); font-size: 14px; line-height: 1.8; }
-.progress-source summary { cursor: pointer; color: var(--fg); padding-block: 14px; min-height: 44px; }
-.progress-source p { max-width: 900px; }
-.progress-source ul { margin: 14px 0 0; padding-inline-start: 20px; }
-.progress-source a { display: inline-block; padding-block: 8px; min-height: 44px; }
-.progress-measurements { margin-top: 62px; padding-top: 32px; border-top: 1px solid var(--line); }
-.progress-measured-note { max-width: 850px; margin: 16px 0 30px; color: var(--muted); font-size: 15px; line-height: 1.8; }
-.progress-scope { max-width: 900px; margin: 32px 0 0; color: var(--muted); font-size: 14px; line-height: 1.8; }
-:root[lang="ar"] .progress-eyebrow { letter-spacing: 0; }
-@media (max-width: 760px) {
-  .progress-grid { grid-template-columns: 1fr; gap: 20px; }
-  .progress-card { padding: 24px; }
-  .progress-intro { min-height: 0; }
-  .progress-measurements { margin-top: 40px; }
+/* The three engine tabs: the previous engine plain, v9 a grid of small squares, coming next a
+   moving gradient edge with neon glow and rows of hex digits. Hover answers quickly: the tab
+   lifts a little and lights up. */
+.eng-tabs { display: flex; flex-wrap: wrap; gap: 12px; margin: 0 0 56px; }
+.eng-tab {
+  position: relative; isolation: isolate;
+  font: 500 15px/1 var(--font-body); color: var(--fg);
+  background: var(--bg-2); border: 0; border-radius: 9999px; padding: 13px 22px; cursor: pointer;
+  box-shadow: 0 0 0 1px var(--ring); display: inline-flex; align-items: center; gap: 10px;
+  transition: box-shadow 240ms ease-out, color 240ms ease-out, background 240ms ease-out, transform 240ms ease-out;
 }
-@media (max-width: 380px) { .progress-card { padding: 20px; } }
+.eng-tab .eng-ver { font: 500 12px/1 var(--font-mono); color: var(--subtle); direction: ltr; }
+.eng-tab .eng-fx { position: absolute; inset: 0; z-index: -1; border-radius: inherit; pointer-events: none; }
+.eng-tab:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+.eng-tab:hover { transform: translateY(-2px); }
+.eng-old:hover { box-shadow: 0 0 0 1px #6a6a6a, 0 4px 14px rgba(0, 0, 0, 0.6); color: var(--fg-strong); }
+.eng-old[aria-selected="true"] { background: #111; color: var(--fg-strong); box-shadow: 0 0 0 1px var(--ring-strong); }
+.eng-soft {
+  background: #05090f; color: var(--fg-strong); text-shadow: 0 1px 3px #000, 0 0 10px rgba(82, 168, 255, 0.35);
+  box-shadow: 0 0 0 1px rgba(82, 168, 255, 0.6), 0 0 18px rgba(82, 168, 255, 0.18);
+}
+.eng-soft .eng-ver { color: #e3f1ff; }
+.eng-soft .eng-fx {
+  background:
+    linear-gradient(90deg, transparent 0 4px, #05090f 4px 6px),
+    linear-gradient(transparent 0 4px, #05090f 4px 6px),
+    linear-gradient(115deg, rgba(82, 168, 255, 0.1) 0%, rgba(82, 168, 255, 0.16) 38%, rgba(82, 168, 255, 0.42) 46%, rgba(255, 255, 255, 0.55) 50%, rgba(82, 168, 255, 0.42) 54%, rgba(82, 168, 255, 0.16) 62%, rgba(82, 168, 255, 0.1) 100%);
+  background-size: 6px 6px, 6px 6px, 300% 100%;
+  -webkit-mask-image: linear-gradient(90deg, #000, rgba(0, 0, 0, 0.4) 35%, rgba(0, 0, 0, 0.4) 65%, #000);
+  mask-image: linear-gradient(90deg, #000, rgba(0, 0, 0, 0.4) 35%, rgba(0, 0, 0, 0.4) 65%, #000);
+  animation: eng-wave 5.5s ease-in-out infinite;
+  transition: filter 240ms ease-out;
+}
+.eng-soft[aria-selected="true"] { box-shadow: 0 0 0 1px rgba(130, 190, 255, 0.85), 0 0 24px rgba(82, 168, 255, 0.3); }
+.eng-soft:hover { box-shadow: 0 0 0 1.5px #a9d3ff, 0 0 28px rgba(82, 168, 255, 0.45); }
+.eng-soft:hover .eng-fx { filter: brightness(1.7); }
+.eng-strong {
+  border: 1.5px solid transparent; color: #f2f8ff;
+  text-shadow: 0 0 6px rgba(82, 168, 255, 0.6), 0 0 14px rgba(82, 168, 255, 0.3);
+  background:
+    linear-gradient(rgba(5, 11, 20, 0.94), rgba(5, 11, 20, 0.94)) padding-box,
+    linear-gradient(90deg, #1e6fd0, #52a8ff, #cfe6ff, #fff, #52a8ff, #1e6fd0) border-box;
+  background-size: 100% 100%, 300% 100%;
+  box-shadow: 0 0 12px rgba(82, 168, 255, 0.35), 0 0 30px rgba(82, 168, 255, 0.15);
+  animation: eng-flow 5s ease infinite, eng-glow 6s ease-in-out infinite;
+}
+.eng-strong .eng-ver { color: #cfe6ff; letter-spacing: 0.3em; margin-inline-end: -0.3em; }
+.eng-strong::after {
+  content: ""; position: absolute; inset-inline: 10%; top: 118%; height: 40%; z-index: -2;
+  background: var(--blue); border-radius: 50%; pointer-events: none;
+  filter: blur(12px); opacity: 0.32; transition: opacity 240ms ease-out;
+}
+.eng-strong[aria-selected="true"] { box-shadow: 0 0 16px rgba(82, 168, 255, 0.55), 0 0 44px rgba(82, 168, 255, 0.25); }
+.eng-strong[aria-selected="true"]::after { opacity: 0.55; }
+.eng-strong:hover { box-shadow: 0 0 0 1px rgba(207, 230, 255, 0.6), 0 0 22px rgba(82, 168, 255, 0.7), 0 0 56px rgba(82, 168, 255, 0.32); }
+.eng-strong:hover::after { opacity: 0.75; }
+/* Four faint rows: the 1st and 3rd drift one way, the 2nd and 4th the other; the middle stays
+   clear for the words. */
+.eng-strong .eng-fx {
+  overflow: hidden; direction: ltr;
+  -webkit-mask-image: linear-gradient(90deg, #000, rgba(0, 0, 0, 0.12) 28%, transparent 38%, transparent 62%, rgba(0, 0, 0, 0.12) 72%, #000);
+  mask-image: linear-gradient(90deg, #000, rgba(0, 0, 0, 0.12) 28%, transparent 38%, transparent 62%, rgba(0, 0, 0, 0.12) 72%, #000);
+}
+.eng-strong .eng-fx::before, .eng-strong .eng-fx::after {
+  position: absolute; top: calc(50% - 18px); left: 0; white-space: pre;
+  font: 500 8px/9px var(--font-mono); letter-spacing: 0.4em; text-shadow: none;
+  color: rgba(140, 196, 255, 0.3);
+}
+.eng-strong .eng-fx::before { content: "a 4 c 1 2 3 b 1 6 1 2 d d 2 7 2 d 1 3 7 1 c 1 7 1 4 9 d a 4 c 1 2 3 b 1 6 1 2 d d 2 7 2 d 1 3 7 1 c 1 7 1 4 9 d \00000A\00000A3 d 5 a 4 f d 1 2 a a b f e 2 2 8 f 2 1 9 e 9 c b 0 e b 3 d 5 a 4 f d 1 2 a a b f e 2 2 8 f 2 1 9 e 9 c b 0 e b "; animation: eng-drift 34s linear infinite; }
+.eng-strong .eng-fx::after { content: "\00000A4 3 9 5 3 6 b 3 2 1 6 f d a e e b 9 7 5 7 2 9 f a e 9 2 4 3 9 5 3 6 b 3 2 1 6 f d a e e b 9 7 5 7 2 9 f a e 9 2 \00000A\00000A5 3 f 1 6 9 4 7 c c f 2 5 e c 8 4 d 8 d b c 7 4 2 5 4 7 5 3 f 1 6 9 4 7 c c f 2 5 e c 8 4 d 8 d b c 7 4 2 5 4 7 "; color: rgba(220, 236, 255, 0.22); animation: eng-drift 42s linear infinite reverse; }
+@keyframes eng-flow { 0%, 100% { background-position: 0 0, 0% 0; } 50% { background-position: 0 0, 100% 0; } }
+@keyframes eng-glow { 0%, 100% { filter: none; } 50% { filter: brightness(1.12); } }
+@keyframes eng-drift { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes eng-wave { 0% { background-position: 0 0, 0 0, 100% 0; } 100% { background-position: 0 0, 0 0, 0% 0; } }
 
-.progress-current .progress-metric .progress-gain { grid-column: 1 / -1; color: var(--muted); font: 400 12px/1.6 var(--font-body); letter-spacing: 0; }
-.measurement-history { margin-top: 28px; }
-.history-table { width: 100%; margin: 24px 0; border-collapse: collapse; text-align: start; font-size: 14px; }
-.history-table th, .history-table td { padding: 14px 12px; border-bottom: 1px solid var(--line); vertical-align: top; text-align: start; }
-.history-table thead th { color: var(--muted); font-size: 12px; font-weight: 500; }
-.history-table tbody th { width: 34%; color: var(--fg); font-weight: 500; }
-.history-table td { width: 22%; color: var(--fg-strong); }
-.history-detail { display: block; margin-top: 6px; color: var(--muted); font-size: 12px; line-height: 1.6; }
-@media (max-width: 620px) {
-  .history-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
-  .history-table tbody, .history-table tr { display: block; }
-  .history-table tbody tr { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); padding: 16px 0; border-bottom: 1px solid var(--line); }
-  .history-table tbody th { grid-column: 1 / -1; width: auto; padding: 0 0 12px; border: 0; }
-  .history-table td { width: auto; min-width: 0; padding: 0 8px 0 0; border: 0; font-size: 13px; overflow-wrap: anywhere; }
-  :root[dir="rtl"] .history-table td { padding: 0 0 0 8px; }
-  .history-table td::before { content: attr(data-label); display: block; min-height: 38px; margin-bottom: 6px; color: var(--muted); font-size: 11px; line-height: 1.6; }
+/* One panel for both engines: the top three numbers move from the previous engine to v9 and
+   light up; the bottom three, which did not change, step back under a light shade. */
+.eng-stage { position: relative; display: grid; }
+/* Both panels always share one cell, the one not shown hidden in it, so the stage keeps the
+   taller one's height and nothing below it jumps when the scene changes. No entry animation
+   of their own: the transitions below bring them in, and one here would replay the moment
+   they end and take their class away. */
+.eng-panel { grid-area: 1 / 1; position: relative; z-index: 1; }
+.eng-panel:not(.on):not(.leaving) { visibility: hidden; }
+/* The video's timings: the old scene fades, drops and blurs in 0.26 s; the new one rises
+   out of a blur, its second part 0.2 s after the first; leaving coming next, the page
+   collapses into the horizon line in 0.3 s. */
+.eng-panel.leaving { animation: eng-out 260ms cubic-bezier(0.55, 0.055, 0.675, 0.19) both; }
+.eng-panel.rising { animation: none; }
+.eng-panel.rising > * { animation: eng-rise 500ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+.eng-panel.rising > * + * { animation-delay: 200ms; }
+.eng-panel.collapsing, .eng-hz.collapsing { transform-origin: 50% 62%; animation: eng-collapse 300ms cubic-bezier(0.55, 0.055, 0.675, 0.19) both; }
+@keyframes eng-out { to { opacity: 0; transform: translateY(24px); filter: blur(8px); } }
+@keyframes eng-rise { from { opacity: 0; transform: translateY(34px); filter: blur(14px); } to { opacity: 1; transform: none; filter: none; } }
+@keyframes eng-collapse { to { transform: scaleY(0.002); filter: brightness(6); opacity: 0; } }
+.eng-panel .figure { padding-inline-end: 0; transition: opacity 500ms ease, filter 500ms ease; }
+.is-v9 .figure.same { opacity: 0.4; filter: saturate(0.6) brightness(0.85); }
+.figure.up .value .n { transition: text-shadow 500ms ease; }
+.is-v9 .figure.up .value .n { text-shadow: 0 0 14px rgba(82, 168, 255, 0.55), 0 0 34px rgba(82, 168, 255, 0.22); }
+.figure.up .value { transform-origin: left center; }
+:root[dir="rtl"] .figure.up .value { transform-origin: right center; }
+.figure.up .value.pop { animation: eng-pop 700ms var(--ease); }
+@keyframes eng-pop { 0%, 100% { filter: none; transform: none; } 40% { filter: brightness(1.6) drop-shadow(0 0 10px rgba(82, 168, 255, 0.6)); transform: scale(1.03); } }
+.eng-num { direction: ltr; unicode-bidi: isolate; font-variant-numeric: tabular-nums; }
+.eng-v9only { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows 450ms var(--ease), opacity 350ms ease; }
+.eng-v9only > div { overflow: hidden; min-height: 0; }
+.is-v9 .eng-v9only { grid-template-rows: 1fr; opacity: 1; }
+.eng-was { color: var(--subtle); font-size: 13.5px; margin: 0 0 6px; }
+.eng-was em { font-style: normal; color: var(--green); white-space: nowrap; }
+.eng-extra { color: var(--fg); font-size: 13.5px; margin: 0 0 6px; }
+.eng-extra b { color: var(--blue); font-weight: 500; text-shadow: 0 0 10px rgba(82, 168, 255, 0.28); }
+.eng-sub { color: var(--fg); font-size: 14px; }
+.eng-sub .eng-num { font-weight: 500; color: var(--fg-strong); }
+.eng-scope { margin: 56px 0 0; padding-top: 22px; box-shadow: 0 -1px 0 var(--line); color: var(--subtle); font-size: 14px; line-height: 1.9; max-width: 900px; }
+
+/* Coming next: the four next steps. */
+.eng-road { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.eng-step { background: rgba(10, 10, 10, 0.62); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); border-radius: 12px; padding: 26px 26px 24px; box-shadow: 0 0 0 1px var(--line); }
+.eng-step .eng-k { font: 500 12px/1 var(--font-mono); color: var(--blue); direction: ltr; display: inline-block; margin-bottom: 14px; text-shadow: 0 0 8px rgba(82, 168, 255, 0.25); }
+.eng-step .eng-h { margin: 0 0 10px; font-weight: 500; font-size: 20px; color: var(--fg-strong); }
+.eng-step p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.7; }
+.eng-step.focus { box-shadow: 0 0 0 1px rgba(82, 168, 255, 0.28), 0 0 28px rgba(82, 168, 255, 0.06); }
+.eng-note { margin: 28px 0 0; color: var(--subtle); font-size: 14px; line-height: 1.8; }
+
+/* Coming next opens like the demo video at 0:20: a beam lies down, becomes the horizon, and
+   the horizon draws itself in hex digits over every card, then opens from its middle onto the
+   new scene. Both are drawn on canvases the width of the stage, in front of the cards: the
+   horizon with only its outer edges softened; the beam and its bloom over it, where the line
+   runs to both edges as it did in the video. */
+.eng-hz, .eng-light { position: absolute; left: 0; top: 0; width: 100%; height: auto; pointer-events: none; }
+.eng-hz { z-index: 2; -webkit-mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent); mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent); }
+.eng-light { z-index: 3; mix-blend-mode: screen; }
+@media (max-width: 960px) { .eng-road { grid-template-columns: 1fr; } }
+@media (max-width: 520px) { .eng-tab { flex: 1 1 100%; justify-content: center; } }
+@media (prefers-reduced-motion: reduce) {
+  .eng-tab, .eng-tab .eng-fx, .eng-tab .eng-fx::before, .eng-tab .eng-fx::after, .figure.up .value.pop { animation: none !important; }
+  .eng-hz, .eng-light { display: none; }
 }
 
 /* FAQ --------------------------------------------------------------------------------------------- */
