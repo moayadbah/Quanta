@@ -1,6 +1,6 @@
 # Measurement protocol, round four (written before any result of this round)
 
-Written: 2026-09-24, before any ruleset v3 code and before the new labels. Author: Claude.
+Written: 2026-09-24, before any ruleset v3 code and before the new labels.
 Tool under test: `app/` at package 0.4.0, ruleset 2026.10.01 ("v2"), then the round-four ruleset ("v3").
 Brief: the owner's round-four direction ("Accuracy is the product. Push it higher.").
 

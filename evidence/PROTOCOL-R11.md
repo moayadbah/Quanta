@@ -1,6 +1,6 @@
 # Measurement protocol, round eleven (written before any result of this round)
 
-**Written:** 2026-10-19, before any ruleset change of this round and before any repository of the new set was screened, labelled or scanned. Author: Claude.
+**Written:** 2026-10-19, before any ruleset change of this round and before any repository of the new set was screened, labelled or scanned.
 
 **Brief.** The team, 2026-10-19, asked for the final version, with:
 - Options 1 to 4 of the round-ten review (option 5 if time allows):

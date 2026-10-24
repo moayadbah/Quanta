@@ -1,7 +1,7 @@
 # Measurement protocol, round nine (written before any result of this round)
 
 Written: 2026-10-17, before any ruleset change of this round and before any repository of the
-new set was screened, labelled or scanned. Author: Claude.
+new set was screened, labelled or scanned.
 Brief (the team, 2026-10-17): the ninth and last version; raise the engine's accuracy and
 performance with every idea that helps.
 Engines: v5 (2026.11.01, shipped), v8 (2026.11.04, round eight, unpublished), v9 (this round).

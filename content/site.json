@@ -3558,6 +3558,22 @@
     "numbers.current.note": {
       "en": "The original implementation was tested on sample fixtures, without an equivalent real-world accuracy benchmark. The results below measure Quanta today; they are not a before-and-after accuracy comparison.",
       "ar": "اختُبر التطبيق الأول على أمثلة مُعدّة للاختبار، دون قياس مماثل لدقة الكشف في مشاريع حقيقية. الأرقام أدناه تقيس Quanta اليوم، وليست مقارنة دقة بين البداية والحاضر."
+    },
+    "numbers.estimate": {
+      "en": "Modelled estimate",
+      "ar": "تقدير محسوب"
+    },
+    "numbers.found": {
+      "en": "{found} of {total} labelled calls found",
+      "ar": "وُجد {found} من {total} استدعاءً موسومًا"
+    },
+    "numbers.confirmed": {
+      "en": "{found} of {total} reported calls confirmed",
+      "ar": "تأكّد {found} من {total} استدعاءً مُبلغًا عنه"
+    },
+    "numbers.latest_sample": {
+      "en": "Latest sample (60 repositories): {latest_found} of {latest_total} found ({latest}%).",
+      "ar": "آخر عينة (60 مستودعًا): وُجد {latest_found} من {latest_total} ({latest}٪)."
     }
   }
 }

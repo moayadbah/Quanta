@@ -318,7 +318,6 @@ function renderSource() {
 
 /* Numbers: the original project and what it does today. Inventory counts come from
    source, while the independent measurements keep their own scope and provenance. */
-const MEASURED_FIGURES = ["other", "pktls", "precision"];
 const REPOSITORY = "https://github.com/moayadbah/Quanta/blob/main/";
 
 function renderProgress() {
@@ -344,9 +343,11 @@ function renderProgress() {
 
 function figureValue(figure) {
   const [before, after = ""] = t(`fig.${figure.id}.format`).split("{n}");
+  const word = after.startsWith(" ") ? after.trim() : "";
   return el("span", { class: "value" },
     el("span", { class: "n" }, before, String(figure.value),
-      el("span", { class: "unit", text: after })),
+      !word && after ? el("span", { class: "unit", text: after }) : null),
+    word ? el("span", { class: "unit word", text: word }) : null,
   );
 }
 
@@ -354,9 +355,11 @@ function renderFigures() {
   const evidence = data.evidence;
   if (!evidence) return;
   renderProgress();
-  fill($("figures"), ...MEASURED_FIGURES.map((id) => {
-    const figure = evidence.figures.find((item) => item.id === id);
-    if (!figure) return null;
+  // Every published figure stays visible. Entries marked "inside" are shown with
+  // their parent card rather than being silently lost from a hand-picked subset.
+  fill($("figures"), ...evidence.figures.filter((figure) => !figure.inside).map((figure) => {
+    const { id, values } = figure;
+    const related = evidence.figures.filter((item) => item.inside === id);
     return el("button", {
       type: "button", class: "figure reveal in",
       "aria-expanded": String(data.figure === id), "aria-controls": "figure-detail",
@@ -369,7 +372,17 @@ function renderFigures() {
       },
     },
       figureValue(figure),
-      el("span", { class: "label", text: t(`fig.${id}.label`, figure.values) }),
+      el("span", { class: "label", text: t(`fig.${id}.label`, values) }),
+      ["hours", "cost"].includes(id)
+        ? el("span", { class: "figure-estimate", text: t("numbers.estimate") }) : null,
+      values.found !== undefined
+        ? el("span", { class: "figure-context", text: t(id === "precision" ? "numbers.confirmed" : "numbers.found", values) }) : null,
+      values.latest !== undefined
+        ? el("span", { class: "figure-context", text: t("numbers.latest_sample", values) }) : null,
+      ...related.map((item) => el("span", { class: "figure-context" },
+        el("bdi", { dir: "ltr", text: t(`fig.${item.id}.format`, { n: item.value }) }),
+        " ", t(`fig.${item.id}.label`, item.values),
+      )),
       el("span", { class: "how" }, t("numbers.how"), icon("chevron", "chev")),
     );
   }));
@@ -392,6 +405,7 @@ function renderDetail() {
   detail.hidden = !figure;
   if (!figure) return;
   const { values, sources } = figure;
+  const related = data.evidence.figures.filter((item) => item.inside === figure.id);
   fill(detail,
     el("p", { class: "h4", text: t(`fig.${figure.id}.label`, values) }),
     el("dl", {},
@@ -400,6 +414,14 @@ function renderDetail() {
       el("dt", { text: t("numbers.source") }), sourceList(sources),
       values.limit ? el("dt", { text: t("numbers.limit") }) : null,
       values.limit ? el("dd", { text: t(`fig.${figure.id}.limit`, values) }) : null,
+      ...related.flatMap((item) => [
+        el("dt", { text: t(`fig.${item.id}.label`, item.values) }),
+        el("dd", {},
+          el("bdi", { dir: "ltr", text: t(`fig.${item.id}.format`, { n: item.value }) }),
+          ". ", t(`fig.${item.id}.measured`, item.values), " ",
+          t(`fig.${item.id}.method`, item.values),
+        ),
+      ]),
     ),
   );
 }

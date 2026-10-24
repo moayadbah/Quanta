@@ -1,6 +1,6 @@
 # Measurement protocol, round ten (written before any result of this round)
 
-Written: 2026-10-18. This was before any ruleset change of this round and before any repository of the new set was screened, labelled or scanned. Author: Claude.
+Written: 2026-10-18. This was before any ruleset change of this round and before any repository of the new set was screened, labelled or scanned.
 
 **Brief.** The team, 2026-10-18: options 1 to 4 of the round-nine follow-up, then one measurement on a new held-out set of 30 repositories. The options are:
 1. pyOpenSSL methods on followed objects.

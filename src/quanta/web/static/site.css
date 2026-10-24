@@ -376,6 +376,8 @@ button.back { border: 0; background: none; padding: 0; justify-self: start; }
 :root[lang="ar"] .figure .value .unit { font-size: 0.34em; letter-spacing: 0; font-weight: 400; }
 .figure.sk-figure { pointer-events: none; }
 .figure .label { color: var(--muted); font-size: 15px; line-height: 1.5; }
+.figure .figure-context { color: var(--fg); font-size: 13px; line-height: 1.7; }
+.figure .figure-estimate { color: var(--muted); font-size: 12px; line-height: 1.6; }
 .figure .how { display: inline-flex; align-items: center; gap: 6px; color: var(--fg); font-size: 13px; opacity: 0.7; transition: opacity var(--fast) var(--ease); }
 @media (hover: hover) { .figure:hover .how, .figure[aria-expanded="true"] .how { opacity: 1; } }
 .figure .how .chev { width: 12px; height: 12px; transition: transform var(--fast) var(--ease); }
