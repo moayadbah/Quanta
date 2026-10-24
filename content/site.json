@@ -1693,7 +1693,7 @@
     },
     "numbers.lede": {
       "en": "How Quanta grew: the numbers, the techniques, and what changed.",
-      "ar": "كيف تطوّر كوانتا: الأرقام، والتقنيات، وما تغيّر."
+      "ar": "كيف تطوّر Quanta: الأرقام، والتقنيات، وما تغيّر."
     },
     "numbers.limit": {
       "en": "Limit",
@@ -3461,7 +3461,7 @@
     },
     "numbers.current.eyebrow": {
       "en": "Quanta today",
-      "ar": "كوانتا اليوم"
+      "ar": "Quanta اليوم"
     },
     "numbers.current.title": {
       "en": "Find more. Explain the next step.",
@@ -3557,7 +3557,7 @@
     },
     "numbers.current.note": {
       "en": "The original implementation was tested on sample fixtures, without an equivalent real-world accuracy benchmark. The results below measure Quanta today; they are not a before-and-after accuracy comparison.",
-      "ar": "اختُبر التطبيق الأول على أمثلة مُعدّة للاختبار، دون قياس مماثل لدقة الكشف في مشاريع حقيقية. الأرقام أدناه تقيس كوانتا اليوم، وليست مقارنة دقة بين البداية والحاضر."
+      "ar": "اختُبر التطبيق الأول على أمثلة مُعدّة للاختبار، دون قياس مماثل لدقة الكشف في مشاريع حقيقية. الأرقام أدناه تقيس Quanta اليوم، وليست مقارنة دقة بين البداية والحاضر."
     }
   }
 }
