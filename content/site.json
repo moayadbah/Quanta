@@ -2608,12 +2608,12 @@
       "ar": "2024-07"
     },
     "refs.omb.title": {
-      "en": "OMB: Report on Post-Quantum Cryptography",
-      "ar": "OMB: Report on Post-Quantum Cryptography"
+      "en": "The White House (ONCD/OMB): Report on Post-Quantum Cryptography, p. 11",
+      "ar": "The White House (ONCD/OMB): Report on Post-Quantum Cryptography, p. 11"
     },
     "refs.omb.took": {
-      "en": "Context only: $7.1 billion to migrate US federal civilian systems, 2025 to 2035.",
-      "ar": "للسياق فقط: 7.1 مليار دولار لترحيل الأنظمة المدنية الفيدرالية الأمريكية بين 2025 و2035."
+      "en": "Context only: about $7.1 billion (2024 dollars) to migrate prioritized US federal systems to PQC, 2025 to 2035.",
+      "ar": "للسياق فقط: نحو 7.1 مليار دولار (بأسعار 2024) لترحيل الأنظمة الفيدرالية الأمريكية ذات الأولوية إلى التشفير ما بعد الكمي بين 2025 و2035."
     },
     "refs.openssl.date": {
       "en": "2025-04-08",
