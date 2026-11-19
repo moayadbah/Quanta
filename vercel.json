@@ -6,6 +6,13 @@
       "maxDuration": 300
     }
   },
+  "redirects": [
+    {
+      "source": "/demo",
+      "destination": "https://www.youtube.com/",
+      "permanent": false
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
